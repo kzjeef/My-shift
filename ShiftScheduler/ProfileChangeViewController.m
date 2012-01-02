@@ -289,6 +289,8 @@
 
         [self.datePicker removeFromSuperview];
         [self.picker removeFromSuperview];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:SHIFT_SETTING_CHANGED_NOTIFICATION object:nil];
     }
 }
 

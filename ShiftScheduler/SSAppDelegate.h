@@ -10,6 +10,8 @@
 #import "ProfilesViewController.h"
 #import "KalViewController.h"
 
+#define SHIFT_SETTING_CHANGED_NOTIFICATION @"ShiftSettingChanged"
+
 
 @interface SSAppDelegate : UIResponder <UIApplicationDelegate, 
 UITableViewDelegate, 
@@ -39,5 +41,6 @@ ProfileEditFinishDelegate>
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 - (void) didFinishEditingSetting;
+- (void) shiftSettingChanged;
 
 @end

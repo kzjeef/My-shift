@@ -76,7 +76,19 @@
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
     
+    
+    // register notifacation
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(shiftSettingChanged)
+                                                 name:SHIFT_SETTING_CHANGED_NOTIFICATION object:nil];
+    
     return YES;
+}
+
+- (void) shiftSettingChanged
+{
+    NSLog(@"Shift Setting Changed boardcast received, reload kal");
+    [kal reloadData];
 }
 
 - (void)showSettingView
@@ -208,10 +220,12 @@
     }
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"ShiftScheduler.sqlite"];
+
+        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES],NSInferMappingModelAutomaticallyOption, nil];
     
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error])
     {
         /*
          Replace this implementation with code to handle the error appropriately.
