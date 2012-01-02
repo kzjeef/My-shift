@@ -20,8 +20,6 @@
 #define PICKER_VIEW_ON 1
 #define PICKER_VIEW_OFF 2
 
-#define SHIFT_SETTING_CHANGED_NOTIFICATION @"ShiftSettingChanged"
-
 @interface ProfileChangeViewController : UITableViewController  <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 {
     int viewMode;
