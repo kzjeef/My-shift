@@ -53,6 +53,7 @@ enum JobShiftAlgoType {
 @property (nonatomic, strong) NSNumber *jobRemindBeforeWork;
 @property (nonatomic, strong) NSArray  *jobFreeJumpTable;
 @property (nonatomic, strong) NSNumber *jobFreeJumpCycle;
+@property (nonatomic, retain) NSData * jobFreeJumpArrayArchive;
 
 
 // init the work date generator with these input.

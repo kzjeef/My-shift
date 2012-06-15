@@ -39,7 +39,7 @@
     NSArray *jobShiftAllTypesString;
     NSCalendar *curCalender;
     NSCalendar *timezoneCalender;
-    NSArray *jobFreejumpTable;
+    NSArray *jobFreeJumpTable;
     UIImage *iconImage;
     UIColor *iconColor;
     UIColor *defaultIconColor;
@@ -67,6 +67,7 @@
 @dynamic jobShiftType;
 @dynamic jobRemindBeforeOff,jobRemindBeforeWork;
 @dynamic jobFreeJumpCycle;
+@dynamic jobFreeJumpArrayArchive;
 @synthesize curCalender, cachedJobOnIconColor, cachedJobOnIconID, shiftAlgo, jobShiftTypeString;
 
 - (ShiftAlgoBase *)shiftAlgo;
@@ -74,12 +75,12 @@
     if (shiftAlgo == nil) {
 	enum JobShiftAlgoType type = (enum JobShiftAlgoType)self.jobShiftType.intValue;
 	switch(type) {
-        case JOB_SHIFT_ALGO_FREE_ROUND:
-            shiftAlgo = [[ShiftAlgoFreeRound alloc] initWithContext:self];
-            break;
-        case JOB_SHIFT_ALGO_FREE_JUMP:
-            shiftAlgo = [[ShiftAlgoFreeJump alloc] initWithContext:self];
-            break;
+	case JOB_SHIFT_ALGO_FREE_ROUND:
+	    shiftAlgo = [[ShiftAlgoFreeRound alloc] initWithContext:self];
+	    break;
+	case JOB_SHIFT_ALGO_FREE_JUMP:
+	    shiftAlgo = [[ShiftAlgoFreeJump alloc] initWithContext:self];
+	    break;
 	default:
 	    assert (-1);
 	}
@@ -87,21 +88,62 @@
     return shiftAlgo;
 }
 
-- (void) setJobFreejumpTable:(NSArray *) array
+- (void) setJobFreeJumpTable:(NSArray *) array
 {
-    jobFreejumpTable = [array copy];
-    
+    jobFreeJumpTable = [array copy];
+    self.jobFreeJumpArrayArchive = [NSKeyedArchiver archivedDataWithRootObject:jobFreeJumpTable];
+    jobFreeJumpTable = nil;
     // archive the table to the core date also do here.
-    // *TODO* add later.
+}
+
+- (NSArray *)fixupArrayByLength: (NSArray *) inputarray
+{
+    int diff = inputarray.count - self.jobFreeJumpCycle.intValue;
+    if (diff == 0)
+        return inputarray;
+    else if (diff > 0) {
+        // oh, we needs fill the addional days with zero
+        NSMutableArray *fixeda = [[NSMutableArray alloc] initWithCapacity:self.jobFreeJumpCycle.intValue];
+        [fixeda setArray:inputarray];
+        for (int i = 0; i < diff; i++)
+            [fixeda addObject: [NSNumber numberWithInt: 0]];
+        return fixeda;
+    } else {
+        // diff < 0, we need cut the array with cycle length
+        NSMutableArray *fixeda = [[NSMutableArray alloc] initWithCapacity:self.jobFreeJumpCycle.intValue];
+        NSRange a = NSMakeRange(0, self.jobFreeJumpCycle.intValue);
+        [fixeda replaceObjectsInRange:a withObjectsFromArray:inputarray range:a];
+        return fixeda;
+    }
 }
 
 /** this function should do the job convert all jump work information
  * to an array can be process by the modale
  */
-- (NSArray *) jobFreejumpTable
+- (NSArray *) jobFreeJumpTable
 {
-#warning add later.
-    return jobFreejumpTable;
+    if (jobFreeJumpTable != nil)
+        return jobFreeJumpTable;
+    if (self.jobFreeJumpArrayArchive != nil) {
+        jobFreeJumpTable = [NSKeyedUnarchiver
+                                 unarchiveObjectWithData:self.jobFreeJumpArrayArchive];
+#ifdef DEBUG_FIXUP_TABLE
+        NSLog(@"old cycle:%@ table: %@", self.jobFreeJumpCycle, jobFreeJumpTable);
+#endif
+        jobFreeJumpTable = [self fixupArrayByLength: jobFreeJumpTable];
+
+#ifdef DEBUG_FIXUP_TABLE
+        NSLog(@"cycle:%@ new table: %@", self.jobFreeJumpCycle, jobFreeJumpTable);
+#endif
+    }
+    else {
+        NSMutableArray *t = [[NSMutableArray alloc] initWithCapacity:self.jobFreeJumpCycle.intValue];
+        for (int i = 0; i < self.jobFreeJumpCycle.intValue; i++) {
+            [t addObject:[NSNumber numberWithBool:0]];
+        }
+        jobFreeJumpTable = [t copy];
+    }
+    return jobFreeJumpTable;
 }
 
 #define FREE_JUMP_STRING NSLocalizedString(@"Free Jump", "")
@@ -111,13 +153,12 @@
 
 - (NSArray *) jobShiftAllTypesString
 {
-    
     if (jobShiftAllTypesString == nil) {
-        jobShiftAllTypesString = [[NSArray alloc] initWithObjects:
-                                  FREE_ROUND_STRING,
-                                  FREE_JUMP_STRING,
-                                  HOUR_ROUND_STRING,
-                                  nil];
+	jobShiftAllTypesString = [[NSArray alloc] initWithObjects:
+				  FREE_ROUND_STRING,
+				  FREE_JUMP_STRING,
+				  HOUR_ROUND_STRING,
+				  nil];
     }
     return jobShiftAllTypesString;
 }
@@ -126,7 +167,7 @@
 {
     NSInteger n = self.jobShiftType.intValue;
     if (n > 0 && n < [[self jobShiftAllTypesString] count]) {
-        return YES;
+	return YES;
     }
     return NO;
 }
@@ -143,9 +184,9 @@
 
 - (NSString *) jobShiftTypeString
 {
-    
+
     if ([self shiftTypeValied])
-        return [[self jobShiftAllTypesString]
+	return [[self jobShiftAllTypesString]
 		   objectAtIndex:(self.jobShiftType.intValue - 1)];
     //    NSAssert(NO, @"shiftType return with empty string, should not happen");
     return [NSString string];
@@ -155,40 +196,40 @@
 // will reset to default setting if not set.
 {
     if (!self.jobOnDays)
-        self.jobOnDays = [NSNumber numberWithInt:JOB_DEFAULT_ON_DAYS];
-    
+	self.jobOnDays = [NSNumber numberWithInt:JOB_DEFAULT_ON_DAYS];
+
     if (!self.jobOffDays)
-        self.jobOffDays = [NSNumber numberWithInt:JOB_DEFAULT_OFF_DAYS];
-    
+	self.jobOffDays = [NSNumber numberWithInt:JOB_DEFAULT_OFF_DAYS];
+
     if (!self.jobStartDate)
-        self.jobStartDate = [NSDate date];
-    
+	self.jobStartDate = [NSDate date];
+
     if (!self.jobOnIconID)
     self.jobOnIconID = JOB_DEFAULT_ICON_FILE;
-    
+
     if (!self.jobEnable)
-        self.jobEnable = [NSNumber numberWithBool:YES];
-    
+	self.jobEnable = [NSNumber numberWithBool:YES];
+
     if (!self.jobOnColorID)
-        self.jobOnColorID = JOB_DEFAULT_COLOR_VALUE;
-    
+	self.jobOnColorID = JOB_DEFAULT_COLOR_VALUE;
+
     NSDateComponents *defaultOnTime = [[NSDateComponents alloc] init];
     [defaultOnTime setHour:8];
     [defaultOnTime setMinute:0];
     if (!self.jobEverydayStartTime)
-        self.jobEverydayStartTime =  [[NSCalendar currentCalendar] dateFromComponents:defaultOnTime];
-    
+	self.jobEverydayStartTime =  [[NSCalendar currentCalendar] dateFromComponents:defaultOnTime];
+
     if (!self.jobEveryDayLengthSec)
-        self.jobEveryDayLengthSec = [NSNumber numberWithInt: JOB_DEFAULT_EVERYDAY_ON_LENGTH]; // 8 hour a day default
-    
+	self.jobEveryDayLengthSec = [NSNumber numberWithInt: JOB_DEFAULT_EVERYDAY_ON_LENGTH]; // 8 hour a day default
+
     if (!self.jobRemindBeforeOff)
-        self.jobRemindBeforeOff = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_OFF];
-    
+	self.jobRemindBeforeOff = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_OFF];
+
     if (!self.jobRemindBeforeWork)
-        self.jobRemindBeforeWork = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_WORK];
-    
+	self.jobRemindBeforeWork = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_WORK];
+
     if (!self.jobShiftType)
-        self.jobShiftType = [NSNumber numberWithInt:JOB_SHIFT_ALGO_FREE_ROUND];
+	self.jobShiftType = [NSNumber numberWithInt:JOB_SHIFT_ALGO_FREE_ROUND];
 }
 
 
@@ -197,69 +238,65 @@
 // will reset to default setting if not set.
 {
     self.jobOnDays = [NSNumber numberWithInt:JOB_DEFAULT_ON_DAYS];
-    
+
     self.jobOffDays = [NSNumber numberWithInt:JOB_DEFAULT_OFF_DAYS];
-    
+
     self.jobStartDate = [NSDate date];
-    
+
     self.jobOnIconID = JOB_DEFAULT_ICON_FILE;
-    
+
     self.jobOnColorID = JOB_DEFAULT_COLOR_VALUE;
-    
+
     self.jobEnable = [NSNumber numberWithBool:YES];
-    
+
     NSDateComponents *defaultOnTime = [[NSDateComponents alloc] init];
     [defaultOnTime setHour:8];
     [defaultOnTime setMinute:0];
     self.jobEverydayStartTime =  [[NSCalendar currentCalendar] dateFromComponents:defaultOnTime];
-    
+
     self.jobEveryDayLengthSec = [NSNumber numberWithInt: JOB_DEFAULT_EVERYDAY_ON_LENGTH]; // 8 hour a day default
     self.jobRemindBeforeOff = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_OFF];
     self.jobRemindBeforeWork = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_WORK];
-    
+
 //#warning  remove this test message
 //    self.jobShiftType = [NSNumber numberWithInt:JOB_SHIFT_ALGO_FREE_JUMP];
 //#warning  remove this test message
 }
 
-
-
-
 - (NSString *)jobEverydayOffTimeWithFormatter:(NSDateFormatter *)formatter
 {
     return [formatter stringFromDate:[self.jobEverydayStartTime dateByAddingTimeInterval:
-                                   self.jobEveryDayLengthSec.intValue]];
+				   self.jobEveryDayLengthSec.intValue]];
 }
-
 
 - (UIImage *) iconImage
 {
-    if (!iconImage 
-        || ![cachedJobOnIconID isEqualToString:self.jobOnIconID]
+    if (!iconImage
+	|| ![cachedJobOnIconID isEqualToString:self.jobOnIconID]
 #ifdef ENABLE_COLOR_ENABLE_CHOOSE
-        || ![cachedJobOnIconColorOn isEqualToNumber:self.jobOnIconColorOn]
+	|| ![cachedJobOnIconColorOn isEqualToNumber:self.jobOnIconColorOn]
 #endif
-        ) {
-        
-        if (self.jobOnIconID == nil)
-            self.jobOnIconID = JOB_DEFAULT_ICON_FILE;
-        
-        NSString *iconpath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"jobicons.bundle/%@", self.jobOnIconID] ofType:nil];
-        
-        iconImage = [UIImage imageWithContentsOfFile:iconpath];
-        cachedJobOnIconID = self.jobOnIconID;
-        if (!iconImage) {
-            NSLog(@"ICON: can't found icon %@", self.jobOnIconID);
-        }
-        
-        // disable cholor enable or not choose by user;
+	) {
+
+	if (self.jobOnIconID == nil)
+	    self.jobOnIconID = JOB_DEFAULT_ICON_FILE;
+
+	NSString *iconpath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"jobicons.bundle/%@", self.jobOnIconID] ofType:nil];
+
+	iconImage = [UIImage imageWithContentsOfFile:iconpath];
+	cachedJobOnIconID = self.jobOnIconID;
+	if (!iconImage) {
+	    NSLog(@"ICON: can't found icon %@", self.jobOnIconID);
+	}
+
+	// disable cholor enable or not choose by user;
 #ifdef ENABLE_COLOR_ENABLE_CHOOSE
-        cachedJobOnIconColorOn = self.jobOnIconColorOn;
+	cachedJobOnIconColorOn = self.jobOnIconColorOn;
        if (self.jobOnIconColorOn.intValue == TRUE) {
-            iconImage = [OneJob processIconImageWithColor:iconImage withColor:self.iconColor];
-        }
+	    iconImage = [OneJob processIconImageWithColor:iconImage withColor:self.iconColor];
+	}
 #else
-        iconImage = [UIImage generateMonoImage:iconImage withColor:self.iconColor];
+	iconImage = [UIImage generateMonoImage:iconImage withColor:self.iconColor];
 #endif
     }
     return iconImage;
@@ -275,9 +312,9 @@
 - (UIColor *) defaultIconColor
 {
     if (defaultIconColor == nil) {
-        // 39814c is green one
-        // B674C2 is light purple one
-        defaultIconColor = [UIColor colorWithHexString:JOB_DEFAULT_COLOR_VALUE withAlpha:DEFAULT_ALPHA_VALUE_OF_JOB_ICON];
+	// 39814c is green one
+	// B674C2 is light purple one
+	defaultIconColor = [UIColor colorWithHexString:JOB_DEFAULT_COLOR_VALUE withAlpha:DEFAULT_ALPHA_VALUE_OF_JOB_ICON];
     }
     return defaultIconColor;
 }
@@ -285,18 +322,18 @@
 - (UIColor *) iconColor
 {
     if (!iconColor || ![cachedJobOnIconColor isEqualToString:self.jobOnColorID]) {
-        if (self.jobOnColorID == nil)
-            return self.defaultIconColor;
-        NSLog(@"%@", self.jobOnColorID);
-        iconColor = [UIColor colorWithHexString:self.jobOnColorID 
-                                      withAlpha:DEFAULT_ALPHA_VALUE_OF_JOB_ICON];
-        
-        if (cachedJobOnIconColor != self.jobOnIconID) 
-            cachedJobOnIconID = nil;
-        cachedJobOnIconColor = self.jobOnColorID;
-        
+	if (self.jobOnColorID == nil)
+	    return self.defaultIconColor;
+	NSLog(@"%@", self.jobOnColorID);
+	iconColor = [UIColor colorWithHexString:self.jobOnColorID
+				      withAlpha:DEFAULT_ALPHA_VALUE_OF_JOB_ICON];
+
+	if (cachedJobOnIconColor != self.jobOnIconID)
+	    cachedJobOnIconID = nil;
+	cachedJobOnIconColor = self.jobOnColorID;
+
     }
-    
+
 #ifdef ENABLE_COLOR_ENABLE_CHOOSE
     if (self.jobOnIconColorOn.intValue == FALSE)
        return nil;
@@ -309,14 +346,14 @@
 
 // ideas1 ， 只储存所有工作的日期， 在这个workdays的数组里。
 //            问题： 但是问题是， 这样做了以后无法调整， 要调班的时候无法做了。
-// idea2, 储存所有的日期， 一年也就365个嘛， 一百年也没多少个。 所以放的下。 
+// idea2, 储存所有的日期， 一年也就365个嘛， 一百年也没多少个。 所以放的下。
 //          这样就需要把nsdate做继承。 继承或者不继承。。 继承了不用改现有代码。
 // 先选择2把。
 - (id) initWithWorkConfigWithStartDate: (NSDate *) thestartDate
-                     workdayLengthWith: (int) workdaylength
-                     restdayLengthWith: (int) restdayLength
-                         lengthOfArray: (int) lengthOfArray
-                              withName:(NSString *)name
+		     workdayLengthWith: (int) workdaylength
+		     restdayLengthWith: (int) restdayLength
+			 lengthOfArray: (int) lengthOfArray
+			      withName:(NSString *)name
 {
     self = [self init];
 

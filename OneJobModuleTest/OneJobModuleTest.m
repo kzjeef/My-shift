@@ -48,6 +48,66 @@
     [super tearDown];
 }
 
+- (BOOL) verifyArray: (NSArray *)a1 anotherArray: (NSArray *)a2
+{
+  if (a1.count != a2.count)
+    return NO;
+  for (int i = a1.count - 1 ; i >= 0; i--) {
+    NSNumber *n1, *n2;
+    n1 = [a1 objectAtIndex:i];
+    n2 = [a2 objectAtIndex:i];
+    if (n1.intValue != n2.intValue)
+      return NO;
+  }
+
+  return YES;
+}
+
+- (void)testFreesRoundTableArchive
+{
+    OneJob *freejumpJob;
+    
+    freejumpJob = [NSEntityDescription insertNewObjectForEntityForName:@"OneJob" 
+                                                inManagedObjectContext:self.moc];
+    [freejumpJob forceDefaultSetting];
+    freejumpJob.jobShiftType = [NSNumber numberWithInt:JOB_SHIFT_ALGO_FREE_JUMP];
+    
+    
+    // Setup a test array for flowing case:
+    // 1. 2 on 2 off, and 6 on 6 off.
+    // Totally 12+4 = 16 days.
+    NSMutableArray *array1 = [[NSMutableArray alloc] init];
+    
+    [array1 addObject: [NSNumber numberWithInt: 1]];
+    [array1 addObject: [NSNumber numberWithInt: 1]];
+    [array1 addObject: [NSNumber numberWithInt: 0]];
+    [array1 addObject: [NSNumber numberWithInt: 0]];
+    for (int i = 0; i < 6; i++)
+        [array1 addObject: [NSNumber numberWithInt: 1]];
+    for (int i = 0; i < 6; i++)
+        [array1 addObject: [NSNumber numberWithInt: 0]];
+    
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeStyle:NSDateFormatterFullStyle];
+    
+    freejumpJob.jobFreeJumpTable = array1;
+    freejumpJob.jobFreeJumpCycle = [NSNumber numberWithInt:array1.count];
+    STAssertTrue([self verifyArray: array1 anotherArray:freejumpJob.jobFreeJumpTable], @"archive checking, save the pick out array1 not same");
+
+    NSMutableArray *array2 = [[NSMutableArray alloc] init];
+    [array2 addObject: [NSNumber numberWithInt: 1]];
+    [array2 addObject: [NSNumber numberWithInt: 0]];
+    [array2 addObject: [NSNumber numberWithInt: 1]];
+    [array2 addObject: [NSNumber numberWithInt: 0]];
+
+    freejumpJob.jobFreeJumpTable = array2;
+    freejumpJob.jobFreeJumpCycle = [NSNumber numberWithInt:array2.count];
+
+    STAssertTrue([self verifyArray: array2 anotherArray:freejumpJob.jobFreeJumpTable], @"archive change check, save is not work for new array");
+    STAssertFalse([self verifyArray: array1 anotherArray:freejumpJob.jobFreeJumpTable], @"archve change check, save equal to pervious array");
+
+}
+
 // the default on and off is 5/2
 - (void)testFreesRoundADefaultOnDay
 {
@@ -56,8 +116,7 @@
     int testroundafterEnd = 5;
     int default_on = JOB_DEFAULT_ON_DAYS;
     int default_off = JOB_DEFAULT_OFF_DAYS;
-    
-    
+
     onOffJob = [NSEntityDescription insertNewObjectForEntityForName:@"OneJob" 
                                              inManagedObjectContext:self.moc];
     [onOffJob forceDefaultSetting];
@@ -121,6 +180,8 @@
     }
 }
 
+ 
+
 - (void) testFreeJumpShift
 {
     OneJob *freejumpJob;
@@ -146,12 +207,14 @@
         [ma addObject: [NSNumber numberWithInt: 0]];
     
     formatter = [[NSDateFormatter alloc] init];
-    [formatter setTimeStyle:NSDateFormatterFullStyle];
+    [formatter setDateStyle:NSDateFormatterFullStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
     
-    freejumpJob.jobFreejumpTable = ma;
+    freejumpJob.jobFreeJumpTable = ma;
+    freejumpJob.jobFreeJumpCycle = [NSNumber numberWithInt:16];
+                        
     
     NSDate *today = [NSDate date];
-    
     // test case is inside of Jump Shift model
     // and the model is 
     // 1, 2, working
@@ -165,7 +228,8 @@
         int each_round = 16;
         for (int j = 0; j < each_round; j++) {
             int t = (each_round * i) + j;
-            NSDate *target_time = [today cc_dateByMovingToNextOrBackwardsFewDays:t withCalender:calender];
+            NSDate *target_time = [today cc_dateByMovingToNextOrBackwardsFewDays:t 
+                                                                    withCalender:calender];
             
             NSArray *a = [freejumpJob returnWorkdaysWithInStartDate:today endDate:target_time];
             if (t != 0)
@@ -185,8 +249,6 @@
         }
     }
 }
-
-
 
 
 @end

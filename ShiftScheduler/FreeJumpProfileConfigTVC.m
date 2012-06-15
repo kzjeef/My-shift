@@ -45,14 +45,14 @@
 {
     [super viewDidLoad];
 
-    shiftStateArray = [[NSMutableArray alloc] initWithCapacity:100];
-    
-    for (int i = 0; i < 100; i++) {
-        [shiftStateArray addObject:[NSNumber numberWithBool:0]];
-    }
+    shiftStateArray = [self.theJob.jobFreeJumpTable mutableCopy];
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
-  
+
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.editing = YES;
+    self.tableView.allowsSelectionDuringEditing = YES;
+
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
@@ -93,13 +93,15 @@
     return 2;
 }
 
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (section == 0)
-        return 2;
-    else if (section == 1)
-        return 10;
+  if (section == 0)
+    return 2;
+  else if (section == 1)
+    return self.theJob.jobFreeJumpCycle;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -149,14 +151,14 @@ else if (editingStyle == UITableViewCellEditingStyleInsert) {
 }
 */
 
-                                                                                                                              /*
+/*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
 }
-                                                                                                                              */
+*/
 
-                                                                                                                               /*
+/*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -164,7 +166,21 @@ else if (editingStyle == UITableViewCellEditingStyleInsert) {
 return YES;
 }
 
-                                                                                                                                */
+*/
+- (void)setEditing:(BOOL)editing animated:(BOOL)animate
+{
+    [super setEditing:editing animated:animate];
+
+    if (!editing) {
+	 [self saveShiftChange];
+	 [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void)saveShiftChange
+{
+  self.theJob.jobFreeJumpTable = shiftStateArray;
+}
 
 - (BOOL) checkShiftDayState: (int) index
 {
@@ -178,7 +194,6 @@ return YES;
     v = (v == 0)  ? 1 : 0;
     [shiftStateArray replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:v]];
 }
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -196,7 +211,6 @@ return YES;
     [self.tableView reloadData];
         
 }
-
 
 - (void) showPickerView:(UIPickerView *)pPickerView
 {
