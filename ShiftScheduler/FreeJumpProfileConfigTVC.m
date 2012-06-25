@@ -16,7 +16,6 @@
     OneJob *job_;
     SCModalPickerView *modalPickerView;
     UIPickerView *picker;
-
     NSMutableArray *shiftStateArray;
 }
 
@@ -26,11 +25,7 @@
 
 @synthesize theJob=job_;
 
-
 #define LENGTH_OF_CYCLE NSLocalizedString(@"Cycle length", "length of cycle")
-#define CHOOSE_ON_OFF_DAY NSLocalizedString(@"Choose On/Off Days", "choose on/off days")
-
-
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -39,6 +34,11 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)reloadShiftTable
+{
+    shiftStateArray = [self.theJob.jobFreeJumpTable mutableCopy];
 }
 
 - (void)viewDidLoad
@@ -55,11 +55,8 @@
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
-
-
     picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 250, 325, 250)];
-    
+
     CGSize pickerSize = [picker sizeThatFits:CGSizeZero];
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
     CGRect pickerRect = CGRectMake(0.0, screenRect.origin.y + screenRect.size.height - pickerSize.height - 65, pickerSize.width, pickerSize.height);
@@ -69,8 +66,6 @@
     picker.delegate = self;
     picker.dataSource = self;
     modalPickerView = [[SCModalPickerView alloc] init];
-    
-
 }
 
 - (void)viewDidUnload
@@ -93,15 +88,13 @@
     return 2;
 }
 
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-  if (section == 0)
-    return 2;
-  else if (section == 1)
-    return self.theJob.jobFreeJumpCycle;
+    if (section == 0)
+        return 1;
+    else if (section == 1)
+        return self.theJob.jobFreeJumpCycle.intValue;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,26 +109,37 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-
             cell.textLabel.text = LENGTH_OF_CYCLE;
             cell.detailTextLabel.text = (self.theJob.jobFreeJumpCycle == nil) ? @"No Cycle" : ([NSString stringWithFormat:@"%@", self.theJob.jobFreeJumpCycle]);
         }
-        else if (indexPath.row == 1)
-            cell.textLabel.text = CHOOSE_ON_OFF_DAY;
     }
 
     if (indexPath.section == 1) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
-        cell.detailTextLabel.text = 0;
-        
-        if ([self checkShiftDayState:indexPath.row])
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        else
-            cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
+
+        if ([self checkShiftDayState:indexPath.row]) {
+            cell.editingAccessoryType = UITableViewCellAccessoryCheckmark;
+            // @TODO: add more detail information when check
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"√"];
+        } else {
+            cell.editingAccessoryType = UITableViewCellAccessoryNone;
+            cell.detailTextLabel.text = nil;
+        }
     }
 
     return cell;
 }
+
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleNone;
+}
+
+- (BOOL) tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
 
 /*
 // Override to support editing the table view.
@@ -144,10 +148,10 @@ if (- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCe
 if (editingStyle == UITableViewCellEditingStyleDelete) {
 // Delete the row from the data source
 [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-}   
+}
 else if (editingStyle == UITableViewCellEditingStyleInsert) {
 // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-}   
+}
 }
 */
 
@@ -172,18 +176,20 @@ return YES;
     [super setEditing:editing animated:animate];
 
     if (!editing) {
-	 [self saveShiftChange];
-	 [self.navigationController popViewControllerAnimated:YES];
+        [self saveShiftChange];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
 - (void)saveShiftChange
 {
-  self.theJob.jobFreeJumpTable = shiftStateArray;
+    self.theJob.jobFreeJumpTable = shiftStateArray;
 }
 
 - (BOOL) checkShiftDayState: (int) index
 {
+    if (shiftStateArray.lastObject == nil)
+        return NO;
     int v = [[shiftStateArray objectAtIndex:index] intValue];
     return v;
 }
@@ -194,6 +200,8 @@ return YES;
     v = (v == 0)  ? 1 : 0;
     [shiftStateArray replaceObjectAtIndex:index withObject:[NSNumber numberWithBool:v]];
 }
+
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -203,13 +211,13 @@ return YES;
             [self showPickerView:picker];
         }
     }
-    
+
     else if (indexPath.section == 1) {
         [self toggleShiftDayState:indexPath.row];
     }
-    
+
     [self.tableView reloadData];
-        
+
 }
 
 - (void) showPickerView:(UIPickerView *)pPickerView
@@ -217,21 +225,26 @@ return YES;
     //__block UIPickerView *tPickerView = pPickerView;
     [modalPickerView setPickerView:pPickerView];
     __block OneJob *job = self.theJob;
+    __block FreeJumpProfileConfigTVC *_self = self;
     NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
     __block UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:pChoosedIndexPath];
 
     [modalPickerView setCompletionHandler:^(SCModalPickerViewResult result){
             if (result == SCModalPickerViewResultDone)
-                { 
+                {
                     int value = [pPickerView selectedRowInComponent:0] + 1;
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", value];
                     [cell setSelected:YES];
 
+		    // Clear the cache of shift table, and load new one.
                     job.jobFreeJumpCycle = [NSNumber numberWithInt:value];
-            
+                    [job jobFreeJumpTableCacheInvalid];
+                    [_self reloadShiftTable];
+                    [_self.tableView reloadData];
+
                 }
         }];
-    
+
     [modalPickerView show];
 }
 
@@ -242,18 +255,18 @@ return YES;
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSString *returnStr = @"";
-        
+
     // note: custom picker doesn't care about titles, it uses custom views
     // don't return 0
     returnStr = [[NSNumber numberWithInt:(row + 1)] stringValue];
-    
+
     return returnStr;
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
     CGFloat componentWidth = 0.0;
-    
+
     componentWidth = 40.0;      // first column size is wider to hold names
     return componentWidth;
 }
@@ -272,6 +285,5 @@ return YES;
 {
     return 1;
 }
-
 
 @end

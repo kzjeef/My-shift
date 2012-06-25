@@ -117,6 +117,11 @@
     }
 }
 
+- (void) jobFreeJumpTableCacheInvalid
+{
+    jobFreeJumpTable = nil;
+}
+
 /** this function should do the job convert all jump work information
  * to an array can be process by the modale
  */

@@ -77,6 +77,7 @@ enum JobShiftAlgoType {
 - (Boolean) isShiftDateValied;
 - (NSNumber *) shiftTotalCycle;
 + (BOOL) IsDateBetweenInclusive:(NSDate *)date begin: (NSDate *) begin end: (NSDate *)end;
+- (void) jobFreeJumpTableCacheInvalid;
 
 @property (nonatomic, strong) NSSet *shiftdays;
 @end
