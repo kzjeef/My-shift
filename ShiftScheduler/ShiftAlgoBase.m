@@ -5,7 +5,7 @@
 {
   	enum JobShiftAlgoType shiftType;
 	OneJob *JobContext;
-    NSCalendar *curCalendar;
+	NSCalendar *curCalendar;
 }
 
 @property (nonatomic)enum JobShiftAlgoType shiftType;

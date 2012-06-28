@@ -218,7 +218,7 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
             timestr = TIME_STR_ALARM_OFF_NOW;
         NSString *offRemindString = [NSString stringWithFormat:@"%@ %@.", job.jobName, timestr]; 
         
-        ret = [self scheduleNotificationWithItem:job.jobEverydayStartTime withDaysLater:daysLater interval:job.jobRemindBeforeOff.intValue alarmBody:offRemindString alarmActionTitle:defaultActionTitle TimeAfter:job.jobEveryDayLengthSec.intValue
+        ret = [self scheduleNotificationWithItem:job.jobEverydayStartTime withDaysLater:daysLater interval:job.jobRemindBeforeOff.intValue alarmBody:offRemindString alarmActionTitle:defaultActionTitle TimeAfter:[job getJobEveryDayLengthSec].intValue
          job:job isOffDay:YES];
         if (ret) alarmCount += 1;
     }

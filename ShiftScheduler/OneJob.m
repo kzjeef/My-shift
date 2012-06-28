@@ -48,6 +48,8 @@
     NSNumber *cachedJobOnIconColorOn;
 }
 @property (strong, nonatomic) ShiftAlgoBase *shiftAlgo;
+@property (nonatomic, strong) NSNumber * jobEveryDayLengthSec;  // minites of every day work.
+@property (nonatomic, strong) NSDate * jobEverydayStartTime;
 
 @end
 
@@ -222,13 +224,37 @@
 //#warning  remove this test message
 }
 
+-(NSNumber *)getJobEveryDayLengthSec
+{
+    return self.jobEveryDayLengthSec;
+}
 
+-(void)setJobEveryDayLengthSec:(NSNumber *number)
+{
+    self.jobEveryDayLengthSec = number;
+}
+
+
+-(NSDate *)getJobEverydayStartTime
+{
+    return self.jobEverydayStartTime;
+}
+
+-(NSDate *)getJobEverydayEndTime
+{
+    return [self.jobEverydayStartTime dateByAddingTimeInterval:self.jobEveryDayLengthSec.intValue];
+}
+
+
+- (NSString *)jobEverydayStartTimeWithFormatter:(NSDateFormatter *)formatter
+{
+    return [formatter stringFromDate:self.jobEverydayStartTime];
+}
 
 
 - (NSString *)jobEverydayOffTimeWithFormatter:(NSDateFormatter *)formatter
 {
-    return [formatter stringFromDate:[self.jobEverydayStartTime dateByAddingTimeInterval:
-                                   self.jobEveryDayLengthSec.intValue]];
+    return [formatter stringFromDate: [self getJobEverydayEndTime]];
 }
 
 

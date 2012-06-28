@@ -32,8 +32,6 @@ enum JobShiftAlgoType {
 @property (nonatomic, strong) NSString * jobName;       // the job's name
 @property (nonatomic, strong) NSNumber * jobEnable;   // bool enable the job display on the cal or not
 @property (nonatomic, strong) NSString * jobDescription; //the detail describe of this job
-@property (nonatomic, strong) NSNumber * jobEveryDayLengthSec;  // minites of every day work.
-@property (nonatomic, strong) NSDate * jobEverydayStartTime;
 @property (nonatomic, strong) NSNumber * jobOnDays; // how long works once
 @property (nonatomic, strong) NSNumber * jobOffDays; // how long rest once.
 @property (nonatomic, strong) NSDate * jobStartDate;
@@ -69,6 +67,9 @@ enum JobShiftAlgoType {
 - (UIColor *) iconColor;
 - (void) trydDfaultSetting;
 - (void) forceDefaultSetting;
+-(NSDate *)getJobEverydayStartTime;
+-(NSDate *)getJobEverydayEndTime;
+- (NSString *)jobEverydayStartTimeWithFormatter:(NSDateFormatter *)formatter;
 - (NSString *) jobEverydayOffTimeWithFormatter:(NSDateFormatter *) formatter;
 
 - (NSArray *) jobShiftAllTypesString;

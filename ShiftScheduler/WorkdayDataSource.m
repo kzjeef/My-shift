@@ -123,9 +123,8 @@
     
     if (job.jobEverydayStartTime != Nil)
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@",
-
-    [self.timeFormatter stringFromDate:job.jobEverydayStartTime],
-                                 [job jobEverydayOffTimeWithFormatter:self.timeFormatter]];
+					      [job jobEverydayStartTimeWithFormatter:self.timeFormatter],
+					      [job jobEverydayOffTimeWithFormatter:self.timeFormatter]];
     cell.imageView.image = job.iconImage;
     return cell;
 }
