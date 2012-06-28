@@ -195,7 +195,7 @@ enum {
 
     // this is for compitable with old version witch not adding such information. 
     if ([theJob getJobEveryDayLengthSec] == Nil
-        || theJob.jobEverydayStartTime == Nil
+        || [theJob getJobEverydayStartTime] == Nil
         || theJob.jobRemindBeforeOff == Nil
         || theJob.jobRemindBeforeWork == Nil)
         [theJob trydDfaultSetting];
@@ -204,7 +204,7 @@ enum {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateStyle:NSDateFormatterNoStyle];
         [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-        cell.detailTextLabel.text = [dateFormatter stringFromDate:theJob.jobEverydayStartTime];
+        cell.detailTextLabel.text = [dateFormatter stringFromDate:[theJob getJobEverydayStartTime]];
     } else if (indexPath.row == HOURS_ITEM) {
         cell.detailTextLabel.text = [SSProfileTimeAndAlarmVC jobWorkHourCellStringwithJob:theJob];
     } else if (indexPath.row == REMIND_BEFORE_WORK_ITEM) {
@@ -277,10 +277,10 @@ enum {
         if (result == SCModalPickerViewResultDone)
         { 
             if (pChoosedIndexPath.row == CLOCK_IN_ITEM) {
-                job.jobEverydayStartTime = tdatePicker.date;
-                NSLog(@"start time every date:%@ with Job:%@", [pDateFormatter stringFromDate:job.jobEverydayStartTime], job.jobName);
+                [job mysetJobEverydayStartTime:tdatePicker.date];
+                NSLog(@"start time every date:%@ with Job:%@", [pDateFormatter stringFromDate:[job getJobEverydayStartTime]], job.jobName);
             } else if (pChoosedIndexPath.row == HOURS_ITEM) {
-	      [job setJobEveryDayLengthSec:[NSNumber numberWithInt:tdatePicker.countDownDuration]];
+	      [job mysetJobEveryDayLengthSec:[NSNumber numberWithInt:tdatePicker.countDownDuration]];
                 NSLog(@"work every length:%@ with Job:%@", [job getJobEveryDayLengthSec], job.jobName);
             }
             
@@ -295,7 +295,7 @@ enum {
 {
     if (indexPath.row == CLOCK_IN_ITEM) {
         self.datePicker.datePickerMode = UIDatePickerModeTime;
-        self.datePicker.date = self.theJob.jobEverydayStartTime;
+        self.datePicker.date = [self.theJob getJobEverydayStartTime];
         [self showDatePickerView:self.datePicker];
     } else if (indexPath.row == HOURS_ITEM) {
         self.datePicker.datePickerMode = UIDatePickerModeCountDownTimer;

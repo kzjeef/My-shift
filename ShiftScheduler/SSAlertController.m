@@ -202,7 +202,7 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
         if (job.jobRemindBeforeWork.intValue == 0)
             timestr = TIME_STR_ALARM_BEFORE_NOW;
         NSString *workRemindString = [NSString stringWithFormat:@"%@ %@.", job.jobName, timestr]; 
-        ret = [self scheduleNotificationWithItem:job.jobEverydayStartTime
+        ret = [self scheduleNotificationWithItem:[job getJobEverydayStartTime]
 				   withDaysLater:daysLater
 					interval:job.jobRemindBeforeWork.intValue
 				       alarmBody:workRemindString
@@ -225,7 +225,7 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
             timestr = TIME_STR_ALARM_OFF_NOW;
         NSString *offRemindString = [NSString stringWithFormat:@"%@ %@.", job.jobName, timestr]; 
         
-        ret = [self scheduleNotificationWithItem:job.jobEverydayStartTime
+        ret = [self scheduleNotificationWithItem:[job getJobEverydayStartTime]
 				   withDaysLater:daysLater
 					interval:job.jobRemindBeforeOff.intValue
 				       alarmBody:offRemindString

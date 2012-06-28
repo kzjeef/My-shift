@@ -125,7 +125,7 @@
     
     cell.textLabel.text = job.jobName;
     
-    if (job.jobEverydayStartTime != Nil)
+    if ([job getJobEverydayStartTime] != Nil)
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@",
 					      [job jobEverydayStartTimeWithFormatter:self.timeFormatter],
 					      [job jobEverydayOffTimeWithFormatter:self.timeFormatter]];

@@ -15,6 +15,8 @@
 #import "ShiftAlgoFreeRound.h"
 #import "ShiftAlgoFreeJump.h"
 
+#define DAY_TO_SECONDS 60*60*24
+
 @interface OneJob()
 {
     ShiftAlgoBase *shiftAlgo;
@@ -59,8 +61,6 @@
 @dynamic jobFreeJumpCycle;
 @dynamic jobFreeJumpArrayArchive;
 @dynamic jobXShiftCount, jobXShiftStartShift, jobXShiftRevertOrder;
-
->>>>>>> 877180a57bad28dd3048f7c6edb61d827c636772
 @synthesize curCalender, cachedJobOnIconColor, cachedJobOnIconID, shiftAlgo, jobShiftTypeString;
 
 - (ShiftAlgoBase *)shiftAlgo;
@@ -113,6 +113,7 @@
 - (void) jobFreeJumpTableCacheInvalid
 {
     jobFreeJumpTable = nil;
+    [self createEmptyJumpTable];
 }
 
 /** this function should do the job convert all jump work information
@@ -133,15 +134,19 @@
 #ifdef DEBUG_FIXUP_TABLE
         NSLog(@"cycle:%@ new table: %@", self.jobFreeJumpCycle, jobFreeJumpTable);
 #endif
-    }
-    else {
-        NSMutableArray *t = [[NSMutableArray alloc] initWithCapacity:self.jobFreeJumpCycle.intValue];
-        for (int i = 0; i < self.jobFreeJumpCycle.intValue; i++) {
-            [t addObject:[NSNumber numberWithBool:0]];
-        }
-        jobFreeJumpTable = [t copy];
-    }
+    } else
+        [self createEmptyJumpTable];
     return jobFreeJumpTable;
+}
+
+- (void) createEmptyJumpTable
+{
+    NSLog(@"Create new jump table with cycle: %@", self.jobFreeJumpCycle);
+    NSMutableArray *t = [[NSMutableArray alloc] initWithCapacity:self.jobFreeJumpCycle.intValue];
+    for (int i = 0; i < self.jobFreeJumpCycle.intValue; i++) {
+        [t addObject:[NSNumber numberWithBool:0]];
+    }
+    jobFreeJumpTable = [t copy];
 }
 
 #define FREE_JUMP_STRING NSLocalizedString(@"Free Jump", "")
@@ -255,6 +260,7 @@
     self.jobEveryDayLengthSec = [NSNumber numberWithInt: JOB_DEFAULT_EVERYDAY_ON_LENGTH]; // 8 hour a day default
     self.jobRemindBeforeOff = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_OFF];
     self.jobRemindBeforeWork = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_WORK];
+    self.jobFreeJumpCycle = [NSNumber numberWithInt:JOB_DEFAULT_JUMP_CYCLE];
 
 //#warning  remove this test message
 //    self.jobShiftType = [NSNumber numberWithInt:JOB_SHIFT_ALGO_FREE_JUMP];
@@ -266,7 +272,7 @@
     if (self.jobXShiftCount == nil || self.jobXShiftCount.intValue == 0)
 	return 0;
     else
-	return self.jobXSshiftCount.intValue;
+	return self.jobXShiftCount.intValue;
 }
 
 -(NSNumber *)getJobEveryDayLengthSec
@@ -274,10 +280,10 @@
     if ([self getXShiftCount] == 0)
 	return self.jobEveryDayLengthSec;
     else
-	return DAY_TO_SECONDS / [self getXShiftCount];
+	return [NSNumber numberWithInt:(DAY_TO_SECONDS / [self getXShiftCount])];
 }
 
--(void)setJobEveryDayLengthSec:(NSNumber *number)
+-(void)mysetJobEveryDayLengthSec:(NSNumber *)number
 {
     self.jobEveryDayLengthSec = number;
 }
@@ -285,8 +291,13 @@
 
 -(NSDate *)getJobEverydayStartTime
 {
-    if ([self getXShiftCount] == 0)
+    //    if ([self getXShiftCount] == 0)
 	return self.jobEverydayStartTime;
+}
+
+-(void)mysetJobEverydayStartTime:(NSDate *)time
+{
+    self.jobEverydayStartTime = time;
 }
 
 -(NSDate *)getJobEverydayEndTime
@@ -378,7 +389,6 @@
     return iconColor;
 }
 
-#define DAY_TO_SECONDS 60*60*24
 
 // ideas1 ， 只储存所有工作的日期， 在这个workdays的数组里。
 //            问题： 但是问题是， 这样做了以后无法调整， 要调班的时候无法做了。

@@ -9,6 +9,7 @@
 #import "FreeJumpProfileConfigTVC.h"
 #import "SCViewController.h"
 #import "SCModalPickerView.h"
+#import "NSDateAdditions.h"
 
 
 @interface FreeJumpProfileConfigTVC ()
@@ -17,7 +18,10 @@
     SCModalPickerView *modalPickerView;
     UIPickerView *picker;
     NSMutableArray *shiftStateArray;
+    NSDateFormatter *dateFormatter;
 }
+
+@property (readonly) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -25,7 +29,7 @@
 
 @synthesize theJob=job_;
 
-#define LENGTH_OF_CYCLE NSLocalizedString(@"Cycle length", "length of cycle")
+#define LENGTH_OF_CYCLE NSLocalizedString(@"Cycle (Click to Change)", "length of cycle")
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -80,6 +84,16 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (NSDateFormatter *) dateFormatter
+{
+    if (!dateFormatter) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterFullStyle];
+        [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    }
+    return dateFormatter;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -95,6 +109,8 @@
         return 1;
     else if (section == 1)
         return self.theJob.jobFreeJumpCycle.intValue;
+    else
+        return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,14 +119,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
 
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
             cell.textLabel.text = LENGTH_OF_CYCLE;
-            cell.detailTextLabel.text = (self.theJob.jobFreeJumpCycle == nil) ? @"No Cycle" : ([NSString stringWithFormat:@"%@", self.theJob.jobFreeJumpCycle]);
+            cell.detailTextLabel.text = (self.theJob.jobFreeJumpCycle == nil) ? @"0" : ([NSString stringWithFormat:@"%@", self.theJob.jobFreeJumpCycle]);
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
     }
 
@@ -120,14 +137,20 @@
         if ([self checkShiftDayState:indexPath.row]) {
             cell.editingAccessoryType = UITableViewCellAccessoryCheckmark;
             // @TODO: add more detail information when check
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"√"];
+            cell.detailTextLabel.text = [self shiftChooserDetailedHelpMessageWithCount:indexPath.row];
         } else {
             cell.editingAccessoryType = UITableViewCellAccessoryNone;
-            cell.detailTextLabel.text = nil;
+            cell.detailTextLabel.text = [self shiftChooserDetailedHelpMessageWithCount:indexPath.row];
         }
     }
 
     return cell;
+}
+
+- (NSString *) shiftChooserDetailedHelpMessageWithCount:(int) row
+{
+    return [self.dateFormatter stringFromDate:[self.theJob.jobStartDate cc_dateByMovingToNextOrBackwardsFewDays:row withCalender:[NSCalendar currentCalendar]]];
+    
 }
 
 

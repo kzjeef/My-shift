@@ -19,6 +19,7 @@
 #define JOB_DEFAULT_EVERYDAY_ON_LENGTH (60*60*8)
 #define JOB_DEFAULT_REMIND_TIME_BEFORE_WORK -1
 #define JOB_DEFAULT_REMIND_TIME_BEFORE_OFF -1
+#define JOB_DEFAULT_JUMP_CYCLE 7
 
 enum JobShiftAlgoType {
   JOB_SHIFT_ALGO_NON_TYPE = 0,	// Report assert here.
@@ -46,6 +47,8 @@ enum JobShiftAlgoType {
 // For support ICON of Shift Day.
 @property (nonatomic, strong) NSString  *jobOnColorID;
 @property (nonatomic, strong) NSString  *jobOnIconID;
+@property (nonatomic, strong) NSString  *cachedJobOnIconColor;
+@property (nonatomic, strong) NSString  *cachedJobOnIconID;
 @property (weak, nonatomic, readonly) UIImage  *iconImage;
 @property (weak, nonatomic, readonly) UIColor  *iconColor;
 
@@ -78,7 +81,10 @@ enum JobShiftAlgoType {
 - (UIColor *) iconColor;
 - (void) trydDfaultSetting;
 - (void) forceDefaultSetting;
+-(NSNumber *)getJobEveryDayLengthSec;
+-(void)mysetJobEveryDayLengthSec:(NSNumber *)number;
 -(NSDate *)getJobEverydayStartTime;
+-(void)mysetJobEverydayStartTime:(NSDate *)time;
 -(NSDate *)getJobEverydayEndTime;
 - (NSString *)jobEverydayStartTimeWithFormatter:(NSDateFormatter *)formatter;
 - (NSString *) jobEverydayOffTimeWithFormatter:(NSDateFormatter *) formatter;

@@ -23,7 +23,6 @@
 UITableViewController  
 <UITextFieldDelegate, JPImagePickerControllerDelegate, InfColorPickerControllerDelegate, SSShiftTypePickerDelegate>
 
-@property (nonatomic, strong) UISwitch *colorEnableSwitch;
 @property (nonatomic, strong) NSArray *itemsArray;
 @property (nonatomic, strong) NSArray *timeItemsArray;
 @property (nonatomic, strong) UIBarButtonItem *saveButton;

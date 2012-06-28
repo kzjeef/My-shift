@@ -21,7 +21,6 @@
     BOOL showColorAndIconPicker;
     UITextField *nameField;
     UILabel *nameLable;
-    UISwitch *colorEnableSwitch;
     NSArray *itemsArray;
     NSArray *timeItemArray;
     UIBarButtonItem *saveButton;
@@ -49,7 +48,7 @@
 
 @synthesize itemsArray, saveButton, dateFormatter, cancelButton;
 @synthesize theJob, viewMode;
-@synthesize managedObjectContext, profileDelegate, iconDateSource, colorEnableSwitch;
+@synthesize managedObjectContext, profileDelegate, iconDateSource;
 @synthesize  nameField, timeItemsArray;
 
 @synthesize datePicker;
@@ -195,35 +194,6 @@
     [textField resignFirstResponder];
 }
 
-
-- (UISwitch *)colorEnableSwitch
-{
-    if (colorEnableSwitch == nil) 
-    {
-        CGRect frame = CGRectMake(200, 8.0, 120.0, 27.0);
-        colorEnableSwitch = [[UISwitch alloc] initWithFrame:frame];
-        [colorEnableSwitch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
-        
-        // in case the parent view draws with a custom color or gradient, use a transparent color
-        colorEnableSwitch.backgroundColor = [UIColor clearColor];
-		
-		[colorEnableSwitch setAccessibilityLabel:NSLocalizedString(@"Color Enable Switch", @"")];
-		
-		colorEnableSwitch.tag = kViewTag;	// tag this view for later so we can remove it from recycled table cells
-    }
-    return colorEnableSwitch;
-}
-
-- (void)switchAction:(id)sender
-{
-	// NSLog(@"switchAction: value = %d", [sender isOn]);
-    self.theJob.jobOnIconColorOn = [NSNumber numberWithInt:[sender isOn]];
-    [self.tableView reloadData];
-    
-    // TODO: make choose color cell disappear.
-}
-
-
 #pragma mark - "controller start init"
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -265,9 +235,6 @@
 	self.navigationItem.leftBarButtonItem = self.cancelButton;
     // in editing mode, only show return.
     
-//    [self.colorEnableSwitch setOn:self.theJob.jobOnIconColorOn.intValue];
-//    [self setUpUndoManager];
-
     datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 250, 325, 250)];
     CGSize pickerSize = [datePicker sizeThatFits:CGSizeZero];
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
