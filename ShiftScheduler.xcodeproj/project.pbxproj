@@ -82,7 +82,6 @@
 		29AEBDBC1561340A0010F27D /* ShiftDay.h in Sources */ = {isa = PBXBuildFile; fileRef = 294E2900148B302700E6ED45 /* ShiftDay.h */; };
 		29AEBDBD1561340A0010F27D /* ShiftDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 294E2901148B302700E6ED45 /* ShiftDay.m */; };
 		29AEBDBE1561340A0010F27D /* OneJob.h in Sources */ = {isa = PBXBuildFile; fileRef = 29B9E1DD1472C39F00DB2E1F /* OneJob.h */; };
-		29AEBDC3156134340010F27D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B9E1C31472C1D700DB2E1F /* main.m */; };
 		29AEBDE715628BAB0010F27D /* ShiftAlgoFreeJump.h in Headers */ = {isa = PBXBuildFile; fileRef = 29AEBDE515628BAB0010F27D /* ShiftAlgoFreeJump.h */; };
 		29AEBDE815628BAB0010F27D /* ShiftAlgoFreeJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AEBDE615628BAB0010F27D /* ShiftAlgoFreeJump.m */; };
 		29AEBDE9156291360010F27D /* ShiftAlgoFreeJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AEBDE615628BAB0010F27D /* ShiftAlgoFreeJump.m */; };
@@ -99,9 +98,6 @@
 		29B9E1ED1472C39F00DB2E1F /* ProfileChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B9E1E11472C39F00DB2E1F /* ProfileChangeViewController.m */; };
 		29B9E1EF1472C39F00DB2E1F /* ProfilesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B9E1E41472C39F00DB2E1F /* ProfilesViewController.m */; };
 		29B9E1F11472C39F00DB2E1F /* WorkdayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B9E1E71472C39F00DB2E1F /* WorkdayDataSource.m */; };
-		29B9E1FB1472C72000DB2E1F /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 29B9E1FA1472C72000DB2E1F /* Kal.bundle */; };
-		29B9E2071472C95800DB2E1F /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E2061472C94C00DB2E1F /* libKal.a */; };
-		29B9E21B1472D6FE00DB2E1F /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B9E21A1472D6FE00DB2E1F /* UIViewAdditions.m */; };
 		29C943B014E957F700122144 /* SSKalDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C943AF14E957F700122144 /* SSKalDelegate.h */; };
 		29C943B214E9581600122144 /* SSKalDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C943B114E9581600122144 /* SSKalDelegate.m */; };
 		29C943B614E9642900122144 /* SSProfileTimeAndAlarmVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C943B314E9642800122144 /* SSProfileTimeAndAlarmVC.h */; };
@@ -109,6 +105,13 @@
 		29C943B814E9642900122144 /* SSProfileTimeAndAlarmVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29C943B514E9642900122144 /* SSProfileTimeAndAlarmVC.xib */; };
 		29C943BB14EAB55200122144 /* UserReviewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C943B914EAB55200122144 /* UserReviewController.h */; };
 		29C943BC14EAB55200122144 /* UserReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C943BA14EAB55200122144 /* UserReviewController.m */; };
+		29D6A521159CB45D00AC6103 /* KalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29D6A520159CB45D00AC6103 /* KalViewController.h */; };
+		29D6A523159CB48200AC6103 /* Kal.h in Headers */ = {isa = PBXBuildFile; fileRef = 29D6A522159CB48200AC6103 /* Kal.h */; };
+		29D6A525159CB4A200AC6103 /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 29D6A524159CB4A200AC6103 /* Kal.bundle */; };
+		29D6A528159CB4B600AC6103 /* UIViewAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 29D6A526159CB4B600AC6103 /* UIViewAdditions.h */; };
+		29D6A529159CB4B600AC6103 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D6A527159CB4B600AC6103 /* UIViewAdditions.m */; };
+		29D6A534159CB65500AC6103 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B9E1C31472C1D700DB2E1F /* main.m */; };
+		29D6A550159CB79F00AC6103 /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D6A513159CB37000AC6103 /* libKal.a */; };
 		29DDDAC314808F94004DC703 /* NSDateAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 29DDDAC114808F94004DC703 /* NSDateAdditions.h */; };
 		29DDDAC414808F94004DC703 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 29DDDAC214808F94004DC703 /* NSDateAdditions.m */; };
 		29E339D414CA955A0036EAED /* ProfileIconPickerDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E339D214CA955A0036EAED /* ProfileIconPickerDataSource.h */; };
@@ -143,16 +146,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		29B9E2051472C94C00DB2E1F /* PBXContainerItemProxy */ = {
+		29D6A512159CB37000AC6103 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 29B9E1FE1472C94C00DB2E1F /* Kal.xcodeproj */;
+			containerPortal = 29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = Kal;
 		};
-		29B9E2081472C95D00DB2E1F /* PBXContainerItemProxy */ = {
+		29D6A52A159CB4DC00AC6103 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 29B9E1FE1472C94C00DB2E1F /* Kal.xcodeproj */;
+			containerPortal = 29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = Kal;
@@ -160,8 +163,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2900DEC11483E44E00E588EE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "/Users/zhangjeef/Developer/ShiftScheduler2/ShiftScheduler/ShiftScheduler/zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
-		2900DEC21483E44E00E588EE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "/Users/zhangjeef/Developer/ShiftScheduler2/ShiftScheduler/ShiftScheduler/zh-Hant.lproj/Localizable.strings"; sourceTree = "<absolute>"; };
+		2900DEC11483E44E00E588EE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		2900DEC21483E44E00E588EE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2900DEC31483EEA100E588EE /* ShiftSchedulerModelBasic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShiftSchedulerModelBasic.xcdatamodel; sourceTree = "<group>"; };
 		290474C9148E7A4E0089A432 /* ShfitChangeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShfitChangeList.h; sourceTree = "<group>"; };
 		290474CA148E7A4E0089A432 /* ShfitChangeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShfitChangeList.m; sourceTree = "<group>"; };
@@ -198,8 +201,8 @@
 		292DBCA714CA943F00C87A70 /* JPImagePickerOverviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JPImagePickerOverviewController.xib; path = JPImagePicker/JPImagePickerOverviewController.xib; sourceTree = "<group>"; };
 		292DBCA814CA943F00C87A70 /* UIImageResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIImageResizing.h; path = JPImagePicker/UIImageResizing.h; sourceTree = "<group>"; };
 		292DBCA914CA943F00C87A70 /* UIImageResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImageResizing.m; path = JPImagePicker/UIImageResizing.m; sourceTree = "<group>"; };
-		2932F71614B2237E00BE7A9E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = /Users/zhangjeef/Developer/ShiftScheduler2/ShiftScheduler/ShiftScheduler/ja.lproj/InfoPlist.strings; sourceTree = "<absolute>"; };
-		2932F71714B2237E00BE7A9E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = /Users/zhangjeef/Developer/ShiftScheduler2/ShiftScheduler/ShiftScheduler/ja.lproj/Localizable.strings; sourceTree = "<absolute>"; };
+		2932F71614B2237E00BE7A9E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2932F71714B2237E00BE7A9E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2935514114E2BABA004D8FAC /* SSTurnShiftTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTurnShiftTVC.h; sourceTree = "<group>"; };
 		2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTurnShiftTVC.m; sourceTree = "<group>"; };
 		2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSTurnShiftTVC.xib; sourceTree = "<group>"; };
@@ -239,12 +242,12 @@
 		29B9E1BB1472C1D700DB2E1F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B9E1BF1472C1D700DB2E1F /* ShiftScheduler-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ShiftScheduler-Info.plist"; sourceTree = "<group>"; };
 		29B9E1C11472C1D700DB2E1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		29B9E1C31472C1D700DB2E1F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B9E1C31472C1D700DB2E1F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B9E1C51472C1D700DB2E1F /* ShiftScheduler-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShiftScheduler-Prefix.pch"; sourceTree = "<group>"; };
 		29B9E1C61472C1D700DB2E1F /* SSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSAppDelegate.h; sourceTree = "<group>"; };
 		29B9E1C71472C1D700DB2E1F /* SSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSAppDelegate.m; sourceTree = "<group>"; };
 		29B9E1CA1472C1D700DB2E1F /* ShiftScheduler.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShiftScheduler.xcdatamodel; sourceTree = "<group>"; };
-		29B9E1D31472C2A800DB2E1F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/zhangjeef/Developer/ShiftScheduler2/ShiftScheduler/ShiftScheduler/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		29B9E1D31472C2A800DB2E1F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		29B9E1D51472C2B000DB2E1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		29B9E1D71472C2B600DB2E1F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		29B9E1DD1472C39F00DB2E1F /* OneJob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneJob.h; sourceTree = "<group>"; };
@@ -255,10 +258,6 @@
 		29B9E1E41472C39F00DB2E1F /* ProfilesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilesViewController.m; sourceTree = "<group>"; };
 		29B9E1E61472C39F00DB2E1F /* WorkdayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkdayDataSource.h; sourceTree = "<group>"; };
 		29B9E1E71472C39F00DB2E1F /* WorkdayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkdayDataSource.m; sourceTree = "<group>"; };
-		29B9E1FA1472C72000DB2E1F /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = ../../Kal/src/Kal.bundle; sourceTree = "<group>"; };
-		29B9E1FE1472C94C00DB2E1F /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = ../../Kal/src/Kal.xcodeproj; sourceTree = "<group>"; };
-		29B9E2191472D6FD00DB2E1F /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewAdditions.h; path = ../../Kal/src/UIViewAdditions.h; sourceTree = "<group>"; };
-		29B9E21A1472D6FE00DB2E1F /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewAdditions.m; path = ../../Kal/src/UIViewAdditions.m; sourceTree = "<group>"; };
 		29C943AF14E957F700122144 /* SSKalDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKalDelegate.h; sourceTree = "<group>"; };
 		29C943B114E9581600122144 /* SSKalDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKalDelegate.m; sourceTree = "<group>"; };
 		29C943B314E9642800122144 /* SSProfileTimeAndAlarmVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSProfileTimeAndAlarmVC.h; sourceTree = "<group>"; };
@@ -266,10 +265,14 @@
 		29C943B514E9642900122144 /* SSProfileTimeAndAlarmVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSProfileTimeAndAlarmVC.xib; sourceTree = "<group>"; };
 		29C943B914EAB55200122144 /* UserReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserReviewController.h; sourceTree = "<group>"; };
 		29C943BA14EAB55200122144 /* UserReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserReviewController.m; sourceTree = "<group>"; };
+		29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = ../Kal/src/Kal.xcodeproj; sourceTree = "<group>"; };
+		29D6A520159CB45D00AC6103 /* KalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KalViewController.h; path = ../Kal/src/KalViewController.h; sourceTree = "<group>"; };
+		29D6A522159CB48200AC6103 /* Kal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Kal.h; path = ../Kal/src/Kal.h; sourceTree = "<group>"; };
+		29D6A524159CB4A200AC6103 /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = ../Kal/src/Kal.bundle; sourceTree = "<group>"; };
+		29D6A526159CB4B600AC6103 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewAdditions.h; path = ../Kal/src/UIViewAdditions.h; sourceTree = "<group>"; };
+		29D6A527159CB4B600AC6103 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewAdditions.m; path = ../Kal/src/UIViewAdditions.m; sourceTree = "<group>"; };
 		29DDDAC114808F94004DC703 /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateAdditions.h; sourceTree = "<group>"; };
 		29DDDAC214808F94004DC703 /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
-		29E128CB1476D408008DDB53 /* KalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KalViewController.h; path = ../../Kal/src/KalViewController.h; sourceTree = "<group>"; };
-		29E128CC1476D431008DDB53 /* Kal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Kal.h; path = ../../Kal/src/Kal.h; sourceTree = "<group>"; };
 		29E339D214CA955A0036EAED /* ProfileIconPickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileIconPickerDataSource.h; sourceTree = "<group>"; };
 		29E339D314CA955A0036EAED /* ProfileIconPickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileIconPickerDataSource.m; sourceTree = "<group>"; };
 		29E98C9914EFD8270048AF49 /* SCAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAnimation.h; sourceTree = "<group>"; };
@@ -320,9 +323,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29D6A550159CB79F00AC6103 /* libKal.a in Frameworks */,
 				2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */,
 				2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */,
-				29B9E2071472C95800DB2E1F /* libKal.a in Frameworks */,
 				29B9E1B61472C1D700DB2E1F /* UIKit.framework in Frameworks */,
 				29B9E1B81472C1D700DB2E1F /* Foundation.framework in Frameworks */,
 				29B9E1BA1472C1D700DB2E1F /* CoreGraphics.framework in Frameworks */,
@@ -436,12 +439,11 @@
 		298B0167148B941900C013F5 /* Compile Need files */ = {
 			isa = PBXGroup;
 			children = (
-				29B9E1FA1472C72000DB2E1F /* Kal.bundle */,
+				29D6A522159CB48200AC6103 /* Kal.h */,
+				29D6A520159CB45D00AC6103 /* KalViewController.h */,
 				2968BECB14F9050F00DF1CCF /* notify.caf */,
-				29E128CB1476D408008DDB53 /* KalViewController.h */,
-				29E128CC1476D431008DDB53 /* Kal.h */,
-				29B9E2191472D6FD00DB2E1F /* UIViewAdditions.h */,
-				29B9E21A1472D6FE00DB2E1F /* UIViewAdditions.m */,
+				29D6A526159CB4B600AC6103 /* UIViewAdditions.h */,
+				29D6A527159CB4B600AC6103 /* UIViewAdditions.m */,
 				29DDDAC114808F94004DC703 /* NSDateAdditions.h */,
 				29DDDAC214808F94004DC703 /* NSDateAdditions.m */,
 			);
@@ -570,6 +572,7 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
+				29D6A524159CB4A200AC6103 /* Kal.bundle */,
 				29AEBDC8156136830010F27D /* GUI */,
 				293994B5147D25D30007320C /* Model */,
 				29B9E1BE1472C1D700DB2E1F /* Supporting Files */,
@@ -577,7 +580,7 @@
 				29AEBDC91561369D0010F27D /* Test */,
 				29B9E1B41472C1D700DB2E1F /* Frameworks */,
 				29B9E1B21472C1D700DB2E1F /* Products */,
-				29B9E1FE1472C94C00DB2E1F /* Kal.xcodeproj */,
+				29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -633,10 +636,10 @@
 			path = ShiftScheduler;
 			sourceTree = "<group>";
 		};
-		29B9E1FF1472C94C00DB2E1F /* Products */ = {
+		29D6A50C159CB36F00AC6103 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				29B9E2061472C94C00DB2E1F /* libKal.a */,
+				29D6A513159CB37000AC6103 /* libKal.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -715,6 +718,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29D6A523159CB48200AC6103 /* Kal.h in Headers */,
+				29D6A521159CB45D00AC6103 /* KalViewController.h in Headers */,
 				29DDDAC314808F94004DC703 /* NSDateAdditions.h in Headers */,
 				294E2902148B302700E6ED45 /* ShiftDay.h in Headers */,
 				290474E9148FC6DB0089A432 /* ShiftPickerDataSource.h in Headers */,
@@ -756,6 +761,7 @@
 				299E33A2156A74820066E843 /* SSShiftTypePickerTVC.h in Headers */,
 				29F49CA6156FDAD900C76EFC /* FreeJumpProfileConfigTVC.h in Headers */,
 				29F49CAA156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.h in Headers */,
+				29D6A528159CB4B600AC6103 /* UIViewAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,7 +798,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				29B9E2091472C95D00DB2E1F /* PBXTargetDependency */,
+				29D6A52B159CB4DC00AC6103 /* PBXTargetDependency */,
 			);
 			name = ShiftScheduler;
 			productName = ShiftScheduler;
@@ -814,14 +820,15 @@
 			knownRegions = (
 				en,
 				"zh-Hans",
+				ja,
 			);
 			mainGroup = 29B9E1A61472C1D700DB2E1F;
 			productRefGroup = 29B9E1B21472C1D700DB2E1F /* Products */;
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 29B9E1FF1472C94C00DB2E1F /* Products */;
-					ProjectRef = 29B9E1FE1472C94C00DB2E1F /* Kal.xcodeproj */;
+					ProductGroup = 29D6A50C159CB36F00AC6103 /* Products */;
+					ProjectRef = 29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -833,11 +840,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		29B9E2061472C94C00DB2E1F /* libKal.a */ = {
+		29D6A513159CB37000AC6103 /* libKal.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libKal.a;
-			remoteRef = 29B9E2051472C94C00DB2E1F /* PBXContainerItemProxy */;
+			remoteRef = 29D6A512159CB37000AC6103 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -855,7 +862,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29B9E1FB1472C72000DB2E1F /* Kal.bundle in Resources */,
 				29B9E1C21472C1D700DB2E1F /* InfoPlist.strings in Resources */,
 				29B9E1D41472C2B000DB2E1F /* Localizable.strings in Resources */,
 				290474CE148E7A4E0089A432 /* ShfitChangeList.xib in Resources */,
@@ -872,6 +878,7 @@
 				2968BECC14F9050F00DF1CCF /* notify.caf in Resources */,
 				2958CFBA1568DAAE00E273C3 /* calendar-red-57x57.png in Resources */,
 				2958CFBC1568DAB500E273C3 /* calendar-red-114x114.png in Resources */,
+				29D6A525159CB4A200AC6103 /* Kal.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,14 +927,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29AEBDC3156134340010F27D /* main.m in Sources */,
 				29B9E1C81472C1D700DB2E1F /* SSAppDelegate.m in Sources */,
 				29B9E1CB1472C1D700DB2E1F /* ShiftScheduler.xcdatamodeld in Sources */,
 				29B9E1EB1472C39F00DB2E1F /* OneJob.m in Sources */,
 				29B9E1ED1472C39F00DB2E1F /* ProfileChangeViewController.m in Sources */,
 				29B9E1EF1472C39F00DB2E1F /* ProfilesViewController.m in Sources */,
 				29B9E1F11472C39F00DB2E1F /* WorkdayDataSource.m in Sources */,
-				29B9E21B1472D6FE00DB2E1F /* UIViewAdditions.m in Sources */,
 				29DDDAC414808F94004DC703 /* NSDateAdditions.m in Sources */,
 				294E2903148B302700E6ED45 /* ShiftDay.m in Sources */,
 				290474CD148E7A4E0089A432 /* ShfitChangeList.m in Sources */,
@@ -968,16 +973,18 @@
 				299E33A3156A74820066E843 /* SSShiftTypePickerTVC.m in Sources */,
 				29F49CA7156FDAD900C76EFC /* FreeJumpProfileConfigTVC.m in Sources */,
 				29F49CAB156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.m in Sources */,
+				29D6A529159CB4B600AC6103 /* UIViewAdditions.m in Sources */,
+				29D6A534159CB65500AC6103 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		29B9E2091472C95D00DB2E1F /* PBXTargetDependency */ = {
+		29D6A52B159CB4DC00AC6103 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Kal;
-			targetProxy = 29B9E2081472C95D00DB2E1F /* PBXContainerItemProxy */;
+			targetProxy = 29D6A52A159CB4DC00AC6103 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
