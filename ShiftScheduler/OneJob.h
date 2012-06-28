@@ -29,31 +29,39 @@ enum JobShiftAlgoType {
 
 @interface OneJob : NSManagedObject
 
-@property (nonatomic, strong) NSString * jobName;       // the job's name
-@property (nonatomic, strong) NSNumber * jobEnable;   // bool enable the job display on the cal or not
-@property (nonatomic, strong) NSString * jobDescription; //the detail describe of this job
-@property (nonatomic, strong) NSNumber * jobEveryDayLengthSec;  // minites of every day work.
-@property (nonatomic, strong) NSDate * jobEverydayStartTime;
-@property (nonatomic, strong) NSNumber * jobOnDays; // how long works once
-@property (nonatomic, strong) NSNumber * jobOffDays; // how long rest once.
-@property (nonatomic, strong) NSDate * jobStartDate;
-@property (nonatomic, strong) NSDate * jobFinishDate;
-@property (nonatomic, strong) NSString * jobOnColorID;
-@property (nonatomic, strong) NSString * jobOnIconID;
-@property (nonatomic, strong) NSNumber * jobShiftType;
-@property (nonatomic, readonly) NSString * jobShiftTypeString;
-@property (nonatomic, strong) NSNumber * jobOnIconColorOn;
-@property (nonatomic, strong) NSCalendar *curCalender;
+// Common
+@property (nonatomic, strong) NSString  *jobName;       // the job's name
+@property (nonatomic, strong) NSNumber  *jobEnable;   // bool enable the job display on the cal or not
+@property (nonatomic, strong) NSString  *jobDescription; //the detail describe of this job
+@property (nonatomic, strong) NSDate    *jobStartDate;
+@property (nonatomic, strong) NSDate    *jobFinishDate;
+@property (nonatomic, strong) NSNumber  *jobShiftType;
+@property (nonatomic, readonly) NSString        *jobShiftTypeString;
+@property (nonatomic, strong) NSCalendar        *curCalender;
+
+// For (legency/Most common) On/Off Days work shift.
+@property (nonatomic, strong) NSNumber  *jobOnDays; // how long works once
+@property (nonatomic, strong) NSNumber  *jobOffDays; // how long rest once.
+
+// For support ICON of Shift Day.
+@property (nonatomic, strong) NSString  *jobOnColorID;
+@property (nonatomic, strong) NSString  *jobOnIconID;
 @property (weak, nonatomic, readonly) UIImage  *iconImage;
 @property (weak, nonatomic, readonly) UIColor  *iconColor;
-@property (nonatomic, strong) NSString *cachedJobOnIconColor;
-@property (nonatomic, strong) NSString *cachedJobOnIconID;
-@property (weak, nonatomic, readonly)  UIColor *defaultIconColor;
+
+// For reminder support
 @property (nonatomic, strong) NSNumber *jobRemindBeforeOff;
 @property (nonatomic, strong) NSNumber *jobRemindBeforeWork;
+
+// Choose able work days Table.
 @property (nonatomic, strong) NSArray  *jobFreeJumpTable;
 @property (nonatomic, strong) NSNumber *jobFreeJumpCycle;
 @property (nonatomic, retain) NSData * jobFreeJumpArrayArchive;
+
+// X Shift Support...
+@property (nonatomic, strong) NSNumber *jobXShiftCount; // X shift a day, for the 3-shift like work schedule.
+@property (nonatomic, strong) NSNumber *jobXShiftStartShift; // X shift, what's you shart shift.
+@property (nonatomic, strong) NSNumber *jobXShiftRevertOrder; // True If it's revert order.
 
 
 // init the work date generator with these input.
@@ -70,6 +78,9 @@ enum JobShiftAlgoType {
 - (UIColor *) iconColor;
 - (void) trydDfaultSetting;
 - (void) forceDefaultSetting;
+-(NSDate *)getJobEverydayStartTime;
+-(NSDate *)getJobEverydayEndTime;
+- (NSString *)jobEverydayStartTimeWithFormatter:(NSDateFormatter *)formatter;
 - (NSString *) jobEverydayOffTimeWithFormatter:(NSDateFormatter *) formatter;
 
 - (NSArray *) jobShiftAllTypesString;

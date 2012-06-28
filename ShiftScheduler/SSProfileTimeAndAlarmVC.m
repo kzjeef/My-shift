@@ -176,7 +176,7 @@ enum {
 {
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setPositiveFormat:@"##0.#"];
-    float a = theJob.jobEveryDayLengthSec.floatValue / (60.f * 60.f);
+    float a = [theJob getJobEveryDayLengthSec].floatValue / (60.f * 60.f);
     
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
     dateformatter.timeStyle = NSDateFormatterShortStyle;
@@ -194,7 +194,7 @@ enum {
 {
 
     // this is for compitable with old version witch not adding such information. 
-    if (theJob.jobEveryDayLengthSec == Nil
+    if ([theJob getJobEveryDayLengthSec] == Nil
         || theJob.jobEverydayStartTime == Nil
         || theJob.jobRemindBeforeOff == Nil
         || theJob.jobRemindBeforeWork == Nil)
@@ -280,8 +280,8 @@ enum {
                 job.jobEverydayStartTime = tdatePicker.date;
                 NSLog(@"start time every date:%@ with Job:%@", [pDateFormatter stringFromDate:job.jobEverydayStartTime], job.jobName);
             } else if (pChoosedIndexPath.row == HOURS_ITEM) {
-                job.jobEveryDayLengthSec =  [NSNumber numberWithInt:tdatePicker.countDownDuration];
-                NSLog(@"work every length:%@ with Job:%@", job.jobEveryDayLengthSec, job.jobName);
+	      [job setJobEveryDayLengthSec:[NSNumber numberWithInt:tdatePicker.countDownDuration]];
+                NSLog(@"work every length:%@ with Job:%@", [job getJobEveryDayLengthSec], job.jobName);
             }
             
             [safeSelf.tableView reloadData];
@@ -300,7 +300,7 @@ enum {
     } else if (indexPath.row == HOURS_ITEM) {
         self.datePicker.datePickerMode = UIDatePickerModeCountDownTimer;
         self.datePicker.minuteInterval = 5;
-        self.datePicker.countDownDuration = [self.theJob.jobEveryDayLengthSec intValue];
+        self.datePicker.countDownDuration = [[self.theJob getJobEveryDayLengthSec] intValue];
         [self showDatePickerView:self.datePicker];
     } else if (indexPath.row == REMIND_BEFORE_WORK_ITEM) {
         NSTimeInterval i = [self.theJob.jobRemindBeforeWork doubleValue];
