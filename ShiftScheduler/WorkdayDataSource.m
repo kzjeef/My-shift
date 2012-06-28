@@ -58,11 +58,15 @@
                                        managedObjectContext:self.objectContext
                                        sectionNameKeyPath:@"jobName" 
                                        cacheName:JOB_CACHE_INDEFITER];
-    NSError *error = 0;
     self.fetchedRequestController = frc;
+    // delete this because time.firstTileOfMonth
+#if 0
+    NSError *error = 0;
+
     [self.fetchedRequestController performFetch:&error];
     if (error)
         NSLog(@"fetch request error:%@", error.userInfo);
+#endif
     self.fetchedRequestController.delegate = self;
     
     
