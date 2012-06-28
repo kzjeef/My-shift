@@ -10,6 +10,12 @@
 #import "OneJob.h"
 #import "NSDateAdditions.h"
 
+#define TIME_STR_ALARM_BEFORE_HOURS NSLocalizedString(@"will start in %d Hour", "will start in %d Hour")
+#define TIME_STR_ALARM_BEFORE_MINITES NSLocalizedString(@"will start in %d Minutes", "will start in %d Minutes")
+#define TIME_STR_ALARM_BEFORE_NOW NSLocalizedString(@"is start now", "is start now")
+#define TIME_STR_ALARM_OFF_HOURS NSLocalizedString(@"will off in %d Hour", "will start in %d Hour")
+#define TIME_STR_ALARM_OFF_MINITES NSLocalizedString(@"will off in %d Minutes", "will start in %d Minutes")
+#define TIME_STR_ALARM_OFF_NOW NSLocalizedString(@"is off now", "is start now")
 
 #define JOB_CACHE_INDEFITER @"JobNameCache"
 @implementation SSAlertController
@@ -46,8 +52,10 @@
     alert_sound_url = [NSURL fileURLWithPath:[[NSBundle mainBundle]
                                                      pathForResource:@"notify" ofType:@"caf"]];
     NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
-    [dnc addObserver:self selector:@selector(managedContextDataChanged:) name:NSManagedObjectContextDidSaveNotification object:self.managedcontext];
-    
+    [dnc addObserver:self selector:@selector(managedContextDataChanged:)
+		name:NSManagedObjectContextDidSaveNotification
+	      object:self.managedcontext];
+
     return self;
 }
 
@@ -177,14 +185,6 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
-#define TIME_STR_ALARM_BEFORE_HOURS NSLocalizedString(@"will start in %d Hour", "will start in %d Hour")
-#define TIME_STR_ALARM_BEFORE_MINITES NSLocalizedString(@"will start in %d Minutes", "will start in %d Minutes")
-#define TIME_STR_ALARM_BEFORE_NOW NSLocalizedString(@"is start now", "is start now")
-
-#define TIME_STR_ALARM_OFF_HOURS NSLocalizedString(@"will off in %d Hour", "will start in %d Hour")
-#define TIME_STR_ALARM_OFF_MINITES NSLocalizedString(@"will off in %d Minutes", "will start in %d Minutes")
-#define TIME_STR_ALARM_OFF_NOW NSLocalizedString(@"is off now", "is start now")
-
 
 - (int) setupAlarmForJob: (OneJob *) job daysLater:(int) daysLater
 {
@@ -202,7 +202,14 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
         if (job.jobRemindBeforeWork.intValue == 0)
             timestr = TIME_STR_ALARM_BEFORE_NOW;
         NSString *workRemindString = [NSString stringWithFormat:@"%@ %@.", job.jobName, timestr]; 
-        ret = [self scheduleNotificationWithItem:job.jobEverydayStartTime withDaysLater:daysLater interval:job.jobRemindBeforeWork.intValue alarmBody:workRemindString alarmActionTitle:defaultActionTitle TimeAfter:0 job:job isOffDay:NO];
+        ret = [self scheduleNotificationWithItem:job.jobEverydayStartTime
+				   withDaysLater:daysLater
+					interval:job.jobRemindBeforeWork.intValue
+				       alarmBody:workRemindString
+				alarmActionTitle:defaultActionTitle
+				       TimeAfter:0
+					     job:job
+					isOffDay:NO];
         if (ret) alarmCount ++;
     }
     
@@ -218,8 +225,14 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
             timestr = TIME_STR_ALARM_OFF_NOW;
         NSString *offRemindString = [NSString stringWithFormat:@"%@ %@.", job.jobName, timestr]; 
         
-        ret = [self scheduleNotificationWithItem:job.jobEverydayStartTime withDaysLater:daysLater interval:job.jobRemindBeforeOff.intValue alarmBody:offRemindString alarmActionTitle:defaultActionTitle TimeAfter:[job getJobEveryDayLengthSec].intValue
-         job:job isOffDay:YES];
+        ret = [self scheduleNotificationWithItem:job.jobEverydayStartTime
+				   withDaysLater:daysLater
+					interval:job.jobRemindBeforeOff.intValue
+				       alarmBody:offRemindString
+				alarmActionTitle:defaultActionTitle
+				       TimeAfter:[job getJobEveryDayLengthSec].intValue
+					     job:job
+					isOffDay:YES];
         if (ret) alarmCount += 1;
     }
     return alarmCount;
@@ -266,16 +279,14 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
  additions, removals and so on.
  */
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-	// The fetch controller is about to start sending change
-	// notifications, so prepare the table view for updates.
-}
+// - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+// 	// The fetch controller is about to start sending change
+// 	// notifications, so prepare the table view for updates.
+// }
 
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-
-    
-}
+// - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+// }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
 	// The fetch controller has sent all current change

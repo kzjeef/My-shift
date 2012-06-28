@@ -15,24 +15,6 @@
 #import "ShiftAlgoFreeRound.h"
 #import "ShiftAlgoFreeJump.h"
 
-#define WORKDAY_TYPE_FULL 0
-#define WORKDAY_TYPE_NOT  1
-#define WORKDAY_TYPE_HALF 2
-@interface WorkDay : NSObject {
-@private
-    int dayType;
-    NSDate *theDate;
-}
-
-@property int dayType;
-@property (strong) NSDate *theDate;
-@end
-
-@implementation WorkDay
-@synthesize dayType;
-@synthesize theDate;
-@end
-
 @interface OneJob()
 {
     ShiftAlgoBase *shiftAlgo;
@@ -47,9 +29,15 @@
     NSString *cachedJobOnIconColor;
     NSNumber *cachedJobOnIconColorOn;
 }
+
 @property (strong, nonatomic) ShiftAlgoBase *shiftAlgo;
+
+// This two is shift start/end related member, if shift is regular, it function like normal.
+// If the shift is X-Shift, it's the work lenght is fixed, and start time needs calculate by
+// shift property and order.
 @property (nonatomic, strong) NSNumber * jobEveryDayLengthSec;  // minites of every day work.
 @property (nonatomic, strong) NSDate * jobEverydayStartTime;
+@property (weak, nonatomic, readonly)  UIColor *defaultIconColor;
 
 @end
 
@@ -64,11 +52,13 @@
 @dynamic jobStartDate;
 @dynamic jobFinishDate;
 @dynamic shiftdays;
-@dynamic jobOnColorID,jobOnIconColorOn;
+@dynamic jobOnColorID;
 @dynamic jobOnIconID;
 @dynamic jobShiftType;
 @dynamic jobRemindBeforeOff,jobRemindBeforeWork;
 @dynamic jobFreeJumpCycle;
+@dynamic jobXShiftCount, jobXShiftStartShift, jobXShiftRevertOrder;
+
 @synthesize curCalender, cachedJobOnIconColor, cachedJobOnIconID, shiftAlgo, jobShiftTypeString;
 
 - (ShiftAlgoBase *)shiftAlgo;
@@ -224,9 +214,20 @@
 //#warning  remove this test message
 }
 
+- (int)getXShiftCount
+{
+    if (self.jobXShiftCount == nil || self.jobXShiftCount.intValue == 0)
+	return 0;
+    else
+	return self.jobXSshiftCount.intValue;
+}
+
 -(NSNumber *)getJobEveryDayLengthSec
 {
-    return self.jobEveryDayLengthSec;
+    if ([self getXShiftCount] == 0)
+	return self.jobEveryDayLengthSec;
+    else
+	return DAY_TO_SECONDS / [self getXShiftCount];
 }
 
 -(void)setJobEveryDayLengthSec:(NSNumber *number)
@@ -237,14 +238,14 @@
 
 -(NSDate *)getJobEverydayStartTime
 {
-    return self.jobEverydayStartTime;
+    if ([self getXShiftCount] == 0)
+	return self.jobEverydayStartTime;
 }
 
 -(NSDate *)getJobEverydayEndTime
 {
     return [self.jobEverydayStartTime dateByAddingTimeInterval:self.jobEveryDayLengthSec.intValue];
 }
-
 
 - (NSString *)jobEverydayStartTimeWithFormatter:(NSDateFormatter *)formatter
 {
