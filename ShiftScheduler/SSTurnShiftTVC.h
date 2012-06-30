@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OneJob.h"
-
+#import "SSShiftWorkdayConfigTVC.h"
 
 // default working days and off days when adding new profile.
 #define PCVC_DEFAULT_OFF_DAYS 2
@@ -23,6 +23,7 @@
 @property (nonatomic, strong) IBOutlet UIPickerView *picker;
 @property (nonatomic, strong) OneJob *theJob;
 @property (nonatomic, strong) NSIndexPath *firstChooseIndexPath;
+@property (assign, nonatomic)     id<SSShiftTypePickerDelegate> __unsafe_unretained pickDelegate;
 
 + (BOOL) isItemInThisViewController: (NSString *) item;
 + (void) configureTimeCell: (UITableViewCell *)cell indexPath: (NSIndexPath *)indexPath Job: (OneJob *)theJob dateFormatter:(NSDateFormatter *)dateFormatter;

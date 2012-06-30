@@ -59,7 +59,7 @@ enum {
     kal.tileDelegate = dataSource;
     // setup tile view delegate, provides tile icon information.
     
-    self.profileView = [[ProfilesViewController alloc] initWithManagedContext:self.managedObjectContext];
+    self.profileView = [[ShiftListProfilesTVC alloc] initWithManagedContext:self.managedObjectContext];
     self.profileView.parentViewDelegate = self;
     
     self.profileNVC = [[UINavigationController alloc] initWithRootViewController:self.profileView];

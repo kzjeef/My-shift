@@ -10,10 +10,10 @@
 
 #import "OneJob.h"
 
-@class ProfileChangeViewController;
+@class ShiftProfileChangeViewController;
 
 @protocol ProfileViewDelegate
-- (void) didChangeProfile:(ProfileChangeViewController *) addController
+- (void) didChangeProfile:(ShiftProfileChangeViewController *) addController
         didFinishWithSave:(BOOL) finishWithSave;
 @end
 
@@ -22,7 +22,7 @@
 @end
 
 
-@interface ProfilesViewController : UITableViewController <NSFetchedResultsControllerDelegate, ProfileViewDelegate>
+@interface ShiftListProfilesTVC : UITableViewController <NSFetchedResultsControllerDelegate, ProfileViewDelegate>
 {
 	NSManagedObjectContext *managedObjectContext;
 	NSManagedObjectContext *addingManagedObjectContext;

@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "OneJob.h"
+#import "SSShiftWorkdayConfigTVC.h"
 
-@interface FreeJumpProfileConfigTVC : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+
+@interface SSShiftTableConfigTVC : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) OneJob *theJob;
+@property (assign, nonatomic) id<SSShiftTypePickerDelegate> __unsafe_unretained pickDelegate;
 @end

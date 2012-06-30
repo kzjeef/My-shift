@@ -6,30 +6,32 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "FreeJumpProfileConfigTVC.h"
+#import "SSShiftTableConfigTVC.h"
 #import "SCViewController.h"
 #import "SCModalPickerView.h"
 #import "NSDateAdditions.h"
 
 
-@interface FreeJumpProfileConfigTVC ()
+@interface SSShiftTableConfigTVC ()
 {
     OneJob *job_;
     SCModalPickerView *modalPickerView;
     UIPickerView *picker;
     NSMutableArray *shiftStateArray;
     NSDateFormatter *dateFormatter;
+    id<SSShiftTypePickerDelegate> __unsafe_unretained pickDelegate;
 }
 
 @property (readonly) NSDateFormatter *dateFormatter;
 
 @end
 
-@implementation FreeJumpProfileConfigTVC
+@implementation SSShiftTableConfigTVC
 
 @synthesize theJob=job_;
+@synthesize pickDelegate;
 
-#define LENGTH_OF_CYCLE NSLocalizedString(@"Cycle (Click to Change)", "length of cycle")
+#define LENGTH_OF_CYCLE NSLocalizedString(@"Shift Cycle", "length of cycle")
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -111,6 +113,22 @@
         return self.theJob.jobFreeJumpCycle.intValue;
     else
         return 0;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+        return NSLocalizedString(@"Shift Cycle Length", "");
+    else
+        return NSLocalizedString(@"Which days on shift?", "");
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    if (section == 0)
+        return NSLocalizedString(@"Click to change shift cycle", "");
+    if (section == 1)
+        return NSLocalizedString(@"Click to choose shift on days", "");
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -200,7 +218,11 @@ return YES;
 
     if (!editing) {
         [self saveShiftChange];
-        [self.navigationController popViewControllerAnimated:YES];
+
+	if (pickDelegate)
+	    [pickDelegate SSShiftTypePickerClientFinishConfigure: self];
+        else
+            [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -231,6 +253,7 @@ return YES;
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
+            [picker selectRow:self.theJob.jobFreeJumpCycle.intValue inComponent:0 animated:YES];
             [self showPickerView:picker];
         }
     }
@@ -248,7 +271,7 @@ return YES;
     //__block UIPickerView *tPickerView = pPickerView;
     [modalPickerView setPickerView:pPickerView];
     __block OneJob *job = self.theJob;
-    __block FreeJumpProfileConfigTVC *_self = self;
+    __block SSShiftTableConfigTVC *_self = self;
     NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
     __block UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:pChoosedIndexPath];
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProfilesViewController.h"
+#import "ShiftListProfilesTVC.h"
 #import "KalViewController.h"
 #import "ShfitChangeList.h"
 #import "SSKalDelegate.h"
@@ -23,7 +23,7 @@ ProfileEditFinishDelegate>
     UINavigationController *profileNVC;
     KalViewController *kal;
     SSAlertController *alertC;
-    ProfilesViewController *profileView;
+    ShiftListProfilesTVC *profileView;
     ShfitChangeList *changelistVC;
     SSKalDelegate *sskalDelegate;
     SSSettingTVC *settingVC;
@@ -42,7 +42,7 @@ ProfileEditFinishDelegate>
 
 // --
 @property (strong) UINavigationController *navController;				
-@property (nonatomic, strong) ProfilesViewController *profileView;
+@property (nonatomic, strong) ShiftListProfilesTVC *profileView;
 @property (nonatomic, strong) SSSettingTVC *settingVC;
 @property (nonatomic, strong) UINavigationController *profileNVC;
 @property (nonatomic, strong) ShfitChangeList *changelistVC;

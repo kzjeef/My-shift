@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "OneJob.h"
-#import "ProfilesViewController.h"
+#import "ShiftListProfilesTVC.h"
 #import "ProfileIconPickerDataSource.h"
 #import "InfColorPickerController.h"
-#import "SSShiftTypePickerTVC.h"
+#import "SSShiftWorkdayConfigTVC.h"
 
 
 #define PCVC_EDITING_MODE 0
@@ -19,7 +19,7 @@
 
 // default working days and off days when adding new profile.
 
-@interface ProfileChangeViewController : 
+@interface ShiftProfileChangeViewController : 
 UITableViewController  
 <UITextFieldDelegate, JPImagePickerControllerDelegate, InfColorPickerControllerDelegate, SSShiftTypePickerDelegate>
 

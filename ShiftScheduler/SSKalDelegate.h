@@ -6,7 +6,7 @@
 //  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
 //
 #import <UIKit/UIKit.h>
-#import "ProfilesViewController.h"
+#import "ShiftListProfilesTVC.h"
 #import "KalViewController.h"
 #import "ShfitChangeList.h"
 

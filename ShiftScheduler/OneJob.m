@@ -149,9 +149,10 @@
     jobFreeJumpTable = [t copy];
 }
 
-#define FREE_JUMP_STRING NSLocalizedString(@"Free Jump", "")
-#define FREE_ROUND_STRING NSLocalizedString(@"Day Round", "")
-#define HOUR_ROUND_STRING NSLocalizedString(@"Hour Round", "")
+#define FREE_ROUND_STRING NSLocalizedString(@"Regular Work Day", "")
+#define FREE_JUMP_STRING NSLocalizedString(@"Customize Work Day", "")
+
+//#define HOUR_ROUND_STRING NSLocalizedString(@"Hour Round", "")
 #define NA_SHITF_STRING   NSLocalizedString(@"N/A", "")
 
 - (NSArray *) jobShiftAllTypesString
@@ -160,7 +161,6 @@
 	jobShiftAllTypesString = [[NSArray alloc] initWithObjects:
 				  FREE_ROUND_STRING,
 				  FREE_JUMP_STRING,
-				  HOUR_ROUND_STRING,
 				  nil];
     }
     return jobShiftAllTypesString;
@@ -169,7 +169,7 @@
 - (Boolean) shiftTypeValied
 {
     NSInteger n = self.jobShiftType.intValue;
-    if (n > 0 && n < [[self jobShiftAllTypesString] count]) {
+    if (n > 0 && n <= [[self jobShiftAllTypesString] count]) {
 	return YES;
     }
     return NO;
@@ -192,7 +192,7 @@
 	return [[self jobShiftAllTypesString]
 		   objectAtIndex:(self.jobShiftType.intValue - 1)];
     //    NSAssert(NO, @"shiftType return with empty string, should not happen");
-    return [NSString string];
+    return NA_SHITF_STRING;
 }
 
 - (void) trydDfaultSetting

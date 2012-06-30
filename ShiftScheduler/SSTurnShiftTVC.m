@@ -21,13 +21,15 @@
     SCModalPickerView *modalPickerView;
     SCModalPickerView *modalDatePickerView;
     OneJob *theJob;
+
+    id<SSShiftTypePickerDelegate> __unsafe_unretained pickDelegate;
 }
 
 @end
 
 @implementation SSTurnShiftTVC
 
-@synthesize picker, theJob, firstChooseIndexPath;
+@synthesize picker, theJob, firstChooseIndexPath, pickDelegate;
 
 #define WORKLEN_ITEM_STRING   NSLocalizedString(@"Work Length", "how long work days")
 #define RESTLEN_ITEM_STRING   NSLocalizedString(@"Rest Length", "how long rest days")
@@ -251,7 +253,10 @@ enum {
 
     if (!editing)
     {
-        [self.navigationController popViewControllerAnimated:animate];
+	if (pickDelegate)
+	    [pickDelegate SSShiftTypePickerClientFinishConfigure:self];
+	else
+	    [self.navigationController popViewControllerAnimated:animate];
     }
 }
 

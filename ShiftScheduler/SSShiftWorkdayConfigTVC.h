@@ -9,17 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "OneJob.h"
 
-@class SSShiftTypePickerTVC;
+@class SSShiftWorkdayConfigTVC;
 
 @protocol SSShiftTypePickerDelegate 
 
-- (void) SSItemPickerChoosewithController: (SSShiftTypePickerTVC *) sender itemIndex: (NSInteger) index;
+- (void) SSItemPickerChoosewithController: (SSShiftWorkdayConfigTVC *) sender itemIndex: (NSInteger) index;
+
+- (void) SSShiftTypePickerClientFinishConfigure: (id) sender;
 
 @end
 
-@interface SSShiftTypePickerTVC : UITableViewController
+@interface SSShiftWorkdayConfigTVC : UITableViewController <SSShiftTypePickerDelegate>
 
 @property (strong) NSArray *items;
+@property (nonatomic, strong) OneJob *theJob;		   
 @property (assign, nonatomic)     id<SSShiftTypePickerDelegate> __unsafe_unretained pickDelegate;
 
 

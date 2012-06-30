@@ -6,16 +6,16 @@
 //  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
 
-#import "ProfileChangeViewController.h"
+#import "ShiftProfileChangeViewController.h"
 #import "UIColor+HexCoding.h"
 #import "InfColorPicker.h"
 #import "SSTurnShiftTVC.h"
 #import "SSProfileTimeAndAlarmVC.h"
-#import "FreeJumpProfileConfigTVC.h"
+#import "SSShiftWorkdayConfigTVC.h"
 #import "SSTurnFinishDatePickerTVC.h"
 #import "SCModalPickerView.h"
 
-@interface ProfileChangeViewController() 
+@interface ShiftProfileChangeViewController() 
 {
     int viewMode;
     BOOL showColorAndIconPicker;
@@ -34,6 +34,7 @@
 
     UIDatePicker *datePicker;
     SCModalPickerView *modalDatePickerView;
+    Boolean warnningShiftType;
     
     Boolean enterConfig;
 
@@ -44,7 +45,7 @@
 
 @end
 
-@implementation ProfileChangeViewController
+@implementation ShiftProfileChangeViewController
 
 @synthesize itemsArray, saveButton, dateFormatter, cancelButton;
 @synthesize theJob, viewMode;
@@ -59,13 +60,12 @@
 
 #define NAME_ITEM_STRING  NSLocalizedString(@"Job Name", "job name")
 #define ICON_ITEM_STRING  NSLocalizedString(@"Change Icon", "choose a icon")
-#define COLOR_ENABLE_STRING NSLocalizedString(@"Enable color icon", "enable color icon")
+#define COLOR_ENABLE_STRING NSLocalizedString(@"Enable Color icon", "enable color icon")
 #define COLOR_PICKER_STRING NSLocalizedString(@"Change Color", "choose a color to show icon")
 #define STARTWITH_ITEM_STRING NSLocalizedString(@"Start with", "start with this date")
-#define REPEAT_ITEM_STRING    NSLocalizedString(@"Repeat Until", "finish at this date")
+#define REPEAT_ITEM_STRING    NSLocalizedString(@"Repeat until", "finish at this date")
 #define REPEAT_FOREVER_STRING NSLocalizedString(@"Repeat forever", "repeart forever string")
-#define SHIFTTYPE_ITEM_STRING NSLocalizedString(@"Shift Type", "shift type")
-#define SHIFTCONFIG_ITEM_STRING NSLocalizedString(@"Detail Configure", "config  detail of shift")
+#define SHIFTCONFIG_ITEM_STRING NSLocalizedString(@"Shift detail", "config  detail of shift")
 
 #define STARTWITH_ITEM 1
 #define FINISH_ITEM 2
@@ -78,7 +78,6 @@
 					  NAME_ITEM_STRING,
 				      ICON_ITEM_STRING,
 				      COLOR_PICKER_STRING,
-				      SHIFTTYPE_ITEM_STRING,
 				      STARTWITH_ITEM_STRING,
 				      REPEAT_ITEM_STRING,
                       SHIFTCONFIG_ITEM_STRING,
@@ -324,7 +323,7 @@
         return 3;
 #endif
     else if (section == 1)
-        return 4;
+        return 3;
     else if (section == 2)
         return self.timeItemsArray.count;
     return 0;
@@ -387,15 +386,16 @@
 
     }
 
-    if ([item isEqualToString:SHIFTTYPE_ITEM_STRING]) {
-        cell.detailTextLabel.text = self.theJob.jobShiftTypeString;
-        cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    
     if ([item isEqualToString:SHIFTCONFIG_ITEM_STRING]) {
-        cell.editingAccessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if (self.theJob.jobShiftType == nil || self.theJob.jobShiftType.intValue == 0) {
+            if (warnningShiftType) {
+                cell.textLabel.highlightedTextColor = [UIColor redColor];
+                cell.textLabel.highlighted = YES;
+            }
+        }
+        cell.detailTextLabel.text = [self.theJob jobShiftTypeString];
     }
-    
     
     [self configureStartRepeatItems:item withCell:cell];
 
@@ -467,24 +467,6 @@
     return NO;
 }
 
-- (void)shiftConfigChooseRightShiftConfigure
-{
-    if (![self.theJob shiftTypeValied]) {
-        // do some thing , alart ?
-    }
-
-    if (self.theJob.jobShiftType.intValue == JOB_SHIFT_ALGO_FREE_ROUND) {
-        SSTurnShiftTVC *tstvc = [[SSTurnShiftTVC alloc] initWithNibName:@"SSTurnShiftTVC" bundle:nil];
-        tstvc.theJob = self.theJob;
-        [self.navigationController pushViewController:tstvc animated:YES];
-    }
-
-    if (self.theJob.jobShiftType.intValue == JOB_SHIFT_ALGO_FREE_JUMP) {
-	FreeJumpProfileConfigTVC *fjmp = [[FreeJumpProfileConfigTVC alloc] initWithStyle:UITableViewStyleGrouped];
-	fjmp.theJob = self.theJob;
-	[self.navigationController pushViewController:fjmp animated:YES];
-    }
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -520,17 +502,22 @@
         [color_picker presentModallyOverViewController:self];
     }
     
-    if ([item isEqualToString:SHIFTTYPE_ITEM_STRING]) {
-        SSShiftTypePickerTVC *stp = [[SSShiftTypePickerTVC alloc] initWithStyle:UITableViewStyleGrouped];
-        stp.pickDelegate = self;
-        stp.items = self.theJob.jobShiftAllTypesString;
-        [self.navigationController pushViewController:stp animated:YES];
-    }
-    
-    
     if ([item isEqualToString:SHIFTCONFIG_ITEM_STRING]) {
+
+        SSShiftWorkdayConfigTVC *stp = [[SSShiftWorkdayConfigTVC alloc] initWithStyle:UITableViewStyleGrouped];
+        stp.pickDelegate = self;
+	stp.theJob = self.theJob;
+        stp.items = self.theJob.jobShiftAllTypesString;
+        
+#if 1
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:stp];
+        [self.navigationController  presentModalViewController:navController animated:YES];
+#else
+        [self.navigationController pushViewController:stp animated:YES];
+#endif
+        
         enterConfig = YES;
-        [self shiftConfigChooseRightShiftConfigure];
+
     }
 
     if ([item isEqualToString:STARTWITH_ITEM_STRING]) {
@@ -580,6 +567,8 @@
 				    message:NSLocalizedString(@"Please Choose a shift type", "alert string in editing profile view to let user input shift type")
 				   delegate:self
 			  cancelButtonTitle:NSLocalizedString(@"I Know", @"I Know") otherButtonTitles:nil, nil] show];
+        warnningShiftType = YES;
+        [self.tableView reloadData];
         return;
     }
     
@@ -686,12 +675,13 @@
 }
 
 #pragma - mark - ShiftTypePickerDelegate
-- (void) SSItemPickerChoosewithController: (SSShiftTypePickerTVC *) sender itemIndex: (NSInteger) index
+- (void) SSItemPickerChoosewithController: (SSShiftWorkdayConfigTVC *) sender itemIndex: (NSInteger) index
 {
-    self.theJob.jobShiftType = [NSNumber numberWithInt:(index + 1)];
-    [sender.navigationController popViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
+
+    warnningShiftType = NO;
+    
     [self.tableView reloadData];
 }
-
 
 @end

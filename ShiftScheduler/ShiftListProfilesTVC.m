@@ -6,15 +6,15 @@
 //  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
 
-#import "ProfilesViewController.h"
-#import "ProfileChangeViewController.h"
+#import "ShiftListProfilesTVC.h"
+#import "ShiftProfileChangeViewController.h"
 #import "OneJob.h"
 #import "UIColor+HexCoding.h"
 
 
 #define PROFILE_CACHE_INDIFITER @"ProfileListCache"
 
-@implementation ProfilesViewController
+@implementation ShiftListProfilesTVC
 
 @synthesize managedObjectContext, addingManagedObjectContext, fetchedResultsController;
 @synthesize parentViewDelegate;
@@ -71,7 +71,7 @@
 
 - (IBAction)insertNewProfile:(id) sender
 {
-    ProfileChangeViewController *addViewController = [[ProfileChangeViewController alloc] initWithNibName:@"ProfileChangeViewController" bundle:nil];
+    ShiftProfileChangeViewController *addViewController = [[ShiftProfileChangeViewController alloc] initWithNibName:@"ProfileChangeViewController" bundle:nil];
     addViewController.viewMode = PCVC_ADDING_MODE;
 	
     // Create a new managed object context for the new book -- set its persistent store coordinator to the same as that from the fetched results controller's context.
@@ -413,7 +413,7 @@
     if (indexPath.section == [self numberOfSectionsInTableView:self.tableView] - 1) { // last section
         [self insertNewProfile:nil];
     } else {
-        ProfileChangeViewController *pcvc = [[ProfileChangeViewController alloc] initWithNibName:@"ProfileChangeViewController" bundle:nil];
+        ShiftProfileChangeViewController *pcvc = [[ShiftProfileChangeViewController alloc] initWithNibName:@"ProfileChangeViewController" bundle:nil];
         pcvc.theJob = [self.fetchedResultsController objectAtIndexPath:indexPath];
         pcvc.profileDelegate = self;
         pcvc.managedObjectContext = self.managedObjectContext;
@@ -484,7 +484,7 @@
 
 
 
-- (void) didChangeProfile :(ProfileChangeViewController *) addController
+- (void) didChangeProfile :(ShiftProfileChangeViewController *) addController
 				didFinishWithSave:(BOOL) finishWithSave
 {
     if (finishWithSave) {

@@ -12,18 +12,18 @@
 #include "ShiftDay.h"
 
 
-#define JOB_DEFAULT_ON_DAYS 5
-#define JOB_DEFAULT_OFF_DAYS 2
-#define JOB_DEFAULT_ICON_FILE @"bag32.png"
-#define JOB_DEFAULT_COLOR_VALUE @"25AA5C"
-#define JOB_DEFAULT_EVERYDAY_ON_LENGTH (60*60*8)
-#define JOB_DEFAULT_REMIND_TIME_BEFORE_WORK -1
-#define JOB_DEFAULT_REMIND_TIME_BEFORE_OFF -1
+#define JOB_DEFAULT_ON_DAYS                     5
+#define JOB_DEFAULT_OFF_DAYS                    2
+#define JOB_DEFAULT_ICON_FILE                   @"bag32.png"
+#define JOB_DEFAULT_COLOR_VALUE                 @"366BCF"
+#define JOB_DEFAULT_EVERYDAY_ON_LENGTH          (60*60*8)
+#define JOB_DEFAULT_REMIND_TIME_BEFORE_WORK     -1
+#define JOB_DEFAULT_REMIND_TIME_BEFORE_OFF      -1
 #define JOB_DEFAULT_JUMP_CYCLE 7
 
 enum JobShiftAlgoType {
   JOB_SHIFT_ALGO_NON_TYPE = 0,	// Report assert here.
-  JOB_SHIFT_ALGO_FREE_ROUND = 1, // X on X off round robin shift.
+  JOB_SHIFT_ALGO_FREE_ROUND, // X on X off round robin shift.
   JOB_SHIFT_ALGO_FREE_JUMP,	 // X on/off self check in Y days.
   JOB_SHIFT_ALGO_HOUR_ROUND ,	 // three shift system. 
 };
