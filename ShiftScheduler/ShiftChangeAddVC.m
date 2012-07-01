@@ -101,6 +101,7 @@
       forControlEvents:UIControlEventValueChanged];
     changeShiftSegmentControl = control;
     return changeShiftSegmentControl;
+    
 }
 
 - (void)shiftTypeChanged: (UISegmentedControl *) sender
@@ -302,7 +303,7 @@
             } else {
                 cell.textLabel.text = NSLocalizedString(@"To", "change to in shift change view");
             }
-            cell.detailTextLabel.text = NSLocalizedString(@"choose date ", "choose data");
+            cell.detailTextLabel.text = NSLocalizedString(@"choose date", "choose data");
             cell.detailTextLabel.alpha = 0.3;
 #ifdef USE_ANOTHER_VC_CHOOSEDATA
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

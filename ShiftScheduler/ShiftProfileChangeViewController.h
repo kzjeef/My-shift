@@ -21,7 +21,7 @@
 
 @interface ShiftProfileChangeViewController : 
 UITableViewController  
-<UITextFieldDelegate, JPImagePickerControllerDelegate, InfColorPickerControllerDelegate, SSShiftTypePickerDelegate>
+<UITextFieldDelegate, JPImagePickerControllerDelegate, InfColorPickerControllerDelegate, SSShiftTypePickerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) NSArray *itemsArray;
 @property (nonatomic, strong) NSArray *timeItemsArray;

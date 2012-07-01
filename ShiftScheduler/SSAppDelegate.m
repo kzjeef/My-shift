@@ -84,7 +84,7 @@ enum {
 #ifdef CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
                NSLocalizedString(@"change shift" , "change shift"), 
 #endif
-               NSLocalizedString(@"manage shift", "manage shift"),
+               NSLocalizedString(@"Management Shift", "shift management view"),
                NSLocalizedString(@"Setting", "setting in action shift"),
                nil];
     self.rightAS.tag = TAG_MENU;
@@ -216,7 +216,6 @@ enum {
     }
     
 }
-
 
 - (void) didFinishEditingSetting
 {

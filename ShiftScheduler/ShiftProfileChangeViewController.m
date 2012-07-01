@@ -62,6 +62,9 @@
 #define ICON_ITEM_STRING  NSLocalizedString(@"Change Icon", "choose a icon")
 #define COLOR_ENABLE_STRING NSLocalizedString(@"Enable Color icon", "enable color icon")
 #define COLOR_PICKER_STRING NSLocalizedString(@"Change Color", "choose a color to show icon")
+#define ICON_OR_TEXT_STRING NSLocalizedString(@"Icon Behavior", "show icon or text in profile change view")
+#define ICON_STRING NSLocalizedString(@"Icon", "Icon")
+#define TEXT_STRING NSLocalizedString(@"Charactor", "Charactor")
 #define STARTWITH_ITEM_STRING NSLocalizedString(@"Start with", "start with this date")
 #define REPEAT_ITEM_STRING    NSLocalizedString(@"Repeat until", "finish at this date")
 #define REPEAT_FOREVER_STRING NSLocalizedString(@"Repeat forever", "repeart forever string")
@@ -78,6 +81,7 @@
 					  NAME_ITEM_STRING,
 				      ICON_ITEM_STRING,
 				      COLOR_PICKER_STRING,
+                                      ICON_OR_TEXT_STRING,
 				      STARTWITH_ITEM_STRING,
 				      REPEAT_ITEM_STRING,
                       SHIFTCONFIG_ITEM_STRING,
@@ -192,6 +196,13 @@
     self.theJob.jobName = textField.text;
     [textField resignFirstResponder];
 }
+
+- (void)jobSwitchAction:(id) sender
+{
+    UISwitch *currentSwitch = sender;
+    self.theJob.jobShowTextInCalendar = [NSNumber numberWithBool:currentSwitch.isOn];
+}
+
 
 #pragma mark - "controller start init"
 
@@ -320,7 +331,7 @@
 #if 0
         return  self.editing ? 3 : 1;
 #else
-        return 3;
+        return 4;
 #endif
     else if (section == 1)
         return 3;
@@ -335,7 +346,7 @@
     if (indexPath.section == 0)
         item = [self.itemsArray objectAtIndex:indexPath.row];
     else if (indexPath.section == 1)
-        item = [self.itemsArray objectAtIndex:(indexPath.row + 3)];
+        item = [self.itemsArray objectAtIndex:(indexPath.row + 4)];
     else if (indexPath.section == 2)
         item = [self.timeItemsArray objectAtIndex:indexPath.row];
     return item;
@@ -376,6 +387,13 @@
 
     cell.textLabel.text = item;
     cell.imageView.image = nil;
+
+    if ([item isEqualToString:ICON_OR_TEXT_STRING]) {
+        if (self.theJob.jobShowTextInCalendar.intValue == YES)
+            cell.detailTextLabel.text = TEXT_STRING;
+        else
+            cell.detailTextLabel.text = ICON_STRING;
+    }
     
    
     if ([item isEqualToString:NAME_ITEM_STRING]) {
@@ -487,10 +505,19 @@
 		imagePickerController.delegate = self;
 		imagePickerController.dataSource = self.iconDateSource;
 		imagePickerController.imagePickerTitle = NSLocalizedString(@"Choose Icon", "title of choose icon view");
-        imagePickerController.monoColor = [self.theJob iconColor];
-        imagePickerController.monoProcessAllImage = YES;
+                imagePickerController.monoColor = [self.theJob iconColor];
+                imagePickerController.monoProcessAllImage = YES;
 		
 		[self.navigationController presentModalViewController:imagePickerController animated:YES];
+    }
+
+    if ([item isEqualToString:ICON_OR_TEXT_STRING]) {
+        UIActionSheet *colorTextPicker = [[UIActionSheet alloc] initWithTitle:Nil 
+                                                                     delegate:self
+                                                            cancelButtonTitle:nil
+                                                       destructiveButtonTitle:nil 
+                                                            otherButtonTitles:ICON_STRING, TEXT_STRING , nil];
+        [colorTextPicker showInView:self.tableView.superview];
     }
     
     if ([item isEqualToString:COLOR_PICKER_STRING]) {
@@ -684,4 +711,18 @@
     [self.tableView reloadData];
 }
 
+
+- (void)actionSheet:(UIAlertView *)sender clickedButtonAtIndex:(NSInteger)index
+{
+    switch (index) {
+    case 0:
+        self.theJob.jobShowTextInCalendar = [NSNumber numberWithInt:0];
+        [self.tableView reloadData];
+        break;
+    case 1:
+        self.theJob.jobShowTextInCalendar = [NSNumber numberWithInt:1];
+        [self.tableView reloadData];
+        break;
+    }
+}
 @end

@@ -145,7 +145,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
             cell.textLabel.text = LENGTH_OF_CYCLE;
             cell.detailTextLabel.text = (self.theJob.jobFreeJumpCycle == nil) ? @"0" : ([NSString stringWithFormat:@"%@", self.theJob.jobFreeJumpCycle]);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
     }
 

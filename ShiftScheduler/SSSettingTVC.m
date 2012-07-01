@@ -114,7 +114,7 @@
 {
     
     if (section == 1)
-        return NSLocalizedString(@"__SYSTEM_ALERT_DETAIL__", "");
+        return NSLocalizedString(@"you can choose use iOS default alert sound or use application's alert sound.", "");
     return Nil;
 }
 
@@ -228,7 +228,7 @@
     NSString *support_title = NSLocalizedString(@"[SSS] ShiftSheduler support", "shift sheduler support");
     
     NSString *tel_other_title = NSLocalizedString(@"Check this app: Shift Sheduler", "");
-    NSString *tel_other_body  = NSLocalizedString(@"__TELL_OTHER_BODY__", "");
+    NSString *tel_other_body  = NSLocalizedString(@"Hi, \n I found a very interesting app, and I think it will help for you, check it out!\n Link is: http://itunes.apple.com/us/app/shift-scheduler/id482061308?mt=8", "");
     
     
     if (indexPath.section == 0) return;

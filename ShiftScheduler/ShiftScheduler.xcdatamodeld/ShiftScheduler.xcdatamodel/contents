@@ -18,6 +18,7 @@
         <attribute name="jobRemindBeforeOff" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="jobRemindBeforeWork" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="jobShiftType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="jobShowTextInCalendar" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="jobStartDate" optional="YES" attributeType="Date"/>
         <attribute name="jobXShiftCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="jobXShiftRevertOrder" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -33,7 +34,7 @@
         <relationship name="whatJob" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="OneJob" inverseName="shiftdays" inverseEntity="OneJob" syncable="YES"/>
     </entity>
     <elements>
-        <element name="OneJob" positionX="160" positionY="192" width="128" height="375"/>
+        <element name="OneJob" positionX="160" positionY="192" width="128" height="390"/>
         <element name="ShiftDay" positionX="-560" positionY="207" width="128" height="120"/>
     </elements>
 </model>

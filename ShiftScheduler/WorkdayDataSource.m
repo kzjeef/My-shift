@@ -232,9 +232,12 @@
                 drawType = KAL_TILE_DRAW_METHOD_MONO_ICON_FILL_COLOR;
 
             NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys: 
-                                   [NSNumber numberWithInt:drawType],  KAL_TILE_ICON_DRAW_TYPE_KEY, 
-                                   job.iconImage, KAL_TILE_ICON_IMAGE_KEY, 
-                                   job.iconColor, KAL_TILE_ICON_COLOR_KEY, nil];
+                                                     [NSNumber numberWithInt:drawType], KAL_TILE_ICON_DRAW_TYPE_KEY,
+                                                job.iconImage, KAL_TILE_ICON_IMAGE_KEY, 
+                                                job.iconColor, KAL_TILE_ICON_COLOR_KEY,
+                                                job.jobShowTextInCalendar, KAL_TILE_ICON_IS_SHOW_TEXT,
+                                                [job.jobName substringWithRange:NSMakeRange(0, 1)], KAL_TILE_ICON_TEXT,
+                                                nil];
             [resultArray addObject:entry];
         }
     }

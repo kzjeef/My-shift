@@ -196,11 +196,7 @@ enum {
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
     if (section == 0) {
-        
-        NSString *descrption = [NSString stringWithFormat:@"%@ \n%@",
-                                NSLocalizedString(@"You can change the shift days by click each item\n", "tips"),
-                                 NSLocalizedString(@"___HELP___", "help")];
-        return descrption;
+        return NSLocalizedString(@"You can change the shift days by click each item\n", "tips");
     }
     return  [NSString string] ;
     

@@ -61,6 +61,7 @@
 @dynamic jobFreeJumpCycle;
 @dynamic jobFreeJumpArrayArchive;
 @dynamic jobXShiftCount, jobXShiftStartShift, jobXShiftRevertOrder;
+@dynamic jobShowTextInCalendar;
 @synthesize curCalender, cachedJobOnIconColor, cachedJobOnIconID, shiftAlgo, jobShiftTypeString;
 
 - (ShiftAlgoBase *)shiftAlgo;
@@ -236,7 +237,6 @@
 }
 
 
-
 - (void) forceDefaultSetting
 // will reset to default setting if not set.
 {
@@ -261,10 +261,6 @@
     self.jobRemindBeforeOff = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_OFF];
     self.jobRemindBeforeWork = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_WORK];
     self.jobFreeJumpCycle = [NSNumber numberWithInt:JOB_DEFAULT_JUMP_CYCLE];
-
-//#warning  remove this test message
-//    self.jobShiftType = [NSNumber numberWithInt:JOB_SHIFT_ALGO_FREE_JUMP];
-//#warning  remove this test message
 }
 
 - (int)getXShiftCount
@@ -291,7 +287,6 @@
 
 -(NSDate *)getJobEverydayStartTime
 {
-    //    if ([self getXShiftCount] == 0)
 	return self.jobEverydayStartTime;
 }
 

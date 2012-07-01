@@ -45,6 +45,7 @@ enum JobShiftAlgoType {
 @property (nonatomic, strong) NSNumber  *jobOffDays; // how long rest once.
 
 // For support ICON of Shift Day.
+@property (nonatomic, strong) NSNumber  *jobShowTextInCalendar;
 @property (nonatomic, strong) NSString  *jobOnColorID;
 @property (nonatomic, strong) NSString  *jobOnIconID;
 @property (nonatomic, strong) NSString  *cachedJobOnIconColor;
