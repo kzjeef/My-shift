@@ -58,7 +58,7 @@
 
 #pragma mark - "init values"
 
-#define NAME_ITEM_STRING  NSLocalizedString(@"Job Name", "job name")
+#define NAME_ITEM_STRING  NSLocalizedString(@"Shift Name", "job name")
 #define ICON_ITEM_STRING  NSLocalizedString(@"Change Icon", "choose a icon")
 #define COLOR_ENABLE_STRING NSLocalizedString(@"Enable Color icon", "enable color icon")
 #define COLOR_PICKER_STRING NSLocalizedString(@"Change Color", "choose a color to show icon")
@@ -156,7 +156,7 @@
 		CGRect frame = CGRectMake(kLeftMargin, 8.0, kTextFieldWidth, kTextFieldHeight);
 		nameField = [[UITextField alloc] initWithFrame:frame];
 		nameField.textColor = [UIColor blackColor];
-		nameField.placeholder = NSLocalizedString(@"Name of Job", nil);
+		nameField.placeholder = NSLocalizedString(@"Name of Shift", nil);
 		nameField.autocorrectionType = UITextAutocorrectionTypeDefault;	// no auto correction support
 		
 		nameField.keyboardType = UIKeyboardTypeDefault;	// use the default type input method (entire keyboard)
@@ -581,8 +581,8 @@
 
     // No profile name not allow save.
     if (self.theJob.jobName == nil || self.theJob.jobName.length == 0) {
-        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Input Job Name", "alart title in editing profile view")
-				     message:NSLocalizedString(@"Please input Job Name", "alert string in editing profile view to let user input job name")
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Input Shift Name", "alart title in editing profile view")
+				     message:NSLocalizedString(@"Please input shift Name", "alert string in editing profile view to let user input job name")
 				    delegate:self
 			   cancelButtonTitle:NSLocalizedString(@"I Know", @"I Know") otherButtonTitles:nil, nil] show];
         return;

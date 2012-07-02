@@ -41,7 +41,7 @@ enum {
      * instead of -[KalViewController init].
      */
     kal = [[KalViewController alloc] init];
-    kal.title = NSLocalizedString(@"Job Scheduer", "application title");
+    kal.title = NSLocalizedString(@"Shift Scheduler", "application title");
     
     kal.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
                                               initWithTitle:NSLocalizedString (@"Today", "today") 
@@ -88,7 +88,7 @@ enum {
                NSLocalizedString(@"Setting", "setting in action shift"),
                nil];
     self.rightAS.tag = TAG_MENU;
-    UIBarButtonItem *settingItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"More", "more") style:UIBarButtonItemStylePlain target:self action:@selector(showRightActionSheet)];
+    UIBarButtonItem *settingItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Config", "config") style:UIBarButtonItemStylePlain target:self action:@selector(showRightActionSheet)];
     
     [kal.navigationItem setRightBarButtonItem:settingItem];
 
