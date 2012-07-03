@@ -53,13 +53,13 @@
 		2935514514E2BABA004D8FAC /* SSTurnShiftTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */; };
 		2935514614E2BABA004D8FAC /* SSTurnShiftTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */; };
 		2935514814E2DDB0004D8FAC /* ShiftProfileChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2935514714E2DDB0004D8FAC /* ShiftProfileChangeViewController.xib */; };
+		293B649A15A326C100D0C4B5 /* NSDateAdditions.h in Sources */ = {isa = PBXBuildFile; fileRef = 293B649915A326C100D0C4B5 /* NSDateAdditions.h */; };
 		294E2902148B302700E6ED45 /* ShiftDay.h in Headers */ = {isa = PBXBuildFile; fileRef = 294E2900148B302700E6ED45 /* ShiftDay.h */; };
 		294E2903148B302700E6ED45 /* ShiftDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 294E2901148B302700E6ED45 /* ShiftDay.m */; };
 		2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECD14F9076400DF1CCF /* AVFoundation.framework */; };
 		2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */; };
 		299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */; };
 		299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */; };
-		29ADE6AB159FF84A0026A039 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29ADE6AA159FF84A0026A039 /* CoreText.framework */; };
 		29AEBD691554146F0010F27D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29ECA45814B0514E00B3832D /* SenTestingKit.framework */; };
 		29AEBD6A1554146F0010F27D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E1B51472C1D700DB2E1F /* UIKit.framework */; };
 		29AEBD6B1554146F0010F27D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E1B71472C1D700DB2E1F /* Foundation.framework */; };
@@ -213,6 +213,7 @@
 		2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTurnShiftTVC.m; sourceTree = "<group>"; };
 		2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSTurnShiftTVC.xib; sourceTree = "<group>"; };
 		2935514714E2DDB0004D8FAC /* ShiftProfileChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShiftProfileChangeViewController.xib; sourceTree = "<group>"; };
+		293B649915A326C100D0C4B5 /* NSDateAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSDateAdditions.h; sourceTree = "<group>"; };
 		294E28FF148B2F3A00E6ED45 /* ShiftScheduler 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 2.xcdatamodel"; sourceTree = "<group>"; };
 		294E2900148B302700E6ED45 /* ShiftDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftDay.h; sourceTree = "<group>"; };
 		294E2901148B302700E6ED45 /* ShiftDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftDay.m; sourceTree = "<group>"; };
@@ -220,7 +221,6 @@
 		2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftWorkdayConfigTVC.h; sourceTree = "<group>"; };
 		299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftWorkdayConfigTVC.m; sourceTree = "<group>"; };
-		29ADE6AA159FF84A0026A039 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		29AEBD681554146F0010F27D /* OneJobModuleTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneJobModuleTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29AEBD6E1554146F0010F27D /* OneJobModuleTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OneJobModuleTest-Info.plist"; sourceTree = "<group>"; };
 		29AEBD701554146F0010F27D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -320,7 +320,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29ADE6AB159FF84A0026A039 /* CoreText.framework in Frameworks */,
 				29D6A550159CB79F00AC6103 /* libKal.a in Frameworks */,
 				2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */,
 				2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */,
@@ -569,7 +568,6 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
-				29ADE6AA159FF84A0026A039 /* CoreText.framework */,
 				29D6A524159CB4A200AC6103 /* Kal.bundle */,
 				29AEBDC8156136830010F27D /* GUI */,
 				293994B5147D25D30007320C /* Model */,
@@ -608,6 +606,7 @@
 		29B9E1BD1472C1D700DB2E1F /* ShiftScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				293B649915A326C100D0C4B5 /* NSDateAdditions.h */,
 				29009FE8159F4AE500A1588E /* UIColor+HexCoding.h */,
 				29009FE9159F4AE500A1588E /* UIColor+HexCoding.m */,
 				292DBC8014C952B300C87A70 /* jobicons.bundle */,
@@ -899,6 +898,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				293B649A15A326C100D0C4B5 /* NSDateAdditions.h in Sources */,
 				29AEBDEA1563CE1A0010F27D /* ShiftAlgoFreeJump.h in Sources */,
 				29AEBDE9156291360010F27D /* ShiftAlgoFreeJump.m in Sources */,
 				29AEBDB41561340A0010F27D /* ShiftAlgoBase.h in Sources */,
@@ -1118,7 +1118,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShiftScheduler/ShiftScheduler-Prefix.pch";
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -1140,7 +1140,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShiftScheduler/ShiftScheduler-Prefix.pch";
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;

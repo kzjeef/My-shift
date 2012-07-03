@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "config.h"
 #import "OneJob.h"
 
 @class SSShiftWorkdayConfigTVC;

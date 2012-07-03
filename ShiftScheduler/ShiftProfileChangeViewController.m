@@ -514,7 +514,7 @@
     if ([item isEqualToString:ICON_OR_TEXT_STRING]) {
         UIActionSheet *colorTextPicker = [[UIActionSheet alloc] initWithTitle:Nil 
                                                                      delegate:self
-                                                            cancelButtonTitle:nil
+                                                            cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
                                                        destructiveButtonTitle:nil 
                                                             otherButtonTitles:ICON_STRING, TEXT_STRING , nil];
         [colorTextPicker showInView:self.tableView.superview];
@@ -532,11 +532,13 @@
     if ([item isEqualToString:SHIFTCONFIG_ITEM_STRING]) {
 
         SSShiftWorkdayConfigTVC *stp = [[SSShiftWorkdayConfigTVC alloc] initWithStyle:UITableViewStyleGrouped];
+#if CONFIG_WORKDAY_CONFIG_MODAL_VIEW
         stp.pickDelegate = self;
+#endif
 	stp.theJob = self.theJob;
         stp.items = self.theJob.jobShiftAllTypesString;
         
-#if 1
+#if CONFIG_WORKDAY_CONFIG_MODAL_VIEW
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:stp];
         [self.navigationController  presentModalViewController:navController animated:YES];
 #else
@@ -704,7 +706,10 @@
 #pragma - mark - ShiftTypePickerDelegate
 - (void) SSItemPickerChoosewithController: (SSShiftWorkdayConfigTVC *) sender itemIndex: (NSInteger) index
 {
+
+#if CONFIG_WORKDAY_CONFIG_MODAL_VIEW
     [self dismissModalViewControllerAnimated:YES];
+#endif
 
     warnningShiftType = NO;
     

@@ -19,8 +19,9 @@
 UIActionSheetDelegate,UIAlertViewDelegate,
 ProfileEditFinishDelegate>
 {
-    UINavigationController *navController;
-    UINavigationController *profileNVC;
+    UINavigationController	*navController;
+    UINavigationController	*profileNVC;
+    UITabBarController		*tabbarVC;
     KalViewController *kal;
     SSAlertController *alertC;
     ShiftListProfilesTVC *profileView;

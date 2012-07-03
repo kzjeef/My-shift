@@ -6,9 +6,11 @@
 //  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
 //
 
+#import "config.h"
 #import "SSAppDelegate.h"
 #import "WorkdayDataSource.h"
 #import "SSKalDelegate.h"
+
 #import "Kal.h"
 
 @implementation SSAppDelegate
@@ -30,7 +32,7 @@ enum {
 
 #define CREATE_PROFILE_PROMPT NSLocalizedString(@"You don't have any shift profile yet. Do you want to create one? ", "prompt of create profile title")
 #define CREATE_PROFILE_NO  NSLocalizedString(@"No,Thanks", "no create one")
-#define CREATE_PROFILE_YES  NSLocalizedString(@"Yes, Create one profile", "create one")
+#define CREATE_PROFILE_YES  NSLocalizedString(@"Create Profile", "create one")
 
 //#define CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
 
@@ -79,10 +81,11 @@ enum {
 
     alertC = [[SSAlertController alloc] initWithManagedContext:self.managedObjectContext];
 
+#if !(CONFIG_MAIN_UI_USE_TAB_BAR_CONTROLLER)    
     // Setup Action Sheet
     self.rightAS = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel") destructiveButtonTitle:nil 
                                  otherButtonTitles:
-#ifdef CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
+#if CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
                NSLocalizedString(@"change shift" , "change shift"), 
 #endif
                NSLocalizedString(@"Management Shift", "shift management view"),
@@ -90,8 +93,11 @@ enum {
                nil];
     self.rightAS.tag = TAG_MENU;
     UIBarButtonItem *settingItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Config", "config") style:UIBarButtonItemStylePlain target:self action:@selector(showRightActionSheet)];
-    
     [kal.navigationItem setRightBarButtonItem:settingItem];
+#else
+    // add tab bar vc related things.
+    tabbarVC = [[UITabBarController alloc] init];
+#endif
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
@@ -99,7 +105,6 @@ enum {
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
-    //    [self.managedObjectContext save:NULL];
     
     if ([self.profileView profileuNumber] == 0)
         [self performSelector:@selector(popNotifyZeroProfile:) withObject:nil afterDelay:1];
@@ -190,14 +195,14 @@ enum {
     [alertNoProfile dismissWithClickedButtonIndex:alertNoProfile.cancelButtonIndex animated:NO];
      
     
-#ifdef CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
+#if CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
 #define MANAGEMENT_START_OFFSET 1
 #else
 #define MANAGEMENT_START_OFFSET 0
 #endif
     switch (index) {
             
-#ifdef CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
+#if CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
         case 0:
             [self showShiftChangeView];
             // change shift

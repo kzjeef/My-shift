@@ -41,8 +41,10 @@
 {
     [super viewDidLoad];
     self.title = SHIFT_TYPE_PICKER_STRING;
-    
+
+#if CONFIG_WORKDAY_CONFIG_MODAL_VIEW
     NSAssert(self.pickDelegate, @"picker Delegate should be used");
+#endif
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
  
@@ -124,6 +126,10 @@
 - (void) SSShiftTypePickerClientFinishConfigure: (id) sender
 {
     [self.pickDelegate SSItemPickerChoosewithController:self itemIndex:self.theJob.jobShiftType.intValue - 1];
+
+#if !(CONFIG_WORKDAY_CONFIG_MODAL_VIEW)
+    [self.navigationController popViewControllerAnimated:YES];
+#endif
 }
 
 @end
