@@ -610,7 +610,7 @@
     
     // must have configure the shift once.
     if (self.viewMode == PCVC_ADDING_MODE && enterConfig == NO) {
-        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Not Configure shift", "alert for not configure shift yet.") message:@"please have a configure of your shift." delegate:self cancelButtonTitle:NSLocalizedString(@"I Know", @"I know") otherButtonTitles:nil, nil] show];
+        [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Not Configure shift", "alert for not configure shift yet.") message:@"please have a configure of your shift." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
         return;
     }
 

@@ -246,7 +246,7 @@
         // Return a title or nil as appropriate for the section.
     switch (section) {
         case 0:
-            title = NSLocalizedString(@"Shift", "choose which shift");
+            title = NSLocalizedString(@"Shift", "shift in shift add view");
             break;
         case 1:
             title = NSLocalizedString(@"Date", "choose date in shift change add");
@@ -429,7 +429,7 @@
 
 	if (type == TYPE_OVERWORK) {
 	    namelist = [NSArray arrayWithObjects:
-				    NSLocalizedString(@"OverWork", "Choose OverWork day"),
+				    NSLocalizedString(@"OverWork", "OverWork"),
 				nil];
 	    typeList = [NSArray arrayWithObjects:
 				    [NSNumber numberWithInt:UIDatePickerModeDate],
@@ -441,7 +441,7 @@
 	
 	if (type == TYPE_VACATION) {
 	    namelist = [NSArray arrayWithObjects:
-				    NSLocalizedString(@"Vacation", "Choose OverWork day"),
+				    NSLocalizedString(@"Vacation", "Vacation"),
 				nil];
 	    typeList = [NSArray arrayWithObjects:
 				    [NSNumber numberWithInt:UIDatePickerModeDate],

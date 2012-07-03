@@ -28,6 +28,10 @@ enum {
     TAG_ZERO_PROFILE,
 };
 
+#define CREATE_PROFILE_PROMPT NSLocalizedString(@"You don't have any shift profile yet. Do you want to create one? ", "prompt of create profile title")
+#define CREATE_PROFILE_NO  NSLocalizedString(@"No,Thanks", "no create one")
+#define CREATE_PROFILE_YES  NSLocalizedString(@"Yes, Create one profile", "create one")
+
 //#define CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -69,9 +73,6 @@ enum {
     self.navController = navController;
     self.navController.modalPresentationStyle = UIModalPresentationFullScreen;
     
-#define CREATE_PROFILE_PROMPT NSLocalizedString(@"__NO_PROFILE_MESSAGE__", "")
-#define CREATE_PROFILE_NO  NSLocalizedString(@"__NO_PROFILE_NO__", "no create one")
-#define CREATE_PROFILE_YES  NSLocalizedString(@"__NO_PROFILE_YES__", "create one")
     
     alertNoProfile = [[UIAlertView alloc] initWithTitle:nil message:CREATE_PROFILE_PROMPT delegate:self cancelButtonTitle:CREATE_PROFILE_NO otherButtonTitles:CREATE_PROFILE_YES, nil];
     alertNoProfile.tag = TAG_ZERO_PROFILE;

@@ -238,7 +238,7 @@
 //									     style:UIBarButtonItemStylePlain
 //									    target:self
 //									    action:@selector(returnToHome)];
-    self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Home", "home");
+    self.navigationItem.leftBarButtonItem.title = NSLocalizedString(@"Home", "return to home in profile view");
     NSError *error;
     if (![self.fetchedResultsController performFetch:&error]) {
 		// Update to handle the error appropriately.
