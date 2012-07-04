@@ -100,22 +100,26 @@ enum {
     // add tab bar vc related things.
     tabBarVC = [[UITabBarController alloc] init];
     NSString *iconPath = [[NSBundle mainBundle] pathForResource:@"tab-calendar" ofType:@"png"];
-    self.navController.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageWithContentsOfFile:iconPath] tag:1];
+    self.navController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Calendar", "calendar in tab bar")
+                                                                  image:[UIImage imageWithContentsOfFile:iconPath] tag:1];
     [tabBarVC addChildViewController:self.navController];
     
     iconPath = [[NSBundle mainBundle] pathForResource:@"GKTabbarIconRequestsInactive@2x~iphone" ofType:@"png"];
-    self.profileView.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageWithContentsOfFile:iconPath] tag:2];
+    self.profileView.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Shifts", "shifts works in tabbar") 
+                                                                image:[UIImage imageWithContentsOfFile:iconPath] tag:2];
     UINavigationController *profileNVCC = [[UINavigationController alloc] initWithRootViewController:self.profileView];
     [tabBarVC addChildViewController:profileNVCC];
     
     iconPath = [[NSBundle mainBundle] pathForResource:@"IL_SmartPlaylistIcon" ofType:@"png"];
-    self.settingVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageWithContentsOfFile:iconPath] tag:3];
+    self.settingVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Settings", "Settings")
+                                                              image:[UIImage imageWithContentsOfFile:iconPath] tag:3];
     UINavigationController *settingNVC = [[UINavigationController alloc] initWithRootViewController:self.settingVC];
     [tabBarVC addChildViewController:settingNVC];
     
 
     iconPath = [[NSBundle mainBundle] pathForResource:@"GSFacesInfo" ofType:@"png"];
-    help.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageWithContentsOfFile:iconPath] tag:4];
+    help.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Tips", "tips in tabbar")
+                                                    image:[UIImage imageWithContentsOfFile:iconPath] tag:4];
     //[tabBarVC addChildViewController:help];
     // help interface
     // [tabBarVC addChildViewController:self.helpView];
