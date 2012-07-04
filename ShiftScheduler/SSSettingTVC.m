@@ -183,7 +183,7 @@
     
     if (indexPath.section == 0) {
         cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        cell.textLabel.text = NSLocalizedString(@"Job Scheduer", "");
+        cell.textLabel.text = NSLocalizedString(@"Shift Scheduler", "");
         cell.textLabel.font = [UIFont systemFontOfSize:24];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     } else if (indexPath.section == 2) {
