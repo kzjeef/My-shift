@@ -230,6 +230,7 @@
 		exit(-1);  // Fail
     }
     self.fetchedResultsController.delegate = self;
+    plusImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"addButton" ofType:@"png"]];
     
 }
 
@@ -256,6 +257,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    plusImage = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -334,6 +336,7 @@
     
     // Configure the cell...
     if (indexPath.section == [self numberOfSectionsInTableView:self.tableView] - 1) { // last section
+        cell.imageView.image = plusImage;
         cell.textLabel.text = NSLocalizedString(@"Adding new shift...", "add new shift");
         cell.textLabel.textColor = [UIColor colorWithHexString:@"283DA0"];
     } else {

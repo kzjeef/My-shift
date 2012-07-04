@@ -21,7 +21,6 @@ ProfileEditFinishDelegate>
 {
     UINavigationController	*navController;
     UINavigationController	*profileNVC;
-    UITabBarController		*tabbarVC;
     KalViewController *kal;
     SSAlertController *alertC;
     ShiftListProfilesTVC *profileView;

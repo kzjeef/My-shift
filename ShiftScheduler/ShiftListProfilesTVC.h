@@ -29,6 +29,7 @@
 	NSFetchedResultsController *fetchedResultsController;
 	UIBarButtonItem *addButton;
 	UIBarButtonItem *oldLeftItem;
+    UIImage *plusImage;
     id <ProfileEditFinishDelegate> parentViewDelegate;
 }
 

@@ -129,6 +129,7 @@
         return NSLocalizedString(@"Click to change shift cycle", "");
     if (section == 1)
         return NSLocalizedString(@"Click to choose shift on days", "");
+    return [NSString string];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

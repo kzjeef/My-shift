@@ -54,6 +54,12 @@
 		2935514614E2BABA004D8FAC /* SSTurnShiftTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */; };
 		2935514814E2DDB0004D8FAC /* ShiftProfileChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2935514714E2DDB0004D8FAC /* ShiftProfileChangeViewController.xib */; };
 		293B649A15A326C100D0C4B5 /* NSDateAdditions.h in Sources */ = {isa = PBXBuildFile; fileRef = 293B649915A326C100D0C4B5 /* NSDateAdditions.h */; };
+		293B64EB15A335AA00D0C4B5 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 293B64EA15A335A900D0C4B5 /* config.h */; };
+		293B64F115A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64ED15A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png */; };
+		293B64F415A3BF8400D0C4B5 /* tab-calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64F015A3BF8400D0C4B5 /* tab-calendar.png */; };
+		293B64FB15A3C64900D0C4B5 /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64F915A3C64900D0C4B5 /* addButton.png */; };
+		293B64FE15A3C7D300D0C4B5 /* GSFacesInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */; };
+		293B650215A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B650115A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png */; };
 		294E2902148B302700E6ED45 /* ShiftDay.h in Headers */ = {isa = PBXBuildFile; fileRef = 294E2900148B302700E6ED45 /* ShiftDay.h */; };
 		294E2903148B302700E6ED45 /* ShiftDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 294E2901148B302700E6ED45 /* ShiftDay.m */; };
 		2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECD14F9076400DF1CCF /* AVFoundation.framework */; };
@@ -214,6 +220,12 @@
 		2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSTurnShiftTVC.xib; sourceTree = "<group>"; };
 		2935514714E2DDB0004D8FAC /* ShiftProfileChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShiftProfileChangeViewController.xib; sourceTree = "<group>"; };
 		293B649915A326C100D0C4B5 /* NSDateAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSDateAdditions.h; sourceTree = "<group>"; };
+		293B64EA15A335A900D0C4B5 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = ShiftScheduler/config.h; sourceTree = "<group>"; };
+		293B64ED15A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IL_SmartPlaylistIcon.png; path = Resources/IL_SmartPlaylistIcon.png; sourceTree = "<group>"; };
+		293B64F015A3BF8400D0C4B5 /* tab-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab-calendar.png"; path = "Resources/tab-calendar.png"; sourceTree = "<group>"; };
+		293B64F915A3C64900D0C4B5 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addButton.png; path = Resources/addButton.png; sourceTree = "<group>"; };
+		293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GSFacesInfo.png; path = Resources/GSFacesInfo.png; sourceTree = "<group>"; };
+		293B650115A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GKTabbarIconRequestsInactive@2x~iphone.png"; path = "Resources/GKTabbarIconRequestsInactive@2x~iphone.png"; sourceTree = "<group>"; };
 		294E28FF148B2F3A00E6ED45 /* ShiftScheduler 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 2.xcdatamodel"; sourceTree = "<group>"; };
 		294E2900148B302700E6ED45 /* ShiftDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftDay.h; sourceTree = "<group>"; };
 		294E2901148B302700E6ED45 /* ShiftDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftDay.m; sourceTree = "<group>"; };
@@ -424,6 +436,18 @@
 			path = ShiftScheduler;
 			sourceTree = "<group>";
 		};
+		293B64EC15A3BF5000D0C4B5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */,
+				293B650115A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png */,
+				293B64F915A3C64900D0C4B5 /* addButton.png */,
+				293B64ED15A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png */,
+				293B64F015A3BF8400D0C4B5 /* tab-calendar.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		2958CFBD1568DC2A00E273C3 /* Free Jump Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -568,6 +592,8 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
+				293B64EC15A3BF5000D0C4B5 /* Resources */,
+				293B64EA15A335A900D0C4B5 /* config.h */,
 				29D6A524159CB4A200AC6103 /* Kal.bundle */,
 				29AEBDC8156136830010F27D /* GUI */,
 				293994B5147D25D30007320C /* Model */,
@@ -757,6 +783,7 @@
 				29009FE1159F4AB600A1588E /* DatePickerViewController2.h in Headers */,
 				29009FE5159F4AB600A1588E /* ShfitChangeList.h in Headers */,
 				29009FEA159F4AE500A1588E /* UIColor+HexCoding.h in Headers */,
+				293B64EB15A335AA00D0C4B5 /* config.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,6 +899,11 @@
 				29009FE3159F4AB600A1588E /* DatePickerViewController2.xib in Resources */,
 				29009FE4159F4AB600A1588E /* NameEditCell.xib in Resources */,
 				29009FE7159F4AB600A1588E /* ShfitChangeList.xib in Resources */,
+				293B64F115A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png in Resources */,
+				293B64F415A3BF8400D0C4B5 /* tab-calendar.png in Resources */,
+				293B64FB15A3C64900D0C4B5 /* addButton.png in Resources */,
+				293B64FE15A3C7D300D0C4B5 /* GSFacesInfo.png in Resources */,
+				293B650215A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

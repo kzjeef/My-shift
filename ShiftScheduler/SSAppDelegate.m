@@ -80,6 +80,8 @@ enum {
     alertNoProfile.tag = TAG_ZERO_PROFILE;
 
     alertC = [[SSAlertController alloc] initWithManagedContext:self.managedObjectContext];
+    
+    UINavigationController *help = [[UINavigationController alloc] init];
 
 #if !(CONFIG_MAIN_UI_USE_TAB_BAR_CONTROLLER)    
     // Setup Action Sheet
@@ -96,12 +98,37 @@ enum {
     [kal.navigationItem setRightBarButtonItem:settingItem];
 #else
     // add tab bar vc related things.
-    tabbarVC = [[UITabBarController alloc] init];
+    tabBarVC = [[UITabBarController alloc] init];
+    NSString *iconPath = [[NSBundle mainBundle] pathForResource:@"tab-calendar" ofType:@"png"];
+    self.navController.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageWithContentsOfFile:iconPath] tag:1];
+    [tabBarVC addChildViewController:self.navController];
+    
+    iconPath = [[NSBundle mainBundle] pathForResource:@"GKTabbarIconRequestsInactive@2x~iphone" ofType:@"png"];
+    self.profileView.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageWithContentsOfFile:iconPath] tag:2];
+    UINavigationController *profileNVCC = [[UINavigationController alloc] initWithRootViewController:self.profileView];
+    [tabBarVC addChildViewController:profileNVCC];
+    
+    iconPath = [[NSBundle mainBundle] pathForResource:@"IL_SmartPlaylistIcon" ofType:@"png"];
+    self.settingVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageWithContentsOfFile:iconPath] tag:3];
+    UINavigationController *settingNVC = [[UINavigationController alloc] initWithRootViewController:self.settingVC];
+    [tabBarVC addChildViewController:settingNVC];
+    
+
+    iconPath = [[NSBundle mainBundle] pathForResource:@"GSFacesInfo" ofType:@"png"];
+    help.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageWithContentsOfFile:iconPath] tag:4];
+    //[tabBarVC addChildViewController:help];
+    // help interface
+    // [tabBarVC addChildViewController:self.helpView];
 #endif
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
+#if CONFIG_MAIN_UI_USE_TAB_BAR_CONTROLLER
+    self.window.rootViewController = tabBarVC;
+#else    
     [self.window addSubview:self.navController.view];
+#endif
+    
     [self.window makeKeyAndVisible];
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
