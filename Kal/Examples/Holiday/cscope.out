@@ -1,0 +1,6678 @@
+cscope 15 $HOME/Developer/Kal/Examples/Holiday               0000035635
+	@Classes/Holiday.h
+
+13 @
+š‹rçû
+ 
+	gHŞiday
+ : 
+NSObjeù
+
+
+15 
+NSD©e
+ *
+d©e
+;
+
+16 
+NSSŒšg
+ *
+	gÇme
+;
+
+17 
+NSSŒšg
+ *
+	gcouÁry
+;
+
+20 @
+	$´İ”ty
+ (
+nÚ©omic
+, 
+»š
+, 
+»adÚly
+è
+NSD©e
+ *
+d©e
+;
+
+21 @
+	$´İ”ty
+ (
+nÚ©omic
+, 
+»š
+, 
+»adÚly
+è
+NSSŒšg
+ *
+Çme
+;
+
+22 @
+	$´İ”ty
+ (
+nÚ©omic
+, 
+»š
+, 
+»adÚly
+è
+NSSŒšg
+ *
+couÁry
+;
+
+24 + (
+HŞiday
+*)
+hŞidayNamed
+:(
+NSSŒšg
+ *)
+Çme
+ 
+couÁry
+:(NSSŒšg *)couÁry 
+d©e
+:(
+NSD©e
+ *)date;
+
+25 - (
+id
+)
+š™W™hName
+:(
+NSSŒšg
+ *)
+Çme
+ 
+couÁry
+:(NSSŒšg *)couÁry 
+d©e
+:(
+NSD©e
+ *)date;
+
+26 - (
+NSCom·risÚResuÉ
+)
+com·»
+:(
+HŞiday
+ *)
+Ùh”HŞiday
+;
+
+28 @
+’d
+
+
+	@Classes/Holiday.m
+
+8 @
+im¶em’tiÚ
+ 
+	gHŞiday
+
+
+10 @
+syÁhesize
+ 
+	gd©e
+, 
+	gÇme
+, 
+	gcouÁry
+;
+
+12 + (
+	gHŞiday
+*)
+	ghŞidayNamed
+:(
+NSSŒšg
+ *)
+aName
+ 
+couÁry
+:(NSSŒšg *)
+aCouÁry
+ 
+d©e
+:(
+NSD©e
+ *)
+aD©e
+;
+
+14  [[[
+HŞiday
+ 
+®loc
+] 
+	gš™W™hName
+:
+aName
+ 
+couÁry
+:
+aCouÁry
+ 
+d©e
+:
+aD©e
+] 
+autÜ–—£
+];
+
+17 - (
+	gid
+)
+	gš™W™hName
+:(
+NSSŒšg
+ *)
+aName
+ 
+couÁry
+:(NSSŒšg *)
+aCouÁry
+ 
+d©e
+:(
+NSD©e
+ *)
+aD©e
+
+
+19 ià((
+£lf
+ = [
+su³r
+ 
+š™
+])) {
+
+20 
+Çme
+ = [
+aName
+ 
+cİy
+];
+
+21 
+	gcouÁry
+ = [
+aCouÁry
+ 
+cİy
+];
+
+22 
+	gd©e
+ = [
+aD©e
+ 
+»š
+];
+
+24  
+	g£lf
+;
+
+27 - (
+	gNSCom·risÚResuÉ
+)
+	gcom·»
+:(
+HŞiday
+ *)
+Ùh”HŞiday
+
+
+29 
+NSCom·risÚResuÉ
+ 
+com·risÚ
+ = [
+£lf
+.
+d©e
+ 
+com·»
+:
+Ùh”HŞiday
+.date];
+
+30 ià(
+	gcom·risÚ
+ =ğ
+NSOrd”edSame
+)
+
+31  [
+£lf
+.
+Çme
+ 
+com·»
+:
+Ùh”HŞiday
+.name];
+
+33  
+	gcom·risÚ
+;
+
+36 - ()
+	gd—Îoc
+
+
+38 [
+d©e
+ 
+»Ëa£
+];
+
+39 [
+Çme
+ 
+»Ëa£
+];
+
+40 [
+couÁry
+ 
+»Ëa£
+];
+
+41 [
+su³r
+ 
+d—Îoc
+];
+
+44 @
+	g’d
+
+
+	@Classes/HolidayAppDelegate.h
+
+6 #impÜˆ<
+UIK™
+/UIK™.
+h
+>
+
+29 @
+şass
+ 
+	gK®V›wCÚŒŞËr
+;
+
+31 @
+š‹rçû
+ 
+	gHŞidayAµD–eg©e
+ : 
+NSObjeù
+ <
+UIAµliÿtiÚD–eg©e
+, 
+	gUITabËV›wD–eg©e
+>
+
+33 
+UIWšdow
+ *
+	gwšdow
+;
+
+34 
+UINavig©iÚCÚŒŞËr
+ *
+	gÇvCÚŒŞËr
+;
+
+35 
+K®V›wCÚŒŞËr
+ *
+	gk®
+;
+
+36 
+id
+ 
+	gd©aSourû
+;
+
+39 @
+	$´İ”ty
+ (
+nÚ©omic
+, 
+»š
+è
+IBOu‘
+ 
+UIWšdow
+ *
+wšdow
+;
+
+41 @
+’d
+
+
+	@Classes/HolidayAppDelegate.m
+
+11 @
+im¶em’tiÚ
+ 
+	gHŞidayAµD–eg©e
+
+
+13 @
+syÁhesize
+ 
+	gwšdow
+;
+
+15 - ()
+	g­¶iÿtiÚDidFšishLaunchšg
+:(
+UIAµliÿtiÚ
+ *)
+­¶iÿtiÚ
+
+
+24 
+k®
+ = [[
+K®V›wCÚŒŞËr
+ 
+®loc
+] 
+š™
+];
+
+25 
+	gk®
+.
+	gt™Ë
+ = @"Holidays";
+
+36 
+	gk®
+.
+	gÇvig©iÚI‹m
+.
+	grightB¬Bu‰ÚI‹m
+ = [[[
+UIB¬Bu‰ÚI‹m
+ 
+®loc
+] 
+š™W™hT™Ë
+:@"Today" 
+¡yË
+:
+UIB¬Bu‰ÚI‹mStyËBÜd”ed
+ 
+rg‘
+:
+£lf
+ 
+aùiÚ
+:@
+£ËùÜ
+(
+showAndS–eùToday
+)] 
+autÜ–—£
+];
+
+37 
+	gk®
+.
+	gd–eg©e
+ = 
+£lf
+;
+
+38 
+	gd©aSourû
+ = [[
+HŞidaySql™eD©aSourû
+ 
+®loc
+] 
+š™
+];
+
+39 
+	gk®
+.
+	gd©aSourû
+ = 
+d©aSourû
+;
+
+42 
+	gÇvCÚŒŞËr
+ = [[
+UINavig©iÚCÚŒŞËr
+ 
+®loc
+] 
+š™W™hRoÙV›wCÚŒŞËr
+:
+k®
+];
+
+43 [
+wšdow
+ 
+addSubv›w
+:
+ÇvCÚŒŞËr
+.
+v›w
+];
+
+44 [
+wšdow
+ 
+makeKeyAndVisibË
+];
+
+48 - ()
+	gshowAndS–eùToday
+
+
+50 [
+k®
+ 
+showAndS–eùD©e
+:[
+NSD©e
+ 
+d©e
+]];
+
+53 #´agm¨
+m¬k
+ 
+UITabËV›wD–eg©e
+ 
+´ÙocŞ
+ 
+cÚfÜmªû
+
+
+56 - ()
+	gbËV›w
+:(
+UITabËV›w
+ *)
+bËV›w
+ 
+didS–eùRowAtIndexP©h
+:(
+NSIndexP©h
+ *)
+šdexP©h
+
+
+58 
+HŞiday
+ *
+hŞiday
+ = [
+d©aSourû
+ 
+hŞidayAtIndexP©h
+:
+šdexP©h
+];
+
+59 
+HŞidaysD‘aV›wCÚŒŞËr
+ *
+	gvc
+ = [[[HŞidaysD‘aV›wCÚŒŞË¸
+®loc
+] 
+š™W™hHŞiday
+:
+hŞiday
+] 
+autÜ–—£
+];
+
+60 [
+ÇvCÚŒŞËr
+ 
+pushV›wCÚŒŞËr
+:
+vc
+ 
+ªim©ed
+:
+YES
+];
+
+63 #´agm¨
+m¬k
+ -
+
+65 - ()
+	gd—Îoc
+
+
+67 [
+k®
+ 
+»Ëa£
+];
+
+68 [
+d©aSourû
+ 
+»Ëa£
+];
+
+69 [
+wšdow
+ 
+»Ëa£
+];
+
+70 [
+ÇvCÚŒŞËr
+ 
+»Ëa£
+];
+
+71 [
+su³r
+ 
+d—Îoc
+];
+
+74 @
+	g’d
+
+
+	@Classes/HolidayJSONDataSource.h
+
+8 @
+şass
+ 
+	gHŞiday
+;
+
+20 @
+š‹rçû
+ 
+	gHŞidayJSOND©aSourû
+ : 
+NSObjeù
+ <
+K®D©aSourû
+>
+
+22 
+NSMubËA¼ay
+ *
+™ems
+;
+
+23 
+NSMubËA¼ay
+ *
+	ghŞidays
+;
+
+24 
+NSMubËD©a
+ *
+	gbufãr
+;
+
+25 
+	gid
+<
+	gK®D©aSourûC®lbacks
+> 
+	gÿÎback
+;
+
+26 
+BOOL
+ 
+	gd©aR—dy
+;
+
+29 + (
+	gHŞidayJSOND©aSourû
+ *)
+	gd©aSourû
+;
+
+30 - (
+	gHŞiday
+ *)
+	ghŞidayAtIndexP©h
+:(
+NSIndexP©h
+ *)
+šdexP©h
+;
+
+32 @
+	g’d
+
+
+	@Classes/HolidayJSONDataSource.m
+
+11 
+BOOL
+ 
+	$IsD©eB‘w“nInşusive
+(
+NSD©e
+ *
+d©e
+, NSD©*
+begš
+, NSD©*
+’d
+)
+
+13  [
+d©e
+ 
+com·»
+:
+begš
+] !ğ
+NSOrd”edAsûndšg
+ && [d©com·»:
+’d
+] !ğ
+NSOrd”edDesûndšg
+;
+
+14 
+	}
+}
+
+16 @
+š‹rçû
+ 
+HŞidayJSOND©aSourû
+ ()
+
+17 - (
+	gNSA¼ay
+ *)
+	ghŞidaysFrom
+:(
+NSD©e
+ *)
+äomD©e
+ 
+to
+:(NSD©*)
+toD©e
+;
+
+18 - (
+	gNSA¼ay
+ *)
+	gm¬kedD©esFrom
+:(
+NSD©e
+ *)
+äomD©e
+ 
+to
+:(NSD©*)
+toD©e
+;
+
+19 @
+	g’d
+
+
+21 @
+im¶em’tiÚ
+ 
+	gHŞidayJSOND©aSourû
+
+
+23 + (
+	gHŞidayJSOND©aSourû
+ *)
+	gd©aSourû
+
+
+25  [[[[
+£lf
+ 
+şass
+] 
+	g®loc
+] 
+	gš™
+] 
+	gautÜ–—£
+];
+
+28 - (
+	gid
+)
+	gš™
+
+
+30 ià((
+	g£lf
+ = [
+su³r
+ 
+š™
+])) {
+
+31 
+™ems
+ = [[
+NSMubËA¼ay
+ 
+®loc
+] 
+š™
+];
+
+32 
+	ghŞidays
+ = [[
+NSMubËA¼ay
+ 
+®loc
+] 
+š™
+];
+
+33 
+	gbufãr
+ = [[
+NSMubËD©a
+ 
+®loc
+] 
+š™
+];
+
+35  
+	g£lf
+;
+
+38 - (
+	gHŞiday
+ *)
+	ghŞidayAtIndexP©h
+:(
+NSIndexP©h
+ *)
+šdexP©h
+
+
+40  [
+™ems
+ 
+objeùAtIndex
+:
+šdexP©h
+.
+row
+];
+
+43 #´agm¨
+m¬k
+ 
+UITabËV›wD©aSourû
+ 
+´ÙocŞ
+ 
+cÚfÜmªû
+
+
+45 - (
+	gUITabËV›wC–l
+ *)
+	gbËV›w
+:(
+UITabËV›w
+ *)
+bËV›w
+ 
+ûÎFÜRowAtIndexP©h
+:(
+NSIndexP©h
+ *)
+šdexP©h
+
+
+47 
+NSSŒšg
+ *
+id’tif›r
+ = @"MyCell";
+
+48 
+UITabËV›wC–l
+ *
+	gûÎ
+ = [
+bËV›w
+ 
+dequeueReu§bËC–lW™hId’tif›r
+:
+id’tif›r
+];
+
+49 ià(!
+	gûÎ
+) {
+
+50 
+	gûÎ
+ = [[[
+UITabËV›wC–l
+ 
+®loc
+] 
+š™W™hStyË
+:
+UITabËV›wC–lStyËDeçuÉ
+ 
+»u£Id’tif›r
+:
+id’tif›r
+] 
+autÜ–—£
+];
+
+51 
+	gûÎ
+.
+	g£ËùiÚStyË
+ = 
+UITabËV›wC–lS–eùiÚStyËNÚe
+;
+
+52 
+	gûÎ
+.
+	gimageV›w
+.
+	gcÚ‹ÁMode
+ = 
+UIV›wCÚ‹ÁModeSÿËA¥eùFl
+;
+
+55 
+HŞiday
+ *
+	ghŞiday
+ = [
+£lf
+ 
+hŞidayAtIndexP©h
+:
+šdexP©h
+];
+
+56 
+	gûÎ
+.
+	gimageV›w
+.
+	gimage
+ = [
+UIImage
+ 
+imageNamed
+:[
+NSSŒšg
+ 
+¡ršgW™hFÜm©
+:@"æags/%@.gif", 
+hŞiday
+.
+couÁry
+]];
+
+57 
+	gûÎ
+.
+	g‹xtLab–
+.
+	g‹xt
+ = 
+hŞiday
+.
+Çme
+;
+
+58  
+	gûÎ
+;
+
+61 - (
+	gNSIÁeg”
+)
+	gbËV›w
+:(
+UITabËV›w
+ *)
+bËV›w
+ 
+numb”OfRowsInSeùiÚ
+:(
+NSIÁeg”
+)
+£ùiÚ
+
+
+63  [
+™ems
+ 
+couÁ
+];
+
+66 #´agm¨
+m¬k
+ 
+F‘ch
+ 
+äom
+ 
+the
+ 
+š‹º‘
+
+
+68 - ()
+	gãtchHŞidays
+
+
+70 
+NSSŒšg
+ *
+	g·th
+ = @"http://keith.lazuka.org/holidays.json";
+
+71 
+NSLog
+(@"F‘chšg %@", 
+·th
+);
+
+72 
+	gd©aR—dy
+ = 
+NO
+;
+
+73 [
+hŞidays
+ 
+»moveAÎObjeùs
+];
+
+74 
+NSURLCÚÃùiÚ
+ *
+	gcÚn
+ = [NSURLCÚÃùiÚ 
+cÚÃùiÚW™hReque¡
+:[
+NSURLReque¡
+ 
+»que¡W™hURL
+:[
+NSURL
+ 
+URLW™hSŒšg
+:
+·th
+]] 
+d–eg©e
+:
+£lf
+];
+
+75 [
+cÚn
+ 
+¡¬t
+];
+
+78 - ()
+	gcÚÃùiÚ
+:(
+NSURLCÚÃùiÚ
+ *)
+cÚÃùiÚ
+ 
+didReûiveRe¥Ú£
+:(
+NSURLRe¥Ú£
+ *)
+»¥Ú£
+
+
+80 [
+bufãr
+ 
+£tL’gth
+:0];
+
+83 - ()
+	gcÚÃùiÚ
+:(
+NSURLCÚÃùiÚ
+ *)
+cÚÃùiÚ
+ 
+didReûiveD©a
+:(
+NSD©a
+ *)
+d©a
+
+
+85 [
+bufãr
+ 
+­³ndD©a
+:
+d©a
+];
+
+88 - ()
+	gcÚÃùiÚDidFšishLßdšg
+:(
+NSURLCÚÃùiÚ
+ *)
+cÚÃùiÚ
+
+
+90 
+NSSŒšg
+ *
+¡r
+ = [[[NSSŒšg 
+®loc
+] 
+š™W™hD©a
+:
+bufãr
+ 
+’codšg
+:
+NSUTF8SŒšgEncodšg
+] 
+autÜ–—£
+];
+
+91 
+NSA¼ay
+ *
+	g¬¿y
+ = [
+¡r
+ 
+JSONV®ue
+];
+
+92 ià(!
+	g¬¿y
+)
+
+95 
+NSD©eFÜm©‹r
+ *
+	gfmt
+ = [[[NSD©eFÜm©‹¸
+®loc
+] 
+š™
+] 
+autÜ–—£
+];
+
+96 [
+fmt
+ 
+£tD©eFÜm©
+:@"yyyy-MM-dd"];
+
+97 
+NSDiùiÚ¬y
+ *
+diù
+ 
+š
+ 
+	g¬¿y
+) {
+
+98 
+NSD©e
+ *
+	gd
+ = [
+fmt
+ 
+d©eFromSŒšg
+:[
+diù
+ 
+objeùFÜKey
+:@"date"]];
+
+99 [
+hŞidays
+ 
+addObjeù
+:[
+HŞiday
+ 
+hŞidayNamed
+:[
+diù
+ 
+objeùFÜKey
+:@"Çme"] 
+couÁry
+:[diù objeùFÜKey:@"couÁry"] 
+d©e
+:
+d
+]];
+
+102 
+	gd©aR—dy
+ = 
+YES
+;
+
+103 [
+ÿÎback
+ 
+lßdedD©aSourû
+:
+£lf
+];
+
+106 -()
+	gcÚÃùiÚ
+:(
+NSURLCÚÃùiÚ
+ *)
+cÚÃùiÚ
+ 
+didFaW™hE¼Ü
+:(
+NSE¼Ü
+ *)
+”rÜ
+
+
+108 
+NSLog
+(@"HŞidaysC®’d¬D©aSourû cÚÃùiÚ fau»: %@", 
+”rÜ
+);
+
+111 #´agm¨
+m¬k
+ 
+K®D©aSourû
+ 
+´ÙocŞ
+ 
+cÚfÜmªû
+
+
+113 - ()
+	g´e£ÁšgD©esFrom
+:(
+NSD©e
+ *)
+äomD©e
+ 
+to
+:(NSD©*)
+toD©e
+ 
+d–eg©e
+:(
+id
+<
+K®D©aSourûC®lbacks
+>)delegate
+
+122 ià(
+d©aR—dy
+) {
+
+123 [
+ÿÎback
+ 
+lßdedD©aSourû
+:
+£lf
+];
+
+127 
+	gÿÎback
+ = 
+d–eg©e
+;
+
+128 [
+£lf
+ 
+ãtchHŞidays
+];
+
+131 - (
+	gNSA¼ay
+ *)
+	gm¬kedD©esFrom
+:(
+NSD©e
+ *)
+äomD©e
+ 
+to
+:(NSD©*)
+toD©e
+
+
+133 ià(!
+d©aR—dy
+)
+
+134  [
+NSA¼ay
+ 
+¬¿y
+];
+
+136  [[
+£lf
+ 
+hŞidaysFrom
+:
+äomD©e
+ 
+to
+:
+toD©e
+] 
+v®ueFÜKeyP©h
+:@"date"];
+
+139 - ()
+	glßdI‹msFromD©e
+:(
+NSD©e
+ *)
+äomD©e
+ 
+toD©e
+:(NSDate *)toDate
+
+141 ià(!
+d©aR—dy
+)
+
+144 [
+™ems
+ 
+addObjeùsFromA¼ay
+:[
+£lf
+ 
+hŞidaysFrom
+:
+äomD©e
+ 
+to
+:
+toD©e
+]];
+
+147 - ()
+	g»moveAÎI‹ms
+
+
+149 [
+™ems
+ 
+»moveAÎObjeùs
+];
+
+152 #´agm¨
+m¬k
+ -
+
+154 - (
+	gNSA¼ay
+ *)
+	ghŞidaysFrom
+:(
+NSD©e
+ *)
+äomD©e
+ 
+to
+:(NSD©*)
+toD©e
+
+
+156 
+NSMubËA¼ay
+ *
+m©ches
+ = [NSMubËA¼ay 
+¬¿y
+];
+
+157 
+HŞiday
+ *
+hŞiday
+ 
+š
+ 
+	ghŞidays
+)
+
+158 ià(
+IsD©eB‘w“nInşusive
+(
+hŞiday
+.
+d©e
+, 
+äomD©e
+, 
+toD©e
+))
+
+159 [
+m©ches
+ 
+addObjeù
+:
+hŞiday
+];
+
+161  
+	gm©ches
+;
+
+164 - ()
+	gd—Îoc
+
+
+166 [
+™ems
+ 
+»Ëa£
+];
+
+167 [
+hŞidays
+ 
+»Ëa£
+];
+
+168 [
+bufãr
+ 
+»Ëa£
+];
+
+169 [
+su³r
+ 
+d—Îoc
+];
+
+172 @
+	g’d
+
+
+	@Classes/HolidaySqliteDataSource.h
+
+8 @
+şass
+ 
+	gHŞiday
+;
+
+21 @
+š‹rçû
+ 
+	gHŞidaySql™eD©aSourû
+ : 
+NSObjeù
+ <
+K®D©aSourû
+>
+
+23 
+NSMubËA¼ay
+ *
+™ems
+;
+
+24 
+NSMubËA¼ay
+ *
+	ghŞidays
+;
+
+27 + (
+	gHŞidaySql™eD©aSourû
+ *)
+	gd©aSourû
+;
+
+28 - (
+	gHŞiday
+ *)
+	ghŞidayAtIndexP©h
+:(
+NSIndexP©h
+ *)
+šdexP©h
+;
+
+30 @
+	g’d
+
+
+	@Classes/HolidaySqliteDataSource.m
+
+6 #impÜˆ<
+sql™e3
+.
+h
+>
+
+11 
+BOOL
+ 
+	$IsD©eB‘w“nInşusive
+(
+NSD©e
+ *
+d©e
+, NSD©*
+begš
+, NSD©*
+’d
+)
+
+13  [
+d©e
+ 
+com·»
+:
+begš
+] !ğ
+NSOrd”edAsûndšg
+ && [d©com·»:
+’d
+] !ğ
+NSOrd”edDesûndšg
+;
+
+14 
+	}
+}
+
+16 @
+š‹rçû
+ 
+HŞidaySql™eD©aSourû
+ ()
+
+17 - (
+	gNSA¼ay
+ *)
+	ghŞidaysFrom
+:(
+NSD©e
+ *)
+äomD©e
+ 
+to
+:(NSD©*)
+toD©e
+;
+
+18 @
+	g’d
+
+
+20 @
+im¶em’tiÚ
+ 
+	gHŞidaySql™eD©aSourû
+
+
+22 + (
+	gHŞidaySql™eD©aSourû
+ *)
+	gd©aSourû
+
+
+24  [[[[
+£lf
+ 
+şass
+] 
+	g®loc
+] 
+	gš™
+] 
+	gautÜ–—£
+];
+
+27 - (
+	gid
+)
+	gš™
+
+
+29 ià((
+	g£lf
+ = [
+su³r
+ 
+š™
+])) {
+
+30 
+™ems
+ = [[
+NSMubËA¼ay
+ 
+®loc
+] 
+š™
+];
+
+31 
+	ghŞidays
+ = [[
+NSMubËA¼ay
+ 
+®loc
+] 
+š™
+];
+
+33  
+	g£lf
+;
+
+36 - (
+	gHŞiday
+ *)
+	ghŞidayAtIndexP©h
+:(
+NSIndexP©h
+ *)
+šdexP©h
+
+
+38  [
+™ems
+ 
+objeùAtIndex
+:
+šdexP©h
+.
+row
+];
+
+41 #´agm¨
+m¬k
+ 
+UITabËV›wD©aSourû
+ 
+´ÙocŞ
+ 
+cÚfÜmªû
+
+
+43 - (
+	gUITabËV›wC–l
+ *)
+	gbËV›w
+:(
+UITabËV›w
+ *)
+bËV›w
+ 
+ûÎFÜRowAtIndexP©h
+:(
+NSIndexP©h
+ *)
+šdexP©h
+
+
+45 
+NSSŒšg
+ *
+id’tif›r
+ = @"MyCell";
+
+46 
+UITabËV›wC–l
+ *
+	gûÎ
+ = [
+bËV›w
+ 
+dequeueReu§bËC–lW™hId’tif›r
+:
+id’tif›r
+];
+
+47 ià(!
+	gûÎ
+) {
+
+48 
+	gûÎ
+ = [[[
+UITabËV›wC–l
+ 
+®loc
+] 
+š™W™hStyË
+:
+UITabËV›wC–lStyËDeçuÉ
+ 
+»u£Id’tif›r
+:
+id’tif›r
+] 
+autÜ–—£
+];
+
+49 
+	gûÎ
+.
+	g£ËùiÚStyË
+ = 
+UITabËV›wC–lS–eùiÚStyËNÚe
+;
+
+50 
+	gûÎ
+.
+	gimageV›w
+.
+	gcÚ‹ÁMode
+ = 
+UIV›wCÚ‹ÁModeSÿËA¥eùFl
+;
+
+53 
+HŞiday
+ *
+	ghŞiday
+ = [
+£lf
+ 
+hŞidayAtIndexP©h
+:
+šdexP©h
+];
+
+54 
+	gûÎ
+.
+	gimageV›w
+.
+	gimage
+ = [
+UIImage
+ 
+imageNamed
+:[
+NSSŒšg
+ 
+¡ršgW™hFÜm©
+:@"æags/%@.gif", 
+hŞiday
+.
+couÁry
+]];
+
+55 
+	gûÎ
+.
+	g‹xtLab–
+.
+	g‹xt
+ = 
+hŞiday
+.
+Çme
+;
+
+56  
+	gûÎ
+;
+
+59 - (
+	gNSIÁeg”
+)
+	gbËV›w
+:(
+UITabËV›w
+ *)
+bËV›w
+ 
+numb”OfRowsInSeùiÚ
+:(
+NSIÁeg”
+)
+£ùiÚ
+
+
+61  [
+™ems
+ 
+couÁ
+];
+
+64 #´agm¨
+m¬k
+ 
+Sql™e
+ 
+acûss
+
+
+66 - (
+	gNSSŒšg
+ *)
+	gd©aba£P©h
+
+
+68  [[
+NSBundË
+ 
+mašBundË
+] 
+	g·thFÜResourû
+:@"hŞidays" 
+ofTy³
+:@"db"];
+
+71 - ()
+	glßdHŞidaysFrom
+:(
+NSD©e
+ *)
+äomD©e
+ 
+to
+:(NSD©*)
+toD©e
+ 
+d–eg©e
+:(
+id
+<
+K®D©aSourûC®lbacks
+>)delegate
+
+73 
+NSLog
+(@"F‘chšg hŞiday äomhd©aba£ b‘w“À%@‡nd %@...", 
+äomD©e
+, 
+toD©e
+);
+
+74 
+sql™e3
+ *
+	gdb
+;
+
+75 
+NSD©eFÜm©‹r
+ *
+	gfmt
+ = [[[NSD©eFÜm©‹¸
+®loc
+] 
+š™
+] 
+autÜ–—£
+];
+
+77 if(
+sql™e3_İ’
+([[
+£lf
+ 
+d©aba£P©h
+] 
+UTF8SŒšg
+], &
+db
+è=ğ
+SQLITE_OK
+) {
+
+78 cÚ¡ *
+sql
+ = "select‚ame, country, date_of_event from holidays where date_of_event between ?‡nd ?";
+
+79 
+sql™e3_¡mt
+ *
+	g¡mt
+;
+
+80 if(
+sql™e3_´•¬e_v2
+(
+db
+, 
+sql
+, -1, &
+¡mt
+, 
+NULL
+è=ğ
+SQLITE_OK
+) {
+
+81 [
+fmt
+ 
+£tD©eFÜm©
+:@"yyyy-MM-dd hh:mm:ss"];
+
+82 
+sql™e3_bšd_‹xt
+(
+¡mt
+, 1, [[
+fmt
+ 
+¡ršgFromD©e
+:
+äomD©e
+] 
+UTF8SŒšg
+], -1, 
+SQLITE_STATIC
+);
+
+83 
+sql™e3_bšd_‹xt
+(
+¡mt
+, 2, [[
+fmt
+ 
+¡ršgFromD©e
+:
+toD©e
+] 
+UTF8SŒšg
+], -1, 
+SQLITE_STATIC
+);
+
+84 [
+fmt
+ 
+£tD©eFÜm©
+:@"yyyy-MM-dd"];
+
+85 
+sql™e3_¡•
+(
+¡mt
+è=ğ
+SQLITE_ROW
+) {
+
+86 
+NSSŒšg
+ *
+Çme
+ = [NSSŒšg 
+¡ršgW™hUTF8SŒšg
+:(*)
+sql™e3_cŞumn_‹xt
+(
+¡mt
+, 0)];
+
+87 
+NSSŒšg
+ *
+	gcouÁry
+ = [NSSŒšg 
+¡ršgW™hUTF8SŒšg
+:(*)
+sql™e3_cŞumn_‹xt
+(
+¡mt
+, 1)];
+
+88 
+NSSŒšg
+ *
+	gd©eAsText
+ = [NSSŒšg 
+¡ršgW™hUTF8SŒšg
+:(*)
+sql™e3_cŞumn_‹xt
+(
+¡mt
+, 2)];
+
+89 [
+hŞidays
+ 
+addObjeù
+:[
+HŞiday
+ 
+hŞidayNamed
+:
+Çme
+ 
+couÁry
+:couÁry 
+d©e
+:[
+fmt
+ 
+d©eFromSŒšg
+:
+d©eAsText
+]]];
+
+92 
+sql™e3_fš®ize
+(
+¡mt
+);
+
+94 
+sql™e3_şo£
+(
+db
+);
+
+95 [
+d–eg©e
+ 
+lßdedD©aSourû
+:
+£lf
+];
+
+98 #´agm¨
+m¬k
+ 
+K®D©aSourû
+ 
+´ÙocŞ
+ 
+cÚfÜmªû
+
+
+100 - ()
+	g´e£ÁšgD©esFrom
+:(
+NSD©e
+ *)
+äomD©e
+ 
+to
+:(NSD©*)
+toD©e
+ 
+d–eg©e
+:(
+id
+<
+K®D©aSourûC®lbacks
+>)delegate
+
+102 [
+hŞidays
+ 
+»moveAÎObjeùs
+];
+
+103 [
+£lf
+ 
+lßdHŞidaysFrom
+:
+äomD©e
+ 
+to
+:
+toD©e
+ 
+d–eg©e
+:delegate];
+
+106 - (
+	gNSA¼ay
+ *)
+	gm¬kedD©esFrom
+:(
+NSD©e
+ *)
+äomD©e
+ 
+to
+:(NSD©*)
+toD©e
+
+
+108  [[
+£lf
+ 
+hŞidaysFrom
+:
+äomD©e
+ 
+to
+:
+toD©e
+] 
+v®ueFÜKeyP©h
+:@"date"];
+
+111 - ()
+	glßdI‹msFromD©e
+:(
+NSD©e
+ *)
+äomD©e
+ 
+toD©e
+:(NSDate *)toDate
+
+113 [
+™ems
+ 
+addObjeùsFromA¼ay
+:[
+£lf
+ 
+hŞidaysFrom
+:
+äomD©e
+ 
+to
+:
+toD©e
+]];
+
+116 - ()
+	g»moveAÎI‹ms
+
+
+118 [
+™ems
+ 
+»moveAÎObjeùs
+];
+
+121 #´agm¨
+m¬k
+ -
+
+123 - (
+	gNSA¼ay
+ *)
+	ghŞidaysFrom
+:(
+NSD©e
+ *)
+äomD©e
+ 
+to
+:(NSD©*)
+toD©e
+
+
+125 
+NSMubËA¼ay
+ *
+m©ches
+ = [NSMubËA¼ay 
+¬¿y
+];
+
+126 
+HŞiday
+ *
+hŞiday
+ 
+š
+ 
+	ghŞidays
+)
+
+127 ià(
+IsD©eB‘w“nInşusive
+(
+hŞiday
+.
+d©e
+, 
+äomD©e
+, 
+toD©e
+))
+
+128 [
+m©ches
+ 
+addObjeù
+:
+hŞiday
+];
+
+130  
+	gm©ches
+;
+
+133 - ()
+	gd—Îoc
+
+
+135 [
+™ems
+ 
+»Ëa£
+];
+
+136 [
+hŞidays
+ 
+»Ëa£
+];
+
+137 [
+su³r
+ 
+d—Îoc
+];
+
+140 @
+	g’d
+
+
+	@Classes/HolidaysDetailViewController.h
+
+6 @
+şass
+ 
+	gHŞiday
+;
+
+15 @
+š‹rçû
+ 
+	gHŞidaysD‘aV›wCÚŒŞËr
+ : 
+UIV›wCÚŒŞËr
+
+
+17 
+HŞiday
+ *
+hŞiday
+;
+
+20 - (
+	gid
+)
+	gš™W™hHŞiday
+:(
+HŞiday
+ *)
+hŞiday
+;
+
+22 @
+	g’d
+
+
+	@Classes/HolidaysDetailViewController.m
+
+9 @
+im¶em’tiÚ
+ 
+	gHŞidaysD‘aV›wCÚŒŞËr
+
+
+11 - (
+	gid
+)
+	gš™W™hHŞiday
+:(
+HŞiday
+ *)
+aHŞiday
+
+
+13 ià((
+£lf
+ = [
+su³r
+ 
+š™
+])) {
+
+14 
+hŞiday
+ = [
+aHŞiday
+ 
+»š
+];
+
+16  
+	g£lf
+;
+
+19 - ()
+	glßdV›w
+
+
+21 
+UILab–
+ *
+	gÏb–
+ = [[[UILab– 
+®loc
+] 
+š™W™hF¿me
+:[[
+UISü“n
+ 
+mašSü“n
+] 
+­¶iÿtiÚF¿me
+]] 
+autÜ–—£
+];
+
+22 
+	gÏb–
+.
+	g‹xt
+ = [
+NSSŒšg
+ 
+¡ršgW™hFÜm©
+:@"%@ - %@", 
+hŞiday
+.
+couÁry
+, hŞiday.
+Çme
+];
+
+23 
+	gÏb–
+.
+	g‹xtAlignm’t
+ = 
+UITextAlignm’tC’‹r
+;
+
+24 
+	g£lf
+.
+	gv›w
+ = 
+Ïb–
+;
+
+27 - ()
+	gd—Îoc
+
+
+29 [
+hŞiday
+ 
+»Ëa£
+];
+
+30 [
+su³r
+ 
+d—Îoc
+];
+
+34 @
+	g’d
+
+
+	@JSON/JSON.h
+
+	@JSON/NSObject+SBJSON.h
+
+30 #impÜˆ<
+Found©iÚ
+/Found©iÚ.
+h
+>
+
+40 @
+š‹rçû
+ 
+NSObjeù
+ (
+NSObjeù_SBJSON
+)
+
+55 - (
+	gNSSŒšg
+ *)
+	gJSONF¿gm’t
+;
+
+65 - (
+	gNSSŒšg
+ *)
+	gJSONR•»£Á©iÚ
+;
+
+67 @
+	g’d
+
+
+	@JSON/NSObject+SBJSON.m
+
+33 @
+im¶em’tiÚ
+ 
+NSObjeù
+ (
+NSObjeù_SBJSON
+)
+
+35 - (
+	gNSSŒšg
+ *)
+	gJSONF¿gm’t
+ {
+
+36 
+SBJsÚWr™”
+ *
+	gjsÚWr™”
+ = [SBJsÚWr™” 
+Ãw
+];
+
+37 
+NSSŒšg
+ *
+	gjsÚ
+ = [
+jsÚWr™”
+ 
+¡ršgW™hF¿gm’t
+:
+£lf
+];
+
+38 ià(!
+	gjsÚ
+)
+
+39 
+NSLog
+(@"-JSONF¿gm’ˆçed. E¼Ü¿û is: %@", [
+jsÚWr™”
+ 
+”rÜT¿û
+]);
+
+40 [
+jsÚWr™”
+ 
+»Ëa£
+];
+
+41  
+	gjsÚ
+;
+
+44 - (
+	gNSSŒšg
+ *)
+	gJSONR•»£Á©iÚ
+ {
+
+45 
+SBJsÚWr™”
+ *
+	gjsÚWr™”
+ = [SBJsÚWr™” 
+Ãw
+];
+
+46 
+NSSŒšg
+ *
+	gjsÚ
+ = [
+jsÚWr™”
+ 
+¡ršgW™hObjeù
+:
+£lf
+];
+
+47 ià(!
+	gjsÚ
+)
+
+48 
+NSLog
+(@"-JSONR•»£Á©iÚ faed. E¼Ü¿û is: %@", [
+jsÚWr™”
+ 
+”rÜT¿û
+]);
+
+49 [
+jsÚWr™”
+ 
+»Ëa£
+];
+
+50  
+	gjsÚ
+;
+
+53 @
+	g’d
+
+
+	@JSON/NSString+SBJSON.h
+
+30 #impÜˆ<
+Found©iÚ
+/Found©iÚ.
+h
+>
+
+37 @
+š‹rçû
+ 
+NSSŒšg
+ (
+NSSŒšg_SBJSON
+)
+
+47 - (
+	gid
+)
+	gJSONF¿gm’tV®ue
+;
+
+56 - (
+	gid
+)
+	gJSONV®ue
+;
+
+58 @
+	g’d
+
+
+	@JSON/NSString+SBJSON.m
+
+33 @
+im¶em’tiÚ
+ 
+NSSŒšg
+ (
+NSSŒšg_SBJSON
+)
+
+35 - (
+	gid
+)
+	gJSONF¿gm’tV®ue
+
+
+37 
+SBJsÚP¬£r
+ *
+	gjsÚP¬£r
+ = [SBJsÚP¬£¸
+Ãw
+];
+
+38 
+id
+ 
+	g»´
+ = [
+jsÚP¬£r
+ 
+äagm’tW™hSŒšg
+:
+£lf
+];
+
+39 ià(!
+	g»´
+)
+
+40 
+NSLog
+(@"-JSONF¿gm’tV®uçed. E¼Ü¿û is: %@", [
+jsÚP¬£r
+ 
+”rÜT¿û
+]);
+
+41 [
+jsÚP¬£r
+ 
+»Ëa£
+];
+
+42  
+	g»´
+;
+
+45 - (
+	gid
+)
+	gJSONV®ue
+
+
+47 
+SBJsÚP¬£r
+ *
+	gjsÚP¬£r
+ = [SBJsÚP¬£¸
+Ãw
+];
+
+48 
+id
+ 
+	g»´
+ = [
+jsÚP¬£r
+ 
+objeùW™hSŒšg
+:
+£lf
+];
+
+49 ià(!
+	g»´
+)
+
+50 
+NSLog
+(@"-JSONV®uçed. E¼Ü¿û is: %@", [
+jsÚP¬£r
+ 
+”rÜT¿û
+]);
+
+51 [
+jsÚP¬£r
+ 
+»Ëa£
+];
+
+52  
+	g»´
+;
+
+55 @
+	g’d
+
+
+	@JSON/SBJSON.h
+
+30 #impÜˆ<
+Found©iÚ
+/Found©iÚ.
+h
+>
+
+39 @
+š‹rçû
+ 
+	gSBJSON
+ : 
+SBJsÚBa£
+ <
+SBJsÚP¬£r
+, 
+	gSBJsÚWr™”
+> {
+
+41 @
+´iv©e
+
+
+42 
+SBJsÚP¬£r
+ *
+	gjsÚP¬£r
+;
+
+43 
+SBJsÚWr™”
+ *
+	gjsÚWr™”
+;
+
+48 - (
+	gid
+)
+	gäagm’tW™hSŒšg
+:(
+NSSŒšg
+*)
+jsÚ»p
+
+
+49 
+”rÜ
+:(
+NSE¼Ü
+**)error;
+
+52 - (
+	gid
+)
+	gobjeùW™hSŒšg
+:(
+NSSŒšg
+*)
+jsÚ»p
+
+
+53 
+”rÜ
+:(
+NSE¼Ü
+**)error;
+
+56 - (
+	gid
+)
+	gobjeùW™hSŒšg
+:(
+id
+)
+v®ue
+
+
+57 
+®lowSÿÏr
+:(
+BOOL
+)
+x
+
+
+58 
+”rÜ
+:(
+NSE¼Ü
+**)error;
+
+62 - (
+	gNSSŒšg
+*)
+	g¡ršgW™hObjeù
+:(
+id
+)
+v®ue
+
+
+63 
+”rÜ
+:(
+NSE¼Ü
+**)error;
+
+66 - (
+	gNSSŒšg
+*)
+	g¡ršgW™hF¿gm’t
+:(
+id
+)
+v®ue
+
+
+67 
+”rÜ
+:(
+NSE¼Ü
+**)error;
+
+70 - (
+	gNSSŒšg
+*)
+	g¡ršgW™hObjeù
+:(
+id
+)
+v®ue
+
+
+71 
+®lowSÿÏr
+:(
+BOOL
+)
+x
+
+
+72 
+”rÜ
+:(
+NSE¼Ü
+**)error;
+
+75 @
+	g’d
+
+
+	@JSON/SBJSON.m
+
+32 @
+im¶em’tiÚ
+ 
+	gSBJSON
+
+
+34 - (
+	gid
+)
+	gš™
+ {
+
+35 
+	g£lf
+ = [
+su³r
+ 
+š™
+];
+
+36 ià(
+	g£lf
+) {
+
+37 
+	gjsÚWr™”
+ = [
+SBJsÚWr™”
+ 
+Ãw
+];
+
+38 
+	gjsÚP¬£r
+ = [
+SBJsÚP¬£r
+ 
+Ãw
+];
+
+39 [
+£lf
+ 
+£tMaxD•th
+:512];
+
+42  
+	g£lf
+;
+
+45 - ()
+	gd—Îoc
+ {
+
+46 [
+jsÚWr™”
+ 
+»Ëa£
+];
+
+47 [
+jsÚP¬£r
+ 
+»Ëa£
+];
+
+48 [
+su³r
+ 
+d—Îoc
+];
+
+51 #´agm¨
+m¬k
+ 
+Wr™”
+
+
+54 - (
+	gNSSŒšg
+ *)
+	g¡ršgW™hObjeù
+:(
+id
+)
+obj
+ {
+
+55 
+NSSŒšg
+ *
+»´
+ = [
+jsÚWr™”
+ 
+¡ršgW™hObjeù
+:
+obj
+];
+
+56 ià(
+	g»´
+)
+
+57  
+	g»´
+;
+
+59 [
+”rÜT¿û
+ 
+»Ëa£
+];
+
+60 
+	g”rÜT¿û
+ = [[
+jsÚWr™”
+ 
+”rÜT¿û
+] 
+mubËCİy
+];
+
+61  
+	gn
+;
+
+74 - (
+	gNSSŒšg
+*)
+	g¡ršgW™hObjeù
+:(
+id
+)
+v®ue
+ 
+®lowSÿÏr
+:(
+BOOL
+ïÎowSÿÏ¸
+”rÜ
+:(
+NSE¼Ü
+**)error {
+
+76 
+NSSŒšg
+ *
+jsÚ
+ = 
+®lowSÿÏr
+ ? [
+jsÚWr™”
+ 
+¡ršgW™hF¿gm’t
+:
+v®ue
+] : [jsÚWr™” 
+¡ršgW™hObjeù
+:value];
+
+77 ià(
+	gjsÚ
+)
+
+78  
+	gjsÚ
+;
+
+80 [
+”rÜT¿û
+ 
+»Ëa£
+];
+
+81 
+	g”rÜT¿û
+ = [[
+jsÚWr™”
+ 
+”rÜT¿û
+] 
+mubËCİy
+];
+
+83 ià(
+	g”rÜ
+)
+
+84 *
+	g”rÜ
+ = [
+”rÜT¿û
+ 
+Ï¡Objeù
+];
+
+85  
+	gn
+;
+
+97 - (
+	gNSSŒšg
+*)
+	g¡ršgW™hF¿gm’t
+:(
+id
+)
+v®ue
+ 
+”rÜ
+:(
+NSE¼Ü
+**)error {
+
+98  [
+£lf
+ 
+¡ršgW™hObjeù
+:
+v®ue
+
+
+99 
+®lowSÿÏr
+:
+YES
+
+
+100 
+”rÜ
+:error];
+
+110 - (
+	gNSSŒšg
+*)
+	g¡ršgW™hObjeù
+:(
+id
+)
+v®ue
+ 
+”rÜ
+:(
+NSE¼Ü
+**)error {
+
+111  [
+£lf
+ 
+¡ršgW™hObjeù
+:
+v®ue
+
+
+112 
+®lowSÿÏr
+:
+NO
+
+
+113 
+”rÜ
+:error];
+
+116 #´agm¨
+m¬k
+ 
+P¬sšg
+
+
+118 - (
+	gid
+)
+	gobjeùW™hSŒšg
+:(
+NSSŒšg
+ *)
+»´
+ {
+
+119 
+id
+ 
+obj
+ = [
+jsÚP¬£r
+ 
+objeùW™hSŒšg
+:
+»´
+];
+
+120 ià(
+	gobj
+)
+
+121  
+	gobj
+;
+
+123 [
+”rÜT¿û
+ 
+»Ëa£
+];
+
+124 
+	g”rÜT¿û
+ = [[
+jsÚP¬£r
+ 
+”rÜT¿û
+] 
+mubËCİy
+];
+
+126  
+	gn
+;
+
+139 - (
+	gid
+)
+	gobjeùW™hSŒšg
+:(
+id
+)
+v®ue
+ 
+®lowSÿÏr
+:(
+BOOL
+ïÎowSÿÏ¸
+”rÜ
+:(
+NSE¼Ü
+**)error {
+
+141 
+id
+ 
+obj
+ = 
+®lowSÿÏr
+ ? [
+jsÚP¬£r
+ 
+äagm’tW™hSŒšg
+:
+v®ue
+] : [jsÚP¬£¸
+objeùW™hSŒšg
+:value];
+
+142 ià(
+	gobj
+)
+
+143  
+	gobj
+;
+
+145 [
+”rÜT¿û
+ 
+»Ëa£
+];
+
+146 
+	g”rÜT¿û
+ = [[
+jsÚP¬£r
+ 
+”rÜT¿û
+] 
+mubËCİy
+];
+
+148 ià(
+	g”rÜ
+)
+
+149 *
+	g”rÜ
+ = [
+”rÜT¿û
+ 
+Ï¡Objeù
+];
+
+150  
+	gn
+;
+
+162 - (
+	gid
+)
+	gäagm’tW™hSŒšg
+:(
+NSSŒšg
+*)
+»´
+ 
+”rÜ
+:(
+NSE¼Ü
+**)error {
+
+163  [
+£lf
+ 
+objeùW™hSŒšg
+:
+»´
+
+
+164 
+®lowSÿÏr
+:
+YES
+
+
+165 
+”rÜ
+:error];
+
+175 - (
+	gid
+)
+	gobjeùW™hSŒšg
+:(
+NSSŒšg
+*)
+»´
+ 
+”rÜ
+:(
+NSE¼Ü
+**)error {
+
+176  [
+£lf
+ 
+objeùW™hSŒšg
+:
+»´
+
+
+177 
+®lowSÿÏr
+:
+NO
+
+
+178 
+”rÜ
+:error];
+
+183 #´agm¨
+m¬k
+ 
+Prİ”t›s
+ - 
+·rsšg
+
+
+185 - (
+	gNSUIÁeg”
+)
+	gmaxD•th
+ {
+
+186  
+	gjsÚP¬£r
+.
+	gmaxD•th
+;
+
+189 - ()
+	g£tMaxD•th
+:(
+NSUIÁeg”
+)
+d
+ {
+
+190 
+jsÚWr™”
+.
+maxD•th
+ = 
+jsÚP¬£r
+.maxD•th = 
+d
+;
+
+194 #´agm¨
+m¬k
+ 
+Prİ”t›s
+ - 
+wr™šg
+
+
+196 - (
+	gBOOL
+)
+	ghumªR—dabË
+ {
+
+197  
+	gjsÚWr™”
+.
+	ghumªR—dabË
+;
+
+200 - ()
+	g£tHumªR—dabË
+:(
+BOOL
+)
+x
+ {
+
+201 
+jsÚWr™”
+.
+humªR—dabË
+ = 
+x
+;
+
+204 - (
+	gBOOL
+)
+	gsÜtKeys
+ {
+
+205  
+	gjsÚWr™”
+.
+	gsÜtKeys
+;
+
+208 - ()
+	g£tSÜtKeys
+:(
+BOOL
+)
+x
+ {
+
+209 
+jsÚWr™”
+.
+sÜtKeys
+ = 
+x
+;
+
+212 @
+	g’d
+
+
+	@JSON/SBJsonBase.h
+
+30 #impÜˆ<
+Found©iÚ
+/Found©iÚ.
+h
+>
+
+32 
+NSSŒšg
+ * 
+SBJSONE¼ÜDomaš
+;
+
+36 
+	mEUNSUPPORTED
+ = 1,
+
+37 
+	mEPARSENUM
+,
+
+38 
+	mEPARSE
+,
+
+39 
+	mEFRAGMENT
+,
+
+40 
+	mECTRL
+,
+
+41 
+	mEUNICODE
+,
+
+42 
+	mEDEPTH
+,
+
+43 
+	mEESCAPE
+,
+
+44 
+	mETRAILCOMMA
+,
+
+45 
+	mETRAILGARBAGE
+,
+
+46 
+	mEEOF
+,
+
+47 
+	mEINPUT
+
+
+55 @
+š‹rçû
+ 
+	gSBJsÚBa£
+ : 
+NSObjeù
+ {
+
+56 
+NSMubËA¼ay
+ *
+”rÜT¿û
+;
+
+58 @
+´Ùeùed
+
+
+59 
+NSUIÁeg”
+ 
+	gd•th
+, 
+	gmaxD•th
+;
+
+69 @
+´İ”ty
+ 
+NSUIÁeg”
+ 
+	gmaxD•th
+;
+
+78 @
+	$´İ”ty
+(
+cİy
+,
+»adÚly
+è
+NSA¼ay
+* 
+”rÜT¿û
+;
+
+81 - ()
+addE¼ÜW™hCode
+:(
+NSUIÁeg”
+)
+code
+ 
+desütiÚ
+:(
+NSSŒšg
+*)
+¡r
+;
+
+84 - ()
+ş—rE¼ÜT¿û
+;
+
+86 @
+’d
+
+
+	@JSON/SBJsonBase.m
+
+31 
+NSSŒšg
+ * 
+	gSBJSONE¼ÜDomaš
+ = @"org.brautaset.JSON.ErrorDomain";
+
+34 @
+im¶em’tiÚ
+ 
+	gSBJsÚBa£
+
+
+36 @
+syÁhesize
+ 
+	g”rÜT¿û
+;
+
+37 @
+syÁhesize
+ 
+	gmaxD•th
+;
+
+39 - (
+	gid
+)
+	gš™
+ {
+
+40 
+	g£lf
+ = [
+su³r
+ 
+š™
+];
+
+41 ià(
+	g£lf
+)
+
+42 
+	g£lf
+.
+	gmaxD•th
+ = 512;
+
+43  
+	g£lf
+;
+
+46 - ()
+	gd—Îoc
+ {
+
+47 [
+”rÜT¿û
+ 
+»Ëa£
+];
+
+48 [
+su³r
+ 
+d—Îoc
+];
+
+51 - ()
+	gaddE¼ÜW™hCode
+:(
+NSUIÁeg”
+)
+code
+ 
+desütiÚ
+:(
+NSSŒšg
+*)
+¡r
+ {
+
+52 
+NSDiùiÚ¬y
+ *
+u£rInfo
+;
+
+53 ià(!
+	g”rÜT¿û
+) {
+
+54 
+	g”rÜT¿û
+ = [
+NSMubËA¼ay
+ 
+Ãw
+];
+
+55 
+	gu£rInfo
+ = [
+NSDiùiÚ¬y
+ 
+diùiÚ¬yW™hObjeù
+:
+¡r
+ 
+fÜKey
+:
+NSLoÿlizedDesütiÚKey
+];
+
+58 
+	gu£rInfo
+ = [
+NSDiùiÚ¬y
+ 
+diùiÚ¬yW™hObjeùsAndKeys
+:
+
+59 
+¡r
+, 
+NSLoÿlizedDesütiÚKey
+,
+
+60 [
+”rÜT¿û
+ 
+Ï¡Objeù
+], 
+	gNSUnd”lyšgE¼ÜKey
+,
+
+61 
+	gn
+];
+
+64 
+NSE¼Ü
+ *
+	g”rÜ
+ = [NSE¼Ü 
+”rÜW™hDomaš
+:
+SBJSONE¼ÜDomaš
+ 
+code
+:cod
+u£rInfo
+:userInfo];
+
+66 [
+£lf
+ 
+wlChªgeV®ueFÜKey
+:@"errorTrace"];
+
+67 [
+”rÜT¿û
+ 
+addObjeù
+:
+”rÜ
+];
+
+68 [
+£lf
+ 
+didChªgeV®ueFÜKey
+:@"errorTrace"];
+
+71 - ()
+	gş—rE¼ÜT¿û
+ {
+
+72 [
+£lf
+ 
+wlChªgeV®ueFÜKey
+:@"errorTrace"];
+
+73 [
+”rÜT¿û
+ 
+»Ëa£
+];
+
+74 
+	g”rÜT¿û
+ = 
+n
+;
+
+75 [
+£lf
+ 
+didChªgeV®ueFÜKey
+:@"errorTrace"];
+
+78 @
+	g’d
+
+
+	@JSON/SBJsonParser.h
+
+30 #impÜˆ<
+Found©iÚ
+/Found©iÚ.
+h
+>
+
+38 @
+´ÙocŞ
+ 
+	gSBJsÚP¬£r
+
+
+48 - (
+	gid
+)
+	gobjeùW™hSŒšg
+:(
+NSSŒšg
+ *)
+»´
+;
+
+50 @
+	g’d
+
+
+74 @
+š‹rçû
+ 
+	gSBJsÚP¬£r
+ : 
+SBJsÚBa£
+ <
+SBJsÚP¬£r
+> {
+
+76 @
+´iv©e
+
+
+77 cÚ¡ *
+c
+;
+
+80 @
+	g’d
+
+
+83 @
+š‹rçû
+ 
+SBJsÚP¬£r
+ (
+Priv©e
+)
+
+84 - (
+	gid
+)
+	gäagm’tW™hSŒšg
+:(
+id
+)
+»´
+;
+
+85 @
+	g’d
+
+
+	@JSON/SBJsonParser.m
+
+32 @
+š‹rçû
+ 
+SBJsÚP¬£r
+ ()
+
+34 - (
+	gBOOL
+)
+	gsÿnV®ue
+:(
+NSObjeù
+ **)
+o
+;
+
+36 - (
+	gBOOL
+)
+	gsÿnRe¡OfA¼ay
+:(
+NSMubËA¼ay
+ **)
+o
+;
+
+37 - (
+	gBOOL
+)
+	gsÿnRe¡OfDiùiÚ¬y
+:(
+NSMubËDiùiÚ¬y
+ **)
+o
+;
+
+38 - (
+	gBOOL
+)
+	gsÿnRe¡OfNuÎ
+:(
+NSNuÎ
+ **)
+o
+;
+
+39 - (
+	gBOOL
+)
+	gsÿnRe¡OfF®£
+:(
+NSNumb”
+ **)
+o
+;
+
+40 - (
+	gBOOL
+)
+	gsÿnRe¡OfTrue
+:(
+NSNumb”
+ **)
+o
+;
+
+41 - (
+	gBOOL
+)
+	gsÿnRe¡OfSŒšg
+:(
+NSMubËSŒšg
+ **)
+o
+;
+
+44 - (
+	gBOOL
+)
+	gsÿnNumb”
+:(
+NSNumb”
+ **)
+o
+;
+
+46 - (
+	gBOOL
+)
+	gsÿnHexQuad
+:(
+unich¬
+ *)
+x
+;
+
+47 - (
+	gBOOL
+)
+	gsÿnUnicodeCh¬
+:(
+unich¬
+ *)
+x
+;
+
+49 - (
+	gBOOL
+)
+	gsÿnIsAtEnd
+;
+
+51 @
+	g’d
+
+
+53 
+	#skWh™e¥aû
+(
+c
+è
+	`is¥aû
+(*c)èc++
+
+	)
+
+54 
+	#skDig™s
+(
+c
+è
+	`isdig™
+(*c)èc++
+
+	)
+
+57 @
+im¶em’tiÚ
+ 
+SBJsÚP¬£r
+
+
+59 
+	gù¾
+[0x22];
+
+61 + ()
+	gš™Ÿlize
+
+
+63 
+	gù¾
+[0] = '\"';
+
+64 
+	gù¾
+[1] = '\\';
+
+65 
+	gi
+ = 1; i < 0x20; i++)
+
+66 
+	gù¾
+[
+i
++1] = i;
+
+67 
+	gù¾
+[0x21] = 0;
+
+74 - (
+	gid
+)
+	gäagm’tW™hSŒšg
+:(
+id
+)
+»´
+ {
+
+75 [
+£lf
+ 
+ş—rE¼ÜT¿û
+];
+
+77 ià(!
+	g»´
+) {
+
+78 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EINPUT
+ 
+desütiÚ
+:@"Input was 'nil'"];
+
+79  
+	gn
+;
+
+82 
+	gd•th
+ = 0;
+
+83 
+	gc
+ = [
+»´
+ 
+UTF8SŒšg
+];
+
+85 
+id
+ 
+	go
+;
+
+86 ià(![
+£lf
+ 
+sÿnV®ue
+:&
+o
+]) {
+
+87  
+n
+;
+
+91 ià(![
+£lf
+ 
+sÿnIsAtEnd
+]) {
+
+92 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+ETRAILGARBAGE
+ 
+desütiÚ
+:@"Garbage‡fter JSON"];
+
+93  
+	gn
+;
+
+96 
+NSAs£¹1
+(
+o
+, @"Should hav¨v®id objeù from %@", 
+»´
+);
+
+97  
+	go
+;
+
+100 - (
+	gid
+)
+	gobjeùW™hSŒšg
+:(
+NSSŒšg
+ *)
+»´
+ {
+
+102 
+id
+ 
+o
+ = [
+£lf
+ 
+äagm’tW™hSŒšg
+:
+»´
+];
+
+103 ià(!
+	go
+)
+
+104  
+	gn
+;
+
+107 ià(![
+o
+ 
+isKšdOfCÏss
+:[
+NSDiùiÚ¬y
+ 
+şass
+]] && ![ØisKšdOfCÏss:[
+NSA¼ay
+ class]]) {
+
+108 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EFRAGMENT
+ 
+desütiÚ
+:@"Valid fragment, but‚ot JSON"];
+
+109  
+	gn
+;
+
+112  
+	go
+;
+
+118 - (
+	gBOOL
+)
+	gsÿnV®ue
+:(
+NSObjeù
+ **)
+o
+
+
+120 
+skWh™e¥aû
+(
+c
+);
+
+122 *
+	gc
+++) {
+
+124  [
+£lf
+ 
+sÿnRe¡OfDiùiÚ¬y
+:(
+NSMubËDiùiÚ¬y
+ **)
+o
+];
+
+127  [
+£lf
+ 
+sÿnRe¡OfA¼ay
+:(
+NSMubËA¼ay
+ **)
+o
+];
+
+130  [
+£lf
+ 
+sÿnRe¡OfSŒšg
+:(
+NSMubËSŒšg
+ **)
+o
+];
+
+133  [
+£lf
+ 
+sÿnRe¡OfF®£
+:(
+NSNumb”
+ **)
+o
+];
+
+136  [
+£lf
+ 
+sÿnRe¡OfTrue
+:(
+NSNumb”
+ **)
+o
+];
+
+139  [
+£lf
+ 
+sÿnRe¡OfNuÎ
+:(
+NSNuÎ
+ **)
+o
+];
+
+143 
+c
+--;
+
+144  [
+£lf
+ 
+sÿnNumb”
+:(
+NSNumb”
+ **)
+o
+];
+
+147 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSENUM
+ 
+desütiÚ
+: @"Leading + disallowed in‚umber"];
+
+148  
+	gNO
+;
+
+151 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EEOF
+ 
+desütiÚ
+:@"Unexpectedƒnd of string"];
+
+152  
+	gNO
+;
+
+155 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSE
+ 
+desütiÚ
+: @"Unrecognised†eading character"];
+
+156  
+	gNO
+;
+
+160 
+NSAs£¹
+(0, @"Should‚ever get here");
+
+161  
+	gNO
+;
+
+164 - (
+	gBOOL
+)
+	gsÿnRe¡OfTrue
+:(
+NSNumb”
+ **)
+o
+
+
+166 ià(!
+¡ºcmp
+(
+c
+, "rue", 3)) {
+
+167 
+	gc
+ += 3;
+
+168 *
+	go
+ = [
+NSNumb”
+ 
+numb”W™hBoŞ
+:
+YES
+];
+
+169  
+	gYES
+;
+
+171 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSE
+ 
+desütiÚ
+:@"Expected 'true'"];
+
+172  
+	gNO
+;
+
+175 - (
+	gBOOL
+)
+	gsÿnRe¡OfF®£
+:(
+NSNumb”
+ **)
+o
+
+
+177 ià(!
+¡ºcmp
+(
+c
+, "alse", 4)) {
+
+178 
+	gc
+ += 4;
+
+179 *
+	go
+ = [
+NSNumb”
+ 
+numb”W™hBoŞ
+:
+NO
+];
+
+180  
+	gYES
+;
+
+182 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSE
+ 
+desütiÚ
+: @"Expected 'false'"];
+
+183  
+	gNO
+;
+
+186 - (
+	gBOOL
+)
+	gsÿnRe¡OfNuÎ
+:(
+NSNuÎ
+ **)
+o
+ {
+
+187 ià(!
+¡ºcmp
+(
+c
+, "ull", 3)) {
+
+188 
+	gc
+ += 3;
+
+189 *
+	go
+ = [
+NSNuÎ
+ 
+nuÎ
+];
+
+190  
+	gYES
+;
+
+192 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSE
+ 
+desütiÚ
+: @"Expected 'null'"];
+
+193  
+	gNO
+;
+
+196 - (
+	gBOOL
+)
+	gsÿnRe¡OfA¼ay
+:(
+NSMubËA¼ay
+ **)
+o
+ {
+
+197 ià(
+maxD•th
+ && ++
+d•th
+ > maxDepth) {
+
+198 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EDEPTH
+ 
+desütiÚ
+: @"Nestedoo deep"];
+
+199  
+	gNO
+;
+
+202 *
+	go
+ = [
+NSMubËA¼ay
+ 
+¬¿yW™hC­ac™y
+:8];
+
+204 ; *
+	gc
+ ;) {
+
+205 
+id
+ 
+	gv
+;
+
+207 
+skWh™e¥aû
+(
+c
+);
+
+208 ià(*
+	gc
+ =ğ']' && 
+c
+++) {
+
+209 
+d•th
+--;
+
+210  
+	gYES
+;
+
+213 ià(![
+£lf
+ 
+sÿnV®ue
+:&
+v
+]) {
+
+214 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSE
+ 
+desütiÚ
+:@"Expected value while…arsing‡rray"];
+
+215  
+	gNO
+;
+
+218 [*
+o
+ 
+addObjeù
+:
+v
+];
+
+220 
+skWh™e¥aû
+(
+c
+);
+
+221 ià(*
+	gc
+ =ğ',' && 
+c
+++) {
+
+222 
+skWh™e¥aû
+(
+c
+);
+
+223 ià(*
+	gc
+ == ']') {
+
+224 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+ETRAILCOMMA
+ 
+desütiÚ
+: @"Trailing comma disallowed in‡rray"];
+
+225  
+	gNO
+;
+
+230 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EEOF
+ 
+desütiÚ
+: @"End of input while…arsing‡rray"];
+
+231  
+	gNO
+;
+
+234 - (
+	gBOOL
+)
+	gsÿnRe¡OfDiùiÚ¬y
+:(
+NSMubËDiùiÚ¬y
+ **)
+o
+
+
+236 ià(
+maxD•th
+ && ++
+d•th
+ > maxDepth) {
+
+237 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EDEPTH
+ 
+desütiÚ
+: @"Nestedoo deep"];
+
+238  
+	gNO
+;
+
+241 *
+	go
+ = [
+NSMubËDiùiÚ¬y
+ 
+diùiÚ¬yW™hC­ac™y
+:7];
+
+243 ; *
+	gc
+ ;) {
+
+244 
+id
+ 
+	gk
+, 
+	gv
+;
+
+246 
+skWh™e¥aû
+(
+c
+);
+
+247 ià(*
+	gc
+ =ğ'}' && 
+c
+++) {
+
+248 
+d•th
+--;
+
+249  
+	gYES
+;
+
+252 ià(!(*
+	gc
+ =ğ'\"' && 
+c
+++ && [
+£lf
+ 
+sÿnRe¡OfSŒšg
+:&
+k
+])) {
+
+253 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSE
+ 
+desütiÚ
+: @"Object key stringƒxpected"];
+
+254  
+	gNO
+;
+
+257 
+skWh™e¥aû
+(
+c
+);
+
+258 ià(*
+	gc
+ != ':') {
+
+259 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSE
+ 
+desütiÚ
+: @"Expected ':' separating key‡nd value"];
+
+260  
+	gNO
+;
+
+263 
+	gc
+++;
+
+264 ià(![
+£lf
+ 
+sÿnV®ue
+:&
+v
+]) {
+
+265 
+NSSŒšg
+ *
+¡ršg
+ = [NSSŒšg 
+¡ršgW™hFÜm©
+:@"Objeù v®uex³ùed fÜ key: %@", 
+k
+];
+
+266 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSE
+ 
+desütiÚ
+: 
+¡ršg
+];
+
+267  
+	gNO
+;
+
+270 [*
+o
+ 
+£tObjeù
+:
+v
+ 
+fÜKey
+:
+k
+];
+
+272 
+skWh™e¥aû
+(
+c
+);
+
+273 ià(*
+	gc
+ =ğ',' && 
+c
+++) {
+
+274 
+skWh™e¥aû
+(
+c
+);
+
+275 ià(*
+	gc
+ == '}') {
+
+276 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+ETRAILCOMMA
+ 
+desütiÚ
+: @"Trailing comma disallowed in object"];
+
+277  
+	gNO
+;
+
+282 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EEOF
+ 
+desütiÚ
+: @"End of input while…arsing object"];
+
+283  
+	gNO
+;
+
+286 - (
+	gBOOL
+)
+	gsÿnRe¡OfSŒšg
+:(
+NSMubËSŒšg
+ **)
+o
+
+
+288 *
+o
+ = [
+NSMubËSŒšg
+ 
+¡ršgW™hC­ac™y
+:16];
+
+292 
+size_t
+ 
+	gËn
+ = 
+¡rc¥n
+(
+c
+, 
+ù¾
+);
+
+293 ià(
+	gËn
+) {
+
+295 
+id
+ 
+	gt
+ = [[
+NSSŒšg
+ 
+®loc
+] 
+š™W™hBy‹sNoCİy
+:(*)
+c
+
+
+296 
+Ëngth
+:
+Ën
+
+
+297 
+’codšg
+:
+NSUTF8SŒšgEncodšg
+
+
+298 
+ä“Wh’DÚe
+:
+NO
+];
+
+299 ià(
+	gt
+) {
+
+300 [*
+o
+ 
+­³ndSŒšg
+:
+t
+];
+
+301 [
+t
+ 
+»Ëa£
+];
+
+302 
+	gc
+ +ğ
+Ën
+;
+
+306 ià(*
+	gc
+ == '"') {
+
+307 
+c
+++;
+
+308  
+	gYES
+;
+
+310 } ià(*
+	gc
+ == '\\') {
+
+311 
+unich¬
+ 
+uc
+ = *++
+c
+;
+
+312 
+	guc
+) {
+
+318 'b': 
+uc
+ = '\b'; ;
+
+319 'n': 
+uc
+ = '\n'; ;
+
+320 'r': 
+uc
+ = '\r'; ;
+
+321 't': 
+uc
+ = '\t'; ;
+
+322 'f': 
+uc
+ = '\f'; ;
+
+325 
+c
+++;
+
+326 ià(![
+£lf
+ 
+sÿnUnicodeCh¬
+:&
+uc
+]) {
+
+327 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EUNICODE
+ 
+desütiÚ
+: @"Broken unicode character"];
+
+328  
+	gNO
+;
+
+330 
+	gc
+--;
+
+333 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EESCAPE
+ 
+desütiÚ
+: [
+NSSŒšg
+ 
+¡ršgW™hFÜm©
+:@"IÎeg®ƒsÿ³ sequ’û '0x%x'", 
+uc
+]];
+
+334  
+	gNO
+;
+
+337 
+CFSŒšgAµ’dCh¬aù”s
+((
+CFMubËSŒšgRef
+)*
+o
+, &
+uc
+, 1);
+
+338 
+	gc
+++;
+
+340 } ià(*
+	gc
+ < 0x20) {
+
+341 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+ECTRL
+ 
+desütiÚ
+: [
+NSSŒšg
+ 
+¡ršgW™hFÜm©
+:@"UÃsÿ³d cÚŒŞ ch¬aù” '0x%x'", *
+c
+]];
+
+342  
+	gNO
+;
+
+345 
+NSLog
+(@"should‚ot be‡bleo get here");
+
+347 } *
+	gc
+);
+
+349 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EEOF
+ 
+desütiÚ
+:@"Unexpected EOF while…arsing string"];
+
+350  
+	gNO
+;
+
+353 - (
+	gBOOL
+)
+	gsÿnUnicodeCh¬
+:(
+unich¬
+ *)
+x
+
+
+355 
+unich¬
+ 
+hi
+, 
+	glo
+;
+
+357 ià(![
+£lf
+ 
+sÿnHexQuad
+:&
+hi
+]) {
+
+358 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EUNICODE
+ 
+desütiÚ
+: @"Missing hex quad"];
+
+359  
+	gNO
+;
+
+362 ià(
+	ghi
+ >= 0xd800) {
+
+363 ià(
+hi
+ < 0xdc00) {
+
+365 ià(!(*
+c
+ =ğ'\\' && ++ø&& *ø=ğ'u' && ++ø&& [
+£lf
+ 
+sÿnHexQuad
+:&
+lo
+])) {
+
+366 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EUNICODE
+ 
+desütiÚ
+: @"Missing†ow character in surrogate…air"];
+
+367  
+	gNO
+;
+
+370 ià(
+	glo
+ < 0xdc00 ||†o >= 0xdfff) {
+
+371 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EUNICODE
+ 
+desütiÚ
+:@"Invalid†ow surrogate char"];
+
+372  
+	gNO
+;
+
+375 
+	ghi
+ = (
+hi
+ - 0xd800è* 0x400 + (
+lo
+ - 0xdc00) + 0x10000;
+
+377 } ià(
+	ghi
+ < 0xe000) {
+
+378 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EUNICODE
+ 
+desütiÚ
+:@"Invalid high character in surrogate…air"];
+
+379  
+	gNO
+;
+
+383 *
+	gx
+ = 
+hi
+;
+
+384  
+	gYES
+;
+
+387 - (
+	gBOOL
+)
+	gsÿnHexQuad
+:(
+unich¬
+ *)
+x
+
+
+389 *
+x
+ = 0;
+
+390 
+	gi
+ = 0; i < 4; i++) {
+
+391 
+unich¬
+ 
+	guc
+ = *
+c
+;
+
+392 
+	gc
+++;
+
+393 
+	gd
+ = (
+uc
+ >= '0' && uc <= '9')
+
+394 ? 
+uc
+ - '0' : (uc >= 'a' && uc <= 'f')
+
+395 ? (
+uc
+ - 'a' + 10) : (uc >= 'A' && uc <= 'F')
+
+396 ? (
+uc
+ - 'A' + 10) : -1;
+
+397 ià(
+	gd
+ == -1) {
+
+398 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EUNICODE
+ 
+desütiÚ
+:@"Missing hex digit in quad"];
+
+399  
+	gNO
+;
+
+401 *
+	gx
+ *= 16;
+
+402 *
+	gx
+ +ğ
+d
+;
+
+404  
+	gYES
+;
+
+407 - (
+	gBOOL
+)
+	gsÿnNumb”
+:(
+NSNumb”
+ **)
+o
+
+
+409 cÚ¡ *
+ns
+ = 
+c
+;
+
+415 ià('-' =ğ*
+c
+)
+
+416 
+c
+++;
+
+418 ià('0' =ğ*
+c
+ && c++) {
+
+419 ià(
+isdig™
+(*
+c
+)) {
+
+420 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSENUM
+ 
+desütiÚ
+: @"Leading 0 disallowed in‚umber"];
+
+421  
+	gNO
+;
+
+424 } ià(!
+isdig™
+(*
+c
+è&& 
+	gc
+ !ğ
+ns
+) {
+
+425 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSENUM
+ 
+desütiÚ
+: @"No digits‡fter initial minus"];
+
+426  
+	gNO
+;
+
+429 
+skDig™s
+(
+c
+);
+
+433 ià('.' =ğ*
+c
+ && c++) {
+
+435 ià(!
+isdig™
+(*
+c
+)) {
+
+436 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSENUM
+ 
+desütiÚ
+: @"No digits‡fter decimal…oint"];
+
+437  
+	gNO
+;
+
+439 
+skDig™s
+(
+c
+);
+
+443 ià('e' =ğ*
+c
+ || 'E' == *c) {
+
+444 
+c
+++;
+
+446 ià('-' =ğ*
+c
+ || '+' == *c)
+
+447 
+c
+++;
+
+449 ià(!
+isdig™
+(*
+c
+)) {
+
+450 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSENUM
+ 
+desütiÚ
+: @"No digits‡fterƒxponent"];
+
+451  
+	gNO
+;
+
+453 
+skDig™s
+(
+c
+);
+
+456 
+id
+ 
+	g¡r
+ = [[
+NSSŒšg
+ 
+®loc
+] 
+š™W™hBy‹sNoCİy
+:(*)
+ns
+
+
+457 
+Ëngth
+:
+c
+ - 
+ns
+
+
+458 
+’codšg
+:
+NSUTF8SŒšgEncodšg
+
+
+459 
+ä“Wh’DÚe
+:
+NO
+];
+
+460 [
+¡r
+ 
+autÜ–—£
+];
+
+461 ià(
+	g¡r
+ && (*
+	go
+ = [
+NSDecim®Numb”
+ 
+decim®Numb”W™hSŒšg
+:
+¡r
+]))
+
+462  
+YES
+;
+
+464 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EPARSENUM
+ 
+desütiÚ
+: @"Failed creating decimal instance"];
+
+465  
+	gNO
+;
+
+468 - (
+	gBOOL
+)
+	gsÿnIsAtEnd
+
+
+470 
+skWh™e¥aû
+(
+c
+);
+
+471  !*
+	gc
+;
+
+475 @
+	g’d
+
+
+	@JSON/SBJsonWriter.h
+
+30 #impÜˆ<
+Found©iÚ
+/Found©iÚ.
+h
+>
+
+38 @
+´ÙocŞ
+ 
+	gSBJsÚWr™”
+
+
+48 @
+´İ”ty
+ 
+BOOL
+ 
+	ghumªR—dabË
+;
+
+56 @
+´İ”ty
+ 
+BOOL
+ 
+	gsÜtKeys
+;
+
+67 - (
+	gNSSŒšg
+*)
+	g¡ršgW™hObjeù
+:(
+id
+)
+v®ue
+;
+
+69 @
+	g’d
+
+
+94 @
+š‹rçû
+ 
+	gSBJsÚWr™”
+ : 
+SBJsÚBa£
+ <
+SBJsÚWr™”
+> {
+
+96 @
+´iv©e
+
+
+97 
+BOOL
+ 
+sÜtKeys
+, 
+	ghumªR—dabË
+;
+
+100 @
+	g’d
+
+
+103 @
+š‹rçû
+ 
+SBJsÚWr™”
+ (
+Priv©e
+)
+
+104 - (
+	gNSSŒšg
+*)
+	g¡ršgW™hF¿gm’t
+:(
+id
+)
+v®ue
+;
+
+105 @
+	g’d
+
+
+126 @
+š‹rçû
+ 
+NSObjeù
+ (
+SBProxyFÜJsÚ
+)
+
+127 - (
+	gid
+)
+	g´oxyFÜJsÚ
+;
+
+128 @
+	g’d
+
+
+	@JSON/SBJsonWriter.m
+
+32 @
+š‹rçû
+ 
+SBJsÚWr™”
+ ()
+
+34 - (
+	gBOOL
+)
+	g­³ndV®ue
+:(
+id
+)
+äagm’t
+ 
+što
+:(
+NSMubËSŒšg
+*)
+jsÚ
+;
+
+35 - (
+	gBOOL
+)
+	g­³ndA¼ay
+:(
+NSA¼ay
+*)
+äagm’t
+ 
+što
+:(
+NSMubËSŒšg
+*)
+jsÚ
+;
+
+36 - (
+	gBOOL
+)
+	g­³ndDiùiÚ¬y
+:(
+NSDiùiÚ¬y
+*)
+äagm’t
+ 
+što
+:(
+NSMubËSŒšg
+*)
+jsÚ
+;
+
+37 - (
+	gBOOL
+)
+	g­³ndSŒšg
+:(
+NSSŒšg
+*)
+äagm’t
+ 
+što
+:(
+NSMubËSŒšg
+*)
+jsÚ
+;
+
+39 - (
+	gNSSŒšg
+*)
+	gšd’t
+;
+
+41 @
+	g’d
+
+
+43 @
+im¶em’tiÚ
+ 
+	gSBJsÚWr™”
+
+
+45 @
+syÁhesize
+ 
+	gsÜtKeys
+;
+
+46 @
+syÁhesize
+ 
+	ghumªR—dabË
+;
+
+52 - (
+	gNSSŒšg
+*)
+	g¡ršgW™hF¿gm’t
+:(
+id
+)
+v®ue
+ {
+
+53 [
+£lf
+ 
+ş—rE¼ÜT¿û
+];
+
+54 
+	gd•th
+ = 0;
+
+55 
+NSMubËSŒšg
+ *
+	gjsÚ
+ = [NSMubËSŒšg 
+¡ršgW™hC­ac™y
+:128];
+
+57 ià([
+£lf
+ 
+­³ndV®ue
+:
+v®ue
+ 
+što
+:
+jsÚ
+])
+
+58  
+jsÚ
+;
+
+60  
+	gn
+;
+
+64 - (
+	gNSSŒšg
+*)
+	g¡ršgW™hObjeù
+:(
+id
+)
+v®ue
+ {
+
+66 ià([
+v®ue
+ 
+isKšdOfCÏss
+:[
+NSDiùiÚ¬y
+ 
+şass
+]] || [v®uisKšdOfCÏss:[
+NSA¼ay
+ class]]) {
+
+67  [
+£lf
+ 
+¡ršgW™hF¿gm’t
+:
+v®ue
+];
+
+70 [
+£lf
+ 
+ş—rE¼ÜT¿û
+];
+
+71 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EFRAGMENT
+ 
+desütiÚ
+:@"Not validype for JSON"];
+
+72  
+	gn
+;
+
+76 - (
+	gNSSŒšg
+*)
+	gšd’t
+ {
+
+77  [@"\n" 
+¡ršgByPaddšgToL’gth
+:1 + 2 * 
+d•th
+ 
+w™hSŒšg
+:@" " 
+¡¬tšgAtIndex
+:0];
+
+80 - (
+	gBOOL
+)
+	g­³ndV®ue
+:(
+id
+)
+äagm’t
+ 
+što
+:(
+NSMubËSŒšg
+*)
+jsÚ
+ {
+
+81 ià([
+äagm’t
+ 
+isKšdOfCÏss
+:[
+NSDiùiÚ¬y
+ 
+şass
+]]) {
+
+82 ià(![
+£lf
+ 
+­³ndDiùiÚ¬y
+:
+äagm’t
+ 
+što
+:
+jsÚ
+])
+
+83  
+NO
+;
+
+85 } ià([
+äagm’t
+ 
+isKšdOfCÏss
+:[
+NSA¼ay
+ 
+şass
+]]) {
+
+86 ià(![
+£lf
+ 
+­³ndA¼ay
+:
+äagm’t
+ 
+što
+:
+jsÚ
+])
+
+87  
+NO
+;
+
+89 } ià([
+äagm’t
+ 
+isKšdOfCÏss
+:[
+NSSŒšg
+ 
+şass
+]]) {
+
+90 ià(![
+£lf
+ 
+­³ndSŒšg
+:
+äagm’t
+ 
+što
+:
+jsÚ
+])
+
+91  
+NO
+;
+
+93 } ià([
+äagm’t
+ 
+isKšdOfCÏss
+:[
+NSNumb”
+ 
+şass
+]]) {
+
+94 ià('c' =ğ*[
+äagm’t
+ 
+objCTy³
+])
+
+95 [
+jsÚ
+ 
+­³ndSŒšg
+:[
+äagm’t
+ 
+boŞV®ue
+] ? @"true" : @"false"];
+
+97 [
+jsÚ
+ 
+­³ndSŒšg
+:[
+äagm’t
+ 
+¡ršgV®ue
+]];
+
+99 } ià([
+äagm’t
+ 
+isKšdOfCÏss
+:[
+NSNuÎ
+ 
+şass
+]]) {
+
+100 [
+jsÚ
+ 
+­³ndSŒšg
+:@"null"];
+
+101 } ià([
+äagm’t
+ 
+»¥ÚdsToS–eùÜ
+:@
+£ËùÜ
+(
+´oxyFÜJsÚ
+)]) {
+
+102 [
+£lf
+ 
+­³ndV®ue
+:[
+äagm’t
+ 
+´oxyFÜJsÚ
+] 
+što
+:
+jsÚ
+];
+
+105 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EUNSUPPORTED
+ 
+desütiÚ
+:[
+NSSŒšg
+ 
+¡ršgW™hFÜm©
+:@"JSON s”Ÿli§tiÚ‚Ù suµÜ‹d fÜ %@", [
+äagm’t
+ 
+şass
+]]];
+
+106  
+	gNO
+;
+
+108  
+	gYES
+;
+
+111 - (
+	gBOOL
+)
+	g­³ndA¼ay
+:(
+NSA¼ay
+*)
+äagm’t
+ 
+što
+:(
+NSMubËSŒšg
+*)
+jsÚ
+ {
+
+112 ià(
+maxD•th
+ && ++
+d•th
+ > maxDepth) {
+
+113 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EDEPTH
+ 
+desütiÚ
+: @"Nestedoo deep"];
+
+114  
+	gNO
+;
+
+116 [
+jsÚ
+ 
+­³ndSŒšg
+:@"["];
+
+118 
+BOOL
+ 
+	gaddComma
+ = 
+NO
+;
+
+119 
+id
+ 
+v®ue
+ 
+š
+ 
+	gäagm’t
+) {
+
+120 ià(
+	gaddComma
+)
+
+121 [
+jsÚ
+ 
+­³ndSŒšg
+:@","];
+
+123 
+	gaddComma
+ = 
+YES
+;
+
+125 ià([
+£lf
+ 
+humªR—dabË
+])
+
+126 [
+jsÚ
+ 
+­³ndSŒšg
+:[
+£lf
+ 
+šd’t
+]];
+
+128 ià(![
+£lf
+ 
+­³ndV®ue
+:
+v®ue
+ 
+što
+:
+jsÚ
+]) {
+
+129  
+NO
+;
+
+133 
+	gd•th
+--;
+
+134 ià([
+£lf
+ 
+humªR—dabË
+] && [
+äagm’t
+ 
+couÁ
+])
+
+135 [
+jsÚ
+ 
+­³ndSŒšg
+:[
+£lf
+ 
+šd’t
+]];
+
+136 [
+jsÚ
+ 
+­³ndSŒšg
+:@"]"];
+
+137  
+	gYES
+;
+
+140 - (
+	gBOOL
+)
+	g­³ndDiùiÚ¬y
+:(
+NSDiùiÚ¬y
+*)
+äagm’t
+ 
+što
+:(
+NSMubËSŒšg
+*)
+jsÚ
+ {
+
+141 ià(
+maxD•th
+ && ++
+d•th
+ > maxDepth) {
+
+142 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EDEPTH
+ 
+desütiÚ
+: @"Nestedoo deep"];
+
+143  
+	gNO
+;
+
+145 [
+jsÚ
+ 
+­³ndSŒšg
+:@"{"];
+
+147 
+NSSŒšg
+ *
+	gcŞÚ
+ = [
+£lf
+ 
+humªR—dabË
+] ? @" : " : @":";
+
+148 
+BOOL
+ 
+	gaddComma
+ = 
+NO
+;
+
+149 
+NSA¼ay
+ *
+	gkeys
+ = [
+äagm’t
+ 
+®lKeys
+];
+
+150 ià(
+	g£lf
+.
+	gsÜtKeys
+)
+
+151 
+	gkeys
+ = [
+keys
+ 
+sÜ‹dA¼ayUsšgS–eùÜ
+:@
+£ËùÜ
+(
+com·»
+:)];
+
+153 
+id
+ 
+v®ue
+ 
+š
+ 
+	gkeys
+) {
+
+154 ià(
+	gaddComma
+)
+
+155 [
+jsÚ
+ 
+­³ndSŒšg
+:@","];
+
+157 
+	gaddComma
+ = 
+YES
+;
+
+159 ià([
+£lf
+ 
+humªR—dabË
+])
+
+160 [
+jsÚ
+ 
+­³ndSŒšg
+:[
+£lf
+ 
+šd’t
+]];
+
+162 ià(![
+v®ue
+ 
+isKšdOfCÏss
+:[
+NSSŒšg
+ 
+şass
+]]) {
+
+163 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EUNSUPPORTED
+ 
+desütiÚ
+: @"JSON object key must be string"];
+
+164  
+	gNO
+;
+
+167 ià(![
+£lf
+ 
+­³ndSŒšg
+:
+v®ue
+ 
+što
+:
+jsÚ
+])
+
+168  
+NO
+;
+
+170 [
+jsÚ
+ 
+­³ndSŒšg
+:
+cŞÚ
+];
+
+171 ià(![
+£lf
+ 
+­³ndV®ue
+:[
+äagm’t
+ 
+objeùFÜKey
+:
+v®ue
+] 
+što
+:
+jsÚ
+]) {
+
+172 [
+£lf
+ 
+addE¼ÜW™hCode
+:
+EUNSUPPORTED
+ 
+desütiÚ
+:[
+NSSŒšg
+ 
+¡ršgW™hFÜm©
+:@"UnsuµÜ‹d v®ufÜ key %@ iÀobjeù", 
+v®ue
+]];
+
+173  
+	gNO
+;
+
+177 
+	gd•th
+--;
+
+178 ià([
+£lf
+ 
+humªR—dabË
+] && [
+äagm’t
+ 
+couÁ
+])
+
+179 [
+jsÚ
+ 
+­³ndSŒšg
+:[
+£lf
+ 
+šd’t
+]];
+
+180 [
+jsÚ
+ 
+­³ndSŒšg
+:@"}"];
+
+181  
+	gYES
+;
+
+184 - (
+	gBOOL
+)
+	g­³ndSŒšg
+:(
+NSSŒšg
+*)
+äagm’t
+ 
+što
+:(
+NSMubËSŒšg
+*)
+jsÚ
+ {
+
+186 
+NSMubËCh¬aù”S‘
+ *
+kEsÿ³Ch¬s
+;
+
+187 ifĞ! 
+	gkEsÿ³Ch¬s
+ ) {
+
+188 
+	gkEsÿ³Ch¬s
+ = [[
+NSMubËCh¬aù”S‘
+ 
+ch¬aù”S‘W™hRªge
+: 
+NSMakeRªge
+(0,32)] 
+	g»š
+];
+
+189 [
+kEsÿ³Ch¬s
+ 
+addCh¬aù”sInSŒšg
+: @"\"\\"];
+
+192 [
+jsÚ
+ 
+­³ndSŒšg
+:@"\""];
+
+194 
+NSRªge
+ 
+	gesc
+ = [
+äagm’t
+ 
+¿ngeOfCh¬aù”FromS‘
+:
+kEsÿ³Ch¬s
+];
+
+195 iàĞ!
+	gesc
+.
+	gËngth
+ ) {
+
+197 [
+jsÚ
+ 
+­³ndSŒšg
+:
+äagm’t
+];
+
+200 
+NSUIÁeg”
+ 
+	gËngth
+ = [
+äagm’t
+ 
+Ëngth
+];
+
+201 
+NSUIÁeg”
+ 
+	gi
+ = 0; i < 
+	gËngth
+; i++) {
+
+202 
+unich¬
+ 
+	guc
+ = [
+äagm’t
+ 
+ch¬aù”AtIndex
+:
+i
+];
+
+203 
+	guc
+) {
+
+204 '"': [
+jsÚ
+ 
+­³ndSŒšg
+:@"\\\""]; ;
+
+205 '\\': [
+jsÚ
+ 
+­³ndSŒšg
+:@"\\\\"]; ;
+
+206 '\t': [
+jsÚ
+ 
+­³ndSŒšg
+:@"\\t"]; ;
+
+207 '\n': [
+jsÚ
+ 
+­³ndSŒšg
+:@"\\n"]; ;
+
+208 '\r': [
+jsÚ
+ 
+­³ndSŒšg
+:@"\\r"]; ;
+
+209 '\b': [
+jsÚ
+ 
+­³ndSŒšg
+:@"\\b"]; ;
+
+210 '\f': [
+jsÚ
+ 
+­³ndSŒšg
+:@"\\f"]; ;
+
+212 ià(
+uc
+ < 0x20) {
+
+213 [
+jsÚ
+ 
+­³ndFÜm©
+:@"\\u%04x", 
+uc
+];
+
+215 
+CFSŒšgAµ’dCh¬aù”s
+((
+CFMubËSŒšgRef
+)
+jsÚ
+, &
+uc
+, 1);
+
+223 [
+jsÚ
+ 
+­³ndSŒšg
+:@"\""];
+
+224  
+	gYES
+;
+
+228 @
+	g’d
+
+
+	@main.m
+
+9 #impÜˆ<
+UIK™
+/UIK™.
+h
+>
+
+11 
+	$maš
+(
+¬gc
+, *
+¬gv
+[]) {
+
+13 
+NSAutÜ–—£PoŞ
+ * 
+poŞ
+ = [[NSAutÜ–—£PoŞ 
+®loc
+] 
+š™
+];
+
+14 
+»tV®
+ = 
+	`UIAµliÿtiÚMaš
+(
+¬gc
+, 
+¬gv
+, 
+n
+,‚il);
+
+15 [
+poŞ
+ 
+»Ëa£
+];
+
+16  
+»tV®
+;
+
+17 
+	}
+}
+
+	@
+1
+.
+1
+/usr/include
+24
+559
+Classes/Holiday.h
+Classes/Holiday.m
+Classes/HolidayAppDelegate.h
+Classes/HolidayAppDelegate.m
+Classes/HolidayJSONDataSource.h
+Classes/HolidayJSONDataSource.m
+Classes/HolidaySqliteDataSource.h
+Classes/HolidaySqliteDataSource.m
+Classes/HolidaysDetailViewController.h
+Classes/HolidaysDetailViewController.m
+JSON/JSON.h
+JSON/NSObject+SBJSON.h
+JSON/NSObject+SBJSON.m
+JSON/NSString+SBJSON.h
+JSON/NSString+SBJSON.m
+JSON/SBJSON.h
+JSON/SBJSON.m
+JSON/SBJsonBase.h
+JSON/SBJsonBase.m
+JSON/SBJsonParser.h
+JSON/SBJsonParser.m
+JSON/SBJsonWriter.h
+JSON/SBJsonWriter.m
+main.m
