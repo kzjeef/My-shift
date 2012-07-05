@@ -37,6 +37,7 @@
     Boolean warnningShiftType;
     
     Boolean enterConfig;
+    NSData *saveJobData;
 
     OneJob *theJob;
 }
@@ -84,7 +85,7 @@
                                       ICON_OR_TEXT_STRING,
 				      STARTWITH_ITEM_STRING,
 				      REPEAT_ITEM_STRING,
-                      SHIFTCONFIG_ITEM_STRING,
+                                      SHIFTCONFIG_ITEM_STRING,
 				      nil];
     }
     return itemsArray;
@@ -242,8 +243,12 @@
 
     // cancel button only appear in adding mode, because we can not cancel the date in editing mode, it use save data context.
     if (self.viewMode == PCVC_ADDING_MODE)
-	self.navigationItem.leftBarButtonItem = self.cancelButton;
+        self.navigationItem.leftBarButtonItem = self.cancelButton;
+
     // in editing mode, only show return.
+    //    if (self.viewMode == PCVC_EDITING_MODE)
+    //        saveJobData = [NSManagedObjectArchiver archivedDataWithRootObject:self.theJob];
+        
     
     datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 250, 325, 250)];
     CGSize pickerSize = [datePicker sizeThatFits:CGSizeZero];
@@ -645,7 +650,9 @@
 }
 
 - (IBAction)cancel:(id)sender {
+    //    self.theJob = [NSManagedObjectArchiver unarchiveObjectWithData: saveJobData context:self.theJob insert:NO];
     [self.profileDelegate didChangeProfile:self didFinishWithSave:NO];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

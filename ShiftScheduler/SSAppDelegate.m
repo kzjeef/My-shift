@@ -128,13 +128,11 @@ enum {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
 #if CONFIG_MAIN_UI_USE_TAB_BAR_CONTROLLER
-    self.window.rootViewController = tabBarVC;
+    [self.window addSubview:tabBarVC.view];
 #else    
     [self.window addSubview:self.navController.view];
 #endif
     
-    [self.window makeKeyAndVisible];
-    // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
     
     if ([self.profileView profileuNumber] == 0)
@@ -391,7 +389,11 @@ enum {
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"ShiftScheduler.sqlite"];
     
-    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                             
+                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                                [NSNumber numberWithBool:YES],
+                                NSInferMappingModelAutomaticallyOption, nil];
     
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

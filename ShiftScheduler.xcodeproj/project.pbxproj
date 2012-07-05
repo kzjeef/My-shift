@@ -311,6 +311,7 @@
 		29F49CA5156FDAD900C76EFC /* SSShiftTableConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftTableConfigTVC.m; sourceTree = "<group>"; };
 		29F49CA8156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTurnFinishDatePickerTVC.h; sourceTree = "<group>"; };
 		29F49CA9156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTurnFinishDatePickerTVC.m; sourceTree = "<group>"; };
+		29F6B55D15A4C40500FAEA1C /* ShiftScheduler 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 5.xcdatamodel"; sourceTree = "<group>"; };
 		29F89FEC14E8072D002BB665 /* ShiftScheduler 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 4.xcdatamodel"; sourceTree = "<group>"; };
 		29FA9AF114F48DAE00717505 /* SSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAlertController.h; sourceTree = "<group>"; };
 		29FA9AF214F48DAE00717505 /* SSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAlertController.m; sourceTree = "<group>"; };
@@ -592,8 +593,8 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
-				293B64EC15A3BF5000D0C4B5 /* Resources */,
 				293B64EA15A335A900D0C4B5 /* config.h */,
+				293B64EC15A3BF5000D0C4B5 /* Resources */,
 				29D6A524159CB4A200AC6103 /* Kal.bundle */,
 				29AEBDC8156136830010F27D /* GUI */,
 				293994B5147D25D30007320C /* Model */,
@@ -1219,6 +1220,7 @@
 		29B9E1C91472C1D700DB2E1F /* ShiftScheduler.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				29F6B55D15A4C40500FAEA1C /* ShiftScheduler 5.xcdatamodel */,
 				29F89FEC14E8072D002BB665 /* ShiftScheduler 4.xcdatamodel */,
 				29F2147F14E68A9B008BEE92 /* ShiftScheduler 3.xcdatamodel */,
 				294E28FF148B2F3A00E6ED45 /* ShiftScheduler 2.xcdatamodel */,

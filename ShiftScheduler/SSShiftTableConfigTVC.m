@@ -44,7 +44,20 @@
 
 - (void)reloadShiftTable
 {
+    int i, size;
+    // First copy the array,
+    NSArray *arrayBackup = [NSArray arrayWithArray:shiftStateArray];
+    // Invvalid the cache.
+    [self.theJob jobFreeJumpTableCacheInvalid];
+    // Get new new jump array
     shiftStateArray = [self.theJob.jobFreeJumpTable mutableCopy];
+    
+    size = self.theJob.jobFreeJumpCycle.intValue;
+
+    // Then try to copy back all table items back, try it all.
+    for (i = 0; i < MIN(size, arrayBackup.count); i ++)
+        [shiftStateArray replaceObjectAtIndex:i withObject:[arrayBackup objectAtIndex:i]];
+
 }
 
 - (void)viewDidLoad
@@ -285,7 +298,6 @@ return YES;
 
 		    // Clear the cache of shift table, and load new one.
                     job.jobFreeJumpCycle = [NSNumber numberWithInt:value];
-                    [job jobFreeJumpTableCacheInvalid];
                     [_self reloadShiftTable];
                     [_self.tableView reloadData];
 
