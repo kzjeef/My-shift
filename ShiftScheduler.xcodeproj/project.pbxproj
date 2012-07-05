@@ -275,12 +275,12 @@
 		29C943B514E9642900122144 /* SSProfileTimeAndAlarmVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSProfileTimeAndAlarmVC.xib; sourceTree = "<group>"; };
 		29C943B914EAB55200122144 /* UserReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserReviewController.h; sourceTree = "<group>"; };
 		29C943BA14EAB55200122144 /* UserReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserReviewController.m; sourceTree = "<group>"; };
-		29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = ../Kal/src/Kal.xcodeproj; sourceTree = "<group>"; };
-		29D6A520159CB45D00AC6103 /* KalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KalViewController.h; path = ../Kal/src/KalViewController.h; sourceTree = "<group>"; };
-		29D6A522159CB48200AC6103 /* Kal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Kal.h; path = ../Kal/src/Kal.h; sourceTree = "<group>"; };
-		29D6A524159CB4A200AC6103 /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = ../Kal/src/Kal.bundle; sourceTree = "<group>"; };
-		29D6A526159CB4B600AC6103 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewAdditions.h; path = ../Kal/src/UIViewAdditions.h; sourceTree = "<group>"; };
-		29D6A527159CB4B600AC6103 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewAdditions.m; path = ../Kal/src/UIViewAdditions.m; sourceTree = "<group>"; };
+		29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = Kal/src/Kal.xcodeproj; sourceTree = "<group>"; };
+		29D6A520159CB45D00AC6103 /* KalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KalViewController.h; path = Kal/src/KalViewController.h; sourceTree = "<group>"; };
+		29D6A522159CB48200AC6103 /* Kal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Kal.h; path = Kal/src/Kal.h; sourceTree = "<group>"; };
+		29D6A524159CB4A200AC6103 /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = Kal/src/Kal.bundle; sourceTree = "<group>"; };
+		29D6A526159CB4B600AC6103 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewAdditions.h; path = Kal/src/UIViewAdditions.h; sourceTree = "<group>"; };
+		29D6A527159CB4B600AC6103 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewAdditions.m; path = Kal/src/UIViewAdditions.m; sourceTree = "<group>"; };
 		29DDDAC214808F94004DC703 /* ShiftScheduler/NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftScheduler/NSDateAdditions.m; sourceTree = "<group>"; };
 		29E339D214CA955A0036EAED /* ProfileIconPickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileIconPickerDataSource.h; sourceTree = "<group>"; };
 		29E339D314CA955A0036EAED /* ProfileIconPickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileIconPickerDataSource.m; sourceTree = "<group>"; };
