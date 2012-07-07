@@ -58,24 +58,24 @@ enum {
     kal.delegate = self.sskalDelegate;
     kal.vcdelegate = self.sskalDelegate;
 
-    WorkdayDataSource *wds = [[WorkdayDataSource alloc] initWithManagedContext:self.managedObjectContext];
-    dataSource  = wds;
-    kal.dataSource = dataSource;
-    
-    kal.tileDelegate = dataSource;
-    // setup tile view delegate, provides tile icon information.
     
     self.profileView = [[ShiftListProfilesTVC alloc] initWithManagedContext:self.managedObjectContext];
     self.profileView.parentViewDelegate = self;
     
     self.profileNVC = [[UINavigationController alloc] initWithRootViewController:self.profileView];
 
+    WorkdayDataSource *wds = [[WorkdayDataSource alloc] initWithManagedContext:self.managedObjectContext];
+    dataSource  = wds;
+    kal.dataSource = dataSource;
+    
+    kal.tileDelegate = dataSource;
+    // setup tile view delegate, provides tile icon information.
+ 
     // Setup the navigation stack and display it.
     navController = [[UINavigationController alloc] initWithRootViewController:kal];
     self.navController = navController;
     self.navController.modalPresentationStyle = UIModalPresentationFullScreen;
-    
-    
+
     alertNoProfile = [[UIAlertView alloc] initWithTitle:nil message:CREATE_PROFILE_PROMPT delegate:self cancelButtonTitle:CREATE_PROFILE_NO otherButtonTitles:CREATE_PROFILE_YES, nil];
     alertNoProfile.tag = TAG_ZERO_PROFILE;
 

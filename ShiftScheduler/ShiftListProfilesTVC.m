@@ -230,6 +230,8 @@
 		exit(-1);  // Fail
     }
     self.fetchedResultsController.delegate = self;
+
+    NSLog(@"Shifts:%@\n", self.fetchedResultsController.fetchedObjects);
     plusImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"addButton" ofType:@"png"]];
     
 }

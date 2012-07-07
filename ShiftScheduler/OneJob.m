@@ -67,17 +67,19 @@
 - (ShiftAlgoBase *)shiftAlgo;
 {
     if (shiftAlgo == nil) {
-	enum JobShiftAlgoType type = (enum JobShiftAlgoType)self.jobShiftType.intValue;
-	switch(type) {
-	case JOB_SHIFT_ALGO_FREE_ROUND:
-	    shiftAlgo = [[ShiftAlgoFreeRound alloc] initWithContext:self];
-	    break;
-	case JOB_SHIFT_ALGO_FREE_JUMP:
-	    shiftAlgo = [[ShiftAlgoFreeJump alloc] initWithContext:self];
-	    break;
-	default:
-	    assert (-1);
-	}
+        enum JobShiftAlgoType type = (enum JobShiftAlgoType)self.jobShiftType.intValue;
+        switch(type) {
+            case JOB_SHIFT_ALGO_FREE_ROUND:
+                shiftAlgo = [[ShiftAlgoFreeRound alloc] initWithContext:self];
+                break;
+            case JOB_SHIFT_ALGO_FREE_JUMP:
+                shiftAlgo = [[ShiftAlgoFreeJump alloc] initWithContext:self];
+                break;
+            default:
+                shiftAlgo = [[ShiftAlgoFreeRound alloc] initWithContext:self];
+                NSLog(@"OneJob: back fall the shift algo to shift round");
+                break;
+        }
     }
     return shiftAlgo;
 }

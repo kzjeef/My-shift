@@ -10,8 +10,10 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>calendar-simple-blue-2-114x114.png</string>
-		<string>calendar-simple-blue-2-57x57.png</string>
+		<string>calendar-simple-blue-114x114.png</string>
+		<string>calendar-simple-blue-57x57.png</string>
+		<string>Default@2x.png</string>
+		<string>Default.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -19,8 +21,10 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>calendar-simple-blue-2-114x114.png</string>
-				<string>calendar-simple-blue-2-57x57.png</string>
+				<string>calendar-simple-blue-114x114.png</string>
+				<string>calendar-simple-blue-57x57.png</string>
+				<string>Default@2x.png</string>
+				<string>Default.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
@@ -35,7 +39,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.7.3</string>
+	<string>2.8.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>

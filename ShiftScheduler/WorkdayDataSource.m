@@ -36,30 +36,37 @@
     return timeFormatter;
 }
 
+- (NSFetchedResultsController *) fetchedRequestController
+{
+    if (fetchedRequestController != nil) {
+        return fetchedRequestController;
+    }
+
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"OneJob" 
+                                              inManagedObjectContext:self.objectContext];
+    [request setEntity:entity];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"jobName"  ascending:YES]];
+    
+
+    request.predicate = [NSPredicate predicateWithFormat:@"jobEnable == YES"];
+    request.fetchBatchSize = 20;
+    [request setReturnsObjectsAsFaults:NO];
+    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] 
+                                       initWithFetchRequest:request 
+                                       managedObjectContext:self.objectContext
+                                       sectionNameKeyPath:nil 
+                                       cacheName:JOB_CACHE_INDEFITER];
+    fetchedRequestController = frc;
+    return frc;
+}
+
 
 - (id) initWithManagedContext:(NSManagedObjectContext *)thecontext
 {
     self = [self init];
     self.objectContext = thecontext;
 
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"OneJob" 
-                                              inManagedObjectContext:self.objectContext];
-    [request setEntity:entity];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor 
-                                                        sortDescriptorWithKey:@"jobName"  
-                                                        ascending:YES]];
-    
-    request.predicate = [NSPredicate predicateWithFormat:@"jobEnable == YES"];
-    request.fetchBatchSize = 20;
-    
-    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] 
-                                       initWithFetchRequest:request 
-                                       managedObjectContext:self.objectContext
-                                       sectionNameKeyPath:@"jobName" 
-                                       cacheName:JOB_CACHE_INDEFITER];
-    self.fetchedRequestController = frc;
-    // delete this because time.firstTileOfMonth
 #if 0
     NSError *error = 0;
 
@@ -69,11 +76,8 @@
 #endif
     self.fetchedRequestController.delegate = self;
     
-    
     NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
     [dnc addObserver:self selector:@selector(managedContextDataChanged:) name:NSManagedObjectContextDidSaveNotification object:self.objectContext];
- 
-
 
     return  self;
 }
@@ -95,12 +99,13 @@
 
 - (NSArray *)theJobNameArray 
 {
-    if (theJobNameArray != 0 && ![self.objectContext hasChanges])
-        return theJobNameArray;
+    // just use cache of fetchrequest controller.
+    //    if (theJobNameArray != 0 && ![self.objectContext hasChanges])
+    //        return theJobNameArray;
     
     [self.fetchedRequestController performFetch:NULL];
     theJobNameArray = self.fetchedRequestController.fetchedObjects;
-
+    //    NSLog(@"fetch in work data source %@", theJobNameArray);
     return theJobNameArray;
 }
 
