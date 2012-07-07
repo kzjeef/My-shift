@@ -12,6 +12,8 @@
     unsigned int day : 5;
     unsigned int year : 15;
   } a;
+
+  NSCalendar *cachedCalendar;
 }
 
 + (KalDate *)dateForDay:(unsigned int)day month:(unsigned int)month year:(unsigned int)year;

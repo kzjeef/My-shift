@@ -44,6 +44,7 @@ static KalDate *today;
     a.day = day;
     a.month = month;
     a.year = year;
+    cachedCalendar = [NSCalendar currentCalendar];
   }
   return self;
 }
@@ -58,7 +59,7 @@ static KalDate *today;
   c.day = a.day;
   c.month = a.month;
   c.year = a.year;
-  return [[NSCalendar currentCalendar] dateFromComponents:c];
+  return [cachedCalendar dateFromComponents:c];
 }
 
 - (BOOL)isToday { return [self isEqual:today]; }

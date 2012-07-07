@@ -8,6 +8,9 @@
 #import "KalPrivate.h"
 
 @interface KalLogic ()
+{
+    NSCalendar *cacheCalendar;
+}
 - (void)moveToMonthForDate:(NSDate *)date;
 - (void)recalculateVisibleDays;
 - (NSUInteger)numberOfDaysInPreviousPartialWeek;
@@ -35,6 +38,7 @@
   if ((self = [super init])) {
     monthAndYearFormatter = [[NSDateFormatter alloc] init];
     [monthAndYearFormatter setDateFormat:@"LLLL yyyy"];
+      cacheCalendar = [NSCalendar currentCalendar];
     [self moveToMonthForDate:date];
   }
   return self;
@@ -47,8 +51,8 @@
 
 - (void)moveToMonthForDate:(NSDate *)date
 {
-  self.baseDate = [date cc_dateByMovingToFirstDayOfTheMonth];
-  [self recalculateVisibleDays];
+    self.baseDate = [date cc_dateByMovingToFirstDayOfTheMonthWithCalendar:cacheCalendar];
+    [self recalculateVisibleDays];
 }
 
 - (void)retreatToPreviousMonth

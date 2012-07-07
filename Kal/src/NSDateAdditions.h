@@ -15,6 +15,9 @@
 - (NSDate *)cc_dateByMovingToEndOfDayWithCalender:(NSCalendar *)cal;
 - (NSDate *)cc_dateByMovingToBeginningOfDayWithCalender:(NSCalendar *) cal;
 - (NSDate *)cc_dateByMovingToFirstDayOfTheMonth;
+- (NSDate *)cc_dateByMovingToFirstDayOfTheMonthWithCalendar:(NSCalendar *)cal;
+- (NSDate *)cc_dateByMovingToNextOrBackwardsFewDays: (int) days withCalender:(NSCalendar *)cal;
+- (NSDate *)cc_dateByMovingToNextDayWithCalender: (NSCalendar *)cal;
 - (NSDate *)cc_dateByMovingToFirstDayOfThePreviousMonth;
 - (NSDate *)cc_dateByMovingToFirstDayOfTheFollowingMonth;
 - (NSDateComponents *)cc_componentsForMonthDayAndYear;

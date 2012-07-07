@@ -114,7 +114,8 @@ extern const CGSize kTileSize;
 
               
               if (showText && showText.intValue == 1) {
-                  UIFont *fontDrawText = [UIFont systemFontOfSize:13.0];
+                  // bold can see this...
+                  UIFont *fontDrawText = [UIFont boldSystemFontOfSize:13.0];
                   [self drawText:text withCtx:ctx atPoint:CGPointMake(iconRect.origin.x, margin) withFont:fontDrawText withColor:iconTextColor];
               } else {
                   UIImage *img = [dict objectForKey:KAL_TILE_ICON_IMAGE_KEY];
