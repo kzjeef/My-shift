@@ -123,6 +123,10 @@
     [self shiftConfigChooseRightShiftConfigure];
 }
 
+- (void) SSItemPickerChoosewithController: (SSShiftWorkdayConfigTVC *) sender itemIndex: (NSInteger) index
+{
+}
+
 - (void) SSShiftTypePickerClientFinishConfigure: (id) sender
 {
     [self.pickDelegate SSItemPickerChoosewithController:self itemIndex:self.theJob.jobShiftType.intValue - 1];

@@ -68,6 +68,8 @@
 {
     [super viewDidLoad];
 
+    self.title = NSLocalizedString(@"Settings", "Settings");
+
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = YES;
  

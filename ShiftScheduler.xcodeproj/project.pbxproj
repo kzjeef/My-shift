@@ -18,7 +18,6 @@
 		29009FE1159F4AB600A1588E /* DatePickerViewController2.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FDA159F4AB600A1588E /* DatePickerViewController2.h */; };
 		29009FE2159F4AB600A1588E /* DatePickerViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FDB159F4AB600A1588E /* DatePickerViewController2.m */; };
 		29009FE3159F4AB600A1588E /* DatePickerViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29009FDC159F4AB600A1588E /* DatePickerViewController2.xib */; };
-		29009FE4159F4AB600A1588E /* NameEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29009FDD159F4AB600A1588E /* NameEditCell.xib */; };
 		29009FE5159F4AB600A1588E /* ShfitChangeList.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FDE159F4AB600A1588E /* ShfitChangeList.h */; };
 		29009FE6159F4AB600A1588E /* ShfitChangeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FDF159F4AB600A1588E /* ShfitChangeList.m */; };
 		29009FE7159F4AB600A1588E /* ShfitChangeList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29009FE0159F4AB600A1588E /* ShfitChangeList.xib */; };
@@ -182,7 +181,6 @@
 		29009FDA159F4AB600A1588E /* DatePickerViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickerViewController2.h; path = ShiftScheduler/DatePickerViewController2.h; sourceTree = "<group>"; };
 		29009FDB159F4AB600A1588E /* DatePickerViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickerViewController2.m; path = ShiftScheduler/DatePickerViewController2.m; sourceTree = "<group>"; };
 		29009FDC159F4AB600A1588E /* DatePickerViewController2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DatePickerViewController2.xib; path = ShiftScheduler/DatePickerViewController2.xib; sourceTree = "<group>"; };
-		29009FDD159F4AB600A1588E /* NameEditCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NameEditCell.xib; path = ShiftScheduler/NameEditCell.xib; sourceTree = "<group>"; };
 		29009FDE159F4AB600A1588E /* ShfitChangeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShfitChangeList.h; path = ShiftScheduler/ShfitChangeList.h; sourceTree = "<group>"; };
 		29009FDF159F4AB600A1588E /* ShfitChangeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShfitChangeList.m; path = ShiftScheduler/ShfitChangeList.m; sourceTree = "<group>"; };
 		29009FE0159F4AB600A1588E /* ShfitChangeList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShfitChangeList.xib; path = ShiftScheduler/ShfitChangeList.xib; sourceTree = "<group>"; };
@@ -486,7 +484,6 @@
 				29009FDA159F4AB600A1588E /* DatePickerViewController2.h */,
 				29009FDB159F4AB600A1588E /* DatePickerViewController2.m */,
 				29009FDC159F4AB600A1588E /* DatePickerViewController2.xib */,
-				29009FDD159F4AB600A1588E /* NameEditCell.xib */,
 				29009FDE159F4AB600A1588E /* ShfitChangeList.h */,
 				29009FDF159F4AB600A1588E /* ShfitChangeList.m */,
 				29009FE0159F4AB600A1588E /* ShfitChangeList.xib */,
@@ -910,7 +907,6 @@
 				29009FCF159F4A4D00A1588E /* SSSettingTVC.xib in Resources */,
 				29009FD7159F4AA100A1588E /* ShiftChangeAddVC.xib in Resources */,
 				29009FE3159F4AB600A1588E /* DatePickerViewController2.xib in Resources */,
-				29009FE4159F4AB600A1588E /* NameEditCell.xib in Resources */,
 				29009FE7159F4AB600A1588E /* ShfitChangeList.xib in Resources */,
 				293B64F115A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png in Resources */,
 				293B64F415A3BF8400D0C4B5 /* tab-calendar.png in Resources */,
