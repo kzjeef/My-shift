@@ -24,6 +24,14 @@
 		29009FE7159F4AB600A1588E /* ShfitChangeList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29009FE0159F4AB600A1588E /* ShfitChangeList.xib */; };
 		29009FEA159F4AE500A1588E /* UIColor+HexCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FE8159F4AE500A1588E /* UIColor+HexCoding.h */; };
 		29009FEB159F4AE500A1588E /* UIColor+HexCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FE9159F4AE500A1588E /* UIColor+HexCoding.m */; };
+		2916127A15A613F30031F78C /* calendar-blue-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916127815A613F30031F78C /* calendar-blue-57x57.png */; };
+		2916127B15A613F30031F78C /* calendar-blue-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916127915A613F30031F78C /* calendar-blue-114x114.png */; };
+		2916127E15A627E20031F78C /* calendar-simple-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916127C15A627E20031F78C /* calendar-simple-57x57.png */; };
+		2916127F15A627E20031F78C /* calendar-simple-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916127D15A627E20031F78C /* calendar-simple-114x114.png */; };
+		2916128115A6280A0031F78C /* calendar-simple-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128015A6280A0031F78C /* calendar-simple-57x57.png */; };
+		2916128315A628130031F78C /* calendar-simple-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128215A628130031F78C /* calendar-simple-114x114.png */; };
+		2916128515A62A6B0031F78C /* calendar-simple-blue-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */; };
+		2916128715A62AC20031F78C /* calendar-simple-blue-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */; };
 		2929A44414D04B360059728D /* InfColorBarPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 2929A43614D04B360059728D /* InfColorBarPicker.h */; };
 		2929A44514D04B360059728D /* InfColorBarPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2929A43714D04B360059728D /* InfColorBarPicker.m */; };
 		2929A44614D04B360059728D /* InfColorIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2929A43814D04B360059728D /* InfColorIndicatorView.h */; };
@@ -64,8 +72,12 @@
 		294E2903148B302700E6ED45 /* ShiftDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 294E2901148B302700E6ED45 /* ShiftDay.m */; };
 		2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECD14F9076400DF1CCF /* AVFoundation.framework */; };
 		2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */; };
+		2980E9E915A7333900AA429C /* calendar-simple-blue-2-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980E9E815A7333900AA429C /* calendar-simple-blue-2-57x57.png */; };
+		2980E9EB15A7394E00AA429C /* icon-simple-3-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980E9EA15A7394E00AA429C /* icon-simple-3-114x114.png */; };
 		299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */; };
 		299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */; };
+		29A54D2415A724A900CACD03 /* Logo square-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 29A54D2315A724A900CACD03 /* Logo square-114x114.png */; };
+		29A54D2615A7322E00CACD03 /* calendar-simple-blue-2-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 29A54D2515A7322E00CACD03 /* calendar-simple-blue-2-114x114.png */; };
 		29AEBD691554146F0010F27D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29ECA45814B0514E00B3832D /* SenTestingKit.framework */; };
 		29AEBD6A1554146F0010F27D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E1B51472C1D700DB2E1F /* UIKit.framework */; };
 		29AEBD6B1554146F0010F27D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E1B71472C1D700DB2E1F /* Foundation.framework */; };
@@ -188,6 +200,14 @@
 		2900DEC11483E44E00E588EE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		2900DEC21483E44E00E588EE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2900DEC31483EEA100E588EE /* ShiftSchedulerModelBasic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShiftSchedulerModelBasic.xcdatamodel; sourceTree = "<group>"; };
+		2916127815A613F30031F78C /* calendar-blue-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendar-blue-57x57.png"; path = "Resources/icons/calendar-blue-57x57.png"; sourceTree = "<group>"; };
+		2916127915A613F30031F78C /* calendar-blue-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendar-blue-114x114.png"; path = "Resources/icons/calendar-blue-114x114.png"; sourceTree = "<group>"; };
+		2916127C15A627E20031F78C /* calendar-simple-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendar-simple-57x57.png"; path = "Resources/icons/calendar-simple-57x57.png"; sourceTree = "<group>"; };
+		2916127D15A627E20031F78C /* calendar-simple-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendar-simple-114x114.png"; path = "Resources/icons/calendar-simple-114x114.png"; sourceTree = "<group>"; };
+		2916128015A6280A0031F78C /* calendar-simple-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-57x57.png"; sourceTree = "<group>"; };
+		2916128215A628130031F78C /* calendar-simple-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-114x114.png"; sourceTree = "<group>"; };
+		2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-57x57.png"; sourceTree = "<group>"; };
+		2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-114x114.png"; sourceTree = "<group>"; };
 		2929A43614D04B360059728D /* InfColorBarPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfColorBarPicker.h; path = ColorPicker/InfColorPicker/InfColorBarPicker.h; sourceTree = "<group>"; };
 		2929A43714D04B360059728D /* InfColorBarPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfColorBarPicker.m; path = ColorPicker/InfColorPicker/InfColorBarPicker.m; sourceTree = "<group>"; };
 		2929A43814D04B360059728D /* InfColorIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfColorIndicatorView.h; path = ColorPicker/InfColorPicker/InfColorIndicatorView.h; sourceTree = "<group>"; };
@@ -231,8 +251,12 @@
 		294E2901148B302700E6ED45 /* ShiftDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftDay.m; sourceTree = "<group>"; };
 		2968BECD14F9076400DF1CCF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2980E9E815A7333900AA429C /* calendar-simple-blue-2-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-2-57x57.png"; sourceTree = "<group>"; };
+		2980E9EA15A7394E00AA429C /* icon-simple-3-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-simple-3-114x114.png"; sourceTree = "<group>"; };
 		299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftWorkdayConfigTVC.h; sourceTree = "<group>"; };
 		299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftWorkdayConfigTVC.m; sourceTree = "<group>"; };
+		29A54D2315A724A900CACD03 /* Logo square-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo square-114x114.png"; sourceTree = "<group>"; };
+		29A54D2515A7322E00CACD03 /* calendar-simple-blue-2-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-2-114x114.png"; sourceTree = "<group>"; };
 		29AEBD681554146F0010F27D /* OneJobModuleTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneJobModuleTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29AEBD6E1554146F0010F27D /* OneJobModuleTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OneJobModuleTest-Info.plist"; sourceTree = "<group>"; };
 		29AEBD701554146F0010F27D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -440,6 +464,10 @@
 		293B64EC15A3BF5000D0C4B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2916127C15A627E20031F78C /* calendar-simple-57x57.png */,
+				2916127D15A627E20031F78C /* calendar-simple-114x114.png */,
+				2916127815A613F30031F78C /* calendar-blue-57x57.png */,
+				2916127915A613F30031F78C /* calendar-blue-114x114.png */,
 				293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */,
 				293B650115A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png */,
 				293B64F915A3C64900D0C4B5 /* addButton.png */,
@@ -593,6 +621,14 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
+				2980E9EA15A7394E00AA429C /* icon-simple-3-114x114.png */,
+				2980E9E815A7333900AA429C /* calendar-simple-blue-2-57x57.png */,
+				29A54D2515A7322E00CACD03 /* calendar-simple-blue-2-114x114.png */,
+				29A54D2315A724A900CACD03 /* Logo square-114x114.png */,
+				2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */,
+				2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */,
+				2916128215A628130031F78C /* calendar-simple-114x114.png */,
+				2916128015A6280A0031F78C /* calendar-simple-57x57.png */,
 				293B64EA15A335A900D0C4B5 /* config.h */,
 				293B64EC15A3BF5000D0C4B5 /* Resources */,
 				29D6A524159CB4A200AC6103 /* Kal.bundle */,
@@ -905,6 +941,18 @@
 				293B64FB15A3C64900D0C4B5 /* addButton.png in Resources */,
 				293B64FE15A3C7D300D0C4B5 /* GSFacesInfo.png in Resources */,
 				293B650215A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png in Resources */,
+				2916127A15A613F30031F78C /* calendar-blue-57x57.png in Resources */,
+				2916127B15A613F30031F78C /* calendar-blue-114x114.png in Resources */,
+				2916127E15A627E20031F78C /* calendar-simple-57x57.png in Resources */,
+				2916127F15A627E20031F78C /* calendar-simple-114x114.png in Resources */,
+				2916128115A6280A0031F78C /* calendar-simple-57x57.png in Resources */,
+				2916128315A628130031F78C /* calendar-simple-114x114.png in Resources */,
+				2916128515A62A6B0031F78C /* calendar-simple-blue-57x57.png in Resources */,
+				2916128715A62AC20031F78C /* calendar-simple-blue-114x114.png in Resources */,
+				29A54D2415A724A900CACD03 /* Logo square-114x114.png in Resources */,
+				29A54D2615A7322E00CACD03 /* calendar-simple-blue-2-114x114.png in Resources */,
+				2980E9E915A7333900AA429C /* calendar-simple-blue-2-57x57.png in Resources */,
+				2980E9EB15A7394E00AA429C /* icon-simple-3-114x114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -135,9 +135,10 @@ enum {
     
     [self.window makeKeyAndVisible];
     
+#if 0
     if ([self.profileView profileuNumber] == 0)
         [self performSelector:@selector(popNotifyZeroProfile:) withObject:nil afterDelay:1];
-    
+#endif
     
     // default perferences
     
@@ -397,6 +398,9 @@ enum {
     
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    
+    
+    
     if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error])
     {
         /*
