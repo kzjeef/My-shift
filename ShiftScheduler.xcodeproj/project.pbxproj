@@ -1275,7 +1275,7 @@
 				2900DEC31483EEA100E588EE /* ShiftSchedulerModelBasic.xcdatamodel */,
 				29B9E1CA1472C1D700DB2E1F /* ShiftScheduler.xcdatamodel */,
 			);
-			currentVersion = 29B9E1CA1472C1D700DB2E1F /* ShiftScheduler.xcdatamodel */;
+			currentVersion = 29F6B55D15A4C40500FAEA1C /* ShiftScheduler 5.xcdatamodel */;
 			path = ShiftScheduler.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

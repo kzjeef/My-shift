@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="872" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="OneJob" representedClassName="OneJob">
         <attribute name="jobDescription" optional="YES" attributeType="String"/>
         <attribute name="jobEnable" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="jobEveryDayLengthSec" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="jobEverydayStartTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="jobFinishDate" optional="YES" attributeType="Date"/>
-        <attribute name="jobFreeJumpArrayArchive" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="jobFreeJumpCycle" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="jobGeneratedData" optional="YES" attributeType="Binary"/>
         <attribute name="jobName" optional="YES" attributeType="String"/>
         <attribute name="jobOffDays" optional="YES" attributeType="Integer 16" defaultValueString="0"/>
@@ -17,12 +15,7 @@
         <attribute name="jobOnIconID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jobRemindBeforeOff" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="jobRemindBeforeWork" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="jobShiftType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="jobShowTextInCalendar" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="jobStartDate" optional="YES" attributeType="Date"/>
-        <attribute name="jobXShiftCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="jobXShiftRevertOrder" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="jobXShiftStartShift" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="shiftdays" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ShiftDay" inverseName="whatJob" inverseEntity="ShiftDay" syncable="YES"/>
     </entity>
     <entity name="ShiftDay" representedClassName="ShiftDay" syncable="YES">
@@ -34,7 +27,7 @@
         <relationship name="whatJob" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="OneJob" inverseName="shiftdays" inverseEntity="OneJob" syncable="YES"/>
     </entity>
     <elements>
-        <element name="OneJob" positionX="160" positionY="192" width="128" height="390"/>
+        <element name="OneJob" positionX="160" positionY="192" width="128" height="285"/>
         <element name="ShiftDay" positionX="-560" positionY="207" width="128" height="120"/>
     </elements>
 </model>
