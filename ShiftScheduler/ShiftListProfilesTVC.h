@@ -24,21 +24,23 @@
 
 @interface ShiftListProfilesTVC : UITableViewController <NSFetchedResultsControllerDelegate, ProfileViewDelegate>
 {
-	NSManagedObjectContext *managedObjectContext;
-	NSManagedObjectContext *addingManagedObjectContext;
-	NSFetchedResultsController *fetchedResultsController;
-	UIBarButtonItem *addButton;
-	UIBarButtonItem *oldLeftItem;
+    NSManagedObjectContext *managedObjectContext;
+    NSManagedObjectContext *addingManagedObjectContext;
+    NSFetchedResultsController *fetchedResultsController;
+    UIBarButtonItem *addButton;
+    UIBarButtonItem *oldLeftItem;
     UIImage *plusImage;
+    NSDateFormatter *timeFormatter;
     id <ProfileEditFinishDelegate> parentViewDelegate;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSManagedObjectContext *addingManagedObjectContext;
-@property (nonatomic, strong) NSFetchedResultsController
-*fetchedResultsController;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
-@property (strong, nonatomic)     id <ProfileEditFinishDelegate> parentViewDelegate;
+@property (strong, nonatomic) NSDateFormatter *timeFormatter;
+
+@property (strong, nonatomic) id <ProfileEditFinishDelegate> parentViewDelegate;
 
 - (id)initWithManagedContext:(NSManagedObjectContext *)context;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath ;

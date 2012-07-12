@@ -77,7 +77,6 @@ enum JobShiftAlgoType {
 
 - (NSArray *) returnWorkdaysWithInStartDate:(NSDate *) startDate endDate: (NSDate *) endDate;
 - (BOOL) isDayWorkingDay:(NSDate *)theDate;
-- (NSInteger)daysBetweenDateV2:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime;
 
 - (UIColor *) iconColor;
 - (void) trydDfaultSetting;

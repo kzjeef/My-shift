@@ -14,6 +14,9 @@
 #import "SSSettingTVC.h"
 #import "SSAlertController.h"
 
+@class SSShareProfileListViewController;
+
+@class SSMailAgent;
 
 @interface SSAppDelegate : UIResponder <UIApplicationDelegate, 
 UIActionSheetDelegate,UIAlertViewDelegate,
@@ -27,9 +30,11 @@ ProfileEditFinishDelegate>
     ShfitChangeList *changelistVC;
     SSKalDelegate *sskalDelegate;
     SSSettingTVC *settingVC;
+    SSShareProfileListViewController *shareProfilesVC;
     UITabBarController *tabBarVC;
     UIActionSheet *rightAS;
     UIAlertView  *alertNoProfile;
+    SSMailAgent *mailAgent;
     id dataSource;
     
 }
@@ -48,6 +53,7 @@ ProfileEditFinishDelegate>
 @property (nonatomic, strong) ShfitChangeList *changelistVC;
 @property (nonatomic, strong) UIActionSheet *rightAS;
 @property (nonatomic, strong) SSKalDelegate *sskalDelegate;
+@property (nonatomic, strong) SSShareProfileListViewController *shareProfilesVC;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

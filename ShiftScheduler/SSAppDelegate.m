@@ -10,6 +10,8 @@
 #import "SSAppDelegate.h"
 #import "WorkdayDataSource.h"
 #import "SSKalDelegate.h"
+#import "SSMailAgent.h"
+#import "SSShareProfileListViewController.h"
 
 #import "Kal.h"
 
@@ -23,13 +25,14 @@
 // --
 @synthesize profileView;
 @synthesize navController;
-@synthesize profileNVC, rightAS, changelistVC, settingVC, sskalDelegate;
+@synthesize profileNVC, rightAS, changelistVC, settingVC, sskalDelegate, shareProfilesVC;
 
 enum {
     TAG_MENU,
     TAG_ZERO_PROFILE,
 };
 
+#define SHARE_STRING NSLocalizedString(@"Share", "share to other")
 #define CREATE_PROFILE_PROMPT NSLocalizedString(@"You don't have any shift profile yet. Do you want to create one? ", "prompt of create profile title")
 #define CREATE_PROFILE_NO  NSLocalizedString(@"No,Thanks", "no create one")
 #define CREATE_PROFILE_YES  NSLocalizedString(@"Create Profile", "create one")
@@ -76,54 +79,69 @@ enum {
     self.navController = navController;
     self.navController.modalPresentationStyle = UIModalPresentationFullScreen;
 
-    alertNoProfile = [[UIAlertView alloc] initWithTitle:nil message:CREATE_PROFILE_PROMPT delegate:self cancelButtonTitle:CREATE_PROFILE_NO otherButtonTitles:CREATE_PROFILE_YES, nil];
+    alertNoProfile = [[UIAlertView alloc] initWithTitle:nil message:CREATE_PROFILE_PROMPT
+                                               delegate:self cancelButtonTitle:CREATE_PROFILE_NO
+                                      otherButtonTitles:CREATE_PROFILE_YES, nil];
     alertNoProfile.tag = TAG_ZERO_PROFILE;
 
     alertC = [[SSAlertController alloc] initWithManagedContext:self.managedObjectContext];
     
     UINavigationController *help = [[UINavigationController alloc] init];
 
-#if !(CONFIG_MAIN_UI_USE_TAB_BAR_CONTROLLER)    
-    // Setup Action Sheet
-    self.rightAS = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel") destructiveButtonTitle:nil 
-                                 otherButtonTitles:
-#if CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
-               NSLocalizedString(@"change shift" , "change shift"), 
-#endif
-               NSLocalizedString(@"Management Shift", "shift management view"),
-               NSLocalizedString(@"Setting", "setting in action shift"),
-               nil];
+    mailAgent = [[SSMailAgent alloc] init];
+    
+    // Setup Action Sheet, share button.
+    self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
+                                      cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
+                                 destructiveButtonTitle:nil 
+                                      otherButtonTitles:
+                                          NSLocalizedString(@"Mail", "share by mail"),
+                                          NSLocalizedString(@"ThinkNote", "share by thinknote"),
+                                          nil];
     self.rightAS.tag = TAG_MENU;
-    UIBarButtonItem *settingItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Config", "config") style:UIBarButtonItemStylePlain target:self action:@selector(showRightActionSheet)];
-    [kal.navigationItem setRightBarButtonItem:settingItem];
-#else
+    UIBarButtonItem *shareItem = [[UIBarButtonItem alloc]
+                                     initWithBarButtonSystemItem: UIBarButtonSystemItemAction
+                                                          target:self action:@selector(showRightActionSheet)];
+    [kal.navigationItem setRightBarButtonItem:shareItem];
     // add tab bar vc related things.
     tabBarVC = [[UITabBarController alloc] init];
     NSString *iconPath = [[NSBundle mainBundle] pathForResource:@"tab-calendar" ofType:@"png"];
-    self.navController.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Calendar", "calendar in tab bar")
-                                                                  image:[UIImage imageWithContentsOfFile:iconPath] tag:1];
+    self.navController.tabBarItem = [[UITabBarItem alloc]
+                                        initWithTitle:NSLocalizedString(@"Calendar", "calendar in tab bar")
+                                                image:[UIImage imageWithContentsOfFile:iconPath] tag:1];
     [tabBarVC addChildViewController:self.navController];
     
-    iconPath = [[NSBundle mainBundle] pathForResource:@"GKTabbarIconRequestsInactive@2x~iphone" ofType:@"png"];
-    self.profileView.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Shifts", "shifts works in tabbar") 
-                                                                image:[UIImage imageWithContentsOfFile:iconPath] tag:2];
-    UINavigationController *profileNVCC = [[UINavigationController alloc] initWithRootViewController:self.profileView];
+
+    iconPath = [[NSBundle mainBundle] pathForResource:@"GKTabbarIconRequestsInactive@2x~iphone"
+                                               ofType:@"png"];
+    self.profileView.tabBarItem = [[UITabBarItem alloc]
+                                      initWithTitle:NSLocalizedString(@"Shifts", "shifts works in tabbar") 
+                                              image:[UIImage imageWithContentsOfFile:iconPath] tag:2];
+
+
+    UINavigationController *profileNVCC = [[UINavigationController alloc]
+                                              initWithRootViewController:self.profileView];
     [tabBarVC addChildViewController:profileNVCC];
     
+
     iconPath = [[NSBundle mainBundle] pathForResource:@"IL_SmartPlaylistIcon" ofType:@"png"];
-    self.settingVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Settings", "Settings")
-                                                              image:[UIImage imageWithContentsOfFile:iconPath] tag:3];
-    UINavigationController *settingNVC = [[UINavigationController alloc] initWithRootViewController:self.settingVC];
+    self.settingVC.tabBarItem = [[UITabBarItem alloc]
+                                    initWithTitle:NSLocalizedString(@"Settings", "Settings")
+                                            image:[UIImage imageWithContentsOfFile:iconPath] tag:3];
+
+
+    UINavigationController *settingNVC = [[UINavigationController alloc]
+                                             initWithRootViewController:self.settingVC];
     [tabBarVC addChildViewController:settingNVC];
     
-
     iconPath = [[NSBundle mainBundle] pathForResource:@"GSFacesInfo" ofType:@"png"];
     help.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Tips", "tips in tabbar")
                                                     image:[UIImage imageWithContentsOfFile:iconPath] tag:4];
+
+    
     //[tabBarVC addChildViewController:help];
     // help interface
     // [tabBarVC addChildViewController:self.helpView];
-#endif
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
@@ -169,6 +187,14 @@ enum {
     [self.rightAS showFromBarButtonItem: kal.navigationItem.rightBarButtonItem animated:YES];
 }
 
+- (SSShareProfileListViewController *)shareProfilesVC
+{
+    if (shareProfilesVC == nil) {
+        shareProfilesVC =  [[SSShareProfileListViewController alloc] initWithManagedContext:self.managedObjectContext];
+    }
+        
+    return shareProfilesVC;
+}
 
 - (void)showManageView
 {
@@ -223,32 +249,19 @@ enum {
 - (void)actionSheet:(UIAlertView *)sender clickedButtonAtIndex:(NSInteger)index
 {
     [alertNoProfile dismissWithClickedButtonIndex:alertNoProfile.cancelButtonIndex animated:NO];
-     
-    
-#if CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
-#define MANAGEMENT_START_OFFSET 1
-#else
-#define MANAGEMENT_START_OFFSET 0
-#endif
     switch (index) {
-            
-#if CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
-        case 0:
-            [self showShiftChangeView];
-            // change shift
-            
-            break;
-#endif
-        case MANAGEMENT_START_OFFSET:
-            // manage shift
-            [self showManageView];
-            break;
-        case MANAGEMENT_START_OFFSET + 1:
-            // setting view
-            [self showSettingView];
-            break;
-        default:
-            break;
+
+    case 0:
+    [mailAgent composeMailWithKalViewController:kal 
+                                        withNVC:self.navController
+                            withShareProfilesVC:self.shareProfilesVC];
+        break;
+    case 1:
+        // ThinkNote
+        //        [self sendCalendarViewByThinkNote];
+        break;
+    default:
+        break;
     }
     
 }
@@ -261,7 +274,8 @@ enum {
 - (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
     //    NSString *itemName = [notif.userInfo objectForKe	y:ToDoItemKey]
     if (app.applicationState == UIApplicationStateActive) {
-        [[[UIAlertView alloc] initWithTitle:notif.alertBody message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+        [[[UIAlertView alloc] initWithTitle:notif.alertBody message:nil delegate:nil
+                          cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
         [alertC playAlarmSound];
     }
 }

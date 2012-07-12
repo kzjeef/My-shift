@@ -17,7 +17,7 @@
 @implementation ShiftListProfilesTVC
 
 @synthesize managedObjectContext, addingManagedObjectContext, fetchedResultsController;
-@synthesize parentViewDelegate;
+@synthesize parentViewDelegate, timeFormatter;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -68,6 +68,14 @@
     }
 }
 
+- (NSDateFormatter *) timeFormatter
+{
+    if (timeFormatter == nil) {
+        timeFormatter = [[NSDateFormatter alloc] init];
+        timeFormatter.timeStyle = NSDateFormatterShortStyle;
+    }
+    return timeFormatter;
+}
 
 - (IBAction)insertNewProfile:(id) sender
 {
@@ -231,27 +239,10 @@
     }
     self.fetchedResultsController.delegate = self;
 
-    NSLog(@"Shifts:%@\n", self.fetchedResultsController.fetchedObjects);
     plusImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"addButton" ofType:@"png"]];
     
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-		
-		// Delete the managed object.
-		NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
-		[context deleteObject:[fetchedResultsController objectAtIndexPath:indexPath]];
-		
-		NSError *error;
-		if (![context save:&error]) {
-			// Update to handle the error appropriately.
-			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-			exit(-1);  // Fail
-		}
-    }   
-}
 
 
 - (void)viewDidUnload
@@ -289,6 +280,7 @@
 }
 
 #pragma mark - Table view data source
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -330,10 +322,8 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (indexPath.section == 1) // never reuse for section 2
-        cell = nil;
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier]; 
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier]; 
     }
     
     // Configure the cell...
@@ -341,6 +331,8 @@
         cell.imageView.image = plusImage;
         cell.textLabel.text = NSLocalizedString(@"Adding new shift...", "add new shift");
         cell.textLabel.textColor = [UIColor colorWithHexString:@"283DA0"];
+
+        
     } else {
         [self configureCell:cell atIndexPath:indexPath];
     }
@@ -386,6 +378,24 @@
     return YES;
 }
 */
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+		
+		// Delete the managed object.
+		NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
+		[context deleteObject:[fetchedResultsController objectAtIndexPath:indexPath]];
+		
+		NSError *error;
+		if (![context save:&error]) {
+			// Update to handle the error appropriately.
+			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+			exit(-1);  // Fail
+		}
+    }   
+}
+
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
@@ -443,6 +453,11 @@
         OneJob *j = t;
         cell.textLabel.text = j.jobName;
         cell.imageView.image = j.iconImage;
+
+        if ([j getJobEverydayStartTime] != Nil)
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@",
+					      [j jobEverydayStartTimeWithFormatter:self.timeFormatter],
+					      [j jobEverydayOffTimeWithFormatter:self.timeFormatter]];
         
         UISwitch *theSwitch;
         CGRect frame = CGRectMake(200, 8.0, 120.0, 27.0);
@@ -486,8 +501,6 @@
     [self.fetchedResultsController performFetch:NULL];
     [self.tableView reloadData];
 }
-
-
 
 - (void) didChangeProfile :(ShiftProfileChangeViewController *) addController
 				didFinishWithSave:(BOOL) finishWithSave

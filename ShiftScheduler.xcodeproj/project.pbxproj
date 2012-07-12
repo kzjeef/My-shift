@@ -125,6 +125,11 @@
 		29DCB8E115A878700095C71D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 29DCB8DD15A873F40095C71D /* Default@2x.png */; };
 		29E339D414CA955A0036EAED /* ProfileIconPickerDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E339D214CA955A0036EAED /* ProfileIconPickerDataSource.h */; };
 		29E339D514CA955A0036EAED /* ProfileIconPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E339D314CA955A0036EAED /* ProfileIconPickerDataSource.m */; };
+		29E6D7EE15ADAC8200235123 /* SSMailAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E6D7EC15ADAC8200235123 /* SSMailAgent.h */; };
+		29E6D7EF15ADAC8200235123 /* SSMailAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E6D7ED15ADAC8200235123 /* SSMailAgent.m */; };
+		29E6D7F115ADACCE00235123 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E6D7F015ADACCE00235123 /* MessageUI.framework */; };
+		29E6D7F915ADC63100235123 /* SSShareProfileListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E6D7F715ADC63100235123 /* SSShareProfileListViewController.h */; };
+		29E6D7FA15ADC63100235123 /* SSShareProfileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E6D7F815ADC63100235123 /* SSShareProfileListViewController.m */; };
 		29E98CA314EFD8270048AF49 /* SCAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98C9914EFD8270048AF49 /* SCAnimation.h */; };
 		29E98CA414EFD8270048AF49 /* SCAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E98C9A14EFD8270048AF49 /* SCAnimation.m */; };
 		29E98CA514EFD8270048AF49 /* SCModalPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98C9B14EFD8270048AF49 /* SCModalPickerView.h */; };
@@ -293,6 +298,11 @@
 		29DCB8DF15A878590095C71D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		29E339D214CA955A0036EAED /* ProfileIconPickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileIconPickerDataSource.h; sourceTree = "<group>"; };
 		29E339D314CA955A0036EAED /* ProfileIconPickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileIconPickerDataSource.m; sourceTree = "<group>"; };
+		29E6D7EC15ADAC8200235123 /* SSMailAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSMailAgent.h; path = ShiftScheduler/SSMailAgent.h; sourceTree = "<group>"; };
+		29E6D7ED15ADAC8200235123 /* SSMailAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSMailAgent.m; path = ShiftScheduler/SSMailAgent.m; sourceTree = "<group>"; };
+		29E6D7F015ADACCE00235123 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		29E6D7F715ADC63100235123 /* SSShareProfileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSShareProfileListViewController.h; path = ShiftScheduler/SSShareProfileListViewController.h; sourceTree = "<group>"; };
+		29E6D7F815ADC63100235123 /* SSShareProfileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSShareProfileListViewController.m; path = ShiftScheduler/SSShareProfileListViewController.m; sourceTree = "<group>"; };
 		29E98C9914EFD8270048AF49 /* SCAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAnimation.h; sourceTree = "<group>"; };
 		29E98C9A14EFD8270048AF49 /* SCAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAnimation.m; sourceTree = "<group>"; };
 		29E98C9B14EFD8270048AF49 /* SCModalPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCModalPickerView.h; sourceTree = "<group>"; };
@@ -342,6 +352,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29E6D7F115ADACCE00235123 /* MessageUI.framework in Frameworks */,
 				29D6A550159CB79F00AC6103 /* libKal.a in Frameworks */,
 				2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */,
 				2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */,
@@ -586,6 +597,7 @@
 		29AEBDC8156136830010F27D /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				29E6D7F215ADC59A00235123 /* Share */,
 				293B64EA15A335A900D0C4B5 /* config.h */,
 				2935514914E2E5EB004D8FAC /* SettingView */,
 				299D8D0D147948B900E20DAE /* ProfileView */,
@@ -607,6 +619,7 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
+				29E6D7F015ADACCE00235123 /* MessageUI.framework */,
 				293B64EC15A3BF5000D0C4B5 /* Resources */,
 				29D6A524159CB4A200AC6103 /* Kal.bundle */,
 				29AEBDC8156136830010F27D /* GUI */,
@@ -678,6 +691,17 @@
 				29D6A513159CB37000AC6103 /* libKal.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		29E6D7F215ADC59A00235123 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				29E6D7EC15ADAC8200235123 /* SSMailAgent.h */,
+				29E6D7ED15ADAC8200235123 /* SSMailAgent.m */,
+				29E6D7F715ADC63100235123 /* SSShareProfileListViewController.h */,
+				29E6D7F815ADC63100235123 /* SSShareProfileListViewController.m */,
+			);
+			name = Share;
 			sourceTree = "<group>";
 		};
 		29E98C9514EFD78F0048AF49 /* SCKit */ = {
@@ -800,6 +824,8 @@
 				29009FEA159F4AE500A1588E /* UIColor+HexCoding.h in Headers */,
 				293B64EB15A335AA00D0C4B5 /* config.h in Headers */,
 				29DCB8DA15A7C79C0095C71D /* NSDateAdditions.h in Headers */,
+				29E6D7EE15ADAC8200235123 /* SSMailAgent.h in Headers */,
+				29E6D7F915ADC63100235123 /* SSShareProfileListViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,6 +1046,8 @@
 				29009FE6159F4AB600A1588E /* ShfitChangeList.m in Sources */,
 				29009FEB159F4AE500A1588E /* UIColor+HexCoding.m in Sources */,
 				29DCB8DC15A7C8730095C71D /* NSDateAdditions.m in Sources */,
+				29E6D7EF15ADAC8200235123 /* SSMailAgent.m in Sources */,
+				29E6D7FA15ADC63100235123 /* SSShareProfileListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
