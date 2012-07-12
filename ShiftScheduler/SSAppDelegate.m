@@ -49,6 +49,8 @@ enum {
      * If your application requires an arbitrary starting date, use -[KalViewController initWithSelectedDate:]
      * instead of -[KalViewController init].
      */
+    
+    // 1. Kal view controller init.
     kal = [[KalViewController alloc] init];
     kal.title = NSLocalizedString(@"Shift Scheduler", "application title");
     
@@ -62,47 +64,69 @@ enum {
     kal.vcdelegate = self.sskalDelegate;
 
     
+    // 2. shift profile list init functions.
     self.profileView = [[ShiftListProfilesTVC alloc] initWithManagedContext:self.managedObjectContext];
     self.profileView.parentViewDelegate = self;
-    
     self.profileNVC = [[UINavigationController alloc] initWithRootViewController:self.profileView];
 
+    
+    // 3. work days data source init, used by Kal.
     WorkdayDataSource *wds = [[WorkdayDataSource alloc] initWithManagedContext:self.managedObjectContext];
     dataSource  = wds;
     kal.dataSource = dataSource;
-    
     kal.tileDelegate = dataSource;
     // setup tile view delegate, provides tile icon information.
- 
+
+    
+    // 4. init a nav view, used by mail.
     // Setup the navigation stack and display it.
     navController = [[UINavigationController alloc] initWithRootViewController:kal];
     self.navController = navController;
-    self.navController.modalPresentationStyle = UIModalPresentationFullScreen;
+    self.navController.modalPresentationStyle = UIModalPresentationFormSheet;
 
+    // a loading button
+    UIActivityIndicatorView * activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    [activityView sizeToFit];
+    [activityView setAutoresizingMask:(UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin)];
+    loadingButton = [[UIBarButtonItem alloc] initWithCustomView:activityView];
+    [activityView startAnimating];
+    [activityView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhite];
+
+    
+#if 0
+    // 5. alert view for no profiles.
     alertNoProfile = [[UIAlertView alloc] initWithTitle:nil message:CREATE_PROFILE_PROMPT
                                                delegate:self cancelButtonTitle:CREATE_PROFILE_NO
                                       otherButtonTitles:CREATE_PROFILE_YES, nil];
     alertNoProfile.tag = TAG_ZERO_PROFILE;
-
+    
     alertC = [[SSAlertController alloc] initWithManagedContext:self.managedObjectContext];
     
-    UINavigationController *help = [[UINavigationController alloc] init];
+    if ([self.profileView profileuNumber] == 0)
+        [self performSelector:@selector(popNotifyZeroProfile:) withObject:nil afterDelay:1];
+#endif
 
+
+
+    // 6. setup share operation, and add it in Kal view.
     mailAgent = [[SSMailAgent alloc] init];
-    
     // Setup Action Sheet, share button.
+    
     self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
                                       cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
                                  destructiveButtonTitle:nil 
                                       otherButtonTitles:
-                                          NSLocalizedString(@"Mail", "share by mail"),
+                                          NSLocalizedString(@"Email", "share by mail"),
                                           NSLocalizedString(@"ThinkNote", "share by thinknote"),
                                           nil];
     self.rightAS.tag = TAG_MENU;
-    UIBarButtonItem *shareItem = [[UIBarButtonItem alloc]
+    shareButton = [[UIBarButtonItem alloc]
                                      initWithBarButtonSystemItem: UIBarButtonSystemItemAction
                                                           target:self action:@selector(showRightActionSheet)];
-    [kal.navigationItem setRightBarButtonItem:shareItem];
+    [self rightButtonSwitchToShareOrBusy:YES];
+    
+    // 7. setup up for the tabbar related.
+
     // add tab bar vc related things.
     tabBarVC = [[UITabBarController alloc] init];
     NSString *iconPath = [[NSBundle mainBundle] pathForResource:@"tab-calendar" ofType:@"png"];
@@ -111,7 +135,6 @@ enum {
                                                 image:[UIImage imageWithContentsOfFile:iconPath] tag:1];
     [tabBarVC addChildViewController:self.navController];
     
-
     iconPath = [[NSBundle mainBundle] pathForResource:@"GKTabbarIconRequestsInactive@2x~iphone"
                                                ofType:@"png"];
     self.profileView.tabBarItem = [[UITabBarItem alloc]
@@ -123,7 +146,6 @@ enum {
                                               initWithRootViewController:self.profileView];
     [tabBarVC addChildViewController:profileNVCC];
     
-
     iconPath = [[NSBundle mainBundle] pathForResource:@"IL_SmartPlaylistIcon" ofType:@"png"];
     self.settingVC.tabBarItem = [[UITabBarItem alloc]
                                     initWithTitle:NSLocalizedString(@"Settings", "Settings")
@@ -135,32 +157,24 @@ enum {
     [tabBarVC addChildViewController:settingNVC];
     
     iconPath = [[NSBundle mainBundle] pathForResource:@"GSFacesInfo" ofType:@"png"];
-    help.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Tips", "tips in tabbar")
-                                                    image:[UIImage imageWithContentsOfFile:iconPath] tag:4];
-
     
+    //    UINavigationController *help = [[UINavigationController alloc] init];
+    //    help.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Tips", "tips in tabbar")
+    //                                                    image:[UIImage imageWithContentsOfFile:iconPath] tag:4];
     //[tabBarVC addChildViewController:help];
     // help interface
     // [tabBarVC addChildViewController:self.helpView];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-#if CONFIG_MAIN_UI_USE_TAB_BAR_CONTROLLER
-    [self.window addSubview:tabBarVC.view];
-#else    
-    [self.window addSubview:self.navController.view];
-#endif
     
+    
+    [self.window addSubview:tabBarVC.view];
+
     [self.window makeKeyAndVisible];
     
-#if 0
-    if ([self.profileView profileuNumber] == 0)
-        [self performSelector:@selector(popNotifyZeroProfile:) withObject:nil afterDelay:1];
-#endif
     
     // default perferences
-    
-    
     NSDictionary *appDefaults = [NSDictionary
                                  dictionaryWithObjects:
                                  [NSArray arrayWithObjects:
@@ -174,6 +188,14 @@ enum {
 
     
     return YES;
+}
+
+- (void) rightButtonSwitchToShareOrBusy:(BOOL) share
+{
+    if (share)
+        [kal.navigationItem setRightBarButtonItem:shareButton];
+    else
+        [kal.navigationItem setRightBarButtonItem:loadingButton];
 }
 
 - (void)popNotifyZeroProfile:(id) sender
@@ -252,9 +274,9 @@ enum {
     switch (index) {
 
     case 0:
-    [mailAgent composeMailWithKalViewController:kal 
+    [mailAgent composeMailWithKalViewController:kal
                                         withNVC:self.navController
-                            withShareProfilesVC:self.shareProfilesVC];
+                              withSSAppDelegate: self];
         break;
     case 1:
         // ThinkNote

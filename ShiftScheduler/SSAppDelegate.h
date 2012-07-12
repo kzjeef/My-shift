@@ -35,6 +35,9 @@ ProfileEditFinishDelegate>
     UIActionSheet *rightAS;
     UIAlertView  *alertNoProfile;
     SSMailAgent *mailAgent;
+    
+    UIBarButtonItem *shareButton;
+    UIBarButtonItem *loadingButton;
     id dataSource;
     
 }
@@ -46,7 +49,7 @@ ProfileEditFinishDelegate>
 
 
 // --
-@property (strong) UINavigationController *navController;				
+@property (nonatomic, strong) UINavigationController *navController;				
 @property (nonatomic, strong) ShiftListProfilesTVC *profileView;
 @property (nonatomic, strong) SSSettingTVC *settingVC;
 @property (nonatomic, strong) UINavigationController *profileNVC;
@@ -55,9 +58,11 @@ ProfileEditFinishDelegate>
 @property (nonatomic, strong) SSKalDelegate *sskalDelegate;
 @property (nonatomic, strong) SSShareProfileListViewController *shareProfilesVC;
 
+
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 - (void) didFinishEditingSetting;
 - (void)showRightActionSheet;
 - (void)popNotifyZeroProfile:(id) sender;
+- (void) rightButtonSwitchToShareOrBusy:(BOOL) share;
 @end

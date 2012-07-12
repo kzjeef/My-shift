@@ -11,6 +11,7 @@
 #import "Kal.h"
 #import "SSShareProfileListViewController.h"
 
+@class SSAppDelegate;
 
 // This class is mainly do all emal pop up job, should also take care of
 // Setting UI's email pop up, and image setup.
@@ -22,6 +23,6 @@
 
 - (void)composeMailWithKalViewController:(KalViewController *)kal 
                                  withNVC:(UINavigationController *)nvc
-                     withShareProfilesVC: (SSShareProfileListViewController *)sharevc;
+                       withSSAppDelegate: (SSAppDelegate *) ssDelegate;
 
 @end
