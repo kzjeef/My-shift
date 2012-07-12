@@ -9,6 +9,8 @@
 #import "KalDate.h"
 #import "KalPrivate.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 #define PROFILER 0
 #if PROFILER
 #include <mach/mach_time.h>
@@ -91,6 +93,28 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 {
   [[self calendarView] jumpToSelectedMonth];
   [self reloadData];
+}
+
++ (UIImage *) imageWithView:(UIView *)view
+{
+
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
+    
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return image;
+}
+
+- (UIImage *)captureCalendarView
+{
+   return [KalViewController imageWithView:[self calendarView]];
+}
+
+- (NSString *)selecedMonthNameAndYear
+{
+    return [logic selectedMonthNameAndYear];
 }
 
 // -----------------------------------------
