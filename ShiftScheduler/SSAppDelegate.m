@@ -100,13 +100,13 @@ enum {
                                       otherButtonTitles:CREATE_PROFILE_YES, nil];
     alertNoProfile.tag = TAG_ZERO_PROFILE;
     
+#endif
+    
+    // setup a
     alertC = [[SSAlertController alloc] initWithManagedContext:self.managedObjectContext];
     
     if ([self.profileView profileuNumber] == 0)
         [self performSelector:@selector(popNotifyZeroProfile:) withObject:nil afterDelay:1];
-#endif
-
-
 
     // 6. setup share operation, and add it in Kal view.
     mailAgent = [[SSMailAgent alloc] init];
@@ -117,7 +117,9 @@ enum {
                                  destructiveButtonTitle:nil 
                                       otherButtonTitles:
                                           NSLocalizedString(@"Email", "share by mail"),
+#ifdef ENABLE_THINKNOTE_SHARE
                                           NSLocalizedString(@"ThinkNote", "share by thinknote"),
+#endif
                                           nil];
     self.rightAS.tag = TAG_MENU;
     shareButton = [[UIBarButtonItem alloc]

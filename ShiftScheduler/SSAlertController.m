@@ -113,10 +113,10 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     NSCalendar *currentCal = [NSCalendar currentCalendar];
     
-   [formatter setTimeStyle:NSDateFormatterMediumStyle];
-   [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterMediumStyle];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
 
-   formatter.timeZone = [NSTimeZone defaultTimeZone];
+    formatter.timeZone = [NSTimeZone defaultTimeZone];
     
     NSTimeInterval offset = [firetime timeIntervalSinceDate:[firetime cc_dateByMovingToBeginningOfDayWithCalender:currentCal]];
     
@@ -194,6 +194,8 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
     BOOL ret;
  
     if (job.jobRemindBeforeWork && job.jobRemindBeforeWork.intValue != -1) {
+        // user have setup alarm for this shift.
+        // setup for Work Alarm
         
         if (job.jobRemindBeforeWork.intValue > 60*60)
             timestr = [NSString stringWithFormat:TIME_STR_ALARM_BEFORE_HOURS, job.jobRemindBeforeWork.intValue / 60 / 60];
@@ -249,9 +251,7 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
 #define MAX_NOTIFY_COUNT 24
     if (self.jobArray.count <= 0)
         return;
-    
-   
-    
+
     if (isShort) {
         // if short, only update today's 
         for (OneJob *j in self.jobArray) {
