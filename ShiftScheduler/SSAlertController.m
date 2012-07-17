@@ -1,4 +1,3 @@
-//
 //  SSAlertController.m
 //  ShiftScheduler
 //

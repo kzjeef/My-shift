@@ -11,5 +11,8 @@
  * otherwise use a tabbar.*/
 #define CONFIG_MAIN_UI_USE_TAB_BAR_CONTROLLER 1
 
+/* Use ThinkNote share. */
+#define ENABLE_THINKNOTE_SHARE  1
+
 #endif
 

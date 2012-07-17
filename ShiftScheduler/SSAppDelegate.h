@@ -17,6 +17,7 @@
 @class SSShareProfileListViewController;
 
 @class SSMailAgent;
+@class SSShareController;
 
 @interface SSAppDelegate : UIResponder <UIApplicationDelegate, 
 UIActionSheetDelegate,UIAlertViewDelegate,
@@ -35,6 +36,7 @@ ProfileEditFinishDelegate>
     UIActionSheet *rightAS;
     UIAlertView  *alertNoProfile;
     SSMailAgent *mailAgent;
+    SSShareController *_shareC;
     
     UIBarButtonItem *shareButton;
     UIBarButtonItem *loadingButton;
@@ -61,7 +63,7 @@ ProfileEditFinishDelegate>
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-- (void) didFinishEditingSetting;
+- (void)didFinishEditingSetting;
 - (void)showRightActionSheet;
 - (void)popNotifyZeroProfile:(id) sender;
 - (void) rightButtonSwitchToShareOrBusy:(BOOL) share;

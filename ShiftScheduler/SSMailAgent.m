@@ -7,74 +7,46 @@
 //
 
 #import "SSMailAgent.h"
-#import <QuartzCore/QuartzCore.h>
 #import "SSAppDelegate.h"
+#import "SSShareObject.h"
 
 
 @implementation SSMailAgent
 
-
-+ (UIImage *) imageWithView:(UIView *)view
+- (id) initWithShareController: (SSShareController *) shareController
 {
-    
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
-    
-    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
+    self = [super init];
+    shareC = shareController;
+    return self;
 }
 
-- (void)composeMailWithKalViewController:(KalViewController *)kal 
-                                 withNVC:(UINavigationController *)pnvc
-                       withSSAppDelegate:(SSAppDelegate *)ssDelegate
+- (void)composeMailWithAppDelegate: (SSAppDelegate *) ssDelegate
+                           withNVC:(UINavigationController *)pnvc
+
 {
     MFMailComposeViewController *picker;
-
+    
     [ssDelegate rightButtonSwitchToShareOrBusy:NO];
     
-    __block KalViewController *kal_ = kal;
-    __block SSAppDelegate *ssDelegate_ = ssDelegate;
-
     picker = [[MFMailComposeViewController alloc] init];
     __block MFMailComposeViewController  *picker_ = picker;
 
     dispatch_queue_t prepare_q = dispatch_queue_create("create mail queue", nil);
     dispatch_async(prepare_q, ^{ 
-        NSString *shiftMonthstr = [kal_ selecedMonthNameAndYear];
-    
         picker_.mailComposeDelegate = self;
-        [picker_ setSubject: [NSString stringWithFormat:@"%@-%@", 
-                             NSLocalizedString(@"Shift Scheduler", ""),
-                             shiftMonthstr]];
-        
+        [picker_ setSubject: shareC.shiftOverviewStr];
         // 1. first add calendar view image,
-        UIImage *image = [kal_ captureCalendarView];
-        if (!image)
-            NSLog(@"image is null by [kal:%@]", kal_);
-        NSData *data = UIImageJPEGRepresentation(image, 90.9f);
+        NSData *data = UIImageJPEGRepresentation(shareC.shiftCalImage, 90.9f);
         
         [picker_ addAttachmentData:data mimeType:@"image/jpeg" 
-                     fileName:[NSString stringWithFormat:@"%@-%@", 
-                               NSLocalizedString(@"Shift Scheduler", ""),
-                               shiftMonthstr]];
+                          fileName:shareC.shiftCalImageName];
         // 2. then add shift list views image
         
-        UIImage *shiftlistImage = [self.class imageWithView:ssDelegate_.shareProfilesVC.view];
-        if (!image)
-            NSLog(@"image from shift list is null");
-        NSData *listdata = UIImageJPEGRepresentation(shiftlistImage, 90.9f);
+        NSData *listdata = UIImageJPEGRepresentation(shareC.shiftListImage, 90.9f);
         [picker_ addAttachmentData:listdata mimeType:@"image/jpeg" 
-                         fileName:NSLocalizedString(@"on-off-time", "on-off time in mail attachment")];
+                          fileName:shareC.shiftListImageName];
         // 3. then body of the mail.
-        NSString *emailBody = NSLocalizedString(@"It's the shift schedule at %@, you can check the shift of this month by attachment %@, and each shift's work time by %@", "email body of shift forward ui");
-        
-        
-        [picker_ setMessageBody:[NSString stringWithFormat:emailBody, 
-                                shiftMonthstr,
-                                NSLocalizedString(@"Shift Scheduler", ""),
-                                NSLocalizedString(@"on-off-time", "on-off time in mail attachment")]
+        [picker_ setMessageBody:shareC.shiftDetailEmailStr
                         isHTML:NO];
         
         dispatch_sync(dispatch_get_main_queue(), ^{

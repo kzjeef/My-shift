@@ -12,6 +12,7 @@
 #import "SSKalDelegate.h"
 #import "SSMailAgent.h"
 #import "SSShareProfileListViewController.h"
+#import "SSShareObject.h"
 
 #import "Kal.h"
 
@@ -102,14 +103,18 @@ enum {
     
 #endif
     
-    // setup a
+    // setup a alert controller
     alertC = [[SSAlertController alloc] initWithManagedContext:self.managedObjectContext];
     
     if ([self.profileView profileuNumber] == 0)
         [self performSelector:@selector(popNotifyZeroProfile:) withObject:nil afterDelay:1];
 
     // 6. setup share operation, and add it in Kal view.
-    mailAgent = [[SSMailAgent alloc] init];
+    _shareC = [[SSShareController alloc] initWithProfilesVC:self.shareProfilesVC withKalController:kal];
+            
+    mailAgent = [[SSMailAgent alloc] initWithShareController:_shareC];
+    
+    
     // Setup Action Sheet, share button.
     
     self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
@@ -276,10 +281,8 @@ enum {
     switch (index) {
 
     case 0:
-    [mailAgent composeMailWithKalViewController:kal
-                                        withNVC:self.navController
-                              withSSAppDelegate: self];
-        break;
+            [mailAgent composeMailWithAppDelegate:self withNVC:self.navController];
+            break;
     case 1:
         // ThinkNote
         //        [self sendCalendarViewByThinkNote];

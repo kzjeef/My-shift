@@ -12,17 +12,19 @@
 #import "SSShareProfileListViewController.h"
 
 @class SSAppDelegate;
+@class SSShareController;
 
 // This class is mainly do all emal pop up job, should also take care of
 // Setting UI's email pop up, and image setup.
 @interface SSMailAgent : NSObject <MFMailComposeViewControllerDelegate>
 {
     UINavigationController *nvc;
+    SSShareController *shareC;
 }
 
+- (id) initWithShareController: (SSShareController *) shareController;
 
-- (void)composeMailWithKalViewController:(KalViewController *)kal 
-                                 withNVC:(UINavigationController *)nvc
-                       withSSAppDelegate: (SSAppDelegate *) ssDelegate;
+- (void)composeMailWithAppDelegate: (SSAppDelegate *) ssDelegate
+                           withNVC:(UINavigationController *)pnvc;
 
 @end
