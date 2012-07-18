@@ -12,6 +12,21 @@
 #import "KalViewController.h"
 #import "UIImage+CaptureView.h"
 
+@interface SSShareResult ()
+{
+    int _result;
+    NSString *_failedReason;
+}
+
+@end
+
+@implementation SSShareResult
+
+@synthesize result = _result;
+@synthesize failedReason = _failedReason;
+
+@end
+
 @interface SSShareController () 
 {
     KalViewController *_kal;

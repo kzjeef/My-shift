@@ -70,6 +70,15 @@
 		297D072715B46860008B9983 /* UIImage+CaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D072515B46860008B9983 /* UIImage+CaptureView.m */; };
 		297D072A15B47548008B9983 /* SSThinkNoteShareAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = 297D072815B47548008B9983 /* SSThinkNoteShareAgent.h */; };
 		297D072B15B47548008B9983 /* SSThinkNoteShareAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D072915B47548008B9983 /* SSThinkNoteShareAgent.m */; };
+		297D073215B702DC008B9983 /* ThinkNoteModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073115B702DC008B9983 /* ThinkNoteModelTest.m */; };
+		297D073315B7035C008B9983 /* SSThinkNoteShareAgent.h in Sources */ = {isa = PBXBuildFile; fileRef = 297D072815B47548008B9983 /* SSThinkNoteShareAgent.h */; };
+		297D073415B7035C008B9983 /* SSThinkNoteShareAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D072915B47548008B9983 /* SSThinkNoteShareAgent.m */; };
+		297D073515B7035C008B9983 /* SSShareObject.h in Sources */ = {isa = PBXBuildFile; fileRef = 29CCA90915B458E8006950EC /* SSShareObject.h */; };
+		297D073615B7035C008B9983 /* SSShareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CCA90A15B458E8006950EC /* SSShareObject.m */; };
+		297D073D15B714A2008B9983 /* NSString+HTTPEscapes.h in Headers */ = {isa = PBXBuildFile; fileRef = 297D073B15B714A2008B9983 /* NSString+HTTPEscapes.h */; };
+		297D073E15B714A2008B9983 /* NSString+HTTPEscapes.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073C15B714A2008B9983 /* NSString+HTTPEscapes.m */; };
+		297D073F15B71C07008B9983 /* NSString+HTTPEscapes.h in Sources */ = {isa = PBXBuildFile; fileRef = 297D073B15B714A2008B9983 /* NSString+HTTPEscapes.h */; };
+		297D074015B71C07008B9983 /* NSString+HTTPEscapes.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073C15B714A2008B9983 /* NSString+HTTPEscapes.m */; };
 		299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */; };
 		299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */; };
 		29AEBD691554146F0010F27D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29ECA45814B0514E00B3832D /* SenTestingKit.framework */; };
@@ -252,6 +261,10 @@
 		297D072515B46860008B9983 /* UIImage+CaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CaptureView.m"; sourceTree = "<group>"; };
 		297D072815B47548008B9983 /* SSThinkNoteShareAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSThinkNoteShareAgent.h; sourceTree = "<group>"; };
 		297D072915B47548008B9983 /* SSThinkNoteShareAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSThinkNoteShareAgent.m; sourceTree = "<group>"; };
+		297D073015B702DB008B9983 /* ThinkNoteModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThinkNoteModelTest.h; path = OneJobModuleTest/ThinkNoteModelTest.h; sourceTree = "<group>"; };
+		297D073115B702DC008B9983 /* ThinkNoteModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteModelTest.m; path = OneJobModuleTest/ThinkNoteModelTest.m; sourceTree = "<group>"; };
+		297D073B15B714A2008B9983 /* NSString+HTTPEscapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTTPEscapes.h"; sourceTree = "<group>"; };
+		297D073C15B714A2008B9983 /* NSString+HTTPEscapes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTTPEscapes.m"; sourceTree = "<group>"; };
 		299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftWorkdayConfigTVC.h; sourceTree = "<group>"; };
 		299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftWorkdayConfigTVC.m; sourceTree = "<group>"; };
 		29AEBD681554146F0010F27D /* OneJobModuleTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneJobModuleTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -623,6 +636,10 @@
 		29AEBDC91561369D0010F27D /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				297D073015B702DB008B9983 /* ThinkNoteModelTest.h */,
+				297D073115B702DC008B9983 /* ThinkNoteModelTest.m */,
+				297D073B15B714A2008B9983 /* NSString+HTTPEscapes.h */,
+				297D073C15B714A2008B9983 /* NSString+HTTPEscapes.m */,
 				29AEBD6C1554146F0010F27D /* OneJobModuleTest */,
 			);
 			name = Test;
@@ -847,6 +864,7 @@
 				29CCA90B15B458E8006950EC /* SSShareObject.h in Headers */,
 				297D072615B46860008B9983 /* UIImage+CaptureView.h in Headers */,
 				297D072A15B47548008B9983 /* SSThinkNoteShareAgent.h in Headers */,
+				297D073D15B714A2008B9983 /* NSString+HTTPEscapes.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -998,6 +1016,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				297D073F15B71C07008B9983 /* NSString+HTTPEscapes.h in Sources */,
+				297D074015B71C07008B9983 /* NSString+HTTPEscapes.m in Sources */,
+				297D073315B7035C008B9983 /* SSThinkNoteShareAgent.h in Sources */,
+				297D073415B7035C008B9983 /* SSThinkNoteShareAgent.m in Sources */,
+				297D073515B7035C008B9983 /* SSShareObject.h in Sources */,
+				297D073615B7035C008B9983 /* SSShareObject.m in Sources */,
 				29AEBDEA1563CE1A0010F27D /* ShiftAlgoFreeJump.h in Sources */,
 				29AEBDE9156291360010F27D /* ShiftAlgoFreeJump.m in Sources */,
 				29AEBDB41561340A0010F27D /* ShiftAlgoBase.h in Sources */,
@@ -1012,6 +1036,7 @@
 				29AEBD7C155418E60010F27D /* ShiftScheduler.xcdatamodeld in Sources */,
 				29AEBD7B155418890010F27D /* OneJob.m in Sources */,
 				29AEBD741554146F0010F27D /* OneJobModuleTest.m in Sources */,
+				297D073215B702DC008B9983 /* ThinkNoteModelTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1072,6 +1097,7 @@
 				29CCA90C15B458E8006950EC /* SSShareObject.m in Sources */,
 				297D072715B46860008B9983 /* UIImage+CaptureView.m in Sources */,
 				297D072B15B47548008B9983 /* SSThinkNoteShareAgent.m in Sources */,
+				297D073E15B714A2008B9983 /* NSString+HTTPEscapes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

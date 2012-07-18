@@ -8,9 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
-@class  KalViewController;
-@class  SSAppDelegate;
-@class  SSShareProfileListViewController;
+@class KalViewController;
+@class SSAppDelegate;
+@class SSShareProfileListViewController;
+@class SSShareResult;
+
+
+typedef void (^ComposeShareViewCompleteHander)(SSShareResult *result);
+
+@interface SSShareResult : NSObject
+
+
+// result: 0, success, -1: failed, reason should in failedReason
+@property int result;
+@property (strong, nonatomic) NSString *failedReason;
+
+@end
 
 @interface SSShareController : NSObject
 
