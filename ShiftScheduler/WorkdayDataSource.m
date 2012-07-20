@@ -67,7 +67,7 @@
     self = [self init];
     self.objectContext = thecontext;
 
-#if 0
+#if 1
     NSError *error = 0;
 
     [self.fetchedRequestController performFetch:&error];
@@ -102,8 +102,6 @@
     // just use cache of fetchrequest controller.
     //    if (theJobNameArray != 0 && ![self.objectContext hasChanges])
     //        return theJobNameArray;
-    
-    [self.fetchedRequestController performFetch:NULL];
     theJobNameArray = self.fetchedRequestController.fetchedObjects;
     //    NSLog(@"fetch in work data source %@", theJobNameArray);
     return theJobNameArray;

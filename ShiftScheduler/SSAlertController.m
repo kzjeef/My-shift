@@ -34,7 +34,7 @@
     request.sortDescriptors = [NSArray arrayWithObject: [NSSortDescriptor
 							    sortDescriptorWithKey: @"jobName"
 									ascending:YES]];
-    request.predicate = nil;
+    request.predicate = [NSPredicate predicateWithFormat:@"jobEnable == YES"];
     // we want monitor all job 's change, if one change from disable
     // to enable, we should know this.
     request.fetchBatchSize = 20;
@@ -60,21 +60,17 @@
 
 - (void) managedContextDataChanged:(NSNotification *) saveNotifaction
 {
-    [self setupAlarm:YES];   
+    NSError *error;
+    [self.frc performFetch:&error];
+    if (error)
+        NSLog(@"SSAlertController: fetch error: %@", [error userInfo]);
+
+    [self setupAlarm:YES];
 }
 
 - (NSArray *)jobArray
 {
-    if (jobArray == nil) {
-        NSMutableArray *a = [[NSMutableArray alloc] init];
-        NSError *error;
-        [self.frc performFetch:&error];
-        for (OneJob *j in self.frc.fetchedObjects)
-            if ([j.jobEnable isEqualToNumber:[NSNumber numberWithBool:YES]])
-                [a addObject:j];
-        jobArray = a;
-    }
-    return jobArray;
+    return self.frc.fetchedObjects;
 }
 
 - (BOOL) shouldAlertWithSound

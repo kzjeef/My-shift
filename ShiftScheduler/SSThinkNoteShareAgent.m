@@ -29,7 +29,7 @@
 - (void) composeThinkNoteWithNagvagation:(UINavigationController *)nvc withBlock:(ComposeShareViewCompleteHander)block
 {
     // 0. start a block.
-    
+
     // 1. first login with user/password.
     // 2. then parser the result JSON, got the "token"
     // 3. call "addnote" function, and post the shareController 's note text.
