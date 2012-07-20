@@ -66,19 +66,7 @@
 		294E2903148B302700E6ED45 /* ShiftDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 294E2901148B302700E6ED45 /* ShiftDay.m */; };
 		2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECD14F9076400DF1CCF /* AVFoundation.framework */; };
 		2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */; };
-		297D072615B46860008B9983 /* UIImage+CaptureView.h in Headers */ = {isa = PBXBuildFile; fileRef = 297D072415B46860008B9983 /* UIImage+CaptureView.h */; };
-		297D072715B46860008B9983 /* UIImage+CaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D072515B46860008B9983 /* UIImage+CaptureView.m */; };
-		297D072A15B47548008B9983 /* SSThinkNoteShareAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = 297D072815B47548008B9983 /* SSThinkNoteShareAgent.h */; };
-		297D072B15B47548008B9983 /* SSThinkNoteShareAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D072915B47548008B9983 /* SSThinkNoteShareAgent.m */; };
 		297D073215B702DC008B9983 /* ThinkNoteModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073115B702DC008B9983 /* ThinkNoteModelTest.m */; };
-		297D073315B7035C008B9983 /* SSThinkNoteShareAgent.h in Sources */ = {isa = PBXBuildFile; fileRef = 297D072815B47548008B9983 /* SSThinkNoteShareAgent.h */; };
-		297D073415B7035C008B9983 /* SSThinkNoteShareAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D072915B47548008B9983 /* SSThinkNoteShareAgent.m */; };
-		297D073515B7035C008B9983 /* SSShareObject.h in Sources */ = {isa = PBXBuildFile; fileRef = 29CCA90915B458E8006950EC /* SSShareObject.h */; };
-		297D073615B7035C008B9983 /* SSShareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CCA90A15B458E8006950EC /* SSShareObject.m */; };
-		297D073D15B714A2008B9983 /* NSString+HTTPEscapes.h in Headers */ = {isa = PBXBuildFile; fileRef = 297D073B15B714A2008B9983 /* NSString+HTTPEscapes.h */; };
-		297D073E15B714A2008B9983 /* NSString+HTTPEscapes.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073C15B714A2008B9983 /* NSString+HTTPEscapes.m */; };
-		297D073F15B71C07008B9983 /* NSString+HTTPEscapes.h in Sources */ = {isa = PBXBuildFile; fileRef = 297D073B15B714A2008B9983 /* NSString+HTTPEscapes.h */; };
-		297D074015B71C07008B9983 /* NSString+HTTPEscapes.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073C15B714A2008B9983 /* NSString+HTTPEscapes.m */; };
 		299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */; };
 		299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */; };
 		29AEBD691554146F0010F27D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29ECA45814B0514E00B3832D /* SenTestingKit.framework */; };
@@ -106,6 +94,20 @@
 		29AEBDE815628BAB0010F27D /* ShiftAlgoFreeJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AEBDE615628BAB0010F27D /* ShiftAlgoFreeJump.m */; };
 		29AEBDE9156291360010F27D /* ShiftAlgoFreeJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AEBDE615628BAB0010F27D /* ShiftAlgoFreeJump.m */; };
 		29AEBDEA1563CE1A0010F27D /* ShiftAlgoFreeJump.h in Sources */ = {isa = PBXBuildFile; fileRef = 29AEBDE515628BAB0010F27D /* ShiftAlgoFreeJump.h */; };
+		29B8F3D315B9BA62000D934A /* NSString+HTTPEscapes.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B8F3CB15B9BA62000D934A /* NSString+HTTPEscapes.h */; };
+		29B8F3D415B9BA62000D934A /* NSString+HTTPEscapes.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8F3CC15B9BA62000D934A /* NSString+HTTPEscapes.m */; };
+		29B8F3D515B9BA62000D934A /* SSShareObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B8F3CD15B9BA62000D934A /* SSShareObject.h */; };
+		29B8F3D615B9BA62000D934A /* SSShareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8F3CE15B9BA62000D934A /* SSShareObject.m */; };
+		29B8F3D715B9BA62000D934A /* SSThinkNoteShareAgent.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B8F3CF15B9BA62000D934A /* SSThinkNoteShareAgent.h */; };
+		29B8F3D815B9BA62000D934A /* SSThinkNoteShareAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8F3D015B9BA62000D934A /* SSThinkNoteShareAgent.m */; };
+		29B8F3D915B9BA62000D934A /* UIImage+CaptureView.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B8F3D115B9BA62000D934A /* UIImage+CaptureView.h */; };
+		29B8F3DA15B9BA62000D934A /* UIImage+CaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8F3D215B9BA62000D934A /* UIImage+CaptureView.m */; };
+		29B8F3DB15B9BABE000D934A /* NSString+HTTPEscapes.h in Sources */ = {isa = PBXBuildFile; fileRef = 29B8F3CB15B9BA62000D934A /* NSString+HTTPEscapes.h */; };
+		29B8F3DC15B9BABE000D934A /* NSString+HTTPEscapes.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8F3CC15B9BA62000D934A /* NSString+HTTPEscapes.m */; };
+		29B8F3DD15B9BB23000D934A /* SSThinkNoteShareAgent.h in Sources */ = {isa = PBXBuildFile; fileRef = 29B8F3CF15B9BA62000D934A /* SSThinkNoteShareAgent.h */; };
+		29B8F3DE15B9BB37000D934A /* SSThinkNoteShareAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8F3D015B9BA62000D934A /* SSThinkNoteShareAgent.m */; };
+		29B8F3DF15B9BB52000D934A /* NSDateAdditions.h in Sources */ = {isa = PBXBuildFile; fileRef = 29DCB8D915A7C79C0095C71D /* NSDateAdditions.h */; };
+		29B8F3E015B9BB52000D934A /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 29DCB8DB15A7C8730095C71D /* NSDateAdditions.m */; };
 		29B9E1B61472C1D700DB2E1F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E1B51472C1D700DB2E1F /* UIKit.framework */; };
 		29B9E1B81472C1D700DB2E1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E1B71472C1D700DB2E1F /* Foundation.framework */; };
 		29B9E1BA1472C1D700DB2E1F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E1B91472C1D700DB2E1F /* CoreGraphics.framework */; };
@@ -125,8 +127,6 @@
 		29C943B814E9642900122144 /* SSProfileTimeAndAlarmVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29C943B514E9642900122144 /* SSProfileTimeAndAlarmVC.xib */; };
 		29C943BB14EAB55200122144 /* UserReviewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C943B914EAB55200122144 /* UserReviewController.h */; };
 		29C943BC14EAB55200122144 /* UserReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C943BA14EAB55200122144 /* UserReviewController.m */; };
-		29CCA90B15B458E8006950EC /* SSShareObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 29CCA90915B458E8006950EC /* SSShareObject.h */; };
-		29CCA90C15B458E8006950EC /* SSShareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CCA90A15B458E8006950EC /* SSShareObject.m */; };
 		29D6A521159CB45D00AC6103 /* KalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29D6A520159CB45D00AC6103 /* KalViewController.h */; };
 		29D6A523159CB48200AC6103 /* Kal.h in Headers */ = {isa = PBXBuildFile; fileRef = 29D6A522159CB48200AC6103 /* Kal.h */; };
 		29D6A525159CB4A200AC6103 /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 29D6A524159CB4A200AC6103 /* Kal.bundle */; };
@@ -257,14 +257,8 @@
 		294E2901148B302700E6ED45 /* ShiftDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftDay.m; sourceTree = "<group>"; };
 		2968BECD14F9076400DF1CCF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		297D072415B46860008B9983 /* UIImage+CaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CaptureView.h"; sourceTree = "<group>"; };
-		297D072515B46860008B9983 /* UIImage+CaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CaptureView.m"; sourceTree = "<group>"; };
-		297D072815B47548008B9983 /* SSThinkNoteShareAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSThinkNoteShareAgent.h; sourceTree = "<group>"; };
-		297D072915B47548008B9983 /* SSThinkNoteShareAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSThinkNoteShareAgent.m; sourceTree = "<group>"; };
 		297D073015B702DB008B9983 /* ThinkNoteModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThinkNoteModelTest.h; path = OneJobModuleTest/ThinkNoteModelTest.h; sourceTree = "<group>"; };
 		297D073115B702DC008B9983 /* ThinkNoteModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteModelTest.m; path = OneJobModuleTest/ThinkNoteModelTest.m; sourceTree = "<group>"; };
-		297D073B15B714A2008B9983 /* NSString+HTTPEscapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTTPEscapes.h"; sourceTree = "<group>"; };
-		297D073C15B714A2008B9983 /* NSString+HTTPEscapes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTTPEscapes.m"; sourceTree = "<group>"; };
 		299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftWorkdayConfigTVC.h; sourceTree = "<group>"; };
 		299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftWorkdayConfigTVC.m; sourceTree = "<group>"; };
 		29AEBD681554146F0010F27D /* OneJobModuleTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneJobModuleTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -279,6 +273,14 @@
 		29AEBDAF15612CBA0010F27D /* ShiftAlgoFreeRound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftAlgoFreeRound.m; sourceTree = "<group>"; };
 		29AEBDE515628BAB0010F27D /* ShiftAlgoFreeJump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftAlgoFreeJump.h; sourceTree = "<group>"; };
 		29AEBDE615628BAB0010F27D /* ShiftAlgoFreeJump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftAlgoFreeJump.m; sourceTree = "<group>"; };
+		29B8F3CB15B9BA62000D934A /* NSString+HTTPEscapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HTTPEscapes.h"; path = "ShiftScheduler/NSString+HTTPEscapes.h"; sourceTree = "<group>"; };
+		29B8F3CC15B9BA62000D934A /* NSString+HTTPEscapes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTTPEscapes.m"; path = "ShiftScheduler/NSString+HTTPEscapes.m"; sourceTree = "<group>"; };
+		29B8F3CD15B9BA62000D934A /* SSShareObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSShareObject.h; path = ShiftScheduler/SSShareObject.h; sourceTree = "<group>"; };
+		29B8F3CE15B9BA62000D934A /* SSShareObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSShareObject.m; path = ShiftScheduler/SSShareObject.m; sourceTree = "<group>"; };
+		29B8F3CF15B9BA62000D934A /* SSThinkNoteShareAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSThinkNoteShareAgent.h; path = ShiftScheduler/SSThinkNoteShareAgent.h; sourceTree = "<group>"; };
+		29B8F3D015B9BA62000D934A /* SSThinkNoteShareAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSThinkNoteShareAgent.m; path = ShiftScheduler/SSThinkNoteShareAgent.m; sourceTree = "<group>"; };
+		29B8F3D115B9BA62000D934A /* UIImage+CaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+CaptureView.h"; path = "ShiftScheduler/UIImage+CaptureView.h"; sourceTree = "<group>"; };
+		29B8F3D215B9BA62000D934A /* UIImage+CaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+CaptureView.m"; path = "ShiftScheduler/UIImage+CaptureView.m"; sourceTree = "<group>"; };
 		29B9E1B11472C1D700DB2E1F /* ShiftScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShiftScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B9E1B51472C1D700DB2E1F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		29B9E1B71472C1D700DB2E1F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -309,8 +311,6 @@
 		29C943B514E9642900122144 /* SSProfileTimeAndAlarmVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSProfileTimeAndAlarmVC.xib; sourceTree = "<group>"; };
 		29C943B914EAB55200122144 /* UserReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserReviewController.h; sourceTree = "<group>"; };
 		29C943BA14EAB55200122144 /* UserReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserReviewController.m; sourceTree = "<group>"; };
-		29CCA90915B458E8006950EC /* SSShareObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShareObject.h; sourceTree = "<group>"; };
-		29CCA90A15B458E8006950EC /* SSShareObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShareObject.m; sourceTree = "<group>"; };
 		29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = Kal/src/Kal.xcodeproj; sourceTree = "<group>"; };
 		29D6A520159CB45D00AC6103 /* KalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KalViewController.h; path = Kal/src/KalViewController.h; sourceTree = "<group>"; };
 		29D6A522159CB48200AC6103 /* Kal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Kal.h; path = Kal/src/Kal.h; sourceTree = "<group>"; };
@@ -638,8 +638,6 @@
 			children = (
 				297D073015B702DB008B9983 /* ThinkNoteModelTest.h */,
 				297D073115B702DC008B9983 /* ThinkNoteModelTest.m */,
-				297D073B15B714A2008B9983 /* NSString+HTTPEscapes.h */,
-				297D073C15B714A2008B9983 /* NSString+HTTPEscapes.m */,
 				29AEBD6C1554146F0010F27D /* OneJobModuleTest */,
 			);
 			name = Test;
@@ -725,13 +723,15 @@
 		29E6D7F215ADC59A00235123 /* Share */ = {
 			isa = PBXGroup;
 			children = (
+				29B8F3CB15B9BA62000D934A /* NSString+HTTPEscapes.h */,
+				29B8F3CC15B9BA62000D934A /* NSString+HTTPEscapes.m */,
+				29B8F3CD15B9BA62000D934A /* SSShareObject.h */,
+				29B8F3CE15B9BA62000D934A /* SSShareObject.m */,
+				29B8F3CF15B9BA62000D934A /* SSThinkNoteShareAgent.h */,
+				29B8F3D015B9BA62000D934A /* SSThinkNoteShareAgent.m */,
+				29B8F3D115B9BA62000D934A /* UIImage+CaptureView.h */,
+				29B8F3D215B9BA62000D934A /* UIImage+CaptureView.m */,
 				29E6D7EC15ADAC8200235123 /* SSMailAgent.h */,
-				297D072815B47548008B9983 /* SSThinkNoteShareAgent.h */,
-				297D072915B47548008B9983 /* SSThinkNoteShareAgent.m */,
-				29CCA90915B458E8006950EC /* SSShareObject.h */,
-				29CCA90A15B458E8006950EC /* SSShareObject.m */,
-				297D072415B46860008B9983 /* UIImage+CaptureView.h */,
-				297D072515B46860008B9983 /* UIImage+CaptureView.m */,
 				29E6D7ED15ADAC8200235123 /* SSMailAgent.m */,
 				29E6D7F715ADC63100235123 /* SSShareProfileListViewController.h */,
 				29E6D7F815ADC63100235123 /* SSShareProfileListViewController.m */,
@@ -861,10 +861,10 @@
 				29DCB8DA15A7C79C0095C71D /* NSDateAdditions.h in Headers */,
 				29E6D7EE15ADAC8200235123 /* SSMailAgent.h in Headers */,
 				29E6D7F915ADC63100235123 /* SSShareProfileListViewController.h in Headers */,
-				29CCA90B15B458E8006950EC /* SSShareObject.h in Headers */,
-				297D072615B46860008B9983 /* UIImage+CaptureView.h in Headers */,
-				297D072A15B47548008B9983 /* SSThinkNoteShareAgent.h in Headers */,
-				297D073D15B714A2008B9983 /* NSString+HTTPEscapes.h in Headers */,
+				29B8F3D315B9BA62000D934A /* NSString+HTTPEscapes.h in Headers */,
+				29B8F3D515B9BA62000D934A /* SSShareObject.h in Headers */,
+				29B8F3D715B9BA62000D934A /* SSThinkNoteShareAgent.h in Headers */,
+				29B8F3D915B9BA62000D934A /* UIImage+CaptureView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1016,12 +1016,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				297D073F15B71C07008B9983 /* NSString+HTTPEscapes.h in Sources */,
-				297D074015B71C07008B9983 /* NSString+HTTPEscapes.m in Sources */,
-				297D073315B7035C008B9983 /* SSThinkNoteShareAgent.h in Sources */,
-				297D073415B7035C008B9983 /* SSThinkNoteShareAgent.m in Sources */,
-				297D073515B7035C008B9983 /* SSShareObject.h in Sources */,
-				297D073615B7035C008B9983 /* SSShareObject.m in Sources */,
+				29B8F3DF15B9BB52000D934A /* NSDateAdditions.h in Sources */,
+				29B8F3E015B9BB52000D934A /* NSDateAdditions.m in Sources */,
+				29B8F3DE15B9BB37000D934A /* SSThinkNoteShareAgent.m in Sources */,
+				29B8F3DD15B9BB23000D934A /* SSThinkNoteShareAgent.h in Sources */,
+				29B8F3DB15B9BABE000D934A /* NSString+HTTPEscapes.h in Sources */,
+				29B8F3DC15B9BABE000D934A /* NSString+HTTPEscapes.m in Sources */,
 				29AEBDEA1563CE1A0010F27D /* ShiftAlgoFreeJump.h in Sources */,
 				29AEBDE9156291360010F27D /* ShiftAlgoFreeJump.m in Sources */,
 				29AEBDB41561340A0010F27D /* ShiftAlgoBase.h in Sources */,
@@ -1094,10 +1094,10 @@
 				29DCB8DC15A7C8730095C71D /* NSDateAdditions.m in Sources */,
 				29E6D7EF15ADAC8200235123 /* SSMailAgent.m in Sources */,
 				29E6D7FA15ADC63100235123 /* SSShareProfileListViewController.m in Sources */,
-				29CCA90C15B458E8006950EC /* SSShareObject.m in Sources */,
-				297D072715B46860008B9983 /* UIImage+CaptureView.m in Sources */,
-				297D072B15B47548008B9983 /* SSThinkNoteShareAgent.m in Sources */,
-				297D073E15B714A2008B9983 /* NSString+HTTPEscapes.m in Sources */,
+				29B8F3D415B9BA62000D934A /* NSString+HTTPEscapes.m in Sources */,
+				29B8F3D615B9BA62000D934A /* SSShareObject.m in Sources */,
+				29B8F3D815B9BA62000D934A /* SSThinkNoteShareAgent.m in Sources */,
+				29B8F3DA15B9BA62000D934A /* UIImage+CaptureView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

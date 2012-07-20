@@ -20,14 +20,19 @@
 
 - (void) testThinkNoteLogin
 {
-    [_ntController loginNoteServerSyncWithName:@"zhangjeef@gmail.com" withPassword:@"123456"];
+    int ret =    [_ntController loginNoteServerSyncWithName:@"zhangjeef@gmail.com" withPassword:@"123456"];
+    STAssertTrue(ret == 0 , @"login failed");
 }
 
 - (void) testThinkNotePostNote
 {
-    [_ntController loginNoteServerSyncWithName:@"zhangjeef@gmail.com" withPassword:@"123456"];
+    int ret;
+    
+    ret = [_ntController loginNoteServerSyncWithName:@"zhangjeef@gmail.com" withPassword:@"123456"];
+    STAssertTrue(ret == 0, @"login failed");
 
-    [_ntController postNoteOnServerSync:@"Test1" note:@"Test 2"];
+    ret = [_ntController postNoteOnServerSync:@"Test1" note:@"Test 2"];
+    STAssertTrue(ret == 0, @"post note failed: ret:%d", ret);
 }
 
 @end

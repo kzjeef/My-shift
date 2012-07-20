@@ -51,7 +51,7 @@
 #define TN_GETNOTE_URL @"/open/getnote"
 
 // sync interface for testcase
-- (void) loginNoteServerSyncWithName:(NSString *)name withPassword:(NSString *)password
+- (int) loginNoteServerSyncWithName:(NSString *)name withPassword:(NSString *)password
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                                     [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", TN_SITE_URL, TN_LOGIN_URL]]];
@@ -88,11 +88,13 @@
         // the result not ok, and not get the login token, failed.
         if ((![result isEqualToString:@"ok"]) || _loginToken == nil) {
             NSLog(@"TN: login failed");
+            return -1;
         } else {
             NSLog(@"TN: login success");
         }
         
     }
+    return 0;
 }
 
 //- (void) postNoteServerWithNotesSync
@@ -158,11 +160,13 @@
 
     if ([result isEqualToString:@"ok"] != YES) {
         NSLog(@"TN: post note failed");
+        return -1;
     }
     
-    _noteID = [jsonDict objectForKey:@"noteid"];
+    _noteID = [jsonDict objectForKey:@"message"];
     if (_noteID == nil || _noteID.length == 0) {
         NSLog(@"TN: Failed to post note, no nodeid");
+        return -2;
     }
     
     return 0;
@@ -234,7 +238,7 @@
             NSLog(@"TN: post note failed");
         }
 
-        _noteID = [jsonDict objectForKey:@"noteid"];
+        _noteID = [jsonDict objectForKey:@"message"];
         if (_noteID == nil || _noteID.length == 0) {
             NSLog(@"TN: Failed to post note, no nodeid");
         }

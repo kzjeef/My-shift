@@ -52,7 +52,7 @@ enum {
 
 @property (assign) id <SSThinkNoteControllerDelegate> connectDelegate;
 
-- (void) loginNoteServerSyncWithName:(NSString *)name withPassword:(NSString *)password;
+- (int) loginNoteServerSyncWithName:(NSString *)name withPassword:(NSString *)password;
 - (void) loginNoteServerWithName: (NSString *) name 
                     withPassword: (NSString *) password;
 

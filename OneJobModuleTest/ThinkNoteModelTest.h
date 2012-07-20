@@ -7,7 +7,7 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "../SSThinkNoteShareAgent.h"
+#import "SSThinkNoteShareAgent.h"
 
 @interface ThinkNoteModelTest : SenTestCase
 {
