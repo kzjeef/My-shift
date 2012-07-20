@@ -47,7 +47,7 @@
                           fileName:shareC.shiftListImageName];
         // 3. then body of the mail.
         [picker_ setMessageBody:shareC.shiftDetailEmailStr
-                        isHTML:NO];
+                        isHTML:YES];
         
         dispatch_sync(dispatch_get_main_queue(), ^{
             [ssDelegate rightButtonSwitchToShareOrBusy:YES];

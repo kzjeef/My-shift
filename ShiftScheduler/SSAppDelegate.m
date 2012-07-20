@@ -40,6 +40,52 @@ enum {
 
 //#define CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
 
+- (void) SSKalControllerInit
+{
+    kal = [[KalViewController alloc] init];
+    kal.title = NSLocalizedString(@"Shift Scheduler", "application title");
+    
+    kal.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+                                            initWithTitle:NSLocalizedString (@"Today", "today") 
+                                            style:UIBarButtonItemStyleBordered target:self action:@selector(showAndSelectToday)];
+    
+    SSKalDelegate *kalDelegate = [[SSKalDelegate alloc] init];
+    self.sskalDelegate = kalDelegate;
+    kal.delegate = self.sskalDelegate;
+    kal.vcdelegate = self.sskalDelegate;
+    WorkdayDataSource *wds = [[WorkdayDataSource alloc] initWithManagedContext:self.managedObjectContext];
+    dataSource  = wds;
+    kal.dataSource = dataSource;
+    kal.tileDelegate = dataSource;
+
+    self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
+                                      cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
+                                 destructiveButtonTitle:nil 
+                                      otherButtonTitles:
+                                              NSLocalizedString(@"Email", "share by mail"),
+#if ENABLE_THINKNOTE_SHARE
+                                          NSLocalizedString(@"ThinkNote", "share by thinknote"),
+#endif
+                                          nil];
+    self.rightAS.tag = TAG_MENU;
+    shareButton = [[UIBarButtonItem alloc]
+                                     initWithBarButtonSystemItem: UIBarButtonSystemItemAction
+                                                          target:self action:@selector(showRightActionSheet)];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [navController setViewControllers:[NSArray arrayWithObject:kal] animated:NO];
+    [UIView setAnimationDuration:.5];
+    [UIView setAnimationBeginsFromCurrentState:YES];        
+    [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown  forView:navController.view cache:YES];
+    [UIView commitAnimations];
+
+    [self rightButtonSwitchToShareOrBusy:YES];
+    // 6. setup share operation, and add it in Kal view.
+    _shareC = [[SSShareController alloc] initWithProfilesVC:self.shareProfilesVC withKalController:kal];
+    
+    mailAgent = [[SSMailAgent alloc] initWithShareController:_shareC];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
@@ -52,36 +98,22 @@ enum {
      */
     
     // 1. Kal view controller init.
-    kal = [[KalViewController alloc] init];
-    kal.title = NSLocalizedString(@"Shift Scheduler", "application title");
-    
-    kal.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
-                                              initWithTitle:NSLocalizedString (@"Today", "today") 
-                                              style:UIBarButtonItemStyleBordered target:self action:@selector(showAndSelectToday)];
-
-    SSKalDelegate *kalDelegate = [[SSKalDelegate alloc] init];
-    self.sskalDelegate = kalDelegate;
-    kal.delegate = self.sskalDelegate;
-    kal.vcdelegate = self.sskalDelegate;
-
     
     // 2. shift profile list init functions.
     self.profileView = [[ShiftListProfilesTVC alloc] initWithManagedContext:self.managedObjectContext];
     self.profileView.parentViewDelegate = self;
     self.profileNVC = [[UINavigationController alloc] initWithRootViewController:self.profileView];
 
-    
     // 3. work days data source init, used by Kal.
-    WorkdayDataSource *wds = [[WorkdayDataSource alloc] initWithManagedContext:self.managedObjectContext];
-    dataSource  = wds;
-    kal.dataSource = dataSource;
-    kal.tileDelegate = dataSource;
     // setup tile view delegate, provides tile icon information.
 
     
     // 4. init a nav view, used by mail.
     // Setup the navigation stack and display it.
-    navController = [[UINavigationController alloc] initWithRootViewController:kal];
+
+    navController = [[UINavigationController alloc] init];
+    navController.view.backgroundColor = [UIColor underPageBackgroundColor];
+
     self.navController = navController;
     self.navController.modalPresentationStyle = UIModalPresentationFormSheet;
 
@@ -109,31 +141,8 @@ enum {
     if ([self.profileView profileuNumber] == 0)
         [self performSelector:@selector(popNotifyZeroProfile:) withObject:nil afterDelay:1];
 
-    // 6. setup share operation, and add it in Kal view.
-    _shareC = [[SSShareController alloc] initWithProfilesVC:self.shareProfilesVC withKalController:kal];
-            
-    mailAgent = [[SSMailAgent alloc] initWithShareController:_shareC];
-    
-    
-    // Setup Action Sheet, share button.
-    
-    self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
-                                      cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
-                                 destructiveButtonTitle:nil 
-                                      otherButtonTitles:
-                                          NSLocalizedString(@"Email", "share by mail"),
-#ifdef ENABLE_THINKNOTE_SHARE
-                                          NSLocalizedString(@"ThinkNote", "share by thinknote"),
-#endif
-                                          nil];
-    self.rightAS.tag = TAG_MENU;
-    shareButton = [[UIBarButtonItem alloc]
-                                     initWithBarButtonSystemItem: UIBarButtonSystemItemAction
-                                                          target:self action:@selector(showRightActionSheet)];
-    [self rightButtonSwitchToShareOrBusy:YES];
     
     // 7. setup up for the tabbar related.
-
     // add tab bar vc related things.
     tabBarVC = [[UITabBarController alloc] init];
     NSString *iconPath = [[NSBundle mainBundle] pathForResource:@"tab-calendar" ofType:@"png"];
@@ -174,8 +183,6 @@ enum {
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    
-    
     [self.window addSubview:tabBarVC.view];
 
     [self.window makeKeyAndVisible];
@@ -193,7 +200,7 @@ enum {
                                            Nil]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 
-    
+    [self performSelectorInBackground:@selector(SSKalControllerInit) withObject:nil];
     return YES;
 }
 
