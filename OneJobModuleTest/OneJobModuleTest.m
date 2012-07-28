@@ -48,6 +48,8 @@
     [super tearDown];
 }
 
+#if 1
+
 - (BOOL) verifyArray: (NSArray *)a1 anotherArray: (NSArray *)a2
 {
   if (a1.count != a2.count)
@@ -249,6 +251,8 @@
         }
     }
 }
+
+#endif
 
 
 @end

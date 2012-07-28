@@ -27,6 +27,7 @@ enum {
     THINKNOTE_CONN_STATUS_IDLE = 1,
     THINKNOTE_CONN_STATUS_LOGIN,
     THINKNOTE_CONN_STATUS_NOTE_POST,
+    THINKNOTE_CONN_STATUS_ATT_POST,
 };
 
 @protocol SSThinkNoteControllerDelegate <NSObject>
@@ -62,6 +63,7 @@ enum {
 //- (int) flushNoteCache;
 
 - (int) postAttachment: (NSString *)name withData: (NSData *)data;
+- (int) postAttachmoentSync: (NSString *)name withData: (NSData *)data;
 
 - (void) disconnect;
 

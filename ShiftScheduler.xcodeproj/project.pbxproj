@@ -62,6 +62,14 @@
 		293B650215A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B650115A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png */; };
 		293C347F15A89B1F00CECAFA /* calendar-simple-blue-72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 293C347E15A89B1F00CECAFA /* calendar-simple-blue-72x72.png */; };
 		293C348115A89B6500CECAFA /* calendar-simple-blue-144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 293C348015A89B6400CECAFA /* calendar-simple-blue-144x144.png */; };
+		294D069B15C2D8320029786A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 29DCB8DF15A878590095C71D /* Default.png */; };
+		294D069C15C2DB320029786A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 29DCB8DD15A873F40095C71D /* Default@2x.png */; };
+		294D069D15C2DB320029786A /* calendar-simple-blue-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */; };
+		294D069E15C2DB320029786A /* calendar-simple-blue-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */; };
+		294D069F15C2DB320029786A /* GSFacesInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */; };
+		294D06A015C2DB320029786A /* GKTabbarIconRequestsInactive@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B650115A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png */; };
+		294D06A115C2DB320029786A /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64F915A3C64900D0C4B5 /* addButton.png */; };
+		294D06A215C2DB320029786A /* IL_SmartPlaylistIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64ED15A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png */; };
 		294E2902148B302700E6ED45 /* ShiftDay.h in Headers */ = {isa = PBXBuildFile; fileRef = 294E2900148B302700E6ED45 /* ShiftDay.h */; };
 		294E2903148B302700E6ED45 /* ShiftDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 294E2901148B302700E6ED45 /* ShiftDay.m */; };
 		2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECD14F9076400DF1CCF /* AVFoundation.framework */; };
@@ -957,6 +965,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				294D069C15C2DB320029786A /* Default@2x.png in Resources */,
+				294D069D15C2DB320029786A /* calendar-simple-blue-114x114.png in Resources */,
+				294D069E15C2DB320029786A /* calendar-simple-blue-57x57.png in Resources */,
+				294D069F15C2DB320029786A /* GSFacesInfo.png in Resources */,
+				294D06A015C2DB320029786A /* GKTabbarIconRequestsInactive@2x~iphone.png in Resources */,
+				294D06A115C2DB320029786A /* addButton.png in Resources */,
+				294D06A215C2DB320029786A /* IL_SmartPlaylistIcon.png in Resources */,
+				294D069B15C2D8320029786A /* Default.png in Resources */,
 				29AEBD711554146F0010F27D /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

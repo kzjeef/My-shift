@@ -20,7 +20,9 @@
                                                                         NULL,
                                                                         CFSTR(":/?#[]@!$&'()*+,;="),
                                                                         kCFStringEncodingUTF8);
-    return (__bridge NSString *)encodedString;
+    NSString * ret = (__bridge NSString *)encodedString;
+    CFRelease(encodedString);
+    return ret;
 }
 
 + (NSString *) stringDecodeEscape: (NSString *)string
@@ -32,6 +34,8 @@
                                                                                         CFSTR(""),
                                                                                         kCFStringEncodingUTF8);
     
-    return (__bridge NSString *)decodedString;
+    NSString *ret =  (__bridge NSString *)decodedString;
+    CFRelease(decodedString);
+    return ret;
 }
 @end

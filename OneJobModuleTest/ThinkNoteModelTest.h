@@ -11,7 +11,6 @@
 
 @interface ThinkNoteModelTest : SenTestCase
 {
-    SSThinkNoteController *_ntController;
 }
 
 @end
