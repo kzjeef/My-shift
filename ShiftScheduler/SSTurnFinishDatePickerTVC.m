@@ -33,10 +33,8 @@
 
 - (NSArray *) items {
     if (items == nil) {
-        items = [NSArray arrayWithObjects:
-                 REPEAT_ITEM_STRING,
-                 REPEAT_FOREVER_STRING,
-                 nil];
+        items = @[REPEAT_ITEM_STRING,
+                 REPEAT_FOREVER_STRING];
     }
     return items;
 }

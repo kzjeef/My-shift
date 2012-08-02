@@ -9,12 +9,16 @@
 #import "SSThinkNoteShareAgent.h"
 #import "SSShareObject.h"
 #import "NSString+HTTPEscapes.h"
+#import "NetworkManager.h"
 
 //#define LOCAL_DEBUG
 
 @interface SSThinkNoteShareAgent()
 {
     SSShareController *_shareC;
+    SSThinkNoteController *_thinknoteC;
+    NetworkManager *_nm;
+    int _attachmentPosted;
 }
 
 @end
@@ -25,42 +29,106 @@
 {
     self = [super init];
     _shareC = shareC;
+    _thinknoteC = [[SSThinkNoteController alloc] init];
+    _thinknoteC.connectDelegate = self;
     return self;
 }
+//#ifdef DEBUG
+#define DEBUG_NAME @"zhangjeef@gmail.com"
+#define DEBUG_PASSWD @"123456"
+//#endif
 
 - (void) composeThinkNoteWithNagvagation:(UINavigationController *)nvc withBlock:(ComposeShareViewCompleteHander)block
 {
     // 0. start a block.
 
-    // 1. first login with user/password.
-    // 2. then parser the result JSON, got the "token"
-    // 3. call "addnote" function, and post the shareController 's note text.
-    // 4. got the "noteid"
-    // 5. post the attachment with 2 pictures with "noteid"
-    // 6. close the connection.
+    dispatch_queue_t prepare_q = dispatch_queue_create("create mail queue", nil);
+    dispatch_async(prepare_q, ^{
+            // 2. login with some account information.
+            [_thinknoteC loginNoteServerWithName:DEBUG_NAME withPassword:DEBUG_PASSWD];
+            // other thing should in handler.
+        });
+}
+
+- (void) thinkNoteServerUpdateState: (int) state error: (NSError *) error
+{
+
+    if (error) {
+        // if there is any error, pop an alert.
+        [[NetworkManager sharedInstance] didStopNetworkOperation];
+        NSString *errorTitle = NSLocalizedString(@"Error when ThinkNote Share", "error title of think note share");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:errorTitle
+                                                        message:[error.userInfo valueForKey:NSLocalizedDescriptionKey]
+                                                       delegate:nil cancelButtonTitle:nil
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+
+    
+    // 1. state: login: start post the shareC's notes
+    if (state == THINKNOTE_CONN_STATUS_LOGIN) {
+        NSLog(@"SSThinkNoteShareAgent: start post note to server");
+        [_thinknoteC postNoteOnServer:_shareC.shiftOverviewStr note:_shareC.shiftDetailEmailStr];
+        [[NetworkManager sharedInstance] didStartNetworkOperation];
+    }
+
+    // 2. state: text updated, start add attachments of each images
+    // After state shift to post, means the note already posted on server.
+    if (state == THINKNOTE_CONN_STATUS_NOTE_POST) {
+        if (_attachmentPosted == 0) {
+            NSLog(@"SSThinkNoteShareAgent: note posted  , start post attachement 1");
+            [_thinknoteC postAttachment:_shareC.shiftCalImageName
+                               withData: UIImageJPEGRepresentation(_shareC.shiftCalImage, 90.9f)];
+            _attachmentPosted++;
+            
+        }
+    }
+    
+    if (state == THINKNOTE_CONN_STATUS_ATT_POST) {
+        if (_attachmentPosted == 1) {
+            NSLog(@"SSThinkNoteShareAgent: note posted, start post attachement 2");
+            [_thinknoteC postAttachment:_shareC.shiftListImageName
+                               withData: UIImageJPEGRepresentation(_shareC.shiftListImage, 90.9f)];
+            _attachmentPosted++;
+        } else if (_attachmentPosted == 2) {
+            NSLog(@"SSThinkNoteShareAgent: two attachment all posted, disconnect");
+            [_thinknoteC disconnect];
+            _attachmentPosted = 0;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                NSLog(@"finish post all attachments !");
+                // TODO: add view related things, how to notify user shared?
+            });
+        }
+    }
+
+    // 3. After the state change to attachment posted, we shall post another attachement.
+
+    // 4. disconnect.
+    
 }
 @end
 
 @implementation SSThinkNoteController
 
-@synthesize connectDelegate = _connectDelegate;
-
-#define TN_APP_KEY @"7F4E06A130880A10A8E2D7B3AC37CCF9"
-#define TN_SITE_URL @"http:www.qingbiji.cn"
-#define TN_LOGIN_URL @"/open/login"
-#define TN_ADDNOTE_URL @"/open/addnote"
-#define TN_ATTACH_URL @"/open/addattach"
-#define TN_GETNOTE_URL @"/open/getnote"
+#define TN_APP_KEY              @"7F4E06A130880A10A8E2D7B3AC37CCF9"
+#define TN_SITE_URL             @"http:www.qingbiji.cn"
+#define TN_LOGIN_URL            @"/open/login"
+#define TN_ADDNOTE_URL          @"/open/addnote"
+#define TN_ATTACH_URL           @"/open/addattach"
+#define TN_GETNOTE_URL          @"/open/getnote"
 
 // sync interface for testcase
 - (int) loginNoteServerSyncWithName:(NSString *)name withPassword:(NSString *)password
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
-                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", TN_SITE_URL, TN_LOGIN_URL]]];
+                                                  [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", TN_SITE_URL, TN_LOGIN_URL]]];
     
 
-     NSString *requestData = [NSString stringWithFormat:@"appkey=%@&username=%@&password=%@",
-                              TN_APP_KEY, name, password];
+    NSString *requestData = [NSString stringWithFormat:@"appkey=%@&username=%@&password=%@",
+                                      TN_APP_KEY, name, password];
 
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[NSData dataWithBytes:[requestData UTF8String]
@@ -74,9 +142,9 @@
     NSLog(@"request: %@ reponse:%@", request, response);
 #endif
     NSDictionary * jsonDict = [NSJSONSerialization 
-                               JSONObjectWithData:data
-                               options:NSJSONReadingMutableLeaves
-                               error:&error];
+                                          JSONObjectWithData:data
+                                                     options:NSJSONReadingMutableLeaves
+                                                       error:&error];
 #ifdef DEBUG
     NSLog(@"ThinkNote-Login: got data:%@", jsonDict);
 #endif
@@ -99,29 +167,33 @@
     return 0;
 }
 
-//- (void) postNoteServerWithNotesSync
-
 - (void) loginNoteServerWithName:(NSString *) name withPassword:(NSString *)password
 {
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: 
-                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", TN_SITE_URL, TN_LOGIN_URL]]];
+                                                  [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", TN_SITE_URL, TN_LOGIN_URL]]];
     
     
     NSString *requestData = [NSString stringWithFormat:@"appkey=%@&username=%@&password=%@",
-                             TN_APP_KEY, name, password];
+                                      TN_APP_KEY, name, password];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[NSData dataWithBytes:[requestData UTF8String]
                                         length:[requestData length]]];
 
     _serverConn = [[NSURLConnection alloc] 
-                                initWithRequest:request delegate:self];
+                                initWithRequest:request delegate:self startImmediately:NO];
     if (_serverConn) {
         _status = THINKNOTE_CONN_STATUS_LOGIN;
         _recvData = [NSMutableData data];
+        [_serverConn scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+        [_serverConn start];
     } else {
         _status = THINKNOTE_CONN_STATUS_IDLE;
-        NSLog(@"login failed\n");
+        NSString *description = NSLocalizedString(@"Connection to ThinkNote Server Error", "think note server erro");
+        NSDictionary *errorDictionary = @{ NSLocalizedDescriptionKey : description};
+        NSError *error = [[NSError alloc] initWithDomain:NSPOSIXErrorDomain code:-ENOMEM userInfo:errorDictionary];
+        [self.connectDelegate thinkNoteServerUpdateState:THINKNOTE_CONN_STATUS_LOGIN error:error];
+        NSLog(@"ThinkNote: create login connection failed\n");
     }
 }
 
@@ -131,19 +203,19 @@
     NSAssert(_loginToken != nil && [_loginToken length] != 0, @"post note without login!!");
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: 
-                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", TN_SITE_URL, TN_ADDNOTE_URL]]];
+                                                  [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", TN_SITE_URL, TN_ADDNOTE_URL]]];
     
     
     NSString *requestData = [NSString stringWithFormat:@"appkey=%@&token=%@&title=%@&content=%@&folderId=%d",
-                             TN_APP_KEY, 
-                             _loginToken,
-                             [NSString stringEncodeEscape:title],
-                             [NSString stringEncodeEscape:note],
-                             0];
+                                      TN_APP_KEY, 
+                                      _loginToken,
+                                      [NSString stringEncodeEscape:title],
+                                      [NSString stringEncodeEscape:note],
+                                      0];
     [request setHTTPMethod:@"POST"];
     
     NSMutableData *body = [NSMutableData dataWithBytes:[requestData UTF8String]
-                                  length:[requestData length]];
+                                                length:[requestData length]];
     [request setHTTPBody:body];
     
     NSURLResponse *response;
@@ -152,9 +224,9 @@
     NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error ];
 
     NSDictionary * jsonDict = [NSJSONSerialization 
-                               JSONObjectWithData:data
-                               options:NSJSONReadingMutableLeaves
-                                            error:&error];
+                                      JSONObjectWithData:data
+                                                 options:NSJSONReadingMutableLeaves
+                                                   error:&error];
     
     NSLog(@"got data:%@", jsonDict);
     
@@ -179,15 +251,15 @@
     NSAssert(_loginToken != nil && [_loginToken length] != 0, @"post note without login!!");
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: 
-                                    [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", TN_SITE_URL, TN_ADDNOTE_URL]]];
+                                                  [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", TN_SITE_URL, TN_ADDNOTE_URL]]];
     
     
     NSString *requestData = [NSString stringWithFormat:@"appkey=%@&token=%@&title=%@&content=%@&folderId=%@",
-                             TN_APP_KEY, 
-                             _loginToken,
-                             [NSString stringEncodeEscape:title],
-                             [NSString stringEncodeEscape:note],
-                             [NSNumber numberWithInt:0]];
+                                      TN_APP_KEY, 
+                                      _loginToken,
+                                      [NSString stringEncodeEscape:title],
+                                      [NSString stringEncodeEscape:note],
+                                      @0];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[NSData dataWithBytes:[requestData UTF8String]
                                         length:[requestData length]]];
@@ -213,8 +285,8 @@
     _serverConn = [_serverConn initWithRequest:request delegate:self];
 
     if (_serverConn != nil) {
-       [_recvData setLength:0];
-       _status = THINKNOTE_CONN_STATUS_ATT_POST;
+        [_recvData setLength:0];
+        _status = THINKNOTE_CONN_STATUS_ATT_POST;
     } else {
         NSLog(@"Error: Server Connection Error");
         return -1;
@@ -239,9 +311,9 @@
         NSLog(@"error when add attach: %@", error.userInfo);
     
     NSDictionary * jsonDict = [NSJSONSerialization 
-                                  JSONObjectWithData:returnData
-                                             options:NSJSONReadingMutableLeaves
-                                               error:&error];
+                                      JSONObjectWithData:returnData
+                                                 options:NSJSONReadingMutableLeaves
+                                                   error:&error];
     
     NSLog(@"post attach got return:%@ response:%d data:%@ error:%@",returnData,
           [response statusCode],
@@ -268,13 +340,18 @@
     [_recvData setLength:0];
 }
 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"connect error:%@", error.userInfo);
+}
+
 - (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     NSError *error;
     NSDictionary * jsonDict = [NSJSONSerialization 
-                               JSONObjectWithData:data
-                               options:NSJSONReadingMutableLeaves
-                                            error:&error];
+                                      JSONObjectWithData:data
+                                                 options:NSJSONReadingMutableLeaves
+                                                   error:&error];
     
     NSLog(@"got data:%@", jsonDict);
     
@@ -286,35 +363,64 @@
         
         // the result not ok, and not get the login token, failed.
         if ((![result isEqualToString:@"ok"]) || _loginToken == nil) {
-            NSLog(@"TN: login failed");
+            NSString *description = NSLocalizedString(@"ThinkNote Login Failed", "think note login failed");
+            NSDictionary *errorDictionary = @{ NSLocalizedDescriptionKey : description}; 
+            NSError *error = [[NSError alloc] initWithDomain:NSPOSIXErrorDomain
+                                                        code:-1 userInfo:errorDictionary];
+
+            [self.connectDelegate thinkNoteServerUpdateState:THINKNOTE_CONN_STATUS_LOGIN
+                                                       error:error];
+            NSLog(@"TN: login failed:%@", [jsonDict objectForKey:@"message"]);
         } else {
+            [self.connectDelegate thinkNoteServerUpdateState:THINKNOTE_CONN_STATUS_LOGIN
+                                                       error:nil];
             NSLog(@"TN: login success");
         }
         // call some delegate the login success
     } else if (_status == THINKNOTE_CONN_STATUS_NOTE_POST) {
-        if ([result isEqualToString:@"ok"] != YES) {
-            NSLog(@"TN: post note failed:%@", result);
-        }
-
         _noteID = [jsonDict objectForKey:@"message"];
-        if (_noteID == nil || _noteID.length == 0) {
-            NSLog(@"TN: Failed to post note, no nodeid");
+
+        if ([result isEqualToString:@"ok"] != YES ||
+            _noteID == nil || _noteID.length == 0) {
+
+            NSString *description = NSLocalizedString(@"ThinkNote Note Upload failed.", "thinknote note upload failed");
+            NSDictionary *errorDictionary = @{ NSLocalizedDescriptionKey : description}; 
+            NSError *error = [[NSError alloc] initWithDomain:NSPOSIXErrorDomain code:-1
+                                                    userInfo:errorDictionary];
+
+            [self.connectDelegate thinkNoteServerUpdateState:THINKNOTE_CONN_STATUS_NOTE_POST
+                                                       error:error];
+            NSLog(@"TN: post note failed:%@", [jsonDict objectForKey:@"message"]);
+            return;
+        } else {
+            NSLog(@"TN: note posted");
+            [self.connectDelegate thinkNoteServerUpdateState:THINKNOTE_CONN_STATUS_NOTE_POST
+                                                       error:nil];
         }
     } else if (_status == THINKNOTE_CONN_STATUS_ATT_POST) {
         if ([result isEqualToString:@"ok"] != YES) {
-            NSLog(@"TN: post attach failed:%@", result);
-        }
+            NSString *description = NSLocalizedString(@"ThinkNote Attachment Upload failed.", "think note attach upload error");
+            NSDictionary *errorDictionary = @{ NSLocalizedDescriptionKey : description}; 
+            NSError *error = [[NSError alloc] initWithDomain:NSPOSIXErrorDomain code:-1
+                                                    userInfo:errorDictionary];
 
-        // reset the state to idle
-        _status == THINKNOTE_CONN_STATUS_IDLE;
+            [self.connectDelegate thinkNoteServerUpdateState:THINKNOTE_CONN_STATUS_ATT_POST
+                                                       error:error];
+
+            NSLog(@"TN: post attach failed:%@", [jsonDict objectForKey:@"message"]);
+        } else {
+            [self.connectDelegate
+             thinkNoteServerUpdateState:THINKNOTE_CONN_STATUS_ATT_POST
+             error:nil];
+            NSLog(@"TN: attach post success");
+        }
     }
-    
-    
 }
 
 - (void) disconnect
 {
     [_serverConn cancel];
+    _status = THINKNOTE_CONN_STATUS_IDLE;
 }
 
 #pragma mark - Attachment Help Func.
@@ -325,19 +431,21 @@
 
     if ( [name.pathExtension isEqual:@"png"] ) {
         contentType = @"image/png";
-    } else if ( [name isEqual:@"jpg"] ) {
+    } else if ( [name.pathExtension isEqual:@"jpg"] ) {
         contentType = @"image/jpeg";
-    } else if ( [name isEqual:@"gif"] ) {
+    } else if ( [name.pathExtension isEqual:@"jpeg"] ) {
+        contentType = @"image/jpeg";
+    } else if ( [name.pathExtension isEqual:@"gif"] ) {
         contentType = @"image/gif";
     } else {
-        NSAssert(NO, @"not support file name");
+        NSAssert(NO, @"not support file name:%@ extension:%@", name, name.pathExtension);
         contentType = nil;          // quieten a warning
     }
     return contentType;
 }
 
 
-// This function build all parts into a multiPart data message, 
+// This function build all parts into a multiPart data message,
 // it can support one Blob data, and only one.
 // the @fileName give the Blob 's file name, use to get the MIME type.
 - (NSData *) encodeMultiPartDataWithDict:(NSDictionary *) dict dataFileName:(NSString *) fileName boundary: (NSString *)boundaryStr 
@@ -455,21 +563,19 @@
     
     NSString *boundaryStr = [self generateBoundaryString];
     
-    NSArray *keys = [NSArray arrayWithObjects:@"appkey",
-                             @"token",
-                             @"noteId",
-                             @"attname",
-                             @"attlen",
-                             @"attdata",
-                             nil];
+    NSArray *keys = @[@"appkey",
+                       @"token",
+                       @"noteId",
+                       @"attname",
+                       @"attlen",
+                       @"attdata"];
 
-    NSArray *values = [NSArray arrayWithObjects: TN_APP_KEY,
-                               _loginToken,
-                               _noteID,
-                               name,
-                               [NSString stringWithFormat:@"%d",data.length],
-                               data,
-                               nil];
+    NSArray *values = @[TN_APP_KEY,
+                                  _loginToken,
+                                  _noteID,
+                                  name,
+                           [NSString stringWithFormat:@"%d",data.length],
+                                  data];
 
     NSDictionary *params = [[NSDictionary alloc] initWithObjects:values forKeys:keys];
     

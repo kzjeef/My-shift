@@ -41,10 +41,8 @@ enum {
 
 + (NSArray *) returnItemsArray
 {
-    return  [[NSArray alloc] initWithObjects:
-             WORKLEN_ITEM_STRING,
-             RESTLEN_ITEM_STRING,
-             nil];
+    return  @[WORKLEN_ITEM_STRING,
+             RESTLEN_ITEM_STRING];
 }
 
 - (NSArray *) itemsArray
@@ -282,10 +280,10 @@ enum {
             [cell setSelected:YES];
 
             if (pPickerView.tag == WORKLEN_ITEM) // on day
-                job.jobOnDays = [NSNumber numberWithInt:value];
+                job.jobOnDays = @(value);
             
             if (pPickerView.tag == RESETLEN_ITEM) //off day
-                job.jobOffDays = [NSNumber numberWithInt:value];
+                job.jobOffDays = @(value);
         }
     }];
     
@@ -318,7 +316,7 @@ enum {
 	
     // note: custom picker doesn't care about titles, it uses custom views
     // don't return 0
-    returnStr = [[NSNumber numberWithInt:(row + 1)] stringValue];
+    returnStr = [@(row + 1) stringValue];
     
     return returnStr;
 }

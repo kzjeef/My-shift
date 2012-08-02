@@ -84,9 +84,9 @@
 {
     NSString *shiftMonthstr = [_kal selecedMonthNameAndYear];
 
-    return [NSString stringWithFormat:@"%@ @ %@", 
+    return [NSString stringWithFormat:@"%@ @ %@.%@", 
             NSLocalizedString(@"Shift Scheduler", ""),
-            shiftMonthstr];
+                     shiftMonthstr, @"jpg"];
 }
 
 - (UIImage *) shiftListImage
@@ -98,7 +98,9 @@
 
 - (NSString *) shiftListImageName
 {
-    return NSLocalizedString(@"Shift-On-Off Time", "on-off time in mail attachment");
+    return [NSString stringWithFormat:@"%@.%@", 
+                     NSLocalizedString(@"Shift-On-Off Time", "on-off time in mail attachment"),
+                     @"jpg"];
 }
 
 @end

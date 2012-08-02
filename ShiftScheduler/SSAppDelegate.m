@@ -13,6 +13,7 @@
 #import "SSMailAgent.h"
 #import "SSShareProfileListViewController.h"
 #import "SSShareObject.h"
+#import "SSThinkNoteShareAgent.h"
 
 #import "Kal.h"
 
@@ -73,7 +74,7 @@ enum {
                                                           target:self action:@selector(showRightActionSheet)];
     
     [UIView beginAnimations:nil context:NULL];
-    [navController setViewControllers:[NSArray arrayWithObject:kal] animated:NO];
+    [navController setViewControllers:@[kal] animated:NO];
     [UIView setAnimationDuration:.5];
     [UIView setAnimationBeginsFromCurrentState:YES];        
     [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown  forView:navController.view cache:YES];
@@ -84,6 +85,8 @@ enum {
     _shareC = [[SSShareController alloc] initWithProfilesVC:self.shareProfilesVC withKalController:kal];
     
     mailAgent = [[SSMailAgent alloc] initWithShareController:_shareC];
+    
+    thinkNoteAgent = [[SSThinkNoteShareAgent alloc] initWithSharedObject:_shareC];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -191,13 +194,10 @@ enum {
     // default perferences
     NSDictionary *appDefaults = [NSDictionary
                                  dictionaryWithObjects:
-                                 [NSArray arrayWithObjects:
-                                  [NSNumber numberWithBool:YES],
-                                  [NSNumber numberWithBool:NO], Nil]
-                                 forKeys:[NSArray arrayWithObjects:
-                                          @"enableAlertSound", 
-                                          @"systemDefalutAlertSound",
-                                           Nil]];
+                                 @[@(YES),
+                                  @(NO)]
+                                 forKeys:@[@"enableAlertSound", 
+                                          @"systemDefalutAlertSound"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 
     [self performSelectorInBackground:@selector(SSKalControllerInit) withObject:nil];
@@ -291,8 +291,9 @@ enum {
             [mailAgent composeMailWithAppDelegate:self withNVC:self.navController];
             break;
     case 1:
-        // ThinkNote
-        //        [self sendCalendarViewByThinkNote];
+            [thinkNoteAgent composeThinkNoteWithNagvagation:self.navController withBlock:^(SSShareResult *result) {
+                // @TODO empty here.
+            }];
         break;
     default:
         break;
@@ -438,11 +439,8 @@ enum {
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"ShiftScheduler.sqlite"];
     
-    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                             
-                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-                                [NSNumber numberWithBool:YES],
-                                NSInferMappingModelAutomaticallyOption, nil];
+    NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption: @(YES),
+                                NSInferMappingModelAutomaticallyOption: @(YES)};
     
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];

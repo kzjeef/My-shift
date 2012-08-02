@@ -22,10 +22,8 @@
 - (NSArray *) alarmSettingsArray
 {
     if (!alarmSettingsArray) {
-        alarmSettingsArray = [[NSArray alloc] initWithObjects:
-                              ENABLE_ALARM_SOUND,
-                              ENABLE_SYSTEM_ALERT_SOUND,
-                              nil];
+        alarmSettingsArray = @[ENABLE_ALARM_SOUND,
+                              ENABLE_SYSTEM_ALERT_SOUND];
     }
     return alarmSettingsArray;
 }
@@ -33,11 +31,9 @@
 - (NSArray *) itemsArray
 {
     if (!itemsArray) {
-        itemsArray = [[NSArray alloc] initWithObjects:
-                      TELL_OTHER_ITEM_STRING,
+        itemsArray = @[TELL_OTHER_ITEM_STRING,
 				      EMAIL_SUPPORT_ITEM_STRING,
-				      RATING_ITEM_STRING,
-				      nil];
+				      RATING_ITEM_STRING];
     }
     return itemsArray;
 }

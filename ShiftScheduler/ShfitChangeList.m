@@ -66,7 +66,7 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"ShiftDay"
 					      inManagedObjectContext:self.managedObjectContext];
     [request setEntity:entity];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"shiftFromDay" ascending:NO]]; // Last in, first out
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"shiftFromDay" ascending:NO]]; // Last in, first out
     request.predicate = nil;
     request.fetchBatchSize = 20;
     NSFetchedResultsController *frc = [[NSFetchedResultsController alloc]
@@ -100,11 +100,11 @@
 	switch(type) {
 			
 		case NSFetchedResultsChangeInsert:
-			[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 			
 		case NSFetchedResultsChangeDelete:
-			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 			
 		case NSFetchedResultsChangeUpdate:
@@ -112,8 +112,8 @@
 			break;
 			
 		case NSFetchedResultsChangeMove:
-			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 	}
 }

@@ -26,12 +26,10 @@ enum {
 @synthesize dateFormatter, theJob, datePicker, picker, firstChooseIndexPath;
 
 + (NSArray *) returnItemArray {
-    return [[NSArray alloc] initWithObjects:
-            FROM_ITEM_STRING,
+    return @[FROM_ITEM_STRING,
             HOURS_ITEM_STRING,
             REMIND_BEFORE_WORK,
-            REMIND_BEFORE_CLOCK_OFF,
-            nil];
+            REMIND_BEFORE_CLOCK_OFF];
 }
 
 //- (UIPickerView *) picker
@@ -180,7 +178,7 @@ enum {
     
     NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
     dateformatter.timeStyle = NSDateFormatterShortStyle;
-    NSString *formattedNumberString = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:a]];
+    NSString *formattedNumberString = [numberFormatter stringFromNumber:@(a)];
     
     NSString *dateString = [theJob jobEverydayOffTimeWithFormatter:dateformatter];
     NSString *resultString = [NSString stringWithFormat:@"%@ %@ (%@)", 
@@ -321,31 +319,28 @@ enum {
 
 + (NSDictionary *) returnRemindDict
 {
-    NSArray *objectArray = [NSArray arrayWithObjects:
-                            [NSNumber numberWithInt:-1],
-                            [NSNumber numberWithInt:0],
-                            [NSNumber numberWithInt:5 * 60],
-                            [NSNumber numberWithInt:15 * 60],
-                            [NSNumber numberWithInt:30 * 60],
-                            [NSNumber numberWithInt:60 * 60],
+    NSArray *objectArray = @[@-1,
+                            @0,
+                            @(5 * 60),
+                            @(15 * 60),
+                            @(30 * 60),
+                            @(60 * 60),
                             [NSNumber numberWithInt:1.5 * 60 * 60],
-                            [NSNumber numberWithInt:2 *60 * 60],
-                            nil];
-    NSArray *keysArray = [NSArray arrayWithObjects: [NSNumber numberWithInt:REMIND_NO_ITEM],
-                          [NSNumber numberWithInt:REMIND_JUST_HAPPEN_ITEM],
-                          [NSNumber numberWithInt:REMIND_5_MIN_ITEM],
-                          [NSNumber numberWithInt:REMIND_15_MIN_ITEM],
-                          [NSNumber numberWithInt:REMIND_30_MIN_ITEM],
-                          [NSNumber numberWithInt:REMIND_1_HOUR_ITEM],
-                          [NSNumber numberWithInt:REMIND_1_5_HOUR_ITEM],
-                          [NSNumber numberWithInt:REMIND_2_HOUR_ITEM],
-                          nil];
+                            @(2 *60 * 60)];
+    NSArray *keysArray = @[@(REMIND_NO_ITEM),
+                          @(REMIND_JUST_HAPPEN_ITEM),
+                          @(REMIND_5_MIN_ITEM),
+                          @(REMIND_15_MIN_ITEM),
+                          @(REMIND_30_MIN_ITEM),
+                          @(REMIND_1_HOUR_ITEM),
+                          @(REMIND_1_5_HOUR_ITEM),
+                          @(REMIND_2_HOUR_ITEM)];
     return [[NSDictionary alloc] initWithObjects:objectArray forKeys:keysArray];
 }
 
 + (NSTimeInterval) convertRemindItemToTimeInterval:(int) item
 {
-    return [[[SSProfileTimeAndAlarmVC returnRemindDict] objectForKey:[NSNumber numberWithInt:item]] intValue];
+    return [[[SSProfileTimeAndAlarmVC returnRemindDict] objectForKey:@(item)] intValue];
 }
 
 + (int) convertTimeIntervalToRemindItem: (NSTimeInterval) time
@@ -355,16 +350,14 @@ enum {
 
 + (NSArray *) returnRemindItemArray
 {
-    return [[NSArray alloc] initWithObjects:
-    REMIND_NO_ITEM_STR,
+    return @[REMIND_NO_ITEM_STR,
     REMIND_JUST_HAPPEN_ITEM_STR,
     REMIND_5_MIN_ITEM_STR,
     REMIND_15_MIN_ITEM_STR,
     REMIND_30_MIN_ITEM_STR,
     REMIND_1_HOUR_ITEM_STR,
     REMIND_1_5_HOUR_ITEM_STR,
-    REMIND_2_HOUR_ITEM_STR, 
-    nil];
+    REMIND_2_HOUR_ITEM_STR];
 
 }
 

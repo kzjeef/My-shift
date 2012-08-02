@@ -102,7 +102,7 @@
         NSMutableArray *fixeda = [[NSMutableArray alloc] initWithCapacity:self.jobFreeJumpCycle.intValue];
         [fixeda setArray:inputarray];
         for (int i = 0; i < diff; i++)
-            [fixeda addObject: [NSNumber numberWithInt: 0]];
+            [fixeda addObject: @0];
         return fixeda;
     } else {
         // diff < 0, we need cut the array with cycle length
@@ -161,10 +161,8 @@
 - (NSArray *) jobShiftAllTypesString
 {
     if (jobShiftAllTypesString == nil) {
-	jobShiftAllTypesString = [[NSArray alloc] initWithObjects:
-				  FREE_ROUND_STRING,
-				  FREE_JUMP_STRING,
-				  nil];
+	jobShiftAllTypesString = @[FREE_ROUND_STRING,
+				  FREE_JUMP_STRING];
     }
     return jobShiftAllTypesString;
 }
@@ -202,10 +200,10 @@
 // will reset to default setting if not set.
 {
     if (!self.jobOnDays)
-	self.jobOnDays = [NSNumber numberWithInt:JOB_DEFAULT_ON_DAYS];
+	self.jobOnDays = @JOB_DEFAULT_ON_DAYS;
 
     if (!self.jobOffDays)
-	self.jobOffDays = [NSNumber numberWithInt:JOB_DEFAULT_OFF_DAYS];
+	self.jobOffDays = @JOB_DEFAULT_OFF_DAYS;
 
     if (!self.jobStartDate)
 	self.jobStartDate = [NSDate date];
@@ -214,7 +212,7 @@
     self.jobOnIconID = JOB_DEFAULT_ICON_FILE;
 
     if (!self.jobEnable)
-	self.jobEnable = [NSNumber numberWithBool:YES];
+	self.jobEnable = @(YES);
 
     if (!self.jobOnColorID)
 	self.jobOnColorID = JOB_DEFAULT_COLOR_VALUE;
@@ -226,25 +224,25 @@
 	self.jobEverydayStartTime =  [[NSCalendar currentCalendar] dateFromComponents:defaultOnTime];
 
     if (!self.jobEveryDayLengthSec)
-	self.jobEveryDayLengthSec = [NSNumber numberWithInt: JOB_DEFAULT_EVERYDAY_ON_LENGTH]; // 8 hour a day default
+	self.jobEveryDayLengthSec = @JOB_DEFAULT_EVERYDAY_ON_LENGTH; // 8 hour a day default
 
     if (!self.jobRemindBeforeOff)
-	self.jobRemindBeforeOff = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_OFF];
+	self.jobRemindBeforeOff = @JOB_DEFAULT_REMIND_TIME_BEFORE_OFF;
 
     if (!self.jobRemindBeforeWork)
-	self.jobRemindBeforeWork = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_WORK];
+	self.jobRemindBeforeWork = @JOB_DEFAULT_REMIND_TIME_BEFORE_WORK;
 
     if (!self.jobShiftType)
-	self.jobShiftType = [NSNumber numberWithInt:JOB_SHIFT_ALGO_FREE_ROUND];
+	self.jobShiftType = @(JOB_SHIFT_ALGO_FREE_ROUND);
 }
 
 
 - (void) forceDefaultSetting
 // will reset to default setting if not set.
 {
-    self.jobOnDays = [NSNumber numberWithInt:JOB_DEFAULT_ON_DAYS];
+    self.jobOnDays = @JOB_DEFAULT_ON_DAYS;
 
-    self.jobOffDays = [NSNumber numberWithInt:JOB_DEFAULT_OFF_DAYS];
+    self.jobOffDays = @JOB_DEFAULT_OFF_DAYS;
 
     self.jobStartDate = [NSDate date];
 
@@ -252,17 +250,17 @@
 
     self.jobOnColorID = JOB_DEFAULT_COLOR_VALUE;
 
-    self.jobEnable = [NSNumber numberWithBool:YES];
+    self.jobEnable = @(YES);
 
     NSDateComponents *defaultOnTime = [[NSDateComponents alloc] init];
     [defaultOnTime setHour:8];
     [defaultOnTime setMinute:0];
     self.jobEverydayStartTime =  [[NSCalendar currentCalendar] dateFromComponents:defaultOnTime];
 
-    self.jobEveryDayLengthSec = [NSNumber numberWithInt: JOB_DEFAULT_EVERYDAY_ON_LENGTH]; // 8 hour a day default
-    self.jobRemindBeforeOff = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_OFF];
-    self.jobRemindBeforeWork = [NSNumber numberWithInt:JOB_DEFAULT_REMIND_TIME_BEFORE_WORK];
-    self.jobFreeJumpCycle = [NSNumber numberWithInt:JOB_DEFAULT_JUMP_CYCLE];
+    self.jobEveryDayLengthSec = @JOB_DEFAULT_EVERYDAY_ON_LENGTH; // 8 hour a day default
+    self.jobRemindBeforeOff = @JOB_DEFAULT_REMIND_TIME_BEFORE_OFF;
+    self.jobRemindBeforeWork = @JOB_DEFAULT_REMIND_TIME_BEFORE_WORK;
+    self.jobFreeJumpCycle = @JOB_DEFAULT_JUMP_CYCLE;
 }
 
 - (int)getXShiftCount
@@ -278,7 +276,7 @@
     if ([self getXShiftCount] == 0)
 	return self.jobEveryDayLengthSec;
     else
-	return [NSNumber numberWithInt:(DAY_TO_SECONDS / [self getXShiftCount])];
+	return @(DAY_TO_SECONDS / [self getXShiftCount]);
 }
 
 -(void)mysetJobEveryDayLengthSec:(NSNumber *)number
@@ -401,8 +399,8 @@
     self = [self init];
 
     self.jobName = name;
-    self.jobOnDays = [NSNumber numberWithInt:workdaylength];
-    self.jobOffDays = [NSNumber numberWithInt:restdayLength];
+    self.jobOnDays = @(workdaylength);
+    self.jobOffDays = @(restdayLength);
     self.jobStartDate = thestartDate;
     return self;
 }

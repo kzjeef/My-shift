@@ -45,13 +45,13 @@
         {
             if ([argument returnType] == SCVariableTypeBoolean)
             {
-                [NSException raise:SCGenericException format:@"Invalid argument definition: %@. Positional arguments may not have boolean return types."], [argument argumentId];
+                [NSException raise:SCGenericException format:@"Invalid argument definition: %@. Positional arguments may not have boolean return types.", [argument argumentId]];
             }
             if ([argument isVariableLength])
             {
                 if (foundVariableLengthArg)
                 {
-                    [NSException raise:SCGenericException format:@"Invalid argument definition: %@. A different variable-length argument was previously found."], [argument argumentId];
+                    [NSException raise:SCGenericException format:@"Invalid argument definition: %@. A different variable-length argument was previously found.", [argument argumentId]];
                 }
                 foundVariableLengthArg = YES;
             }
@@ -69,7 +69,7 @@
         }
         else
         {
-            [NSException raise:SCGenericException format:@"Invalid argument definition: %@. This definition has an unknown argument type."], [argument argumentId];
+            [NSException raise:SCGenericException format:@"Invalid argument definition: %@. This definition has an unknown argument type.", [argument argumentId]];
         }
     }
     
@@ -180,7 +180,7 @@
                 NSString *msg = [NSString stringWithFormat:@"Unknown option: %@", option];
                 *error = [NSError errorWithDomain:SCErrorDomain
                                              code:SCErrorCodeInvalidArgument
-                                         userInfo:[NSDictionary dictionaryWithObject:msg forKey:NSLocalizedDescriptionKey]];
+                                         userInfo:@{NSLocalizedDescriptionKey: msg}];
             }
         }
         
@@ -197,7 +197,7 @@
                         NSString *msg = [NSString stringWithFormat:@"The option %@ does not accept a value.", option];
                         *error = [NSError errorWithDomain:SCErrorDomain
                                                      code:SCErrorCodeInvalidArgument
-                                                 userInfo:[NSDictionary dictionaryWithObject:msg forKey:NSLocalizedDescriptionKey]];
+                                                 userInfo:@{NSLocalizedDescriptionKey: msg}];
                     }
                 }
             }
@@ -209,7 +209,7 @@
                     NSString *msg = [NSString stringWithFormat:@"The option %@ requires a value.", option];
                     *error = [NSError errorWithDomain:SCErrorDomain
                                                  code:SCErrorCodeInvalidArgument
-                                             userInfo:[NSDictionary dictionaryWithObject:msg forKey:NSLocalizedDescriptionKey]];
+                                             userInfo:@{NSLocalizedDescriptionKey: msg}];
                 }
             }
         }
@@ -235,7 +235,7 @@
         {
             if ([definition returnType] == SCVariableTypeBoolean)
             {
-                returnValue = [NSNumber numberWithBool:YES];
+                returnValue = @(YES);
             }
             else
             {
@@ -276,7 +276,7 @@
                                     NSString *msg = [NSString stringWithFormat:@"%@ is not a valid number.", tmpValue];
                                     *error = [NSError errorWithDomain:SCErrorDomain
                                                                  code:SCErrorCodeInvalidArgument
-                                                             userInfo:[NSDictionary dictionaryWithObject:msg forKey:NSLocalizedDescriptionKey]];
+                                                             userInfo:@{NSLocalizedDescriptionKey: msg}];
                                 }
                             }
                             break;
@@ -287,7 +287,7 @@
                             NSString *intStr = [NSString stringWithFormat:@"%d", intVal];
                             if ([intStr isEqualToString:tmpValue])
                             {
-                                convertedValue = [NSNumber numberWithInt:intVal];
+                                convertedValue = @(intVal);
                             }
                             else
                             {
@@ -297,7 +297,7 @@
                                     NSString *msg = [NSString stringWithFormat:@"%@ is not a valid integer.", tmpValue];
                                     *error = [NSError errorWithDomain:SCErrorDomain
                                                                  code:SCErrorCodeInvalidArgument
-                                                             userInfo:[NSDictionary dictionaryWithObject:msg forKey:NSLocalizedDescriptionKey]];
+                                                             userInfo:@{NSLocalizedDescriptionKey: msg}];
                                 }
                             }
                             break;
@@ -359,7 +359,7 @@
                         
                         *error = [NSError errorWithDomain:SCErrorDomain
                                                      code:SCErrorCodeInvalidArgument
-                                                 userInfo:[NSDictionary dictionaryWithObject:msg forKey:NSLocalizedDescriptionKey]];
+                                                 userInfo:@{NSLocalizedDescriptionKey: msg}];
                     }
                 }
             }

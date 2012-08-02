@@ -97,7 +97,7 @@
         UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                   target:self
                                                                                   action:@selector(done:)];
-        [_toolbar setItems:[NSArray arrayWithObjects:cancelItem, spaceItem, doneItem, nil]];
+        [_toolbar setItems:@[cancelItem, spaceItem, doneItem]];
     }
     
     return _toolbar;

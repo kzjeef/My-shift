@@ -32,7 +32,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        detailItems = [NSArray arrayWithObjects: FREE_ROUND_DETAIL_STRING, FREE_JUMP_DETAIL_STRING, nil];
+        detailItems = @[FREE_ROUND_DETAIL_STRING, FREE_JUMP_DETAIL_STRING];
     }
     return self;
 }
@@ -119,7 +119,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.theJob.jobShiftType = [NSNumber numberWithInt:(indexPath.row + 1)];    
+    self.theJob.jobShiftType = @(indexPath.row + 1);    
     [self shiftConfigChooseRightShiftConfigure];
 }
 

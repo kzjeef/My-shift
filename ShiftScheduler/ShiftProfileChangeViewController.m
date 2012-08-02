@@ -78,15 +78,13 @@
 {
     
     if (!itemsArray) {
-        itemsArray = [[NSArray alloc] initWithObjects:
-					  NAME_ITEM_STRING,
+        itemsArray = @[NAME_ITEM_STRING,
 				      ICON_ITEM_STRING,
 				      COLOR_PICKER_STRING,
                                       ICON_OR_TEXT_STRING,
 				      STARTWITH_ITEM_STRING,
 				      REPEAT_ITEM_STRING,
-                                      SHIFTCONFIG_ITEM_STRING,
-				      nil];
+                                      SHIFTCONFIG_ITEM_STRING];
     }
     return itemsArray;
 }
@@ -94,12 +92,10 @@
 - (NSArray *) timeItemsArray
 {
     if (!timeItemArray) {
-	timeItemArray = [[NSArray alloc] initWithObjects:
-					     FROM_ITEM_STRING,
+	timeItemArray = @[FROM_ITEM_STRING,
 					 HOURS_ITEM_STRING,
 					 REMIND_BEFORE_WORK,
-					 REMIND_BEFORE_CLOCK_OFF,
-					 nil];
+					 REMIND_BEFORE_CLOCK_OFF];
     }
     return timeItemArray;
 }
@@ -201,7 +197,7 @@
 - (void)jobSwitchAction:(id) sender
 {
     UISwitch *currentSwitch = sender;
-    self.theJob.jobShowTextInCalendar = [NSNumber numberWithBool:currentSwitch.isOn];
+    self.theJob.jobShowTextInCalendar = @(currentSwitch.isOn);
 }
 
 
@@ -728,11 +724,11 @@
 {
     switch (index) {
     case 0:
-        self.theJob.jobShowTextInCalendar = [NSNumber numberWithInt:0];
+        self.theJob.jobShowTextInCalendar = @0;
         [self.tableView reloadData];
         break;
     case 1:
-        self.theJob.jobShowTextInCalendar = [NSNumber numberWithInt:1];
+        self.theJob.jobShowTextInCalendar = @1;
         [self.tableView reloadData];
         break;
     }

@@ -90,10 +90,9 @@
 {
     if (changeShiftSegmentControl)
         return changeShiftSegmentControl;
-    NSArray *changeShiftTypes = [[NSArray alloc] initWithObjects:
-                                 [ShiftDay returnStringForType:[NSNumber numberWithInt:TYPE_EXCAHNGE]],
-                                 [ShiftDay returnStringForType:[NSNumber numberWithInt:TYPE_OVERWORK]],
-                                 [ShiftDay returnStringForType:[NSNumber numberWithInt:TYPE_VACATION]],nil ];
+    NSArray *changeShiftTypes = @[[ShiftDay returnStringForType:@TYPE_EXCAHNGE],
+                                 [ShiftDay returnStringForType:@TYPE_OVERWORK],
+                                 [ShiftDay returnStringForType:@TYPE_VACATION]];
     UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems:changeShiftTypes];
     control.selectedSegmentIndex = 0;
     control.segmentedControlStyle = UISegmentedControlStyleBar;
@@ -107,7 +106,7 @@
 - (void)shiftTypeChanged: (UISegmentedControl *) sender
 {
     // shift change type changed.
-    self.theShiftChange.type = [NSNumber numberWithInt:sender.selectedSegmentIndex];
+    self.theShiftChange.type = @(sender.selectedSegmentIndex);
     [self shiftPickerShow:NO];
     [self datePickerShow:NO];
     [self.tableView reloadData];
@@ -162,7 +161,7 @@
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonClicked)];
     UIBarButtonItem *flexItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonClicked)];
-    NSArray *a = [NSArray arrayWithObjects:cancelButton, flexItem, saveButton,nil];
+    NSArray *a = @[cancelButton, flexItem, saveButton];
     [self setToolbarItems:a];
     
     self.theShiftChange = [NSEntityDescription insertNewObjectForEntityForName:@"ShiftDay" inManagedObjectContext:self.managedObjectContext];
@@ -414,41 +413,24 @@
         NSArray *namelist, *typeList, *placeholderList;
         if (type == TYPE_EXCAHNGE) {
             
-            namelist = [NSArray arrayWithObjects:
-				    NSLocalizedString(@"Origin Shift", "From in shift add view"),
-				NSLocalizedString(@"New Shift", "change to in shift change view"),
-				nil];
-            typeList = [NSArray arrayWithObjects:
-				    [NSNumber numberWithInt:UIDatePickerModeDate], [NSNumber numberWithInt:UIDatePickerModeDate], nil];
-            placeholderList = [NSArray arrayWithObjects:
-					   NSLocalizedString(@"Choose shift date", "choose data"),
-				       NSLocalizedString(@"Choose shift date", "choose data"),
-				       nil];
+            namelist = @[NSLocalizedString(@"Origin Shift", "From in shift add view"),
+				NSLocalizedString(@"New Shift", "change to in shift change view")];
+            typeList = @[@(UIDatePickerModeDate), @(UIDatePickerModeDate)];
+            placeholderList = @[NSLocalizedString(@"Choose shift date", "choose data"),
+				       NSLocalizedString(@"Choose shift date", "choose data")];
             
         }
 
 	if (type == TYPE_OVERWORK) {
-	    namelist = [NSArray arrayWithObjects:
-				    NSLocalizedString(@"OverWork", "OverWork"),
-				nil];
-	    typeList = [NSArray arrayWithObjects:
-				    [NSNumber numberWithInt:UIDatePickerModeDate],
-				nil];
-	    placeholderList = [NSArray arrayWithObjects:
-					   NSLocalizedString(@"overwork date","overwork date in place holder"),
-				       nil];
+	    namelist = @[NSLocalizedString(@"OverWork", "OverWork")];
+	    typeList = @[@(UIDatePickerModeDate)];
+	    placeholderList = @[NSLocalizedString(@"overwork date","overwork date in place holder")];
 	}
 	
 	if (type == TYPE_VACATION) {
-	    namelist = [NSArray arrayWithObjects:
-				    NSLocalizedString(@"Vacation", "Vacation"),
-				nil];
-	    typeList = [NSArray arrayWithObjects:
-				    [NSNumber numberWithInt:UIDatePickerModeDate],
-				nil];
-	    placeholderList = [NSArray arrayWithObjects:
-					   NSLocalizedString(@"Choose a date, have fun!","Vacation date in place holder"),
-				       nil];
+	    namelist = @[NSLocalizedString(@"Vacation", "Vacation")];
+	    typeList = @[@(UIDatePickerModeDate)];
+	    placeholderList = @[NSLocalizedString(@"Choose a date, have fun!","Vacation date in place holder")];
 	}
 				
         DatePickerViewController2 *dpvc = [[DatePickerViewController2 alloc] initWithDateNameList:namelist withTypeList:typeList];
@@ -503,12 +485,12 @@
     
     if (choosedRow == 0) {
         self.theShiftChange.shiftFromDay = picker.date;
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:choosenIndex] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView reloadRowsAtIndexPaths:@[choosenIndex] withRowAnimation:UITableViewRowAnimationFade];
     }
     
     if (choosedRow == 1) {
         self.theShiftChange.shiftToDay = picker.date;
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:choosenIndex] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView reloadRowsAtIndexPaths:@[choosenIndex] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
@@ -519,7 +501,7 @@
         return YES;
         
         // need check whether this value is accept by me.
-    if (self.theShiftChange.type == [NSNumber numberWithInt:TYPE_EXCAHNGE]) {
+    if (self.theShiftChange.type == @TYPE_EXCAHNGE) {
         NSAssert(results.count == 2, @"Result length should be 2 in exchange mode");
         if ([[results objectAtIndex:0] isKindOfClass:[NSDate class]]
             && [[results objectAtIndex:1] isKindOfClass:[NSDate class]]) {
@@ -528,13 +510,13 @@
         }
     }
     
-    if (self.theShiftChange.type == [NSNumber numberWithInt:TYPE_OVERWORK]) {
+    if (self.theShiftChange.type == @TYPE_OVERWORK) {
         NSAssert(results.count == 1, @"Result length should be 1 in exchange mode");
         if ([[results objectAtIndex:0] isKindOfClass:[NSDate class]])
             self.theShiftChange.shiftFromDay =  [results objectAtIndex:0];
     }
     
-    if (self.theShiftChange.type == [NSNumber numberWithInt:TYPE_VACATION]) {
+    if (self.theShiftChange.type == @TYPE_VACATION) {
         NSAssert(results.count == 1, @"Results length should be 1 in exchange mode");
         if ([[results objectAtIndex:0] isKindOfClass:[NSDate class]])
             self.theShiftChange.shiftFromDay = [results objectAtIndex:0];

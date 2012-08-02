@@ -30,7 +30,7 @@
 
 - (NSNumber *) shiftTotalCycle
 {
-    return [NSNumber numberWithInt:[self getCountOfJumpArray]];
+    return @([self getCountOfJumpArray]);
 }
 
 - (NSArray *) shiftCalcWorkdayBetweenStartDate: (NSDate *) beginDate endDate: (NSDate *) endDate
@@ -54,7 +54,7 @@
 
     // 如果说都早于工作开始的时间， 就返回空
     if (diffEndAndJobStartGMT < 0 && diffBeginAndJobStartGMT < 0)
-        return  [NSArray array];
+        return  @[];
 
     NSMutableArray *matchedArray = [[NSMutableArray alloc] init];
     NSDate *workingDate = beginDate;

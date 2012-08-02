@@ -182,7 +182,7 @@
     NSDate *d = picker.date;
     
     [self.resultList replaceObjectAtIndex:[self.tableView indexPathForSelectedRow].row withObject:d];
-    NSArray *ar = [NSArray arrayWithObjects:[self.tableView indexPathForSelectedRow], nil];
+    NSArray *ar = @[[self.tableView indexPathForSelectedRow]];
     [self.tableView reloadRowsAtIndexPaths:ar
                           withRowAnimation:UITableViewRowAnimationAutomatic];
 }

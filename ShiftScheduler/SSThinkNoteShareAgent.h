@@ -12,14 +12,20 @@
 @class SSShareResult;
 
 @class SSShareController;
-@interface SSThinkNoteShareAgent : NSObject
+
+@protocol SSThinkNoteControllerDelegate <NSObject>
+
+- (void) thinkNoteServerUpdateState: (int) state error: (NSError *) error;
+
+@end
+
+
+@interface SSThinkNoteShareAgent : NSObject <SSThinkNoteControllerDelegate>
 
 - (id) initWithSharedObject: (SSShareController *)shareC;
-
-
-
 - (void) composeThinkNoteWithNagvagation: (UINavigationController *)nvc
                                withBlock: (ComposeShareViewCompleteHander) block;
+- (void) thinkNoteServerUpdateState: (int) state error: (NSError *) error;
 
 @end
 
@@ -30,20 +36,14 @@ enum {
     THINKNOTE_CONN_STATUS_ATT_POST,
 };
 
-@protocol SSThinkNoteControllerDelegate <NSObject>
-
-- (void) thinkNoteServerUpdateState: (int) state error: (NSError *) error;
-
-@end
 
 @interface SSThinkNoteController : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
-
 {
     int _status;
     NSString *_loginToken;
     NSString *_noteID;
     // Attachement is NSDirectory with name & data. 
-    // after flush, clear the array.
+    // after flush, clear the array.
     NSArray *_attachments;
     NSMutableData *_recvData;
     NSURLConnection *_serverConn;
@@ -57,7 +57,7 @@ enum {
 - (void) loginNoteServerWithName: (NSString *) name 
                     withPassword: (NSString *) password;
 
-- (int) postNoteOnServer: (NSString *) note;
+- (int) postNoteOnServer: (NSString *) title note: (NSString *)note;
 - (int) postNoteOnServerSync: (NSString *) title note: (NSString *)note;
 
 //- (int) flushNoteCache;

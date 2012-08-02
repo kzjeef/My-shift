@@ -297,7 +297,7 @@ return YES;
                     [cell setSelected:YES];
 
 		    // Clear the cache of shift table, and load new one.
-                    job.jobFreeJumpCycle = [NSNumber numberWithInt:value];
+                    job.jobFreeJumpCycle = @(value);
                     [_self reloadShiftTable];
                     [_self.tableView reloadData];
 
@@ -317,7 +317,7 @@ return YES;
 
     // note: custom picker doesn't care about titles, it uses custom views
     // don't return 0
-    returnStr = [[NSNumber numberWithInt:(row + 1)] stringValue];
+    returnStr = [@(row + 1) stringValue];
 
     return returnStr;
 }

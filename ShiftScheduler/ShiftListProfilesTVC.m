@@ -59,7 +59,7 @@
 {
     UISwitch *currentSwitch = sender;
     OneJob *j = [self.fetchedResultsController.fetchedObjects objectAtIndex:currentSwitch.tag];
-    j.jobEnable = [NSNumber numberWithBool:currentSwitch.isOn];
+    j.jobEnable = @(currentSwitch.isOn);
     NSError *error;
     if (![self.managedObjectContext save:&error]) {
         // Update to handle the error appropriately.
@@ -126,7 +126,7 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"OneJob" inManagedObjectContext:self.managedObjectContext];
     [request setEntity:entity];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"jobName"  ascending:YES]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"jobName"  ascending:YES]];
 
     request.predicate = nil;
     request.fetchBatchSize = 20;
@@ -157,11 +157,11 @@
 	switch(type) {
 			
 		case NSFetchedResultsChangeInsert:
-			[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 			
 		case NSFetchedResultsChangeDelete:
-			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 			
 		case NSFetchedResultsChangeUpdate:
@@ -169,8 +169,8 @@
 			break;
 			
 		case NSFetchedResultsChangeMove:
-			[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 	}
 }
@@ -470,7 +470,7 @@
         
         //XXX: for complicate the old job data modole.
         if (j.jobEnable == nil)
-            j.jobEnable = [NSNumber numberWithInt:1];
+            j.jobEnable = @1;
 
         theSwitch.on = j.jobEnable.boolValue;
 		

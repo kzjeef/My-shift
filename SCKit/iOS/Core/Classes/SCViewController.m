@@ -30,10 +30,10 @@
 - (void)allowAllInterfaceOrientations
 {
     NSSet *orientations = [NSSet setWithObjects:
-                           [NSNumber numberWithInt:UIInterfaceOrientationPortrait],
-                           [NSNumber numberWithInt:UIInterfaceOrientationPortraitUpsideDown],
-                           [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft],
-                           [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight],
+                           @(UIInterfaceOrientationPortrait),
+                           @(UIInterfaceOrientationPortraitUpsideDown),
+                           @(UIInterfaceOrientationLandscapeLeft),
+                           @(UIInterfaceOrientationLandscapeRight),
                            nil];
     [self setAllowedInterfaceOrientations:orientations];
 }

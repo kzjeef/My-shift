@@ -41,7 +41,7 @@
 - (NSNumber *) shiftTotalCycle
 {
     NSAssert(NO, @"should not call here");
-    return [NSNumber numberWithInt:7];
+    return @7;
 }
 
 - (NSArray *) shiftCalcWorkdayBetweenStartDate: (NSDate *) startDate endDate: (NSDate *) endDate

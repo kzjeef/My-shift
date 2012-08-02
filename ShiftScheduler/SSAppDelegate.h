@@ -17,6 +17,7 @@
 @class SSShareProfileListViewController;
 
 @class SSMailAgent;
+@class SSThinkNoteShareAgent;
 @class SSShareController;
 
 @interface SSAppDelegate : UIResponder <UIApplicationDelegate, 
@@ -36,6 +37,7 @@ ProfileEditFinishDelegate>
     UIActionSheet *rightAS;
     UIAlertView  *alertNoProfile;
     SSMailAgent *mailAgent;
+    SSThinkNoteShareAgent *thinkNoteAgent;
     SSShareController *_shareC;
     
     UIBarButtonItem *shareButton;

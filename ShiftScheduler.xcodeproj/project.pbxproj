@@ -75,6 +75,8 @@
 		2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECD14F9076400DF1CCF /* AVFoundation.framework */; };
 		2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */; };
 		297D073215B702DC008B9983 /* ThinkNoteModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073115B702DC008B9983 /* ThinkNoteModelTest.m */; };
+		299B559515CA019A0094EA01 /* NetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 299B559315CA019A0094EA01 /* NetworkManager.h */; };
+		299B559615CA019A0094EA01 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 299B559415CA019A0094EA01 /* NetworkManager.m */; };
 		299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */; };
 		299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */; };
 		29AEBD691554146F0010F27D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29ECA45814B0514E00B3832D /* SenTestingKit.framework */; };
@@ -267,6 +269,8 @@
 		2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		297D073015B702DB008B9983 /* ThinkNoteModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThinkNoteModelTest.h; path = OneJobModuleTest/ThinkNoteModelTest.h; sourceTree = "<group>"; };
 		297D073115B702DC008B9983 /* ThinkNoteModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteModelTest.m; path = OneJobModuleTest/ThinkNoteModelTest.m; sourceTree = "<group>"; };
+		299B559315CA019A0094EA01 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkManager.h; path = ShiftScheduler/NetworkManager.h; sourceTree = "<group>"; };
+		299B559415CA019A0094EA01 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkManager.m; path = ShiftScheduler/NetworkManager.m; sourceTree = "<group>"; };
 		299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftWorkdayConfigTVC.h; sourceTree = "<group>"; };
 		299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftWorkdayConfigTVC.m; sourceTree = "<group>"; };
 		29AEBD681554146F0010F27D /* OneJobModuleTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneJobModuleTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -632,6 +636,8 @@
 			children = (
 				29E6D7F215ADC59A00235123 /* Share */,
 				293B64EA15A335A900D0C4B5 /* config.h */,
+				299B559315CA019A0094EA01 /* NetworkManager.h */,
+				299B559415CA019A0094EA01 /* NetworkManager.m */,
 				2935514914E2E5EB004D8FAC /* SettingView */,
 				299D8D0D147948B900E20DAE /* ProfileView */,
 				298B0168148B946500C013F5 /* ChangeShiftView */,
@@ -873,6 +879,7 @@
 				29B8F3D515B9BA62000D934A /* SSShareObject.h in Headers */,
 				29B8F3D715B9BA62000D934A /* SSThinkNoteShareAgent.h in Headers */,
 				29B8F3D915B9BA62000D934A /* UIImage+CaptureView.h in Headers */,
+				299B559515CA019A0094EA01 /* NetworkManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,7 +929,7 @@
 		29B9E1A81472C1D700DB2E1F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = 29B9E1AB1472C1D700DB2E1F /* Build configuration list for PBXProject "ShiftScheduler" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1114,6 +1121,7 @@
 				29B8F3D615B9BA62000D934A /* SSShareObject.m in Sources */,
 				29B8F3D815B9BA62000D934A /* SSThinkNoteShareAgent.m in Sources */,
 				29B8F3DA15B9BA62000D934A /* UIImage+CaptureView.m in Sources */,
+				299B559615CA019A0094EA01 /* NetworkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1206,7 +1214,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1214,7 +1222,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -1235,8 +1243,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

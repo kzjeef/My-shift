@@ -31,7 +31,7 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName: @"OneJob"
 					      inManagedObjectContext: self.managedcontext];
     [request setEntity:entity];
-    request.sortDescriptors = [NSArray arrayWithObject: [NSSortDescriptor
+    request.sortDescriptors = @[[NSSortDescriptor
 							    sortDescriptorWithKey: @"jobName"
 									ascending:YES]];
     request.predicate = [NSPredicate predicateWithFormat:@"jobEnable == YES"];
