@@ -26,6 +26,7 @@
 - (void) composeThinkNoteWithNagvagation: (UINavigationController *)nvc
                                withBlock: (ComposeShareViewCompleteHander) block;
 - (void) thinkNoteServerUpdateState: (int) state error: (NSError *) error;
+- (void) disconnect;
 
 @end
 

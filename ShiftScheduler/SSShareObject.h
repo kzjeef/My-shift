@@ -33,13 +33,14 @@ typedef void (^ComposeShareViewCompleteHander)(SSShareResult *result);
 @interface SSShareController : NSObject
 
 @property (readonly) NSString *shiftOverviewStr;
-@property (readonly) NSString *shiftThinkNoteStr;
+@property (strong, nonatomic) NSString *shiftThinkNoteStr;
 @property (readonly) NSString *shiftDetailEmailStr;
-@property (readonly) UIImage *shiftCalImage;
-@property (readonly) NSString *shiftCalImageName;
+@property (strong, nonatomic) UIImage *shiftCalImage;
+@property (strong, nonatomic) NSString *shiftCalImageName;
 @property (readonly) UIImage *shiftListImage;
 @property (readonly) NSString *shiftListImageName;
 
 - (id) initWithProfilesVC:(SSShareProfileListViewController *)profilelist
         withKalController:(KalViewController *)kal;
+- (void) invaildCache;
 @end

@@ -44,6 +44,9 @@ enum {
 
 - (void) SSKalControllerInit
 {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+
     kal = [[KalViewController alloc] init];
     kal.title = NSLocalizedString(@"Shift Scheduler", "application title");
     
@@ -93,6 +96,7 @@ enum {
     self.tnoteShareVC.shareC = _shareC;
     self.tnoteShareVC.shareAgent = thinkNoteAgent;
     self.tnoteShareVC.shareDelegate = self;
+    });
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -297,9 +301,11 @@ enum {
     switch (index) {
 
     case 0:
+            [_shareC invaildCache];
             [mailAgent composeMailWithAppDelegate:self withNVC:self.navController];
             break;
     case 1:
+            [_shareC invaildCache];
             [self.navController presentModalViewController:self.tnoteShareVC animated:YES];
         break;
     default:

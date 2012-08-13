@@ -26,7 +26,7 @@
     
     _ntController = [[SSThinkNoteController alloc] init];
     
-    int ret =    [_ntController loginNoteServerSyncWithName:@"zhangjeef@gmail.com" withPassword:@"123456"];
+    int ret =    [_ntController loginNoteServerSyncWithName:@"kzjeef@gmail.com" withPassword:@"123456"];
     STAssertTrue(ret == 0 , @"login failed");
     [_ntController disconnect];
 }
@@ -40,7 +40,7 @@
 
     _ntController = [[SSThinkNoteController alloc] init];
     
-    ret = [_ntController loginNoteServerSyncWithName:@"zhangjeef@gmail.com" withPassword:@"123456"];
+    ret = [_ntController loginNoteServerSyncWithName:@"kzjeef@gmail.com" withPassword:@"123456"];
     STAssertTrue(ret == 0, @"login failed");
 
     ret = [_ntController postNoteOnServerSync:@"Test1" note:@"Test 2"];
@@ -58,7 +58,7 @@
     
     _ntController = [[SSThinkNoteController alloc] init];
     
-    ret = [_ntController loginNoteServerSyncWithName:@"zhangjeef@gmail.com" withPassword:@"123456"];
+    ret = [_ntController loginNoteServerSyncWithName:@"kzjeef@gmail.com" withPassword:@"123456"];
     STAssertTrue(ret == 0, @"login failed");
     
     ret = [_ntController postNoteOnServerSync:@"Test1" note:@"Test 2"];

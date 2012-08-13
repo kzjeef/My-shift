@@ -53,7 +53,6 @@
 		2935514414E2BABA004D8FAC /* SSTurnShiftTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2935514114E2BABA004D8FAC /* SSTurnShiftTVC.h */; };
 		2935514514E2BABA004D8FAC /* SSTurnShiftTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */; };
 		2935514614E2BABA004D8FAC /* SSTurnShiftTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */; };
-		2935514814E2DDB0004D8FAC /* ShiftProfileChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2935514714E2DDB0004D8FAC /* ShiftProfileChangeViewController.xib */; };
 		293B64EB15A335AA00D0C4B5 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 293B64EA15A335A900D0C4B5 /* config.h */; };
 		293B64F115A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64ED15A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png */; };
 		293B64F415A3BF8400D0C4B5 /* tab-calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64F015A3BF8400D0C4B5 /* tab-calendar.png */; };
@@ -75,10 +74,10 @@
 		2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECD14F9076400DF1CCF /* AVFoundation.framework */; };
 		2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */; };
 		297D073215B702DC008B9983 /* ThinkNoteModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073115B702DC008B9983 /* ThinkNoteModelTest.m */; };
+		298C3FBD15D92622002F9AC3 /* ThinkNoteShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 298C3FBC15D92622002F9AC3 /* ThinkNoteShareViewController.m */; };
 		299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */; };
 		299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */; };
 		29AB77A815D8746400669B6B /* notify.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29AB77A715D8746400669B6B /* notify.caf */; };
-		29AB77A915D87F5A00669B6B /* ThinkNoteShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AB77AB15D87F5A00669B6B /* ThinkNoteShareViewController.m */; };
 		29AEBD691554146F0010F27D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29ECA45814B0514E00B3832D /* SenTestingKit.framework */; };
 		29AEBD6A1554146F0010F27D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E1B51472C1D700DB2E1F /* UIKit.framework */; };
 		29AEBD6B1554146F0010F27D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E1B71472C1D700DB2E1F /* Foundation.framework */; };
@@ -146,6 +145,8 @@
 		29D6A529159CB4B600AC6103 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D6A527159CB4B600AC6103 /* UIViewAdditions.m */; };
 		29D6A534159CB65500AC6103 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B9E1C31472C1D700DB2E1F /* main.m */; };
 		29D6A550159CB79F00AC6103 /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D6A513159CB37000AC6103 /* libKal.a */; };
+		29D9F0DA15D93A9A00960B56 /* SSShareObject.h in Sources */ = {isa = PBXBuildFile; fileRef = 29B8F3CD15B9BA62000D934A /* SSShareObject.h */; };
+		29D9F0DB15D93A9A00960B56 /* SSShareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8F3CE15B9BA62000D934A /* SSShareObject.m */; };
 		29DCB8DA15A7C79C0095C71D /* NSDateAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 29DCB8D915A7C79C0095C71D /* NSDateAdditions.h */; };
 		29DCB8DC15A7C8730095C71D /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 29DCB8DB15A7C8730095C71D /* NSDateAdditions.m */; };
 		29DCB8E015A878590095C71D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 29DCB8DF15A878590095C71D /* Default.png */; };
@@ -255,7 +256,6 @@
 		2935514114E2BABA004D8FAC /* SSTurnShiftTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTurnShiftTVC.h; sourceTree = "<group>"; };
 		2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTurnShiftTVC.m; sourceTree = "<group>"; };
 		2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSTurnShiftTVC.xib; sourceTree = "<group>"; };
-		2935514714E2DDB0004D8FAC /* ShiftProfileChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShiftProfileChangeViewController.xib; sourceTree = "<group>"; };
 		293B64EA15A335A900D0C4B5 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = ShiftScheduler/config.h; sourceTree = "<group>"; };
 		293B64ED15A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IL_SmartPlaylistIcon.png; path = Resources/IL_SmartPlaylistIcon.png; sourceTree = "<group>"; };
 		293B64F015A3BF8400D0C4B5 /* tab-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab-calendar.png"; path = "Resources/tab-calendar.png"; sourceTree = "<group>"; };
@@ -271,7 +271,7 @@
 		2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		297D073015B702DB008B9983 /* ThinkNoteModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThinkNoteModelTest.h; path = OneJobModuleTest/ThinkNoteModelTest.h; sourceTree = "<group>"; };
 		297D073115B702DC008B9983 /* ThinkNoteModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteModelTest.m; path = OneJobModuleTest/ThinkNoteModelTest.m; sourceTree = "<group>"; };
-		298C3FBB15D87FDA002F9AC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/ThinkNoteShareViewController.m; sourceTree = "<group>"; };
+		298C3FBC15D92622002F9AC3 /* ThinkNoteShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteShareViewController.m; path = ShiftScheduler/ThinkNoteShareViewController.m; sourceTree = "<group>"; };
 		299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftWorkdayConfigTVC.h; sourceTree = "<group>"; };
 		299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftWorkdayConfigTVC.m; sourceTree = "<group>"; };
 		29AB77A715D8746400669B6B /* notify.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = notify.caf; path = Resources/notify.caf; sourceTree = "<group>"; };
@@ -566,7 +566,6 @@
 				292DBC8A14CA931800C87A70 /* JPImage Picker */,
 				29B9E1E01472C39F00DB2E1F /* ShiftProfileChangeViewController.h */,
 				29B9E1E11472C39F00DB2E1F /* ShiftProfileChangeViewController.m */,
-				2935514714E2DDB0004D8FAC /* ShiftProfileChangeViewController.xib */,
 				299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */,
 				299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */,
 				29B9E1E31472C39F00DB2E1F /* ShiftListProfilesTVC.h */,
@@ -753,7 +752,7 @@
 				29E6D7F715ADC63100235123 /* SSShareProfileListViewController.h */,
 				29E6D7F815ADC63100235123 /* SSShareProfileListViewController.m */,
 				29B43CA315D29DBF000BC677 /* ThinkNoteShareViewController.h */,
-				29AB77AB15D87F5A00669B6B /* ThinkNoteShareViewController.m */,
+				298C3FBC15D92622002F9AC3 /* ThinkNoteShareViewController.m */,
 				29B43CA515D29DBF000BC677 /* ThinkNoteShareViewController.xib */,
 			);
 			name = Share;
@@ -1001,7 +1000,6 @@
 				292DBCB114CA943F00C87A70 /* JPImagePickerOverviewController.xib in Resources */,
 				2929A44B14D04B360059728D /* InfColorPickerView.xib in Resources */,
 				2935514614E2BABA004D8FAC /* SSTurnShiftTVC.xib in Resources */,
-				2935514814E2DDB0004D8FAC /* ShiftProfileChangeViewController.xib in Resources */,
 				29C943B814E9642900122144 /* SSProfileTimeAndAlarmVC.xib in Resources */,
 				29D6A525159CB4A200AC6103 /* Kal.bundle in Resources */,
 				29009FCF159F4A4D00A1588E /* SSSettingTVC.xib in Resources */,
@@ -1047,6 +1045,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29D9F0DA15D93A9A00960B56 /* SSShareObject.h in Sources */,
+				29D9F0DB15D93A9A00960B56 /* SSShareObject.m in Sources */,
 				29B8F3DF15B9BB52000D934A /* NSDateAdditions.h in Sources */,
 				29B8F3E015B9BB52000D934A /* NSDateAdditions.m in Sources */,
 				29B8F3DE15B9BB37000D934A /* SSThinkNoteShareAgent.m in Sources */,
@@ -1129,7 +1129,7 @@
 				29B8F3D615B9BA62000D934A /* SSShareObject.m in Sources */,
 				29B8F3D815B9BA62000D934A /* SSThinkNoteShareAgent.m in Sources */,
 				29B8F3DA15B9BA62000D934A /* UIImage+CaptureView.m in Sources */,
-				29AB77A915D87F5A00669B6B /* ThinkNoteShareViewController.m in Sources */,
+				298C3FBD15D92622002F9AC3 /* ThinkNoteShareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1144,15 +1144,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		29AB77AB15D87F5A00669B6B /* ThinkNoteShareViewController.m */ = {
-			isa = PBXVariantGroup;
-			children = (
-				298C3FBB15D87FDA002F9AC3 /* en */,
-			);
-			name = ThinkNoteShareViewController.m;
-			path = ShiftScheduler;
-			sourceTree = "<group>";
-		};
 		29AEBD6F1554146F0010F27D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -70,19 +70,13 @@
     self.shareButton.title = SHARE_TO_THINKNOTE;
     
     self.cancelButton.title = NSLocalizedString(@"Cancel", "cancel");
-    
-    self.textView.text = self.shareC.shiftThinkNoteStr;
-    
-
+  
     
     self.helpTextView.text = NSLocalizedString(@"Swipe right to review the calendar images.", "share view help text");
     
 
     //    self.helpTextView. = [UIColor grayColor];
-    letftImageView.image = self.shareC.shiftCalImage;
-    
-    imageViewRight.image = self.shareC.shiftListImage;
-
+  
     letftImageView.hidden = YES;
     
     imageViewRight.hidden = YES;
@@ -133,18 +127,43 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.shareC invaildCache];
+    
+    letftImageView.image = self.shareC.shiftCalImage;
+    
+    imageViewRight.image = self.shareC.shiftListImage;
+    
+    self.textView.text = self.shareC.shiftThinkNoteStr;
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    self.shareC.shiftThinkNoteStr = nil;
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (IBAction)cancelButtonClicked:(id)sender {
-    
+
+    [self.shareAgent disconnect];
+    [self.busyIndicator stopAnimating];
+    self.shareButton.enabled = YES;
     [self.shareDelegate shareViewControllerfinishShare];
+
 }
 
 - (IBAction)ShareButtonClicked:(id)sender {
-    
+    self.shareButton.enabled = NO;
+    self.shareC.shiftThinkNoteStr = self.textView.text;
     [self.busyIndicator startAnimating];
     [self.shareAgent composeThinkNoteWithNagvagation:self.navigationController withBlock:^(SSShareResult *result) {
         // @TODO empty here.
@@ -165,6 +184,7 @@
                                                                delegate:nil cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil, nil];
                 [alert show];
+                self.shareButton.enabled = YES;
             });
         } else if (result.result == 0) {
             
@@ -177,6 +197,7 @@
                 [alert show];
                 
                 [self.shareDelegate shareViewControllerfinishShare];
+                self.shareButton.enabled = YES;
 
             });
 
@@ -227,7 +248,7 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.5];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft  forView:self.mainScrollView cache:YES];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight  forView:self.mainScrollView cache:YES];
     [UIView commitAnimations];
 
     [self pageControlChanged:self.pageControl];
@@ -244,7 +265,7 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:.5];
     [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight  forView:self.mainScrollView cache:YES];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft  forView:self.mainScrollView cache:YES];
     [UIView commitAnimations];
 
     [self pageControlChanged:self.pageControl];

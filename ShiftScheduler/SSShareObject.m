@@ -32,10 +32,15 @@
     KalViewController *_kal;
     SSAppDelegate *_appDelegate;
     SSShareProfileListViewController *_profileListVC;
+    
+    UIImage *_shiftCalImage;
+    UIImage *_shiftListImage;
+    NSString *_shiftThinkNoteStr;
 }
 @end
 
 @implementation SSShareController
+
 
 - (id) initWithProfilesVC:(SSShareProfileListViewController *)profilelist
         withKalController:(KalViewController *)kal
@@ -59,15 +64,22 @@
 
 - (NSString *)shiftThinkNoteStr
 {
-    NSString *shiftMonthstr = [_kal selecedMonthNameAndYear];
-   NSString *template = NSLocalizedString(@"My shift schedule at %@, the following images are shift calendar and shift profile.", "shift Str of think Note");
-    return [NSString stringWithFormat:template,
-            shiftMonthstr];
+    
+    if (!_shiftThinkNoteStr) {
+        NSString *shiftMonthstr = [_kal selecedMonthNameAndYear];
+        NSString *template = NSLocalizedString(@"My shift schedule at %@, the following images are shift calendar and shift profile.", "shift Str of think Note");
+        _shiftThinkNoteStr =  [NSString stringWithFormat:template,
+                               shiftMonthstr];
+    }
+    return _shiftThinkNoteStr;
+        
 }
 
 - (NSString *) shiftDetailEmailStr
 {
-    NSString *emailBody = NSLocalizedString(@"Hi, <p> I want to share you with my shift schedule, here is my shift schedule at %@, you can check the shift of this month by attachment: \"%@\", and each shift's work time by attachment: \"%@\". <p> <p> About Shift Sheduler：<a href='http://itunes.apple.com/en/app//id482061308?mt=8'>Click Here</a>");
+    /* Hi, <p> I want to share you with my shift schedule, here is my shift schedule at %@, you can check the shift of this month by attachment: \"%@\", and each shift's work time by attachment: \"%@\". <p> <p> About Shift Sheduler：<a href='http://itunes.apple.com/en/app//id482061308?mt=8'>Click Here</a>
+     */
+    NSString *emailBody = NSLocalizedString(@"__SHARE_EMAIL_BODY_STRINGS__", "email body in share object");
     
     NSString *shiftMonthstr = [_kal selecedMonthNameAndYear];
     
@@ -80,12 +92,15 @@
 
 - (UIImage *)shiftCalImage
 {
-    UIImage *image = [_kal captureCalendarView];
-    if (!image) {
-        NSLog(@"shift Cal image generate failed\n");
-        return nil;
+    if (!_shiftCalImage) {
+        UIImage *image = [_kal captureCalendarView];
+        if (!image) {
+            NSLog(@"shift Cal image generate failed\n");
+            return nil;
+        }
+        _shiftCalImage = image;
     }
-    return image;
+    return _shiftCalImage;
 }
 
 - (NSString *) shiftCalImageName
@@ -99,9 +114,12 @@
 
 - (UIImage *) shiftListImage
 {
+    if (!_shiftListImage) {
     NSAssert(_profileListVC != nil, @"shareProfileViewController == nil");
     UIImage *listImage = [UIImage imageWithView:_profileListVC.view];
-    return listImage;
+        _shiftListImage = listImage;
+    }
+    return _shiftListImage;
 }
 
 - (NSString *) shiftListImageName
@@ -109,6 +127,13 @@
     return [NSString stringWithFormat:@"%@.%@", 
                      NSLocalizedString(@"Shift-On-Off Time", "on-off time in mail attachment"),
                      @"jpg"];
+}
+- (void) invaildCache
+{
+    _shiftCalImage = nil;
+    _shiftListImage = nil;
+    _shiftThinkNoteStr = nil;
+    
 }
 
 @end

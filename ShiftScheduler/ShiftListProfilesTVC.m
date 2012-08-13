@@ -79,7 +79,7 @@
 
 - (IBAction)insertNewProfile:(id) sender
 {
-    ShiftProfileChangeViewController *addViewController = [[ShiftProfileChangeViewController alloc] initWithNibName:@"ProfileChangeViewController" bundle:nil];
+    ShiftProfileChangeViewController *addViewController = [[ShiftProfileChangeViewController alloc] initWithStyle:UITableViewStyleGrouped];
     addViewController.viewMode = PCVC_ADDING_MODE;
 	
     // Create a new managed object context for the new book -- set its persistent store coordinator to the same as that from the fetched results controller's context.
@@ -428,7 +428,7 @@
     if (indexPath.section == [self numberOfSectionsInTableView:self.tableView] - 1) { // last section
         [self insertNewProfile:nil];
     } else {
-        ShiftProfileChangeViewController *pcvc = [[ShiftProfileChangeViewController alloc] initWithNibName:@"ProfileChangeViewController" bundle:nil];
+        ShiftProfileChangeViewController *pcvc = [[ShiftProfileChangeViewController alloc] initWithStyle:UITableViewStyleGrouped];
         pcvc.theJob = [self.fetchedResultsController objectAtIndexPath:indexPath];
         pcvc.profileDelegate = self;
         pcvc.managedObjectContext = self.managedObjectContext;

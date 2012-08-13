@@ -77,7 +77,7 @@
     // 1. state: login: start post the shareC's notes
     if (state == THINKNOTE_CONN_STATUS_LOGIN) {
         NSLog(@"SSThinkNoteShareAgent: start post note to server");
-        [_thinknoteC postNoteOnServer:_shareC.shiftOverviewStr note:_shareC.shiftDetailEmailStr];
+        [_thinknoteC postNoteOnServer:_shareC.shiftOverviewStr note:_shareC.shiftThinkNoteStr];
     }
 
     // 2. state: text updated, start add attachments of each images
@@ -85,8 +85,11 @@
     if (state == THINKNOTE_CONN_STATUS_NOTE_POST) {
         if (_attachmentPosted == 0) {
             NSLog(@"SSThinkNoteShareAgent: note posted  , start post attachement 1");
+            NSData *data;
+            data = UIImageJPEGRepresentation(_shareC.shiftCalImage, 90.9f);
+                          
             [_thinknoteC postAttachment:_shareC.shiftCalImageName
-                               withData: UIImageJPEGRepresentation(_shareC.shiftCalImage, 90.9f)];
+                               withData:data];
             _attachmentPosted++;
             
         }
@@ -110,6 +113,11 @@
 
     // 4. disconnect.
     
+}
+
+- (void) disconnect
+{
+    [_thinknoteC disconnect];
 }
 @end
 
@@ -443,6 +451,8 @@
         NSAssert(NO, @"not support file name:%@ extension:%@", name, name.pathExtension);
         contentType = nil;          // quieten a warning
     }
+    
+    NSLog(@"getContentType: name:%@, type:%@", name, contentType);
     return contentType;
 }
 
