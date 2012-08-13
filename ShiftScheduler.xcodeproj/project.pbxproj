@@ -75,10 +75,10 @@
 		2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECD14F9076400DF1CCF /* AVFoundation.framework */; };
 		2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */; };
 		297D073215B702DC008B9983 /* ThinkNoteModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073115B702DC008B9983 /* ThinkNoteModelTest.m */; };
-		299B559515CA019A0094EA01 /* NetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 299B559315CA019A0094EA01 /* NetworkManager.h */; };
-		299B559615CA019A0094EA01 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 299B559415CA019A0094EA01 /* NetworkManager.m */; };
 		299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */; };
 		299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */; };
+		29AB77A815D8746400669B6B /* notify.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29AB77A715D8746400669B6B /* notify.caf */; };
+		29AB77A915D87F5A00669B6B /* ThinkNoteShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AB77AB15D87F5A00669B6B /* ThinkNoteShareViewController.m */; };
 		29AEBD691554146F0010F27D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29ECA45814B0514E00B3832D /* SenTestingKit.framework */; };
 		29AEBD6A1554146F0010F27D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E1B51472C1D700DB2E1F /* UIKit.framework */; };
 		29AEBD6B1554146F0010F27D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E1B71472C1D700DB2E1F /* Foundation.framework */; };
@@ -104,6 +104,8 @@
 		29AEBDE815628BAB0010F27D /* ShiftAlgoFreeJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AEBDE615628BAB0010F27D /* ShiftAlgoFreeJump.m */; };
 		29AEBDE9156291360010F27D /* ShiftAlgoFreeJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AEBDE615628BAB0010F27D /* ShiftAlgoFreeJump.m */; };
 		29AEBDEA1563CE1A0010F27D /* ShiftAlgoFreeJump.h in Sources */ = {isa = PBXBuildFile; fileRef = 29AEBDE515628BAB0010F27D /* ShiftAlgoFreeJump.h */; };
+		29B43CA615D29DBF000BC677 /* ThinkNoteShareViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B43CA315D29DBF000BC677 /* ThinkNoteShareViewController.h */; };
+		29B43CA815D29DBF000BC677 /* ThinkNoteShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B43CA515D29DBF000BC677 /* ThinkNoteShareViewController.xib */; };
 		29B8F3D315B9BA62000D934A /* NSString+HTTPEscapes.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B8F3CB15B9BA62000D934A /* NSString+HTTPEscapes.h */; };
 		29B8F3D415B9BA62000D934A /* NSString+HTTPEscapes.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8F3CC15B9BA62000D934A /* NSString+HTTPEscapes.m */; };
 		29B8F3D515B9BA62000D934A /* SSShareObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B8F3CD15B9BA62000D934A /* SSShareObject.h */; };
@@ -269,10 +271,10 @@
 		2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		297D073015B702DB008B9983 /* ThinkNoteModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThinkNoteModelTest.h; path = OneJobModuleTest/ThinkNoteModelTest.h; sourceTree = "<group>"; };
 		297D073115B702DC008B9983 /* ThinkNoteModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteModelTest.m; path = OneJobModuleTest/ThinkNoteModelTest.m; sourceTree = "<group>"; };
-		299B559315CA019A0094EA01 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkManager.h; path = ShiftScheduler/NetworkManager.h; sourceTree = "<group>"; };
-		299B559415CA019A0094EA01 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkManager.m; path = ShiftScheduler/NetworkManager.m; sourceTree = "<group>"; };
+		298C3FBB15D87FDA002F9AC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/ThinkNoteShareViewController.m; sourceTree = "<group>"; };
 		299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftWorkdayConfigTVC.h; sourceTree = "<group>"; };
 		299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftWorkdayConfigTVC.m; sourceTree = "<group>"; };
+		29AB77A715D8746400669B6B /* notify.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = notify.caf; path = Resources/notify.caf; sourceTree = "<group>"; };
 		29AEBD681554146F0010F27D /* OneJobModuleTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneJobModuleTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29AEBD6E1554146F0010F27D /* OneJobModuleTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OneJobModuleTest-Info.plist"; sourceTree = "<group>"; };
 		29AEBD701554146F0010F27D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -285,6 +287,8 @@
 		29AEBDAF15612CBA0010F27D /* ShiftAlgoFreeRound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftAlgoFreeRound.m; sourceTree = "<group>"; };
 		29AEBDE515628BAB0010F27D /* ShiftAlgoFreeJump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftAlgoFreeJump.h; sourceTree = "<group>"; };
 		29AEBDE615628BAB0010F27D /* ShiftAlgoFreeJump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftAlgoFreeJump.m; sourceTree = "<group>"; };
+		29B43CA315D29DBF000BC677 /* ThinkNoteShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThinkNoteShareViewController.h; path = ShiftScheduler/ThinkNoteShareViewController.h; sourceTree = "<group>"; };
+		29B43CA515D29DBF000BC677 /* ThinkNoteShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ThinkNoteShareViewController.xib; path = ShiftScheduler/ThinkNoteShareViewController.xib; sourceTree = "<group>"; };
 		29B8F3CB15B9BA62000D934A /* NSString+HTTPEscapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+HTTPEscapes.h"; path = "ShiftScheduler/NSString+HTTPEscapes.h"; sourceTree = "<group>"; };
 		29B8F3CC15B9BA62000D934A /* NSString+HTTPEscapes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+HTTPEscapes.m"; path = "ShiftScheduler/NSString+HTTPEscapes.m"; sourceTree = "<group>"; };
 		29B8F3CD15B9BA62000D934A /* SSShareObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSShareObject.h; path = ShiftScheduler/SSShareObject.h; sourceTree = "<group>"; };
@@ -497,6 +501,7 @@
 		293B64EC15A3BF5000D0C4B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				29AB77A715D8746400669B6B /* notify.caf */,
 				293C348015A89B6400CECAFA /* calendar-simple-blue-144x144.png */,
 				293C347E15A89B1F00CECAFA /* calendar-simple-blue-72x72.png */,
 				29DCB8DF15A878590095C71D /* Default.png */,
@@ -636,8 +641,6 @@
 			children = (
 				29E6D7F215ADC59A00235123 /* Share */,
 				293B64EA15A335A900D0C4B5 /* config.h */,
-				299B559315CA019A0094EA01 /* NetworkManager.h */,
-				299B559415CA019A0094EA01 /* NetworkManager.m */,
 				2935514914E2E5EB004D8FAC /* SettingView */,
 				299D8D0D147948B900E20DAE /* ProfileView */,
 				298B0168148B946500C013F5 /* ChangeShiftView */,
@@ -749,6 +752,9 @@
 				29E6D7ED15ADAC8200235123 /* SSMailAgent.m */,
 				29E6D7F715ADC63100235123 /* SSShareProfileListViewController.h */,
 				29E6D7F815ADC63100235123 /* SSShareProfileListViewController.m */,
+				29B43CA315D29DBF000BC677 /* ThinkNoteShareViewController.h */,
+				29AB77AB15D87F5A00669B6B /* ThinkNoteShareViewController.m */,
+				29B43CA515D29DBF000BC677 /* ThinkNoteShareViewController.xib */,
 			);
 			name = Share;
 			sourceTree = "<group>";
@@ -879,7 +885,7 @@
 				29B8F3D515B9BA62000D934A /* SSShareObject.h in Headers */,
 				29B8F3D715B9BA62000D934A /* SSThinkNoteShareAgent.h in Headers */,
 				29B8F3D915B9BA62000D934A /* UIImage+CaptureView.h in Headers */,
-				299B559515CA019A0094EA01 /* NetworkManager.h in Headers */,
+				29B43CA615D29DBF000BC677 /* ThinkNoteShareViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,6 +1019,8 @@
 				29DCB8E115A878700095C71D /* Default@2x.png in Resources */,
 				293C347F15A89B1F00CECAFA /* calendar-simple-blue-72x72.png in Resources */,
 				293C348115A89B6500CECAFA /* calendar-simple-blue-144x144.png in Resources */,
+				29B43CA815D29DBF000BC677 /* ThinkNoteShareViewController.xib in Resources */,
+				29AB77A815D8746400669B6B /* notify.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1121,7 +1129,7 @@
 				29B8F3D615B9BA62000D934A /* SSShareObject.m in Sources */,
 				29B8F3D815B9BA62000D934A /* SSThinkNoteShareAgent.m in Sources */,
 				29B8F3DA15B9BA62000D934A /* UIImage+CaptureView.m in Sources */,
-				299B559615CA019A0094EA01 /* NetworkManager.m in Sources */,
+				29AB77A915D87F5A00669B6B /* ThinkNoteShareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1136,6 +1144,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		29AB77AB15D87F5A00669B6B /* ThinkNoteShareViewController.m */ = {
+			isa = PBXVariantGroup;
+			children = (
+				298C3FBB15D87FDA002F9AC3 /* en */,
+			);
+			name = ThinkNoteShareViewController.m;
+			path = ShiftScheduler;
+			sourceTree = "<group>";
+		};
 		29AEBD6F1554146F0010F27D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

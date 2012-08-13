@@ -16,6 +16,9 @@
 
 typedef void (^ComposeShareViewCompleteHander)(SSShareResult *result);
 
+#define TN_LOGIN_FAILED -100
+#define TN_SERVER_FAILED -200
+
 @interface SSShareResult : NSObject
 
 
@@ -25,9 +28,12 @@ typedef void (^ComposeShareViewCompleteHander)(SSShareResult *result);
 
 @end
 
+
+
 @interface SSShareController : NSObject
 
 @property (readonly) NSString *shiftOverviewStr;
+@property (readonly) NSString *shiftThinkNoteStr;
 @property (readonly) NSString *shiftDetailEmailStr;
 @property (readonly) UIImage *shiftCalImage;
 @property (readonly) NSString *shiftCalImageName;

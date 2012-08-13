@@ -9,15 +9,17 @@
 #import "SSThinkNoteShareAgent.h"
 #import "SSShareObject.h"
 #import "NSString+HTTPEscapes.h"
-#import "NetworkManager.h"
+#import "SSSettingTVC.h"
 
 //#define LOCAL_DEBUG
+
+#define LOGIN_FAILED_STR NSLocalizedString(@"ThinkNote Login Failed", "think note login failed")
 
 @interface SSThinkNoteShareAgent()
 {
     SSShareController *_shareC;
     SSThinkNoteController *_thinknoteC;
-    NetworkManager *_nm;
+    ComposeShareViewCompleteHander _resultHandler;
     int _attachmentPosted;
 }
 
@@ -33,19 +35,28 @@
     _thinknoteC.connectDelegate = self;
     return self;
 }
-//#ifdef DEBUG
-#define DEBUG_NAME @"zhangjeef@gmail.com"
-#define DEBUG_PASSWD @"123456"
-//#endif
+
 
 - (void) composeThinkNoteWithNagvagation:(UINavigationController *)nvc withBlock:(ComposeShareViewCompleteHander)block
 {
     // 0. start a block.
-
     dispatch_queue_t prepare_q = dispatch_queue_create("create mail queue", nil);
+    NSString *name = [[NSUserDefaults standardUserDefaults] stringForKey:kThinkNoteLoginName];
+    NSString *passwd = [[NSUserDefaults standardUserDefaults] stringForKey:kThinkNoteLoginPassword];
+    
+    _resultHandler = block;
+
+    if (name == nil || passwd == nil || name.length == 0 || passwd.length == 0) {
+        SSShareResult *ret = [[SSShareResult alloc] init];
+        ret.result = TN_LOGIN_FAILED;
+        ret.failedReason = LOGIN_FAILED_STR;
+        _resultHandler(ret);
+        return;
+    }
+    
     dispatch_async(prepare_q, ^{
             // 2. login with some account information.
-            [_thinknoteC loginNoteServerWithName:DEBUG_NAME withPassword:DEBUG_PASSWD];
+            [_thinknoteC loginNoteServerWithName:name   withPassword:passwd];
             // other thing should in handler.
         });
 }
@@ -55,13 +66,10 @@
 
     if (error) {
         // if there is any error, pop an alert.
-        [[NetworkManager sharedInstance] didStopNetworkOperation];
-        NSString *errorTitle = NSLocalizedString(@"Error when ThinkNote Share", "error title of think note share");
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:errorTitle
-                                                        message:[error.userInfo valueForKey:NSLocalizedDescriptionKey]
-                                                       delegate:nil cancelButtonTitle:nil
-                                              otherButtonTitles:nil, nil];
-        [alert show];
+        SSShareResult *ret =[[SSShareResult alloc] init];
+        ret.result = error.code;
+        ret.failedReason = [error.userInfo valueForKey:NSLocalizedDescriptionKey];
+        _resultHandler(ret);
         return;
     }
 
@@ -70,7 +78,6 @@
     if (state == THINKNOTE_CONN_STATUS_LOGIN) {
         NSLog(@"SSThinkNoteShareAgent: start post note to server");
         [_thinknoteC postNoteOnServer:_shareC.shiftOverviewStr note:_shareC.shiftDetailEmailStr];
-        [[NetworkManager sharedInstance] didStartNetworkOperation];
     }
 
     // 2. state: text updated, start add attachments of each images
@@ -95,12 +102,7 @@
             NSLog(@"SSThinkNoteShareAgent: two attachment all posted, disconnect");
             [_thinknoteC disconnect];
             _attachmentPosted = 0;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                NSLog(@"finish post all attachments !");
-                // TODO: add view related things, how to notify user shared?
-            });
+            _resultHandler(nil);
         }
     }
 
@@ -363,10 +365,10 @@
         
         // the result not ok, and not get the login token, failed.
         if ((![result isEqualToString:@"ok"]) || _loginToken == nil) {
-            NSString *description = NSLocalizedString(@"ThinkNote Login Failed", "think note login failed");
+            NSString *description = LOGIN_FAILED_STR;
             NSDictionary *errorDictionary = @{ NSLocalizedDescriptionKey : description}; 
             NSError *error = [[NSError alloc] initWithDomain:NSPOSIXErrorDomain
-                                                        code:-1 userInfo:errorDictionary];
+                                                        code:TN_LOGIN_FAILED userInfo:errorDictionary];
 
             [self.connectDelegate thinkNoteServerUpdateState:THINKNOTE_CONN_STATUS_LOGIN
                                                        error:error];
@@ -385,7 +387,7 @@
 
             NSString *description = NSLocalizedString(@"ThinkNote Note Upload failed.", "thinknote note upload failed");
             NSDictionary *errorDictionary = @{ NSLocalizedDescriptionKey : description}; 
-            NSError *error = [[NSError alloc] initWithDomain:NSPOSIXErrorDomain code:-1
+            NSError *error = [[NSError alloc] initWithDomain:NSPOSIXErrorDomain code:TN_SERVER_FAILED
                                                     userInfo:errorDictionary];
 
             [self.connectDelegate thinkNoteServerUpdateState:THINKNOTE_CONN_STATUS_NOTE_POST
@@ -401,7 +403,7 @@
         if ([result isEqualToString:@"ok"] != YES) {
             NSString *description = NSLocalizedString(@"ThinkNote Attachment Upload failed.", "think note attach upload error");
             NSDictionary *errorDictionary = @{ NSLocalizedDescriptionKey : description}; 
-            NSError *error = [[NSError alloc] initWithDomain:NSPOSIXErrorDomain code:-1
+            NSError *error = [[NSError alloc] initWithDomain:NSPOSIXErrorDomain code:TN_SERVER_FAILED
                                                     userInfo:errorDictionary];
 
             [self.connectDelegate thinkNoteServerUpdateState:THINKNOTE_CONN_STATUS_ATT_POST

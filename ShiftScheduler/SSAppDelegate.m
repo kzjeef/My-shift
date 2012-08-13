@@ -14,6 +14,7 @@
 #import "SSShareProfileListViewController.h"
 #import "SSShareObject.h"
 #import "SSThinkNoteShareAgent.h"
+#import "ThinkNoteShareViewController.h"
 
 #import "Kal.h"
 
@@ -87,10 +88,16 @@ enum {
     mailAgent = [[SSMailAgent alloc] initWithShareController:_shareC];
     
     thinkNoteAgent = [[SSThinkNoteShareAgent alloc] initWithSharedObject:_shareC];
+    
+    self.tnoteShareVC = [[ThinkNoteShareViewController alloc] initWithNibName:@"ThinkNoteShareViewController" bundle:nil];
+    self.tnoteShareVC.shareC = _shareC;
+    self.tnoteShareVC.shareAgent = thinkNoteAgent;
+    self.tnoteShareVC.shareDelegate = self;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
 
     /*
      *    Kal Initialization
@@ -201,8 +208,10 @@ enum {
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 
     [self performSelectorInBackground:@selector(SSKalControllerInit) withObject:nil];
+    
     return YES;
 }
+
 
 - (void) rightButtonSwitchToShareOrBusy:(BOOL) share
 {
@@ -291,15 +300,19 @@ enum {
             [mailAgent composeMailWithAppDelegate:self withNVC:self.navController];
             break;
     case 1:
-            [thinkNoteAgent composeThinkNoteWithNagvagation:self.navController withBlock:^(SSShareResult *result) {
-                // @TODO empty here.
-            }];
+            [self.navController presentModalViewController:self.tnoteShareVC animated:YES];
         break;
     default:
         break;
     }
     
 }
+
+- (void) shareViewControllerfinishShare
+{
+    [self.navController dismissModalViewControllerAnimated:YES];
+}
+
 
 - (void) didFinishEditingSetting
 {

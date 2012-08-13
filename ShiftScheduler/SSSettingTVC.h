@@ -8,17 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SSSettingTVC : UITableViewController <NSURLConnectionDelegate>
+@interface SSSettingTVC : UITableViewController
+<NSURLConnectionDelegate, UIAlertViewDelegate>
 {
-    NSArray *itemsArray;
+    NSArray *feedbackItemsArray;
     NSURL *iTunesURL;
-    NSArray * alarmSettingsArray;
+    NSArray *alarmSettingsArray;
+    NSArray *socialAccountArray;
 }
 
 
-@property (strong, nonatomic, readonly) NSArray *itemsArray;
-@property (strong, nonatomic, readonly) NSArray *alarmSettingsArray;
+@property (nonatomic, readonly) NSArray *feedbackItemsArray;
+@property (nonatomic, readonly) NSArray *alarmSettingsArray;
+@property (nonatomic, readonly) NSArray *socialAccountArray;
 @property (nonatomic, strong) NSURL *iTunesURL;
+
+
+#define kThinkNoteLoginName @"ThinkNoteLoginName"
+#define kThinkNoteLoginPassword @"ThinkNoteLoginPassword"
 
 
 @end

@@ -48,7 +48,7 @@
     return self;
 }
 
-- (NSString *) shiftOverviewStr 
+- (NSString *)shiftOverviewStr
 {
     NSString *shiftMonthstr = [_kal selecedMonthNameAndYear];
     
@@ -57,9 +57,17 @@
             shiftMonthstr];
 }
 
+- (NSString *)shiftThinkNoteStr
+{
+    NSString *shiftMonthstr = [_kal selecedMonthNameAndYear];
+   NSString *template = NSLocalizedString(@"My shift schedule at %@, the following images are shift calendar and shift profile.", "shift Str of think Note");
+    return [NSString stringWithFormat:template,
+            shiftMonthstr];
+}
+
 - (NSString *) shiftDetailEmailStr
 {
-    NSString *emailBody = NSLocalizedString(@"It's the shift schedule at %@, you can check the shift of this month by attachment %@, and each shift's work time by %@", "email body of shift forward ui");
+    NSString *emailBody = NSLocalizedString(@"Hi, <p> I want to share you with my shift schedule, here is my shift schedule at %@, you can check the shift of this month by attachment: \"%@\", and each shift's work time by attachment: \"%@\". <p> <p> About Shift Sheduler：<a href='http://itunes.apple.com/en/app//id482061308?mt=8'>Click Here</a>");
     
     NSString *shiftMonthstr = [_kal selecedMonthNameAndYear];
     

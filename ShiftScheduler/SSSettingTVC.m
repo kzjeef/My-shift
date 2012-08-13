@@ -16,36 +16,55 @@
 
 #define ENABLE_ALARM_SOUND NSLocalizedString(@"Alert Sound", "enable Alert")
 #define ENABLE_SYSTEM_ALERT_SOUND NSLocalizedString(@"System Alert Sound", "system alert")
+#define LOGIN_THINKNOTE_ITEM    NSLocalizedString(@"Login ThinkNote", "thinkNote Login")
+
+#define CANCEL_STR NSLocalizedString(@"Cancel", "cancel")
+#define LOGIN_STR  NSLocalizedString(@"Login", "login")
+#define REGISTER_STR  NSLocalizedString(@"Register", "register a new account for thinknote")
+
 
 @synthesize iTunesURL;
+
+enum {
+    SSSNAME_SECTION = 0,
+    SSALARM_SECTION,
+    SSSOCIAL_SECTION,
+    SSFEEDBACK_SECTION,
+    SSSECTIONS_COUNT,
+};
 
 - (NSArray *) alarmSettingsArray
 {
     if (!alarmSettingsArray) {
-        alarmSettingsArray = @[ENABLE_ALARM_SOUND,
-                              ENABLE_SYSTEM_ALERT_SOUND];
+        alarmSettingsArray = @[ENABLE_ALARM_SOUND, ENABLE_SYSTEM_ALERT_SOUND, ];
     }
     return alarmSettingsArray;
 }
 
-- (NSArray *) itemsArray
+- (NSArray *) socialAccountArray
 {
-    if (!itemsArray) {
-        itemsArray = @[TELL_OTHER_ITEM_STRING,
-				      EMAIL_SUPPORT_ITEM_STRING,
-				      RATING_ITEM_STRING];
+    if (!socialAccountArray) {
+        socialAccountArray = @[LOGIN_THINKNOTE_ITEM];
     }
-    return itemsArray;
+    return socialAccountArray;
 }
 
-
+- (NSArray *) feedbackItemsArray
+{
+    if (!feedbackItemsArray) {
+        feedbackItemsArray = @[TELL_OTHER_ITEM_STRING,
+        EMAIL_SUPPORT_ITEM_STRING,
+        RATING_ITEM_STRING];
+    }
+    return feedbackItemsArray;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-
+        
     }
     return self;
 }
@@ -63,12 +82,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.title = NSLocalizedString(@"Settings", "Settings");
-
+    
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = YES;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -111,8 +130,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    
-    if (section == 1)
+    if (section == SSALARM_SECTION)
         return NSLocalizedString(@"you can choose use iOS default alert sound or use application's alert sound.", "");
     return Nil;
 }
@@ -120,26 +138,28 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 3;
+    return SSSECTIONS_COUNT;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (section == 0)
+    if (section == SSSNAME_SECTION)
         return 1;
-    if (section == 2)
-        return self.itemsArray.count;
-    if (section == 1)
+    if (section == SSFEEDBACK_SECTION)
+        return self.feedbackItemsArray.count;
+    if (section == SSALARM_SECTION)
         return self.alarmSettingsArray.count;
+    if (section == SSSOCIAL_SECTION)
+        return self.socialAccountArray.count;
     return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
+    if (indexPath.section == SSSNAME_SECTION)
         return tableView.rowHeight * 1.5;
-    else 
+    else
         return tableView.rowHeight;
 }
 
@@ -152,7 +172,7 @@
     } else if (s.tag == 1) {
         [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:@"systemDefalutAlertSound"];
     }
-        
+    
 }
 
 - (UISwitch *) newSwitch:(NSIndexPath *)indexPath
@@ -179,19 +199,20 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    if (indexPath.section == 0) {
+    if (indexPath.section == SSSNAME_SECTION) {
         cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
         cell.textLabel.text = NSLocalizedString(@"Shift Scheduler", "");
         cell.textLabel.font = [UIFont systemFontOfSize:24];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
-    } else if (indexPath.section == 2) {
-            cell.textLabel.text = [self.itemsArray objectAtIndex:indexPath.row];
-    } else if (indexPath.section == 1) {
+    } else if (indexPath.section == SSFEEDBACK_SECTION) {
+        cell.textLabel.text = [self.feedbackItemsArray objectAtIndex:indexPath.row];
+    } else if (indexPath.section == SSSOCIAL_SECTION) {
+        cell.textLabel.text = [self.socialAccountArray objectAtIndex:indexPath.row];
+    } else if (indexPath.section == SSALARM_SECTION) {
         cell.textLabel.text = [self.alarmSettingsArray objectAtIndex:indexPath.row];
         
         UISwitch *s = [self newSwitch:indexPath];
-        
-        
+
         if (indexPath.row == 0) { // enable sound.
             s.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableAlertSound"];
         } else if (indexPath.row == 1) {
@@ -213,9 +234,31 @@
                              [body stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailString]];
-
+    
 }
 
+#pragma mark - TextField delegate
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.qingbiji.cn/register" ]];
+            break;
+
+        case 1:
+            [[NSUserDefaults standardUserDefaults] setObject:[alertView textFieldAtIndex:0].text
+                                                      forKey:kThinkNoteLoginName];
+            [[NSUserDefaults standardUserDefaults] setObject:[alertView textFieldAtIndex:1].text
+                                                      forKey:kThinkNoteLoginPassword];
+            break;
+            
+        default:
+            break;
+    }
+
+}
 #pragma mark - Table view delegate
 
 
@@ -230,24 +273,44 @@
     NSString *tel_other_body  = NSLocalizedString(@"Hi, \n I found a very interesting app, and I think it will help for you, check it out!\n Link is: http://itunes.apple.com/us/app/shift-scheduler/id482061308?mt=8", "");
     
     
-    if (indexPath.section == 0) return;
-    
-    if ( [TELL_OTHER_ITEM_STRING isEqualToString:[self.itemsArray objectAtIndex:indexPath.row]])
-        [self sendEMailTo:@"" WithSubject:tel_other_title withBody:tel_other_body];
-    
-    if ( [EMAIL_SUPPORT_ITEM_STRING isEqualToString:[self.itemsArray objectAtIndex:indexPath.row]])
-    {
-        [self sendEMailTo:supprt_mail WithSubject:support_title withBody:@""];
-    }
-    
-    if ( [RATING_ITEM_STRING isEqualToString: [self.itemsArray objectAtIndex:indexPath.row]])
-    {
-        NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=482061308"; 
+    if (indexPath.section == SSSOCIAL_SECTION) {
+        if ([LOGIN_THINKNOTE_ITEM isEqualToString:[self.socialAccountArray objectAtIndex:indexPath.row]]) {
+            UIAlertView *login = [[UIAlertView alloc] initWithTitle:LOGIN_THINKNOTE_ITEM message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: REGISTER_STR, LOGIN_STR, nil];
+            login.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+            
+            NSString *loginName = [[NSUserDefaults standardUserDefaults] objectForKey:@"ThinkNoteLoginName"];
+            NSString *loginPasswd = [[NSUserDefaults standardUserDefaults] objectForKey:@"ThinkNoteLoginPasswd"];
+            
+            if (loginName)
+                [login textFieldAtIndex:0].text = loginName;
 
+            if (loginPasswd)
+                [login textFieldAtIndex:1].text = loginPasswd;
+            
+            [login show];
+        }
         
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        
+        return;
     }
-     
+    
+    if (indexPath.section == SSFEEDBACK_SECTION) {
+        
+        if ( [TELL_OTHER_ITEM_STRING isEqualToString:[self.feedbackItemsArray objectAtIndex:indexPath.row]])
+            [self sendEMailTo:@"" WithSubject:tel_other_title withBody:tel_other_body];
+        
+        else if ( [EMAIL_SUPPORT_ITEM_STRING isEqualToString:[self.feedbackItemsArray objectAtIndex:indexPath.row]]) {
+            [self sendEMailTo:supprt_mail WithSubject:support_title withBody:@""];
+        }
+        
+        else if ( [RATING_ITEM_STRING isEqualToString: [self.feedbackItemsArray objectAtIndex:indexPath.row]]) {
+            NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=482061308";
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        }
+    }
+    
+    
 }
 
 @end

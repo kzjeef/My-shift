@@ -13,15 +13,17 @@
 #import "SSKalDelegate.h"
 #import "SSSettingTVC.h"
 #import "SSAlertController.h"
+#import "ThinkNoteShareViewController.h"
 
 @class SSShareProfileListViewController;
 
 @class SSMailAgent;
 @class SSThinkNoteShareAgent;
 @class SSShareController;
+@class ThinkNoteShareViewController;
 
 @interface SSAppDelegate : UIResponder <UIApplicationDelegate, 
-UIActionSheetDelegate,UIAlertViewDelegate,
+UIActionSheetDelegate,UIAlertViewDelegate,SSShareViewControllerDelegate,
 ProfileEditFinishDelegate>
 {
     UINavigationController	*navController;
@@ -40,6 +42,8 @@ ProfileEditFinishDelegate>
     SSThinkNoteShareAgent *thinkNoteAgent;
     SSShareController *_shareC;
     
+    ThinkNoteShareViewController *_tnoteShareVC;
+    
     UIBarButtonItem *shareButton;
     UIBarButtonItem *loadingButton;
     id dataSource;
@@ -50,7 +54,7 @@ ProfileEditFinishDelegate>
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-
+@property (strong, nonatomic) ThinkNoteShareViewController *tnoteShareVC;
 
 // --
 @property (nonatomic, strong) UINavigationController *navController;				
