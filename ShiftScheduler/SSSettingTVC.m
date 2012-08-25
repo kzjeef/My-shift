@@ -7,6 +7,7 @@
 //
 
 #import "SSSettingTVC.h"
+#import "SSSocialThinkNoteLogin.h"
 
 @implementation SSSettingTVC
 
@@ -19,8 +20,6 @@
 #define LOGIN_THINKNOTE_ITEM    NSLocalizedString(@"Login ThinkNote", "thinkNote Login")
 
 #define CANCEL_STR NSLocalizedString(@"Cancel", "cancel")
-#define LOGIN_STR  NSLocalizedString(@"Login", "login")
-#define REGISTER_STR  NSLocalizedString(@"Register", "register a new account for thinknote")
 
 
 @synthesize iTunesURL;
@@ -32,6 +31,11 @@ enum {
     SSFEEDBACK_SECTION,
     SSSECTIONS_COUNT,
 };
+
+enum {
+    SSSETTING_SOCIAL_THINKNOTEK = 0,
+};
+
 
 - (NSArray *) alarmSettingsArray
 {
@@ -90,6 +94,21 @@ enum {
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    _thinknoteLogin = [[SSSocialThinkNoteLogin alloc]init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(socialSettingChanged)
+                                                 name:SSSocialAccountChangedNotification
+                                               object:nil];
+
+}
+
+- (void) socialSettingChanged
+{
+    NSIndexSet *update = [[NSIndexSet alloc] initWithIndex:SSSOCIAL_SECTION];
+    [self.tableView reloadSections:update
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)viewDidUnload
@@ -97,6 +116,8 @@ enum {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -124,6 +145,34 @@ enum {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
+- (void) switchChanged: (id) sender
+{
+    UISwitch *s = sender;
+    
+    if (s.tag == 0) {
+        [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:@"enableAlertSound"];
+    } else if (s.tag == 1) {
+        [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:@"systemDefalutAlertSound"];
+    }
+    
+}
+
+- (UISwitch *) newSwitch:(NSIndexPath *)indexPath
+{
+    
+    UISwitch *theSwitch;
+    CGRect frame = CGRectMake(200, 8.0, 120.0, 27.0);
+    theSwitch = [[UISwitch alloc] initWithFrame:frame];
+    [theSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    // in case the parent view draws with a custom color or gradient, use a transparent color
+    theSwitch.backgroundColor = [UIColor clearColor];
+    theSwitch.tag = indexPath.row;
+    return theSwitch;
+}
+
 
 #pragma mark - Table view data source
 
@@ -163,41 +212,38 @@ enum {
         return tableView.rowHeight;
 }
 
-- (void) switchChanged: (id) sender
+- (void) setupCellForSocialSection:(UITableViewCell *) cell
+                                          index: (NSIndexPath *)indexPath
 {
-    UISwitch *s = sender;
+    cell.textLabel.text = [self.socialAccountArray objectAtIndex:indexPath.row];
     
-    if (s.tag == 0) {
-        [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:@"enableAlertSound"];
-    } else if (s.tag == 1) {
-        [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:@"systemDefalutAlertSound"];
+    switch (indexPath.row) {
+        case SSSETTING_SOCIAL_THINKNOTEK:
+        {
+            NSString *loginPasswd = [[NSUserDefaults standardUserDefaults] objectForKey:kThinkNoteLoginPassword];
+            if ([loginPasswd length] == 0)
+                cell.detailTextLabel.text = NSLocalizedString(@"No Bound","no bould string in setting");
+            else {
+                cell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:kThinkNoteLoginName];
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            break;
+        }
+        default:
+            break;
     }
-    
 }
-
-- (UISwitch *) newSwitch:(NSIndexPath *)indexPath
-{
-    
-    UISwitch *theSwitch;
-    CGRect frame = CGRectMake(200, 8.0, 120.0, 27.0);
-    theSwitch = [[UISwitch alloc] initWithFrame:frame];
-    [theSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    // in case the parent view draws with a custom color or gradient, use a transparent color
-    theSwitch.backgroundColor = [UIColor clearColor];
-    theSwitch.tag = indexPath.row;
-    return theSwitch;
-}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"SettingCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    
+    cell.detailTextLabel.text = nil;
     
     if (indexPath.section == SSSNAME_SECTION) {
         cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -207,7 +253,7 @@ enum {
     } else if (indexPath.section == SSFEEDBACK_SECTION) {
         cell.textLabel.text = [self.feedbackItemsArray objectAtIndex:indexPath.row];
     } else if (indexPath.section == SSSOCIAL_SECTION) {
-        cell.textLabel.text = [self.socialAccountArray objectAtIndex:indexPath.row];
+        [self setupCellForSocialSection:cell index: indexPath];
     } else if (indexPath.section == SSALARM_SECTION) {
         cell.textLabel.text = [self.alarmSettingsArray objectAtIndex:indexPath.row];
         
@@ -237,28 +283,7 @@ enum {
     
 }
 
-#pragma mark - TextField delegate
 
-- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    switch (buttonIndex) {
-        case 0:
-            
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.qingbiji.cn/register" ]];
-            break;
-
-        case 1:
-            [[NSUserDefaults standardUserDefaults] setObject:[alertView textFieldAtIndex:0].text
-                                                      forKey:kThinkNoteLoginName];
-            [[NSUserDefaults standardUserDefaults] setObject:[alertView textFieldAtIndex:1].text
-                                                      forKey:kThinkNoteLoginPassword];
-            break;
-            
-        default:
-            break;
-    }
-
-}
 #pragma mark - Table view delegate
 
 
@@ -272,25 +297,11 @@ enum {
     NSString *tel_other_title = NSLocalizedString(@"Check this app: Shift Sheduler", "");
     NSString *tel_other_body  = NSLocalizedString(@"Hi, \n I found a very interesting app, and I think it will help for you, check it out!\n Link is: http://itunes.apple.com/us/app/shift-scheduler/id482061308?mt=8", "");
     
-    
     if (indexPath.section == SSSOCIAL_SECTION) {
-        if ([LOGIN_THINKNOTE_ITEM isEqualToString:[self.socialAccountArray objectAtIndex:indexPath.row]]) {
-            UIAlertView *login = [[UIAlertView alloc] initWithTitle:LOGIN_THINKNOTE_ITEM message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: REGISTER_STR, LOGIN_STR, nil];
-            login.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
-            
-            NSString *loginName = [[NSUserDefaults standardUserDefaults] objectForKey:@"ThinkNoteLoginName"];
-            NSString *loginPasswd = [[NSUserDefaults standardUserDefaults] objectForKey:@"ThinkNoteLoginPasswd"];
-            
-            if (loginName)
-                [login textFieldAtIndex:0].text = loginName;
-
-            if (loginPasswd)
-                [login textFieldAtIndex:1].text = loginPasswd;
-            
-            [login show];
+        if ([LOGIN_THINKNOTE_ITEM isEqualToString:
+             [self.socialAccountArray objectAtIndex:indexPath.row]]) {
+            [_thinknoteLogin showThinkNoteLoingView];
         }
-        
-        
         return;
     }
     

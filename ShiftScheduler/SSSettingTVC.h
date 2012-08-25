@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SSSocialThinkNoteLogin.h"
+
+
 @interface SSSettingTVC : UITableViewController
 <NSURLConnectionDelegate, UIAlertViewDelegate>
 {
@@ -15,6 +18,9 @@
     NSURL *iTunesURL;
     NSArray *alarmSettingsArray;
     NSArray *socialAccountArray;
+    
+    SSSocialThinkNoteLogin *_thinknoteLogin;
+    
 }
 
 
@@ -22,10 +28,6 @@
 @property (nonatomic, readonly) NSArray *alarmSettingsArray;
 @property (nonatomic, readonly) NSArray *socialAccountArray;
 @property (nonatomic, strong) NSURL *iTunesURL;
-
-
-#define kThinkNoteLoginName @"ThinkNoteLoginName"
-#define kThinkNoteLoginPassword @"ThinkNoteLoginPassword"
 
 
 @end

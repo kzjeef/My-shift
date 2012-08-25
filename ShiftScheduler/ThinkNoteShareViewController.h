@@ -10,6 +10,7 @@
 
 @class SSShareController;
 @class SSThinkNoteShareAgent;
+@class SSSocialThinkNoteLogin;
 
 @protocol SSShareViewControllerDelegate <NSObject>
 
@@ -19,28 +20,28 @@
 
 @interface ThinkNoteShareViewController : UIViewController <UIGestureRecognizerDelegate>
 {
-
-    id<SSShareViewControllerDelegate>  __unsafe_unretained _shareDelegate;
-
-    __weak IBOutlet UITextView *textView;
+    __weak IBOutlet UITextView          *textView;
     
-    __weak IBOutlet UINavigationItem *titleStatusBar;
-    __weak IBOutlet UIBarButtonItem *shareButton;
+    __weak IBOutlet UINavigationItem    *titleStatusBar;
+    __weak IBOutlet UIBarButtonItem     *shareButton;
     
     __weak IBOutlet UIBarButtonItem *cancelButton;
 
-    __weak IBOutlet UIImageView *letftImageView;
-    __weak IBOutlet UIImageView *imageViewRight;
-    __weak IBOutlet UIPageControl *_pageControl;
-    __weak IBOutlet UIScrollView *_rightScrollView;
-    __weak IBOutlet UIScrollView *_leftScrollView;
-    __weak IBOutlet UIScrollView *_mainScrollView;
+    __weak IBOutlet UIImageView     *letftImageView;
+    __weak IBOutlet UIImageView     *imageViewRight;
+    __weak IBOutlet UIPageControl   *_pageControl;
+    __weak IBOutlet UIScrollView    *_rightScrollView;
+    __weak IBOutlet UIScrollView    *_leftScrollView;
+    __weak IBOutlet UIScrollView    *_mainScrollView;
     
-    __weak IBOutlet UITextView *_helpTextView;
+    __weak IBOutlet UITextView  *_helpTextView;
     
     __weak IBOutlet UIActivityIndicatorView *_busyIndicator;
     
-    UISwipeGestureRecognizer *_swipeGesture;
+    id<SSShareViewControllerDelegate>  __unsafe_unretained _shareDelegate;
+    
+    UISwipeGestureRecognizer    *_swipeGesture;
+    SSSocialThinkNoteLogin      *_thinkNoteLogin;
 }   
 - (IBAction)cancelButtonClicked:(id)sender;
 - (IBAction)ShareButtonClicked:(id)sender;

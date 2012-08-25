@@ -25,6 +25,8 @@
 		29009FEB159F4AE500A1588E /* UIColor+HexCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FE9159F4AE500A1588E /* UIColor+HexCoding.m */; };
 		2916128515A62A6B0031F78C /* calendar-simple-blue-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */; };
 		2916128715A62AC20031F78C /* calendar-simple-blue-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */; };
+		29293D9215DFE778006B6907 /* SSSocialThinkNoteLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */; };
+		29293D9315DFE778006B6907 /* SSSocialThinkNoteLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 29293D9115DFE777006B6907 /* SSSocialThinkNoteLogin.m */; };
 		2929A44414D04B360059728D /* InfColorBarPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 2929A43614D04B360059728D /* InfColorBarPicker.h */; };
 		2929A44514D04B360059728D /* InfColorBarPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2929A43714D04B360059728D /* InfColorBarPicker.m */; };
 		2929A44614D04B360059728D /* InfColorIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2929A43814D04B360059728D /* InfColorIndicatorView.h */; };
@@ -226,6 +228,8 @@
 		2900DEC31483EEA100E588EE /* ShiftSchedulerModelBasic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShiftSchedulerModelBasic.xcdatamodel; sourceTree = "<group>"; };
 		2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-57x57.png"; sourceTree = "<group>"; };
 		2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-114x114.png"; sourceTree = "<group>"; };
+		29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSocialThinkNoteLogin.h; path = ShiftScheduler/SSSocialThinkNoteLogin.h; sourceTree = "<group>"; };
+		29293D9115DFE777006B6907 /* SSSocialThinkNoteLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSocialThinkNoteLogin.m; path = ShiftScheduler/SSSocialThinkNoteLogin.m; sourceTree = "<group>"; };
 		2929A43614D04B360059728D /* InfColorBarPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfColorBarPicker.h; path = ColorPicker/InfColorPicker/InfColorBarPicker.h; sourceTree = "<group>"; };
 		2929A43714D04B360059728D /* InfColorBarPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfColorBarPicker.m; path = ColorPicker/InfColorPicker/InfColorBarPicker.m; sourceTree = "<group>"; };
 		2929A43814D04B360059728D /* InfColorIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfColorIndicatorView.h; path = ColorPicker/InfColorPicker/InfColorIndicatorView.h; sourceTree = "<group>"; };
@@ -483,6 +487,8 @@
 				29009FCA159F4A4D00A1588E /* SSSettingTVC.h */,
 				29009FCB159F4A4D00A1588E /* SSSettingTVC.m */,
 				29009FCC159F4A4D00A1588E /* SSSettingTVC.xib */,
+				29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */,
+				29293D9115DFE777006B6907 /* SSSocialThinkNoteLogin.m */,
 			);
 			name = SettingView;
 			sourceTree = "<group>";
@@ -885,6 +891,7 @@
 				29B8F3D715B9BA62000D934A /* SSThinkNoteShareAgent.h in Headers */,
 				29B8F3D915B9BA62000D934A /* UIImage+CaptureView.h in Headers */,
 				29B43CA615D29DBF000BC677 /* ThinkNoteShareViewController.h in Headers */,
+				29293D9215DFE778006B6907 /* SSSocialThinkNoteLogin.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1130,6 +1137,7 @@
 				29B8F3D815B9BA62000D934A /* SSThinkNoteShareAgent.m in Sources */,
 				29B8F3DA15B9BA62000D934A /* UIImage+CaptureView.m in Sources */,
 				298C3FBD15D92622002F9AC3 /* ThinkNoteShareViewController.m in Sources */,
+				29293D9315DFE778006B6907 /* SSSocialThinkNoteLogin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

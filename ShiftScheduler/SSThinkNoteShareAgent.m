@@ -10,6 +10,7 @@
 #import "SSShareObject.h"
 #import "NSString+HTTPEscapes.h"
 #import "SSSettingTVC.h"
+#import "SSSocialThinkNoteLogin.h"
 
 //#define LOCAL_DEBUG
 
@@ -164,12 +165,12 @@
     
     if (_status == THINKNOTE_CONN_STATUS_LOGIN) {
         NSString *result = [jsonDict objectForKey:@"result"];
-        _loginToken = [NSString stringWithString: [jsonDict objectForKey:@"token"]];
         // the result not ok, and not get the login token, failed.
-        if ((![result isEqualToString:@"ok"]) || _loginToken == nil) {
+        if ((![result isEqualToString:@"ok"])) {
             NSLog(@"TN: login failed");
             return -1;
         } else {
+            _loginToken = [NSString stringWithString: [jsonDict objectForKey:@"token"]];
             NSLog(@"TN: login success");
         }
         

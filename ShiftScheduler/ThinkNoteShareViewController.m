@@ -8,6 +8,7 @@
 
 #import "ThinkNoteShareViewController.h"
 #import "SSThinkNoteShareAgent.h"
+#import "SSSocialThinkNoteLogin.h"
 #import "SSShareObject.h"
 
 #import <QuartzCore/QuartzCore.h>
@@ -105,6 +106,8 @@
     [self.mainScrollView addGestureRecognizer:swipLeft];
     [self.mainScrollView addGestureRecognizer:swipRight];
     
+    _thinkNoteLogin = [[SSSocialThinkNoteLogin alloc] init];
+    
 }
 
 - (void)viewDidUnload
@@ -147,6 +150,17 @@
     self.shareC.shiftThinkNoteStr = nil;
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([_thinkNoteLogin getUserName].length == 0
+        || [_thinkNoteLogin getPasswd].length == 0)
+    {
+        [_thinkNoteLogin showThinkNoteLoingView];
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -162,6 +176,8 @@
 }
 
 - (IBAction)ShareButtonClicked:(id)sender {
+    
+    
     self.shareButton.enabled = NO;
     self.shareC.shiftThinkNoteStr = self.textView.text;
     [self.busyIndicator startAnimating];
