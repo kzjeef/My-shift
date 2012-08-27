@@ -324,10 +324,7 @@ return YES;
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
-    CGFloat componentWidth = 0.0;
-
-    componentWidth = 40.0;      // first column size is wider to hold names
-    return componentWidth;
+  return 60.0;
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
@@ -337,7 +334,7 @@ return YES;
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return 46;
+    return 366;
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
