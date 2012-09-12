@@ -106,15 +106,18 @@
 
     int days = [self daysBetweenDateV2:jobStartGMT andDate:theDate];
     
-    if (days < 0) return  NO;
-    if (days == 0) return YES;
+    if (days < 0)
+        return  NO;
+
+    if (days == 0)
+        return YES;
     
     int t = days % (jobOnDays + jobOffDays);
     
     // handle the case we have limite the time.
     if (jobFinishGMT) {
-    if (t < jobOnDays && [OneJob IsDateBetweenInclusive: theDate begin:jobStartGMT end:jobFinishGMT])
-        return YES;
+        if (t < jobOnDays && [OneJob IsDateBetweenInclusive: theDate begin:jobStartGMT end:jobFinishGMT])
+            return YES;
     else 
         return NO;
     }

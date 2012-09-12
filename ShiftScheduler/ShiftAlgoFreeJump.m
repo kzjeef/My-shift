@@ -79,8 +79,15 @@
 {
     NSAssert([self getCountOfJumpArray] > 0, @"The jump array must > 0");
     NSDate *jobStartGMT = [self.JobContext.jobStartDate
-                           cc_dateByMovingToBeginningOfDayWithCalender:self.curCalendar];
+                              cc_dateByMovingToBeginningOfDayWithCalender:self.curCalendar];
+    NSDate *jobFinishGMT = [self.JobContext.jobFinishDate
+                               cc_dateByMovingToBeginningOfDayWithCalender:self.curCalendar];
+
+    if (![OneJob IsDateBetweenInclusive: theDate begin:jobStartGMT end:jobFinishGMT])
+        return NO;
+
     int days = [self daysBetweenDateV2:jobStartGMT andDate:theDate];
+
     if (days < 0)
         return NO;
     else

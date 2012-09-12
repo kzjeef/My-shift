@@ -80,8 +80,6 @@
     CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
     CGRect pickerRect = CGRectMake(0.0, screenRect.origin.y + screenRect.size.height - pickerSize.height - 65, pickerSize.width, pickerSize.height);
     picker.frame = pickerRect;
-
-    picker.hidden = NO;
     picker.delegate = self;
     picker.dataSource = self;
     modalPickerView = [[SCModalPickerView alloc] init];
@@ -90,8 +88,19 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -181,7 +190,9 @@
 
 - (NSString *) shiftChooserDetailedHelpMessageWithCount:(int) row
 {
-    return [self.dateFormatter stringFromDate:[self.theJob.jobStartDate cc_dateByMovingToNextOrBackwardsFewDays:row withCalender:[NSCalendar currentCalendar]]];
+    return [self.dateFormatter stringFromDate:[self.theJob.jobStartDate
+                                                  cc_dateByMovingToNextOrBackwardsFewDays:row
+                                                  withCalender:[NSCalendar currentCalendar]]];
     
 }
 
@@ -236,7 +247,7 @@ return YES;
 	if (pickDelegate)
 	    [pickDelegate SSShiftTypePickerClientFinishConfigure: self];
         else
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:animate];
     }
 }
 
