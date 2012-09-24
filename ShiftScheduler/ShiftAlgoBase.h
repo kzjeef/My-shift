@@ -8,7 +8,7 @@
 }
 
 @property (strong) OneJob *JobContext;
-@property (readonly) NSCalendar *curCalendar;
+@property (weak, readonly) NSCalendar *curCalendar;
 
 
 - (id) initWithContext: (OneJob *)context;

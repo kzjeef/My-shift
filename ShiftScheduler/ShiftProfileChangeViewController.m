@@ -659,7 +659,7 @@
     //    __block UIDatePicker *tdatePicker = pdatePicker;
     
     [modalDatePickerView setPickerView:pdatePicker];
-    __block OneJob *job = self.theJob;
+    __weak OneJob *job = self.theJob;
 
     [modalDatePickerView setCompletionHandler:^(SCModalPickerViewResult result){
 	    if (result == SCModalPickerViewResultDone)

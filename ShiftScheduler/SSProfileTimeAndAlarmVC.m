@@ -236,14 +236,14 @@ enum {
 
 - (void) showPickerView:(UIPickerView *)pPickerView
 {
-    __block UIPickerView *tPickerView = pPickerView;
+    __weak UIPickerView *tPickerView = pPickerView;
     SCModalPickerView *modalPickerView  = [[SCModalPickerView alloc] init];
     [modalPickerView setPickerView:tPickerView];
-    __block OneJob *job = self.theJob;
-    __block NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
+    __weak OneJob *job = self.theJob;
+    __weak NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
     //__block UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:pChoosedIndexPath];
     //b__block NSArray *premindItemsArray = self.remindItemsArray;
-    __block SSProfileTimeAndAlarmVC *safeSelf = self;
+    __weak SSProfileTimeAndAlarmVC *safeSelf = self;
     [modalPickerView setCompletionHandler:^(SCModalPickerViewResult result){
         if (result == SCModalPickerViewResultDone)
         { 
@@ -262,15 +262,15 @@ enum {
 
 - (void) showDatePickerView:(UIDatePicker *)pdatePicker
 {
-    __block UIDatePicker *tdatePicker = pdatePicker;
+    __weak UIDatePicker *tdatePicker = pdatePicker;
     
     SCModalPickerView *modalPickerView = [[SCModalPickerView alloc] init];
     [modalPickerView setPickerView:tdatePicker];
-    __block OneJob *job = self.theJob;
+    __weak OneJob *job = self.theJob;
     
     NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
-    __block NSDateFormatter *pDateFormatter = self.dateFormatter;
-    __block SSProfileTimeAndAlarmVC *safeSelf = self;
+    __weak NSDateFormatter *pDateFormatter = self.dateFormatter;
+    __weak SSProfileTimeAndAlarmVC *safeSelf = self;
     [modalPickerView setCompletionHandler:^(SCModalPickerViewResult result){
         if (result == SCModalPickerViewResultDone)
         { 

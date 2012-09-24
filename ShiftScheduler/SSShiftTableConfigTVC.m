@@ -22,7 +22,7 @@
     id<SSShiftTypePickerDelegate> __unsafe_unretained pickDelegate;
 }
 
-@property (readonly) NSDateFormatter *dateFormatter;
+@property (weak, readonly) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -295,10 +295,10 @@ return YES;
 {
     //__block UIPickerView *tPickerView = pPickerView;
     [modalPickerView setPickerView:pPickerView];
-    __block OneJob *job = self.theJob;
-    __block SSShiftTableConfigTVC *_self = self;
+    __weak OneJob *job = self.theJob;
+    __weak SSShiftTableConfigTVC *_self = self;
     NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
-    __block UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:pChoosedIndexPath];
+    __weak UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:pChoosedIndexPath];
 
     [modalPickerView setCompletionHandler:^(SCModalPickerViewResult result){
             if (result == SCModalPickerViewResultDone)

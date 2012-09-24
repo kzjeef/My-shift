@@ -24,9 +24,9 @@
 }
 
 
-@property (nonatomic, readonly) NSArray *feedbackItemsArray;
-@property (nonatomic, readonly) NSArray *alarmSettingsArray;
-@property (nonatomic, readonly) NSArray *socialAccountArray;
+@property (weak, nonatomic, readonly) NSArray *feedbackItemsArray;
+@property (weak, nonatomic, readonly) NSArray *alarmSettingsArray;
+@property (weak, nonatomic, readonly) NSArray *socialAccountArray;
 @property (nonatomic, strong) NSURL *iTunesURL;
 
 

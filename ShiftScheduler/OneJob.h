@@ -37,7 +37,7 @@ enum JobShiftAlgoType {
 @property (nonatomic, strong) NSDate    *jobStartDate;
 @property (nonatomic, strong) NSDate    *jobFinishDate;
 @property (nonatomic, strong) NSNumber  *jobShiftType;
-@property (nonatomic, readonly) NSString        *jobShiftTypeString;
+@property (weak, nonatomic, readonly) NSString        *jobShiftTypeString;
 @property (nonatomic, strong) NSCalendar        *curCalender;
 
 // For (legency/Most common) On/Off Days work shift.
@@ -60,7 +60,7 @@ enum JobShiftAlgoType {
 // Choose able work days Table.
 @property (nonatomic, strong) NSArray  *jobFreeJumpTable;
 @property (nonatomic, strong) NSNumber *jobFreeJumpCycle;
-@property (nonatomic, retain) NSData * jobFreeJumpArrayArchive;
+@property (nonatomic, strong) NSData * jobFreeJumpArrayArchive;
 
 // X Shift Support...
 @property (nonatomic, strong) NSNumber *jobXShiftCount; // X shift a day, for the 3-shift like work schedule.

@@ -268,9 +268,9 @@ enum {
 {
     //__block UIPickerView *tPickerView = pPickerView;
     [modalPickerView setPickerView:pPickerView];
-    __block OneJob *job = self.theJob;
+    __weak OneJob *job = self.theJob;
     NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
-    __block UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:pChoosedIndexPath];
+    __weak UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:pChoosedIndexPath];
 
     [modalPickerView setCompletionHandler:^(SCModalPickerViewResult result){
         if (result == SCModalPickerViewResultDone)
