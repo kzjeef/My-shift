@@ -37,6 +37,9 @@
 {
   if ((self = [super init])) {
     monthAndYearFormatter = [[NSDateFormatter alloc] init];
+    NSString *localeString = [[NSLocale preferredLanguages] objectAtIndex:0];
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:localeString];
+    [monthAndYearFormatter setLocale:locale];
     [monthAndYearFormatter setDateFormat:@"LLLL yyyy"];
       cacheCalendar = [NSCalendar currentCalendar];
     [self moveToMonthForDate:date];
