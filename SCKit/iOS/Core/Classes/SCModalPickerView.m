@@ -5,14 +5,15 @@
 //  Created by Sebastian Celis on 8/25/11.
 //  Copyright (c) 2011 Sebastian Celis. All rights reserved.
 //
+
 #import "SCModalPickerView.h"
 
 #import "SCAnimation.h"
 #import "SCConstants.h"
 
 @interface SCModalPickerView ()
-@property (nonatomic, strong) UIWindow *window;
-@property (nonatomic, strong) UIToolbar *toolbar;
+@property (nonatomic, readwrite, strong) UIWindow *window;
+@property (nonatomic, readwrite, strong) UIToolbar *toolbar;
 @property (nonatomic, strong) UIButton *dimmingButton;
 @property (nonatomic, weak) UIWindow *previousWindow;
 @property (nonatomic, strong) UITextField *textField;
@@ -97,7 +98,7 @@
         UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                   target:self
                                                                                   action:@selector(done:)];
-        [_toolbar setItems:@[cancelItem, spaceItem, doneItem]];
+        [_toolbar setItems:[NSArray arrayWithObjects:cancelItem, spaceItem, doneItem, nil]];
     }
     
     return _toolbar;
@@ -146,10 +147,7 @@
     UIButton *dimmingButton = [self dimmingButton];
     [dimmingButton setFrame:[window bounds]];
     [window insertSubview:dimmingButton belowSubview:self];
-    
-    // Make the window visible
-    [window makeKeyAndVisible];
-    
+
     // Listen to keyboard events
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -160,6 +158,9 @@
     // toolbar.
     [self addSubview:[self textField]];
     [[self textField] becomeFirstResponder];
+
+    // Make the window visible
+    [window makeKeyAndVisible];
 }
 
 - (void)cancel:(id)sender
@@ -233,7 +234,7 @@
                          [_dimmingButton setAlpha:0.0];
                      }
                      completion:^(BOOL finished) {
-                         [_previousWindow makeKeyAndVisible];
+                         [_previousWindow makeKeyWindow];
                          [self setWindow:nil];  // Break the retain loop and allow both self and the UIWindow to be reclaimed.
                      }];
 }
