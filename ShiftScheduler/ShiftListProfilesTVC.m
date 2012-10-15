@@ -30,7 +30,7 @@
 - (id)initWithManagedContext:(NSManagedObjectContext *)context
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
-    self.title = NSLocalizedString(@"Management Shift", "shift management view");
+    self.title = NSLocalizedString(@"Shift Manage", "shift management view");
     self.managedObjectContext = context;
     NSError *error;
     [self.fetchedResultsController performFetch:&error];
@@ -212,22 +212,9 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-#if 0
-    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewProfile:)];
-    addButton = button;
-
-//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
-//    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:addButton,
-//                                              self.editButtonItem, nil];
-    
-    if ([self.navigationItem respondsToSelector:@selector(setRightBarButtonItems:)])
-        [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:addButton,nil]];
-    else
-        [self.navigationItem setRightBarButtonItem:addButton];
-#else
+    addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:(@selector(insertNewProfile:))];
+    [self.navigationItem setLeftBarButtonItem:addButton];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-#endif
 
         //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Home", @"return to home in profile view") style:UIBarButtonItemStylePlain target:self action:@selector(returnToHome)];
     
@@ -302,7 +289,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if ([self.fetchedResultsController.fetchedObjects count] > 0 && section == 0) {
-        return NSLocalizedString(@"Management Shift", "");
+        return NSLocalizedString(@"Shift Manage", "");
     }
     return  [NSString string] ;
 }
