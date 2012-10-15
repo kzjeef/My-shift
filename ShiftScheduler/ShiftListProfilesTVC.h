@@ -28,7 +28,6 @@
     NSManagedObjectContext *addingManagedObjectContext;
     NSFetchedResultsController *fetchedResultsController;
     UIBarButtonItem *addButton;
-    UIBarButtonItem *oldLeftItem;
     UIImage *plusImage;
     NSDateFormatter *timeFormatter;
     id <ProfileEditFinishDelegate> parentViewDelegate;

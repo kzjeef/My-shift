@@ -46,7 +46,9 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"OneJob" 
                                               inManagedObjectContext:self.objectContext];
     [request setEntity:entity];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"jobName"  ascending:YES]];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor
+                                                           sortDescriptorWithKey:@"jobName"
+                                                                       ascending:YES]];
     
 
     request.predicate = [NSPredicate predicateWithFormat:@"jobEnable == YES"];
@@ -77,7 +79,10 @@
     self.fetchedRequestController.delegate = self;
     
     NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
-    [dnc addObserver:self selector:@selector(managedContextDataChanged:) name:NSManagedObjectContextDidSaveNotification object:self.objectContext];
+    [dnc addObserver:self
+            selector:@selector(managedContextDataChanged:)
+                name:NSManagedObjectContextDidSaveNotification
+              object:self.objectContext];
 
     return  self;
 }
@@ -91,19 +96,9 @@
     
 }
 
-//- (NSArray *) theJobNameArray
-//{
-//    [self.fetchedResultsController performFetch:nil];
-//    return self.fetchedResultsController.fetchedObjects;
-//}
-
 - (NSArray *)theJobNameArray 
 {
-    // just use cache of fetchrequest controller.
-    //    if (theJobNameArray != 0 && ![self.objectContext hasChanges])
-    //        return theJobNameArray;
     theJobNameArray = self.fetchedRequestController.fetchedObjects;
-    //    NSLog(@"fetch in work data source %@", theJobNameArray);
     return theJobNameArray;
 }
 
@@ -156,11 +151,6 @@
 #define HALF_DAY_SECONDS (60*60*12)
 - (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate
 {
-
-//    return [self.generator returnWorkdaysWithInStartDate:fromDate
-//    endDate: toDate]; return [[self.jobsArray lastObject]
-//    returnWorkdaysWithInStartDate:fromDate endDate:toDate];
-    
     // first, use fetchrequest controller get all Job Info
     
     // got the information about all jobs, work or not, each in an array.
@@ -176,7 +166,8 @@
     for (OneJob *j in self.theJobNameArray) {
         [markedDayArray addObjectsFromArray:[j returnWorkdaysWithInStartDate:fromDate 
 								     endDate:toDate]];
-        [markedDayArray addObjectsFromArray:[j returnWorkdaysWithInStartDate:fromDate endDate:[toDate dateByAddingTimeInterval:ONE_DAY_SECONDS]]];
+        [markedDayArray addObjectsFromArray:[j returnWorkdaysWithInStartDate:fromDate
+                                                                     endDate:[toDate dateByAddingTimeInterval:ONE_DAY_SECONDS]]];
     }
     
     //!!!! OFF by one BUG: the last day need be larger, since for some time zone, the last day will lost
@@ -185,17 +176,23 @@
     return  markedDayArray;
 }
 
+- (void) loadItemsForData:(NSDate *)date toArray:(NSMutableArray *)array
+{
+    for (OneJob *job in self.theJobNameArray) {
+        if ([job isDayWorkingDay:date]) {
+            [array addObject:job];
+        }
+    }
+}
+
 - (void) loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate toArray: (NSMutableArray *)array
 {
     NSDate *nextday;
-    for (nextday = fromDate; [nextday timeIntervalSinceDate:toDate] < 0; 
+    for (nextday = fromDate; [nextday timeIntervalSinceDate:toDate] < 0;
+         // FIXME: why ???? dont understand now...
          nextday = 
          [nextday dateByAddingTimeInterval:24*60*60]) {
-        for (OneJob *job in self.theJobNameArray) {
-            if ([job isDayWorkingDay:nextday]) {
-                [array addObject:job];
-            }
-        }
+        [self loadItemsForData:nextday toArray:array];
     }    
 }
 
@@ -218,13 +215,18 @@
     NSMutableArray *resultArray = [[NSMutableArray alloc] init];
     
     NSMutableArray *tjobArray = [[NSMutableArray alloc] init];
-    
-    NSDate *from = [date cc_dateByMovingToBeginningOfDay];
-    NSDate *to = [date cc_dateByMovingToEndOfDay];
-    
-    [self loadItemsFromDate:from toDate:to toArray:tjobArray];
-    if (tjobArray.count == 0) 
+
+    [self loadItemsForData:date toArray:tjobArray];
+
+    // FIXME: because some bug in shift module, is possible not found
+    // the shift item here, return a default icon to workaround and
+    // print a warnning.
+    if (tjobArray.count == 0)  {
+        NSLog(@"Warnning: Return nil in KalTileDrawDelegate: this should not happens:date:%@", date);
+        NSAssert(NO, @"Warnning: Return nil in KalTileDrawDelegate: this should not happens:date:%@", date);
         return nil;
+    }
+
     for (id j in tjobArray) {
         if (j && [j isKindOfClass:[OneJob class]]) {
             OneJob *job = j;

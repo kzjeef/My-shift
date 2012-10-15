@@ -316,8 +316,9 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
+    // For first section , don't needs a title, save some space for let customer see the last section's title.
     if (section == 0)
-        return NSLocalizedString(@"Name and Icon", "name and icon title");
+        return nil;
     else if (section == 1)
         return  NSLocalizedString(@"Shift Detail", "Shift detail title");
     else if (section == 2)
