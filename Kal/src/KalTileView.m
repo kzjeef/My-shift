@@ -88,12 +88,11 @@ extern const CGSize kTileSize;
   }
   
   if (flags.marked) {
-      //    [markerImage drawInRect:CGRectMake(21.f, 5.f, 4.f, 5.f)];
       NSArray *iconlist;
       iconlist = [delegate KalTileDrawDelegate:self
                        getIconDrawInfoWithDate:self.date.NSDate];
-      CGFloat count = 0;
       if (iconlist) {
+          CGFloat count = 0;
           for (NSDictionary *dict in iconlist) {
               // first check icon draw type, if it's type one, just draw icon
               // if type two,draw with clip to mask.
@@ -106,15 +105,13 @@ extern const CGSize kTileSize;
               // if it was draw color icon directly, use this. 
               CGContextSaveGState(ctx);
 
-              NSNumber *showText      = [dict objectForKey:KAL_TILE_ICON_IS_SHOW_TEXT];
+              NSNumber *isShowText      = [dict objectForKey:KAL_TILE_ICON_IS_SHOW_TEXT];
               NSString *text           = [dict objectForKey:KAL_TILE_ICON_TEXT];
               UIColor *iconTextColor      = [dict objectForKey:KAL_TILE_ICON_COLOR_KEY];
                 
               (iconTextColor == nil) ? [UIColor blackColor] : iconTextColor;
 
-              
-              if (showText && showText.intValue == 1) {
-                  // bold can see this...
+              if (isShowText && isShowText.intValue == YES) {
                   UIFont *fontDrawText = [UIFont boldSystemFontOfSize:13.0];
                   [self drawText:text withCtx:ctx atPoint:CGPointMake(iconRect.origin.x, margin) withFont:fontDrawText withColor:iconTextColor];
               } else {
@@ -128,30 +125,17 @@ extern const CGSize kTileSize;
               CGContextRestoreGState(ctx);
               count += 1;
           }
-      } else {
-//            // draw a triangle under the square to make this day.
-//            CGContextSaveGState(ctx);
-//            CGContextBeginPath(ctx);
-//            
-//            // left, up conner
-//            CGContextMoveToPoint(ctx, 0+1, kTileSize.height - 2);
-//            CGContextAddLineToPoint(ctx, kTileSize.width/3, kTileSize.height - 2);
-//            CGContextAddLineToPoint(ctx, 0+1, (kTileSize.height/3)*2);
-//            
-//            CGContextClosePath(ctx);
-//            // todo the color should can be choose.
-//            if (self.selected)
-//                CGContextSetRGBFillColor(ctx, 0.8, 0.65, 0.7 ,1);
-//            else
-//                CGContextSetRGBFillColor(ctx, 0.55, .4, .55 ,1);
-//            
-//            CGContextSetBlendMode(ctx, kCGBlendModeScreen);
-//            
-//            CGContextFillPath(ctx);
-//            CGContextRestoreGState(ctx);
-        }
-    }
+      }
+  } else {
+      // This is just a work around for the issue some version not get
+      // the icon list.
+      [markerImage drawInRect:CGRectMake(21.f, 5.f, 4.f, 5.f)];
+  }
 
+  // Start draw the day Text...
+
+  // FIXME: if user chagne the font here, have possible can not draw
+  // out, better use NSAttributedString to draw the text.
   NSUInteger n = [self.date day];
   NSString *dayText = [NSString stringWithFormat:@"%lu", (unsigned long)n];
   const char *day = [dayText cStringUsingEncoding:NSUTF8StringEncoding];
