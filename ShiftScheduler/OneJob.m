@@ -97,17 +97,18 @@
     int diff = inputarray.count - self.jobFreeJumpCycle.intValue;
     if (diff == 0)
         return inputarray;
-    else if (diff > 0) {
+    else if (diff < 0) {
         // oh, we needs fill the addional days with zero
         NSMutableArray *fixeda = [[NSMutableArray alloc] initWithCapacity:self.jobFreeJumpCycle.intValue];
         [fixeda setArray:inputarray];
-        for (int i = 0; i < diff; i++)
+        for (int i = 0; i < -diff; i++)
             [fixeda addObject: @0];
         return fixeda;
     } else {
         // diff < 0, we need cut the array with cycle length
         NSMutableArray *fixeda = [[NSMutableArray alloc] initWithCapacity:self.jobFreeJumpCycle.intValue];
         NSRange a = NSMakeRange(0, self.jobFreeJumpCycle.intValue);
+//        NSAssert(inputarray.count == fixeda.count, @"size not equal");
         [fixeda replaceObjectsInRange:a withObjectsFromArray:inputarray range:a];
         return fixeda;
     }
