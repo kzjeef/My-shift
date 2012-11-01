@@ -125,13 +125,12 @@ extern const CGSize kTileSize;
               CGContextRestoreGState(ctx);
               count += 1;
           }
+      } else {
+          // This is just a work around for the issue some version not get
+          // the icon list.
+          [markerImage drawInRect:CGRectMake(21.f, 5.f, 4.f, 5.f)];
       }
-  } else {
-      // This is just a work around for the issue some version not get
-      // the icon list.
-      [markerImage drawInRect:CGRectMake(21.f, 5.f, 4.f, 5.f)];
   }
-
   // Start draw the day Text...
 
   // FIXME: if user chagne the font here, have possible can not draw
