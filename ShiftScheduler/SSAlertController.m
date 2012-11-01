@@ -54,6 +54,7 @@
     [dnc addObserver:self selector:@selector(managedContextDataChanged:)
 		name:NSManagedObjectContextDidSaveNotification
 	      object:self.managedcontext];
+    [dnc addObserver:self selector:@selector(alarmSoundChange:) name:@"ALARM_SOUND_CHANGED" object:nil];
 
     return self;
 }
@@ -65,6 +66,12 @@
     if (error)
         NSLog(@"SSAlertController: fetch error: %@", [error userInfo]);
 
+    [self setupAlarm:YES];
+}
+
+- (void) alarmSoundChange:(NSNotification *) noti
+{
+    NSLog(@"resetup alarm because the alarm sound changed");
     [self setupAlarm:YES];
 }
 
@@ -164,11 +171,11 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
     localNotif.alertAction = actionTitle;
     
     if ([self shouldAlertWithSound]) {
-        if ([self shouldUseSystemSound])
-            localNotif.soundName = UILocalNotificationDefaultSoundName;
-        else
-            localNotif.soundName = @"notify.caf";
+        NSString *currentDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"alarmSoundFileName"];
+        localNotif.soundName = currentDefault;
     }
+
+    
     localNotif.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     return YES;

@@ -8,6 +8,7 @@
 
 #import "SSSettingTVC.h"
 #import "SSSocialThinkNoteLogin.h"
+#import "AlarmPickerViewController.h"
 
 @implementation SSSettingTVC
 
@@ -16,7 +17,8 @@
 #define RATING_ITEM_STRING    NSLocalizedString(@"Rating me!", "Rating me item")
 
 #define ENABLE_ALARM_SOUND NSLocalizedString(@"Alert Sound", "enable Alert")
-#define ENABLE_SYSTEM_ALERT_SOUND NSLocalizedString(@"System Alert Sound", "system alert")
+#define PICK_ALERT_SOUND NSLocalizedString(@"Alert", "choose alert sound")
+
 #define LOGIN_THINKNOTE_ITEM    NSLocalizedString(@"Login ThinkNote", "thinkNote Login")
 
 #define CANCEL_STR NSLocalizedString(@"Cancel", "cancel")
@@ -40,7 +42,7 @@ enum {
 - (NSArray *) alarmSettingsArray
 {
     if (!alarmSettingsArray) {
-        alarmSettingsArray = @[ENABLE_ALARM_SOUND, ENABLE_SYSTEM_ALERT_SOUND, ];
+        alarmSettingsArray = @[ENABLE_ALARM_SOUND, PICK_ALERT_SOUND];
     }
     return alarmSettingsArray;
 }
@@ -68,7 +70,6 @@ enum {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        
     }
     return self;
 }
@@ -123,6 +124,7 @@ enum {
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -153,17 +155,14 @@ enum {
     
     if (s.tag == 0) {
         [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:@"enableAlertSound"];
-    } else if (s.tag == 1) {
-        [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:@"systemDefalutAlertSound"];
-    }
-    
+    } 
 }
 
 - (UISwitch *) newSwitch:(NSIndexPath *)indexPath
 {
     
     UISwitch *theSwitch;
-    CGRect frame = CGRectMake(200, 8.0, 120.0, 27.0);
+    CGRect frame = CGRectMake(210, 8.0, 120.0, 27.0);
     theSwitch = [[UISwitch alloc] initWithFrame:frame];
     [theSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
     
@@ -179,8 +178,6 @@ enum {
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
-    if (section == SSALARM_SECTION)
-        return NSLocalizedString(@"you can choose use iOS default alert sound or use application's alert sound.", "");
     return Nil;
 }
 
@@ -237,10 +234,21 @@ enum {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"SettingCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    static NSString *nameCell = @"ShiftName";
+    UITableViewCell *cell;
+
+
+    if (indexPath.section != SSSNAME_SECTION) {
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        }
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:nameCell];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                          reuseIdentifier:nameCell];
+        }
     }
     
     cell.detailTextLabel.text = nil;
@@ -258,13 +266,25 @@ enum {
         cell.textLabel.text = [self.alarmSettingsArray objectAtIndex:indexPath.row];
         
         UISwitch *s = [self newSwitch:indexPath];
-
+        BOOL enableSound = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableAlertSound"];
         if (indexPath.row == 0) { // enable sound.
-            s.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableAlertSound"];
+            s.on = enableSound;
+            [cell.contentView addSubview:s];
         } else if (indexPath.row == 1) {
-            s.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"systemDefalutAlertSound"];
+            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            if (!enableSound)
+                cell.textLabel.textColor = [UIColor grayColor];
+            else
+                cell.textLabel.textColor = [UIColor blackColor];
+            
+            cell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"alarmSoundName"];
+
+
+
+            // TODO Set the current selected Alarm in the detail label
+                     
         }
-        [cell.contentView addSubview:s];
+        
     }
     
     
@@ -303,9 +323,7 @@ enum {
             [_thinknoteLogin showThinkNoteLoingView];
         }
         return;
-    }
-    
-    if (indexPath.section == SSFEEDBACK_SECTION) {
+    } else if (indexPath.section == SSFEEDBACK_SECTION) {
         
         if ( [TELL_OTHER_ITEM_STRING isEqualToString:[self.feedbackItemsArray objectAtIndex:indexPath.row]])
             [self sendEMailTo:@"" WithSubject:tel_other_title withBody:tel_other_body];
@@ -318,6 +336,14 @@ enum {
             NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=482061308";
             
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        }
+    } else if (indexPath.section == SSALARM_SECTION) {
+        if (indexPath.row == 1) {
+            BOOL enableSound = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableAlertSound"];
+            if (!enableSound)
+                return;
+            AlarmPickerViewController  *view = [[AlarmPickerViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            [self.navigationController pushViewController:view animated:YES];
         }
     }
     

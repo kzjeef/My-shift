@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Beep</string>
+		<key>file</key>
+		<string>Alarm_Beep_03.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Classic</string>
+		<key>file</key>
+		<string>Alarm_Classic.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Rooster</string>
+		<key>file</key>
+		<string>Alarm_Rooster_02.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Argo Navis</string>
+		<key>file</key>
+		<string>ArgoNavis.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Easy</string>
+		<key>file</key>
+		<string>Big_Easy.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Bird</string>
+		<key>file</key>
+		<string>BirdLoop.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Halfway Home</string>
+		<key>file</key>
+		<string>HalfwayHome.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Procyon</string>
+		<key>file</key>
+		<string>Procyon.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Revelation</string>
+		<key>file</key>
+		<string>Revelation.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>TwirlAway</string>
+		<key>file</key>
+		<string>TwirlAway.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Ding</string>
+		<key>file</key>
+		<string>DingDong.caf</string>
+	</dict>
+</array>
+</plist>
