@@ -160,6 +160,21 @@
 		29E6D7F115ADACCE00235123 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E6D7F015ADACCE00235123 /* MessageUI.framework */; };
 		29E6D7F915ADC63100235123 /* SSShareProfileListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E6D7F715ADC63100235123 /* SSShareProfileListViewController.h */; };
 		29E6D7FA15ADC63100235123 /* SSShareProfileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E6D7F815ADC63100235123 /* SSShareProfileListViewController.m */; };
+		29E980EF1641747B00B65A7E /* AlarmPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E980ED1641747B00B65A7E /* AlarmPickerViewController.h */; };
+		29E980F01641747B00B65A7E /* AlarmPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E980EE1641747B00B65A7E /* AlarmPickerViewController.m */; };
+		29E980F2164177B600B65A7E /* AlarmList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29E980F1164177B600B65A7E /* AlarmList.plist */; };
+		29E980FE16419E1500B65A7E /* DingDong.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980F316419E1500B65A7E /* DingDong.caf */; };
+		29E980FF16419E1500B65A7E /* Alarm_Beep_03.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980F416419E1500B65A7E /* Alarm_Beep_03.caf */; };
+		29E9810016419E1500B65A7E /* Alarm_Classic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980F516419E1500B65A7E /* Alarm_Classic.caf */; };
+		29E9810116419E1500B65A7E /* Alarm_Rooster_02.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980F616419E1500B65A7E /* Alarm_Rooster_02.caf */; };
+		29E9810216419E1500B65A7E /* ArgoNavis.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980F716419E1500B65A7E /* ArgoNavis.caf */; };
+		29E9810316419E1500B65A7E /* Big_Easy.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980F816419E1500B65A7E /* Big_Easy.caf */; };
+		29E9810416419E1500B65A7E /* BirdLoop.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980F916419E1500B65A7E /* BirdLoop.caf */; };
+		29E9810516419E1500B65A7E /* HalfwayHome.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980FA16419E1500B65A7E /* HalfwayHome.caf */; };
+		29E9810616419E1500B65A7E /* Procyon.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980FB16419E1500B65A7E /* Procyon.caf */; };
+		29E9810716419E1500B65A7E /* Revelation.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980FC16419E1500B65A7E /* Revelation.caf */; };
+		29E9810816419E1500B65A7E /* TwirlAway.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980FD16419E1500B65A7E /* TwirlAway.caf */; };
+		29E9810B1642DBB700B65A7E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 29E9810A1642DBB600B65A7E /* Default-568h@2x.png */; };
 		29E98CA314EFD8270048AF49 /* SCAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98C9914EFD8270048AF49 /* SCAnimation.h */; };
 		29E98CA414EFD8270048AF49 /* SCAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E98C9A14EFD8270048AF49 /* SCAnimation.m */; };
 		29E98CA514EFD8270048AF49 /* SCModalPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98C9B14EFD8270048AF49 /* SCModalPickerView.h */; };
@@ -348,6 +363,21 @@
 		29E6D7F015ADACCE00235123 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		29E6D7F715ADC63100235123 /* SSShareProfileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSShareProfileListViewController.h; path = ShiftScheduler/SSShareProfileListViewController.h; sourceTree = "<group>"; };
 		29E6D7F815ADC63100235123 /* SSShareProfileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSShareProfileListViewController.m; path = ShiftScheduler/SSShareProfileListViewController.m; sourceTree = "<group>"; };
+		29E980ED1641747B00B65A7E /* AlarmPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmPickerViewController.h; path = ShiftScheduler/AlarmPickerViewController.h; sourceTree = "<group>"; };
+		29E980EE1641747B00B65A7E /* AlarmPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmPickerViewController.m; path = ShiftScheduler/AlarmPickerViewController.m; sourceTree = "<group>"; };
+		29E980F1164177B600B65A7E /* AlarmList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AlarmList.plist; sourceTree = "<group>"; };
+		29E980F316419E1500B65A7E /* DingDong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DingDong.caf; path = Resources/alarm/DingDong.caf; sourceTree = "<group>"; };
+		29E980F416419E1500B65A7E /* Alarm_Beep_03.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Alarm_Beep_03.caf; path = Resources/alarm/Alarm_Beep_03.caf; sourceTree = "<group>"; };
+		29E980F516419E1500B65A7E /* Alarm_Classic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Alarm_Classic.caf; path = Resources/alarm/Alarm_Classic.caf; sourceTree = "<group>"; };
+		29E980F616419E1500B65A7E /* Alarm_Rooster_02.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Alarm_Rooster_02.caf; path = Resources/alarm/Alarm_Rooster_02.caf; sourceTree = "<group>"; };
+		29E980F716419E1500B65A7E /* ArgoNavis.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ArgoNavis.caf; path = Resources/alarm/ArgoNavis.caf; sourceTree = "<group>"; };
+		29E980F816419E1500B65A7E /* Big_Easy.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Big_Easy.caf; path = Resources/alarm/Big_Easy.caf; sourceTree = "<group>"; };
+		29E980F916419E1500B65A7E /* BirdLoop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = BirdLoop.caf; path = Resources/alarm/BirdLoop.caf; sourceTree = "<group>"; };
+		29E980FA16419E1500B65A7E /* HalfwayHome.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HalfwayHome.caf; path = Resources/alarm/HalfwayHome.caf; sourceTree = "<group>"; };
+		29E980FB16419E1500B65A7E /* Procyon.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Procyon.caf; path = Resources/alarm/Procyon.caf; sourceTree = "<group>"; };
+		29E980FC16419E1500B65A7E /* Revelation.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Revelation.caf; path = Resources/alarm/Revelation.caf; sourceTree = "<group>"; };
+		29E980FD16419E1500B65A7E /* TwirlAway.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TwirlAway.caf; path = Resources/alarm/TwirlAway.caf; sourceTree = "<group>"; };
+		29E9810A1642DBB600B65A7E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		29E98C9914EFD8270048AF49 /* SCAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAnimation.h; sourceTree = "<group>"; };
 		29E98C9A14EFD8270048AF49 /* SCAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAnimation.m; sourceTree = "<group>"; };
 		29E98C9B14EFD8270048AF49 /* SCModalPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCModalPickerView.h; sourceTree = "<group>"; };
@@ -485,6 +515,8 @@
 			isa = PBXGroup;
 			children = (
 				29009FCA159F4A4D00A1588E /* SSSettingTVC.h */,
+				29E980ED1641747B00B65A7E /* AlarmPickerViewController.h */,
+				29E980EE1641747B00B65A7E /* AlarmPickerViewController.m */,
 				29009FCB159F4A4D00A1588E /* SSSettingTVC.m */,
 				29009FCC159F4A4D00A1588E /* SSSettingTVC.xib */,
 				29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */,
@@ -507,7 +539,8 @@
 		293B64EC15A3BF5000D0C4B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				29AB77A715D8746400669B6B /* notify.caf */,
+				29E9810916419E1E00B65A7E /* Audio */,
+				29E980F1164177B600B65A7E /* AlarmList.plist */,
 				293C348015A89B6400CECAFA /* calendar-simple-blue-144x144.png */,
 				293C347E15A89B1F00CECAFA /* calendar-simple-blue-72x72.png */,
 				29DCB8DF15A878590095C71D /* Default.png */,
@@ -668,6 +701,7 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
+				29E9810A1642DBB600B65A7E /* Default-568h@2x.png */,
 				29E6D7F015ADACCE00235123 /* MessageUI.framework */,
 				293B64EC15A3BF5000D0C4B5 /* Resources */,
 				29D6A524159CB4A200AC6103 /* Kal.bundle */,
@@ -762,6 +796,25 @@
 				29B43CA515D29DBF000BC677 /* ThinkNoteShareViewController.xib */,
 			);
 			name = Share;
+			sourceTree = "<group>";
+		};
+		29E9810916419E1E00B65A7E /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				29E980F316419E1500B65A7E /* DingDong.caf */,
+				29E980F416419E1500B65A7E /* Alarm_Beep_03.caf */,
+				29E980F516419E1500B65A7E /* Alarm_Classic.caf */,
+				29E980F616419E1500B65A7E /* Alarm_Rooster_02.caf */,
+				29E980F716419E1500B65A7E /* ArgoNavis.caf */,
+				29E980F816419E1500B65A7E /* Big_Easy.caf */,
+				29E980F916419E1500B65A7E /* BirdLoop.caf */,
+				29AB77A715D8746400669B6B /* notify.caf */,
+				29E980FA16419E1500B65A7E /* HalfwayHome.caf */,
+				29E980FB16419E1500B65A7E /* Procyon.caf */,
+				29E980FC16419E1500B65A7E /* Revelation.caf */,
+				29E980FD16419E1500B65A7E /* TwirlAway.caf */,
+			);
+			name = Audio;
 			sourceTree = "<group>";
 		};
 		29E98C9514EFD78F0048AF49 /* SCKit */ = {
@@ -892,6 +945,7 @@
 				29B8F3D915B9BA62000D934A /* UIImage+CaptureView.h in Headers */,
 				29B43CA615D29DBF000BC677 /* ThinkNoteShareViewController.h in Headers */,
 				29293D9215DFE778006B6907 /* SSSocialThinkNoteLogin.h in Headers */,
+				29E980EF1641747B00B65A7E /* AlarmPickerViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1026,6 +1080,19 @@
 				293C348115A89B6500CECAFA /* calendar-simple-blue-144x144.png in Resources */,
 				29B43CA815D29DBF000BC677 /* ThinkNoteShareViewController.xib in Resources */,
 				29AB77A815D8746400669B6B /* notify.caf in Resources */,
+				29E980F2164177B600B65A7E /* AlarmList.plist in Resources */,
+				29E980FE16419E1500B65A7E /* DingDong.caf in Resources */,
+				29E980FF16419E1500B65A7E /* Alarm_Beep_03.caf in Resources */,
+				29E9810016419E1500B65A7E /* Alarm_Classic.caf in Resources */,
+				29E9810116419E1500B65A7E /* Alarm_Rooster_02.caf in Resources */,
+				29E9810216419E1500B65A7E /* ArgoNavis.caf in Resources */,
+				29E9810316419E1500B65A7E /* Big_Easy.caf in Resources */,
+				29E9810416419E1500B65A7E /* BirdLoop.caf in Resources */,
+				29E9810516419E1500B65A7E /* HalfwayHome.caf in Resources */,
+				29E9810616419E1500B65A7E /* Procyon.caf in Resources */,
+				29E9810716419E1500B65A7E /* Revelation.caf in Resources */,
+				29E9810816419E1500B65A7E /* TwirlAway.caf in Resources */,
+				29E9810B1642DBB700B65A7E /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1138,6 +1205,7 @@
 				29B8F3DA15B9BA62000D934A /* UIImage+CaptureView.m in Sources */,
 				298C3FBD15D92622002F9AC3 /* ThinkNoteShareViewController.m in Sources */,
 				29293D9315DFE778006B6907 /* SSSocialThinkNoteLogin.m in Sources */,
+				29E980F01641747B00B65A7E /* AlarmPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

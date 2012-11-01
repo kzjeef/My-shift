@@ -206,9 +206,14 @@ enum {
     NSDictionary *appDefaults = [NSDictionary
                                  dictionaryWithObjects:
                                  @[@(YES),
-                                  @(NO)]
-                                 forKeys:@[@"enableAlertSound", 
-                                          @"systemDefalutAlertSound"]];
+                                 @(NO),
+                                 @"Alarm_Beep_03.caf",
+                                 @"Beep"]
+                                 
+                                 forKeys:@[@"enableAlertSound",
+                                 @"systemDefalutAlertSound",
+                                 @"alarmSoundFileName",
+                                 @"alarmSoundName"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 
     [self performSelectorInBackground:@selector(SSKalControllerInit) withObject:nil];
