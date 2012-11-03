@@ -443,7 +443,6 @@
     if (!editing)
     {
         NSError *error;
-        [self.managedObjectContext save:&error];
         self.nameField.enabled = NO;
         [self.nameField resignFirstResponder];
         [self saveProfile:nil];
@@ -617,7 +616,6 @@
         return;
     }
 
-    NSError *error = nil;
     if (self.theJob.jobStartDate == nil) {
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"incomplete input", "alart title start profile view")
                                     message:NSLocalizedString(@"Please choose start date", "alert string in editing profile view let user choose start date")
@@ -626,21 +624,7 @@
         return;
     }
 
-
-    
-    if (self.viewMode == PCVC_ADDING_MODE)
-        [self.profileDelegate didChangeProfile:self didFinishWithSave:YES];
-
-    else {
-        // here: we don't save the data by delegate, it will merge the date, and cause crash.
-        // in edit mode, save it by managedContext is fine.
-        [self.profileDelegate didChangeProfile:self didFinishWithSave:NO];
-        [self.managedObjectContext save:&error];
-    }
-
-    if (error != nil) {
-        NSLog(@"save error happens when save profile: %@", [error userInfo]);
-    }
+    [self.profileDelegate didChangeProfile:self didFinishWithSave:YES];
     [self.navigationController popViewControllerAnimated:YES];
     // NSLog(@"have new profile %@", job.jobName);
 }

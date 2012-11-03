@@ -115,7 +115,7 @@
 
 /**
  Returns the fetched results controller. Creates and configures the controller if necessary.
- */
+*/
 - (NSFetchedResultsController *)fetchedResultsController 
 {
     
@@ -433,17 +433,9 @@
         pcvc.profileDelegate = self;
         pcvc.managedObjectContext = self.managedObjectContext;
         pcvc.viewMode = PCVC_EDITING_MODE;
-	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pcvc];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pcvc];
 	[self.navigationController presentModalViewController:navController animated:YES];
     }
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -502,24 +494,28 @@
     [self.tableView reloadData];
 }
 
-- (void) didChangeProfile :(ShiftProfileChangeViewController *) addController
+- (void) didChangeProfile:(ShiftProfileChangeViewController *) addController
 				didFinishWithSave:(BOOL) finishWithSave
 {
-    if (finishWithSave) {
-        // merge the add context to the main context
-        //cache	[NSFetchedResultsController deleteCacheWithName:PROFILE_CACHE_INDIFITER];
-        // cache delete maybe don't needed, rfc will controller this
+    NSError *error = nil;
 
-        NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
-        [dnc addObserver:self selector:@selector(addControllerContextDidSave:) name:NSManagedObjectContextDidSaveNotification object:addingManagedObjectContext];
-		
-        NSError *error;
-        if (![addingManagedObjectContext save:&error]) {
-            // Update to handle the error appropriately.
+    if (finishWithSave) {
+
+        
+        if (addController.viewMode == PCVC_EDITING_MODE) {
+            [self.managedObjectContext save:&error];
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            exit(-1);  // Fail
+        } else {
+
+            NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
+            [dnc addObserver:self selector:@selector(addControllerContextDidSave:) name:NSManagedObjectContextDidSaveNotification object:addingManagedObjectContext];
+            
+            if (![addingManagedObjectContext save:&error]) {
+                // Update to handle the error appropriately.
+                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            }
+            [dnc removeObserver:self name:NSManagedObjectContextDidSaveNotification object:addingManagedObjectContext];
         }
-        [dnc removeObserver:self name:NSManagedObjectContextDidSaveNotification object:addingManagedObjectContext];
     } else {
         [self.addingManagedObjectContext reset];
     }
