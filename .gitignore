@@ -8,6 +8,15 @@
 # any tracked files which get ignored after the change.
 #
 # Normal rules
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+.DS_Store
+*.tm_build_errors
 #
 .*
 *.o
@@ -93,3 +102,4 @@ rm 'Resources/icons/v1/calendar-1.png'
 rm 'Resources/icons/v1/calendar-2.png'
 rm 'Resources/icons/v1/calendar.png'
 Resources/icons/v1/
+Resources/alarm/

@@ -45,7 +45,7 @@
                                                        format:&format
                                              errorDescription:&error];
     if(!plist){
-        NSLog(error);
+        NSLog(@"loadAlarm generate alarm list error%@", error);
     }
 
    items = plist;

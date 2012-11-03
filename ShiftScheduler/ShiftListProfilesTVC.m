@@ -14,9 +14,17 @@
 
 #define PROFILE_CACHE_INDIFITER @"ProfileListCache"
 
+enum {
+    SECTION_NORMAL_SHIFT = 0,
+    SECTION_OUTDATE_SHIFT,
+    SECTION_ADD_NEW_SHIFT,
+    SECTION_SIZE,
+} ;
+
+
 @implementation ShiftListProfilesTVC
 
-@synthesize managedObjectContext, addingManagedObjectContext, fetchedResultsController;
+@synthesize managedObjectContext, addingManagedObjectContext, fetchedResultsController, fetchedResultsControllerOOD;
 @synthesize parentViewDelegate, timeFormatter;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -52,13 +60,20 @@
 
 - (NSInteger) profileuNumber
 {
-    return [self.fetchedResultsController.fetchedObjects count];
+    return [self.fetchedResultsController.fetchedObjects count] + [self.fetchedResultsControllerOOD.fetchedObjects count];
 }
 
 - (void)jobSwitchAction:(id) sender
 {
     UISwitch *currentSwitch = sender;
-    OneJob *j = [self.fetchedResultsController.fetchedObjects objectAtIndex:currentSwitch.tag];
+    OneJob *j;
+    if (currentSwitch.tag > 0)
+        j = [self.fetchedResultsController.fetchedObjects objectAtIndex:currentSwitch.tag];
+    else {
+        // FIXME: here we use a nagtive value to pass the info.
+        j = [self.fetchedResultsControllerOOD.fetchedObjects objectAtIndex:-currentSwitch.tag];
+    }
+    
     j.jobEnable = @(currentSwitch.isOn);
     NSError *error;
     if (![self.managedObjectContext save:&error]) {
@@ -113,22 +128,52 @@
 #pragma mark -
 #pragma mark Fetched results controller
 
+
+- (NSFetchedResultsController *)fetchedResultsControllerOOD
+{
+ 
+    if (fetchedResultsControllerOOD != nil)
+        return fetchedResultsControllerOOD;
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"OneJob"
+                                          inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:entity];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"jobFinishDate" ascending:NO]];
+
+    @try {
+        request.predicate = [NSPredicate predicateWithFormat:@"(jobFinishDate != nil) && (jobFinishDate < %@)", [NSDate date]];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"got exception... %@ %@", [exception name], [exception reason] );
+        return NULL;
+    }
+    
+    request.fetchBatchSize = 20;
+    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                          managedObjectContext:self.managedObjectContext
+                                                                            sectionNameKeyPath:Nil cacheName:nil];
+    fetchedResultsControllerOOD = frc;
+    return fetchedResultsControllerOOD;
+}
+
+
 /**
  Returns the fetched results controller. Creates and configures the controller if necessary.
 */
 - (NSFetchedResultsController *)fetchedResultsController 
 {
     
-    if (fetchedResultsController != nil) {
+    if (fetchedResultsController != nil)
         return fetchedResultsController;
-    }
+
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"OneJob" inManagedObjectContext:self.managedObjectContext];
     [request setEntity:entity];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"jobName"  ascending:YES]];
 
-    request.predicate = nil;
+    request.predicate = [NSPredicate predicateWithFormat:@"(jobFinishDate == nil) || (jobFinishDate >= %@) ", [NSDate date]];
     request.fetchBatchSize = 20;
     NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] 
                                        initWithFetchRequest:request 
@@ -152,27 +197,35 @@
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
 	
-	UITableView *tableView = self.tableView;
+    UITableView *tableView = self.tableView;
     
-	switch(type) {
+    switch(type) {
 			
-		case NSFetchedResultsChangeInsert:
-			[tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-			break;
+    case NSFetchedResultsChangeInsert:
+        [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        break;
 			
-		case NSFetchedResultsChangeDelete:
-			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-			break;
+    case NSFetchedResultsChangeDelete:
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        break;
 			
-		case NSFetchedResultsChangeUpdate:
-			[self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-			break;
+    case NSFetchedResultsChangeUpdate:
+//        if (indexPath.section == SECTION_NORMAL_SHIFT)
+//            [self configureCell:[tableView cellForRowAtIndexPath:indexPath]
+//                    atIndexPath:indexPath.row
+//                        withFrc:self.fetchedResultsController];
+//        else
+//            if (indexPath.row > 0)
+//                [self configureCell:[tableView cellForRowAtIndexPath:indexPath]
+//                    atIndexPath:indexPath.row - 1
+//                        withFrc:self.fetchedResultsControllerOOD];
+        break;
 			
-		case NSFetchedResultsChangeMove:
-			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-			break;
-	}
+    case NSFetchedResultsChangeMove:
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        break;
+    }
 }
 
 
@@ -221,10 +274,18 @@
     NSError *error;
     if (![self.fetchedResultsController performFetch:&error]) {
 		// Update to handle the error appropriately.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		exit(-1);  // Fail
+		NSLog(@"Unresolved error fetchShifts %@, %@", error, [error userInfo]);
+		abort();
     }
     self.fetchedResultsController.delegate = self;
+
+    NSError *ooderr;
+    if (![self.fetchedResultsControllerOOD performFetch:&ooderr]) {
+		// Update to handle the error appropriately.
+		NSLog(@"Unresolved error fetchOODShifts %@, %@", ooderr, [ooderr userInfo]);
+		exit(-1);  // Fail
+    }
+    self.fetchedResultsControllerOOD.delegate = self;
 
     plusImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"addButton" ofType:@"png"]];
     
@@ -271,26 +332,40 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[self.fetchedResultsController sections] count] + 1;
+    return SECTION_SIZE;
+}
+
+- (NSInteger)numberOfObjectsOfFrc:(NSFetchedResultsController *) frc
+{
+    return [frc.fetchedObjects count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
+    int normalshifts = [self numberOfObjectsOfFrc:self.fetchedResultsController];
+    int oodshifts = [self numberOfObjectsOfFrc:self.fetchedResultsControllerOOD];
     
-    if (section == [self numberOfSectionsInTableView:self.tableView] - 1) { // last section
+    if (section == SECTION_NORMAL_SHIFT && normalshifts  > 0 )
+        return normalshifts;
+    else if (section == SECTION_OUTDATE_SHIFT && oodshifts > 0) {
+        if (_expendOutOfDateShifts)
+            return  oodshifts + 1;
+        else 
+            return 1;
+    } else if (section == SECTION_ADD_NEW_SHIFT)
         return 1;
-    } else {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[fetchedResultsController sections] objectAtIndex:section];
-        return [sectionInfo numberOfObjects];
-    }
+    return 0;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if ([self.fetchedResultsController.fetchedObjects count] > 0 && section == 0) {
+    if (section == SECTION_NORMAL_SHIFT &&
+        [self.fetchedResultsController.fetchedObjects count] > 0) {
         return NSLocalizedString(@"Shift Manage", "");
-    }
+    } else if (section == SECTION_OUTDATE_SHIFT &&
+               [self numberOfObjectsOfFrc: self.fetchedResultsControllerOOD])
+        return NSLocalizedString(@"Archived Shifts", "out of date shift is archived");
+
     return  [NSString string] ;
 }
 
@@ -298,30 +373,51 @@
 {
     if ([self.fetchedResultsController.fetchedObjects count] > 0 && section == 0) {
         return NSLocalizedString(@"choose to change shift detail", "");
-    }
+    } else if (section == SECTION_OUTDATE_SHIFT &&
+               [self numberOfObjectsOfFrc: self.fetchedResultsControllerOOD])
+        return NSLocalizedString(@"archive for shifts already out of date ", "out of date shift is archived");
     return  [NSString string] ;
 
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"CellOfProfileCell";
+    static NSString *cellIdentifier = @"CellOfProfileCell";
+    static NSString *clearCellIdentifier = @"CellProfileCellClean";
+    NSString *indentifer;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier]; 
-    }
+    UITableViewCell *cell;
     
-    // Configure the cell...
-    if (indexPath.section == [self numberOfSectionsInTableView:self.tableView] - 1) { // last section
+    if (indexPath.section == SECTION_ADD_NEW_SHIFT || (indexPath.section == SECTION_OUTDATE_SHIFT && indexPath.row == 0))
+        indentifer = clearCellIdentifier;
+    else
+        indentifer = cellIdentifier;
+
+    cell = [tableView dequeueReusableCellWithIdentifier:indentifer];
+    if (cell == nil)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:indentifer];
+
+    if (indexPath.section == SECTION_NORMAL_SHIFT)
+        [self configureCell:cell atIndexPath:indexPath.row withFrc:self.fetchedResultsController];
+    else if (indexPath.section == SECTION_ADD_NEW_SHIFT) {
         cell.imageView.image = plusImage;
         cell.textLabel.text = NSLocalizedString(@"Adding new shift...", "add new shift");
         cell.textLabel.textColor = [UIColor colorWithHexString:@"283DA0"];
-
-        
-    } else {
-        [self configureCell:cell atIndexPath:indexPath];
+    } else  {
+        // Handle for show/hide archive shifts of out of date.
+        if (indexPath.row == 0) {
+            NSString *tt = NSLocalizedString(@"Outdated Shifts", "expand archived shifts");
+            NSString *text = [NSString stringWithFormat:@"%@ (%d)",
+                              tt, [self numberOfObjectsOfFrc:self.fetchedResultsControllerOOD]];
+            cell.textLabel.text = text;
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.textLabel.textColor = [UIColor colorWithHexString:@"283DA0"];
+        } else {
+            if (_expendOutOfDateShifts)
+                [self configureCell:cell atIndexPath:indexPath.row - 1
+                            withFrc:self.fetchedResultsControllerOOD];
+        }
     }
     
     return cell;
@@ -333,21 +429,14 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    
-    
-    if (indexPath.section == [self numberOfSectionsInTableView:self.tableView] - 1) { // last section
-        return  NO;
-    } else {
-        return YES;
-    }
+
+    if (indexPath.section == SECTION_ADD_NEW_SHIFT)
+        return NO;
+    return YES;
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([[self.fetchedResultsController fetchedObjects] count] <= 0) {
-        return UITableViewCellEditingStyleInsert;
-    } else {
         return UITableViewCellEditingStyleDelete;
-    }
 }
 
 /*
@@ -367,20 +456,23 @@
 */
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-		
-		// Delete the managed object.
-		NSManagedObjectContext *context = [fetchedResultsController managedObjectContext];
-		[context deleteObject:[fetchedResultsController objectAtIndexPath:indexPath]];
-		
-		NSError *error;
-		if (![context save:&error]) {
-			// Update to handle the error appropriately.
-			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-			exit(-1);  // Fail
-		}
-    }   
+        if (indexPath.section == SECTION_NORMAL_SHIFT)
+            [self.managedObjectContext
+                deleteObject:[self.fetchedResultsController
+                                 objectAtIndexPath:indexPath]];
+        else if (indexPath.section == SECTION_OUTDATE_SHIFT)
+            [self.managedObjectContext
+                deleteObject:[self.fetchedResultsControllerOOD
+                                 objectAtIndexPath:indexPath]];
+        NSError *error;
+        if (![self.managedObjectContext save:&error]) {
+            // Update to handle the error appropriately.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            exit(-1);  // Fail
+        }
+    }
 }
 
 
@@ -408,44 +500,71 @@
 
 #pragma mark - Table view delegate
 
+- (void) openProfileEditView: (NSInteger)row withFrc: (NSFetchedResultsController *)frc
+{
+    ShiftProfileChangeViewController *pcvc = [[ShiftProfileChangeViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    pcvc.theJob = [frc.fetchedObjects objectAtIndex:row];
+    pcvc.profileDelegate = self;
+    pcvc.managedObjectContext = self.managedObjectContext;
+    pcvc.viewMode = PCVC_EDITING_MODE;
+    UINavigationController *navController = [[UINavigationController alloc]
+                                                initWithRootViewController:pcvc];
+    [self.navigationController presentModalViewController:navController animated:YES];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if (indexPath.section == [self numberOfSectionsInTableView:self.tableView] - 1) { // last section
+    if (indexPath.section == SECTION_NORMAL_SHIFT) {
+        [self openProfileEditView:indexPath.row
+                          withFrc:self.fetchedResultsController];
+    } else if (indexPath.section == SECTION_OUTDATE_SHIFT) {
+        // ... if row is 0, toggle show and hide OOD shifts.
+        if (indexPath.row == 0) {
+            _expendOutOfDateShifts = !_expendOutOfDateShifts;
+            
+              [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_OUTDATE_SHIFT]
+                            withRowAnimation:UITableViewRowAnimationAutomatic];
+
+  
+        } else {
+            [self openProfileEditView:indexPath.row - 1
+                              withFrc:self.fetchedResultsControllerOOD];
+        }
+    } else
         [self insertNewProfile:nil];
-    } else {
-        ShiftProfileChangeViewController *pcvc = [[ShiftProfileChangeViewController alloc] initWithStyle:UITableViewStyleGrouped];
-        pcvc.theJob = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        pcvc.profileDelegate = self;
-        pcvc.managedObjectContext = self.managedObjectContext;
-        pcvc.viewMode = PCVC_EDITING_MODE;
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:pcvc];
-	[self.navigationController presentModalViewController:navController animated:YES];
-    }
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(UITableViewCell *)cell
+          atIndexPath:(NSInteger) row
+              withFrc:(NSFetchedResultsController *)frc
+    
 {
-    id t = [self.fetchedResultsController.fetchedObjects objectAtIndex:indexPath.row];
+    id t = [frc.fetchedObjects objectAtIndex:row];
     if ([t isKindOfClass:[OneJob class]]) {
         OneJob *j = t;
         cell.textLabel.text = j.jobName;
         cell.imageView.image = j.iconImage;
 
         if ([j getJobEverydayStartTime] != Nil)
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@",
-					      [j jobEverydayStartTimeWithFormatter:self.timeFormatter],
-					      [j jobEverydayOffTimeWithFormatter:self.timeFormatter]];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@",
+                                                  [j jobEverydayStartTimeWithFormatter:self.timeFormatter],
+                                                  [j jobEverydayOffTimeWithFormatter:self.timeFormatter]];
         
         UISwitch *theSwitch;
         CGRect frame = CGRectMake(200, 8.0, 120.0, 27.0);
         theSwitch = [[UISwitch alloc] initWithFrame:frame];
-        [theSwitch addTarget:self action:@selector(jobSwitchAction:) forControlEvents:UIControlEventValueChanged];
+        [theSwitch addTarget:self action:@selector(jobSwitchAction:)
+            forControlEvents:UIControlEventValueChanged];
         
         // in case the parent view draws with a custom color or gradient, use a transparent color
         theSwitch.backgroundColor = [UIColor clearColor];
-        theSwitch.tag = indexPath.row;
+
+        // FIXME Here we use trick to figure out which OOD or not.
+        // OOD use a nagtive value, tag is a int value.
+        theSwitch.tag = row;
+
+        if (frc == self.fetchedResultsControllerOOD)
+            theSwitch.tag = -theSwitch.tag;
         
         //XXX: for complicate the old job data modole.
         if (j.jobEnable == nil)
@@ -469,15 +588,20 @@
 #pragma mark - Profile View Delegete
 
 /**
- Notification from the add controller's context's save operation. This is used to update the fetched results controller's managed object context with the new book instead of performing a fetch (which would be a much more computationally expensive operation).
+ Notification from the add controller's context's save operation. This
+ is used to update the fetched results controller's managed object
+ context with the new book instead of performing a fetch (which would
+ be a much more computationally expensive operation).
  */
 - (void)addControllerContextDidSave:(NSNotification*)saveNotification {
 	
-	NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-	// Merging changes causes the fetched results controller to update its results
-	[context mergeChangesFromContextDidSaveNotification:saveNotification];
-	[context save:nil];
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    // Merging changes causes the fetched results controller to update its results
+    [context mergeChangesFromContextDidSaveNotification:saveNotification];
+    [context save:nil];
+
     [self.fetchedResultsController performFetch:NULL];
+    [self.fetchedResultsControllerOOD performFetch:NULL];
     [self.tableView reloadData];
 }
 
@@ -487,21 +611,23 @@
     NSError *error = nil;
 
     if (finishWithSave) {
-
-        
         if (addController.viewMode == PCVC_EDITING_MODE) {
-            [self.managedObjectContext save:&error];
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            if (![self.managedObjectContext save:&error])
+                NSLog(@"Unresolved error can not save editing profile %@, %@", error, [error userInfo]);
         } else {
 
             NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
-            [dnc addObserver:self selector:@selector(addControllerContextDidSave:) name:NSManagedObjectContextDidSaveNotification object:addingManagedObjectContext];
+            [dnc addObserver:self selector:@selector(addControllerContextDidSave:)
+                        name:NSManagedObjectContextDidSaveNotification
+                      object:addingManagedObjectContext];
             
             if (![addingManagedObjectContext save:&error]) {
                 // Update to handle the error appropriately.
-                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                NSLog(@"Unresolved can not saveerror %@, %@", error, [error userInfo]);
             }
-            [dnc removeObserver:self name:NSManagedObjectContextDidSaveNotification object:addingManagedObjectContext];
+            [dnc removeObserver:self
+                           name:NSManagedObjectContextDidSaveNotification
+                         object:addingManagedObjectContext];
         }
     } else {
         [self.addingManagedObjectContext reset];
