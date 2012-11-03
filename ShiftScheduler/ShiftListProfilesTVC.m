@@ -365,7 +365,6 @@ enum {
     } else if (section == SECTION_OUTDATE_SHIFT &&
                [self numberOfObjectsOfFrc: self.fetchedResultsControllerOOD])
         return NSLocalizedString(@"Archived Shifts", "out of date shift is archived");
-
     return  [NSString string] ;
 }
 
