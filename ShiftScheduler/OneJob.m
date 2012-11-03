@@ -114,6 +114,17 @@
     }
 }
 
+- (void)didChangeValueForKey:(NSString *)key
+{
+    [super didChangeValueForKey:key];
+
+    
+    NSLog(@"Job: %@.%@ changed \n", self.jobName, key);
+
+    if ([key isEqualToString:@"jobShiftType"])
+        self.shiftAlgo = nil;
+}
+
 - (void) jobFreeJumpTableCacheInvalid
 {
     jobFreeJumpTable = nil;
