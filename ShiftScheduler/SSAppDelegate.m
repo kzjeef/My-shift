@@ -262,11 +262,11 @@ enum {
     [kal showAndSelectDate:[NSDate date]];
 }
 
-- (ShfitChangeList *)changelistVC
+- (SSShiftHolidayList *)changelistVC
 {
     if (changelistVC)
         return changelistVC;
-    changelistVC = [[ShfitChangeList alloc] initWithManagedContext:self.managedObjectContext];
+    changelistVC = [[SSShiftHolidayList alloc] initWithManagedContext:self.managedObjectContext];
     return changelistVC;
 }
 

@@ -6,16 +6,16 @@
 //  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
 //
 
-#import "ShfitChangeList.h"
+#import "SSShiftHolidayList.h"
 #import "ShiftDay.h"
 
 #ifdef USE_OLD_ADDVC
-#import "ShiftChangeAddVC.h"
+#import "SSShiftHolidayCreateVC.h"
 #else
 #import "ShiftChangeAddViewController.h"
 #endif
 
-@implementation ShfitChangeList
+@implementation SSShiftHolidayList
 
 @synthesize managedObjectContext,addingManagedObjectContext,fetchedResultsController, dateFormatter;
 
@@ -155,7 +155,7 @@
 {
     
 #ifdef USE_OLD_ADDVC 
-    ShiftChangeAddVC *addvc = [[ShiftChangeAddVC alloc] initWithNibName:@"ShiftChangeAddVC" bundle:nil];
+    SSShiftHolidayCreateVC *addvc = [[SSShiftHolidayCreateVC alloc] initWithNibName:@"ShiftChangeAddVC" bundle:nil];
 
     // Create a new managed object context for the new book -- set its persistent store coordinator to the same as that from the fetched results controller's context.
 #else

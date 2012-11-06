@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "ShiftListProfilesTVC.h"
 #import "KalViewController.h"
-#import "ShfitChangeList.h"
+#import "SSShiftHolidayList.h"
 
 @interface SSKalDelegate : NSObject <UITableViewDelegate,
 					 KalViewControllerDelegate>

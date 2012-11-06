@@ -10,17 +10,17 @@
 		29009FCD159F4A4D00A1588E /* SSSettingTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FCA159F4A4D00A1588E /* SSSettingTVC.h */; };
 		29009FCE159F4A4D00A1588E /* SSSettingTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FCB159F4A4D00A1588E /* SSSettingTVC.m */; };
 		29009FCF159F4A4D00A1588E /* SSSettingTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29009FCC159F4A4D00A1588E /* SSSettingTVC.xib */; };
-		29009FD5159F4AA100A1588E /* ShiftChangeAddVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FD0159F4AA100A1588E /* ShiftChangeAddVC.h */; };
-		29009FD6159F4AA100A1588E /* ShiftChangeAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FD1159F4AA100A1588E /* ShiftChangeAddVC.m */; };
-		29009FD7159F4AA100A1588E /* ShiftChangeAddVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29009FD2159F4AA100A1588E /* ShiftChangeAddVC.xib */; };
+		29009FD5159F4AA100A1588E /* SSShiftHolidayCreateVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FD0159F4AA100A1588E /* SSShiftHolidayCreateVC.h */; };
+		29009FD6159F4AA100A1588E /* SSShiftHolidayCreateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FD1159F4AA100A1588E /* SSShiftHolidayCreateVC.m */; };
+		29009FD7159F4AA100A1588E /* SSShiftHolidayCreateVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29009FD2159F4AA100A1588E /* SSShiftHolidayCreateVC.xib */; };
 		29009FD8159F4AA100A1588E /* ShiftPickerDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FD3159F4AA100A1588E /* ShiftPickerDataSource.h */; };
 		29009FD9159F4AA100A1588E /* ShiftPickerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FD4159F4AA100A1588E /* ShiftPickerDataSource.m */; };
 		29009FE1159F4AB600A1588E /* DatePickerViewController2.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FDA159F4AB600A1588E /* DatePickerViewController2.h */; };
 		29009FE2159F4AB600A1588E /* DatePickerViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FDB159F4AB600A1588E /* DatePickerViewController2.m */; };
 		29009FE3159F4AB600A1588E /* DatePickerViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29009FDC159F4AB600A1588E /* DatePickerViewController2.xib */; };
-		29009FE5159F4AB600A1588E /* ShfitChangeList.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FDE159F4AB600A1588E /* ShfitChangeList.h */; };
-		29009FE6159F4AB600A1588E /* ShfitChangeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FDF159F4AB600A1588E /* ShfitChangeList.m */; };
-		29009FE7159F4AB600A1588E /* ShfitChangeList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29009FE0159F4AB600A1588E /* ShfitChangeList.xib */; };
+		29009FE5159F4AB600A1588E /* SSShiftHolidayList.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FDE159F4AB600A1588E /* SSShiftHolidayList.h */; };
+		29009FE6159F4AB600A1588E /* SSShiftHolidayList.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FDF159F4AB600A1588E /* SSShiftHolidayList.m */; };
+		29009FE7159F4AB600A1588E /* SSShiftHolidayList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29009FE0159F4AB600A1588E /* SSShiftHolidayList.xib */; };
 		29009FEA159F4AE500A1588E /* UIColor+HexCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FE8159F4AE500A1588E /* UIColor+HexCoding.h */; };
 		29009FEB159F4AE500A1588E /* UIColor+HexCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FE9159F4AE500A1588E /* UIColor+HexCoding.m */; };
 		2916128515A62A6B0031F78C /* calendar-simple-blue-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */; };
@@ -225,17 +225,17 @@
 		29009FCA159F4A4D00A1588E /* SSSettingTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSettingTVC.h; path = ShiftScheduler/SSSettingTVC.h; sourceTree = "<group>"; };
 		29009FCB159F4A4D00A1588E /* SSSettingTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSettingTVC.m; path = ShiftScheduler/SSSettingTVC.m; sourceTree = "<group>"; };
 		29009FCC159F4A4D00A1588E /* SSSettingTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSSettingTVC.xib; path = ShiftScheduler/SSSettingTVC.xib; sourceTree = "<group>"; };
-		29009FD0159F4AA100A1588E /* ShiftChangeAddVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShiftChangeAddVC.h; path = ShiftScheduler/ShiftChangeAddVC.h; sourceTree = "<group>"; };
-		29009FD1159F4AA100A1588E /* ShiftChangeAddVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShiftChangeAddVC.m; path = ShiftScheduler/ShiftChangeAddVC.m; sourceTree = "<group>"; };
-		29009FD2159F4AA100A1588E /* ShiftChangeAddVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShiftChangeAddVC.xib; path = ShiftScheduler/ShiftChangeAddVC.xib; sourceTree = "<group>"; };
+		29009FD0159F4AA100A1588E /* SSShiftHolidayCreateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSShiftHolidayCreateVC.h; path = ShiftScheduler/SSShiftHolidayCreateVC.h; sourceTree = "<group>"; };
+		29009FD1159F4AA100A1588E /* SSShiftHolidayCreateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSShiftHolidayCreateVC.m; path = ShiftScheduler/SSShiftHolidayCreateVC.m; sourceTree = "<group>"; };
+		29009FD2159F4AA100A1588E /* SSShiftHolidayCreateVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSShiftHolidayCreateVC.xib; path = ShiftScheduler/SSShiftHolidayCreateVC.xib; sourceTree = "<group>"; };
 		29009FD3159F4AA100A1588E /* ShiftPickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShiftPickerDataSource.h; path = ShiftScheduler/ShiftPickerDataSource.h; sourceTree = "<group>"; };
 		29009FD4159F4AA100A1588E /* ShiftPickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShiftPickerDataSource.m; path = ShiftScheduler/ShiftPickerDataSource.m; sourceTree = "<group>"; };
 		29009FDA159F4AB600A1588E /* DatePickerViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickerViewController2.h; path = ShiftScheduler/DatePickerViewController2.h; sourceTree = "<group>"; };
 		29009FDB159F4AB600A1588E /* DatePickerViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickerViewController2.m; path = ShiftScheduler/DatePickerViewController2.m; sourceTree = "<group>"; };
 		29009FDC159F4AB600A1588E /* DatePickerViewController2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DatePickerViewController2.xib; path = ShiftScheduler/DatePickerViewController2.xib; sourceTree = "<group>"; };
-		29009FDE159F4AB600A1588E /* ShfitChangeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShfitChangeList.h; path = ShiftScheduler/ShfitChangeList.h; sourceTree = "<group>"; };
-		29009FDF159F4AB600A1588E /* ShfitChangeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShfitChangeList.m; path = ShiftScheduler/ShfitChangeList.m; sourceTree = "<group>"; };
-		29009FE0159F4AB600A1588E /* ShfitChangeList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShfitChangeList.xib; path = ShiftScheduler/ShfitChangeList.xib; sourceTree = "<group>"; };
+		29009FDE159F4AB600A1588E /* SSShiftHolidayList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSShiftHolidayList.h; path = ShiftScheduler/SSShiftHolidayList.h; sourceTree = "<group>"; };
+		29009FDF159F4AB600A1588E /* SSShiftHolidayList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSShiftHolidayList.m; path = ShiftScheduler/SSShiftHolidayList.m; sourceTree = "<group>"; };
+		29009FE0159F4AB600A1588E /* SSShiftHolidayList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSShiftHolidayList.xib; path = ShiftScheduler/SSShiftHolidayList.xib; sourceTree = "<group>"; };
 		29009FE8159F4AE500A1588E /* UIColor+HexCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexCoding.h"; sourceTree = "<group>"; };
 		29009FE9159F4AE500A1588E /* UIColor+HexCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexCoding.m"; sourceTree = "<group>"; };
 		2900DEC11483E44E00E588EE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -582,12 +582,12 @@
 				29009FDA159F4AB600A1588E /* DatePickerViewController2.h */,
 				29009FDB159F4AB600A1588E /* DatePickerViewController2.m */,
 				29009FDC159F4AB600A1588E /* DatePickerViewController2.xib */,
-				29009FDE159F4AB600A1588E /* ShfitChangeList.h */,
-				29009FDF159F4AB600A1588E /* ShfitChangeList.m */,
-				29009FE0159F4AB600A1588E /* ShfitChangeList.xib */,
-				29009FD0159F4AA100A1588E /* ShiftChangeAddVC.h */,
-				29009FD1159F4AA100A1588E /* ShiftChangeAddVC.m */,
-				29009FD2159F4AA100A1588E /* ShiftChangeAddVC.xib */,
+				29009FDE159F4AB600A1588E /* SSShiftHolidayList.h */,
+				29009FDF159F4AB600A1588E /* SSShiftHolidayList.m */,
+				29009FE0159F4AB600A1588E /* SSShiftHolidayList.xib */,
+				29009FD0159F4AA100A1588E /* SSShiftHolidayCreateVC.h */,
+				29009FD1159F4AA100A1588E /* SSShiftHolidayCreateVC.m */,
+				29009FD2159F4AA100A1588E /* SSShiftHolidayCreateVC.xib */,
 				29009FD3159F4AA100A1588E /* ShiftPickerDataSource.h */,
 				29009FD4159F4AA100A1588E /* ShiftPickerDataSource.m */,
 			);
@@ -930,10 +930,10 @@
 				29F49CAA156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.h in Headers */,
 				29D6A528159CB4B600AC6103 /* UIViewAdditions.h in Headers */,
 				29009FCD159F4A4D00A1588E /* SSSettingTVC.h in Headers */,
-				29009FD5159F4AA100A1588E /* ShiftChangeAddVC.h in Headers */,
+				29009FD5159F4AA100A1588E /* SSShiftHolidayCreateVC.h in Headers */,
 				29009FD8159F4AA100A1588E /* ShiftPickerDataSource.h in Headers */,
 				29009FE1159F4AB600A1588E /* DatePickerViewController2.h in Headers */,
-				29009FE5159F4AB600A1588E /* ShfitChangeList.h in Headers */,
+				29009FE5159F4AB600A1588E /* SSShiftHolidayList.h in Headers */,
 				29009FEA159F4AE500A1588E /* UIColor+HexCoding.h in Headers */,
 				293B64EB15A335AA00D0C4B5 /* config.h in Headers */,
 				29DCB8DA15A7C79C0095C71D /* NSDateAdditions.h in Headers */,
@@ -1064,9 +1064,9 @@
 				29C943B814E9642900122144 /* SSProfileTimeAndAlarmVC.xib in Resources */,
 				29D6A525159CB4A200AC6103 /* Kal.bundle in Resources */,
 				29009FCF159F4A4D00A1588E /* SSSettingTVC.xib in Resources */,
-				29009FD7159F4AA100A1588E /* ShiftChangeAddVC.xib in Resources */,
+				29009FD7159F4AA100A1588E /* SSShiftHolidayCreateVC.xib in Resources */,
 				29009FE3159F4AB600A1588E /* DatePickerViewController2.xib in Resources */,
-				29009FE7159F4AB600A1588E /* ShfitChangeList.xib in Resources */,
+				29009FE7159F4AB600A1588E /* SSShiftHolidayList.xib in Resources */,
 				293B64F115A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png in Resources */,
 				293B64F415A3BF8400D0C4B5 /* tab-calendar.png in Resources */,
 				293B64FB15A3C64900D0C4B5 /* addButton.png in Resources */,
@@ -1191,10 +1191,10 @@
 				29D6A529159CB4B600AC6103 /* UIViewAdditions.m in Sources */,
 				29D6A534159CB65500AC6103 /* main.m in Sources */,
 				29009FCE159F4A4D00A1588E /* SSSettingTVC.m in Sources */,
-				29009FD6159F4AA100A1588E /* ShiftChangeAddVC.m in Sources */,
+				29009FD6159F4AA100A1588E /* SSShiftHolidayCreateVC.m in Sources */,
 				29009FD9159F4AA100A1588E /* ShiftPickerDataSource.m in Sources */,
 				29009FE2159F4AB600A1588E /* DatePickerViewController2.m in Sources */,
-				29009FE6159F4AB600A1588E /* ShfitChangeList.m in Sources */,
+				29009FE6159F4AB600A1588E /* SSShiftHolidayList.m in Sources */,
 				29009FEB159F4AE500A1588E /* UIColor+HexCoding.m in Sources */,
 				29DCB8DC15A7C8730095C71D /* NSDateAdditions.m in Sources */,
 				29E6D7EF15ADAC8200235123 /* SSMailAgent.m in Sources */,

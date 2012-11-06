@@ -6,11 +6,11 @@
 //  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
 //
 
-#import "ShiftChangeAddVC.h"
-#import "ShfitChangeList.h"
+#import "SSShiftHolidayCreateVC.h"
+#import "SSShiftHolidayList.h"
 #import "DatePickerViewController2.h"
 
-@implementation ShiftChangeAddVC
+@implementation SSShiftHolidayCreateVC
 
 @synthesize changeShiftSegmentControl, managedObjectContext,listDelegate, 
             theShiftChange, notesTextFiled, shiftPicker, datePicker, dateFormatter;

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ShiftListProfilesTVC.h"
 #import "KalViewController.h"
-#import "ShfitChangeList.h"
+#import "SSShiftHolidayList.h"
 #import "SSKalDelegate.h"
 #import "SSSettingTVC.h"
 #import "SSAlertController.h"
@@ -31,7 +31,7 @@ ProfileEditFinishDelegate>
     KalViewController *kal;
     SSAlertController *alertC;
     ShiftListProfilesTVC *profileView;
-    ShfitChangeList *changelistVC;
+    SSShiftHolidayList *changelistVC;
     SSKalDelegate *sskalDelegate;
     SSSettingTVC *settingVC;
     SSShareProfileListViewController *shareProfilesVC;
@@ -61,7 +61,7 @@ ProfileEditFinishDelegate>
 @property (nonatomic, strong) ShiftListProfilesTVC *profileView;
 @property (nonatomic, strong) SSSettingTVC *settingVC;
 @property (nonatomic, strong) UINavigationController *profileNVC;
-@property (nonatomic, strong) ShfitChangeList *changelistVC;
+@property (nonatomic, strong) SSShiftHolidayList *changelistVC;
 @property (nonatomic, strong) UIActionSheet *rightAS;
 @property (nonatomic, strong) SSKalDelegate *sskalDelegate;
 @property (nonatomic, strong) SSShareProfileListViewController *shareProfilesVC;

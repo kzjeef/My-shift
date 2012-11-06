@@ -14,7 +14,7 @@
 
 #define USE_ANOTHER_VC_CHOOSEDATA
 
-@interface ShiftChangeAddVC : UITableViewController <UIPickerViewDelegate, 
+@interface SSShiftHolidayCreateVC : UITableViewController <UIPickerViewDelegate, 
     DatePickerViewController2Delegate, UITextFieldDelegate>
 {
     UISegmentedControl *changeShiftSegmentControl;

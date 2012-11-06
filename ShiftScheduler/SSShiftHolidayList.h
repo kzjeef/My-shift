@@ -11,13 +11,13 @@
 #define USE_OLD_ADDVC
 
 
-@class ShiftChangeAddVC;
+@class SSShiftHolidayCreateVC;
 @class ShiftChangeAddViewController;
 
 @protocol ShiftChangeListDelegate
 
 #ifdef USE_OLD_ADDVC
-- (void) didChangeShift :(ShiftChangeAddVC *) addController
+- (void) didChangeShift :(SSShiftHolidayCreateVC *) addController
        didFinishWithSave:(BOOL) finishWithSave;
 #else
 
@@ -26,7 +26,7 @@
 #endif
 @end
 
-@interface ShfitChangeList : UITableViewController <NSFetchedResultsControllerDelegate, ShiftChangeListDelegate>
+@interface SSShiftHolidayList : UITableViewController <NSFetchedResultsControllerDelegate, ShiftChangeListDelegate>
 {
 	NSManagedObjectContext *managedObjectContext;
 	NSFetchedResultsController *fetchedResultsController;
