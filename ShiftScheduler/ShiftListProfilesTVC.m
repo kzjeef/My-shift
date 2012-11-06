@@ -79,7 +79,7 @@ enum {
         // FIXME: here we use a nagtive value to pass the info.
         position = currentSwitch.tag + MAGIC_OFFSET;
         if (self.fetchedResultsController.fetchedObjects.count > position)
-            j = [self.fetchedResultsControllerOOD.fetchedObjects objectAtIndex:-currentSwitch.tag];
+            j = [self.fetchedResultsControllerOOD.fetchedObjects objectAtIndex:position];
     }
     if (j == nil) {
         NSLog(@"not found any object at index: %d", position);
