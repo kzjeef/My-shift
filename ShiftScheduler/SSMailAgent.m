@@ -29,7 +29,7 @@
     [ssDelegate rightButtonSwitchToShareOrBusy:NO];
     
     picker = [[MFMailComposeViewController alloc] init];
-    __weak MFMailComposeViewController  *picker_ = picker;
+    __block MFMailComposeViewController  *picker_ = picker;
 
     dispatch_queue_t prepare_q = dispatch_queue_create("create mail queue", nil);
     dispatch_async(prepare_q, ^{ 

@@ -63,17 +63,28 @@ enum {
     return [self.fetchedResultsController.fetchedObjects count] + [self.fetchedResultsControllerOOD.fetchedObjects count];
 }
 
+/* FIXME  This was ugly, but tag only can pass one value, the -tag will always < 0xffff, hope user don't create so much shift... */
+#define MAGIC_OFFSET 0xffff
+
 - (void)jobSwitchAction:(id) sender
 {
     UISwitch *currentSwitch = sender;
     OneJob *j;
-    if (currentSwitch.tag > 0)
-        j = [self.fetchedResultsController.fetchedObjects objectAtIndex:currentSwitch.tag];
-    else {
+    int position;
+    if (currentSwitch.tag >= 0) {
+        position = currentSwitch.tag;
+        if (self.fetchedResultsController.fetchedObjects.count > position)
+            j = [self.fetchedResultsController.fetchedObjects objectAtIndex:position];
+    } else {
         // FIXME: here we use a nagtive value to pass the info.
-        j = [self.fetchedResultsControllerOOD.fetchedObjects objectAtIndex:-currentSwitch.tag];
+        position = currentSwitch.tag + MAGIC_OFFSET;
+        if (self.fetchedResultsController.fetchedObjects.count > position)
+            j = [self.fetchedResultsControllerOOD.fetchedObjects objectAtIndex:-currentSwitch.tag];
     }
-    
+    if (j == nil) {
+        NSLog(@"not found any object at index: %d", position);
+        return;
+    }
     j.jobEnable = @(currentSwitch.isOn);
     NSError *error;
     if (![self.managedObjectContext save:&error]) {
@@ -563,7 +574,7 @@ enum {
         theSwitch.tag = row;
 
         if (frc == self.fetchedResultsControllerOOD)
-            theSwitch.tag = -theSwitch.tag;
+            theSwitch.tag = (theSwitch.tag - MAGIC_OFFSET);
         
         //XXX: for complicate the old job data modole.
         if (j.jobEnable == nil)

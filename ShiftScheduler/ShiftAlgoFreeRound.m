@@ -29,7 +29,6 @@
 //     注意的是： 这里经过nscalender计算以后，时间就变成了utc时间。    
     
     
-    NSInteger timeZoneDiff = [[NSTimeZone defaultTimeZone] secondsFromGMTForDate:beginDate];
     // 1st, calulate a first array.
     
     // 计算的时候使用gmt时间， 在要把date加入到时区里面的时候， 加上时区的秒数。

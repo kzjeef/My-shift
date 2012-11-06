@@ -444,10 +444,9 @@
 
     if (!editing)
     {
-        NSError *error;
         self.nameField.enabled = NO;
         [self.nameField resignFirstResponder];
-        [self saveProfile:nil];
+        [self saveProfile:Nil];
     } else {
         self.nameField.enabled = YES;
     }
