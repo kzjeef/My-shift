@@ -40,10 +40,7 @@
     dbg(@"shiftCalcWorkday: begin:%@ end:%@",
 	[formatter stringFromDate:beginDate],
 	[formatter stringFromDate:endDate]);
-    
-    NSInteger timeZoneDiff = [[NSTimeZone defaultTimeZone] secondsFromGMTForDate:beginDate];
 
-        
     NSDate *jobStartGMT = [self.JobContext.jobStartDate
                            cc_dateByMovingToBeginningOfDayWithCalender:self.curCalendar];
 
@@ -67,7 +64,7 @@
     dbg(@"range: %d\n", range);
     for (int i = 0; i < range; i++) {
         if ([self shiftIsWorkingDay: workingDate])
-            [matchedArray addObject:[[workingDate copy] dateByAddingTimeInterval:timeZoneDiff]];
+            [matchedArray addObject:[[workingDate copy] cc_dateByMovingToMiddleOfDay]];
 
         workingDate = [workingDate cc_dateByMovingToNextDayWithCalender:self.curCalendar];
     }

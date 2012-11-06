@@ -151,27 +151,14 @@
 #define HALF_DAY_SECONDS (60*60*12)
 - (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate
 {
-    // first, use fetchrequest controller get all Job Info
-    
-    // got the information about all jobs, work or not, each in an array.
-    // or each add an generator.
-    
-    // (have a API to generator, let him know which data will be show,
-    // so it needs more calulating more days.
-    
-    // merge the genrator's result together.
+
 
     NSMutableArray *markedDayArray = [[NSMutableArray alloc] init];
     
     for (OneJob *j in self.theJobNameArray) {
         [markedDayArray addObjectsFromArray:[j returnWorkdaysWithInStartDate:fromDate 
 								     endDate:toDate]];
-        [markedDayArray addObjectsFromArray:[j returnWorkdaysWithInStartDate:fromDate
-                                                                     endDate:[toDate dateByAddingTimeInterval:ONE_DAY_SECONDS]]];
     }
-    
-    //!!!! OFF by one BUG: the last day need be larger, since for some time zone, the last day will lost
-    
     
     return  markedDayArray;
 }

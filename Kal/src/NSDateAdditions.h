@@ -11,6 +11,7 @@
 // their calculations.
 
 - (NSDate *)cc_dateByMovingToBeginningOfDay;
+- (NSDate *)cc_dateByMovingToMiddleOfDay;
 - (NSDate *)cc_dateByMovingToEndOfDay;
 - (NSDate *)cc_dateByMovingToEndOfDayWithCalender:(NSCalendar *)cal;
 - (NSDate *)cc_dateByMovingToBeginningOfDayWithCalender:(NSCalendar *) cal;

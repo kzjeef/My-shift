@@ -66,10 +66,10 @@
 
 //     恰好是工作当天，就直接加上了
         if (days == 0) {
-            [matchedArray addObject:[[workingDate copy] dateByAddingTimeInterval:timeZoneDiff]];
+            [matchedArray addObject:[[workingDate copy] cc_dateByMovingToMiddleOfDay]];
             continue;
         }
-//      剩下就是最通常的情况，用余数来计算工作的天数，如果小雨jobOnDays，那天以前都是工作日。
+//      剩下就是最通常的情况，用余数来计算工作的天数，如果小于jobOnDays，那天以前都是工作日。
         int jobOnDays = [self.JobContext.jobOnDays intValue];
         int jobOffDays = [self.JobContext.jobOffDays intValue];
         
@@ -78,7 +78,7 @@
         int t = days % totaldays;
         
         if (t < jobOnDays) {
-            [matchedArray addObject:[[workingDate copy] dateByAddingTimeInterval:timeZoneDiff]];
+            [matchedArray addObject:[[workingDate copy] cc_dateByMovingToMiddleOfDay]];
         }
         
     }

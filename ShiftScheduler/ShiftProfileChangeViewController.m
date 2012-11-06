@@ -14,6 +14,7 @@
 #import "SSShiftWorkdayConfigTVC.h"
 #import "SSTurnFinishDatePickerTVC.h"
 #import "SCModalPickerView.h"
+#import "NSDateAdditions.h"
 
 @interface ShiftProfileChangeViewController() 
 {
@@ -649,10 +650,10 @@
     [modalDatePickerView setCompletionHandler:^(SCModalPickerViewResult result){
 	    if (result == SCModalPickerViewResultDone)
 		{ 
-		    if (pdatePicker.tag == STARTWITH_ITEM)
-			job.jobStartDate = pdatePicker.date;
-		    else if (pdatePicker.tag == FINISH_ITEM)
-			job.jobFinishDate = pdatePicker.date;
+		    if (pdatePicker.tag == STARTWITH_ITEM) {
+                job.jobStartDate = [pdatePicker.date cc_dateByMovingToMiddleOfDay];
+            } else if (pdatePicker.tag == FINISH_ITEM)
+                job.jobFinishDate = [pdatePicker.date cc_dateByMovingToMiddleOfDay];
 
 		    dispatch_async(dispatch_get_main_queue(), ^{
 			    [self.tableView reloadData];
