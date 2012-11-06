@@ -310,9 +310,14 @@ enum {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NSArray *versionCompatibility = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
     NSString *supprt_mail = @"zhangjeef@gmail.com";
     NSString *support_title = NSLocalizedString(@"[SSS] ShiftSheduler support", "shift sheduler support");
+    NSString *support_body = [NSString stringWithFormat:@"\n\n\n---\nApp Version: %@ \nCurrent TimeZone:%@\niOS Version:%@",
+                              [NSString stringWithFormat:@"%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]],
+                              [NSTimeZone systemTimeZone],
+                              versionCompatibility
+                              ];
     
     NSString *tel_other_title = NSLocalizedString(@"Check this app: Shift Sheduler", "");
     NSString *tel_other_body  = NSLocalizedString(@"Hi, \n I found a very interesting app, and I think it will help for you, check it out!\n Link is: http://itunes.apple.com/us/app/shift-scheduler/id482061308?mt=8", "");
@@ -329,7 +334,7 @@ enum {
             [self sendEMailTo:@"" WithSubject:tel_other_title withBody:tel_other_body];
         
         else if ( [EMAIL_SUPPORT_ITEM_STRING isEqualToString:[self.feedbackItemsArray objectAtIndex:indexPath.row]]) {
-            [self sendEMailTo:supprt_mail WithSubject:support_title withBody:@""];
+            [self sendEMailTo:supprt_mail WithSubject:support_title withBody:support_body];
         }
         
         else if ( [RATING_ITEM_STRING isEqualToString: [self.feedbackItemsArray objectAtIndex:indexPath.row]]) {
