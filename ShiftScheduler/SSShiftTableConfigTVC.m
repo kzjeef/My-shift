@@ -74,14 +74,16 @@
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 250, 325, 250)];
+    picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 200.f, 320.f, 216.0f)];
 
-    CGSize pickerSize = [picker sizeThatFits:CGSizeZero];
-    CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
-    CGRect pickerRect = CGRectMake(0.0, screenRect.origin.y + screenRect.size.height - pickerSize.height - 65, pickerSize.width, pickerSize.height);
-    picker.frame = pickerRect;
+    // CGSize pickerSize = [picker sizeThatFits:CGSizeZero];
+    // CGRect screenRect = [[UIScreen mainScreen] applicationFrame];
+    // CGRect pickerRect = CGRectMake(0.0, screenRect.origin.y + screenRect.size.height - pickerSize.height - 65, pickerSize.width, pickerSize.height);
+    // picker.frame = pickerRect;
     picker.delegate = self;
     picker.dataSource = self;
+    picker.showsSelectionIndicator = YES;
+
     modalPickerView = [[SCModalPickerView alloc] init];
 }
 
