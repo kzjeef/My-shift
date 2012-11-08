@@ -221,9 +221,14 @@ enum {
         break;
 			
     case NSFetchedResultsChangeDelete:
-            if (controller == fetchedResultsControllerOOD && indexPath.section == SECTION_NORMAL_SHIFT)
-                break;
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            if (controller == fetchedResultsControllerOOD) {
+                NSIndexPath *tp = [NSIndexPath indexPathForRow:indexPath.row inSection:SECTION_OUTDATE_SHIFT];
+                [tableView deleteRowsAtIndexPaths:@[tp] withRowAnimation:UITableViewRowAnimationFade];
+            } else {
+                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+            }
+
         break;
 			
     case NSFetchedResultsChangeUpdate:
@@ -265,19 +270,19 @@ enum {
     [self.tableView endUpdates];
     
     // update all contexts if same change happens, don't change it if editing 
-        int section;
-        if (controller == fetchedResultsController)
-            section = SECTION_NORMAL_SHIFT;
-        else
-            section = SECTION_OUTDATE_SHIFT;
-        
-        [self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:section]
+    NSIndexSet *set;
+    if (controller == fetchedResultsController) {
+        set = [[NSIndexSet alloc] initWithIndex:SECTION_NORMAL_SHIFT];
+        [self.tableView reloadSections:set
                       withRowAnimation:UITableViewRowAnimationAutomatic];
-        //        [self.tableView reloadData];
-    
+
+    } else {
+        set = [[NSIndexSet alloc] initWithIndex:SECTION_OUTDATE_SHIFT];
+        [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationAutomatic];
+        set = [[NSIndexSet alloc] initWithIndex:SECTION_OUTDATE_SHOW_HIDE];
+        [self.tableView reloadSections:set withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
-
-
 
 #pragma mark - View lifecycle
 
