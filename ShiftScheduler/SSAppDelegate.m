@@ -204,16 +204,17 @@ enum {
     
     // default perferences
     NSDictionary *appDefaults = [NSDictionary
-                                 dictionaryWithObjects:
-                                 @[@(YES),
-                                 @(NO),
-                                 @"Alarm_Beep_03.caf",
-                                 @"Beep"]
-                                 
-                                 forKeys:@[@"enableAlertSound",
-                                 @"systemDefalutAlertSound",
-                                 @"alarmSoundFileName",
-                                 @"alarmSoundName"]];
+                                    dictionaryWithObjects:
+                                        @[@(YES),
+                                           @(NO),
+                                           @"Alarm_Beep_03.caf",
+                                           @"Beep",
+                                           @(NO)]
+                                                  forKeys:@[@"enableAlertSound",
+                                                            @"systemDefalutAlertSound",
+                                                            @"alarmSoundFileName",
+                                                            @"alarmSoundName",
+                                                            @"enableDisplayOutdateShift"]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 
     [self performSelectorInBackground:@selector(SSKalControllerInit) withObject:nil];

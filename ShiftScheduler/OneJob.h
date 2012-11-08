@@ -78,23 +78,24 @@ enum JobShiftAlgoType {
 - (NSArray *) returnWorkdaysWithInStartDate:(NSDate *) startDate endDate: (NSDate *) endDate;
 - (BOOL) isDayWorkingDay:(NSDate *)theDate;
 
-- (UIColor *) iconColor;
-- (void) trydDfaultSetting;
-- (void) forceDefaultSetting;
--(NSNumber *)getJobEveryDayLengthSec;
--(void)mysetJobEveryDayLengthSec:(NSNumber *)number;
--(NSDate *)getJobEverydayStartTime;
--(void)mysetJobEverydayStartTime:(NSDate *)time;
--(NSDate *)getJobEverydayEndTime;
-- (NSString *)jobEverydayStartTimeWithFormatter:(NSDateFormatter *)formatter;
-- (NSString *) jobEverydayOffTimeWithFormatter:(NSDateFormatter *) formatter;
+- (UIColor *)       iconColor;
+- (void)            trydDfaultSetting;
+- (void)            forceDefaultSetting;
+-(NSNumber *)       getJobEveryDayLengthSec;
+-(void)             mysetJobEveryDayLengthSec:(NSNumber *)number;
+-(NSDate *)         getJobEverydayStartTime;
+-(void)             mysetJobEverydayStartTime:(NSDate *)time;
+-(NSDate *)         getJobEverydayEndTime;
+- (NSString *)      jobEverydayStartTimeWithFormatter:(NSDateFormatter *)formatter;
+- (NSString *)      jobEverydayOffTimeWithFormatter:(NSDateFormatter *) formatter;
 
-- (NSArray *) jobShiftAllTypesString;
-- (Boolean) shiftTypeValied;
-- (Boolean) isShiftDateValied;
-- (NSNumber *) shiftTotalCycle;
-+ (BOOL) IsDateBetweenInclusive:(NSDate *)date begin: (NSDate *) begin end: (NSDate *)end;
-- (void) jobFreeJumpTableCacheInvalid;
+- (NSArray *)       jobShiftAllTypesString;
+- (Boolean)         shiftTypeValied;
+- (Boolean)         isShiftDateValied;
+- (NSNumber *)      shiftTotalCycle;
++ (BOOL)            IsDateBetweenInclusive:(NSDate *)date begin: (NSDate *) begin end: (NSDate *)end;
+- (void)            jobFreeJumpTableCacheInvalid;
+- (BOOL)            isShiftAlreadyOutdated;
 
 @property (nonatomic, strong) NSSet *shiftdays;
 @end
@@ -110,11 +111,11 @@ enum JobShiftAlgoType {
 // return value:
 // failed: return -X; is error number
 // success: return 0;
-- (NSInteger)addShiftdaysObject:(ShiftDay *)value;
+- (NSInteger)       addShiftdaysObject:(ShiftDay *)value;
 
-- (void)removeShiftdaysObject:(ShiftDay *)value;
-- (void)addShiftdays:(NSSet *)values;
-- (void)removeShiftdays:(NSSet *)values;
+- (void)            removeShiftdaysObject:(ShiftDay *)value;
+- (void)            addShiftdays:(NSSet *)values;
+- (void)            removeShiftdays:(NSSet *)values;
 
 @end
 

@@ -156,8 +156,7 @@
     NSMutableArray *markedDayArray = [[NSMutableArray alloc] init];
     
     for (OneJob *j in self.theJobNameArray) {
-        [markedDayArray addObjectsFromArray:[j returnWorkdaysWithInStartDate:fromDate 
-								     endDate:toDate]];
+        [markedDayArray addObjectsFromArray:[j returnWorkdaysWithInStartDate:fromDate endDate:[toDate dateByAddingTimeInterval:ONE_DAY_SECONDS]]];
     }
     
     return  markedDayArray;

@@ -440,4 +440,15 @@
 {
     return [self.shiftAlgo shiftIsWorkingDay:theDate];
 }
+
+
+- (BOOL) isShiftAlreadyOutdated
+{
+    if (self.jobFinishDate == nil) return NO;
+    if ([[self.jobFinishDate cc_dateByMovingToMiddleOfDay]
+         timeIntervalSinceDate:[[NSDate date] cc_dateByMovingToMiddleOfDay]] >= 0)
+         return NO;
+    else
+        return YES;
+}
 @end

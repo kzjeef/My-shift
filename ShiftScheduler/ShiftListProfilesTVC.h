@@ -29,12 +29,10 @@
     NSFetchedResultsController *fetchedResultsController;
     NSFetchedResultsController *fetchedResultsControllerOOD; // out of date shifts.
     UIBarButtonItem *addButton;
+    UIBarButtonItem *oldLeftItem;
     UIImage *plusImage;
     NSDateFormatter *timeFormatter;
     id <ProfileEditFinishDelegate> parentViewDelegate;
-
-    BOOL _expendOutOfDateShifts;
-
 }
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -47,10 +45,7 @@
 @property (strong, nonatomic) id <ProfileEditFinishDelegate> parentViewDelegate;
 
 - (id)initWithManagedContext:(NSManagedObjectContext *)context;
-- (void)configureCell:(UITableViewCell *)cell
-          atIndexPath:(NSInteger)indexPath
-              withFrc:(NSFetchedResultsController *)frc;
-
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath ;
 - (IBAction)insertNewProfile:(id) sender;
 - (NSInteger) profileuNumber;
 
