@@ -18,7 +18,9 @@
     NSURL *iTunesURL;
     NSArray *alarmSettingsArray;
     NSArray *socialAccountArray;
-    
+
+    UIActionSheet *_resetAS;
+    NSManagedObjectContext *_managedObjectContext;
     SSSocialThinkNoteLogin *_thinknoteLogin;
     
 }
@@ -27,7 +29,10 @@
 @property (weak, nonatomic, readonly) NSArray *feedbackItemsArray;
 @property (weak, nonatomic, readonly) NSArray *alarmSettingsArray;
 @property (weak, nonatomic, readonly) NSArray *socialAccountArray;
+
 @property (nonatomic, strong) NSURL *iTunesURL;
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 
 @end

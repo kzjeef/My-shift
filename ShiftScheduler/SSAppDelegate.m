@@ -283,6 +283,7 @@ enum {
     if (settingVC == nil)
     {
         settingVC = [[SSSettingTVC alloc] initWithNibName:@"SSSettingTVC" bundle:nil];
+        settingVC.managedObjectContext = self.managedObjectContext;
     }
     return settingVC;
 }
@@ -335,6 +336,7 @@ enum {
     if (app.applicationState == UIApplicationStateActive) {
         [[[UIAlertView alloc] initWithTitle:notif.alertBody message:nil delegate:nil
                           cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+
         [alertC playAlarmSound];
     }
 }

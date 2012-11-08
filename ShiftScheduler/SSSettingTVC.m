@@ -23,6 +23,10 @@
 
 #define CANCEL_STR NSLocalizedString(@"Cancel", "cancel")
 
+#define RESET_STR NSLocalizedString(@"Reset All Data", "reset")
+#define RESET_WARNNING_STR NSLocalizedString(@"This will delete all Shift information in your application, are you sure ?", \
+                                             "long warnning information before delete all data")
+
 
 @synthesize iTunesURL;
 
@@ -31,6 +35,7 @@ enum {
     SSALARM_SECTION,
     SSSOCIAL_SECTION,
     SSFEEDBACK_SECTION,
+    SSRESET_SECTION,
     SSSECTIONS_COUNT,
 };
 
@@ -198,6 +203,8 @@ enum {
         return self.alarmSettingsArray.count;
     if (section == SSSOCIAL_SECTION)
         return self.socialAccountArray.count;
+    if (section == SSRESET_SECTION)
+        return 1;
     return 0;
 }
 
@@ -285,12 +292,24 @@ enum {
                      
         }
         
+    } else if (indexPath.section == SSRESET_SECTION) {
+        cell.textLabel.text = RESET_STR;
+        cell.backgroundColor = [UIColor colorWithRed:1.f green:.1f blue:.1f alpha:1.0f];
+        cell.textLabel.textColor = [UIColor whiteColor];
     }
     
-    
-    // Configure the cell...
-    
     return cell;
+}
+
+#pragma mark - delete shift functions
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+        [self deleteAllShifts];
+    else if (buttonIndex == 1)
+        return; // 0 is cancel.
+
 }
 
 - (void) sendEMailTo: (NSString *)to WithSubject: (NSString *) subject withBody:(NSString *)body {
@@ -301,6 +320,34 @@ enum {
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailString]];
     
+}
+
+
+
+-(void) deleteAllShifts
+{
+    [self deleteAllObjects:@"OneJob"];
+}
+
+- (void) deleteAllObjects: (NSString *) entityDescription
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityDescription inManagedObjectContext:_managedObjectContext];
+    [fetchRequest setEntity:entity];
+
+    NSError *error;
+    NSArray *items = [_managedObjectContext executeFetchRequest:fetchRequest error:&error];
+
+    
+
+    for (NSManagedObject *managedObject in items) {
+    	[_managedObjectContext deleteObject:managedObject];
+    	NSLog(@"%@ object deleted",entityDescription);
+    }
+    if (![_managedObjectContext save:&error]) {
+    	NSLog(@"Error deleting %@ - error:%@",entityDescription,error);
+    }
+
 }
 
 
@@ -350,6 +397,10 @@ enum {
             AlarmPickerViewController  *view = [[AlarmPickerViewController alloc] initWithStyle:UITableViewStyleGrouped];
             [self.navigationController pushViewController:view animated:YES];
         }
+    } else if (indexPath.section == SSRESET_SECTION) {
+        [[[UIAlertView alloc] initWithTitle:RESET_STR message:RESET_WARNNING_STR delegate:self
+                          cancelButtonTitle:RESET_STR otherButtonTitles:NSLocalizedString(@"Cancel", "cancel") ,nil] show];
+
     }
     
     
