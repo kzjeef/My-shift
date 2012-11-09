@@ -47,6 +47,9 @@ enum {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
+    for (OneJob *j in self.fetchedResultsController.fetchedObjects) {
+        j.middleSizeImage = nil;
+    }
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -553,8 +556,8 @@ return YES;
         } else {
             cell.textLabel.textColor = [UIColor blackColor];
         }
-        
-        cell.imageView.image = j.iconImage;
+
+        cell.imageView.image = j.middleSizeImage;
 
         if ([j getJobEverydayStartTime] != Nil)
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@",

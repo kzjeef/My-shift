@@ -67,6 +67,10 @@ enum JobShiftAlgoType {
 @property (nonatomic, strong) NSNumber *jobXShiftStartShift; // X shift, what's you shart shift.
 @property (nonatomic, strong) NSNumber *jobXShiftRevertOrder; // True If it's revert order.
 
+// SHift list images.
+
+@property (nonatomic, strong) UIImage  *middleSizeImage;
+
 
 // init the work date generator with these input.
 - (id) initWithWorkConfigWithStartDate: (NSDate *) startDate

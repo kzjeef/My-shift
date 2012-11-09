@@ -127,7 +127,7 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@",
 					      [job jobEverydayStartTimeWithFormatter:self.timeFormatter],
 					      [job jobEverydayOffTimeWithFormatter:self.timeFormatter]];
-    cell.imageView.image = job.iconImage;
+    cell.imageView.image = job.middleSizeImage;
     return cell;
 }
     

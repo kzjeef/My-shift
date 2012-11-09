@@ -10,6 +10,7 @@
 #import "NSDateAdditions.h"
 #import "UIColor+HexCoding.h"
 #import "UIImage+MonoImage.h"
+#import "UIImageResizing.h"
 
 #import "ShiftAlgoBase.h"
 #import "ShiftAlgoFreeRound.h"
@@ -30,6 +31,7 @@
     NSString *cachedJobOnIconID;
     NSString *cachedJobOnIconColor;
     NSNumber *cachedJobOnIconColorOn;
+    UIImage  *middleSizeImage;
 }
 
 @property (strong, nonatomic) ShiftAlgoBase *shiftAlgo;
@@ -62,7 +64,7 @@
 @dynamic jobFreeJumpArrayArchive;
 @dynamic jobXShiftCount, jobXShiftStartShift, jobXShiftRevertOrder;
 @dynamic jobShowTextInCalendar;
-@synthesize curCalender, cachedJobOnIconColor, cachedJobOnIconID, shiftAlgo, jobShiftTypeString;
+@synthesize curCalender, cachedJobOnIconColor, cachedJobOnIconID, shiftAlgo, jobShiftTypeString, middleSizeImage;
 
 - (ShiftAlgoBase *)shiftAlgo;
 {
@@ -321,6 +323,17 @@
 - (NSString *)jobEverydayOffTimeWithFormatter:(NSDateFormatter *)formatter
 {
     return [formatter stringFromDate: [self getJobEverydayEndTime]];
+}
+
+- (UIImage *) middleSizeImage
+{
+#define LIST_ICON_SIZE CGSizeMake(25,25)
+
+    if (middleSizeImage == nil) {
+        middleSizeImage = [[self.iconImage copy] scaleAndCropToSize:LIST_ICON_SIZE onlyIfNeeded:YES];
+    }
+    
+    return middleSizeImage;
 }
 
 - (UIImage *) iconImage
