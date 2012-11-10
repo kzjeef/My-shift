@@ -73,4 +73,6 @@ ProfileEditFinishDelegate>
 - (void)showRightActionSheet;
 - (void)popNotifyZeroProfile:(id) sender;
 - (void) rightButtonSwitchToShareOrBusy:(BOOL) share;
+
++ (BOOL) enableThinkNoteConfig;
 @end

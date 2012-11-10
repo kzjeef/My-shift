@@ -9,6 +9,7 @@
 #import "SSSettingTVC.h"
 #import "SSSocialThinkNoteLogin.h"
 #import "AlarmPickerViewController.h"
+#import "SSAppDelegate.h"
 
 @implementation SSSettingTVC
 
@@ -201,8 +202,13 @@ enum {
         return self.feedbackItemsArray.count;
     if (section == SSALARM_SECTION)
         return self.alarmSettingsArray.count;
-    if (section == SSSOCIAL_SECTION)
-        return self.socialAccountArray.count;
+    if (section == SSSOCIAL_SECTION) {
+        if ([SSAppDelegate enableThinkNoteConfig])
+            return self.socialAccountArray.count;
+        else
+            return 0;
+            
+    }
     if (section == SSRESET_SECTION)
         return 1;
     return 0;

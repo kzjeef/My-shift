@@ -63,16 +63,27 @@ enum {
     dataSource  = wds;
     kal.dataSource = dataSource;
     kal.tileDelegate = dataSource;
-
-    self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
-                                      cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
-                                 destructiveButtonTitle:nil 
-                                      otherButtonTitles:
-                                              NSLocalizedString(@"Email", "share by mail"),
+        
+    if ([self.class enableThinkNoteConfig]) {
+        self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
+                                          cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
+                                     destructiveButtonTitle:nil
+                                          otherButtonTitles:
+                        NSLocalizedString(@"Email", "share by mail"),
 #if ENABLE_THINKNOTE_SHARE
-                                          NSLocalizedString(@"ThinkNote", "share by thinknote"),
+                        NSLocalizedString(@"ThinkNote", "share by thinknote"),
 #endif
-                                          nil];
+                        nil];
+        
+    } else {
+        self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
+                                          cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
+                                     destructiveButtonTitle:nil
+                                          otherButtonTitles:
+                        NSLocalizedString(@"Email", "share by mail"),
+                        nil];
+
+    }
     self.rightAS.tag = TAG_MENU;
     shareButton = [[UIBarButtonItem alloc]
                                      initWithBarButtonSystemItem: UIBarButtonSystemItemAction
@@ -301,6 +312,7 @@ enum {
     [self.navController pushViewController:self.settingVC animated:YES];
 }
 
+#pragma mark - alert and action sheet
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) return; // 0 is cancel.
@@ -319,14 +331,18 @@ enum {
             [mailAgent composeMailWithAppDelegate:self withNVC:self.navController];
             break;
     case 1:
-            [_shareC invaildCache];
-            [self.navController presentModalViewController:self.tnoteShareVC animated:YES];
+            if ([self.class enableThinkNoteConfig]) {
+                [_shareC invaildCache];
+                [self.navController presentModalViewController:self.tnoteShareVC animated:YES];
+            }
         break;
     default:
         break;
     }
     
 }
+
+#pragma  mark - share controller delegate
 
 - (void) shareViewControllerfinishShare
 {
@@ -521,6 +537,15 @@ enum {
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
++ (BOOL) enableThinkNoteConfig
+{
+    NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
+    NSArray* languages = [defs objectForKey:@"AppleLanguages"];
+    NSString* preferredLang = [languages objectAtIndex:0];
+    // Only enable think note for chinese people.
+    return [preferredLang isEqualToString:@"zh-Hans"];
 }
 
 @end
