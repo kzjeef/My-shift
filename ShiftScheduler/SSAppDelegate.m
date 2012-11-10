@@ -15,6 +15,7 @@
 #import "SSShareObject.h"
 #import "SSThinkNoteShareAgent.h"
 #import "ThinkNoteShareViewController.h"
+#import "UIImageResizing.h"
 
 #import "Kal.h"
 
@@ -160,26 +161,32 @@ enum {
     // add tab bar vc related things.
     tabBarVC = [[UITabBarController alloc] init];
     NSString *iconPath = [[NSBundle mainBundle] pathForResource:@"tab-calendar" ofType:@"png"];
+    
+#define TAB_ICON_SIZE CGSizeMake(32, 32)
+    UIImage *calImage = [[UIImage imageWithContentsOfFile:iconPath]  scaleToSize:TAB_ICON_SIZE onlyIfNeeded:YES];
     self.navController.tabBarItem = [[UITabBarItem alloc]
                                         initWithTitle:NSLocalizedString(@"Calendar", "calendar in tab bar")
-                                                image:[UIImage imageWithContentsOfFile:iconPath] tag:1];
+                                                image:calImage tag:1];
     [tabBarVC addChildViewController:self.navController];
     
-    iconPath = [[NSBundle mainBundle] pathForResource:@"GKTabbarIconRequestsInactive@2x~iphone"
+    iconPath = [[NSBundle mainBundle] pathForResource:@"users"
                                                ofType:@"png"];
+    UIImage *shiftlistImg = [[UIImage imageWithContentsOfFile:iconPath]  scaleToSize:TAB_ICON_SIZE onlyIfNeeded:YES];
     self.profileView.tabBarItem = [[UITabBarItem alloc]
                                       initWithTitle:NSLocalizedString(@"Shifts", "shifts works in tabbar") 
-                                              image:[UIImage imageWithContentsOfFile:iconPath] tag:2];
+                                              image:shiftlistImg tag:2];
 
 
     UINavigationController *profileNVCC = [[UINavigationController alloc]
                                               initWithRootViewController:self.profileView];
     [tabBarVC addChildViewController:profileNVCC];
     
-    iconPath = [[NSBundle mainBundle] pathForResource:@"IL_SmartPlaylistIcon" ofType:@"png"];
+    iconPath = [[NSBundle mainBundle] pathForResource:@"settings" ofType:@"png"];
+    
+    UIImage *settingImg = [[UIImage imageWithContentsOfFile:iconPath]  scaleToSize:TAB_ICON_SIZE onlyIfNeeded:YES];
     self.settingVC.tabBarItem = [[UITabBarItem alloc]
                                     initWithTitle:NSLocalizedString(@"Settings", "Settings")
-                                            image:[UIImage imageWithContentsOfFile:iconPath] tag:3];
+                                            image:settingImg tag:3];
 
 
     UINavigationController *settingNVC = [[UINavigationController alloc]

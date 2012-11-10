@@ -41,7 +41,6 @@
 		2929A44F14D04B360059728D /* InfHSBSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2929A44114D04B360059728D /* InfHSBSupport.m */; };
 		2929A45014D04B360059728D /* InfSourceColorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2929A44214D04B360059728D /* InfSourceColorView.h */; };
 		2929A45114D04B360059728D /* InfSourceColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2929A44314D04B360059728D /* InfSourceColorView.m */; };
-		292DBC8114C952B300C87A70 /* jobicons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 292DBC8014C952B300C87A70 /* jobicons.bundle */; };
 		292DBCAA14CA943F00C87A70 /* JPImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 292DBCA014CA943F00C87A70 /* JPImagePickerController.h */; };
 		292DBCAB14CA943F00C87A70 /* JPImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 292DBCA114CA943F00C87A70 /* JPImagePickerController.m */; };
 		292DBCAC14CA943F00C87A70 /* JPImagePickerDetailController.h in Headers */ = {isa = PBXBuildFile; fileRef = 292DBCA214CA943F00C87A70 /* JPImagePickerDetailController.h */; };
@@ -55,12 +54,23 @@
 		2935514414E2BABA004D8FAC /* SSTurnShiftTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2935514114E2BABA004D8FAC /* SSTurnShiftTVC.h */; };
 		2935514514E2BABA004D8FAC /* SSTurnShiftTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */; };
 		2935514614E2BABA004D8FAC /* SSTurnShiftTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */; };
+		293970D4164E8AC200A79721 /* grayButtonBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970D0164E8AC100A79721 /* grayButtonBackgroud.png */; };
+		293970D5164E8AC200A79721 /* redButtonBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970D1164E8AC200A79721 /* redButtonBackgroud.png */; };
+		293970D6164E8AC200A79721 /* greenButtonBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970D2164E8AC200A79721 /* greenButtonBackgroud.png */; };
+		293970D7164E8AC200A79721 /* grayButtonBackgroud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970D3164E8AC200A79721 /* grayButtonBackgroud@2x.png */; };
+		293970DA164E8AF700A79721 /* redButtonBackgroud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970D8164E8AF700A79721 /* redButtonBackgroud@2x.png */; };
+		293970DB164E8AF700A79721 /* greenButtonBackgroud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970D9164E8AF700A79721 /* greenButtonBackgroud@2x.png */; };
+		293970DD164E9DE800A79721 /* jobicons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 293970DC164E9DE800A79721 /* jobicons.bundle */; };
+		293970DF164EA09F00A79721 /* arrow-circular-alt-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970DE164EA09F00A79721 /* arrow-circular-alt-1.png */; };
+		293970E5164EA0B200A79721 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970E0164EA0B200A79721 /* settings.png */; };
+		293970E6164EA0B200A79721 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970E1164EA0B200A79721 /* settings@2x.png */; };
+		293970E7164EA0B200A79721 /* tab-calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970E2164EA0B200A79721 /* tab-calendar@2x.png */; };
+		293970E8164EA0B200A79721 /* users.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970E3164EA0B200A79721 /* users.png */; };
+		293970E9164EA0B200A79721 /* users@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970E4164EA0B200A79721 /* users@2x.png */; };
 		293B64EB15A335AA00D0C4B5 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 293B64EA15A335A900D0C4B5 /* config.h */; };
-		293B64F115A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64ED15A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png */; };
 		293B64F415A3BF8400D0C4B5 /* tab-calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64F015A3BF8400D0C4B5 /* tab-calendar.png */; };
 		293B64FB15A3C64900D0C4B5 /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64F915A3C64900D0C4B5 /* addButton.png */; };
 		293B64FE15A3C7D300D0C4B5 /* GSFacesInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */; };
-		293B650215A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B650115A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png */; };
 		293C347F15A89B1F00CECAFA /* calendar-simple-blue-72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 293C347E15A89B1F00CECAFA /* calendar-simple-blue-72x72.png */; };
 		293C348115A89B6500CECAFA /* calendar-simple-blue-144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 293C348015A89B6400CECAFA /* calendar-simple-blue-144x144.png */; };
 		294D069B15C2D8320029786A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 29DCB8DF15A878590095C71D /* Default.png */; };
@@ -68,9 +78,7 @@
 		294D069D15C2DB320029786A /* calendar-simple-blue-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */; };
 		294D069E15C2DB320029786A /* calendar-simple-blue-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */; };
 		294D069F15C2DB320029786A /* GSFacesInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */; };
-		294D06A015C2DB320029786A /* GKTabbarIconRequestsInactive@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B650115A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png */; };
 		294D06A115C2DB320029786A /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64F915A3C64900D0C4B5 /* addButton.png */; };
-		294D06A215C2DB320029786A /* IL_SmartPlaylistIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64ED15A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png */; };
 		294E2902148B302700E6ED45 /* ShiftDay.h in Headers */ = {isa = PBXBuildFile; fileRef = 294E2900148B302700E6ED45 /* ShiftDay.h */; };
 		294E2903148B302700E6ED45 /* ShiftDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 294E2901148B302700E6ED45 /* ShiftDay.m */; };
 		2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECD14F9076400DF1CCF /* AVFoundation.framework */; };
@@ -259,7 +267,6 @@
 		2929A44114D04B360059728D /* InfHSBSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfHSBSupport.m; path = ColorPicker/InfColorPicker/InfHSBSupport.m; sourceTree = "<group>"; };
 		2929A44214D04B360059728D /* InfSourceColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfSourceColorView.h; path = ColorPicker/InfColorPicker/InfSourceColorView.h; sourceTree = "<group>"; };
 		2929A44314D04B360059728D /* InfSourceColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfSourceColorView.m; path = ColorPicker/InfColorPicker/InfSourceColorView.m; sourceTree = "<group>"; };
-		292DBC8014C952B300C87A70 /* jobicons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = jobicons.bundle; sourceTree = "<group>"; };
 		292DBCA014CA943F00C87A70 /* JPImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JPImagePickerController.h; path = JPImagePicker/JPImagePickerController.h; sourceTree = "<group>"; };
 		292DBCA114CA943F00C87A70 /* JPImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JPImagePickerController.m; path = JPImagePicker/JPImagePickerController.m; sourceTree = "<group>"; };
 		292DBCA214CA943F00C87A70 /* JPImagePickerDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JPImagePickerDetailController.h; path = JPImagePicker/JPImagePickerDetailController.h; sourceTree = "<group>"; };
@@ -275,12 +282,23 @@
 		2935514114E2BABA004D8FAC /* SSTurnShiftTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTurnShiftTVC.h; sourceTree = "<group>"; };
 		2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTurnShiftTVC.m; sourceTree = "<group>"; };
 		2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSTurnShiftTVC.xib; sourceTree = "<group>"; };
+		293970D0164E8AC100A79721 /* grayButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grayButtonBackgroud.png; path = Resources/grayButtonBackgroud.png; sourceTree = "<group>"; };
+		293970D1164E8AC200A79721 /* redButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redButtonBackgroud.png; path = Resources/redButtonBackgroud.png; sourceTree = "<group>"; };
+		293970D2164E8AC200A79721 /* greenButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greenButtonBackgroud.png; path = Resources/greenButtonBackgroud.png; sourceTree = "<group>"; };
+		293970D3164E8AC200A79721 /* grayButtonBackgroud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "grayButtonBackgroud@2x.png"; path = "Resources/grayButtonBackgroud@2x.png"; sourceTree = "<group>"; };
+		293970D8164E8AF700A79721 /* redButtonBackgroud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "redButtonBackgroud@2x.png"; path = "Resources/redButtonBackgroud@2x.png"; sourceTree = "<group>"; };
+		293970D9164E8AF700A79721 /* greenButtonBackgroud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "greenButtonBackgroud@2x.png"; path = "Resources/greenButtonBackgroud@2x.png"; sourceTree = "<group>"; };
+		293970DC164E9DE800A79721 /* jobicons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = jobicons.bundle; sourceTree = SOURCE_ROOT; };
+		293970DE164EA09F00A79721 /* arrow-circular-alt-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-circular-alt-1.png"; path = "Resources/arrow-circular-alt-1.png"; sourceTree = "<group>"; };
+		293970E0164EA0B200A79721 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = Resources/settings.png; sourceTree = "<group>"; };
+		293970E1164EA0B200A79721 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "Resources/settings@2x.png"; sourceTree = "<group>"; };
+		293970E2164EA0B200A79721 /* tab-calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab-calendar@2x.png"; path = "Resources/tab-calendar@2x.png"; sourceTree = "<group>"; };
+		293970E3164EA0B200A79721 /* users.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = users.png; path = Resources/users.png; sourceTree = "<group>"; };
+		293970E4164EA0B200A79721 /* users@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "users@2x.png"; path = "Resources/users@2x.png"; sourceTree = "<group>"; };
 		293B64EA15A335A900D0C4B5 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = ShiftScheduler/config.h; sourceTree = "<group>"; };
-		293B64ED15A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IL_SmartPlaylistIcon.png; path = Resources/IL_SmartPlaylistIcon.png; sourceTree = "<group>"; };
 		293B64F015A3BF8400D0C4B5 /* tab-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab-calendar.png"; path = "Resources/tab-calendar.png"; sourceTree = "<group>"; };
 		293B64F915A3C64900D0C4B5 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addButton.png; path = Resources/addButton.png; sourceTree = "<group>"; };
 		293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GSFacesInfo.png; path = Resources/GSFacesInfo.png; sourceTree = "<group>"; };
-		293B650115A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "GKTabbarIconRequestsInactive@2x~iphone.png"; path = "Resources/GKTabbarIconRequestsInactive@2x~iphone.png"; sourceTree = "<group>"; };
 		293C347E15A89B1F00CECAFA /* calendar-simple-blue-72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendar-simple-blue-72x72.png"; path = "Resources/icons/calendar-simple-blue-72x72.png"; sourceTree = "<group>"; };
 		293C348015A89B6400CECAFA /* calendar-simple-blue-144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendar-simple-blue-144x144.png"; path = "Resources/icons/calendar-simple-blue-144x144.png"; sourceTree = "<group>"; };
 		294E28FF148B2F3A00E6ED45 /* ShiftScheduler 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -539,8 +557,21 @@
 		293B64EC15A3BF5000D0C4B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				293970D0164E8AC100A79721 /* grayButtonBackgroud.png */,
+				293970D8164E8AF700A79721 /* redButtonBackgroud@2x.png */,
+				293970D9164E8AF700A79721 /* greenButtonBackgroud@2x.png */,
+				293970D1164E8AC200A79721 /* redButtonBackgroud.png */,
+				293970D2164E8AC200A79721 /* greenButtonBackgroud.png */,
+				293970D3164E8AC200A79721 /* grayButtonBackgroud@2x.png */,
+				29E9810A1642DBB600B65A7E /* Default-568h@2x.png */,
 				29E9810916419E1E00B65A7E /* Audio */,
 				29E980F1164177B600B65A7E /* AlarmList.plist */,
+				293970E0164EA0B200A79721 /* settings.png */,
+				293970E1164EA0B200A79721 /* settings@2x.png */,
+				293970E2164EA0B200A79721 /* tab-calendar@2x.png */,
+				293970E3164EA0B200A79721 /* users.png */,
+				293970E4164EA0B200A79721 /* users@2x.png */,
+				293970DE164EA09F00A79721 /* arrow-circular-alt-1.png */,
 				293C348015A89B6400CECAFA /* calendar-simple-blue-144x144.png */,
 				293C347E15A89B1F00CECAFA /* calendar-simple-blue-72x72.png */,
 				29DCB8DF15A878590095C71D /* Default.png */,
@@ -548,9 +579,7 @@
 				2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */,
 				2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */,
 				293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */,
-				293B650115A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png */,
 				293B64F915A3C64900D0C4B5 /* addButton.png */,
-				293B64ED15A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png */,
 				293B64F015A3BF8400D0C4B5 /* tab-calendar.png */,
 			);
 			name = Resources;
@@ -701,7 +730,6 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
-				29E9810A1642DBB600B65A7E /* Default-568h@2x.png */,
 				29E6D7F015ADACCE00235123 /* MessageUI.framework */,
 				293B64EC15A3BF5000D0C4B5 /* Resources */,
 				29D6A524159CB4A200AC6103 /* Kal.bundle */,
@@ -746,7 +774,6 @@
 				29DCB8DB15A7C8730095C71D /* NSDateAdditions.m */,
 				29009FE8159F4AE500A1588E /* UIColor+HexCoding.h */,
 				29009FE9159F4AE500A1588E /* UIColor+HexCoding.m */,
-				292DBC8014C952B300C87A70 /* jobicons.bundle */,
 				29B9E1C61472C1D700DB2E1F /* SSAppDelegate.h */,
 				29B9E1C71472C1D700DB2E1F /* SSAppDelegate.m */,
 				29C943B914EAB55200122144 /* UserReviewController.h */,
@@ -758,6 +785,7 @@
 		29B9E1BE1472C1D700DB2E1F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				293970DC164E9DE800A79721 /* jobicons.bundle */,
 				29B9E1D61472C2B000DB2E1F /* Localizable.strings */,
 				29B9E1BF1472C1D700DB2E1F /* ShiftScheduler-Info.plist */,
 				29B9E1C01472C1D700DB2E1F /* InfoPlist.strings */,
@@ -1042,9 +1070,7 @@
 				294D069D15C2DB320029786A /* calendar-simple-blue-114x114.png in Resources */,
 				294D069E15C2DB320029786A /* calendar-simple-blue-57x57.png in Resources */,
 				294D069F15C2DB320029786A /* GSFacesInfo.png in Resources */,
-				294D06A015C2DB320029786A /* GKTabbarIconRequestsInactive@2x~iphone.png in Resources */,
 				294D06A115C2DB320029786A /* addButton.png in Resources */,
-				294D06A215C2DB320029786A /* IL_SmartPlaylistIcon.png in Resources */,
 				294D069B15C2D8320029786A /* Default.png in Resources */,
 				29AEBD711554146F0010F27D /* InfoPlist.strings in Resources */,
 			);
@@ -1056,7 +1082,6 @@
 			files = (
 				29B9E1C21472C1D700DB2E1F /* InfoPlist.strings in Resources */,
 				29B9E1D41472C2B000DB2E1F /* Localizable.strings in Resources */,
-				292DBC8114C952B300C87A70 /* jobicons.bundle in Resources */,
 				292DBCAE14CA943F00C87A70 /* JPImagePickerDetailController.xib in Resources */,
 				292DBCB114CA943F00C87A70 /* JPImagePickerOverviewController.xib in Resources */,
 				2929A44B14D04B360059728D /* InfColorPickerView.xib in Resources */,
@@ -1067,11 +1092,9 @@
 				29009FD7159F4AA100A1588E /* SSShiftHolidayCreateVC.xib in Resources */,
 				29009FE3159F4AB600A1588E /* DatePickerViewController2.xib in Resources */,
 				29009FE7159F4AB600A1588E /* SSShiftHolidayList.xib in Resources */,
-				293B64F115A3BF8400D0C4B5 /* IL_SmartPlaylistIcon.png in Resources */,
 				293B64F415A3BF8400D0C4B5 /* tab-calendar.png in Resources */,
 				293B64FB15A3C64900D0C4B5 /* addButton.png in Resources */,
 				293B64FE15A3C7D300D0C4B5 /* GSFacesInfo.png in Resources */,
-				293B650215A3CD1300D0C4B5 /* GKTabbarIconRequestsInactive@2x~iphone.png in Resources */,
 				2916128515A62A6B0031F78C /* calendar-simple-blue-57x57.png in Resources */,
 				2916128715A62AC20031F78C /* calendar-simple-blue-114x114.png in Resources */,
 				29DCB8E015A878590095C71D /* Default.png in Resources */,
@@ -1093,6 +1116,19 @@
 				29E9810716419E1500B65A7E /* Revelation.caf in Resources */,
 				29E9810816419E1500B65A7E /* TwirlAway.caf in Resources */,
 				29E9810B1642DBB700B65A7E /* Default-568h@2x.png in Resources */,
+				293970D4164E8AC200A79721 /* grayButtonBackgroud.png in Resources */,
+				293970D5164E8AC200A79721 /* redButtonBackgroud.png in Resources */,
+				293970D6164E8AC200A79721 /* greenButtonBackgroud.png in Resources */,
+				293970D7164E8AC200A79721 /* grayButtonBackgroud@2x.png in Resources */,
+				293970DA164E8AF700A79721 /* redButtonBackgroud@2x.png in Resources */,
+				293970DB164E8AF700A79721 /* greenButtonBackgroud@2x.png in Resources */,
+				293970DD164E9DE800A79721 /* jobicons.bundle in Resources */,
+				293970DF164EA09F00A79721 /* arrow-circular-alt-1.png in Resources */,
+				293970E5164EA0B200A79721 /* settings.png in Resources */,
+				293970E6164EA0B200A79721 /* settings@2x.png in Resources */,
+				293970E7164EA0B200A79721 /* tab-calendar@2x.png in Resources */,
+				293970E8164EA0B200A79721 /* users.png in Resources */,
+				293970E9164EA0B200A79721 /* users@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

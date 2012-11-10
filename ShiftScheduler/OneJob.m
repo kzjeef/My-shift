@@ -329,7 +329,7 @@
 {
 #define LIST_ICON_SIZE CGSizeMake(25,25)
 
-    if (middleSizeImage == nil) {
+    if (middleSizeImage == nil || ![cachedJobOnIconID isEqualToString:self.jobOnIconID]) {
         middleSizeImage = [[self.iconImage copy] scaleAndCropToSize:LIST_ICON_SIZE onlyIfNeeded:YES];
     }
     

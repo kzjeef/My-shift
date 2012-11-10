@@ -400,7 +400,7 @@
     
    
     if ([item isEqualToString:NAME_ITEM_STRING]) {
-        cell.imageView.image = self.theJob.iconImage;
+        cell.imageView.image = self.theJob.middleSizeImage;
         self.nameField.delegate = self;
         [self.nameField setText:self.theJob.jobName];
         [cell.contentView addSubview:self.nameField];

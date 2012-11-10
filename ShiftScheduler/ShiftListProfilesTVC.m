@@ -276,24 +276,9 @@ enum {
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-#if 0
-    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewProfile:)];
-    addButton = button;
-
-//    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
-//    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:addButton,
-//                                              self.editButtonItem, nil];
-    
-    if ([self.navigationItem respondsToSelector:@selector(setRightBarButtonItems:)])
-        [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:addButton,nil]];
-    else
-        [self.navigationItem setRightBarButtonItem:addButton];
-#else
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-#endif
-
-    //    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Home", @"return to home in profile view") style:UIBarButtonItemStylePlain target:self action:@selector(returnToHome)];
+    UIBarButtonItem *addbutton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewProfile:)];
+    self.navigationItem.leftBarButtonItem = addbutton;
     
     NSError *error;
     if (![self.fetchedResultsController performFetch:&error]) {
@@ -357,10 +342,15 @@ enum {
 {
     // Return the number of rows in the section.
     
-    if (section == SECTION_ADD_NEW_SHIFT
-        || section == SECTION_OUTDATE_SHOW_HIDE) { // last section
+    if (section == SECTION_ADD_NEW_SHIFT)
         return 1;
-    } else {
+    else if (section == SECTION_OUTDATE_SHOW_HIDE) {
+        if ([self.fetchedResultsControllerOOD.fetchedObjects count] > 0)
+        return 1;
+        else
+            return  0;
+    }
+    else {
         id <NSFetchedResultsSectionInfo> sectionInfo = [[fetchedResultsController sections] objectAtIndex:section];
         return [sectionInfo numberOfObjects];
     }
@@ -380,7 +370,7 @@ enum {
 {
     if ([self.fetchedResultsController.fetchedObjects count] > 0 && section == SECTION_NORMAL_SHIFT) {
         return NSLocalizedString(@"choose to change shift detail", "");
-    } else if (section == SECTION_OUTDATE_SHOW_HIDE)
+    } else if (section == SECTION_OUTDATE_SHOW_HIDE && [self.fetchedResultsControllerOOD.fetchedObjects count] > 0)
         return NSLocalizedString(@"click button to show or hide the outdated shifts", "show hide out date shifts strings.");
     return  [NSString string] ;
 
@@ -408,7 +398,9 @@ enum {
     else if (indexPath.section == SECTION_ADD_NEW_SHIFT) {
         cell.imageView.image = plusImage;
         cell.textLabel.text = NSLocalizedString(@"Adding new shift...", "add new shift");
-        cell.textLabel.textColor = [UIColor colorWithHexString:@"283DA0"];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.backgroundColor = [UIColor colorWithWhite:.1 alpha:0];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"greenButtonBackgroud"]];
     } else if (indexPath.section == SECTION_OUTDATE_SHOW_HIDE) {
         NSString *tt = NSLocalizedString(@"Outdated Shifts", "expand archived shifts");
         NSString *text = [NSString stringWithFormat:@"%@ (%d)",
@@ -417,7 +409,9 @@ enum {
         cell.textLabel.text = text;
         cell.imageView.image = nil;
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        cell.textLabel.textColor = [UIColor colorWithHexString:@"283DA0"];
+        //        cell.textLabel.textColor = [UIColor colorWithHexString:@"283DA0"];
+        cell.textLabel.backgroundColor = [UIColor colorWithWhite:.1 alpha:0];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"grayButtonBackgroud"]];
     }
     
     return cell;

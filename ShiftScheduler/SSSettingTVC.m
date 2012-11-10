@@ -294,8 +294,9 @@ enum {
         
     } else if (indexPath.section == SSRESET_SECTION) {
         cell.textLabel.text = RESET_STR;
-        cell.backgroundColor = [UIColor colorWithRed:1.f green:.1f blue:.1f alpha:1.0f];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"redButtonBackgroud"]];
         cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.backgroundColor = [UIColor colorWithWhite:.1 alpha:0];
     }
     
     return cell;
