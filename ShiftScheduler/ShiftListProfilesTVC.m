@@ -37,7 +37,7 @@ enum {
 - (id)initWithManagedContext:(NSManagedObjectContext *)context
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
-    self.title = NSLocalizedString(@"Management Shift", "shift management view");
+    self.title = NSLocalizedString(@"Shift Manage", "");
     self.managedObjectContext = context;
     return self;
 }
@@ -407,7 +407,7 @@ enum {
                                    tt,
                                    [self.fetchedResultsControllerOOD.fetchedObjects count]];
         cell.textLabel.text = text;
-        cell.imageView.image = nil;
+        cell.imageView.image = [UIImage imageNamed:@"overdate"];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         //        cell.textLabel.textColor = [UIColor colorWithHexString:@"283DA0"];
         cell.textLabel.backgroundColor = [UIColor colorWithWhite:.1 alpha:0];

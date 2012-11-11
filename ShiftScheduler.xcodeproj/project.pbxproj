@@ -23,6 +23,7 @@
 		29009FE7159F4AB600A1588E /* SSShiftHolidayList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29009FE0159F4AB600A1588E /* SSShiftHolidayList.xib */; };
 		29009FEA159F4AE500A1588E /* UIColor+HexCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FE8159F4AE500A1588E /* UIColor+HexCoding.h */; };
 		29009FEB159F4AE500A1588E /* UIColor+HexCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FE9159F4AE500A1588E /* UIColor+HexCoding.m */; };
+		290317B5164FE5FD008C258E /* overdate.png in Resources */ = {isa = PBXBuildFile; fileRef = 290317B4164FE5FD008C258E /* overdate.png */; };
 		2916128515A62A6B0031F78C /* calendar-simple-blue-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */; };
 		2916128715A62AC20031F78C /* calendar-simple-blue-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */; };
 		29293D9215DFE778006B6907 /* SSSocialThinkNoteLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */; };
@@ -249,6 +250,7 @@
 		2900DEC11483E44E00E588EE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		2900DEC21483E44E00E588EE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2900DEC31483EEA100E588EE /* ShiftSchedulerModelBasic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShiftSchedulerModelBasic.xcdatamodel; sourceTree = "<group>"; };
+		290317B4164FE5FD008C258E /* overdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = overdate.png; path = Resources/overdate.png; sourceTree = "<group>"; };
 		2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-57x57.png"; sourceTree = "<group>"; };
 		2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-114x114.png"; sourceTree = "<group>"; };
 		29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSocialThinkNoteLogin.h; path = ShiftScheduler/SSSocialThinkNoteLogin.h; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 		293B64EC15A3BF5000D0C4B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				290317B4164FE5FD008C258E /* overdate.png */,
 				293970D0164E8AC100A79721 /* grayButtonBackgroud.png */,
 				293970D8164E8AF700A79721 /* redButtonBackgroud@2x.png */,
 				293970D9164E8AF700A79721 /* greenButtonBackgroud@2x.png */,
@@ -1129,6 +1132,7 @@
 				293970E7164EA0B200A79721 /* tab-calendar@2x.png in Resources */,
 				293970E8164EA0B200A79721 /* users.png in Resources */,
 				293970E9164EA0B200A79721 /* users@2x.png in Resources */,
+				290317B5164FE5FD008C258E /* overdate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
