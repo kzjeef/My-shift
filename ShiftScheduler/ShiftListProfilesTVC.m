@@ -13,6 +13,7 @@
 
 
 #define PROFILE_CACHE_INDIFITER @"ProfileListCache"
+#define PROFILE_OOD_CACHE_INDIFITER @"ProfileListCacheOOD"
 
 enum {
     SECTION_NORMAL_SHIFT = 0,
@@ -144,7 +145,7 @@ enum {
     NSFetchedResultsController *frc = [[NSFetchedResultsController alloc]
                                           initWithFetchRequest:request
                                           managedObjectContext:self.managedObjectContext
-                                            sectionNameKeyPath:Nil cacheName:nil];
+                                            sectionNameKeyPath:Nil cacheName:PROFILE_OOD_CACHE_INDIFITER];
     fetchedResultsControllerOOD = frc;
     return fetchedResultsControllerOOD;
 }
@@ -225,11 +226,19 @@ enum {
 			
     case NSFetchedResultsChangeDelete:
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_OUTDATE_SHOW_HIDE] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+        // If the last OOD Object was delete, really need is just
+        // remove the section, but seems only make a full update can
+        // make the section disappear.
+        [self.fetchedResultsControllerOOD performFetch:NULL];
+//        if ([self.fetchedResultsControllerOOD.fetchedObjects count] > 0)
+            [tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_OUTDATE_SHOW_HIDE] withRowAnimation:UITableViewRowAnimationAutomatic];
+//        else
+//            [tableView reloadData];
         break;
 			
     case NSFetchedResultsChangeUpdate:
-            //        [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
         break;
 			
     case NSFetchedResultsChangeMove:
