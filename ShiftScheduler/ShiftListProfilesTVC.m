@@ -231,14 +231,13 @@ enum {
         // remove the section, but seems only make a full update can
         // make the section disappear.
         [self.fetchedResultsControllerOOD performFetch:NULL];
-//        if ([self.fetchedResultsControllerOOD.fetchedObjects count] > 0)
+
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_OUTDATE_SHOW_HIDE] withRowAnimation:UITableViewRowAnimationAutomatic];
-//        else
-//            [tableView reloadData];
+
         break;
 			
     case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            //            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
         break;
 			
     case NSFetchedResultsChangeMove:
@@ -641,6 +640,12 @@ return YES;
         }
     } else {
         [self.addingManagedObjectContext reset];
+        
+        // reset will cancel any not saved data, so the change made in edit view will also discard.
+        [self.managedObjectContext reset];
+
+        [self.fetchedResultsController performFetch:NULL];
+        [self.tableView reloadData];
     }
     // Release the adding managed object context.
     self.addingManagedObjectContext = nil;

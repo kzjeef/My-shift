@@ -239,13 +239,9 @@
     self.navigationItem.rightBarButtonItem = self.saveButton;
 
     // cancel button only appear in adding mode, because we can not cancel the date in editing mode, it use save data context.
-    if (self.viewMode == PCVC_ADDING_MODE)
+
         self.navigationItem.leftBarButtonItem = self.cancelButton;
 
-    // in editing mode, only show return.
-    //    if (self.viewMode == PCVC_EDITING_MODE)
-    //        saveJobData = [NSManagedObjectArchiver archivedDataWithRootObject:self.theJob];
-        
     
     datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 250, 325, 250)];
     CGSize pickerSize = [datePicker sizeThatFits:CGSizeZero];
@@ -465,7 +461,7 @@
         showColorAndIconPicker = NO;
         [self.tableView deleteRowsAtIndexPaths:a withRowAnimation:UITableViewRowAnimationAutomatic];
         // index paths for icon picker and color picker.
-    } 
+    }
 #endif
     
 }
@@ -631,10 +627,10 @@
 }
 
 - (IBAction)cancel:(id)sender {
-    //    self.theJob = [NSManagedObjectArchiver unarchiveObjectWithData: saveJobData context:self.theJob insert:NO];
-    [self.profileDelegate didChangeProfile:self didFinishWithSave:NO];
-    
     [self.navigationController popViewControllerAnimated:YES];
+    [self.profileDelegate didChangeProfile:self didFinishWithSave:NO];
+
+
 }
 
 #pragma - mark DatePicker

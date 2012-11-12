@@ -45,7 +45,6 @@
 @property (strong, nonatomic) id <ProfileEditFinishDelegate> parentViewDelegate;
 
 - (id)initWithManagedContext:(NSManagedObjectContext *)context;
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath ;
 - (IBAction)insertNewProfile:(id) sender;
 - (NSInteger) profileuNumber;
 
