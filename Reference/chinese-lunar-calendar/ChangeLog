@@ -1,0 +1,9 @@
+2008-08-29  Calen Chen <cachen@novell.com>
+
+	* README: add README file
+	* ChangeLog: add ChangeLog file
+
+2008-08-29  Calen Chen <cachen@novell.com>
+
+	* calendar.py:
+	* date.py:
