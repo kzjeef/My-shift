@@ -20,9 +20,12 @@
 
 // default working days and off days when adding new profile.
 
-@interface ShiftProfileChangeViewController : 
-UITableViewController  
-<UITextFieldDelegate, JPImagePickerControllerDelegate, InfColorPickerControllerDelegate, UIActionSheetDelegate>
+@interface ShiftProfileChangeViewController : UITableViewController
+<UITextFieldDelegate,
+   JPImagePickerControllerDelegate,
+   InfColorPickerControllerDelegate,
+   UIActionSheetDelegate,
+   SSShiftTypePickerDelegate>
 
 @property (nonatomic, strong) NSArray *itemsArray;
 @property (nonatomic, strong) NSArray *timeItemsArray;

@@ -48,67 +48,69 @@ enum {
     
     dispatch_async(dispatch_get_main_queue(), ^{
 
-    kal = [[KalViewController alloc] init];
-    kal.title = NSLocalizedString(@"Shift Scheduler", "application title");
+	    [self shiftModuleMigration];
+	    
+	    kal = [[KalViewController alloc] init];
+	    kal.title = NSLocalizedString(@"Shift Scheduler", "application title");
     
-    kal.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
-                                            initWithTitle:NSLocalizedString (@"Today", "today") 
-                                            style:UIBarButtonItemStyleBordered target:self action:@selector(showAndSelectToday)];
+	    kal.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
+						       initWithTitle:NSLocalizedString (@"Today", "today") 
+							       style:UIBarButtonItemStyleBordered target:self action:@selector(showAndSelectToday)];
     
-    SSKalDelegate *kalDelegate = [[SSKalDelegate alloc] init];
-    self.sskalDelegate = kalDelegate;
-    kal.delegate = self.sskalDelegate;
-    kal.vcdelegate = self.sskalDelegate;
-    WorkdayDataSource *wds = [[WorkdayDataSource alloc] initWithManagedContext:self.managedObjectContext];
-    dataSource  = wds;
-    kal.dataSource = dataSource;
-    kal.tileDelegate = dataSource;
+	    SSKalDelegate *kalDelegate = [[SSKalDelegate alloc] init];
+	    self.sskalDelegate = kalDelegate;
+	    kal.delegate = self.sskalDelegate;
+	    kal.vcdelegate = self.sskalDelegate;
+	    WorkdayDataSource *wds = [[WorkdayDataSource alloc] initWithManagedContext:self.managedObjectContext];
+	    dataSource  = wds;
+	    kal.dataSource = dataSource;
+	    kal.tileDelegate = dataSource;
         
-    if ([self.class enableThinkNoteConfig]) {
-        self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
-                                          cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
-                                     destructiveButtonTitle:nil
-                                          otherButtonTitles:
-                        NSLocalizedString(@"Email", "share by mail"),
+	    if ([self.class enableThinkNoteConfig]) {
+		self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
+						  cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
+					     destructiveButtonTitle:nil
+						  otherButtonTitles:
+							  NSLocalizedString(@"Email", "share by mail"),
 #if ENABLE_THINKNOTE_SHARE
-                        NSLocalizedString(@"ThinkNote", "share by thinknote"),
+						      NSLocalizedString(@"ThinkNote", "share by thinknote"),
 #endif
-                        nil];
+						      nil];
         
-    } else {
-        self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
-                                          cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
-                                     destructiveButtonTitle:nil
-                                          otherButtonTitles:
-                        NSLocalizedString(@"Email", "share by mail"),
-                        nil];
+	    } else {
+		self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
+						  cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
+					     destructiveButtonTitle:nil
+						  otherButtonTitles:
+							  NSLocalizedString(@"Email", "share by mail"),
+						      nil];
 
-    }
-    self.rightAS.tag = TAG_MENU;
-    shareButton = [[UIBarButtonItem alloc]
+	    }
+	    self.rightAS.tag = TAG_MENU;
+	    shareButton = [[UIBarButtonItem alloc]
                                      initWithBarButtonSystemItem: UIBarButtonSystemItemAction
                                                           target:self action:@selector(showRightActionSheet)];
     
-    [UIView beginAnimations:nil context:NULL];
-    [navController setViewControllers:@[kal] animated:NO];
-    [UIView setAnimationDuration:.5];
-    [UIView setAnimationBeginsFromCurrentState:YES];        
-    [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown  forView:navController.view cache:YES];
-    [UIView commitAnimations];
+	    [UIView beginAnimations:nil context:NULL];
+	    [navController setViewControllers:@[kal] animated:NO];
+	    [UIView setAnimationDuration:.5];
+	    [UIView setAnimationBeginsFromCurrentState:YES];        
+	    [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown  forView:navController.view cache:YES];
+	    [UIView commitAnimations];
 
-    [self rightButtonSwitchToShareOrBusy:YES];
-    // 6. setup share operation, and add it in Kal view.
-    _shareC = [[SSShareController alloc] initWithProfilesVC:self.shareProfilesVC withKalController:kal];
+	    [self rightButtonSwitchToShareOrBusy:YES];
+	    // 6. setup share operation, and add it in Kal view.
+	    _shareC = [[SSShareController alloc] initWithProfilesVC:self.shareProfilesVC withKalController:kal];
     
-    mailAgent = [[SSMailAgent alloc] initWithShareController:_shareC];
+	    mailAgent = [[SSMailAgent alloc] initWithShareController:_shareC];
     
-    thinkNoteAgent = [[SSThinkNoteShareAgent alloc] initWithSharedObject:_shareC];
+	    thinkNoteAgent = [[SSThinkNoteShareAgent alloc] initWithSharedObject:_shareC];
     
-    self.tnoteShareVC = [[ThinkNoteShareViewController alloc] initWithNibName:@"ThinkNoteShareViewController" bundle:nil];
-    self.tnoteShareVC.shareC = _shareC;
-    self.tnoteShareVC.shareAgent = thinkNoteAgent;
-    self.tnoteShareVC.shareDelegate = self;
-    });
+	    self.tnoteShareVC = [[ThinkNoteShareViewController alloc] initWithNibName:@"ThinkNoteShareViewController" bundle:nil];
+	    self.tnoteShareVC.shareC = _shareC;
+	    self.tnoteShareVC.shareAgent = thinkNoteAgent;
+	    self.tnoteShareVC.shareDelegate = self;
+	});
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -547,5 +549,43 @@ enum {
     // Only enable think note for chinese people.
     return [preferredLang isEqualToString:@"zh-Hans"];
 }
+
+- (void) shiftModuleMigration
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"OneJob"
+                                              inManagedObjectContext:self.managedObjectContext];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"jobName"  ascending:YES]];
+    [request setEntity:entity];
+    
+    request.fetchBatchSize = 20;
+    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc]
+                                       initWithFetchRequest:request
+                                       managedObjectContext:self.managedObjectContext
+                                       sectionNameKeyPath:Nil cacheName:nil];
+    
+    NSError *error = nil;
+    [frc performFetch:&error];
+    if (error) {
+        NSLog(@"fetch meeds error when shift module migration:%@", [error userInfo]);
+        return;
+    }
+    
+    OneJob *j;
+    for (j in frc.fetchedObjects) {
+        if ([j convertShiftRoundToJump] == NO) {
+            NSLog(@"shift:%@ convert failed", j);
+	    [self.managedObjectContext reset];
+	    break;
+        }
+    }
+
+    [self.managedObjectContext save:&error];
+
+    if (error)
+        NSLog(@"save manage context error:%@", error.userInfo);
+
+}
+
 
 @end

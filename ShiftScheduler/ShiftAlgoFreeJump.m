@@ -23,7 +23,7 @@
 - (id) initWithContext: (OneJob *) job
 {
      self = [super initWithContext:job];
-     [self setShiftType:JOB_SHIFT_ALGO_FREE_ROUND];
+     [self setShiftType:JOB_SHIFT_ALGO_FREE_JUMP];
 
      return self;
 }

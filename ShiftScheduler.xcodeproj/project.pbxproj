@@ -447,8 +447,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29E6D7F115ADACCE00235123 /* MessageUI.framework in Frameworks */,
 				29D6A550159CB79F00AC6103 /* libKal.a in Frameworks */,
+				29E6D7F115ADACCE00235123 /* MessageUI.framework in Frameworks */,
 				2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */,
 				2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */,
 				29B9E1B61472C1D700DB2E1F /* UIKit.framework in Frameworks */,
@@ -559,6 +559,7 @@
 		293B64EC15A3BF5000D0C4B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				29D6A524159CB4A200AC6103 /* Kal.bundle */,
 				290317B4164FE5FD008C258E /* overdate.png */,
 				293970D0164E8AC100A79721 /* grayButtonBackgroud.png */,
 				293970D8164E8AF700A79721 /* redButtonBackgroud@2x.png */,
@@ -669,19 +670,19 @@
 		29AEBDC4156134B50010F27D /* ShiftModel */ = {
 			isa = PBXGroup;
 			children = (
-				29AEBDE515628BAB0010F27D /* ShiftAlgoFreeJump.h */,
-				29AEBDE615628BAB0010F27D /* ShiftAlgoFreeJump.m */,
 				29F2147B14E66DB7008BEE92 /* UIImage+MonoImage.h */,
 				29F2147C14E66DB7008BEE92 /* UIImage+MonoImage.m */,
 				29B9E1DD1472C39F00DB2E1F /* OneJob.h */,
 				29B9E1DE1472C39F00DB2E1F /* OneJob.m */,
 				29B9E1C91472C1D700DB2E1F /* ShiftScheduler.xcdatamodeld */,
+				29AEBDE515628BAB0010F27D /* ShiftAlgoFreeJump.h */,
+				29AEBDE615628BAB0010F27D /* ShiftAlgoFreeJump.m */,
 				29AEBDAC15612CBA0010F27D /* ShiftAlgoBase.h */,
 				29AEBDAD15612CBA0010F27D /* ShiftAlgoBase.m */,
-				294E2900148B302700E6ED45 /* ShiftDay.h */,
-				294E2901148B302700E6ED45 /* ShiftDay.m */,
 				29AEBDAE15612CBA0010F27D /* ShiftAlgoFreeRound.h */,
 				29AEBDAF15612CBA0010F27D /* ShiftAlgoFreeRound.m */,
+				294E2900148B302700E6ED45 /* ShiftDay.h */,
+				294E2901148B302700E6ED45 /* ShiftDay.m */,
 			);
 			name = ShiftModel;
 			sourceTree = "<group>";
@@ -733,9 +734,7 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
-				29E6D7F015ADACCE00235123 /* MessageUI.framework */,
 				293B64EC15A3BF5000D0C4B5 /* Resources */,
-				29D6A524159CB4A200AC6103 /* Kal.bundle */,
 				29AEBDC8156136830010F27D /* GUI */,
 				293994B5147D25D30007320C /* Model */,
 				29B9E1BE1472C1D700DB2E1F /* Supporting Files */,
@@ -759,6 +758,7 @@
 		29B9E1B41472C1D700DB2E1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29E6D7F015ADACCE00235123 /* MessageUI.framework */,
 				2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */,
 				2968BECD14F9076400DF1CCF /* AVFoundation.framework */,
 				29ECA45814B0514E00B3832D /* SenTestingKit.framework */,

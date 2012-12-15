@@ -15,6 +15,8 @@
 #import "SSTurnFinishDatePickerTVC.h"
 #import "SCModalPickerView.h"
 #import "NSDateAdditions.h"
+#import "SSShiftTableConfigTVC.h"
+
 
 @interface ShiftProfileChangeViewController() 
 {
@@ -240,7 +242,7 @@
 
     // cancel button only appear in adding mode, because we can not cancel the date in editing mode, it use save data context.
 
-        self.navigationItem.leftBarButtonItem = self.cancelButton;
+    self.navigationItem.leftBarButtonItem = self.cancelButton;
 
     
     datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 250, 325, 250)];
@@ -411,7 +413,9 @@
                 cell.textLabel.highlighted = YES;
             }
         }
+#if !CONFIG_SINGLE_SHIFT_CONFIG_MODE
         cell.detailTextLabel.text = [self.theJob jobShiftTypeString];
+#endif
     }
     
     [self configureStartRepeatItems:item withCell:cell];
@@ -527,23 +531,19 @@
     }
     
     if ([item isEqualToString:SHIFTCONFIG_ITEM_STRING]) {
+#if CONFIG_SINGLE_SHIFT_CONFIG_MODE
+      	SSShiftTableConfigTVC *fjmp = [[SSShiftTableConfigTVC alloc] initWithStyle:UITableViewStyleGrouped];
+	fjmp.theJob = self.theJob;
+	fjmp.pickDelegate = self;
+	[self.navigationController pushViewController:fjmp animated:YES];
 
+#else
         SSShiftWorkdayConfigTVC *stp = [[SSShiftWorkdayConfigTVC alloc] initWithStyle:UITableViewStyleGrouped];
-#if CONFIG_WORKDAY_CONFIG_MODAL_VIEW
-        stp.pickDelegate = self;
-#endif
 	stp.theJob = self.theJob;
         stp.items = self.theJob.jobShiftAllTypesString;
-        
-#if CONFIG_WORKDAY_CONFIG_MODAL_VIEW
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:stp];
-        [self.navigationController  presentModalViewController:navController animated:YES];
-#else
         [self.navigationController pushViewController:stp animated:YES];
 #endif
-        
         enterConfig = YES;
-
     }
 
     if ([item isEqualToString:STARTWITH_ITEM_STRING]) {
@@ -713,5 +713,11 @@
         [self.tableView reloadData];
         break;
     }
+}
+
+- (void) SSShiftTypePickerClientFinishConfigure: (id) sender
+{
+  UITableViewController *s = sender;
+  [s.navigationController popViewControllerAnimated:YES];
 }
 @end

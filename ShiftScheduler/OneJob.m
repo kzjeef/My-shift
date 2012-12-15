@@ -246,8 +246,11 @@
     if (!self.jobRemindBeforeWork)
 	self.jobRemindBeforeWork = @JOB_DEFAULT_REMIND_TIME_BEFORE_WORK;
 
-    if (!self.jobShiftType)
-	self.jobShiftType = @(JOB_SHIFT_ALGO_FREE_ROUND);
+    if (!self.jobShowTextInCalendar)
+	self.jobShowTextInCalendar = @0;
+
+    if (!self.jobShiftType || self.jobShiftType.intValue == JOB_SHIFT_ALGO_NON_TYPE)
+	self.jobShiftType = @(JOB_SHIFT_ALGO_FREE_JUMP);
 }
 
 
@@ -464,4 +467,47 @@
     else
         return YES;
 }
+
+// migrate old round shift to jump table shift to unify shift model.
+- (BOOL) convertShiftRoundToJump
+{
+    if (self.jobShiftType.intValue == JOB_SHIFT_ALGO_FREE_JUMP)
+      return YES;
+    
+    if (self.jobShiftType.intValue == JOB_SHIFT_ALGO_FREE_ROUND) {
+        if (self.jobOnDays < 0 || self.jobOffDays < 0) {
+            NSLog(@"invalid shift on convert shift round to jump...: %@", self);
+            return NO;
+        }
+
+	@try {
+	    self.jobShiftType = @(JOB_SHIFT_ALGO_FREE_JUMP);
+	    
+	    self.jobFreeJumpCycle = [NSNumber numberWithInt:self.jobOnDays.intValue
+					      + self.jobOffDays.intValue];
+
+	    NSMutableArray *a = [[NSMutableArray alloc]
+                             initWithCapacity:self.jobFreeJumpCycle.intValue];
+
+	    for (int i = 0; i < self.jobOnDays.intValue; i++)
+            [a setObject:@1 atIndexedSubscript:i];
+	    for (int i = self.jobOnDays.intValue; i < self.jobFreeJumpCycle.intValue; i++)
+            [a setObject:@0 atIndexedSubscript:i];
+        
+	    [self setJobFreeJumpTable:a];
+        
+	    NSLog(@"Convert: contert a shift %@ to jump cycle shift", self);
+        
+	    return YES;
+	}
+
+	@catch (NSException *e) { // deal with exception ,and return false, if return false, db reset, and continue.
+	    NSLog(@"Got Exception:%@ when process shift %@", e, self);
+	    return NO;
+	}
+    }
+
+    return YES;
+}
+
 @end

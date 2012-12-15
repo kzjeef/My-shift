@@ -14,5 +14,8 @@
 /* Use ThinkNote share. */
 #define ENABLE_THINKNOTE_SHARE  1
 
+/* Use single shift config table mode. */
+#define CONFIG_SINGLE_SHIFT_CONFIG_MODE 1
+
 #endif
 
