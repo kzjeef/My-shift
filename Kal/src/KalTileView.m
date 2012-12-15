@@ -96,12 +96,13 @@ extern const CGSize kTileSize;
           for (NSDictionary *dict in iconlist) {
               // first check icon draw type, if it's type one, just draw icon
               // if type two,draw with clip to mask.
-                
-              CGFloat iheight = kTileSize.height / 3;
-              CGFloat iwidth = kTileSize.width / 3;
+              
+              // -1 to fix the third icon will out of the rect of this tail.
+              CGFloat iheight = kTileSize.height / 3 - 1;
+              CGFloat iwidth = kTileSize.width / 3 - 1;
               CGFloat margin = 1;
               CGRect iconRect = CGRectMake(margin + (count * iwidth) , 
-                                           kTileSize.height - iheight - (margin * 2), iwidth, iheight);
+                                           kTileSize.height - iheight - (margin), iwidth, iheight);
               // if it was draw color icon directly, use this. 
               CGContextSaveGState(ctx);
 
@@ -140,8 +141,9 @@ extern const CGSize kTileSize;
   const char *day = [dayText cStringUsingEncoding:NSUTF8StringEncoding];
   CGSize textSize = [dayText sizeWithFont:font];
   CGFloat textX, textY;
-  textX = roundf(0.5f * (kTileSize.width - textSize.width));
-  textY = 0.f + roundf(0.5f * (kTileSize.height - textSize.height));
+    float textPosition = 0.5; // lower value to let calendar down, higher value to up.
+  textX = roundf(textPosition * (kTileSize.width - textSize.width));
+  textY = 0.f + roundf(textPosition * (kTileSize.height - textSize.height));
   if (shadowColor) {
     [shadowColor setFill];
     CGContextShowTextAtPoint(ctx, textX, textY, day, n >= 10 ? 2 : 1);
