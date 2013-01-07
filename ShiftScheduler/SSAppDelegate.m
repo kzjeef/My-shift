@@ -239,6 +239,17 @@ enum {
 
     [self performSelectorInBackground:@selector(SSKalControllerInit) withObject:nil];
     
+    id token = [[NSFileManager defaultManager] ubiquityIdentityToken];
+    
+    if (token) {
+        NSLog(@"have icloud");
+        // have iClude account;
+    } else {
+        NSLog(@"don't have icloud");
+    }
+    
+
+    
     return YES;
 }
 

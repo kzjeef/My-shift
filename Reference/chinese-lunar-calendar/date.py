@@ -106,8 +106,12 @@ class Date:
 	def SolarToLunar(self):
 		date = Date(-1, -1, -1)
 		offset = self.SolarDaysFromBaseDate()
+                # 首先找到和1900年1月31日差多少天
 		for iYear in range(len(yearCode)):
+                        # 在YearCode里面循环, 
 			self.lunarYearDays = Date(iYear + 1900).LunarYearDays()
+                        # 计算那一年的农历年有多少天
+                        # 一直减， 知道减到余数小于一年的天数。
 			if offset < self.lunarYearDays:
 				date.year = iYear + 1900
 				break
@@ -164,13 +168,6 @@ class Date:
 	#
 	def Zodiac(self):
 		return Zodiac[Zhi.index(self.GanZhiYear().decode('utf-8')[-1:])]
-
-		monthNum = self.GetLeapMonth() == 0 and 12 or 13
-		for m in range(monthNum):
-			self.yearDays += self.daysInMonth[m]
-
-		return self.yearDays
-
 
 	#
 	def LunarMonth(self):
