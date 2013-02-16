@@ -55,10 +55,6 @@
 		2935514414E2BABA004D8FAC /* SSTurnShiftTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2935514114E2BABA004D8FAC /* SSTurnShiftTVC.h */; };
 		2935514514E2BABA004D8FAC /* SSTurnShiftTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */; };
 		2935514614E2BABA004D8FAC /* SSTurnShiftTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */; };
-		29391E46168DD1A3002C16F5 /* ChineseLurarDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 29391E44168DD1A3002C16F5 /* ChineseLurarDate.h */; };
-		29391E47168DD1A3002C16F5 /* ChineseLurarDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29391E45168DD1A3002C16F5 /* ChineseLurarDate.m */; };
-		29391E4A168E9FDD002C16F5 /* NSDate+SolarAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = 29391E48168E9FDD002C16F5 /* NSDate+SolarAddition.h */; };
-		29391E4B168E9FDD002C16F5 /* NSDate+SolarAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 29391E49168E9FDD002C16F5 /* NSDate+SolarAddition.m */; };
 		293970D4164E8AC200A79721 /* grayButtonBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970D0164E8AC100A79721 /* grayButtonBackgroud.png */; };
 		293970D5164E8AC200A79721 /* redButtonBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970D1164E8AC200A79721 /* redButtonBackgroud.png */; };
 		293970D6164E8AC200A79721 /* greenButtonBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970D2164E8AC200A79721 /* greenButtonBackgroud.png */; };
@@ -86,11 +82,6 @@
 		294D06A115C2DB320029786A /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64F915A3C64900D0C4B5 /* addButton.png */; };
 		294E2902148B302700E6ED45 /* ShiftDay.h in Headers */ = {isa = PBXBuildFile; fileRef = 294E2900148B302700E6ED45 /* ShiftDay.h */; };
 		294E2903148B302700E6ED45 /* ShiftDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 294E2901148B302700E6ED45 /* ShiftDay.m */; };
-		2958CDAC1695BF2700D3AAB6 /* testChineseLunarCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2958CDAB1695BF2700D3AAB6 /* testChineseLunarCalendar.m */; };
-		2958CDAD1695C0C600D3AAB6 /* ChineseLurarDate.h in Sources */ = {isa = PBXBuildFile; fileRef = 29391E44168DD1A3002C16F5 /* ChineseLurarDate.h */; };
-		2958CDAE1695C0C600D3AAB6 /* ChineseLurarDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29391E45168DD1A3002C16F5 /* ChineseLurarDate.m */; };
-		2958CDAF1695D8B900D3AAB6 /* NSDate+SolarAddition.h in Sources */ = {isa = PBXBuildFile; fileRef = 29391E48168E9FDD002C16F5 /* NSDate+SolarAddition.h */; };
-		2958CDB01695D8B900D3AAB6 /* NSDate+SolarAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 29391E49168E9FDD002C16F5 /* NSDate+SolarAddition.m */; };
 		2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECD14F9076400DF1CCF /* AVFoundation.framework */; };
 		2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */; };
 		297D073215B702DC008B9983 /* ThinkNoteModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073115B702DC008B9983 /* ThinkNoteModelTest.m */; };
@@ -260,6 +251,7 @@
 		2900DEC21483E44E00E588EE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2900DEC31483EEA100E588EE /* ShiftSchedulerModelBasic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShiftSchedulerModelBasic.xcdatamodel; sourceTree = "<group>"; };
 		290317B4164FE5FD008C258E /* overdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = overdate.png; path = Resources/overdate.png; sourceTree = "<group>"; };
+		2912672D16CF691D00FFB202 /* SSLunarDate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSLunarDate.xcodeproj; path = ../../SSLunarDate/SSLunarDate.xcodeproj; sourceTree = "<group>"; };
 		2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-57x57.png"; sourceTree = "<group>"; };
 		2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-114x114.png"; sourceTree = "<group>"; };
 		29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSocialThinkNoteLogin.h; path = ShiftScheduler/SSSocialThinkNoteLogin.h; sourceTree = "<group>"; };
@@ -294,10 +286,6 @@
 		2935514114E2BABA004D8FAC /* SSTurnShiftTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTurnShiftTVC.h; sourceTree = "<group>"; };
 		2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTurnShiftTVC.m; sourceTree = "<group>"; };
 		2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSTurnShiftTVC.xib; sourceTree = "<group>"; };
-		29391E44168DD1A3002C16F5 /* ChineseLurarDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChineseLurarDate.h; path = ChineseLurarDate/ChineseLurarDate.h; sourceTree = SOURCE_ROOT; };
-		29391E45168DD1A3002C16F5 /* ChineseLurarDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChineseLurarDate.m; path = ChineseLurarDate/ChineseLurarDate.m; sourceTree = SOURCE_ROOT; };
-		29391E48168E9FDD002C16F5 /* NSDate+SolarAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+SolarAddition.h"; path = "ChineseLurarDate/NSDate+SolarAddition.h"; sourceTree = SOURCE_ROOT; };
-		29391E49168E9FDD002C16F5 /* NSDate+SolarAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+SolarAddition.m"; path = "ChineseLurarDate/NSDate+SolarAddition.m"; sourceTree = SOURCE_ROOT; };
 		293970D0164E8AC100A79721 /* grayButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grayButtonBackgroud.png; path = Resources/grayButtonBackgroud.png; sourceTree = "<group>"; };
 		293970D1164E8AC200A79721 /* redButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redButtonBackgroud.png; path = Resources/redButtonBackgroud.png; sourceTree = "<group>"; };
 		293970D2164E8AC200A79721 /* greenButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greenButtonBackgroud.png; path = Resources/greenButtonBackgroud.png; sourceTree = "<group>"; };
@@ -320,8 +308,6 @@
 		294E28FF148B2F3A00E6ED45 /* ShiftScheduler 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 2.xcdatamodel"; sourceTree = "<group>"; };
 		294E2900148B302700E6ED45 /* ShiftDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftDay.h; sourceTree = "<group>"; };
 		294E2901148B302700E6ED45 /* ShiftDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftDay.m; sourceTree = "<group>"; };
-		2958CDAA1695BF2700D3AAB6 /* testChineseLunarCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = testChineseLunarCalendar.h; path = ChineseLurarDate/testChineseLunarCalendar.h; sourceTree = "<group>"; };
-		2958CDAB1695BF2700D3AAB6 /* testChineseLunarCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = testChineseLunarCalendar.m; path = ChineseLurarDate/testChineseLunarCalendar.m; sourceTree = "<group>"; };
 		2968BECD14F9076400DF1CCF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		297D073015B702DB008B9983 /* ThinkNoteModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThinkNoteModelTest.h; path = OneJobModuleTest/ThinkNoteModelTest.h; sourceTree = "<group>"; };
@@ -564,13 +550,10 @@
 		293994B5147D25D30007320C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2912672D16CF691D00FFB202 /* SSLunarDate.xcodeproj */,
 				29AEBDC71561356C0010F27D /* KalRelated */,
 				29AEBDC6156134DF0010F27D /* AlertModel */,
 				29AEBDC4156134B50010F27D /* ShiftModel */,
-				29391E44168DD1A3002C16F5 /* ChineseLurarDate.h */,
-				29391E48168E9FDD002C16F5 /* NSDate+SolarAddition.h */,
-				29391E49168E9FDD002C16F5 /* NSDate+SolarAddition.m */,
-				29391E45168DD1A3002C16F5 /* ChineseLurarDate.m */,
 			);
 			name = Model;
 			path = ShiftScheduler;
@@ -754,8 +737,6 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
-				2958CDAA1695BF2700D3AAB6 /* testChineseLunarCalendar.h */,
-				2958CDAB1695BF2700D3AAB6 /* testChineseLunarCalendar.m */,
 				293446E916835B88007219D1 /* ShiftScheduler.entitlements */,
 				293B64EC15A3BF5000D0C4B5 /* Resources */,
 				29AEBDC8156136830010F27D /* GUI */,
@@ -1000,8 +981,6 @@
 				29B43CA615D29DBF000BC677 /* ThinkNoteShareViewController.h in Headers */,
 				29293D9215DFE778006B6907 /* SSSocialThinkNoteLogin.h in Headers */,
 				29E980EF1641747B00B65A7E /* AlarmPickerViewController.h in Headers */,
-				29391E46168DD1A3002C16F5 /* ChineseLurarDate.h in Headers */,
-				29391E4A168E9FDD002C16F5 /* NSDate+SolarAddition.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1184,10 +1163,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2958CDAF1695D8B900D3AAB6 /* NSDate+SolarAddition.h in Sources */,
-				2958CDB01695D8B900D3AAB6 /* NSDate+SolarAddition.m in Sources */,
-				2958CDAD1695C0C600D3AAB6 /* ChineseLurarDate.h in Sources */,
-				2958CDAE1695C0C600D3AAB6 /* ChineseLurarDate.m in Sources */,
 				29D9F0DA15D93A9A00960B56 /* SSShareObject.h in Sources */,
 				29D9F0DB15D93A9A00960B56 /* SSShareObject.m in Sources */,
 				29B8F3DF15B9BB52000D934A /* NSDateAdditions.h in Sources */,
@@ -1211,7 +1186,6 @@
 				29AEBD7B155418890010F27D /* OneJob.m in Sources */,
 				29AEBD741554146F0010F27D /* OneJobModuleTest.m in Sources */,
 				297D073215B702DC008B9983 /* ThinkNoteModelTest.m in Sources */,
-				2958CDAC1695BF2700D3AAB6 /* testChineseLunarCalendar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1276,8 +1250,6 @@
 				298C3FBD15D92622002F9AC3 /* ThinkNoteShareViewController.m in Sources */,
 				29293D9315DFE778006B6907 /* SSSocialThinkNoteLogin.m in Sources */,
 				29E980F01641747B00B65A7E /* AlarmPickerViewController.m in Sources */,
-				29391E47168DD1A3002C16F5 /* ChineseLurarDate.m in Sources */,
-				29391E4B168E9FDD002C16F5 /* NSDate+SolarAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1337,6 +1309,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "OneJobModuleTest/OneJobModuleTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../SSLunarDate/build/Release-iphoneos\"",
+					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7\"",
+					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7s\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = octest;
@@ -1355,6 +1333,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "OneJobModuleTest/OneJobModuleTest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../SSLunarDate/build/Release-iphoneos\"",
+					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7\"",
+					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7s\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				WRAPPER_EXTENSION = octest;
@@ -1428,7 +1412,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShiftScheduler/ShiftScheduler-Prefix.pch";
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../SSLunarDate/build/Release-iphoneos\"",
+					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7\"",
+					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7s\"",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -1451,7 +1441,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShiftScheduler/ShiftScheduler-Prefix.pch";
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../SSLunarDate/build/Release-iphoneos\"",
+					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7\"",
+					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7s\"",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
