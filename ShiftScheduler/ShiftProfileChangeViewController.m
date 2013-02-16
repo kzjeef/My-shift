@@ -641,7 +641,8 @@
     
     [modalDatePickerView setPickerView:pdatePicker];
     __weak OneJob *job = self.theJob;
-
+    __weak ShiftProfileChangeViewController *self_ptr = self;
+    
     [modalDatePickerView setCompletionHandler:^(SCModalPickerViewResult result){
 	    if (result == SCModalPickerViewResultDone)
 		{ 
@@ -651,7 +652,7 @@
                 job.jobFinishDate = [pdatePicker.date cc_dateByMovingToMiddleOfDay];
 
 		    dispatch_async(dispatch_get_main_queue(), ^{
-			    [self.tableView reloadData];
+			    [[self_ptr tableView] reloadData];
 			});
 		}}];
     [modalDatePickerView show];

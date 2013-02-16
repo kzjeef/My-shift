@@ -501,7 +501,7 @@
         return YES;
         
         // need check whether this value is accept by me.
-    if (self.theShiftChange.type == @TYPE_EXCAHNGE) {
+    if ([self.theShiftChange.type isEqualToNumber:@TYPE_EXCAHNGE]) {
         NSAssert(results.count == 2, @"Result length should be 2 in exchange mode");
         if ([[results objectAtIndex:0] isKindOfClass:[NSDate class]]
             && [[results objectAtIndex:1] isKindOfClass:[NSDate class]]) {
@@ -510,13 +510,13 @@
         }
     }
     
-    if (self.theShiftChange.type == @TYPE_OVERWORK) {
+    if ([self.theShiftChange.type isEqualToNumber:@TYPE_OVERWORK]) {
         NSAssert(results.count == 1, @"Result length should be 1 in exchange mode");
         if ([[results objectAtIndex:0] isKindOfClass:[NSDate class]])
             self.theShiftChange.shiftFromDay =  [results objectAtIndex:0];
     }
     
-    if (self.theShiftChange.type == @TYPE_VACATION) {
+    if ([self.theShiftChange.type isEqualToNumber:@TYPE_VACATION]) {
         NSAssert(results.count == 1, @"Results length should be 1 in exchange mode");
         if ([[results objectAtIndex:0] isKindOfClass:[NSDate class]])
             self.theShiftChange.shiftFromDay = [results objectAtIndex:0];
