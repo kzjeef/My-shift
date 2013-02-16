@@ -290,10 +290,11 @@
 
 -(NSNumber *)getJobEveryDayLengthSec
 {
-    if ([self getXShiftCount] == 0)
-	return self.jobEveryDayLengthSec;
+    int v = [self getXShiftCount];
+    if (v != 0)
+        return @(DAY_TO_SECONDS / v);
     else
-	return @(DAY_TO_SECONDS / [self getXShiftCount]);
+        return self.jobEveryDayLengthSec;
 }
 
 -(void)mysetJobEveryDayLengthSec:(NSNumber *)number
