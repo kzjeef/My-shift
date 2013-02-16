@@ -9,6 +9,7 @@
 #import "ShiftListProfilesTVC.h"
 #import "ShiftProfileChangeViewController.h"
 #import "OneJob.h"
+#import "SSDefaultConfigName.h"
 #import "UIColor+HexCoding.h"
 
 
@@ -163,7 +164,7 @@ enum {
     [request setEntity:entity];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"jobStartDate"  ascending:YES]];
 
-    BOOL showOOD = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableDisplayOutdateShift"];
+    BOOL showOOD = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT];
     if (showOOD)
         request.predicate = nil;
     else
@@ -527,10 +528,10 @@ return YES;
 
         if (self.fetchedResultsController.fetchRequest.predicate == nil) {
             [self switchPredicate:[self validOnlyPredicate]];
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"enableDisplayOutdateShift"];
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT];
         } else {
             [self switchPredicate:nil];
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"enableDisplayOutdateShift"];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT];
         }
         
         [self.fetchedResultsControllerOOD performFetch:NULL];

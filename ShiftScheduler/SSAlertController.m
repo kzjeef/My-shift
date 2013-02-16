@@ -8,6 +8,8 @@
 #import "SSAlertController.h"
 #import "OneJob.h"
 #import "NSDateAdditions.h"
+#import "SSDefaultConfigName.h"
+
 
 #define TIME_STR_ALARM_BEFORE_HOURS NSLocalizedString(@"will start in %d Hour", "will start in %d Hour")
 #define TIME_STR_ALARM_BEFORE_MINITES NSLocalizedString(@"will start in %d Minutes", "will start in %d Minutes")
@@ -82,12 +84,12 @@
 
 - (BOOL) shouldAlertWithSound
 {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"enableAlertSound"];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_ALERT_SOUND];
 }
 
 - (BOOL) shouldUseSystemSound
 {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"systemDefalutAlertSound"];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_USE_SYS_DEFAULT_ALERT_SOUND];
 }
 
 static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
@@ -171,7 +173,7 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
     localNotif.alertAction = actionTitle;
     
     if ([self shouldAlertWithSound]) {
-        NSString *currentDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"alarmSoundFileName"];
+        NSString *currentDefault = [[NSUserDefaults standardUserDefaults] stringForKey:USER_CONFIG_APP_DEFAULT_ALERT_SOUND];
         localNotif.soundName = currentDefault;
     }
 

@@ -24,6 +24,8 @@
 		29009FEA159F4AE500A1588E /* UIColor+HexCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FE8159F4AE500A1588E /* UIColor+HexCoding.h */; };
 		29009FEB159F4AE500A1588E /* UIColor+HexCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FE9159F4AE500A1588E /* UIColor+HexCoding.m */; };
 		290317B5164FE5FD008C258E /* overdate.png in Resources */ = {isa = PBXBuildFile; fileRef = 290317B4164FE5FD008C258E /* overdate.png */; };
+		2912673916CF77CE00FFB202 /* SSDefaultConfigName.h in Headers */ = {isa = PBXBuildFile; fileRef = 2912673816CF77CE00FFB202 /* SSDefaultConfigName.h */; };
+		2912673D16CF81FA00FFB202 /* libSSLunarDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2912673C16CF81FA00FFB202 /* libSSLunarDate.a */; };
 		2916128515A62A6B0031F78C /* calendar-simple-blue-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */; };
 		2916128715A62AC20031F78C /* calendar-simple-blue-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */; };
 		29293D9215DFE778006B6907 /* SSSocialThinkNoteLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */; };
@@ -232,7 +234,7 @@
 
 /* Begin PBXFileReference section */
 		29009FCA159F4A4D00A1588E /* SSSettingTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSettingTVC.h; path = ShiftScheduler/SSSettingTVC.h; sourceTree = "<group>"; };
-		29009FCB159F4A4D00A1588E /* SSSettingTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSettingTVC.m; path = ShiftScheduler/SSSettingTVC.m; sourceTree = "<group>"; };
+		29009FCB159F4A4D00A1588E /* SSSettingTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SSSettingTVC.m; path = ShiftScheduler/SSSettingTVC.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29009FCC159F4A4D00A1588E /* SSSettingTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSSettingTVC.xib; path = ShiftScheduler/SSSettingTVC.xib; sourceTree = "<group>"; };
 		29009FD0159F4AA100A1588E /* SSShiftHolidayCreateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSShiftHolidayCreateVC.h; path = ShiftScheduler/SSShiftHolidayCreateVC.h; sourceTree = "<group>"; };
 		29009FD1159F4AA100A1588E /* SSShiftHolidayCreateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSShiftHolidayCreateVC.m; path = ShiftScheduler/SSShiftHolidayCreateVC.m; sourceTree = "<group>"; };
@@ -252,6 +254,8 @@
 		2900DEC31483EEA100E588EE /* ShiftSchedulerModelBasic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShiftSchedulerModelBasic.xcdatamodel; sourceTree = "<group>"; };
 		290317B4164FE5FD008C258E /* overdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = overdate.png; path = Resources/overdate.png; sourceTree = "<group>"; };
 		2912672D16CF691D00FFB202 /* SSLunarDate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSLunarDate.xcodeproj; path = ../../SSLunarDate/SSLunarDate.xcodeproj; sourceTree = "<group>"; };
+		2912673816CF77CE00FFB202 /* SSDefaultConfigName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SSDefaultConfigName.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		2912673C16CF81FA00FFB202 /* libSSLunarDate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSSLunarDate.a; path = "../SSLunarDate/build/Release-iphoneos/libSSLunarDate.a"; sourceTree = "<group>"; };
 		2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-57x57.png"; sourceTree = "<group>"; };
 		2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-114x114.png"; sourceTree = "<group>"; };
 		29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSocialThinkNoteLogin.h; path = ShiftScheduler/SSSocialThinkNoteLogin.h; sourceTree = "<group>"; };
@@ -299,7 +303,7 @@
 		293970E2164EA0B200A79721 /* tab-calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab-calendar@2x.png"; path = "Resources/tab-calendar@2x.png"; sourceTree = "<group>"; };
 		293970E3164EA0B200A79721 /* users.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = users.png; path = Resources/users.png; sourceTree = "<group>"; };
 		293970E4164EA0B200A79721 /* users@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "users@2x.png"; path = "Resources/users@2x.png"; sourceTree = "<group>"; };
-		293B64EA15A335A900D0C4B5 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = ShiftScheduler/config.h; sourceTree = "<group>"; };
+		293B64EA15A335A900D0C4B5 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		293B64F015A3BF8400D0C4B5 /* tab-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab-calendar.png"; path = "Resources/tab-calendar.png"; sourceTree = "<group>"; };
 		293B64F915A3C64900D0C4B5 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addButton.png; path = Resources/addButton.png; sourceTree = "<group>"; };
 		293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GSFacesInfo.png; path = Resources/GSFacesInfo.png; sourceTree = "<group>"; };
@@ -348,7 +352,7 @@
 		29B9E1C31472C1D700DB2E1F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B9E1C51472C1D700DB2E1F /* ShiftScheduler-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShiftScheduler-Prefix.pch"; sourceTree = "<group>"; };
 		29B9E1C61472C1D700DB2E1F /* SSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SSAppDelegate.h; sourceTree = "<group>"; };
-		29B9E1C71472C1D700DB2E1F /* SSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SSAppDelegate.m; sourceTree = "<group>"; };
+		29B9E1C71472C1D700DB2E1F /* SSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SSAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29B9E1CA1472C1D700DB2E1F /* ShiftScheduler.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShiftScheduler.xcdatamodel; sourceTree = "<group>"; };
 		29B9E1D31472C2A800DB2E1F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		29B9E1D51472C2B000DB2E1F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -358,7 +362,7 @@
 		29B9E1E01472C39F00DB2E1F /* ShiftProfileChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftProfileChangeViewController.h; sourceTree = "<group>"; };
 		29B9E1E11472C39F00DB2E1F /* ShiftProfileChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftProfileChangeViewController.m; sourceTree = "<group>"; };
 		29B9E1E31472C39F00DB2E1F /* ShiftListProfilesTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftListProfilesTVC.h; sourceTree = "<group>"; };
-		29B9E1E41472C39F00DB2E1F /* ShiftListProfilesTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftListProfilesTVC.m; sourceTree = "<group>"; };
+		29B9E1E41472C39F00DB2E1F /* ShiftListProfilesTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ShiftListProfilesTVC.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29B9E1E61472C39F00DB2E1F /* WorkdayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkdayDataSource.h; sourceTree = "<group>"; };
 		29B9E1E71472C39F00DB2E1F /* WorkdayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkdayDataSource.m; sourceTree = "<group>"; };
 		29C943AF14E957F700122144 /* SSKalDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKalDelegate.h; sourceTree = "<group>"; };
@@ -386,7 +390,7 @@
 		29E6D7F715ADC63100235123 /* SSShareProfileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSShareProfileListViewController.h; path = ShiftScheduler/SSShareProfileListViewController.h; sourceTree = "<group>"; };
 		29E6D7F815ADC63100235123 /* SSShareProfileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSShareProfileListViewController.m; path = ShiftScheduler/SSShareProfileListViewController.m; sourceTree = "<group>"; };
 		29E980ED1641747B00B65A7E /* AlarmPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmPickerViewController.h; path = ShiftScheduler/AlarmPickerViewController.h; sourceTree = "<group>"; };
-		29E980EE1641747B00B65A7E /* AlarmPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmPickerViewController.m; path = ShiftScheduler/AlarmPickerViewController.m; sourceTree = "<group>"; };
+		29E980EE1641747B00B65A7E /* AlarmPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = AlarmPickerViewController.m; path = ShiftScheduler/AlarmPickerViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29E980F1164177B600B65A7E /* AlarmList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AlarmList.plist; sourceTree = "<group>"; };
 		29E980F316419E1500B65A7E /* DingDong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DingDong.caf; path = Resources/alarm/DingDong.caf; sourceTree = "<group>"; };
 		29E980F416419E1500B65A7E /* Alarm_Beep_03.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Alarm_Beep_03.caf; path = Resources/alarm/Alarm_Beep_03.caf; sourceTree = "<group>"; };
@@ -430,7 +434,7 @@
 		29F6B55D15A4C40500FAEA1C /* ShiftScheduler 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 5.xcdatamodel"; sourceTree = "<group>"; };
 		29F89FEC14E8072D002BB665 /* ShiftScheduler 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 4.xcdatamodel"; sourceTree = "<group>"; };
 		29FA9AF114F48DAE00717505 /* SSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAlertController.h; sourceTree = "<group>"; };
-		29FA9AF214F48DAE00717505 /* SSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSAlertController.m; sourceTree = "<group>"; };
+		29FA9AF214F48DAE00717505 /* SSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SSAlertController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,6 +453,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2912673D16CF81FA00FFB202 /* libSSLunarDate.a in Frameworks */,
 				29D6A550159CB79F00AC6103 /* libKal.a in Frameworks */,
 				29E6D7F115ADACCE00235123 /* MessageUI.framework in Frameworks */,
 				2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */,
@@ -714,12 +719,10 @@
 			isa = PBXGroup;
 			children = (
 				29E6D7F215ADC59A00235123 /* Share */,
-				293B64EA15A335A900D0C4B5 /* config.h */,
 				2935514914E2E5EB004D8FAC /* SettingView */,
 				299D8D0D147948B900E20DAE /* ProfileView */,
 				298B0168148B946500C013F5 /* ChangeShiftView */,
 				29E98C9514EFD78F0048AF49 /* SCKit */,
-				29B9E1BD1472C1D700DB2E1F /* ShiftScheduler */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -737,6 +740,8 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
+				2912673C16CF81FA00FFB202 /* libSSLunarDate.a */,
+				29B9E1BD1472C1D700DB2E1F /* ShiftScheduler */,
 				293446E916835B88007219D1 /* ShiftScheduler.entitlements */,
 				293B64EC15A3BF5000D0C4B5 /* Resources */,
 				29AEBDC8156136830010F27D /* GUI */,
@@ -777,12 +782,14 @@
 		29B9E1BD1472C1D700DB2E1F /* ShiftScheduler */ = {
 			isa = PBXGroup;
 			children = (
+				29B9E1C61472C1D700DB2E1F /* SSAppDelegate.h */,
+				29B9E1C71472C1D700DB2E1F /* SSAppDelegate.m */,
+				293B64EA15A335A900D0C4B5 /* config.h */,
+				2912673816CF77CE00FFB202 /* SSDefaultConfigName.h */,
 				29DCB8D915A7C79C0095C71D /* NSDateAdditions.h */,
 				29DCB8DB15A7C8730095C71D /* NSDateAdditions.m */,
 				29009FE8159F4AE500A1588E /* UIColor+HexCoding.h */,
 				29009FE9159F4AE500A1588E /* UIColor+HexCoding.m */,
-				29B9E1C61472C1D700DB2E1F /* SSAppDelegate.h */,
-				29B9E1C71472C1D700DB2E1F /* SSAppDelegate.m */,
 				29C943B914EAB55200122144 /* UserReviewController.h */,
 				29C943BA14EAB55200122144 /* UserReviewController.m */,
 			);
@@ -981,6 +988,7 @@
 				29B43CA615D29DBF000BC677 /* ThinkNoteShareViewController.h in Headers */,
 				29293D9215DFE778006B6907 /* SSSocialThinkNoteLogin.h in Headers */,
 				29E980EF1641747B00B65A7E /* AlarmPickerViewController.h in Headers */,
+				2912673916CF77CE00FFB202 /* SSDefaultConfigName.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

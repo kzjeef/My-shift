@@ -16,6 +16,7 @@
 #import "SSThinkNoteShareAgent.h"
 #import "ThinkNoteShareViewController.h"
 #import "UIImageResizing.h"
+#import "SSDefaultConfigName.h"
 
 #import "Kal.h"
 
@@ -224,17 +225,19 @@ enum {
     
     // default perferences
     NSDictionary *appDefaults = [NSDictionary
-                                    dictionaryWithObjects:
-                                        @[@(YES),
-                                           @(NO),
-                                           @"Alarm_Beep_03.caf",
-                                           @"Beep",
-                                           @(NO)]
-                                                  forKeys:@[@"enableAlertSound",
-                                                            @"systemDefalutAlertSound",
-                                                            @"alarmSoundFileName",
-                                                            @"alarmSoundName",
-                                                            @"enableDisplayOutdateShift"]];
+                                 dictionaryWithObjects:
+                                 @[@(YES),
+                                 @(NO),
+                                 @"Alarm_Beep_03.caf",
+                                 @"Beep",
+                                 @(NO),
+                                 @(NO)]
+                                 forKeys:@[USER_CONFIG_ENABLE_ALERT_SOUND,
+                                 USER_CONFIG_USE_SYS_DEFAULT_ALERT_SOUND,
+                                 USER_CONFIG_APP_DEFAULT_ALERT_SOUND,
+                                 USER_CONFIG_APP_ALERT_SOUND_FILE,
+                                 USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY,
+                                 USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 
     [self performSelectorInBackground:@selector(SSKalControllerInit) withObject:nil];

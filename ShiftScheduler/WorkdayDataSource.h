@@ -18,13 +18,14 @@
     NSArray *theJobNameArray;
     NSMutableArray*items;
     NSDateFormatter *timeFormatter;
+    NSDate *currentChoosenDate;
     id<KalDataSourceCallbacks> callback;
 }
 
 @property (strong, nonatomic) NSArray *theJobNameArray;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedRequestController;
 @property (strong, nonatomic) NSDateFormatter *timeFormatter;
-@property (strong, nonatomic)     NSManagedObjectContext * objectContext;
+@property (strong, nonatomic) NSManagedObjectContext * objectContext;
 
 
 - (id) initWithManagedContext:(NSManagedObjectContext *)thecontext;

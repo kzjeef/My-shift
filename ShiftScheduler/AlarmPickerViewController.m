@@ -9,6 +9,8 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "AlarmPickerViewController.h"
+#import "SSDefaultConfigName.h"
+
 
 @interface AlarmPickerViewController ()
 {
@@ -67,14 +69,14 @@
 {
     [super viewWillAppear:animated];
     
-    alarmFileNameSaved = [[NSUserDefaults standardUserDefaults] stringForKey:@"alarmSoundFileName"];
+    alarmFileNameSaved = [[NSUserDefaults standardUserDefaults] stringForKey:USER_CONFIG_APP_DEFAULT_ALERT_SOUND];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
 
-    NSString *newFile = [[NSUserDefaults standardUserDefaults] stringForKey:@"alarmSoundFileName"];
+    NSString *newFile = [[NSUserDefaults standardUserDefaults] stringForKey:USER_CONFIG_APP_DEFAULT_ALERT_SOUND];
     if (![newFile isEqualToString:alarmFileNameSaved]) {
         NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
         [dnc postNotificationName:@"ALARM_SOUND_CHANGED" object:nil];
@@ -118,7 +120,7 @@
 
     NSString *filename = [[items objectAtIndex:indexPath.row] objectForKey:@"file"];
 
-    NSString *currentDefault = [[NSUserDefaults standardUserDefaults] stringForKey:@"alarmSoundFileName"];
+    NSString *currentDefault = [[NSUserDefaults standardUserDefaults] stringForKey:USER_CONFIG_APP_DEFAULT_ALERT_SOUND];
     if ([currentDefault isEqualToString:filename])
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     else
@@ -142,8 +144,8 @@
     NSString *filename = [[items objectAtIndex:indexPath.row] objectForKey:@"file"];
     NSString *name = [[items objectAtIndex:indexPath.row] objectForKey:@"name"];
 
-    [[NSUserDefaults standardUserDefaults] setObject:filename forKey:@"alarmSoundFileName"];
-    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"alarmSoundName"];
+    [[NSUserDefaults standardUserDefaults] setObject:filename forKey:USER_CONFIG_APP_DEFAULT_ALERT_SOUND];
+    [[NSUserDefaults standardUserDefaults] setObject:name forKey:USER_CONFIG_APP_ALERT_SOUND_FILE];
 
     
     [self.tableView reloadData];

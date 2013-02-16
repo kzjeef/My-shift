@@ -10,6 +10,8 @@
 #import "SSSocialThinkNoteLogin.h"
 #import "AlarmPickerViewController.h"
 #import "SSAppDelegate.h"
+#import "SSDefaultConfigName.h"
+
 
 @implementation SSSettingTVC
 
@@ -160,7 +162,7 @@ enum {
     UISwitch *s = sender;
     
     if (s.tag == 0) {
-        [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:@"enableAlertSound"];
+        [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:USER_CONFIG_ENABLE_ALERT_SOUND];
     } 
 }
 
@@ -279,7 +281,7 @@ enum {
         cell.textLabel.text = [self.alarmSettingsArray objectAtIndex:indexPath.row];
         
         UISwitch *s = [self newSwitch:indexPath];
-        BOOL enableSound = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableAlertSound"];
+        BOOL enableSound = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_ALERT_SOUND];
         if (indexPath.row == 0) { // enable sound.
             s.on = enableSound;
             [cell.contentView addSubview:s];
@@ -290,7 +292,7 @@ enum {
             else
                 cell.textLabel.textColor = [UIColor blackColor];
             
-            cell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"alarmSoundName"];
+            cell.detailTextLabel.text = [[NSUserDefaults standardUserDefaults] stringForKey:USER_CONFIG_APP_ALERT_SOUND_FILE];
 
 
 
@@ -398,7 +400,7 @@ enum {
         }
     } else if (indexPath.section == SSALARM_SECTION) {
         if (indexPath.row == 1) {
-            BOOL enableSound = [[NSUserDefaults standardUserDefaults] boolForKey:@"enableAlertSound"];
+            BOOL enableSound = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_ALERT_SOUND];
             if (!enableSound)
                 return;
             AlarmPickerViewController  *view = [[AlarmPickerViewController alloc] initWithStyle:UITableViewStyleGrouped];

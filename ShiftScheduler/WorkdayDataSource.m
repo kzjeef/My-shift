@@ -8,6 +8,9 @@
 
 #import "WorkdayDataSource.h"
 #import "NSDateAdditions.h"
+#import "SSDefaultConfigName.h"
+#import "SSLunarDate/SSLunarDate.h"
+
 
 @implementation WorkdayDataSource
 
@@ -96,6 +99,12 @@
     
 }
 
+- (BOOL) isLunarDateDisplayEnable
+{
+    return [[NSUserDefaults standardUserDefaults]
+            boolForKey:USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY];
+}
+
 - (NSArray *)theJobNameArray 
 {
     theJobNameArray = self.fetchedRequestController.fetchedObjects;
@@ -112,29 +121,56 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
 	 cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+ 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WorkCell"];
     if (!cell) {
-	cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-				      reuseIdentifier:@"WorkCell"];
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                      reuseIdentifier:@"WorkCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-
-    OneJob *job = [self jobAtIndexPath: indexPath];
     
-    cell.textLabel.text = job.jobName;
+    
+    if ([self isLunarDateDisplayEnable] && indexPath.section == 0) {
+        SSLunarDate *lunarDate = [[SSLunarDate alloc] initWithDate:currentChoosenDate];
+        cell.textLabel.text =  [NSString stringWithFormat:@"%@%@",
+                                [lunarDate monthString],
+                                [lunarDate dayString]];
+        
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@(%@)",
+                                     [lunarDate yearGanzhiString],
+                                     [lunarDate zodiacString]];
+        cell.imageView.image = nil;
+    } else {
+        OneJob *job = [self jobAtIndexPath: indexPath];
+        cell.textLabel.text = job.jobName;
     
     if ([job getJobEverydayStartTime] != Nil)
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@",
-					      [job jobEverydayStartTimeWithFormatter:self.timeFormatter],
-					      [job jobEverydayOffTimeWithFormatter:self.timeFormatter]];
-    cell.imageView.image = job.middleSizeImage;
+                                     [job jobEverydayStartTimeWithFormatter:self.timeFormatter],
+                                     [job jobEverydayOffTimeWithFormatter:self.timeFormatter]];
+        cell.imageView.image = job.middleSizeImage;
+    }
     return cell;
 }
-    
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [items count];
+    if ([self isLunarDateDisplayEnable]) {
+        if (section == 0)
+            return 1;
+        else
+            return [items count];
+    } else
+        return [items count];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    if ([self isLunarDateDisplayEnable]) {
+        return 2;
+    } else
+        return 1;
 }
 
 
@@ -164,6 +200,7 @@
 
 - (void) loadItemsForData:(NSDate *)date toArray:(NSMutableArray *)array
 {
+    currentChoosenDate = date;
     for (OneJob *job in self.theJobNameArray) {
         if ([job isDayWorkingDay:date]) {
             [array addObject:job];
@@ -171,15 +208,18 @@
     }
 }
 
+
 - (void) loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate toArray: (NSMutableArray *)array
 {
     NSDate *nextday;
+    
     for (nextday = fromDate; [nextday timeIntervalSinceDate:toDate] < 0;
          // FIXME: why ???? dont understand now...
          nextday = 
          [nextday dateByAddingTimeInterval:24*60*60]) {
         [self loadItemsForData:nextday toArray:array];
-    }    
+    }
+
 }
 
 
