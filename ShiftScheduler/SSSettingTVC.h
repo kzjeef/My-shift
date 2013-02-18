@@ -14,11 +14,17 @@
 @interface SSSettingTVC : UITableViewController
 <NSURLConnectionDelegate, UIAlertViewDelegate>
 {
-    NSArray *feedbackItemsArray;
-    NSURL *iTunesURL;
-    NSArray *alarmSettingsArray;
-    NSArray *socialAccountArray;
+    NSArray *sections;
 
+    NSArray *appConfigArray;
+    NSArray *appConfigHelpArray;
+    NSArray *alarmSettingsArray;
+    NSArray *feedbackItemsArray;
+
+    NSArray *socialAccountArray;
+    
+
+    NSURL *iTunesURL;
     UIActionSheet *_resetAS;
     NSManagedObjectContext *_managedObjectContext;
     SSSocialThinkNoteLogin *_thinknoteLogin;
@@ -26,9 +32,14 @@
 }
 
 
-@property (weak, nonatomic, readonly) NSArray *feedbackItemsArray;
 @property (weak, nonatomic, readonly) NSArray *alarmSettingsArray;
+@property (weak, nonatomic, readonly) NSArray *appConfigArray;
+@property (weak, nonatomic, readonly) NSArray *appConfigHelpArray;
+
 @property (weak, nonatomic, readonly) NSArray *socialAccountArray;
+@property (weak, nonatomic, readonly) NSArray *feedbackItemsArray;
+
+
 
 @property (nonatomic, strong) NSURL *iTunesURL;
 

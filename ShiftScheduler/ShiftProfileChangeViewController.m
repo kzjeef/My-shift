@@ -73,6 +73,7 @@
 #define REPEAT_ITEM_STRING    NSLocalizedString(@"Repeat until", "finish at this date")
 #define REPEAT_FOREVER_STRING NSLocalizedString(@"Repeat forever", "repeart forever string")
 #define SHIFTCONFIG_ITEM_STRING NSLocalizedString(@"Shift detail", "config  detail of shift")
+#define SHIFT_TIME_DETAIL_TITLE NSLocalizedString(@"Time and Remind", "time and remind title")
 
 #define STARTWITH_ITEM 1
 #define FINISH_ITEM 2
@@ -319,9 +320,9 @@
     if (section == 0)
         return nil;
     else if (section == 1)
-        return  NSLocalizedString(@"Shift Detail", "Shift detail title");
+        return SHIFTCONFIG_ITEM_STRING;
     else if (section == 2)
-        return NSLocalizedString(@"Time and Remind", "time and remind title");
+        return SHIFT_TIME_DETAIL_TITLE;
     return @"";
 }
 
@@ -407,12 +408,20 @@
 
     if ([item isEqualToString:SHIFTCONFIG_ITEM_STRING]) {
         cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
+#if !CONFIG_SINGLE_SHIFT_CONFIG_MODE
         if (self.theJob.jobShiftType == nil || self.theJob.jobShiftType.intValue == 0) {
             if (warnningShiftType) {
                 cell.textLabel.highlightedTextColor = [UIColor redColor];
                 cell.textLabel.highlighted = YES;
             }
         }
+#else
+        if (warnningShiftType) {
+            cell.textLabel.highlightedTextColor = [UIColor redColor];
+            cell.textLabel.highlighted = YES;
+        }
+#endif
+        
 #if !CONFIG_SINGLE_SHIFT_CONFIG_MODE
         cell.detailTextLabel.text = [self.theJob jobShiftTypeString];
 #endif
@@ -610,6 +619,8 @@
     // must have configure the shift once.
     if (self.viewMode == PCVC_ADDING_MODE && enterConfig == NO) {
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Not Configure shift", "alert for not configure shift yet.") message:@"please have a configure of your shift." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+        warnningShiftType = YES;
+        [self.tableView reloadData];
         return;
     }
 

@@ -22,6 +22,9 @@
 #define ENABLE_ALARM_SOUND NSLocalizedString(@"Alert Sound", "enable Alert")
 #define PICK_ALERT_SOUND NSLocalizedString(@"Alert", "choose alert sound")
 
+#define LUNAR_ENABLE_ITEM   NSLocalizedString(@"Lunar Calendar", "enable chinese calendar config title")
+#define LUNAR_ENABLE_TEIM_HELP NSLocalizedString(@"show chinese lunar calendar", "enable chinese calendar config help")
+
 #define LOGIN_THINKNOTE_ITEM    NSLocalizedString(@"Login ThinkNote", "thinkNote Login")
 
 #define CANCEL_STR NSLocalizedString(@"Cancel", "cancel")
@@ -35,6 +38,7 @@
 
 enum {
     SSSNAME_SECTION = 0,
+    SSAPPCFG_SECTION,
     SSALARM_SECTION,
     SSSOCIAL_SECTION,
     SSFEEDBACK_SECTION,
@@ -46,6 +50,28 @@ enum {
     SSSETTING_SOCIAL_THINKNOTEK = 0,
 };
 
+enum {
+    SSSETTING_APPCFG_LUNAR_ENABLE = 0,
+};
+
+enum {
+    SSSETTING_TAG_SYSALARM_ENABLE = 0,
+    SSSETTING_TAG_APPCFG_LUNAR_ENABLE = 1,
+};
+
+- (NSArray *) appConfigHelpArray
+{
+    if (!appConfigHelpArray)
+        appConfigHelpArray = @[LUNAR_ENABLE_TEIM_HELP];
+    return appConfigHelpArray;
+}
+
+- (NSArray *) appConfigArray
+{
+    if (!appConfigArray)
+        appConfigArray = @[LUNAR_ENABLE_ITEM];
+    return appConfigArray;
+}
 
 - (NSArray *) alarmSettingsArray
 {
@@ -54,6 +80,8 @@ enum {
     }
     return alarmSettingsArray;
 }
+
+
 
 - (NSArray *) socialAccountArray
 {
@@ -161,12 +189,14 @@ enum {
 {
     UISwitch *s = sender;
     
-    if (s.tag == 0) {
+    if (s.tag == SSSETTING_TAG_SYSALARM_ENABLE) {
         [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:USER_CONFIG_ENABLE_ALERT_SOUND];
-    } 
+    }  else if (s.tag == SSSETTING_TAG_APPCFG_LUNAR_ENABLE) {
+        [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY];
+    }
 }
 
-- (UISwitch *) newSwitch:(NSIndexPath *)indexPath
+- (UISwitch *) newSwitch:(NSIndexPath *)indexPath withTag:(NSInteger) tag
 {
     
     UISwitch *theSwitch;
@@ -176,7 +206,7 @@ enum {
     
     // in case the parent view draws with a custom color or gradient, use a transparent color
     theSwitch.backgroundColor = [UIColor clearColor];
-    theSwitch.tag = indexPath.row;
+    theSwitch.tag = tag;
     return theSwitch;
 }
 
@@ -202,6 +232,8 @@ enum {
         return 1;
     if (section == SSFEEDBACK_SECTION)
         return self.feedbackItemsArray.count;
+    if (section == SSAPPCFG_SECTION)
+        return self.appConfigArray.count;
     if (section == SSALARM_SECTION)
         return self.alarmSettingsArray.count;
     if (section == SSSOCIAL_SECTION) {
@@ -250,19 +282,24 @@ enum {
 {
     static NSString *CellIdentifier = @"SettingCell";
     static NSString *nameCell = @"ShiftName";
+    static NSString *appcfgCell = @"appConfig";
     UITableViewCell *cell;
 
-
-    if (indexPath.section != SSSNAME_SECTION) {
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-        }
-    } else {
+    if (indexPath.section == SSSNAME_SECTION) {
         cell = [tableView dequeueReusableCellWithIdentifier:nameCell];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                           reuseIdentifier:nameCell];
+        }
+
+    } else if (indexPath.section == SSAPPCFG_SECTION) {
+        cell = [tableView dequeueReusableCellWithIdentifier:appcfgCell];
+        if (cell == nil)
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:appcfgCell];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         }
     }
     
@@ -273,6 +310,16 @@ enum {
         cell.textLabel.text = NSLocalizedString(@"Shift Scheduler", "");
         cell.textLabel.font = [UIFont systemFontOfSize:24];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    } else if (indexPath.section == SSAPPCFG_SECTION) {
+        cell.textLabel.text = [self.appConfigArray objectAtIndex:indexPath.row];
+        cell.detailTextLabel.text = [self.appConfigHelpArray objectAtIndex:indexPath.row];
+        
+        if (indexPath.row == SSSETTING_APPCFG_LUNAR_ENABLE) {
+            UISwitch *s = [self newSwitch:indexPath withTag:SSSETTING_TAG_APPCFG_LUNAR_ENABLE];
+            BOOL enableLunar = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY];
+            s.on = enableLunar;
+            [cell.contentView addSubview:s];
+        }
     } else if (indexPath.section == SSFEEDBACK_SECTION) {
         cell.textLabel.text = [self.feedbackItemsArray objectAtIndex:indexPath.row];
     } else if (indexPath.section == SSSOCIAL_SECTION) {
@@ -280,7 +327,7 @@ enum {
     } else if (indexPath.section == SSALARM_SECTION) {
         cell.textLabel.text = [self.alarmSettingsArray objectAtIndex:indexPath.row];
         
-        UISwitch *s = [self newSwitch:indexPath];
+        UISwitch *s = [self newSwitch:indexPath withTag:SSSETTING_TAG_SYSALARM_ENABLE];
         BOOL enableSound = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_ALERT_SOUND];
         if (indexPath.row == 0) { // enable sound.
             s.on = enableSound;
@@ -308,55 +355,6 @@ enum {
     }
     
     return cell;
-}
-
-#pragma mark - delete shift functions
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0)
-        [self deleteAllShifts];
-    else if (buttonIndex == 1)
-        return; // 0 is cancel.
-
-}
-
-- (void) sendEMailTo: (NSString *)to WithSubject: (NSString *) subject withBody:(NSString *)body {
-    NSString *mailString =  [NSString stringWithFormat:@"mailto:?to=%@&subject=%@&body=%@",
-                             [to stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                             [subject stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                             [body stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailString]];
-    
-}
-
-
-
--(void) deleteAllShifts
-{
-    [self deleteAllObjects:@"OneJob"];
-}
-
-- (void) deleteAllObjects: (NSString *) entityDescription
-{
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:entityDescription inManagedObjectContext:_managedObjectContext];
-    [fetchRequest setEntity:entity];
-
-    NSError *error;
-    NSArray *items = [_managedObjectContext executeFetchRequest:fetchRequest error:&error];
-
-    
-
-    for (NSManagedObject *managedObject in items) {
-    	[_managedObjectContext deleteObject:managedObject];
-    	NSLog(@"%@ object deleted",entityDescription);
-    }
-    if (![_managedObjectContext save:&error]) {
-    	NSLog(@"Error deleting %@ - error:%@",entityDescription,error);
-    }
-
 }
 
 
@@ -414,5 +412,53 @@ enum {
     
     
 }
+
+#pragma mark - delete shift functions
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+        [self deleteAllShifts];
+    else if (buttonIndex == 1)
+        return; // 0 is cancel.
+    
+}
+
+- (void) sendEMailTo: (NSString *)to WithSubject: (NSString *) subject withBody:(NSString *)body {
+    NSString *mailString =  [NSString stringWithFormat:@"mailto:?to=%@&subject=%@&body=%@",
+                             [to stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                             [subject stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                             [body stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailString]];
+    
+}
+
+-(void) deleteAllShifts
+{
+    [self deleteAllObjects:@"OneJob"];
+}
+
+- (void) deleteAllObjects: (NSString *) entityDescription
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityDescription inManagedObjectContext:_managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *items = [_managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    
+    
+    for (NSManagedObject *managedObject in items) {
+    	[_managedObjectContext deleteObject:managedObject];
+    	NSLog(@"%@ object deleted",entityDescription);
+    }
+    if (![_managedObjectContext save:&error]) {
+    	NSLog(@"Error deleting %@ - error:%@",entityDescription,error);
+    }
+    
+}
+
 
 @end

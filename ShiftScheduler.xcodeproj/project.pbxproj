@@ -541,9 +541,9 @@
 		2935514914E2E5EB004D8FAC /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
-				29009FCA159F4A4D00A1588E /* SSSettingTVC.h */,
 				29E980ED1641747B00B65A7E /* AlarmPickerViewController.h */,
 				29E980EE1641747B00B65A7E /* AlarmPickerViewController.m */,
+				29009FCA159F4A4D00A1588E /* SSSettingTVC.h */,
 				29009FCB159F4A4D00A1588E /* SSSettingTVC.m */,
 				29009FCC159F4A4D00A1588E /* SSSettingTVC.xib */,
 				29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */,
