@@ -148,6 +148,11 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   [self reloadData];
 }
 
+- (void)didSelectTitle
+{
+    [self.vcdelegate KalViewControllerdidSelectTitle:self];
+}
+
 - (NSArray *) KalTileDrawDelegate: (KalTileView *) sender getIconDrawInfoWithDate: (NSDate *) date
 {
     return [self.tileDelegate KalTileDrawDelegate:sender getIconDrawInfoWithDate:date];

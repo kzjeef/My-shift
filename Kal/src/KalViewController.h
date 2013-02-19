@@ -20,6 +20,7 @@
 @class  KalViewController;
 @protocol KalViewControllerDelegate
 - (void) KalViewController: (KalViewController *) sender selectDate: (NSDate *) date;
+- (void) KalViewControllerdidSelectTitle: (KalViewController *) sender;
 @end
 
 

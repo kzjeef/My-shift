@@ -42,6 +42,7 @@
 {
   UILabel *headerTitleLabel;
   KalGridView *gridView;
+  UIView *headerView;
   UITableView *tableView;
   UIImageView *shadowView;
   id<KalViewDelegate> __unsafe_unretained delegate;
@@ -77,6 +78,7 @@
 - (void)showPreviousMonth;
 - (void)showFollowingMonth;
 - (void)didSelectDate:(KalDate *)date;
+- (void)didSelectTitle;
 
 - (NSArray *) KalTileDrawDelegate: (KalTileView *) sender getIconDrawInfoWithDate: (NSDate *) date;
 
