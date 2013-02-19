@@ -230,6 +230,20 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = Kal;
 		};
+		29F1BCF316D26A650097F9CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2912672D16CF691D00FFB202 /* SSLunarDate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 29AFF70A16C223E80093EAB4;
+			remoteInfo = SSLunarDate;
+		};
+		29F1BCF516D26A650097F9CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2912672D16CF691D00FFB202 /* SSLunarDate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 29AFF71B16C223E80093EAB4;
+			remoteInfo = SSLunarDateTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -926,6 +940,15 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		29F1BCEF16D26A650097F9CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				29F1BCF416D26A650097F9CC /* libSSLunarDate.a */,
+				29F1BCF616D26A650097F9CC /* SSLunarDateTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1038,7 +1061,7 @@
 		29B9E1A81472C1D700DB2E1F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = 29B9E1AB1472C1D700DB2E1F /* Build configuration list for PBXProject "ShiftScheduler" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1057,6 +1080,10 @@
 					ProductGroup = 29D6A50C159CB36F00AC6103 /* Products */;
 					ProjectRef = 29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */;
 				},
+				{
+					ProductGroup = 29F1BCEF16D26A650097F9CC /* Products */;
+					ProjectRef = 2912672D16CF691D00FFB202 /* SSLunarDate.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1072,6 +1099,20 @@
 			fileType = archive.ar;
 			path = libKal.a;
 			remoteRef = 29D6A512159CB37000AC6103 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		29F1BCF416D26A650097F9CC /* libSSLunarDate.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSSLunarDate.a;
+			remoteRef = 29F1BCF316D26A650097F9CC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		29F1BCF616D26A650097F9CC /* SSLunarDateTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SSLunarDateTests.octest;
+			remoteRef = 29F1BCF516D26A650097F9CC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1411,7 +1452,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				CODE_SIGN_ENTITLEMENTS = ShiftScheduler/ShiftScheduler.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1440,7 +1480,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				CODE_SIGN_ENTITLEMENTS = ShiftScheduler/ShiftScheduler.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
