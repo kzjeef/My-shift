@@ -103,3 +103,4 @@ rm 'Resources/icons/v1/calendar-2.png'
 rm 'Resources/icons/v1/calendar.png'
 Resources/icons/v1/
 Resources/alarm/
+build/
