@@ -16,6 +16,10 @@
 
 #define JOB_CACHE_INDEFITER @"JobNameCache"
 
+#define LUNAR_CONVERT_ERROR_TITLE_STR  NSLocalizedString(@"No Lunar Date", "not able to generate lunar Date title")
+#define LUNAR_CONVERT_ERROR_DETAIL_STR  NSLocalizedString(@"lunar date out of range.", "not able to generate lunar Date title")
+
+
 @synthesize fetchedRequestController;
 @synthesize theJobNameArray;
 @synthesize timeFormatter, objectContext;
@@ -132,13 +136,19 @@
     
     if ([self isLunarDateDisplayEnable] && indexPath.section == 0) {
         SSLunarDate *lunarDate = [[SSLunarDate alloc] initWithDate:currentChoosenDate];
-        cell.textLabel.text =  [NSString stringWithFormat:@"%@%@",
-                                [lunarDate monthString],
-                                [lunarDate dayString]];
         
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@(%@)",
-                                     [lunarDate yearGanzhiString],
-                                     [lunarDate zodiacString]];
+        if ([lunarDate convertSuccess]) {
+            cell.textLabel.text =  [NSString stringWithFormat:@"%@%@",
+                                    [lunarDate monthString],
+                                    [lunarDate dayString]];
+            
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@(%@)",
+                                         [lunarDate yearGanzhiString],
+                                         [lunarDate zodiacString]];
+        } else {
+            cell.textLabel.text = LUNAR_CONVERT_ERROR_TITLE_STR;
+            cell.detailTextLabel.text = LUNAR_CONVERT_ERROR_DETAIL_STR;
+        }
         cell.imageView.image = nil;
     } else {
         OneJob *job = [self jobAtIndexPath: indexPath];
