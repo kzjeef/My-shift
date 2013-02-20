@@ -242,15 +242,20 @@ enum {
 
     [self performSelectorInBackground:@selector(SSKalControllerInit) withObject:nil];
     
-    id token = [[NSFileManager defaultManager] ubiquityIdentityToken];
-    
-    if (token) {
-        NSLog(@"have icloud");
-        // have iClude account;
+    if (![[NSFileManager defaultManager] respondsToSelector:@selector(ubiquityIdentityToken)]) {
+        // iOS 5.x System.
+        NSLog(@"ios5 system.");
     } else {
-        NSLog(@"don't have icloud");
+        // iOS 6.x + system.
+        id token = [[NSFileManager defaultManager] ubiquityIdentityToken];
+        
+        if (token) {
+            NSLog(@"have icloud");
+            // have iClude account;
+        } else {
+            NSLog(@"don't have icloud");
+        }
     }
-    
 
     
     return YES;

@@ -1467,6 +1467,7 @@
 					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7\"",
 					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7s\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
@@ -1495,6 +1496,7 @@
 					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7\"",
 					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7s\"",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
