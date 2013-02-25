@@ -8,9 +8,10 @@
 
 #import "SSSettingTVC.h"
 #import "SSSocialThinkNoteLogin.h"
-#import "AlarmPickerViewController.h"
+#import "SSSettingAlarmPickerVC.h"
 #import "SSAppDelegate.h"
 #import "SSDefaultConfigName.h"
+#import "SSSettingHolidayRegionPIckerVC.h"
 
 
 @implementation SSSettingTVC
@@ -23,7 +24,12 @@
 #define PICK_ALERT_SOUND NSLocalizedString(@"Alert", "choose alert sound")
 
 #define LUNAR_ENABLE_ITEM   NSLocalizedString(@"Lunar Calendar", "enable chinese calendar config title")
+
 #define LUNAR_ENABLE_TEIM_HELP NSLocalizedString(@"show chinese lunar calendar", "enable chinese calendar config help")
+
+#define HOLIDAY_PICK_ITEM   NSLocalizedString(@"Region Holidays", "enable chinese calendar config title")
+
+#define HOLIDAY_PICK_ITEM_HLEP NSLocalizedString(@"show region(s) holiday on calendar", "show region hlidays help")
 
 #define LOGIN_THINKNOTE_ITEM    NSLocalizedString(@"Login ThinkNote", "thinkNote Login")
 
@@ -52,6 +58,7 @@ enum {
 
 enum {
     SSSETTING_APPCFG_LUNAR_ENABLE = 0,
+    SSSETTING_APPCFG_HOLIDAY_PICK,
 };
 
 enum {
@@ -62,14 +69,14 @@ enum {
 - (NSArray *) appConfigHelpArray
 {
     if (!appConfigHelpArray)
-        appConfigHelpArray = @[LUNAR_ENABLE_TEIM_HELP];
+        appConfigHelpArray = @[LUNAR_ENABLE_TEIM_HELP, HOLIDAY_PICK_ITEM_HLEP];
     return appConfigHelpArray;
 }
 
 - (NSArray *) appConfigArray
 {
     if (!appConfigArray)
-        appConfigArray = @[LUNAR_ENABLE_ITEM];
+        appConfigArray = @[LUNAR_ENABLE_ITEM, HOLIDAY_PICK_ITEM];
     return appConfigArray;
 }
 
@@ -319,6 +326,8 @@ enum {
             BOOL enableLunar = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY];
             s.on = enableLunar;
             [cell.contentView addSubview:s];
+        } else if (indexPath.row == SSSETTING_APPCFG_HOLIDAY_PICK) {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
     } else if (indexPath.section == SSFEEDBACK_SECTION) {
         cell.textLabel.text = [self.feedbackItemsArray objectAtIndex:indexPath.row];
@@ -382,6 +391,11 @@ enum {
             [_thinknoteLogin showThinkNoteLoingView];
         }
         return;
+    } else if (indexPath.section == SSAPPCFG_SECTION) {
+        if (indexPath.row == SSSETTING_APPCFG_HOLIDAY_PICK) {
+            SSSettingHolidayRegionPIckerVC *vc = [[SSSettingHolidayRegionPIckerVC alloc] initWithStyle:UITableViewStylePlain];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     } else if (indexPath.section == SSFEEDBACK_SECTION) {
         
         if ( [TELL_OTHER_ITEM_STRING isEqualToString:[self.feedbackItemsArray objectAtIndex:indexPath.row]])
@@ -401,7 +415,7 @@ enum {
             BOOL enableSound = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_ALERT_SOUND];
             if (!enableSound)
                 return;
-            AlarmPickerViewController  *view = [[AlarmPickerViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            SSSettingAlarmPickerVC  *view = [[SSSettingAlarmPickerVC alloc] initWithStyle:UITableViewStyleGrouped];
             [self.navigationController pushViewController:view animated:YES];
         }
     } else if (indexPath.section == SSRESET_SECTION) {

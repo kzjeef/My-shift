@@ -230,12 +230,14 @@ enum {
                                  @(NO),
                                  @"Alarm_Beep_03.caf",
                                  @"Beep",
+                                 @[@0,@0],
                                  @(NO),
                                  @(NO)]
                                  forKeys:@[USER_CONFIG_ENABLE_ALERT_SOUND,
                                  USER_CONFIG_USE_SYS_DEFAULT_ALERT_SOUND,
                                  USER_CONFIG_APP_DEFAULT_ALERT_SOUND,
                                  USER_CONFIG_APP_ALERT_SOUND_FILE,
+                                 USER_CONFIG_HOLIDAY_REGION,
                                  USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY,
                                  USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];

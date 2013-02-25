@@ -91,6 +91,8 @@
 		299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */; };
 		299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */; };
 		29AB77A815D8746400669B6B /* notify.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29AB77A715D8746400669B6B /* notify.caf */; };
+		29AD3C8B16D7B036002E6543 /* SSSettingHolidayRegionPIckerVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 29AD3C8916D7B035002E6543 /* SSSettingHolidayRegionPIckerVC.h */; };
+		29AD3C8C16D7B036002E6543 /* SSSettingHolidayRegionPIckerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD3C8A16D7B035002E6543 /* SSSettingHolidayRegionPIckerVC.m */; };
 		29AEBD691554146F0010F27D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29ECA45814B0514E00B3832D /* SenTestingKit.framework */; };
 		29AEBD6A1554146F0010F27D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E1B51472C1D700DB2E1F /* UIKit.framework */; };
 		29AEBD6B1554146F0010F27D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B9E1B71472C1D700DB2E1F /* Foundation.framework */; };
@@ -171,8 +173,8 @@
 		29E6D7F115ADACCE00235123 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E6D7F015ADACCE00235123 /* MessageUI.framework */; };
 		29E6D7F915ADC63100235123 /* SSShareProfileListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E6D7F715ADC63100235123 /* SSShareProfileListViewController.h */; };
 		29E6D7FA15ADC63100235123 /* SSShareProfileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E6D7F815ADC63100235123 /* SSShareProfileListViewController.m */; };
-		29E980EF1641747B00B65A7E /* AlarmPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E980ED1641747B00B65A7E /* AlarmPickerViewController.h */; };
-		29E980F01641747B00B65A7E /* AlarmPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E980EE1641747B00B65A7E /* AlarmPickerViewController.m */; };
+		29E980EF1641747B00B65A7E /* SSSettingAlarmPickerVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E980ED1641747B00B65A7E /* SSSettingAlarmPickerVC.h */; };
+		29E980F01641747B00B65A7E /* SSSettingAlarmPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E980EE1641747B00B65A7E /* SSSettingAlarmPickerVC.m */; };
 		29E980F2164177B600B65A7E /* AlarmList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29E980F1164177B600B65A7E /* AlarmList.plist */; };
 		29E980FE16419E1500B65A7E /* DingDong.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980F316419E1500B65A7E /* DingDong.caf */; };
 		29E980FF16419E1500B65A7E /* Alarm_Beep_03.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980F416419E1500B65A7E /* Alarm_Beep_03.caf */; };
@@ -334,6 +336,8 @@
 		299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftWorkdayConfigTVC.h; sourceTree = "<group>"; };
 		299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftWorkdayConfigTVC.m; sourceTree = "<group>"; };
 		29AB77A715D8746400669B6B /* notify.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = notify.caf; path = Resources/notify.caf; sourceTree = "<group>"; };
+		29AD3C8916D7B035002E6543 /* SSSettingHolidayRegionPIckerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSettingHolidayRegionPIckerVC.h; path = ShiftScheduler/SSSettingHolidayRegionPIckerVC.h; sourceTree = "<group>"; };
+		29AD3C8A16D7B035002E6543 /* SSSettingHolidayRegionPIckerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSettingHolidayRegionPIckerVC.m; path = ShiftScheduler/SSSettingHolidayRegionPIckerVC.m; sourceTree = "<group>"; };
 		29AEBD681554146F0010F27D /* OneJobModuleTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneJobModuleTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29AEBD6E1554146F0010F27D /* OneJobModuleTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OneJobModuleTest-Info.plist"; sourceTree = "<group>"; };
 		29AEBD701554146F0010F27D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -403,8 +407,8 @@
 		29E6D7F015ADACCE00235123 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		29E6D7F715ADC63100235123 /* SSShareProfileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSShareProfileListViewController.h; path = ShiftScheduler/SSShareProfileListViewController.h; sourceTree = "<group>"; };
 		29E6D7F815ADC63100235123 /* SSShareProfileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSShareProfileListViewController.m; path = ShiftScheduler/SSShareProfileListViewController.m; sourceTree = "<group>"; };
-		29E980ED1641747B00B65A7E /* AlarmPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmPickerViewController.h; path = ShiftScheduler/AlarmPickerViewController.h; sourceTree = "<group>"; };
-		29E980EE1641747B00B65A7E /* AlarmPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = AlarmPickerViewController.m; path = ShiftScheduler/AlarmPickerViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		29E980ED1641747B00B65A7E /* SSSettingAlarmPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSettingAlarmPickerVC.h; path = ShiftScheduler/SSSettingAlarmPickerVC.h; sourceTree = "<group>"; };
+		29E980EE1641747B00B65A7E /* SSSettingAlarmPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SSSettingAlarmPickerVC.m; path = ShiftScheduler/SSSettingAlarmPickerVC.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29E980F1164177B600B65A7E /* AlarmList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AlarmList.plist; sourceTree = "<group>"; };
 		29E980F316419E1500B65A7E /* DingDong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DingDong.caf; path = Resources/alarm/DingDong.caf; sourceTree = "<group>"; };
 		29E980F416419E1500B65A7E /* Alarm_Beep_03.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Alarm_Beep_03.caf; path = Resources/alarm/Alarm_Beep_03.caf; sourceTree = "<group>"; };
@@ -555,8 +559,10 @@
 		2935514914E2E5EB004D8FAC /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
-				29E980ED1641747B00B65A7E /* AlarmPickerViewController.h */,
-				29E980EE1641747B00B65A7E /* AlarmPickerViewController.m */,
+				29E980ED1641747B00B65A7E /* SSSettingAlarmPickerVC.h */,
+				29AD3C8916D7B035002E6543 /* SSSettingHolidayRegionPIckerVC.h */,
+				29AD3C8A16D7B035002E6543 /* SSSettingHolidayRegionPIckerVC.m */,
+				29E980EE1641747B00B65A7E /* SSSettingAlarmPickerVC.m */,
 				29009FCA159F4A4D00A1588E /* SSSettingTVC.h */,
 				29009FCB159F4A4D00A1588E /* SSSettingTVC.m */,
 				29009FCC159F4A4D00A1588E /* SSSettingTVC.xib */,
@@ -1010,8 +1016,9 @@
 				29B8F3D915B9BA62000D934A /* UIImage+CaptureView.h in Headers */,
 				29B43CA615D29DBF000BC677 /* ThinkNoteShareViewController.h in Headers */,
 				29293D9215DFE778006B6907 /* SSSocialThinkNoteLogin.h in Headers */,
-				29E980EF1641747B00B65A7E /* AlarmPickerViewController.h in Headers */,
+				29E980EF1641747B00B65A7E /* SSSettingAlarmPickerVC.h in Headers */,
 				2912673916CF77CE00FFB202 /* SSDefaultConfigName.h in Headers */,
+				29AD3C8B16D7B036002E6543 /* SSSettingHolidayRegionPIckerVC.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1298,7 +1305,8 @@
 				29B8F3DA15B9BA62000D934A /* UIImage+CaptureView.m in Sources */,
 				298C3FBD15D92622002F9AC3 /* ThinkNoteShareViewController.m in Sources */,
 				29293D9315DFE778006B6907 /* SSSocialThinkNoteLogin.m in Sources */,
-				29E980F01641747B00B65A7E /* AlarmPickerViewController.m in Sources */,
+				29E980F01641747B00B65A7E /* SSSettingAlarmPickerVC.m in Sources */,
+				29AD3C8C16D7B036002E6543 /* SSSettingHolidayRegionPIckerVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

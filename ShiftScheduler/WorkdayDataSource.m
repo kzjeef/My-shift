@@ -10,7 +10,22 @@
 #import "NSDateAdditions.h"
 #import "SSDefaultConfigName.h"
 #import "SSLunarDate/SSLunarDate.h"
+#import "SSLunarDate/SSHolidayManager.h"
 
+#define ONE_DAY_SECONDS (60*60*24)
+#define HALF_DAY_SECONDS (60*60*12)
+
+
+@interface WorkdayDataSource()
+{
+    NSArray *_cachedRegionList;
+    NSArray *_holidayManagers;
+}
+
+@property (readonly) NSArray *holidayManagers;
+@property (readonly) NSArray * cachedRegionList;
+
+@end
 
 @implementation WorkdayDataSource
 
@@ -29,10 +44,44 @@
     self = [super init];
     if (self) {
         items = [[NSMutableArray alloc] init];
+        currentChoosenDate = [NSDate date];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(regionChangedNotifyHandler) name:HOLIDAY_REGION_CHANGED_NOTICE object:nil];
     }
     
     return self;
 }
+
+- (void) regionChangedNotifyHandler
+{
+    [callback loadedDataSource:self];
+}
+
+- (NSArray *) cachedRegionList
+{
+    NSArray *storedList = [[NSUserDefaults standardUserDefaults] objectForKey:USER_CONFIG_HOLIDAY_REGION];
+    _cachedRegionList = [storedList copy];
+    return _cachedRegionList;
+}
+
+- (NSArray *) holidayManagers
+{
+    
+    // Without ARC, this should be better handle, since region changed will
+    // leak orignall array.
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [self.cachedRegionList count]; i++) {
+        NSNumber *n = [self.cachedRegionList objectAtIndex:i];
+        if (n.intValue == YES) {
+            SSHolidayManager *m = [[SSHolidayManager alloc] initWithRegion:(SSHolidayRegion)i];
+            [array addObject:m];
+        }
+    }
+    _holidayManagers = array;
+
+    return _holidayManagers;
+}
+
+
 
 - (NSDateFormatter *) timeFormatter
 {
@@ -42,6 +91,10 @@
     }
     return timeFormatter;
 }
+
+
+
+#pragma mark - TableView
 
 - (NSFetchedResultsController *) fetchedRequestController
 {
@@ -69,6 +122,38 @@
     fetchedRequestController = frc;
     return frc;
 }
+
+#pragma mark - Holiday Related
+
+- (NSArray *) getHolidayForDate:(NSDate *) date
+{
+    NSAssert(date != nil, @"Date not should nil");
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    
+    for (SSHolidayManager *m in self.holidayManagers) {
+        NSArray *a = [m getHolidayListForDate:date];
+        if (a != nil && [a lastObject] != nil)
+            [result addObjectsFromArray:a];
+    }
+    
+    return result;
+}
+
+- (NSArray *) getHolidayFromDateToDate:(NSDate *) fromDate  endDate:(NSDate *) toDate {
+    
+    NSDate *d = [fromDate copy];
+    NSMutableArray *res = [[NSMutableArray alloc] init];
+    while (true) {
+        NSArray *a = [self getHolidayForDate:d];
+        if ([a lastObject] != nil)
+            [res addObject:[d copy]];
+        d = [d dateByAddingTimeInterval:ONE_DAY_SECONDS];
+        if ([d compare:toDate] == NSOrderedDescending)
+            break;
+    }
+    return res;
+}
+
 
 
 - (id) initWithManagedContext:(NSManagedObjectContext *)thecontext
@@ -99,6 +184,7 @@
     
     [self.fetchedRequestController performFetch:nil];
     theJobNameArray = nil;
+    _holidayManagers = nil;
     [callback loadedDataSource:self];
     
 }
@@ -193,17 +279,16 @@
     callback = delegate;
 }
 
-#define ONE_DAY_SECONDS (60*60*24)
-#define HALF_DAY_SECONDS (60*60*12)
 - (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate
 {
-
 
     NSMutableArray *markedDayArray = [[NSMutableArray alloc] init];
     
     for (OneJob *j in self.theJobNameArray) {
         [markedDayArray addObjectsFromArray:[j returnWorkdaysWithInStartDate:fromDate endDate:[toDate dateByAddingTimeInterval:ONE_DAY_SECONDS]]];
     }
+    
+    [markedDayArray addObjectsFromArray:[self getHolidayFromDateToDate:fromDate endDate:toDate]];
     
     return  markedDayArray;
 }
@@ -253,35 +338,47 @@
     NSMutableArray *tjobArray = [[NSMutableArray alloc] init];
 
     [self loadItemsForData:date toArray:tjobArray];
-
+    
+    NSArray *holidays = [self getHolidayForDate:date];
+    if ([holidays lastObject] != nil) {
+        NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [NSNumber numberWithInt:KAL_TILE_ICON_TYPE_HOLIDAY],    KAL_TILE_ICON_TYPE_KEY,
+                               [NSNumber numberWithInt:KAL_TILE_ICON_POSITION_BOTTOM], KAL_TILE_ICON_POS_KEY,
+                               nil];
+        [resultArray addObject:entry];
+    }
+    
     // FIXME: because some bug in shift module, is possible not found
     // the shift item here, return a default icon to workaround and
     // print a warnning.
-    if (tjobArray.count == 0)  {
+    if (tjobArray.count == 0 && resultArray.count == 0)  {
         NSLog(@"Warnning: Return nil in KalTileDrawDelegate: this should not happens:date:%@", date);
         NSAssert(NO, @"Warnning: Return nil in KalTileDrawDelegate: this should not happens:date:%@", date);
         return nil;
+    } else if (tjobArray == 0) {
+        return resultArray;
     }
 
+    // First, deal with shift icons.
     for (id j in tjobArray) {
         if (j && [j isKindOfClass:[OneJob class]]) {
             OneJob *job = j;
-            int drawType;
-            if (job.iconColor == nil)
-                drawType = KAL_TILE_DRAW_METHOD_COLOR_ICON;
-            else
-                drawType = KAL_TILE_DRAW_METHOD_MONO_ICON_FILL_COLOR;
 
-            NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys: 
-                                   [NSNumber numberWithInt:drawType], KAL_TILE_ICON_DRAW_TYPE_KEY,
-                                   job.iconImage, KAL_TILE_ICON_IMAGE_KEY,
-                                   job.iconColor, KAL_TILE_ICON_COLOR_KEY,
-                                   [job.jobName substringWithRange:NSMakeRange(0, 1)], KAL_TILE_ICON_TEXT,
-                                   job.jobShowTextInCalendar, KAL_TILE_ICON_IS_SHOW_TEXT,
-                                                nil];
+            NSDictionary *entry = [NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSNumber numberWithInt:KAL_TILE_ICON_TYPE_SHIFT], KAL_TILE_ICON_TYPE_KEY,
+                                   [NSNumber numberWithInt:KAL_TILE_ICON_POSITION_TOP], KAL_TILE_ICON_POS_KEY,
+                                   job.iconImage,                                       KAL_TILE_ICON_IMAGE_KEY,
+                                   job.iconColor,                                       KAL_TILE_ICON_COLOR_KEY,
+                                   [job.jobName substringWithRange:NSMakeRange(0, 1)],  KAL_TILE_ICON_TEXT_KEY,
+                                   job.jobShowTextInCalendar,                           KAL_TILE_ICON_IS_SHOW_TEXT_KEY,
+                                   nil];
             [resultArray addObject:entry];
         }
     }
+
+    // Then, add a icon that to notice the day was a holiday, the Kal
+    // will draw the icon.
+    
     return resultArray;   
 }
 
