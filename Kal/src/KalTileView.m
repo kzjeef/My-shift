@@ -92,39 +92,25 @@ extern const CGSize kTileSize;
       iconlist = [delegate KalTileDrawDelegate:self
                        getIconDrawInfoWithDate:self.date.NSDate];
       if (iconlist) {
-          CGFloat count = 0;
+          CGFloat top_count = 0;
           for (NSDictionary *dict in iconlist) {
               // first check icon draw type, if it's type one, just draw icon
               // if type two,draw with clip to mask.
               
-              // -1 to fix the third icon will out of the rect of this tail.
-              CGFloat iheight = kTileSize.height / 3 - 1;
-              CGFloat iwidth = kTileSize.width / 3 - 1;
-              CGFloat margin = 1;
-              CGRect iconRect = CGRectMake(margin + (count * iwidth) , 
-                                           kTileSize.height - iheight - (margin), iwidth, iheight);
-              // if it was draw color icon directly, use this. 
-              CGContextSaveGState(ctx);
-
-              NSNumber *isShowText      = [dict objectForKey:KAL_TILE_ICON_IS_SHOW_TEXT];
-              NSString *text           = [dict objectForKey:KAL_TILE_ICON_TEXT];
-              UIColor *iconTextColor      = [dict objectForKey:KAL_TILE_ICON_COLOR_KEY];
-                
-              (iconTextColor == nil) ? [UIColor blackColor] : iconTextColor;
-
-              if (isShowText && isShowText.intValue == YES) {
-                  UIFont *fontDrawText = [UIFont boldSystemFontOfSize:13.0];
-                  [self drawText:text withCtx:ctx atPoint:CGPointMake(iconRect.origin.x, margin) withFont:fontDrawText withColor:iconTextColor];
-              } else {
-                  UIImage *img = [dict objectForKey:KAL_TILE_ICON_IMAGE_KEY];
-                  [img scaleAndCropToSize:iconRect.size onlyIfNeeded:YES];
-                  CGImageRef alphaImage = CGImageRetain(img.CGImage);
-                  CGContextDrawImage(ctx, iconRect, alphaImage);
-                  CGImageRelease(alphaImage);
+              NSNumber *position = [dict objectForKey:KAL_TILE_ICON_POS_KEY];
+              NSNumber *type     = [dict objectForKey:KAL_TILE_ICON_TYPE_KEY];
+              
+              if (position.integerValue == KAL_TILE_ICON_POSITION_TOP) {
+                  
+                  if (type.integerValue == KAL_TILE_ICON_TYPE_SHIFT) {
+                      [self drawMarkForShiftIcon:dict count:top_count ctx:ctx];
+                  }                   top_count += 1;
+              } else if (position.integerValue == KAL_TILE_ICON_POSITION_BOTTOM) {
+                  if (type.integerValue == KAL_TILE_ICON_TYPE_HOLIDAY) {
+                      UIFont *fontDrawText = [UIFont boldSystemFontOfSize:13.0];
+                      [self drawText:@"H" withCtx:ctx atPoint:CGPointMake(35., 30.) withFont:fontDrawText withColor:[self holidayTextColor]];
+                  }
               }
-
-              CGContextRestoreGState(ctx);
-              count += 1;
           }
       } else {
           // This is just a work around for the issue some version not get
@@ -156,8 +142,45 @@ extern const CGSize kTileSize;
     [[UIColor colorWithWhite:0.25f alpha:0.3f] setFill];
     CGContextFillRect(ctx, CGRectMake(0.f, 0.f, kTileSize.width, kTileSize.height));
   }
-    
+}
 
+- (UIColor *) holidayTextColor
+{
+    if (self.selected )
+        return [UIColor colorWithWhite:.88f alpha:.88f];
+    else
+        return [UIColor brownColor];
+}
+
+- (void) drawMarkForShiftIcon:(NSDictionary *) dict count:(int) count ctx:(CGContextRef) ctx
+{
+    // -1 to fix the third icon will out of the rect of this tail.
+    CGFloat iheight = kTileSize.height / 3 - 1;
+    CGFloat iwidth = kTileSize.width / 3 - 1;
+    CGFloat margin = 1;
+    CGRect iconRect = CGRectMake(margin + (count * iwidth) ,
+                                 kTileSize.height - iheight - (margin), iwidth, iheight);
+    // if it was draw color icon directly, use this.
+    CGContextSaveGState(ctx);
+    
+    NSNumber *isShowText      = [dict objectForKey:KAL_TILE_ICON_IS_SHOW_TEXT_KEY];
+    NSString *text           = [dict objectForKey:KAL_TILE_ICON_TEXT_KEY];
+    UIColor *iconTextColor      = [dict objectForKey:KAL_TILE_ICON_COLOR_KEY];
+    
+    (iconTextColor == nil) ? [UIColor blackColor] : iconTextColor;
+    
+    if (isShowText && isShowText.intValue == YES) {
+        UIFont *fontDrawText = [UIFont boldSystemFontOfSize:13.0];
+        [self drawText:text withCtx:ctx atPoint:CGPointMake(iconRect.origin.x, margin) withFont:fontDrawText withColor:iconTextColor];
+    } else {
+        UIImage *img = [dict objectForKey:KAL_TILE_ICON_IMAGE_KEY];
+        [img scaleAndCropToSize:iconRect.size onlyIfNeeded:YES];
+        CGImageRef alphaImage = CGImageRetain(img.CGImage);
+        CGContextDrawImage(ctx, iconRect, alphaImage);
+        CGImageRelease(alphaImage);
+    }
+    
+    CGContextRestoreGState(ctx);
 }
 
 - (void)resetState

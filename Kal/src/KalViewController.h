@@ -60,9 +60,24 @@ enum {
  */
 #define KAL_TILE_ICON_IMAGE_KEY @"icon_image"
 #define KAL_TILE_ICON_COLOR_KEY @"icon_color"
-#define KAL_TILE_ICON_DRAW_TYPE_KEY @"draw_type"
-#define KAL_TILE_ICON_IS_SHOW_TEXT @"is_show_text"
-#define KAL_TILE_ICON_TEXT @"icon_text"
+#define KAL_TILE_ICON_POS_KEY @"draw_position"
+#define KAL_TILE_ICON_IS_SHOW_TEXT_KEY @"is_show_text"
+#define KAL_TILE_ICON_TEXT_KEY @"icon_text"
+#define KAL_TILE_ICON_TYPE_KEY @"icon_type"
+
+enum {
+    KAL_TILE_ICON_POSITION_TOP,
+    KAL_TILE_ICON_POSITION_MIDDLE,
+    KAL_TILE_ICON_POSITION_BOTTOM
+};
+
+enum {
+        KAL_TILE_ICON_TYPE_SHIFT,         /* Shift realted icon */
+        KAL_TILE_ICON_TYPE_HOLIDAY,       /* Holiday, big holiday date */
+        KAL_TILE_ICON_TYPE_PUB_OFF,       /* Public off day */
+        KAL_TILE_ICON_TYPE_PUB_OVERWORK,  /* Public overwork day, only exsit in CN I think.... */
+};
+
 @class KalTileView;
 @protocol KalTileIconDelegate
 
