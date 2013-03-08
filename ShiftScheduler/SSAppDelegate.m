@@ -42,6 +42,8 @@ enum {
 #define CREATE_PROFILE_NO  NSLocalizedString(@"No,Thanks", "no create one")
 #define CREATE_PROFILE_YES  NSLocalizedString(@"Create Profile", "create one")
 
+#define DID_SHIFT_MIGRATION @"user_migration_done"
+
 //#define CONFIG_SS_ENABLE_SHIFT_CHANGE_FUNCTION
 
 - (void) SSKalControllerInit
@@ -231,13 +233,17 @@ enum {
                                  @"Alarm_Beep_03.caf",
                                  @"Beep",
                                  @(NO),
-                                 @(NO)]
+                                    @(NO),
+                                    @(NO),
+                                   ]
                                  forKeys:@[USER_CONFIG_ENABLE_ALERT_SOUND,
                                  USER_CONFIG_USE_SYS_DEFAULT_ALERT_SOUND,
                                  USER_CONFIG_APP_DEFAULT_ALERT_SOUND,
                                  USER_CONFIG_APP_ALERT_SOUND_FILE,
                                  USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY,
-                                 USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT]];
+                                           USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT,
+                                           DID_SHIFT_MIGRATION,
+                                           ]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 
     [self performSelectorInBackground:@selector(SSKalControllerInit) withObject:nil];
@@ -571,6 +577,16 @@ enum {
 
 - (void) shiftModuleMigration
 {
+  NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+  NSNumber *didMigration = [defs objectForKey:DID_SHIFT_MIGRATION];
+
+  BOOL success = YES;
+  if (didMigration != nil && didMigration.intValue == YES)
+    return;
+  else {
+    NSLog(@"user will perform one shift migration..only once...");
+  }
+  
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"OneJob"
                                               inManagedObjectContext:self.managedObjectContext];
@@ -595,11 +611,17 @@ enum {
         if ([j convertShiftRoundToJump] == NO) {
             NSLog(@"shift:%@ convert failed", j);
 	    [self.managedObjectContext reset];
+            success = NO;
 	    break;
         }
     }
 
-    [self.managedObjectContext save:&error];
+    if (success) {
+      [self.managedObjectContext save:&error];
+      // Only do once migration, oterwise it will make startup time too long...
+      [defs setObject:@(YES) forKey:DID_SHIFT_MIGRATION];
+      return;
+    }
 
     if (error)
         NSLog(@"save manage context error:%@", error.userInfo);
