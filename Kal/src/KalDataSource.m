@@ -13,6 +13,9 @@
   return [[[self class] alloc] init];
 }
 
+- (void)updateSelectDay:(NSDate *)date {}
+
+
 #pragma mark UITableViewDataSource protocol conformance
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
