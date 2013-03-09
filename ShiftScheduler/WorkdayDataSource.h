@@ -18,10 +18,11 @@
     NSArray *theJobNameArray;
     NSMutableArray*items;
     NSDateFormatter *timeFormatter;
-    NSDate *currentChoosenDate;
+    NSDate *_currentChoosenDate;
     id<KalDataSourceCallbacks> callback;
 }
 
+@property (strong) NSDate *currentChoosenDate;
 @property (strong, nonatomic) NSArray *theJobNameArray;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedRequestController;
 @property (strong, nonatomic) NSDateFormatter *timeFormatter;
@@ -32,6 +33,9 @@
 
 // Tile View Icon delegate
 - (NSArray *) KalTileDrawDelegate: (KalTileView *) sender getIconDrawInfoWithDate: (NSDate *) date;
+
+- (void)updateSelectDay:(NSDate *)date;
+
 
 
 
