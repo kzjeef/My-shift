@@ -76,6 +76,7 @@
 - (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate;
 - (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 - (void)removeAllItems;
+- (void)updateSelectDay:(NSDate *)date;
 @end
 
 @protocol KalDataSourceCallbacks <NSObject>

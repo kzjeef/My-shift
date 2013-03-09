@@ -34,6 +34,8 @@
 #define LUNAR_CONVERT_ERROR_TITLE_STR  NSLocalizedString(@"No Lunar Date", "not able to generate lunar Date title")
 #define LUNAR_CONVERT_ERROR_DETAIL_STR  NSLocalizedString(@"lunar date out of range.", "not able to generate lunar Date title")
 
+#define LUNAR_FMT_START_STRING  NSLocalizedString(@"Lunar", "")
+
 
 @synthesize fetchedRequestController;
 @synthesize theJobNameArray;
@@ -44,8 +46,8 @@
     self = [super init];
     if (self) {
         items = [[NSMutableArray alloc] init];
-        currentChoosenDate = [NSDate date];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(regionChangedNotifyHandler) name:HOLIDAY_REGION_CHANGED_NOTICE object:nil];
+        _currentChoosenDate = [NSDate date];
     }
     
     return self;
@@ -221,10 +223,11 @@
     
     
     if ([self isLunarDateDisplayEnable] && indexPath.section == 0) {
-        SSLunarDate *lunarDate = [[SSLunarDate alloc] initWithDate:currentChoosenDate];
+        SSLunarDate *lunarDate = [[SSLunarDate alloc] initWithDate:self.currentChoosenDate];
         
         if ([lunarDate convertSuccess]) {
-            cell.textLabel.text =  [NSString stringWithFormat:@"%@%@",
+            cell.textLabel.text =  [NSString stringWithFormat:@"%@:%@%@",
+                                    LUNAR_FMT_START_STRING,
                                     [lunarDate monthString],
                                     [lunarDate dayString]];
             
@@ -272,6 +275,11 @@
 
 #pragma mark KalDataSource protocol conformance
 
+- (void)updateSelectDay:(NSDate *)date
+{
+  _currentChoosenDate = date;
+}
+
 - (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate 
 		   delegate:(id<KalDataSourceCallbacks>)delegate
 {
@@ -295,7 +303,6 @@
 
 - (void) loadItemsForData:(NSDate *)date toArray:(NSMutableArray *)array
 {
-    currentChoosenDate = date;
     for (OneJob *job in self.theJobNameArray) {
         if ([job isDayWorkingDay:date]) {
             [array addObject:job];

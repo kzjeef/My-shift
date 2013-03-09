@@ -127,6 +127,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   NSDate *from = [[date NSDate] cc_dateByMovingToBeginningOfDay];
   NSDate *to = [[date NSDate] cc_dateByMovingToEndOfDay];
   [self clearTable];
+  [dataSource updateSelectDay:[date NSDate]];
   [dataSource loadItemsFromDate:from toDate:to];
   [tableView reloadData];
   [tableView flashScrollIndicators];
@@ -199,9 +200,9 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   [self reloadData];
 }
 
-- (NSDate *)selectedDate
+- (NSDate *)selectedDate:(NSDate *) date
 {
-  return [self.calendarView.selectedDate NSDate];
+  return date;
 }
 
 
