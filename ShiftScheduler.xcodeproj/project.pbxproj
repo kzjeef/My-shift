@@ -1071,6 +1071,7 @@
 				en,
 				"zh-Hans",
 				ja,
+				"zh-Hant",
 			);
 			mainGroup = 29B9E1A61472C1D700DB2E1F;
 			productRefGroup = 29B9E1B21472C1D700DB2E1F /* Products */;
