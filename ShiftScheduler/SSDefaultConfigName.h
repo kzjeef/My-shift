@@ -14,6 +14,7 @@
 #define USER_CONFIG_APP_DEFAULT_ALERT_SOUND      @"alarmSoundFileName"
 #define USER_CONFIG_APP_ALERT_SOUND_FILE         @"alarmSoundName"
 #define USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY     @"enableLunarDayDisplay"
+#define USER_CONFIG_ENABLE_MONDAY_DISPLAY        @"enableMondayFirstDisplay"
 #define USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT @"enableDisplayOutdateShift"
 #define USER_CONFIG_HOLIDAY_REGION                @"holidayRegionList"
 

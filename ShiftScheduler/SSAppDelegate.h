@@ -22,6 +22,8 @@
 @class SSShareController;
 @class ThinkNoteShareViewController;
 
+#define SS_LOCAL_NOTIFY_WEEK_START_CHANGED @"week start day changed"
+
 @interface SSAppDelegate : UIResponder <UIApplicationDelegate, 
 UIActionSheetDelegate,UIAlertViewDelegate,SSShareViewControllerDelegate,
 ProfileEditFinishDelegate>
