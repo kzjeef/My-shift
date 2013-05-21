@@ -25,6 +25,9 @@
 #define LUNAR_ENABLE_ITEM   NSLocalizedString(@"Lunar Calendar", "enable chinese calendar config title")
 #define LUNAR_ENABLE_TEIM_HELP NSLocalizedString(@"show chinese lunar calendar", "enable chinese calendar config help")
 
+#define MONDAY_START_ITEM   NSLocalizedString(@"Week start Monday", "enable start with monday title.")
+#define MONDAY_START_ITEM_HELP   NSLocalizedString(@"Calendar's week config", "change week start with monday help")
+
 #define LOGIN_THINKNOTE_ITEM    NSLocalizedString(@"Login ThinkNote", "thinkNote Login")
 
 #define CANCEL_STR NSLocalizedString(@"Cancel", "cancel")
@@ -52,32 +55,37 @@ enum {
 
 enum {
     SSSETTING_APPCFG_LUNAR_ENABLE = 0,
+    SSSETTING_APPCFG_MONDAY_ENABLE,
 };
 
 enum {
     SSSETTING_TAG_SYSALARM_ENABLE = 0,
     SSSETTING_TAG_APPCFG_LUNAR_ENABLE = 1,
+    SSSETTING_TAG_APPCFG_MONDAY_ENABLE,
 };
 
 - (NSArray *) appConfigHelpArray
 {
     if (!appConfigHelpArray)
-        appConfigHelpArray = @[LUNAR_ENABLE_TEIM_HELP];
+        appConfigHelpArray = @[ LUNAR_ENABLE_TEIM_HELP,
+                                MONDAY_START_ITEM_HELP];
+
     return appConfigHelpArray;
 }
 
 - (NSArray *) appConfigArray
 {
     if (!appConfigArray)
-        appConfigArray = @[LUNAR_ENABLE_ITEM];
+      appConfigArray = @[LUNAR_ENABLE_ITEM,
+                         MONDAY_START_ITEM];
     return appConfigArray;
 }
 
 - (NSArray *) alarmSettingsArray
 {
-    if (!alarmSettingsArray) {
+    if (!alarmSettingsArray)
         alarmSettingsArray = @[ENABLE_ALARM_SOUND, PICK_ALERT_SOUND];
-    }
+
     return alarmSettingsArray;
 }
 
@@ -193,10 +201,13 @@ enum {
         [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:USER_CONFIG_ENABLE_ALERT_SOUND];
     }  else if (s.tag == SSSETTING_TAG_APPCFG_LUNAR_ENABLE) {
         [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY];
+    } else if (s.tag == SSSETTING_TAG_APPCFG_MONDAY_ENABLE) {
+        [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:USER_CONFIG_ENABLE_MONDAY_DISPLAY];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SS_LOCAL_NOTIFY_WEEK_START_CHANGED object:[NSNumber numberWithBool:s.on]];
     }
 }
 
-- (UISwitch *) newSwitch:(NSIndexPath *)indexPath withTag:(NSInteger) tag
+- (UISwitch *)newSwitch:(NSIndexPath *)indexPath withTag:(NSInteger) tag
 {
     
     UISwitch *theSwitch;
@@ -319,7 +330,12 @@ enum {
             BOOL enableLunar = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY];
             s.on = enableLunar;
             [cell.contentView addSubview:s];
-        }
+        } else if (indexPath.row == SSSETTING_APPCFG_MONDAY_ENABLE) {
+            UISwitch *s = [self newSwitch:indexPath withTag:SSSETTING_TAG_APPCFG_MONDAY_ENABLE];
+            BOOL enableMondayFirst = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_MONDAY_DISPLAY];
+            s.on = enableMondayFirst;
+            [cell.contentView addSubview:s];
+        } 
     } else if (indexPath.section == SSFEEDBACK_SECTION) {
         cell.textLabel.text = [self.feedbackItemsArray objectAtIndex:indexPath.row];
     } else if (indexPath.section == SSSOCIAL_SECTION) {

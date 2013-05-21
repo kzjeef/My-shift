@@ -114,6 +114,8 @@ enum {
 	    self.tnoteShareVC.shareAgent = thinkNoteAgent;
 	    self.tnoteShareVC.shareDelegate = self;
 	});
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyWeekStartHandler:) name:SS_LOCAL_NOTIFY_WEEK_START_CHANGED object:nil];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -235,6 +237,7 @@ enum {
                                  @(NO),
                                     @(NO),
                                     @(NO),
+                                    @(NO),
                                    ]
                                  forKeys:@[USER_CONFIG_ENABLE_ALERT_SOUND,
                                  USER_CONFIG_USE_SYS_DEFAULT_ALERT_SOUND,
@@ -243,6 +246,7 @@ enum {
                                  USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY,
                                            USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT,
                                            DID_SHIFT_MIGRATION,
+                                           USER_CONFIG_ENABLE_MONDAY_DISPLAY,
                                            ]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 
@@ -266,7 +270,6 @@ enum {
     
     return YES;
 }
-
 
 - (void) rightButtonSwitchToShareOrBusy:(BOOL) share
 {
@@ -627,6 +630,14 @@ enum {
         NSLog(@"save manage context error:%@", error.userInfo);
 
 }
+
+- (void) notifyWeekStartHandler:(id) sender
+{
+  NSNumber *isMondayStart = [[NSUserDefaults standardUserDefaults]
+                             objectForKey:USER_CONFIG_ENABLE_MONDAY_DISPLAY];
+  [kal changeWeekStartType:isMondayStart.boolValue];
+}
+  
 
 
 @end
