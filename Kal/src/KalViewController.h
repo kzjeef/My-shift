@@ -104,6 +104,7 @@ enum {
 
 - (UIImage *)captureCalendarView;  /// get the Image of Kal View.
 - (NSString *)selecedMonthNameAndYear; /// get the name of selected year and month.
+- (void)changeWeekStartType:(BOOL) isStartWithMon;
 
 - (NSArray *) KalTileDrawDelegate: (KalTileView *) sender getIconDrawInfoWithDate: (NSDate *) date; // get the tile icon informations.
 

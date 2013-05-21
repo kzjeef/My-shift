@@ -23,6 +23,7 @@
 - (NSDate *)cc_dateByMovingToFirstDayOfTheFollowingMonth;
 - (NSDateComponents *)cc_componentsForMonthDayAndYear;
 - (NSUInteger)cc_weekday;
+- (NSUInteger)cc_weekdayWithCalendar:(NSCalendar *) calendar;
 - (NSUInteger)cc_numberOfDaysInMonth;
 
 @end

@@ -160,7 +160,12 @@
 
 - (NSUInteger)cc_weekday
 {
-  return [[NSCalendar currentCalendar] ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:self];
+    return [[NSCalendar currentCalendar] ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:self];
+}
+
+- (NSUInteger)cc_weekdayWithCalendar:(NSCalendar *) calendar
+{
+    return [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:self];
 }
 
 - (NSUInteger)cc_numberOfDaysInMonth

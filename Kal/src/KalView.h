@@ -47,6 +47,7 @@
   UIImageView *shadowView;
   id<KalViewDelegate> __unsafe_unretained delegate;
   KalLogic *logic;
+  NSMutableArray *weekdayLabels;
 }
 
 @property (nonatomic, unsafe_unretained) id<KalViewDelegate> delegate;
@@ -55,6 +56,7 @@
 
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)delegate logic:(KalLogic *)logic;
+- (void)refreshWeekdayLabel:(BOOL) sunDayStart;
 - (BOOL)isSliding;
 - (void)selectDate:(KalDate *)date;
 - (void)markTilesForDates:(NSArray *)dates;

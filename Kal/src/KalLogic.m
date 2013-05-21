@@ -41,7 +41,7 @@
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:localeString];
     [monthAndYearFormatter setLocale:locale];
     [monthAndYearFormatter setDateFormat:@"LLLL yyyy"];
-      cacheCalendar = [NSCalendar currentCalendar];
+    cacheCalendar = [NSCalendar currentCalendar];
     [self moveToMonthForDate:date];
   }
   return self;
@@ -63,6 +63,14 @@
   [self moveToMonthForDate:[self.baseDate cc_dateByMovingToFirstDayOfThePreviousMonth]];
 }
 
+- (void)setCalendarStartMonday:(BOOL)isStartMonday
+{
+  if (isStartMonday)
+    [cacheCalendar setFirstWeekday:2];
+  else
+    [cacheCalendar setFirstWeekday:1];
+}
+
 - (void)advanceToFollowingMonth
 {
   [self moveToMonthForDate:[self.baseDate cc_dateByMovingToFirstDayOfTheFollowingMonth]];
@@ -77,15 +85,15 @@
 
 - (NSUInteger)numberOfDaysInPreviousPartialWeek
 {
-  return [self.baseDate cc_weekday] - 1;
+    return [self.baseDate cc_weekdayWithCalendar:cacheCalendar] - 1;
 }
 
 - (NSUInteger)numberOfDaysInFollowingPartialWeek
 {
   NSDateComponents *c = [self.baseDate cc_componentsForMonthDayAndYear];
   c.day = [self.baseDate cc_numberOfDaysInMonth];
-  NSDate *lastDayOfTheMonth = [[NSCalendar currentCalendar] dateFromComponents:c];
-  return 7 - [lastDayOfTheMonth cc_weekday];
+  NSDate *lastDayOfTheMonth = [cacheCalendar dateFromComponents:c];
+  return 7 - [lastDayOfTheMonth cc_weekdayWithCalendar:cacheCalendar];
 }
 
 - (NSArray *)calculateDaysInFinalWeekOfPreviousMonth
