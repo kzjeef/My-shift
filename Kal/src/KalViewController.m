@@ -205,6 +205,18 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   return date;
 }
 
+- (void)changeWeekStartType:(BOOL) isStartWithMon
+{
+  [logic setCalendarStartMonday:isStartWithMon];
+  // KalView's logic is inverted.
+  [[self calendarView] refreshWeekdayLabel:!isStartWithMon];
+
+  [self significantTimeChangeOccurred];
+
+  NSLog(@"KalViewController: Calendar redraw due to the week day start changed...");
+}
+
+
 
 // -----------------------------------------------------------------------------------
 #pragma mark UIViewController

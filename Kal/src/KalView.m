@@ -40,7 +40,6 @@ static const CGFloat kMonthLabelHeight = 17.f;
     [self addSubviewsToContentView:contentView];
     [self addSubview:contentView];
   }
-  
   return self;
 }
 
@@ -131,7 +130,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
   headerTitleLabel.shadowColor = [UIColor whiteColor];
   headerTitleLabel.shadowOffset = CGSizeMake(0.f, 1.f);
   [self setHeaderTitleText:[logic selectedMonthNameAndYear]];
-  [pheaderView addSubview:headerTitleLabel];
+  [headerView addSubview:headerTitleLabel];
   
   // Create the next month button on the right side of the view
   CGRect nextMonthButtonFrame = CGRectMake(self.width - kChangeMonthButtonWidth,
@@ -143,13 +142,35 @@ static const CGFloat kMonthLabelHeight = 17.f;
   nextMonthButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
   nextMonthButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
   [nextMonthButton addTarget:self action:@selector(showFollowingMonth) forControlEvents:UIControlEventTouchUpInside];
-  [pheaderView addSubview:nextMonthButton];
-  
+  [headerView addSubview:nextMonthButton];
+  // if needs, change it later.
+    [self refreshWeekdayLabel:YES];
+}
+
+-(void)refreshWeekdayLabel:(BOOL) sunDayStart
+{
+  if (weekdayLabels == nil)
+    weekdayLabels = [[NSMutableArray alloc] initWithCapacity:7];
+
+  // Remove all week day label.
+  for (UILabel *l in weekdayLabels)
+    [l removeFromSuperview];
+
+  [weekdayLabels removeAllObjects];
+
   // Add column labels for each weekday (adjusting based on the current locale's first weekday)
-  NSArray *weekdayNames = [[[NSDateFormatter alloc] init] shortWeekdaySymbols];
-  NSUInteger firstWeekday = [[NSCalendar currentCalendar] firstWeekday];
+  NSArray *weekdayNames = [[[NSDateFormatter alloc] init]
+                            shortWeekdaySymbols];
+  NSCalendar *cal = [NSCalendar currentCalendar];
+  if (sunDayStart)
+    [cal setFirstWeekday:1];
+  else
+    [cal setFirstWeekday:2];
+  NSUInteger firstWeekday = [cal firstWeekday];
   NSUInteger i = firstWeekday - 1;
-  for (CGFloat xOffset = 0.f; xOffset < pheaderView.width; xOffset += 46.f, i = (i+1)%7) {
+  for (CGFloat xOffset = 0.f;
+       xOffset < headerView.width;
+       xOffset += 46.f, i = (i+1)%7) {
     CGRect weekdayFrame = CGRectMake(xOffset, 30.f, 46.f, kHeaderHeight - 29.f);
     UILabel *weekdayLabel = [[UILabel alloc] initWithFrame:weekdayFrame];
     weekdayLabel.backgroundColor = [UIColor clearColor];
@@ -159,7 +180,8 @@ static const CGFloat kMonthLabelHeight = 17.f;
     weekdayLabel.shadowColor = [UIColor whiteColor];
     weekdayLabel.shadowOffset = CGSizeMake(0.f, 1.f);
     weekdayLabel.text = [weekdayNames objectAtIndex:i];
-    [pheaderView addSubview:weekdayLabel];
+    [headerView addSubview:weekdayLabel];
+    [weekdayLabels addObject:weekdayLabel];
   }
 }
 
