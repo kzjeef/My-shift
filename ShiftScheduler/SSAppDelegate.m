@@ -574,6 +574,8 @@ enum {
 
 + (BOOL) enableThinkNoteConfig
 {
+
+  return NO;
     NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
     NSArray* languages = [defs objectForKey:@"AppleLanguages"];
     NSString* preferredLang = [languages objectAtIndex:0];

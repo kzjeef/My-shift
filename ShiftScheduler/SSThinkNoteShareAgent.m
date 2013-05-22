@@ -125,7 +125,7 @@
 @implementation SSThinkNoteController
 
 #define TN_APP_KEY              @"7F4E06A130880A10A8E2D7B3AC37CCF9"
-#define TN_SITE_URL             @"http:www.qingbiji.cn"
+#define TN_SITE_URL             @"http://www.qingbiji.cn:80"
 #define TN_LOGIN_URL            @"/open/login"
 #define TN_ADDNOTE_URL          @"/open/addnote"
 #define TN_ATTACH_URL           @"/open/addattach"
@@ -157,7 +157,7 @@
                                                      options:NSJSONReadingMutableLeaves
                                                        error:&error];
 #ifdef DEBUG
-    NSLog(@"ThinkNote-Login: got data:%@", jsonDict);
+    NSLog(@"ThinkNote-Login: got data:%@ error: %@", jsonDict, error.userInfo);
 #endif
     
     _status = THINKNOTE_CONN_STATUS_LOGIN;
