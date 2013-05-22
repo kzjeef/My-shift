@@ -113,9 +113,10 @@ enum {
 	    self.tnoteShareVC.shareC = _shareC;
 	    self.tnoteShareVC.shareAgent = thinkNoteAgent;
 	    self.tnoteShareVC.shareDelegate = self;
-	});
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyWeekStartHandler:) name:SS_LOCAL_NOTIFY_WEEK_START_CHANGED object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyWeekStartHandler:) name:SS_LOCAL_NOTIFY_WEEK_START_CHANGED object:nil];
+            [self notifyWeekStartHandler:nil];
+	});
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
