@@ -28,6 +28,8 @@
 		2912673D16CF81FA00FFB202 /* libSSLunarDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2912673C16CF81FA00FFB202 /* libSSLunarDate.a */; };
 		2916128515A62A6B0031F78C /* calendar-simple-blue-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */; };
 		2916128715A62AC20031F78C /* calendar-simple-blue-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128615A62AC20031F78C /* calendar-simple-blue-114x114.png */; };
+		292652D2174D0EFE00ACE37F /* libSSLunarDate.a in Sources */ = {isa = PBXBuildFile; fileRef = 2912673C16CF81FA00FFB202 /* libSSLunarDate.a */; };
+		292652D3174D0F1400ACE37F /* libSSLunarDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F1BCF416D26A650097F9CC /* libSSLunarDate.a */; };
 		29293D9215DFE778006B6907 /* SSSocialThinkNoteLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */; };
 		29293D9315DFE778006B6907 /* SSSocialThinkNoteLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 29293D9115DFE777006B6907 /* SSSocialThinkNoteLogin.m */; };
 		2929A44414D04B360059728D /* InfColorBarPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 2929A43614D04B360059728D /* InfColorBarPicker.h */; };
@@ -456,6 +458,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292652D3174D0F1400ACE37F /* libSSLunarDate.a in Frameworks */,
 				29AEBD79155418490010F27D /* CoreData.framework in Frameworks */,
 				29AEBD691554146F0010F27D /* SenTestingKit.framework in Frameworks */,
 				29AEBD6A1554146F0010F27D /* UIKit.framework in Frameworks */,
@@ -1213,6 +1216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292652D2174D0EFE00ACE37F /* libSSLunarDate.a in Sources */,
 				29D9F0DA15D93A9A00960B56 /* SSShareObject.h in Sources */,
 				29D9F0DB15D93A9A00960B56 /* SSShareObject.m in Sources */,
 				29B8F3DF15B9BB52000D934A /* NSDateAdditions.h in Sources */,

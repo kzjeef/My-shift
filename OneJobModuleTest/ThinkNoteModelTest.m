@@ -26,7 +26,7 @@
     
     _ntController = [[SSThinkNoteController alloc] init];
     
-    int ret =    [_ntController loginNoteServerSyncWithName:@"kzjeef@gmail.com" withPassword:@"123456"];
+    int ret =    [_ntController loginNoteServerSyncWithName:@"zhangjeef@gmail.com" withPassword:@"123456"];
     STAssertTrue(ret == 0 , @"login failed");
     [_ntController disconnect];
 }
