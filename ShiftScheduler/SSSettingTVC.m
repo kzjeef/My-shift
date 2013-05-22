@@ -27,8 +27,8 @@
 
 #define LUNAR_ENABLE_TEIM_HELP NSLocalizedString(@"show chinese lunar calendar", "enable chinese calendar config help")
 
-#define MONDAY_START_ITEM   NSLocalizedString(@"Week start Monday", "enable start with monday title.")
-#define MONDAY_START_ITEM_HELP   NSLocalizedString(@"Calendar's week config", "change week start with monday help")
+#define MONDAY_START_ITEM   NSLocalizedString(@"Monday Start", "enable start with monday title.")
+#define MONDAY_START_ITEM_HELP   NSLocalizedString(@"change week to monday", "change week start with monday help")
 
 #define HOLIDAY_PICK_ITEM   NSLocalizedString(@"Region Holidays", "enable chinese calendar config title")
 
