@@ -196,7 +196,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   printf("[[self calendarView] jumpToSelectedMonth]: %.1f ms\n", tp.tv_nsec / 1e6);
 #endif
   
-  [[self calendarView] selectDate:[KalDate dateFromNSDate:date]];
+    [[self calendarView] selectDate:[KalDate dateFromNSDate:date]];
   [self reloadData];
 }
 
@@ -207,11 +207,16 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)changeWeekStartType:(BOOL) isStartWithMon
 {
+
   [logic setCalendarStartMonday:isStartWithMon];
   // KalView's logic is inverted.
-  [[self calendarView] refreshWeekdayLabel:!isStartWithMon];
 
-  [self significantTimeChangeOccurred];
+  [[self calendarView] refreshWeekdayLabel:!isStartWithMon];
+  [[self calendarView] selectDate:[KalDate dateFromNSDate:[NSDate date]]];
+    // FIXME: here because it's not able to directly refrash, so workaround it
+    // by move to next month and move back, pretty silly.
+    [self showFollowingMonth];
+    [self showPreviousMonth];
 
   NSLog(@"KalViewController: Calendar redraw due to the week day start changed...");
 }
