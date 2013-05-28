@@ -10,6 +10,7 @@
 @interface KalLogic ()
 {
     NSCalendar *cacheCalendar;
+    BOOL mIsStartMonday;
 }
 - (void)moveToMonthForDate:(NSDate *)date;
 - (void)recalculateVisibleDays;
@@ -69,6 +70,13 @@
     [cacheCalendar setFirstWeekday:2];
   else
     [cacheCalendar setFirstWeekday:1];
+    
+    mIsStartMonday = isStartMonday;
+}
+
+- (BOOL)isCalendarStartMondayMode
+{
+    return mIsStartMonday;
 }
 
 - (void)advanceToFollowingMonth
