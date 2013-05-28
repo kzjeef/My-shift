@@ -208,6 +208,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 - (void)changeWeekStartType:(BOOL) isStartWithMon
 {
 
+  KalDate *savedDate = [[self calendarView] selectedDate];
   [logic setCalendarStartMonday:isStartWithMon];
   // KalView's logic is inverted.
 
@@ -216,7 +217,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
     // by move to next month and move back, pretty silly.
     [self showFollowingMonth];
     [self showPreviousMonth];
-    [[self calendarView] selectDate:[KalDate dateFromNSDate:[NSDate date]]];
+    [[self calendarView] selectDate:savedDate];
 
   NSLog(@"KalViewController: Calendar redraw due to the week day start changed...");
 }
