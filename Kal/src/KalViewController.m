@@ -212,11 +212,11 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   // KalView's logic is inverted.
 
   [[self calendarView] refreshWeekdayLabel:!isStartWithMon];
-  [[self calendarView] selectDate:[KalDate dateFromNSDate:[NSDate date]]];
     // FIXME: here because it's not able to directly refrash, so workaround it
     // by move to next month and move back, pretty silly.
     [self showFollowingMonth];
     [self showPreviousMonth];
+    [[self calendarView] selectDate:[KalDate dateFromNSDate:[NSDate date]]];
 
   NSLog(@"KalViewController: Calendar redraw due to the week day start changed...");
 }
