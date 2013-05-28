@@ -42,6 +42,7 @@
 - (id)initForDate:(NSDate *)date; // designated initializer.
 
 - (void)setCalendarStartMonday:(BOOL)isStartMonday;
+- (BOOL)isCalendarStartMondayMode;
 - (void)retreatToPreviousMonth;
 - (void)advanceToFollowingMonth;
 - (void)moveToMonthForDate:(NSDate *)date;

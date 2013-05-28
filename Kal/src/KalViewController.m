@@ -209,6 +209,8 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 {
 
   KalDate *savedDate = [[self calendarView] selectedDate];
+    if ([logic isCalendarStartMondayMode] == isStartWithMon)
+        return;
   [logic setCalendarStartMonday:isStartWithMon];
   // KalView's logic is inverted.
 
