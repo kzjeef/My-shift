@@ -28,35 +28,40 @@
     self = [super init];
 
     self.managedcontext = thecontext;
-    
+
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName: @"OneJob"
-					      inManagedObjectContext: self.managedcontext];
+                                              inManagedObjectContext: self.managedcontext];
     [request setEntity:entity];
     request.sortDescriptors = @[[NSSortDescriptor
-							    sortDescriptorWithKey: @"jobName"
-									ascending:YES]];
+                                 sortDescriptorWithKey: @"jobName"
+                                 ascending:YES]];
     request.predicate = [NSPredicate predicateWithFormat:@"jobEnable == YES"];
     // we want monitor all job 's change, if one change from disable
     // to enable, we should know this.
     request.fetchBatchSize = 20;
-    
+
     self.frc = [[NSFetchedResultsController alloc]
-                initWithFetchRequest:request managedObjectContext:self.managedcontext sectionNameKeyPath:nil cacheName:JOB_CACHE_INDEFITER];
+                initWithFetchRequest:request
+                   managedObjectContext:self.managedcontext
+                  sectionNameKeyPath:nil cacheName:JOB_CACHE_INDEFITER];
+
     NSError *error = 0;
     self.frc = frc;
     self.frc.delegate = self;
     [self.frc performFetch:&error];
     if (error)
-	NSLog(@"fetch request error:%@", error.userInfo);
-    
+        NSLog(@"fetch request error:%@", error.userInfo);
+
     alert_sound_url = [NSURL fileURLWithPath:[[NSBundle mainBundle]
-                                                     pathForResource:@"notify" ofType:@"caf"]];
+                                              pathForResource:@"notify" ofType:@"caf"]];
+
     NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
     [dnc addObserver:self selector:@selector(managedContextDataChanged:)
-		name:NSManagedObjectContextDidSaveNotification
-	      object:self.managedcontext];
-    [dnc addObserver:self selector:@selector(alarmSoundChange:) name:@"ALARM_SOUND_CHANGED" object:nil];
+                name:NSManagedObjectContextDidSaveNotification
+              object:self.managedcontext];
+    [dnc addObserver:self selector:@selector(alarmSoundChange:)
+                name:@"ALARM_SOUND_CHANGED" object:nil];
 
     return self;
 }
@@ -84,12 +89,14 @@
 
 - (BOOL) shouldAlertWithSound
 {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_ALERT_SOUND];
+    return [[NSUserDefaults standardUserDefaults]
+            boolForKey:USER_CONFIG_ENABLE_ALERT_SOUND];
 }
 
 - (BOOL) shouldUseSystemSound
 {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_USE_SYS_DEFAULT_ALERT_SOUND];
+    return [[NSUserDefaults standardUserDefaults]
+            boolForKey:USER_CONFIG_USE_SYS_DEFAULT_ALERT_SOUND];
 }
 
 static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
@@ -99,85 +106,103 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
 
 - (void) playAlarmSound
 {
-    AudioServicesCreateSystemSoundID ((__bridge_retained CFURLRef)alert_sound_url,                                          &alertSoundID);
-    AudioServicesAddSystemSoundCompletion(alertSoundID, NULL, NULL, alertSoundPlayingCallback, NULL);
-    
+    AudioServicesCreateSystemSoundID ((__bridge_retained CFURLRef)alert_sound_url,
+                                      &alertSoundID);
+    AudioServicesAddSystemSoundCompletion(alertSoundID,
+                                          NULL, NULL,
+                                          alertSoundPlayingCallback,
+                                          NULL);
+
     AudioServicesPlayAlertSound(alertSoundID);
 }
 
-
-- (BOOL)scheduleNotificationWithItem:(NSDate *)firetime withDaysLater:(int)daysInFurther 
-                            interval:(int)timeIntervalBefore 
-                           alarmBody: (NSString *) alarmBody 
+- (BOOL)scheduleNotificationWithItem:(NSDate *)firetime
+                       withDaysLater:(int)daysInFurther
+                            interval:(int)timeIntervalBefore
+                           alarmBody: (NSString *) alarmBody
                     alarmActionTitle: (NSString *) actionTitle
                            TimeAfter: (NSTimeInterval) after
                                  job: (OneJob *)job
-                            isOffDay: (boolean_t) isOffday
+                         isBeforeOff: (boolean_t) isBeforeOff
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     NSCalendar *currentCal = [NSCalendar currentCalendar];
-    
-    [formatter setTimeStyle:NSDateFormatterMediumStyle];
-    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    NSDate *fireDateEndWork;
+    NSDate *fireDateBegingWork;
 
-    formatter.timeZone = [NSTimeZone defaultTimeZone];
-    
-    NSTimeInterval offset = [firetime timeIntervalSinceDate:[firetime cc_dateByMovingToBeginningOfDayWithCalender:currentCal]];
-    
-    NSDate *fireDate = [[[NSDate date] cc_dateByMovingToBeginningOfDay] dateByAddingTimeInterval:offset];
-    
-    fireDate = [fireDate cc_dateByMovingToNextOrBackwardsFewDays:daysInFurther withCalender:currentCal];
-    
-    NSDate *firedayWorkDate = [fireDate copy];
-    
-    // 工作时长， 这里加上, 为了解决隔夜工作的问题。
-    fireDate = [fireDate dateByAddingTimeInterval:after];
-
-    // 多少秒之前
-    fireDate = [fireDate dateByAddingTimeInterval:-timeIntervalBefore];
-    
-    
-    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-    if (localNotif == nil)
-        return NO;
-    
     if (job.jobEnable.boolValue == NO)
         return NO;
 
-    if ([fireDate timeIntervalSinceDate:[NSDate date]] < 0) {
-        NSLog(@"drop a notify since it out of date: when:%@ now:%@", [formatter stringFromDate:fireDate], [formatter stringFromDate:[NSDate date]]);
+    [formatter setTimeStyle:NSDateFormatterMediumStyle];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    formatter.timeZone = [NSTimeZone defaultTimeZone];
+
+    // firetime = everyday work start time
+    // offset = firetime  - firetime's beginning.
+    // fireDate = today's beginning + offset
+    // firedate move to days later.
+
+    NSTimeInterval offset = [firetime timeIntervalSinceDate:
+                                          [firetime cc_dateByMovingToBeginningOfDayWithCalender:currentCal]];
+
+    fireDateBegingWork = [[[NSDate date] cc_dateByMovingToBeginningOfDay]
+                             dateByAddingTimeInterval:offset];
+
+    fireDateBegingWork = [fireDateBegingWork
+                           cc_dateByMovingToNextOrBackwardsFewDays:daysInFurther
+                                                      withCalender:currentCal];
+
+    BOOL isWorkDayOfBeginAlarm = [job isDayWorkingDay:fireDateBegingWork];
+
+    // After add this length,
+    // the fireDate become the end of that's day's work.
+    fireDateEndWork = [[fireDateBegingWork dateByAddingTimeInterval:after] copy];
+
+    // Note:
+    // If the start time was 0:00, the days later should be -1,
+    // like, alarm 1 hour before 0:00 of Jul.2, should be alarm at
+    // Jul.1 's 23:00
+
+    NSDate *finalFireDate;
+    if (isBeforeOff)
+        finalFireDate = fireDateEndWork;
+    else
+        finalFireDate = fireDateBegingWork;
+
+    finalFireDate = [finalFireDate dateByAddingTimeInterval: -timeIntervalBefore];
+
+    if ([finalFireDate timeIntervalSinceDate:[NSDate date]] < 0) {
+        NSLog(@"drop a notify since it out of date: when:%@ now:%@",
+              [formatter stringFromDate:finalFireDate],
+              [formatter stringFromDate:[NSDate date]]);
         return NO;
     }
-    
-//    因为下班的时间的那天并不上班， 所以隔天会提醒可能会被取消， 这样可以避免这个问题。
-//  因为过夜的工作完全有可能是到了第二天， 而这一天也不工作，所以必须查看开始工作的那一天是否是工作日。
-    
-    if (isOffday) {
-        if (![job isDayWorkingDay:firedayWorkDate]) {
-            NSLog(@"drop a notify since it was not %@ 's working day: %@",job.jobName, [formatter stringFromDate:fireDate]);
-            return NO;
-        } 
-    } else {
-        if (![job isDayWorkingDay:fireDate]) {
-            NSLog(@"drop a notify since it was not %@ 's working day: %@",job.jobName, [formatter stringFromDate:fireDate]);
-            return NO;
-        }
+
+    if (!isWorkDayOfBeginAlarm) {
+        NSLog(@"drop notify: begin:%d job: %@ working day: %@",
+              isBeforeOff,
+              job.jobName,
+              [formatter stringFromDate:finalFireDate]);
+        return NO;
     }
-    
-    NSLog(@"add one local notify for:%@ firedate: %@",job.jobName, [formatter stringFromDate:fireDate]);
-    
-    localNotif.fireDate = fireDate;
+
+    NSLog(@"setup local notify job: %@ firedate: %@",
+          job.jobName,
+          [formatter stringFromDate:finalFireDate]);
+
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    if (localNotif == nil)
+        return NO;
+    localNotif.fireDate = finalFireDate;
     localNotif.timeZone = [NSTimeZone systemTimeZone];
     localNotif.hasAction = YES;
     localNotif.alertBody = alarmBody;
     localNotif.alertAction = actionTitle;
-    
+
     if ([self shouldAlertWithSound]) {
         NSString *currentDefault = [[NSUserDefaults standardUserDefaults] stringForKey:USER_CONFIG_APP_DEFAULT_ALERT_SOUND];
         localNotif.soundName = currentDefault;
     }
-
-    
     localNotif.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     return YES;
@@ -196,49 +221,56 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
     NSString *defaultActionTitle = NSLocalizedString(@"I Know", "I Know");
     int alarmCount = 0;
     BOOL ret;
- 
+
     if (job.jobRemindBeforeWork && job.jobRemindBeforeWork.intValue != -1) {
         // user have setup alarm for this shift.
         // setup for Work Alarm
-        
+
         if (job.jobRemindBeforeWork.intValue > 60*60)
-            timestr = [NSString stringWithFormat:TIME_STR_ALARM_BEFORE_HOURS, job.jobRemindBeforeWork.intValue / 60 / 60];
+            timestr = [NSString stringWithFormat:TIME_STR_ALARM_BEFORE_HOURS,
+                                job.jobRemindBeforeWork.intValue / 60 / 60];
         else
-            timestr = [NSString stringWithFormat:TIME_STR_ALARM_BEFORE_MINITES, job.jobRemindBeforeWork.intValue / 60];
+            timestr = [NSString stringWithFormat:TIME_STR_ALARM_BEFORE_MINITES,
+                                job.jobRemindBeforeWork.intValue / 60];
         if (job.jobRemindBeforeWork.intValue == 0)
             timestr = TIME_STR_ALARM_BEFORE_NOW;
-        NSString *workRemindString = [NSString stringWithFormat:@"%@ %@.", job.jobName, timestr]; 
+        NSString *workRemindString = [NSString stringWithFormat:@"%@ %@.", job.jobName, timestr];
+
+
         ret = [self scheduleNotificationWithItem:[job getJobEverydayStartTime]
-				   withDaysLater:daysLater
-					interval:job.jobRemindBeforeWork.intValue
-				       alarmBody:workRemindString
-				alarmActionTitle:defaultActionTitle
-				       TimeAfter:0
-					     job:job
-					isOffDay:NO];
+                                   withDaysLater:daysLater
+                                        interval:job.jobRemindBeforeWork.intValue
+                                       alarmBody:workRemindString
+                                alarmActionTitle:defaultActionTitle
+                                       TimeAfter:0
+                                             job:job
+                                     isBeforeOff:NO];
         if (ret) alarmCount ++;
     }
-    
+
     if (job.jobRemindBeforeOff && job.jobRemindBeforeOff.intValue != -1) {
-        
-        
+
+
         if (job.jobRemindBeforeOff.intValue > 60*60)
-            timestr = [NSString stringWithFormat:TIME_STR_ALARM_OFF_HOURS, job.jobRemindBeforeOff.intValue / 60 / 60];
+            timestr = [NSString stringWithFormat:TIME_STR_ALARM_OFF_HOURS,
+                                job.jobRemindBeforeOff.intValue / 60 / 60];
         else
-            timestr = [NSString stringWithFormat:TIME_STR_ALARM_OFF_MINITES, job.jobRemindBeforeOff.intValue / 60];
-        
+            timestr = [NSString stringWithFormat:TIME_STR_ALARM_OFF_MINITES,
+                                job.jobRemindBeforeOff.intValue / 60];
+
         if (job.jobRemindBeforeOff.intValue == 0)
             timestr = TIME_STR_ALARM_OFF_NOW;
-        NSString *offRemindString = [NSString stringWithFormat:@"%@ %@.", job.jobName, timestr]; 
-        
+        NSString *offRemindString = [NSString stringWithFormat:@"%@ %@.",
+                                              job.jobName, timestr];
+
         ret = [self scheduleNotificationWithItem:[job getJobEverydayStartTime]
-				   withDaysLater:daysLater
-					interval:job.jobRemindBeforeOff.intValue
-				       alarmBody:offRemindString
-				alarmActionTitle:defaultActionTitle
-				       TimeAfter:[job getJobEveryDayLengthSec].intValue
-					     job:job
-					isOffDay:YES];
+                                   withDaysLater:daysLater
+                                        interval:job.jobRemindBeforeOff.intValue
+                                       alarmBody:offRemindString
+                                alarmActionTitle:defaultActionTitle
+                                       TimeAfter:[job getJobEveryDayLengthSec].intValue
+                                             job:job
+                                     isBeforeOff:YES];
         if (ret) alarmCount += 1;
     }
     return alarmCount;
@@ -248,22 +280,23 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
 
 - (void) setupAlarm: (BOOL)isShort
 {
-    
+
     // clear the alarm set before.
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    
+
 #define MAX_NOTIFY_COUNT 24
     if (self.jobArray.count <= 0)
         return;
 
     if (isShort) {
-        // if short, only update today's 
+        // if short, only update today's
         for (OneJob *j in self.jobArray) {
             [self setupAlarmForJob:j daysLater:0];
             [self setupAlarmForJob:j daysLater:1];
         }
     } else {
-        int max_notify = ((self.jobArray.count * 7) > MAX_NOTIFY_COUNT) ? MAX_NOTIFY_COUNT : self.jobArray.count * 7;
+        int max_notify = ((self.jobArray.count * 7) > MAX_NOTIFY_COUNT)
+            ? MAX_NOTIFY_COUNT : self.jobArray.count * 7;
         int used = 0;
         // try our best to eat all the notify
         // and only set 7 days laters for each job.
@@ -276,7 +309,7 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
     }
 }
 
-#pragma mark - FetchedResultController 
+#pragma mark - FetchedResultController
 
 /**
  Delegate methods of NSFetchedResultsController to respond to
@@ -284,8 +317,8 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
  */
 
 // - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-// 	// The fetch controller is about to start sending change
-// 	// notifications, so prepare the table view for updates.
+//      // The fetch controller is about to start sending change
+//      // notifications, so prepare the table view for updates.
 // }
 
 
@@ -293,9 +326,9 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
 // }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-	// The fetch controller has sent all current change
-	// notifications, so tell the table view to process all
-	// updates.
+        // The fetch controller has sent all current change
+        // notifications, so tell the table view to process all
+        // updates.
     [NSFetchedResultsController deleteCacheWithName:JOB_CACHE_INDEFITER];
     self.jobArray = nil;
 
