@@ -24,6 +24,9 @@
 		29009FEA159F4AE500A1588E /* UIColor+HexCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 29009FE8159F4AE500A1588E /* UIColor+HexCoding.h */; };
 		29009FEB159F4AE500A1588E /* UIColor+HexCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 29009FE9159F4AE500A1588E /* UIColor+HexCoding.m */; };
 		290317B5164FE5FD008C258E /* overdate.png in Resources */ = {isa = PBXBuildFile; fileRef = 290317B4164FE5FD008C258E /* overdate.png */; };
+		290F4E381783EA800023ADE8 /* SSDayEventUTC.h in Headers */ = {isa = PBXBuildFile; fileRef = 290F4E361783EA800023ADE8 /* SSDayEventUTC.h */; };
+		290F4E391783EA800023ADE8 /* SSDayEventUTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 290F4E371783EA800023ADE8 /* SSDayEventUTC.m */; };
+		290F4E3B1783EF1B0023ADE8 /* SSDayEventUTC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 290F4E3A1783EF1B0023ADE8 /* SSDayEventUTC.xib */; };
 		2912673916CF77CE00FFB202 /* SSDefaultConfigName.h in Headers */ = {isa = PBXBuildFile; fileRef = 2912673816CF77CE00FFB202 /* SSDefaultConfigName.h */; };
 		2912673D16CF81FA00FFB202 /* libSSLunarDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2912673C16CF81FA00FFB202 /* libSSLunarDate.a */; };
 		2916128515A62A6B0031F78C /* calendar-simple-blue-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128415A62A6B0031F78C /* calendar-simple-blue-57x57.png */; };
@@ -271,6 +274,9 @@
 		2900DEC21483E44E00E588EE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2900DEC31483EEA100E588EE /* ShiftSchedulerModelBasic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShiftSchedulerModelBasic.xcdatamodel; sourceTree = "<group>"; };
 		290317B4164FE5FD008C258E /* overdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = overdate.png; path = Resources/overdate.png; sourceTree = "<group>"; };
+		290F4E361783EA800023ADE8 /* SSDayEventUTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSDayEventUTC.h; path = ShiftScheduler/SSDayEventUTC.h; sourceTree = "<group>"; };
+		290F4E371783EA800023ADE8 /* SSDayEventUTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSDayEventUTC.m; path = ShiftScheduler/SSDayEventUTC.m; sourceTree = "<group>"; };
+		290F4E3A1783EF1B0023ADE8 /* SSDayEventUTC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSDayEventUTC.xib; sourceTree = "<group>"; };
 		2912672D16CF691D00FFB202 /* SSLunarDate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSLunarDate.xcodeproj; path = ../../SSLunarDate/SSLunarDate.xcodeproj; sourceTree = "<group>"; };
 		2912673816CF77CE00FFB202 /* SSDefaultConfigName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SSDefaultConfigName.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2912673C16CF81FA00FFB202 /* libSSLunarDate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSSLunarDate.a; path = "../SSLunarDate/build/Release-iphoneos/libSSLunarDate.a"; sourceTree = "<group>"; };
@@ -302,8 +308,6 @@
 		292DBCA714CA943F00C87A70 /* JPImagePickerOverviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JPImagePickerOverviewController.xib; path = JPImagePicker/JPImagePickerOverviewController.xib; sourceTree = "<group>"; };
 		292DBCA814CA943F00C87A70 /* UIImageResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIImageResizing.h; path = JPImagePicker/UIImageResizing.h; sourceTree = "<group>"; };
 		292DBCA914CA943F00C87A70 /* UIImageResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImageResizing.m; path = JPImagePicker/UIImageResizing.m; sourceTree = "<group>"; };
-		2932F71614B2237E00BE7A9E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2932F71714B2237E00BE7A9E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		293446E916835B88007219D1 /* ShiftScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = ShiftScheduler.entitlements; path = ShiftScheduler/ShiftScheduler.entitlements; sourceTree = "<group>"; };
 		2935514114E2BABA004D8FAC /* SSTurnShiftTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTurnShiftTVC.h; sourceTree = "<group>"; };
 		2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTurnShiftTVC.m; sourceTree = "<group>"; };
@@ -542,6 +546,16 @@
 			name = Icon;
 			sourceTree = "<group>";
 		};
+		290F4E331783EA2C0023ADE8 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				290F4E361783EA800023ADE8 /* SSDayEventUTC.h */,
+				290F4E3A1783EF1B0023ADE8 /* SSDayEventUTC.xib */,
+				290F4E371783EA800023ADE8 /* SSDayEventUTC.m */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
 		292DBC8A14CA931800C87A70 /* JPImage Picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -741,6 +755,7 @@
 		29AEBDC8156136830010F27D /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				290F4E331783EA2C0023ADE8 /* Calendar */,
 				29E6D7F215ADC59A00235123 /* Share */,
 				2935514914E2E5EB004D8FAC /* SettingView */,
 				299D8D0D147948B900E20DAE /* ProfileView */,
@@ -1022,6 +1037,7 @@
 				29E980EF1641747B00B65A7E /* SSSettingAlarmPickerVC.h in Headers */,
 				2912673916CF77CE00FFB202 /* SSDefaultConfigName.h in Headers */,
 				29AD3C8B16D7B036002E6543 /* SSSettingHolidayRegionPIckerVC.h in Headers */,
+				290F4E381783EA800023ADE8 /* SSDayEventUTC.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1197,6 +1213,7 @@
 				293970E8164EA0B200A79721 /* users.png in Resources */,
 				293970E9164EA0B200A79721 /* users@2x.png in Resources */,
 				290317B5164FE5FD008C258E /* overdate.png in Resources */,
+				290F4E3B1783EF1B0023ADE8 /* SSDayEventUTC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1312,6 +1329,7 @@
 				29293D9315DFE778006B6907 /* SSSocialThinkNoteLogin.m in Sources */,
 				29E980F01641747B00B65A7E /* SSSettingAlarmPickerVC.m in Sources */,
 				29AD3C8C16D7B036002E6543 /* SSSettingHolidayRegionPIckerVC.m in Sources */,
+				290F4E391783EA800023ADE8 /* SSDayEventUTC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1340,7 +1358,6 @@
 				29B9E1C11472C1D700DB2E1F /* en */,
 				29B9E1D31472C2A800DB2E1F /* zh-Hans */,
 				2900DEC11483E44E00E588EE /* zh-Hant */,
-				2932F71614B2237E00BE7A9E /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1351,7 +1368,6 @@
 				29B9E1D51472C2B000DB2E1F /* en */,
 				29B9E1D71472C2B600DB2E1F /* zh-Hans */,
 				2900DEC21483E44E00E588EE /* zh-Hant */,
-				2932F71714B2237E00BE7A9E /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

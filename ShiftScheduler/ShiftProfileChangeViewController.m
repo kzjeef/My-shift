@@ -75,6 +75,9 @@
 #define SHIFTCONFIG_ITEM_STRING NSLocalizedString(@"Shift detail", "config  detail of shift")
 #define SHIFT_TIME_DETAIL_TITLE NSLocalizedString(@"Time and Remind", "time and remind title")
 
+#define EMPTY_SHIFT_WARNNING_TITLE NSLocalizedString(@"Do you forget shift detail?", "empty shift warnning")
+#define EMPTY_SHIFT_WARNNING_DETAIL NSLocalizedString(@"an empty shift detail will cause shift not display on calendar", "empty shift warnning.")
+
 #define STARTWITH_ITEM 1
 #define FINISH_ITEM 2
 
@@ -83,12 +86,12 @@
     
     if (!itemsArray) {
         itemsArray = @[NAME_ITEM_STRING,
-				      ICON_ITEM_STRING,
-				      COLOR_PICKER_STRING,
-                                      ICON_OR_TEXT_STRING,
-				      STARTWITH_ITEM_STRING,
-				      REPEAT_ITEM_STRING,
-                                      SHIFTCONFIG_ITEM_STRING];
+                       ICON_ITEM_STRING,
+                       COLOR_PICKER_STRING,
+                       ICON_OR_TEXT_STRING,
+                       STARTWITH_ITEM_STRING,
+                       REPEAT_ITEM_STRING,
+                       SHIFTCONFIG_ITEM_STRING];
     }
     return itemsArray;
 }
@@ -408,23 +411,10 @@
 
     if ([item isEqualToString:SHIFTCONFIG_ITEM_STRING]) {
         cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
-#if !CONFIG_SINGLE_SHIFT_CONFIG_MODE
-        if (self.theJob.jobShiftType == nil || self.theJob.jobShiftType.intValue == 0) {
-            if (warnningShiftType) {
-                cell.textLabel.highlightedTextColor = [UIColor redColor];
-                cell.textLabel.highlighted = YES;
-            }
-        }
-#else
         if (warnningShiftType) {
             cell.textLabel.highlightedTextColor = [UIColor redColor];
             cell.textLabel.highlighted = YES;
         }
-#endif
-        
-#if !CONFIG_SINGLE_SHIFT_CONFIG_MODE
-        cell.detailTextLabel.text = [self.theJob jobShiftTypeString];
-#endif
     }
     
     [self configureStartRepeatItems:item withCell:cell];
@@ -540,19 +530,12 @@
     }
     
     if ([item isEqualToString:SHIFTCONFIG_ITEM_STRING]) {
-#if CONFIG_SINGLE_SHIFT_CONFIG_MODE
       	SSShiftTableConfigTVC *fjmp = [[SSShiftTableConfigTVC alloc] initWithStyle:UITableViewStyleGrouped];
-	fjmp.theJob = self.theJob;
-	fjmp.pickDelegate = self;
-	[self.navigationController pushViewController:fjmp animated:YES];
-
-#else
-        SSShiftWorkdayConfigTVC *stp = [[SSShiftWorkdayConfigTVC alloc] initWithStyle:UITableViewStyleGrouped];
-	stp.theJob = self.theJob;
-        stp.items = self.theJob.jobShiftAllTypesString;
-        [self.navigationController pushViewController:stp animated:YES];
-#endif
+        fjmp.theJob = self.theJob;
+        fjmp.pickDelegate = self;
+        [self.navigationController pushViewController:fjmp animated:YES];
         enterConfig = YES;
+        warnningShiftType = NO;
     }
 
     if ([item isEqualToString:STARTWITH_ITEM_STRING]) {
@@ -607,6 +590,20 @@
         return;
     }
     
+    if ([self.theJob isJobFreeJumpTableAllZero]) {
+
+        if (warnningShiftType != YES) {  // just warnning once...
+            [[[UIAlertView alloc] initWithTitle:EMPTY_SHIFT_WARNNING_TITLE
+                                        message:EMPTY_SHIFT_WARNNING_DETAIL
+                                       delegate:nil
+                              cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+            warnningShiftType = YES;
+            [self.tableView reloadData];
+            return;
+        }
+    }
+
+
     // shift start date > shift < date.
     if ([self.theJob isShiftDateValied] == NO) {
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Shift Invalied", "alart shift type in editing profile view")

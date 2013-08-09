@@ -9,7 +9,7 @@
 #import "Kal.h"
 #import "OneJob.h"
 
-@interface WorkdayDataSource : NSObject  <KalDataSource, NSFetchedResultsControllerDelegate, KalTileIconDelegate>
+@interface WorkdayDataSource : NSObject  <KalDataSource, NSFetchedResultsControllerDelegate, KalTileIconDelegate, UITableViewDelegate>
 {
     //WorkDateGenerator *generator;
     //NSArray *jobsArray;

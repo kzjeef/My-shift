@@ -62,11 +62,13 @@ enum {
     
 	    SSKalDelegate *kalDelegate = [[SSKalDelegate alloc] init];
 	    self.sskalDelegate = kalDelegate;
-	    kal.delegate = self.sskalDelegate;
 	    kal.vcdelegate = self.sskalDelegate;
+
 	    WorkdayDataSource *wds = [[WorkdayDataSource alloc] initWithManagedContext:self.managedObjectContext];
+
 	    dataSource  = wds;
 	    kal.dataSource = dataSource;
+        kal.delegate = dataSource;
 	    kal.tileDelegate = dataSource;
         
 	    if ([self.class enableThinkNoteConfig]) {

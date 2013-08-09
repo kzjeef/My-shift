@@ -166,6 +166,16 @@
     jobFreeJumpTable = [t copy];
 }
 
+- (BOOL) isJobFreeJumpTableAllZero
+{
+    for (int i = 0; i < self.jobFreeJumpCycle.intValue; i++) {
+        NSNumber *n = [self.jobFreeJumpTable objectAtIndex:i];
+        if (n.intValue != 0)
+            return NO;
+    }
+    return YES;
+}
+
 #define FREE_ROUND_STRING NSLocalizedString(@"Regular Work Day", "")
 #define FREE_JUMP_STRING NSLocalizedString(@"Customize Work Day", "")
 

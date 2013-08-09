@@ -67,8 +67,6 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.editing = YES;
     self.tableView.allowsSelectionDuringEditing = YES;
-
-    self.job.jobFinishDate = [self minValildDate];
  }
 
 - (void)viewDidUnload
@@ -149,7 +147,12 @@
     if (indexPath.section == 0) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
         cell.textLabel.text = REPEAT_ITEM_STRING;
-        cell.detailTextLabel.text = [self.dateFormatter stringFromDate:self.job.jobFinishDate];
+
+        NSDate *d = self.job.jobFinishDate;
+        if (d == nil)
+            d = [self minValildDate];
+        cell.detailTextLabel.text = [self.dateFormatter stringFromDate:d];
+
     }
     
     if (indexPath.section == 1) {

@@ -11,6 +11,7 @@
 #import "SSDefaultConfigName.h"
 #import "SSLunarDate/SSLunarDate.h"
 #import "SSLunarDate/SSHolidayManager.h"
+#import "SSDayEventUTC.h"
 
 #define ONE_DAY_SECONDS (60*60*24)
 #define HALF_DAY_SECONDS (60*60*12)
@@ -213,33 +214,41 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
 	 cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
- 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"WorkCell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:@"WorkCell"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    
-    
-    if ([self isLunarDateDisplayEnable] && indexPath.section == 0) {
-        SSLunarDate *lunarDate = [[SSLunarDate alloc] initWithDate:self.currentChoosenDate];
-        
-        if ([lunarDate convertSuccess]) {
-            cell.textLabel.text =  [NSString stringWithFormat:@"%@:%@%@",
-                                    LUNAR_FMT_START_STRING,
-                                    [lunarDate monthString],
-                                    [lunarDate dayString]];
-            
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@(%@)",
-                                         [lunarDate yearGanzhiString],
-                                         [lunarDate zodiacString]];
-        } else {
-            cell.textLabel.text = LUNAR_CONVERT_ERROR_TITLE_STR;
-            cell.detailTextLabel.text = LUNAR_CONVERT_ERROR_DETAIL_STR;
+    if (([self isLunarDateDisplayEnable]
+         || (self.currentChoosenDate  && [self getHolidayForDate:self.currentChoosenDate].count > 0))
+        && indexPath.section == 0) {
+        NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"SSDayEventUTC"
+                                      owner:self
+                                    options:nil];
+
+        SSDayEventUTC *cell = [views objectAtIndex:0];
+        cell.lunarTextView.text = nil;
+        cell.holidayTextView.text = nil;
+
+
+        if ([self isLunarDateDisplayEnable]) {
+            SSLunarDate *lunarDate = [[SSLunarDate alloc] initWithDate:self.currentChoosenDate];
+
+            if ([lunarDate convertSuccess])
+                cell.lunarTextView.text = [NSString stringWithFormat:@"%@:%@%@",
+                                           LUNAR_FMT_START_STRING,
+                                           [lunarDate monthString],
+                                           [lunarDate dayString]];
         }
-        cell.imageView.image = nil;
+        
+        if (self.currentChoosenDate != nil) {
+            NSArray *holidays = [self getHolidayForDate:self.currentChoosenDate];
+            if ([holidays count] > 0)
+                cell.holidayTextView.text = [holidays objectAtIndex:0];
+        }
+
+        return cell;
     } else {
+        UITableViewCell *cell;
+        cell = [tableView dequeueReusableCellWithIdentifier:@"WorkdayNormalCell"];
+        if (cell == nil)
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"WorkdayNormalCell"];
+
         OneJob *job = [self jobAtIndexPath: indexPath];
         cell.textLabel.text = job.jobName;
     
@@ -248,30 +257,45 @@
                                      [job jobEverydayStartTimeWithFormatter:self.timeFormatter],
                                      [job jobEverydayOffTimeWithFormatter:self.timeFormatter]];
         cell.imageView.image = job.middleSizeImage;
+        return cell;
     }
-    return cell;
+
+    NSLog(@"work day data source return an nil cell");
+    return nil;
 }
 
+- (BOOL) needsDisplayInformationBar
+{
+    if ([self isLunarDateDisplayEnable]
+        || (self.currentChoosenDate && [self getHolidayForDate:self.currentChoosenDate].count > 0))
+        return YES;
+    return NO;
+
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([self isLunarDateDisplayEnable]) {
-        if (section == 0)
-            return 1;
-        else
-            return [items count];
-    } else
+    if ([self needsDisplayInformationBar] && section == 0)
+        return 1;
+    else
         return [items count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if ([self isLunarDateDisplayEnable]) {
+    if ([self needsDisplayInformationBar])
         return 2;
-    } else
+    else
         return 1;
 }
 
+#pragma mark UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self needsDisplayInformationBar] && indexPath.section == 0 && indexPath.row == 0)
+        return tableView.rowHeight * 0.75;
+    else
+        return  tableView.rowHeight;
+}
 
 #pragma mark KalDataSource protocol conformance
 

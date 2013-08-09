@@ -203,11 +203,13 @@ static const CGFloat kMonthLabelHeight = 17.f;
   [contentView addSubview:tableView];
   
   // Drop shadow below tile grid and over the list of events for the selected day
+
+#if 0
   shadowView = [[UIImageView alloc] initWithFrame:fullWidthAutomaticLayoutFrame];
   shadowView.image = [UIImage imageNamed:@"Kal.bundle/kal_grid_shadow.png"];
   shadowView.height = shadowView.image.size.height;
   [contentView addSubview:shadowView];
-  
+#endif
   // Trigger the initial KVO update to finish the contentView layout
   [gridView sizeToFit];
 }
