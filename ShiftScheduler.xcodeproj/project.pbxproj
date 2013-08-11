@@ -94,6 +94,56 @@
 		297D073215B702DC008B9983 /* ThinkNoteModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073115B702DC008B9983 /* ThinkNoteModelTest.m */; };
 		298C3FBD15D92622002F9AC3 /* ThinkNoteShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 298C3FBC15D92622002F9AC3 /* ThinkNoteShareViewController.m */; };
 		2991F79517B6AB4A009AF142 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2991F79417B6AB4A009AF142 /* CoreMedia.framework */; };
+		2991F79717B78026009AF142 /* strike_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F79617B78026009AF142 /* strike_icon@2x.png */; };
+		2991F7CE17B780A9009AF142 /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F79917B780A8009AF142 /* addButton.png */; };
+		2991F7CF17B780A9009AF142 /* Alarm_Beep_03.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F79B17B780A8009AF142 /* Alarm_Beep_03.caf */; };
+		2991F7D017B780A9009AF142 /* Alarm_Classic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F79C17B780A8009AF142 /* Alarm_Classic.caf */; };
+		2991F7D117B780A9009AF142 /* Alarm_Rooster_02.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F79D17B780A8009AF142 /* Alarm_Rooster_02.caf */; };
+		2991F7D217B780A9009AF142 /* ArgoNavis.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F79E17B780A8009AF142 /* ArgoNavis.caf */; };
+		2991F7D317B780A9009AF142 /* Big_Easy.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F79F17B780A8009AF142 /* Big_Easy.caf */; };
+		2991F7D417B780A9009AF142 /* BirdLoop.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7A017B780A8009AF142 /* BirdLoop.caf */; };
+		2991F7D517B780A9009AF142 /* DingDong.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7A117B780A8009AF142 /* DingDong.caf */; };
+		2991F7D617B780A9009AF142 /* HalfwayHome.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7A217B780A8009AF142 /* HalfwayHome.caf */; };
+		2991F7D717B780A9009AF142 /* alarm_sound_1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7A417B780A8009AF142 /* alarm_sound_1.caf */; };
+		2991F7D817B780A9009AF142 /* 八音盒.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7A517B780A8009AF142 /* 八音盒.caf */; };
+		2991F7D917B780A9009AF142 /* 木琴.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7A617B780A8009AF142 /* 木琴.caf */; };
+		2991F7DA17B780A9009AF142 /* 海边小屋.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7A717B780A8009AF142 /* 海边小屋.caf */; };
+		2991F7DB17B780A9009AF142 /* 甜美舞曲.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7A817B780A8009AF142 /* 甜美舞曲.caf */; };
+		2991F7DC17B780A9009AF142 /* 空谷回响.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7A917B780A8009AF142 /* 空谷回响.caf */; };
+		2991F7DD17B780A9009AF142 /* 美妙清晨.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7AA17B780A8009AF142 /* 美妙清晨.caf */; };
+		2991F7DE17B780A9009AF142 /* 自然晨曦.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7AB17B780A8009AF142 /* 自然晨曦.caf */; };
+		2991F7DF17B780A9009AF142 /* 起床闹钟.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7AC17B780A8009AF142 /* 起床闹钟.caf */; };
+		2991F7E017B780A9009AF142 /* 马林巴琴.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7AD17B780A8009AF142 /* 马林巴琴.caf */; };
+		2991F7E117B780A9009AF142 /* 黑白琴键.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7AE17B780A8009AF142 /* 黑白琴键.caf */; };
+		2991F7E217B780A9009AF142 /* Procyon.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7AF17B780A8009AF142 /* Procyon.caf */; };
+		2991F7E317B780A9009AF142 /* Revelation.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B017B780A8009AF142 /* Revelation.caf */; };
+		2991F7E417B780A9009AF142 /* TwirlAway.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B117B780A9009AF142 /* TwirlAway.caf */; };
+		2991F7E517B780A9009AF142 /* arrow-circular-alt-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B217B780A9009AF142 /* arrow-circular-alt-1.png */; };
+		2991F7E617B780A9009AF142 /* Calendar-icon-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B317B780A9009AF142 /* Calendar-icon-114x114.png */; };
+		2991F7E717B780A9009AF142 /* Calendar-icon-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B417B780A9009AF142 /* Calendar-icon-57x57.png */; };
+		2991F7E817B780A9009AF142 /* grayButtonBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B517B780A9009AF142 /* grayButtonBackgroud.png */; };
+		2991F7E917B780A9009AF142 /* grayButtonBackgroud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B617B780A9009AF142 /* grayButtonBackgroud@2x.png */; };
+		2991F7EA17B780A9009AF142 /* greenButtonBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B717B780A9009AF142 /* greenButtonBackgroud.png */; };
+		2991F7EB17B780A9009AF142 /* greenButtonBackgroud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B817B780A9009AF142 /* greenButtonBackgroud@2x.png */; };
+		2991F7EC17B780A9009AF142 /* GSFacesInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B917B780A9009AF142 /* GSFacesInfo.png */; };
+		2991F7ED17B780A9009AF142 /* calendar-simple-blue-144x144.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7BC17B780A9009AF142 /* calendar-simple-blue-144x144.png */; };
+		2991F7EE17B780A9009AF142 /* calendar-simple-blue-72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7BD17B780A9009AF142 /* calendar-simple-blue-72x72.png */; };
+		2991F7EF17B780A9009AF142 /* calendar-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7BF17B780A9009AF142 /* calendar-1.png */; };
+		2991F7F017B780A9009AF142 /* calendar-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7C017B780A9009AF142 /* calendar-2.png */; };
+		2991F7F117B780A9009AF142 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7C117B780A9009AF142 /* calendar.png */; };
+		2991F7F217B780A9009AF142 /* notify.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7C217B780A9009AF142 /* notify.caf */; };
+		2991F7F317B780A9009AF142 /* Notify.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7C317B780A9009AF142 /* Notify.mp3 */; };
+		2991F7F417B780A9009AF142 /* overdate.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7C417B780A9009AF142 /* overdate.png */; };
+		2991F7F517B780A9009AF142 /* redButtonBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7C517B780A9009AF142 /* redButtonBackgroud.png */; };
+		2991F7F617B780A9009AF142 /* redButtonBackgroud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7C617B780A9009AF142 /* redButtonBackgroud@2x.png */; };
+		2991F7F717B780A9009AF142 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7C717B780A9009AF142 /* settings.png */; };
+		2991F7F817B780A9009AF142 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7C817B780A9009AF142 /* settings@2x.png */; };
+		2991F7FA17B780A9009AF142 /* tab-calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7CA17B780A9009AF142 /* tab-calendar.png */; };
+		2991F7FB17B780A9009AF142 /* tab-calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7CB17B780A9009AF142 /* tab-calendar@2x.png */; };
+		2991F7FC17B780A9009AF142 /* users.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7CC17B780A9009AF142 /* users.png */; };
+		2991F7FD17B780A9009AF142 /* users@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7CD17B780A9009AF142 /* users@2x.png */; };
+		2991F7FF17B781F6009AF142 /* strike_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7FE17B781F6009AF142 /* strike_icon.png */; };
+		2991F80117B783C5009AF142 /* SSSettingAlarmPickerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2991F80017B783C5009AF142 /* SSSettingAlarmPickerVC.xib */; };
 		299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */; };
 		299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */; };
 		29AB77A815D8746400669B6B /* notify.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29AB77A715D8746400669B6B /* notify.caf */; };
@@ -341,6 +391,56 @@
 		297D073115B702DC008B9983 /* ThinkNoteModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteModelTest.m; path = OneJobModuleTest/ThinkNoteModelTest.m; sourceTree = "<group>"; };
 		298C3FBC15D92622002F9AC3 /* ThinkNoteShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteShareViewController.m; path = ShiftScheduler/ThinkNoteShareViewController.m; sourceTree = "<group>"; };
 		2991F79417B6AB4A009AF142 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		2991F79617B78026009AF142 /* strike_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "strike_icon@2x.png"; path = "Resources/strike_icon@2x.png"; sourceTree = "<group>"; };
+		2991F79917B780A8009AF142 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addButton.png; sourceTree = "<group>"; };
+		2991F79B17B780A8009AF142 /* Alarm_Beep_03.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alarm_Beep_03.caf; sourceTree = "<group>"; };
+		2991F79C17B780A8009AF142 /* Alarm_Classic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alarm_Classic.caf; sourceTree = "<group>"; };
+		2991F79D17B780A8009AF142 /* Alarm_Rooster_02.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alarm_Rooster_02.caf; sourceTree = "<group>"; };
+		2991F79E17B780A8009AF142 /* ArgoNavis.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArgoNavis.caf; sourceTree = "<group>"; };
+		2991F79F17B780A8009AF142 /* Big_Easy.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Big_Easy.caf; sourceTree = "<group>"; };
+		2991F7A017B780A8009AF142 /* BirdLoop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BirdLoop.caf; sourceTree = "<group>"; };
+		2991F7A117B780A8009AF142 /* DingDong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = DingDong.caf; sourceTree = "<group>"; };
+		2991F7A217B780A8009AF142 /* HalfwayHome.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HalfwayHome.caf; sourceTree = "<group>"; };
+		2991F7A417B780A8009AF142 /* alarm_sound_1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = alarm_sound_1.caf; sourceTree = "<group>"; };
+		2991F7A517B780A8009AF142 /* 八音盒.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "八音盒.caf"; sourceTree = "<group>"; };
+		2991F7A617B780A8009AF142 /* 木琴.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "木琴.caf"; sourceTree = "<group>"; };
+		2991F7A717B780A8009AF142 /* 海边小屋.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "海边小屋.caf"; sourceTree = "<group>"; };
+		2991F7A817B780A8009AF142 /* 甜美舞曲.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "甜美舞曲.caf"; sourceTree = "<group>"; };
+		2991F7A917B780A8009AF142 /* 空谷回响.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "空谷回响.caf"; sourceTree = "<group>"; };
+		2991F7AA17B780A8009AF142 /* 美妙清晨.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "美妙清晨.caf"; sourceTree = "<group>"; };
+		2991F7AB17B780A8009AF142 /* 自然晨曦.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "自然晨曦.caf"; sourceTree = "<group>"; };
+		2991F7AC17B780A8009AF142 /* 起床闹钟.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "起床闹钟.caf"; sourceTree = "<group>"; };
+		2991F7AD17B780A8009AF142 /* 马林巴琴.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "马林巴琴.caf"; sourceTree = "<group>"; };
+		2991F7AE17B780A8009AF142 /* 黑白琴键.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "黑白琴键.caf"; sourceTree = "<group>"; };
+		2991F7AF17B780A8009AF142 /* Procyon.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Procyon.caf; sourceTree = "<group>"; };
+		2991F7B017B780A8009AF142 /* Revelation.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Revelation.caf; sourceTree = "<group>"; };
+		2991F7B117B780A9009AF142 /* TwirlAway.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TwirlAway.caf; sourceTree = "<group>"; };
+		2991F7B217B780A9009AF142 /* arrow-circular-alt-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-circular-alt-1.png"; sourceTree = "<group>"; };
+		2991F7B317B780A9009AF142 /* Calendar-icon-114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-icon-114x114.png"; sourceTree = "<group>"; };
+		2991F7B417B780A9009AF142 /* Calendar-icon-57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-icon-57x57.png"; sourceTree = "<group>"; };
+		2991F7B517B780A9009AF142 /* grayButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayButtonBackgroud.png; sourceTree = "<group>"; };
+		2991F7B617B780A9009AF142 /* grayButtonBackgroud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayButtonBackgroud@2x.png"; sourceTree = "<group>"; };
+		2991F7B717B780A9009AF142 /* greenButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenButtonBackgroud.png; sourceTree = "<group>"; };
+		2991F7B817B780A9009AF142 /* greenButtonBackgroud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenButtonBackgroud@2x.png"; sourceTree = "<group>"; };
+		2991F7B917B780A9009AF142 /* GSFacesInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GSFacesInfo.png; sourceTree = "<group>"; };
+		2991F7BC17B780A9009AF142 /* calendar-simple-blue-144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-144x144.png"; sourceTree = "<group>"; };
+		2991F7BD17B780A9009AF142 /* calendar-simple-blue-72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-simple-blue-72x72.png"; sourceTree = "<group>"; };
+		2991F7BF17B780A9009AF142 /* calendar-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-1.png"; sourceTree = "<group>"; };
+		2991F7C017B780A9009AF142 /* calendar-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-2.png"; sourceTree = "<group>"; };
+		2991F7C117B780A9009AF142 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		2991F7C217B780A9009AF142 /* notify.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notify.caf; sourceTree = "<group>"; };
+		2991F7C317B780A9009AF142 /* Notify.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Notify.mp3; sourceTree = "<group>"; };
+		2991F7C417B780A9009AF142 /* overdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overdate.png; sourceTree = "<group>"; };
+		2991F7C517B780A9009AF142 /* redButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redButtonBackgroud.png; sourceTree = "<group>"; };
+		2991F7C617B780A9009AF142 /* redButtonBackgroud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redButtonBackgroud@2x.png"; sourceTree = "<group>"; };
+		2991F7C717B780A9009AF142 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		2991F7C817B780A9009AF142 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		2991F7CA17B780A9009AF142 /* tab-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-calendar.png"; sourceTree = "<group>"; };
+		2991F7CB17B780A9009AF142 /* tab-calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-calendar@2x.png"; sourceTree = "<group>"; };
+		2991F7CC17B780A9009AF142 /* users.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = users.png; sourceTree = "<group>"; };
+		2991F7CD17B780A9009AF142 /* users@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "users@2x.png"; sourceTree = "<group>"; };
+		2991F7FE17B781F6009AF142 /* strike_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = strike_icon.png; path = Resources/strike_icon.png; sourceTree = "<group>"; };
+		2991F80017B783C5009AF142 /* SSSettingAlarmPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSSettingAlarmPickerVC.xib; path = ShiftScheduler/SSSettingAlarmPickerVC.xib; sourceTree = "<group>"; };
 		299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftWorkdayConfigTVC.h; sourceTree = "<group>"; };
 		299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftWorkdayConfigTVC.m; sourceTree = "<group>"; };
 		29AB77A715D8746400669B6B /* notify.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = notify.caf; path = Resources/notify.caf; sourceTree = "<group>"; };
@@ -582,6 +682,7 @@
 				29AD3C8916D7B035002E6543 /* SSSettingHolidayRegionPIckerVC.h */,
 				29AD3C8A16D7B035002E6543 /* SSSettingHolidayRegionPIckerVC.m */,
 				29E980ED1641747B00B65A7E /* SSSettingAlarmPickerVC.h */,
+				2991F80017B783C5009AF142 /* SSSettingAlarmPickerVC.xib */,
 				29E980EE1641747B00B65A7E /* SSSettingAlarmPickerVC.m */,
 				29009FCA159F4A4D00A1588E /* SSSettingTVC.h */,
 				29009FCB159F4A4D00A1588E /* SSSettingTVC.m */,
@@ -609,6 +710,9 @@
 			children = (
 				29D6A524159CB4A200AC6103 /* Kal.bundle */,
 				290317B4164FE5FD008C258E /* overdate.png */,
+				2991F79817B780A8009AF142 /* Resources */,
+				2991F7FE17B781F6009AF142 /* strike_icon.png */,
+				2991F79617B78026009AF142 /* strike_icon@2x.png */,
 				293970D0164E8AC100A79721 /* grayButtonBackgroud.png */,
 				293970D8164E8AF700A79721 /* redButtonBackgroud@2x.png */,
 				293970D9164E8AF700A79721 /* greenButtonBackgroud@2x.png */,
@@ -673,6 +777,100 @@
 				29009FD4159F4AA100A1588E /* ShiftPickerDataSource.m */,
 			);
 			name = ChangeShiftView;
+			sourceTree = "<group>";
+		};
+		2991F79817B780A8009AF142 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2991F79917B780A8009AF142 /* addButton.png */,
+				2991F79A17B780A8009AF142 /* alarm */,
+				2991F7B217B780A9009AF142 /* arrow-circular-alt-1.png */,
+				2991F7B317B780A9009AF142 /* Calendar-icon-114x114.png */,
+				2991F7B417B780A9009AF142 /* Calendar-icon-57x57.png */,
+				2991F7B517B780A9009AF142 /* grayButtonBackgroud.png */,
+				2991F7B617B780A9009AF142 /* grayButtonBackgroud@2x.png */,
+				2991F7B717B780A9009AF142 /* greenButtonBackgroud.png */,
+				2991F7B817B780A9009AF142 /* greenButtonBackgroud@2x.png */,
+				2991F7B917B780A9009AF142 /* GSFacesInfo.png */,
+				2991F7BA17B780A9009AF142 /* icons */,
+				2991F7C217B780A9009AF142 /* notify.caf */,
+				2991F7C317B780A9009AF142 /* Notify.mp3 */,
+				2991F7C417B780A9009AF142 /* overdate.png */,
+				2991F7C517B780A9009AF142 /* redButtonBackgroud.png */,
+				2991F7C617B780A9009AF142 /* redButtonBackgroud@2x.png */,
+				2991F7C717B780A9009AF142 /* settings.png */,
+				2991F7C817B780A9009AF142 /* settings@2x.png */,
+				2991F7CA17B780A9009AF142 /* tab-calendar.png */,
+				2991F7CB17B780A9009AF142 /* tab-calendar@2x.png */,
+				2991F7CC17B780A9009AF142 /* users.png */,
+				2991F7CD17B780A9009AF142 /* users@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2991F79A17B780A8009AF142 /* alarm */ = {
+			isa = PBXGroup;
+			children = (
+				2991F79B17B780A8009AF142 /* Alarm_Beep_03.caf */,
+				2991F79C17B780A8009AF142 /* Alarm_Classic.caf */,
+				2991F79D17B780A8009AF142 /* Alarm_Rooster_02.caf */,
+				2991F79E17B780A8009AF142 /* ArgoNavis.caf */,
+				2991F79F17B780A8009AF142 /* Big_Easy.caf */,
+				2991F7A017B780A8009AF142 /* BirdLoop.caf */,
+				2991F7A117B780A8009AF142 /* DingDong.caf */,
+				2991F7A217B780A8009AF142 /* HalfwayHome.caf */,
+				2991F7A317B780A8009AF142 /* long */,
+				2991F7AF17B780A8009AF142 /* Procyon.caf */,
+				2991F7B017B780A8009AF142 /* Revelation.caf */,
+				2991F7B117B780A9009AF142 /* TwirlAway.caf */,
+			);
+			path = alarm;
+			sourceTree = "<group>";
+		};
+		2991F7A317B780A8009AF142 /* long */ = {
+			isa = PBXGroup;
+			children = (
+				2991F7A417B780A8009AF142 /* alarm_sound_1.caf */,
+				2991F7A517B780A8009AF142 /* 八音盒.caf */,
+				2991F7A617B780A8009AF142 /* 木琴.caf */,
+				2991F7A717B780A8009AF142 /* 海边小屋.caf */,
+				2991F7A817B780A8009AF142 /* 甜美舞曲.caf */,
+				2991F7A917B780A8009AF142 /* 空谷回响.caf */,
+				2991F7AA17B780A8009AF142 /* 美妙清晨.caf */,
+				2991F7AB17B780A8009AF142 /* 自然晨曦.caf */,
+				2991F7AC17B780A8009AF142 /* 起床闹钟.caf */,
+				2991F7AD17B780A8009AF142 /* 马林巴琴.caf */,
+				2991F7AE17B780A8009AF142 /* 黑白琴键.caf */,
+			);
+			path = long;
+			sourceTree = "<group>";
+		};
+		2991F7BA17B780A9009AF142 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				2991F7BB17B780A9009AF142 /* blue */,
+				2991F7BC17B780A9009AF142 /* calendar-simple-blue-144x144.png */,
+				2991F7BD17B780A9009AF142 /* calendar-simple-blue-72x72.png */,
+				2991F7BE17B780A9009AF142 /* v1 */,
+			);
+			path = icons;
+			sourceTree = "<group>";
+		};
+		2991F7BB17B780A9009AF142 /* blue */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = blue;
+			sourceTree = "<group>";
+		};
+		2991F7BE17B780A9009AF142 /* v1 */ = {
+			isa = PBXGroup;
+			children = (
+				2991F7BF17B780A9009AF142 /* calendar-1.png */,
+				2991F7C017B780A9009AF142 /* calendar-2.png */,
+				2991F7C117B780A9009AF142 /* calendar.png */,
+			);
+			path = v1;
 			sourceTree = "<group>";
 		};
 		299D8D0D147948B900E20DAE /* ProfileView */ = {
@@ -1218,6 +1416,56 @@
 				293970E9164EA0B200A79721 /* users@2x.png in Resources */,
 				290317B5164FE5FD008C258E /* overdate.png in Resources */,
 				290F4E3B1783EF1B0023ADE8 /* SSDayEventUTC.xib in Resources */,
+				2991F79717B78026009AF142 /* strike_icon@2x.png in Resources */,
+				2991F7CE17B780A9009AF142 /* addButton.png in Resources */,
+				2991F7CF17B780A9009AF142 /* Alarm_Beep_03.caf in Resources */,
+				2991F7D017B780A9009AF142 /* Alarm_Classic.caf in Resources */,
+				2991F7D117B780A9009AF142 /* Alarm_Rooster_02.caf in Resources */,
+				2991F7D217B780A9009AF142 /* ArgoNavis.caf in Resources */,
+				2991F7D317B780A9009AF142 /* Big_Easy.caf in Resources */,
+				2991F7D417B780A9009AF142 /* BirdLoop.caf in Resources */,
+				2991F7D517B780A9009AF142 /* DingDong.caf in Resources */,
+				2991F7D617B780A9009AF142 /* HalfwayHome.caf in Resources */,
+				2991F7D717B780A9009AF142 /* alarm_sound_1.caf in Resources */,
+				2991F7D817B780A9009AF142 /* 八音盒.caf in Resources */,
+				2991F7D917B780A9009AF142 /* 木琴.caf in Resources */,
+				2991F7DA17B780A9009AF142 /* 海边小屋.caf in Resources */,
+				2991F7DB17B780A9009AF142 /* 甜美舞曲.caf in Resources */,
+				2991F7DC17B780A9009AF142 /* 空谷回响.caf in Resources */,
+				2991F7DD17B780A9009AF142 /* 美妙清晨.caf in Resources */,
+				2991F7DE17B780A9009AF142 /* 自然晨曦.caf in Resources */,
+				2991F7DF17B780A9009AF142 /* 起床闹钟.caf in Resources */,
+				2991F7E017B780A9009AF142 /* 马林巴琴.caf in Resources */,
+				2991F7E117B780A9009AF142 /* 黑白琴键.caf in Resources */,
+				2991F7E217B780A9009AF142 /* Procyon.caf in Resources */,
+				2991F7E317B780A9009AF142 /* Revelation.caf in Resources */,
+				2991F7E417B780A9009AF142 /* TwirlAway.caf in Resources */,
+				2991F7E517B780A9009AF142 /* arrow-circular-alt-1.png in Resources */,
+				2991F7E617B780A9009AF142 /* Calendar-icon-114x114.png in Resources */,
+				2991F7E717B780A9009AF142 /* Calendar-icon-57x57.png in Resources */,
+				2991F7E817B780A9009AF142 /* grayButtonBackgroud.png in Resources */,
+				2991F7E917B780A9009AF142 /* grayButtonBackgroud@2x.png in Resources */,
+				2991F7EA17B780A9009AF142 /* greenButtonBackgroud.png in Resources */,
+				2991F7EB17B780A9009AF142 /* greenButtonBackgroud@2x.png in Resources */,
+				2991F7EC17B780A9009AF142 /* GSFacesInfo.png in Resources */,
+				2991F7ED17B780A9009AF142 /* calendar-simple-blue-144x144.png in Resources */,
+				2991F7EE17B780A9009AF142 /* calendar-simple-blue-72x72.png in Resources */,
+				2991F7EF17B780A9009AF142 /* calendar-1.png in Resources */,
+				2991F7F017B780A9009AF142 /* calendar-2.png in Resources */,
+				2991F7F117B780A9009AF142 /* calendar.png in Resources */,
+				2991F7F217B780A9009AF142 /* notify.caf in Resources */,
+				2991F7F317B780A9009AF142 /* Notify.mp3 in Resources */,
+				2991F7F417B780A9009AF142 /* overdate.png in Resources */,
+				2991F7F517B780A9009AF142 /* redButtonBackgroud.png in Resources */,
+				2991F7F617B780A9009AF142 /* redButtonBackgroud@2x.png in Resources */,
+				2991F7F717B780A9009AF142 /* settings.png in Resources */,
+				2991F7F817B780A9009AF142 /* settings@2x.png in Resources */,
+				2991F7FA17B780A9009AF142 /* tab-calendar.png in Resources */,
+				2991F7FB17B780A9009AF142 /* tab-calendar@2x.png in Resources */,
+				2991F7FC17B780A9009AF142 /* users.png in Resources */,
+				2991F7FD17B780A9009AF142 /* users@2x.png in Resources */,
+				2991F7FF17B781F6009AF142 /* strike_icon.png in Resources */,
+				2991F80117B783C5009AF142 /* SSSettingAlarmPickerVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,7 @@
     NSArray *items;
     AVAudioPlayer *avSound;
     NSString *alarmFileNameSaved;
+    UIImage *selected_icon;
     int pickedRow;
 }
 @end
@@ -58,6 +59,8 @@
     [super viewDidLoad];
     [self loadAlarmList];
 
+    selected_icon = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"strike_icon" ofType:@"png"]];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
 
@@ -97,7 +100,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -121,22 +124,27 @@
     NSString *filename = [[items objectAtIndex:indexPath.row] objectForKey:@"file"];
 
     NSString *currentDefault = [[NSUserDefaults standardUserDefaults] stringForKey:USER_CONFIG_APP_DEFAULT_ALERT_SOUND];
-    if ([currentDefault isEqualToString:filename])
+
+
+    if ([currentDefault isEqualToString:filename]) {
+        cell.accessoryView = [[UIImageView alloc] initWithImage:selected_icon];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    else
+    } else {
+        cell.accessoryView = nil;
         cell.accessoryType = UITableViewCellAccessoryNone;
+    }
 
 
-    NSURL *soundURL = [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
+
 
     // get the length of alarm.
+    /*
+    NSURL *soundURL = [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:soundURL options:nil];
     CMTime time = asset.duration;
     double durationInSeconds = CMTimeGetSeconds(time);
     int dur = (int)durationInSeconds;
-
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d:%d", dur / 60, dur % 60];
-
+     */
     return cell;
 }
 
