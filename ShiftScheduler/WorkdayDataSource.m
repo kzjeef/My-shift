@@ -223,7 +223,7 @@
 
         SSDayEventUTC *cell = [views objectAtIndex:0];
         cell.lunarTextView.text = nil;
-        cell.holidayTextView.text = nil;
+        cell.holidayLabel.text = nil;
 
 
         if ([self isLunarDateDisplayEnable]) {
@@ -239,7 +239,7 @@
         if (self.currentChoosenDate != nil) {
             NSArray *holidays = [self getHolidayForDate:self.currentChoosenDate];
             if ([holidays count] > 0)
-                cell.holidayTextView.text = [holidays objectAtIndex:0];
+                cell.holidayLabel.text = [holidays objectAtIndex:0];
         }
 
         return cell;

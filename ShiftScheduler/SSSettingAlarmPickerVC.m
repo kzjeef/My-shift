@@ -7,7 +7,7 @@
 //
 
 #import <AVFoundation/AVFoundation.h>
-
+#import <CoreMedia/CoreMedia.h>
 #import "SSSettingAlarmPickerVC.h"
 #import "SSDefaultConfigName.h"
 
@@ -125,6 +125,17 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     else
         cell.accessoryType = UITableViewCellAccessoryNone;
+
+
+    NSURL *soundURL = [[NSBundle mainBundle] URLForResource:filename withExtension:nil];
+
+    // get the length of alarm.
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:soundURL options:nil];
+    CMTime time = asset.duration;
+    double durationInSeconds = CMTimeGetSeconds(time);
+    int dur = (int)durationInSeconds;
+
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d:%d", dur / 60, dur % 60];
 
     return cell;
 }

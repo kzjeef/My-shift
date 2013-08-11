@@ -93,6 +93,7 @@
 		2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */; };
 		297D073215B702DC008B9983 /* ThinkNoteModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073115B702DC008B9983 /* ThinkNoteModelTest.m */; };
 		298C3FBD15D92622002F9AC3 /* ThinkNoteShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 298C3FBC15D92622002F9AC3 /* ThinkNoteShareViewController.m */; };
+		2991F79517B6AB4A009AF142 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2991F79417B6AB4A009AF142 /* CoreMedia.framework */; };
 		299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */; };
 		299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */; };
 		29AB77A815D8746400669B6B /* notify.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29AB77A715D8746400669B6B /* notify.caf */; };
@@ -339,6 +340,7 @@
 		297D073015B702DB008B9983 /* ThinkNoteModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThinkNoteModelTest.h; path = OneJobModuleTest/ThinkNoteModelTest.h; sourceTree = "<group>"; };
 		297D073115B702DC008B9983 /* ThinkNoteModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteModelTest.m; path = OneJobModuleTest/ThinkNoteModelTest.m; sourceTree = "<group>"; };
 		298C3FBC15D92622002F9AC3 /* ThinkNoteShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteShareViewController.m; path = ShiftScheduler/ThinkNoteShareViewController.m; sourceTree = "<group>"; };
+		2991F79417B6AB4A009AF142 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftWorkdayConfigTVC.h; sourceTree = "<group>"; };
 		299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftWorkdayConfigTVC.m; sourceTree = "<group>"; };
 		29AB77A715D8746400669B6B /* notify.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = notify.caf; path = Resources/notify.caf; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2991F79517B6AB4A009AF142 /* CoreMedia.framework in Frameworks */,
 				2912673D16CF81FA00FFB202 /* libSSLunarDate.a in Frameworks */,
 				29D6A550159CB79F00AC6103 /* libKal.a in Frameworks */,
 				29E6D7F115ADACCE00235123 /* MessageUI.framework in Frameworks */,
@@ -576,9 +579,9 @@
 		2935514914E2E5EB004D8FAC /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
-				29E980ED1641747B00B65A7E /* SSSettingAlarmPickerVC.h */,
 				29AD3C8916D7B035002E6543 /* SSSettingHolidayRegionPIckerVC.h */,
 				29AD3C8A16D7B035002E6543 /* SSSettingHolidayRegionPIckerVC.m */,
+				29E980ED1641747B00B65A7E /* SSSettingAlarmPickerVC.h */,
 				29E980EE1641747B00B65A7E /* SSSettingAlarmPickerVC.m */,
 				29009FCA159F4A4D00A1588E /* SSSettingTVC.h */,
 				29009FCB159F4A4D00A1588E /* SSSettingTVC.m */,
@@ -778,6 +781,7 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
+				2991F79417B6AB4A009AF142 /* CoreMedia.framework */,
 				2912673C16CF81FA00FFB202 /* libSSLunarDate.a */,
 				29B9E1BD1472C1D700DB2E1F /* ShiftScheduler */,
 				293446E916835B88007219D1 /* ShiftScheduler.entitlements */,
