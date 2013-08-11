@@ -11,14 +11,18 @@
 #import "SSSettingAlarmPickerVC.h"
 #import "SSDefaultConfigName.h"
 
+#define LONG_ALARM_STR NSLocalizedString(@"Long Alarm", "long alarm section title")
+#define SHORT_ALARM_STR NSLocalizedString(@"Short Alarm", "short alarm section title")
 
 @interface SSSettingAlarmPickerVC ()
 {
-    NSArray *items;
+    NSArray *shortItems;
+    NSArray *longItems;
     AVAudioPlayer *avSound;
     NSString *alarmFileNameSaved;
     UIImage *selected_icon;
     int pickedRow;
+    int pickedSection;
 }
 @end
 
@@ -30,14 +34,13 @@
     if (self) {
         // Custom initialization
         
-        pickedRow = -1;
     }
     return self;
 }
 
-- (void)loadAlarmList
+- (NSArray *)loadAlarmList: (NSString *) name
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"AlarmList" ofType:@"plist"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"plist"];
     NSData *plistData = [NSData dataWithContentsOfFile:path];
     NSString *error;
     NSPropertyListFormat format;
@@ -51,15 +54,20 @@
         NSLog(@"loadAlarm generate alarm list error%@", error);
     }
 
-   items = plist;
+    return plist;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadAlarmList];
+    shortItems = [self loadAlarmList: @"AlarmList"];
+    longItems = [self loadAlarmList:@"LongAlarmList"];
+
 
     selected_icon = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"strike_icon" ofType:@"png"]];
+
+    pickedRow = -1;
+    pickedSection = -1;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -106,8 +114,21 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return items.count;
+    if (section == 1)
+        return shortItems.count;
+    else
+        return longItems.count;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+        return LONG_ALARM_STR;
+    else
+        return SHORT_ALARM_STR;
+}
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -116,12 +137,20 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    
 
-    NSString *name = [[items objectAtIndex:indexPath.row] objectForKey:@"name"];
+    NSArray *alarmArray;
+
+    if (indexPath.section == 1)
+        alarmArray = shortItems;
+    else
+        alarmArray = longItems;
+
+
+
+    NSString *name = [[alarmArray objectAtIndex:indexPath.row] objectForKey:@"name"];
     cell.textLabel.text = name;
 
-    NSString *filename = [[items objectAtIndex:indexPath.row] objectForKey:@"file"];
+    NSString *filename = [[alarmArray objectAtIndex:indexPath.row] objectForKey:@"file"];
 
     NSString *currentDefault = [[NSUserDefaults standardUserDefaults] stringForKey:USER_CONFIG_APP_DEFAULT_ALERT_SOUND];
 
@@ -152,19 +181,28 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSArray *alarmArray;
     BOOL onlyStop = false;
     // choose selected item,
     // 1. update the index,
-    if (pickedRow == indexPath.row)
+
+    if (indexPath.section == 1)
+        alarmArray = shortItems;
+    else
+        alarmArray = longItems;
+
+    if (pickedRow == indexPath.row && pickedSection == indexPath.section)
         onlyStop = true;
+
     pickedRow = indexPath.row;
+    pickedSection = indexPath.section;
 
     // 2. store the name of alarm file.
-    NSString *filename = [[items objectAtIndex:indexPath.row] objectForKey:@"file"];
-    NSString *name = [[items objectAtIndex:indexPath.row] objectForKey:@"name"];
+    NSString *filename = [[alarmArray objectAtIndex:indexPath.row]  objectForKey:@"file"];
+    NSString *name = [[alarmArray objectAtIndex:indexPath.row]      objectForKey:@"name"];
 
-    [[NSUserDefaults standardUserDefaults] setObject:filename forKey:USER_CONFIG_APP_DEFAULT_ALERT_SOUND];
-    [[NSUserDefaults standardUserDefaults] setObject:name forKey:USER_CONFIG_APP_ALERT_SOUND_FILE];
+    [[NSUserDefaults standardUserDefaults] setObject:filename   forKey:USER_CONFIG_APP_DEFAULT_ALERT_SOUND];
+    [[NSUserDefaults standardUserDefaults] setObject:name       forKey:USER_CONFIG_APP_ALERT_SOUND_FILE];
 
     
     [self.tableView reloadData];

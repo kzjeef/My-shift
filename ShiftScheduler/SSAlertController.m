@@ -18,6 +18,9 @@
 #define TIME_STR_ALARM_OFF_MINITES NSLocalizedString(@"will off in %d Minutes", "will start in %d Minutes")
 #define TIME_STR_ALARM_OFF_NOW NSLocalizedString(@"is off now", "is start now")
 
+#define ALERT_USER_ENTER_APP NSLocalizedString(@"The alarm you setup in app is going to out of date, please enter the app to active the alarm again (only enter and exit is enough)", "alarm out of date notify body")
+
+
 #define JOB_CACHE_INDEFITER @"JobNameCache"
 @implementation SSAlertController
 
@@ -186,9 +189,11 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
         return NO;
     }
 
-    NSLog(@"setup local notify job: %@ firedate: %@",
+    NSString *alarmSoundFile = [[NSUserDefaults standardUserDefaults] stringForKey:USER_CONFIG_APP_DEFAULT_ALERT_SOUND];
+
+    NSLog(@"setup local notify job: %@ firedate: %@ sound:%@",
           job.jobName,
-          [formatter stringFromDate:finalFireDate]);
+          [formatter stringFromDate:finalFireDate], alarmSoundFile);
 
     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
     if (localNotif == nil)
@@ -200,18 +205,36 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
     localNotif.alertAction = actionTitle;
 
     if ([self shouldAlertWithSound]) {
-        NSString *currentDefault = [[NSUserDefaults standardUserDefaults] stringForKey:USER_CONFIG_APP_DEFAULT_ALERT_SOUND];
-        localNotif.soundName = currentDefault;
+        localNotif.soundName = alarmSoundFile;
     }
-    localNotif.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+    localNotif.applicationIconBadgeNumber = ++badgeNumber;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     return YES;
+}
+
+
+- (void) setupWarnningUserNotifyForDate: (NSDate *) date
+{
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    localNotif.fireDate = date;
+    localNotif.timeZone = [NSTimeZone systemTimeZone];
+    localNotif.hasAction = YES;
+    localNotif.alertBody = ALERT_USER_ENTER_APP;
+    localNotif.alertAction = NSLocalizedString(@"I Know", "I Know");
+
+    if ([self shouldAlertWithSound])
+        localNotif.soundName = UILocalNotificationDefaultSoundName;
+
+    localNotif.applicationIconBadgeNumber = 1;
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
 }
 
 
 - (void) clearBadgeNumber
 {
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
+    badgeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber;
 }
 
 
@@ -293,19 +316,34 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
         for (OneJob *j in self.jobArray) {
             [self setupAlarmForJob:j daysLater:0];
             [self setupAlarmForJob:j daysLater:1];
+            [self setupAlarmForJob:j daysLater:2];
+
         }
     } else {
-        int max_notify = ((self.jobArray.count * 7) > MAX_NOTIFY_COUNT)
-            ? MAX_NOTIFY_COUNT : self.jobArray.count * 7;
+        int max_notify = MIN(self.jobArray.count * 7, MAX_NOTIFY_COUNT);
         int used = 0;
+        int days = 0;
         // try our best to eat all the notify
         // and only set 7 days laters for each job.
         for (int i = 0; i < max_notify; i++) {
             if (used > max_notify)
                 break;
+            days = i;
             for (OneJob *j in self.jobArray)
                 used += [self setupAlarmForJob:j daysLater:i];
         }
+
+        // at the date by days - 1, setup an alarm for user to enter the app
+        // to active the alarm.
+
+        OneJob *random_job = [self.jobArray lastObject];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+
+        NSDate *alertDate = [random_job.jobStartDate cc_dateByMovingToNextOrBackwardsFewDays:days - 1 withCalender: [NSCalendar currentCalendar]];
+        if (random_job != nil)
+            [self setupWarnningUserNotifyForDate: alertDate];
+        NSLog(@"schedule a alart let user reactive the alarm at :%@", [formatter stringFromDate:alertDate]);
+
     }
 }
 

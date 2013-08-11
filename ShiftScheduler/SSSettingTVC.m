@@ -434,7 +434,7 @@ enum {
             BOOL enableSound = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_ALERT_SOUND];
             if (!enableSound)
                 return;
-            SSSettingAlarmPickerVC  *view = [[SSSettingAlarmPickerVC alloc] initWithStyle:UITableViewStyleGrouped];
+            SSSettingAlarmPickerVC  *view = [[SSSettingAlarmPickerVC alloc] initWithNibName:@"SSSettingAlarmPickerVC" bundle:nil];
             [self.navigationController pushViewController:view animated:YES];
         }
     } else if (indexPath.section == SSRESET_SECTION) {

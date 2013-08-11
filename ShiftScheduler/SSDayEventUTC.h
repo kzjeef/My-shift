@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UITextView *lunarTextView;
 //@property (strong, nonatomic) IBOutlet UITextView *holidayTextView;
 @property (strong, nonatomic) IBOutlet UILabel *holidayLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *lunarImage;
 
 
 @end

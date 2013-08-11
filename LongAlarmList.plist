@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Music Box</string>
+		<key>file</key>
+		<string>八音盒.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Seaside Cabin</string>
+		<key>file</key>
+		<string>海边小屋.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Piano</string>
+		<key>file</key>
+		<string>黑白琴键.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Valley echo</string>
+		<key>file</key>
+		<string>空谷回响.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Marimba</string>
+		<key>file</key>
+		<string>马林巴琴.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Soft</string>
+		<key>file</key>
+		<string>soft.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Beautiful Morning</string>
+		<key>file</key>
+		<string>美妙清晨.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Xylophone</string>
+		<key>file</key>
+		<string>木琴.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Morning Beeping</string>
+		<key>file</key>
+		<string>起床闹钟.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Dance Music</string>
+		<key>file</key>
+		<string>甜美舞曲.caf</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Nature</string>
+		<key>file</key>
+		<string>自然晨曦.caf</string>
+	</dict>
+</array>
+</plist>

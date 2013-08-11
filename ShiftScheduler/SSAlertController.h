@@ -27,6 +27,8 @@
     
     SystemSoundID alertSoundID;
     NSURL *alert_sound_url;
+
+    int badgeNumber;
 }
 
 @property (nonatomic, strong) NSFetchedResultsController *frc;

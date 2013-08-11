@@ -12,6 +12,7 @@
 #import "SSLunarDate/SSLunarDate.h"
 #import "SSLunarDate/SSHolidayManager.h"
 #import "SSDayEventUTC.h"
+#import "UIColor+HexCoding.m"
 
 #define ONE_DAY_SECONDS (60*60*24)
 #define HALF_DAY_SECONDS (60*60*12)
@@ -224,7 +225,9 @@
         SSDayEventUTC *cell = [views objectAtIndex:0];
         cell.lunarTextView.text = nil;
         cell.holidayLabel.text = nil;
-
+        cell.lunarTextView.textColor = [UIColor colorWithHexString:@"2C3E50"];
+        cell.holidayLabel.textColor = [UIColor colorWithHexString:@"D35400"];
+        cell.contentView.backgroundColor = [UIColor colorWithHexString:@"ECF0F1"];
 
         if ([self isLunarDateDisplayEnable]) {
             SSLunarDate *lunarDate = [[SSLunarDate alloc] initWithDate:self.currentChoosenDate];
