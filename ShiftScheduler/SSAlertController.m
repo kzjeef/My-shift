@@ -35,6 +35,8 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName: @"OneJob"
                                               inManagedObjectContext: self.managedcontext];
+    
+    farestAlarmDate = [NSDate date];
     [request setEntity:entity];
     request.sortDescriptors = @[[NSSortDescriptor
                                  sortDescriptorWithKey: @"jobName"
@@ -190,10 +192,13 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
     }
 
     NSString *alarmSoundFile = [[NSUserDefaults standardUserDefaults] stringForKey:USER_CONFIG_APP_DEFAULT_ALERT_SOUND];
+    
+    if ([finalFireDate timeIntervalSinceDate:farestAlarmDate] > 0)
+        farestAlarmDate = finalFireDate;
 
-    NSLog(@"setup local notify job: %@ firedate: %@ sound:%@",
+    NSLog(@"setup local notify job: %@ firedate: %@ sound:%@ badge: %d",
           job.jobName,
-          [formatter stringFromDate:finalFireDate], alarmSoundFile);
+          [formatter stringFromDate:finalFireDate], alarmSoundFile, badgeNumber + 1);
 
     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
     if (localNotif == nil)
@@ -306,6 +311,7 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
 
     // clear the alarm set before.
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    badgeNumber = 0;
 
 #define MAX_NOTIFY_COUNT 24
     if (self.jobArray.count <= 0)
@@ -336,13 +342,17 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
         // at the date by days - 1, setup an alarm for user to enter the app
         // to active the alarm.
 
-        OneJob *random_job = [self.jobArray lastObject];
+        
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setTimeStyle:NSDateFormatterMediumStyle];
+        [formatter setDateStyle:NSDateFormatterMediumStyle];
+        formatter.timeZone = [NSTimeZone defaultTimeZone];
+        
+        NSDate *d = [farestAlarmDate cc_dateByMovingToNextOrBackwardsFewDays:-1 withCalender:[NSCalendar currentCalendar]];
 
-        NSDate *alertDate = [random_job.jobStartDate cc_dateByMovingToNextOrBackwardsFewDays:days - 1 withCalender: [NSCalendar currentCalendar]];
-        if (random_job != nil)
-            [self setupWarnningUserNotifyForDate: alertDate];
-        NSLog(@"schedule a alart let user reactive the alarm at :%@", [formatter stringFromDate:alertDate]);
+        NSLog(@"schedule a alerm at :%@", [formatter stringFromDate:d]);
+        
+        [self setupWarnningUserNotifyForDate:d];
 
     }
 }

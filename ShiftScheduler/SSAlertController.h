@@ -27,6 +27,7 @@
     
     SystemSoundID alertSoundID;
     NSURL *alert_sound_url;
+    NSDate *farestAlarmDate;
 
     int badgeNumber;
 }
