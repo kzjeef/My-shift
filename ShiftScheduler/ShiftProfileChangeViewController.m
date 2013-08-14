@@ -76,7 +76,7 @@
 #define SHIFT_TIME_DETAIL_TITLE NSLocalizedString(@"Time and Remind", "time and remind title")
 
 #define EMPTY_SHIFT_WARNNING_TITLE NSLocalizedString(@"Do you forget shift detail?", "empty shift warnning")
-#define EMPTY_SHIFT_WARNNING_DETAIL NSLocalizedString(@"an empty shift detail will cause shift not display on calendar", "empty shift warnning.")
+#define EMPTY_SHIFT_WARNNING_DETAIL NSLocalizedString(@"Please choose your shift detail...", "empty shift warnning.")
 
 #define STARTWITH_ITEM 1
 #define FINISH_ITEM 2
