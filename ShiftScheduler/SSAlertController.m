@@ -351,9 +351,8 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
         NSDate *d = [farestAlarmDate cc_dateByMovingToNextOrBackwardsFewDays:-1 withCalender:[NSCalendar currentCalendar]];
 
         NSLog(@"schedule a alerm at :%@", [formatter stringFromDate:d]);
-        
-        [self setupWarnningUserNotifyForDate:d];
-
+        if([d timeIntervalSinceDate:[NSDate date]] > 0)
+            [self setupWarnningUserNotifyForDate:d];
     }
 }
 
