@@ -10,14 +10,9 @@
 
 @interface SSDayEventUTC : UITableViewCell
 {
-     UITextView *_lunarTextView;
-    //     UITextView *_holidayTextView;
-    UILabel *_holidayLable;
-
 }
 
-@property (strong, nonatomic) IBOutlet UITextView *lunarTextView;
-//@property (strong, nonatomic) IBOutlet UITextView *holidayTextView;
+@property (strong, nonatomic) IBOutlet UILabel *lunarLabel;
 @property (strong, nonatomic) IBOutlet UILabel *holidayLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *lunarImage;
 

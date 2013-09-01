@@ -223,9 +223,9 @@
                                     options:nil];
 
         SSDayEventUTC *cell = [views objectAtIndex:0];
-        cell.lunarTextView.text = nil;
+        cell.lunarLabel.text = nil;
         cell.holidayLabel.text = nil;
-        cell.lunarTextView.textColor = [UIColor colorWithHexString:@"2C3E50"];
+        cell.lunarLabel.textColor = [UIColor colorWithHexString:@"2C3E50"];
         cell.holidayLabel.textColor = [UIColor colorWithHexString:@"D35400"];
         cell.contentView.backgroundColor = [UIColor colorWithHexString:@"ECF0F1"];
 
@@ -233,7 +233,7 @@
             SSLunarDate *lunarDate = [[SSLunarDate alloc] initWithDate:self.currentChoosenDate];
 
             if ([lunarDate convertSuccess])
-                cell.lunarTextView.text = [NSString stringWithFormat:@"%@:%@%@",
+                cell.lunarLabel.text = [NSString stringWithFormat:@"%@:%@%@",
                                            LUNAR_FMT_START_STRING,
                                            [lunarDate monthString],
                                            [lunarDate dayString]];
