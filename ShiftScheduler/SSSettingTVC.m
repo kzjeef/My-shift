@@ -30,9 +30,9 @@
 #define MONDAY_START_ITEM   NSLocalizedString(@"Monday Start", "enable start with monday title.")
 #define MONDAY_START_ITEM_HELP   NSLocalizedString(@"change week to monday", "change week start with monday help")
 
-#define HOLIDAY_PICK_ITEM   NSLocalizedString(@"Region Holidays", "enable chinese calendar config title")
+#define HOLIDAY_PICK_ITEM   NSLocalizedString(@"Holiday", "enable chinese calendar config title")
 
-#define HOLIDAY_PICK_ITEM_HLEP NSLocalizedString(@"show region(s) holiday on calendar", "show region hlidays help")
+#define HOLIDAY_PICK_ITEM_HLEP NSLocalizedString(@"pick your region to show holidays", "show region hlidays help")
 
 #define LOGIN_THINKNOTE_ITEM    NSLocalizedString(@"Login ThinkNote", "thinkNote Login")
 

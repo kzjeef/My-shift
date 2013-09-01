@@ -49,7 +49,6 @@
         _regionList = [NSArray arrayWithObjects:
                         REGION_NAME_CHINA,
                         REGION_NAME_HK,
-                        REGION_NAME_MACAO,
                         REGION_NAME_TAIWAN,
                         REGION_NAME_US,
                         REGION_NAME_CANADIA,
@@ -67,7 +66,7 @@
             [_regionCheckList addObject:[NSNumber numberWithBool:NO]];
         }
         NSArray *storedCheck = [[NSUserDefaults standardUserDefaults] arrayForKey:USER_CONFIG_HOLIDAY_REGION];
-        for (int i = 0; i < storedCheck.count; i++)
+        for (int i = 0; i < storedCheck.count && i < _regionCheckList.count; i++)
             [_regionCheckList replaceObjectAtIndex:i withObject:[storedCheck objectAtIndex:i]];
     }
     return  _regionCheckList;

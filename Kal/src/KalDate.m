@@ -9,7 +9,9 @@
 static KalDate *today;
 
 
-@interface KalDate ()
+@interface KalDate () {
+    NSDate *nsdate;
+}
 + (void)cacheTodaysDate;
 @end
 
@@ -55,11 +57,14 @@ static KalDate *today;
 
 - (NSDate *)NSDate
 {
-  NSDateComponents *c = [[NSDateComponents alloc] init];
-  c.day = a.day;
-  c.month = a.month;
-  c.year = a.year;
-  return [cachedCalendar dateFromComponents:c];
+    if (nsdate == nil) {
+        NSDateComponents *c = [[NSDateComponents alloc] init];
+        c.day = a.day;
+        c.month = a.month;
+        c.year = a.year;
+        nsdate =  [cachedCalendar dateFromComponents:c];
+    }
+    return  nsdate;
 }
 
 - (BOOL)isToday { return [self isEqual:today]; }
