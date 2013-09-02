@@ -221,7 +221,7 @@ enum {
 {
     
     UISwitch *theSwitch;
-    CGRect frame = CGRectMake(210, 8.0, 120.0, 27.0);
+    CGRect frame = CGRectMake(220, 8.0, 120.0, 27.0);
     theSwitch = [[UISwitch alloc] initWithFrame:frame];
     [theSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
     
