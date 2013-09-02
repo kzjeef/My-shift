@@ -57,30 +57,33 @@
 
 - (void) regionChangedNotifyHandler
 {
+    _holidayManagers = nil;
+    _cachedRegionList = nil;
     [callback loadedDataSource:self];
 }
 
 - (NSArray *) cachedRegionList
 {
-    NSArray *storedList = [[NSUserDefaults standardUserDefaults] objectForKey:USER_CONFIG_HOLIDAY_REGION];
-    _cachedRegionList = [storedList copy];
+    if (_cachedRegionList == nil) {
+        NSArray *storedList = [[NSUserDefaults standardUserDefaults] objectForKey:USER_CONFIG_HOLIDAY_REGION];
+        _cachedRegionList = storedList;
+    }
     return _cachedRegionList;
 }
 
 - (NSArray *) holidayManagers
 {
-    
-    // Without ARC, this should be better handle, since region changed will
-    // leak orignall array.
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    for (int i = 0; i < [self.cachedRegionList count]; i++) {
-        NSNumber *n = [self.cachedRegionList objectAtIndex:i];
-        if (n.intValue == YES) {
-            SSHolidayManager *m = [[SSHolidayManager alloc] initWithRegion:(SSHolidayRegion)i];
-            [array addObject:m];
+    if (_holidayManagers == nil) {
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        for (int i = 0; i < [self.cachedRegionList count]; i++) {
+            NSNumber *n = [self.cachedRegionList objectAtIndex:i];
+            if (n.intValue == YES) {
+                SSHolidayManager *m = [[SSHolidayManager alloc] initWithRegion:(SSHolidayRegion)i];
+                [array addObject:m];
+            }
         }
+        _holidayManagers = array;
     }
-    _holidayManagers = array;
 
     return _holidayManagers;
 }
@@ -227,7 +230,6 @@
         cell.holidayLabel.text = nil;
         cell.lunarLabel.textColor = [UIColor colorWithHexString:@"2C3E50"];
         cell.holidayLabel.textColor = [UIColor colorWithHexString:@"D35400"];
-        cell.contentView.backgroundColor = [UIColor colorWithHexString:@"ECF0F1"];
 
         if ([self isLunarDateDisplayEnable]) {
             SSLunarDate *lunarDate = [[SSLunarDate alloc] initWithDate:self.currentChoosenDate];
