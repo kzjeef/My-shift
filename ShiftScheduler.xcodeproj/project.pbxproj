@@ -426,6 +426,8 @@
 		2991F80E17B7971C009AF142 /* 自然晨曦.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "自然晨曦.caf"; path = "Resources/alarm/long/自然晨曦.caf"; sourceTree = "<group>"; };
 		299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftWorkdayConfigTVC.h; sourceTree = "<group>"; };
 		299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftWorkdayConfigTVC.m; sourceTree = "<group>"; };
+		29AAF46F17D4F88500989BE2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		29AAF47217D4F92100989BE2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		29AB77A715D8746400669B6B /* notify.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = notify.caf; path = Resources/notify.caf; sourceTree = "<group>"; };
 		29AD3C8916D7B035002E6543 /* SSSettingHolidayRegionPIckerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSettingHolidayRegionPIckerVC.h; path = ShiftScheduler/SSSettingHolidayRegionPIckerVC.h; sourceTree = "<group>"; };
 		29AD3C8A16D7B035002E6543 /* SSSettingHolidayRegionPIckerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSettingHolidayRegionPIckerVC.m; path = ShiftScheduler/SSSettingHolidayRegionPIckerVC.m; sourceTree = "<group>"; };
@@ -1566,6 +1568,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				29AEBD701554146F0010F27D /* en */,
+				29AAF46F17D4F88500989BE2 /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1586,6 +1589,7 @@
 				29B9E1D51472C2B000DB2E1F /* en */,
 				29B9E1D71472C2B600DB2E1F /* zh-Hans */,
 				2900DEC21483E44E00E588EE /* zh-Hant */,
+				29AAF47217D4F92100989BE2 /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
