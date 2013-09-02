@@ -111,7 +111,7 @@
                                               inManagedObjectContext:self.objectContext];
     [request setEntity:entity];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor
-                                                           sortDescriptorWithKey:@"jobName"
+                                                           sortDescriptorWithKey:@"jobEverydayStartTime"
                                                                        ascending:YES]];
     
 
