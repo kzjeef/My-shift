@@ -174,7 +174,7 @@
     UINavigationController *navvc = [[UINavigationController alloc] initWithRootViewController:addvc];
 
     [navvc setToolbarHidden:NO];
-    [self.navigationController presentModalViewController:navvc animated:YES];
+    [self.navigationController presentViewController:navvc animated:YES completion:nil];
 
 }
 
@@ -214,7 +214,7 @@
     self.addingManagedObjectContext = nil;
     
         // Dismiss the modal view to return to the main list
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     [self.tableView reloadData];
 }
 

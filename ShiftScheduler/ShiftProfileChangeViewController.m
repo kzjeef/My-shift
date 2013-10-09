@@ -508,7 +508,7 @@
                 imagePickerController.monoColor = [self.theJob iconColor];
                 imagePickerController.monoProcessAllImage = YES;
 		
-		[self.navigationController presentModalViewController:imagePickerController animated:YES];
+		[self.navigationController presentViewController:imagePickerController animated:YES completion:nil];
     }
 
     if ([item isEqualToString:ICON_OR_TEXT_STRING]) {
@@ -673,7 +673,7 @@
     self.theJob.jobOnColorID = [color_picker.resultColor hexStringFromColor];
     self.theJob.cachedJobOnIconID = nil;
     self.theJob.cachedJobOnIconColor = nil;
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
     [self.tableView reloadData];
 }
 
@@ -688,12 +688,12 @@
     self.theJob.cachedJobOnIconID = nil;
     self.theJob.cachedJobOnIconColor = nil;
     [self.tableView reloadData];
-    [self.modalViewController dismissModalViewControllerAnimated:YES];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) imagePickerDidCancel:(JPImagePickerController *)picker
 {
-    [self dismissModalViewControllerAnimated:YES];   
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma - mark - ShiftTypePickerDelegate

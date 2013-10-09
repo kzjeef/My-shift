@@ -52,7 +52,7 @@
         dispatch_sync(dispatch_get_main_queue(), ^{
             [ssDelegate rightButtonSwitchToShareOrBusy:YES];
             nvc = pnvc;
-            [nvc presentModalViewController:picker_ animated:YES];
+            [nvc presentViewController:picker_ animated:YES completion:nil];
         });
     });
 }
@@ -83,7 +83,7 @@
 			break;
 	}
         NSLog(@"mail result:%@", resstring);
-	[nvc dismissModalViewControllerAnimated:YES];
+	[nvc dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

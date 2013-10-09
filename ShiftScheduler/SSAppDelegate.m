@@ -255,23 +255,8 @@ enum {
                                            ]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 
-    [self performSelectorInBackground:@selector(SSKalControllerInit) withObject:nil];
-    
-    if (![[NSFileManager defaultManager] respondsToSelector:@selector(ubiquityIdentityToken)]) {
-        // iOS 5.x System.
-        NSLog(@"ios5 system.");
-    } else {
-        // iOS 6.x + system.
-        id token = [[NSFileManager defaultManager] ubiquityIdentityToken];
-        
-        if (token) {
-            NSLog(@"have icloud");
-            // have iClude account;
-        } else {
-            NSLog(@"don't have icloud");
-        }
-    }
-
+    //    [self performSelectorInBackground:@selector(SSKalControllerInit) withObject:nil];
+    [self SSKalControllerInit];
     
     return YES;
 }
@@ -368,7 +353,7 @@ enum {
     case 1:
             if ([self.class enableThinkNoteConfig]) {
                 [_shareC invaildCache];
-                [self.navController presentModalViewController:self.tnoteShareVC animated:YES];
+                [self.navController presentViewController:self.tnoteShareVC animated:YES completion:nil];
             }
         break;
     default:
@@ -381,13 +366,13 @@ enum {
 
 - (void) shareViewControllerfinishShare
 {
-    [self.navController dismissModalViewControllerAnimated:YES];
+    [self.navController dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 - (void) didFinishEditingSetting
 {
-    [self.navController dismissModalViewControllerAnimated:YES];
+    [self.navController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {

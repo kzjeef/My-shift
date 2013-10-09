@@ -112,7 +112,7 @@ enum {
     addViewController.profileDelegate = self;
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:addViewController];
-    [self.navigationController presentModalViewController:navController animated:YES];
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
 }
 
 #pragma mark -
@@ -513,7 +513,7 @@ return YES;
     pcvc.viewMode = PCVC_EDITING_MODE;
     UINavigationController *navController = [[UINavigationController alloc]
                                                 initWithRootViewController:pcvc];
-    [self.navigationController presentModalViewController:navController animated:YES];
+    [self.navigationController presentViewController:navController animated:YES completion:nil];
 }
 
 #pragma mark - Table view delegate
@@ -652,7 +652,8 @@ return YES;
     self.addingManagedObjectContext = nil;
     
     // Dismiss the modal view to return to the main list
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 @end
 
