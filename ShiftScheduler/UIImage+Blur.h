@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (Blur)
-
+- (UIImage *)imageWithBlurredCircleWithCenter:(CGPoint)center radius:(CGFloat)circleRadius blur:(CGFloat)blurRadius luminosity:(CGFloat)luminosity;
 @end

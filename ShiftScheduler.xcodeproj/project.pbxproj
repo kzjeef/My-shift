@@ -93,7 +93,6 @@
 		2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */; };
 		297D073215B702DC008B9983 /* ThinkNoteModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073115B702DC008B9983 /* ThinkNoteModelTest.m */; };
 		298C3FBD15D92622002F9AC3 /* ThinkNoteShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 298C3FBC15D92622002F9AC3 /* ThinkNoteShareViewController.m */; };
-		2991F79517B6AB4A009AF142 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2991F79417B6AB4A009AF142 /* CoreMedia.framework */; };
 		2991F79717B78026009AF142 /* strike_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F79617B78026009AF142 /* strike_icon@2x.png */; };
 		2991F7E617B780A9009AF142 /* Calendar-icon-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B317B780A9009AF142 /* Calendar-icon-114x114.png */; };
 		2991F7E717B780A9009AF142 /* Calendar-icon-57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B417B780A9009AF142 /* Calendar-icon-57x57.png */; };
@@ -173,6 +172,12 @@
 		29B9E1ED1472C39F00DB2E1F /* ShiftProfileChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B9E1E11472C39F00DB2E1F /* ShiftProfileChangeViewController.m */; };
 		29B9E1EF1472C39F00DB2E1F /* ShiftListProfilesTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B9E1E41472C39F00DB2E1F /* ShiftListProfilesTVC.m */; };
 		29B9E1F11472C39F00DB2E1F /* WorkdayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B9E1E71472C39F00DB2E1F /* WorkdayDataSource.m */; };
+		29C4B5D41813BE260041D0B2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C4B5D31813BE260041D0B2 /* CFNetwork.framework */; };
+		29C4B5D81813BE880041D0B2 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C4B5D71813BE880041D0B2 /* Reveal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		29C4B5DA1813BE9B0041D0B2 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C4B5D91813BE9B0041D0B2 /* CoreMedia.framework */; };
+		29C4B5DC1813BEA70041D0B2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C4B5DB1813BEA70041D0B2 /* QuartzCore.framework */; };
+		29C4B5DF1813C38D0041D0B2 /* UIImage+Blur.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C4B5DD1813C38D0041D0B2 /* UIImage+Blur.h */; };
+		29C4B5E01813C38E0041D0B2 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C4B5DE1813C38D0041D0B2 /* UIImage+Blur.m */; };
 		29C943B014E957F700122144 /* SSKalDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C943AF14E957F700122144 /* SSKalDelegate.h */; };
 		29C943B214E9581600122144 /* SSKalDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C943B114E9581600122144 /* SSKalDelegate.m */; };
 		29C943B614E9642900122144 /* SSProfileTimeAndAlarmVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C943B314E9642800122144 /* SSProfileTimeAndAlarmVC.h */; };
@@ -361,7 +366,6 @@
 		297D073015B702DB008B9983 /* ThinkNoteModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThinkNoteModelTest.h; path = OneJobModuleTest/ThinkNoteModelTest.h; sourceTree = "<group>"; };
 		297D073115B702DC008B9983 /* ThinkNoteModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteModelTest.m; path = OneJobModuleTest/ThinkNoteModelTest.m; sourceTree = "<group>"; };
 		298C3FBC15D92622002F9AC3 /* ThinkNoteShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteShareViewController.m; path = ShiftScheduler/ThinkNoteShareViewController.m; sourceTree = "<group>"; };
-		2991F79417B6AB4A009AF142 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		2991F79617B78026009AF142 /* strike_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "strike_icon@2x.png"; path = "Resources/strike_icon@2x.png"; sourceTree = "<group>"; };
 		2991F79917B780A8009AF142 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addButton.png; sourceTree = "<group>"; };
 		2991F79B17B780A8009AF142 /* Alarm_Beep_03.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alarm_Beep_03.caf; sourceTree = "<group>"; };
@@ -476,6 +480,12 @@
 		29B9E1E41472C39F00DB2E1F /* ShiftListProfilesTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ShiftListProfilesTVC.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29B9E1E61472C39F00DB2E1F /* WorkdayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkdayDataSource.h; sourceTree = "<group>"; };
 		29B9E1E71472C39F00DB2E1F /* WorkdayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkdayDataSource.m; sourceTree = "<group>"; };
+		29C4B5D31813BE260041D0B2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		29C4B5D71813BE880041D0B2 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		29C4B5D91813BE9B0041D0B2 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		29C4B5DB1813BEA70041D0B2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		29C4B5DD1813C38D0041D0B2 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Blur.h"; path = "ShiftScheduler/UIImage+Blur.h"; sourceTree = "<group>"; };
+		29C4B5DE1813C38D0041D0B2 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Blur.m"; path = "ShiftScheduler/UIImage+Blur.m"; sourceTree = "<group>"; };
 		29C943AF14E957F700122144 /* SSKalDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKalDelegate.h; sourceTree = "<group>"; };
 		29C943B114E9581600122144 /* SSKalDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKalDelegate.m; sourceTree = "<group>"; };
 		29C943B314E9642800122144 /* SSProfileTimeAndAlarmVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSProfileTimeAndAlarmVC.h; sourceTree = "<group>"; };
@@ -565,8 +575,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2991F79517B6AB4A009AF142 /* CoreMedia.framework in Frameworks */,
+				29C4B5DC1813BEA70041D0B2 /* QuartzCore.framework in Frameworks */,
+				29C4B5DA1813BE9B0041D0B2 /* CoreMedia.framework in Frameworks */,
+				29C4B5D41813BE260041D0B2 /* CFNetwork.framework in Frameworks */,
 				2912673D16CF81FA00FFB202 /* libSSLunarDate.a in Frameworks */,
+				29C4B5D81813BE880041D0B2 /* Reveal.framework in Frameworks */,
 				29D6A550159CB79F00AC6103 /* libKal.a in Frameworks */,
 				29E6D7F115ADACCE00235123 /* MessageUI.framework in Frameworks */,
 				2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */,
@@ -965,7 +978,8 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
-				2991F79417B6AB4A009AF142 /* CoreMedia.framework */,
+				29C4B5DD1813C38D0041D0B2 /* UIImage+Blur.h */,
+				29C4B5DE1813C38D0041D0B2 /* UIImage+Blur.m */,
 				2912673C16CF81FA00FFB202 /* libSSLunarDate.a */,
 				29B9E1BD1472C1D700DB2E1F /* ShiftScheduler */,
 				293446E916835B88007219D1 /* ShiftScheduler.entitlements */,
@@ -993,6 +1007,10 @@
 		29B9E1B41472C1D700DB2E1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29C4B5DB1813BEA70041D0B2 /* QuartzCore.framework */,
+				29C4B5D91813BE9B0041D0B2 /* CoreMedia.framework */,
+				29C4B5D71813BE880041D0B2 /* Reveal.framework */,
+				29C4B5D31813BE260041D0B2 /* CFNetwork.framework */,
 				29E6D7F015ADACCE00235123 /* MessageUI.framework */,
 				2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */,
 				2968BECD14F9076400DF1CCF /* AVFoundation.framework */,
@@ -1184,6 +1202,7 @@
 				294E2902148B302700E6ED45 /* ShiftDay.h in Headers */,
 				292DBCAA14CA943F00C87A70 /* JPImagePickerController.h in Headers */,
 				292DBCAC14CA943F00C87A70 /* JPImagePickerDetailController.h in Headers */,
+				29C4B5DF1813C38D0041D0B2 /* UIImage+Blur.h in Headers */,
 				292DBCAF14CA943F00C87A70 /* JPImagePickerOverviewController.h in Headers */,
 				292DBCB214CA943F00C87A70 /* UIImageResizing.h in Headers */,
 				29E339D414CA955A0036EAED /* ProfileIconPickerDataSource.h in Headers */,
@@ -1286,7 +1305,7 @@
 		29B9E1A81472C1D700DB2E1F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 29B9E1AB1472C1D700DB2E1F /* Build configuration list for PBXProject "ShiftScheduler" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1533,6 +1552,7 @@
 				29D6A529159CB4B600AC6103 /* UIViewAdditions.m in Sources */,
 				29D6A534159CB65500AC6103 /* main.m in Sources */,
 				29009FCE159F4A4D00A1588E /* SSSettingTVC.m in Sources */,
+				29C4B5E01813C38E0041D0B2 /* UIImage+Blur.m in Sources */,
 				29009FD6159F4AA100A1588E /* SSShiftHolidayCreateVC.m in Sources */,
 				29009FD9159F4AA100A1588E /* ShiftPickerDataSource.m in Sources */,
 				29009FE2159F4AB600A1588E /* DatePickerViewController2.m in Sources */,
@@ -1649,7 +1669,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1666,7 +1685,8 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
@@ -1678,7 +1698,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -1688,7 +1707,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -1706,12 +1725,14 @@
 				CODE_SIGN_ENTITLEMENTS = ShiftScheduler/ShiftScheduler.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/zhangjeef/Developer/shiftScheduler,
 				);
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShiftScheduler/ShiftScheduler-Prefix.pch";
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../SSLunarDate/build/Release-iphoneos\"",
@@ -1719,7 +1740,7 @@
 					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7s\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1735,12 +1756,14 @@
 				CODE_SIGN_ENTITLEMENTS = ShiftScheduler/ShiftScheduler.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					/Users/zhangjeef/Developer/shiftScheduler,
 				);
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShiftScheduler/ShiftScheduler-Prefix.pch";
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../SSLunarDate/build/Release-iphoneos\"",
@@ -1748,7 +1771,7 @@
 					"\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7s\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
