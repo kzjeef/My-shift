@@ -220,6 +220,7 @@ extern const CGSize kTileSize;
   flags.highlighted = NO;
   flags.selected = NO;
   flags.marked = NO;
+    holiday = NO;
 }
 
 - (void)setDate:(KalDate *)aDate

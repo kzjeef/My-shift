@@ -14,24 +14,10 @@
 - (void)setHeaderTitleText:(NSString *)text;
 @end
 
-CGFloat const gestureMinimumTranslation = 20.0;
-typedef enum : NSInteger {
-    kKalViewMoveDirectionNone,
-    kKalViewMoveDirectionUp,
-    kKalViewMoveDirectionDown,
-    kKalViewMoveDirectionRight,
-    kKalViewMoveDirectionLeft
-} CameraMoveDirection;
 
 static const CGFloat kHeaderHeight = 44.f;
 static const CGFloat kMonthLabelHeight = 17.f;
 
-@interface KalView()
-{
-    int direction;
-}
-
-@end
 
 @implementation KalView
 
@@ -58,105 +44,11 @@ static const CGFloat kMonthLabelHeight = 17.f;
     [self addSubviewsToContentView:contentView];
     [self addSubview:contentView];
 
-      [self setGestureRecognizers: @[[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)]]];
+
   }
   return self;
 }
 
-
-
-- (void)handleSwipe:(UIPanGestureRecognizer *)gesture
-{
-    CGPoint translation = [gesture translationInView:self];
-
-    if (gesture.state == UIGestureRecognizerStateBegan)
-    {
-        direction = kKalViewMoveDirectionNone;
-    }
-    else if (gesture.state == UIGestureRecognizerStateChanged && direction == kKalViewMoveDirectionNone)
-    {
-        direction = [self determineCameraDirectionIfNeeded:translation];
-
-        // ok, now initiate movement in the direction indicated by the user's gesture
-
-        switch (direction) {
-            case kKalViewMoveDirectionDown:
-                [self showPreviousMonth];
-                NSLog(@"Start moving down");
-                break;
-
-            case kKalViewMoveDirectionUp:
-                [self showFollowingMonth];
-                NSLog(@"Start moving up");
-                break;
-
-            case kKalViewMoveDirectionRight:
-                break;
-
-            case kKalViewMoveDirectionLeft:
-
-                NSLog(@"Start moving left");
-                break;
-
-            default:
-                break;
-        }
-    }
-    else if (gesture.state == UIGestureRecognizerStateEnded)
-    {
-        // now tell the camera to stop
-        NSLog(@"Stop");
-    }
-}
-
-// This method will determine whether the direction of the user's swipe
-
-- (CameraMoveDirection)determineCameraDirectionIfNeeded:(CGPoint)translation
-{
-    if (direction != kKalViewMoveDirectionNone)
-        return direction;
-
-    // determine if horizontal swipe only if you meet some minimum velocity
-
-    if (fabs(translation.x) > gestureMinimumTranslation)
-    {
-        BOOL gestureHorizontal = NO;
-
-        if (translation.y == 0.0)
-            gestureHorizontal = YES;
-        else
-            gestureHorizontal = (fabs(translation.x / translation.y) > 5.0);
-
-        if (gestureHorizontal)
-        {
-            if (translation.x > 0.0)
-                return kKalViewMoveDirectionRight;
-            else
-                return kKalViewMoveDirectionLeft;
-        }
-    }
-    // determine if vertical swipe only if you meet some minimum velocity
-
-    else if (fabs(translation.y) > gestureMinimumTranslation)
-    {
-        BOOL gestureVertical = NO;
-
-        if (translation.x == 0.0)
-            gestureVertical = YES;
-        else
-            gestureVertical = (fabs(translation.y / translation.x) > 5.0);
-
-        if (gestureVertical)
-        {
-            if (translation.y > 0.0)
-                return kKalViewMoveDirectionDown;
-            else
-                return kKalViewMoveDirectionUp;
-        }
-    }
-
-    return direction;
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
