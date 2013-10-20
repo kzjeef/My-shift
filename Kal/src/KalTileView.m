@@ -142,7 +142,7 @@ extern const CGSize kTileSize;
     if (self.isSelected)
         [self drawFilledCricle:ctx x:kTileSize.width/2 y:kTileSize.height/2 - 6 radius:textSize.height / 2 + 1 BLUE_FILL_COLOR];
     if ([self isHoliday])
-        textColor = [self holidayTextColor];
+        textColor = [self holidayTextColor:textColor];
 
     [textColor setFill];
     CGContextShowTextAtPoint(ctx, textX, textY, day, n >= 10 ? 2 : 1);
@@ -165,8 +165,11 @@ extern const CGSize kTileSize;
     CGContextRestoreGState(ctx);
 }
 
-- (UIColor *) holidayTextColor
+- (UIColor *) holidayTextColor:(UIColor *)originColor
 {
+    if (self.belongsToAdjacentMonth)
+        return originColor;
+
     if (self.selected)
         return [UIColor colorWithRed:0.6 green:1 blue:0.6 alpha:.88];
     else
@@ -229,10 +232,10 @@ extern const CGSize kTileSize;
   [self setNeedsDisplay];
 }
 
-- (BOOL)isHoliday {return flags.holiday; }
+- (BOOL)isHoliday {return holiday; }
 - (void)setHoliday:(BOOL) isHoliday
 {
-    flags.holiday = isHoliday;
+    holiday = isHoliday;
 }
 
 - (BOOL)isSelected { return flags.selected; }

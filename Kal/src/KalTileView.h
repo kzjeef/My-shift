@@ -22,11 +22,12 @@ typedef char KalTileType;
   KalDate *date;
   id<KalViewDelegate> delegate;  // Assigned.
   CGPoint origin;
+    unsigned int holiday;
+
   struct {
     unsigned int selected : 1;
     unsigned int highlighted : 1;
     unsigned int marked : 1;
-    unsigned int holiday: 1;
     unsigned int type : 2;
   } flags;
 }
