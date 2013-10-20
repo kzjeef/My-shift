@@ -169,7 +169,7 @@
         //		nameField.clearButtonMode = UITextFieldViewModeWhileEditing;	// has a clear 'x' button to the right
         nameField.clearButtonMode = UITextFieldViewModeNever;
 		nameField.tag = kViewTag;		// tag this control so we can remove it later for recycled cells
-        nameField.textAlignment = UITextAlignmentRight;
+        nameField.textAlignment = NSTextAlignmentCenter;
 	}	
 	return nameField;
 }
