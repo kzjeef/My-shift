@@ -9,6 +9,7 @@
 #import "KalViewController.h"
 #import "UIImageResizing.h"
 #import "CoreText/CTFont.h"
+#import "UIImage+Blur.h"
 
 
 #include "math.h"
@@ -17,11 +18,14 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 extern const CGSize kTileSize;
 
+@interface KalTileView()
+- (void) drawFilledCricle: (CGContextRef) ctx x:(float) x y:(float) y radius:(float) r
+                      red: (float) red green:(float) green blue: (float) blue alpha: (float) alpha;
+@end
 
 @implementation KalTileView
 
 @synthesize date;
-
 
 - (void) drawText: (NSString *) str withCtx: (CGContextRef)ctx atPoint: (CGPoint) point withFont: (UIFont *) font withColor: (UIColor *) color
 {
@@ -63,17 +67,14 @@ extern const CGSize kTileSize;
   CGContextScaleCTM(ctx, 1, -1);
   
   if ([self isToday] && self.selected) {
-      [[[UIImage imageNamed:@"Kal.bundle/kal_tile_today_selected.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1) blendMode:kCGBlendModeScreen alpha:0.8];
     textColor = [UIColor whiteColor];
     shadowColor = [UIColor blackColor];
     markerImage = [UIImage imageNamed:@"Kal.bundle/kal_marker_today.png"];
   } else if ([self isToday] && !self.selected) {
-      [[[UIImage imageNamed:@"Kal.bundle/kal_tile_today.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1) blendMode:kCGBlendModeScreen alpha:0.8];
     textColor = [UIColor whiteColor];
     shadowColor = [UIColor blackColor];
     markerImage = [UIImage imageNamed:@"Kal.bundle/kal_marker_today.png"];
   } else if (self.selected) {
-      [[[UIImage imageNamed:@"Kal.bundle/kal_tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1) blendMode:kCGBlendModeScreen alpha:0.9];
     textColor = [UIColor whiteColor];
     shadowColor = [UIColor blackColor];
     markerImage = [UIImage imageNamed:@"Kal.bundle/kal_marker_selected.png"];
@@ -101,15 +102,12 @@ extern const CGSize kTileSize;
               NSNumber *type     = [dict objectForKey:KAL_TILE_ICON_TYPE_KEY];
               
               if (position.integerValue == KAL_TILE_ICON_POSITION_TOP) {
-                  
                   if (type.integerValue == KAL_TILE_ICON_TYPE_SHIFT) {
                       [self drawMarkForShiftIcon:dict count:top_count ctx:ctx];
                   }                   top_count += 1;
               } else if (position.integerValue == KAL_TILE_ICON_POSITION_BOTTOM) {
-                  if (type.integerValue == KAL_TILE_ICON_TYPE_HOLIDAY) {
-                      UIFont *fontDrawText = [UIFont boldSystemFontOfSize:13.0];
-                      [self drawText:@"H" withCtx:ctx atPoint:CGPointMake(35., 30.) withFont:fontDrawText withColor:[self holidayTextColor]];
-                  }
+                  if (type.integerValue == KAL_TILE_ICON_TYPE_HOLIDAY)
+                      [self setHoliday:YES];
               }
           }
       } else {
@@ -119,6 +117,7 @@ extern const CGSize kTileSize;
       }
   }
   // Start draw the day Text...
+
 
   // FIXME: if user chagne the font here, have possible can not draw
   // out, better use NSAttributedString to draw the text.
@@ -130,13 +129,24 @@ extern const CGSize kTileSize;
     float textPosition = 0.5; // lower value to let calendar down, higher value to up.
   textX = roundf(textPosition * (kTileSize.width - textSize.width));
   textY = 0.f + roundf(textPosition * (kTileSize.height - textSize.height));
-  if (shadowColor) {
-    [shadowColor setFill];
+
+    // draw the background based on the state of current selection.
+
+#define RED_FILL_COLOR red:.80 green:.05 blue:0 alpha:.7
+#define GREEN_FILL_COLOR red:0.f green:.9 blue:0.1 alpha:.125
+#define HOLIDAY_FILL_COLOR red:.7f green:0 blue:0.f alpha:.3
+#define BLUE_FILL_COLOR red:0.f green:0.34f  blue:.98  alpha:.7
+
+    if (self.isToday)
+        [self drawFilledCricle:ctx x:kTileSize.width/2 y:kTileSize.height/2 - 6 radius:textSize.height / 2 + 1 RED_FILL_COLOR];
+    if (self.isSelected)
+        [self drawFilledCricle:ctx x:kTileSize.width/2 y:kTileSize.height/2 - 6 radius:textSize.height / 2 + 1 BLUE_FILL_COLOR];
+    if ([self isHoliday])
+        textColor = [self holidayTextColor];
+
+    [textColor setFill];
     CGContextShowTextAtPoint(ctx, textX, textY, day, n >= 10 ? 2 : 1);
-    textY += 1.f;
-  }
-  [textColor setFill];
-  CGContextShowTextAtPoint(ctx, textX, textY, day, n >= 10 ? 2 : 1);
+
   
   if (self.highlighted) {
     [[UIColor colorWithWhite:0.25f alpha:0.3f] setFill];
@@ -144,12 +154,23 @@ extern const CGSize kTileSize;
   }
 }
 
+- (void) drawFilledCricle: (CGContextRef) ctx x:(float) x y:(float) y radius:(float) r
+                           red: (float) red green:(float) green blue: (float) blue alpha: (float) alpha
+{
+    CGContextSaveGState(ctx);
+    CGContextSetLineWidth(ctx, 0);
+    CGContextSetRGBFillColor(ctx, red, green, blue, alpha);
+    CGContextAddArc(ctx, x, y, r, 0.0, M_PI*2, YES);
+    CGContextFillPath(ctx);
+    CGContextRestoreGState(ctx);
+}
+
 - (UIColor *) holidayTextColor
 {
-    if (self.selected )
-        return [UIColor colorWithWhite:.88f alpha:.88f];
+    if (self.selected)
+        return [UIColor colorWithRed:0.6 green:1 blue:0.6 alpha:.88];
     else
-        return [UIColor brownColor];
+        return [UIColor purpleColor];
 }
 
 - (void) drawMarkForShiftIcon:(NSDictionary *) dict count:(int) count ctx:(CGContextRef) ctx
@@ -208,8 +229,13 @@ extern const CGSize kTileSize;
   [self setNeedsDisplay];
 }
 
-- (BOOL)isSelected { return flags.selected; }
+- (BOOL)isHoliday {return flags.holiday; }
+- (void)setHoliday:(BOOL) isHoliday
+{
+    flags.holiday = isHoliday;
+}
 
+- (BOOL)isSelected { return flags.selected; }
 - (void)setSelected:(BOOL)selected
 {
   if (flags.selected == selected)

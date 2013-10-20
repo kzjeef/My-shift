@@ -43,6 +43,8 @@
 		29AD3C9516DBDC6F002E6543 /* KalTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalTileView.m; sourceTree = "<group>"; };
 		29ADE69F159F7D650026A039 /* libm.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libm.dylib; path = usr/lib/libm.dylib; sourceTree = SDKROOT; };
 		29ADE6AC159FF8CC0026A039 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		29C4B5E11813C4250041D0B2 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = "UIImage+Blur.h"; path = "../../ShiftScheduler/UIImage+Blur.h"; sourceTree = "<group>"; };
+		29C4B5E21813C4250041D0B2 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = "UIImage+Blur.m"; path = "../../ShiftScheduler/UIImage+Blur.m"; sourceTree = "<group>"; };
 		29E6D7DC15ADA05C00235123 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		533B285F11E2D46E00B3CC07 /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Kal.bundle; sourceTree = "<group>"; };
 		533B286011E2D46E00B3CC07 /* Kal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kal.h; sourceTree = SOURCE_ROOT; };
@@ -96,6 +98,8 @@
 		0867D691FE84028FC02AAC07 /* Kal */ = {
 			isa = PBXGroup;
 			children = (
+				29C4B5E11813C4250041D0B2 /* UIImage+Blur.h */,
+				29C4B5E21813C4250041D0B2 /* UIImage+Blur.m */,
 				29E6D7DC15ADA05C00235123 /* CoreGraphics.framework */,
 				29ADE69F159F7D650026A039 /* libm.dylib */,
 				533B285F11E2D46E00B3CC07 /* Kal.bundle */,
@@ -304,7 +308,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -318,7 +322,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

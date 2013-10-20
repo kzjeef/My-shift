@@ -14,8 +14,24 @@
 - (void)setHeaderTitleText:(NSString *)text;
 @end
 
+CGFloat const gestureMinimumTranslation = 20.0;
+typedef enum : NSInteger {
+    kKalViewMoveDirectionNone,
+    kKalViewMoveDirectionUp,
+    kKalViewMoveDirectionDown,
+    kKalViewMoveDirectionRight,
+    kKalViewMoveDirectionLeft
+} CameraMoveDirection;
+
 static const CGFloat kHeaderHeight = 44.f;
 static const CGFloat kMonthLabelHeight = 17.f;
+
+@interface KalView()
+{
+    int direction;
+}
+
+@end
 
 @implementation KalView
 
@@ -24,6 +40,8 @@ static const CGFloat kMonthLabelHeight = 17.f;
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)theDelegate logic:(KalLogic *)theLogic
 {
   if ((self = [super initWithFrame:frame])) {
+
+
     delegate = theDelegate;
     logic = theLogic;
     [logic addObserver:self forKeyPath:@"selectedMonthNameAndYear" options:NSKeyValueObservingOptionNew context:NULL];
@@ -31,16 +49,113 @@ static const CGFloat kMonthLabelHeight = 17.f;
     self.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
     headerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, frame.size.width, kHeaderHeight)];
-    headerView.backgroundColor = [UIColor grayColor];
+   headerView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.8];
     [self addSubviewsToHeaderView:headerView];
     [self addSubview:headerView];
-    
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0.f, kHeaderHeight, frame.size.width, frame.size.height - kHeaderHeight)];
-    contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, kHeaderHeight, frame.size.width, frame.size.height - kHeaderHeight)];
+
     [self addSubviewsToContentView:contentView];
     [self addSubview:contentView];
+
+      [self setGestureRecognizers: @[[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)]]];
   }
   return self;
+}
+
+
+
+- (void)handleSwipe:(UIPanGestureRecognizer *)gesture
+{
+    CGPoint translation = [gesture translationInView:self];
+
+    if (gesture.state == UIGestureRecognizerStateBegan)
+    {
+        direction = kKalViewMoveDirectionNone;
+    }
+    else if (gesture.state == UIGestureRecognizerStateChanged && direction == kKalViewMoveDirectionNone)
+    {
+        direction = [self determineCameraDirectionIfNeeded:translation];
+
+        // ok, now initiate movement in the direction indicated by the user's gesture
+
+        switch (direction) {
+            case kKalViewMoveDirectionDown:
+                [self showPreviousMonth];
+                NSLog(@"Start moving down");
+                break;
+
+            case kKalViewMoveDirectionUp:
+                [self showFollowingMonth];
+                NSLog(@"Start moving up");
+                break;
+
+            case kKalViewMoveDirectionRight:
+                break;
+
+            case kKalViewMoveDirectionLeft:
+
+                NSLog(@"Start moving left");
+                break;
+
+            default:
+                break;
+        }
+    }
+    else if (gesture.state == UIGestureRecognizerStateEnded)
+    {
+        // now tell the camera to stop
+        NSLog(@"Stop");
+    }
+}
+
+// This method will determine whether the direction of the user's swipe
+
+- (CameraMoveDirection)determineCameraDirectionIfNeeded:(CGPoint)translation
+{
+    if (direction != kKalViewMoveDirectionNone)
+        return direction;
+
+    // determine if horizontal swipe only if you meet some minimum velocity
+
+    if (fabs(translation.x) > gestureMinimumTranslation)
+    {
+        BOOL gestureHorizontal = NO;
+
+        if (translation.y == 0.0)
+            gestureHorizontal = YES;
+        else
+            gestureHorizontal = (fabs(translation.x / translation.y) > 5.0);
+
+        if (gestureHorizontal)
+        {
+            if (translation.x > 0.0)
+                return kKalViewMoveDirectionRight;
+            else
+                return kKalViewMoveDirectionLeft;
+        }
+    }
+    // determine if vertical swipe only if you meet some minimum velocity
+
+    else if (fabs(translation.y) > gestureMinimumTranslation)
+    {
+        BOOL gestureVertical = NO;
+
+        if (translation.x == 0.0)
+            gestureVertical = YES;
+        else
+            gestureVertical = (fabs(translation.y / translation.x) > 5.0);
+
+        if (gestureVertical)
+        {
+            if (translation.y > 0.0)
+                return kKalViewMoveDirectionDown;
+            else
+                return kKalViewMoveDirectionUp;
+        }
+    }
+
+    return direction;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -91,8 +206,11 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 - (void)addSubviewsToHeaderView:(UIView *)pheaderView
 {
+
+/*
   const CGFloat kChangeMonthButtonWidth = 46.0f;
   const CGFloat kChangeMonthButtonHeight = 30.0f;
+ */
   const CGFloat kMonthLabelWidth = 200.0f;
   const CGFloat kHeaderVerticalAdjust = 3.f;
   
@@ -101,20 +219,29 @@ static const CGFloat kMonthLabelHeight = 17.f;
   CGRect imageFrame = pheaderView.frame;
   imageFrame.origin = CGPointZero;
   backgroundView.frame = imageFrame;
-  [pheaderView addSubview:backgroundView];
+
+    //  [pheaderView addSubview:backgroundView];
   
   // Create the previous month button on the left side of the view
-  CGRect previousMonthButtonFrame = CGRectMake(self.left,
+    /*
+    CGRect previousMonthButtonFrame = CGRectMake(self.left,
                                                kHeaderVerticalAdjust,
                                                kChangeMonthButtonWidth,
                                                kChangeMonthButtonHeight);
+
+    CGRect previousMonthButtonFrame = CGRectMake(0,
+                                                 0,
+                                                 kChangeMonthButtonWidth,
+                                                 kChangeMonthButtonHeight);
+*/
+/*
   UIButton *previousMonthButton = [[UIButton alloc] initWithFrame:previousMonthButtonFrame];
   [previousMonthButton setImage:[UIImage imageNamed:@"Kal.bundle/kal_left_arrow.png"] forState:UIControlStateNormal];
   previousMonthButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
   previousMonthButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
   [previousMonthButton addTarget:self action:@selector(showPreviousMonth) forControlEvents:UIControlEventTouchUpInside];
   [pheaderView addSubview:previousMonthButton];
-  
+*/
   // Draw the selected month name centered and at the top of the view
   CGRect monthLabelFrame = CGRectMake((self.width/2.0f) - (kMonthLabelWidth/2.0f),
                                       kHeaderVerticalAdjust,
@@ -125,13 +252,13 @@ static const CGFloat kMonthLabelHeight = 17.f;
   headerTitleLabel = [[UILabel alloc] initWithFrame:monthLabelFrame];
   headerTitleLabel.backgroundColor = [UIColor clearColor];
   headerTitleLabel.font = [UIFont boldSystemFontOfSize:22.f];
-  headerTitleLabel.textAlignment = UITextAlignmentCenter;
   headerTitleLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Kal.bundle/kal_header_text_fill.png"]];
   headerTitleLabel.shadowColor = [UIColor whiteColor];
   headerTitleLabel.shadowOffset = CGSizeMake(0.f, 1.f);
   [self setHeaderTitleText:[logic selectedMonthNameAndYear]];
   [headerView addSubview:headerTitleLabel];
-  
+
+/*
   // Create the next month button on the right side of the view
   CGRect nextMonthButtonFrame = CGRectMake(self.width - kChangeMonthButtonWidth,
                                            kHeaderVerticalAdjust,
@@ -143,6 +270,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
   nextMonthButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
   [nextMonthButton addTarget:self action:@selector(showFollowingMonth) forControlEvents:UIControlEventTouchUpInside];
   [headerView addSubview:nextMonthButton];
+*/
   // if needs, change it later.
     [self refreshWeekdayLabel:YES];
 }
@@ -175,7 +303,6 @@ static const CGFloat kMonthLabelHeight = 17.f;
     UILabel *weekdayLabel = [[UILabel alloc] initWithFrame:weekdayFrame];
     weekdayLabel.backgroundColor = [UIColor clearColor];
     weekdayLabel.font = [UIFont boldSystemFontOfSize:10.f];
-    weekdayLabel.textAlignment = UITextAlignmentCenter;
     weekdayLabel.textColor = [UIColor colorWithRed:0.3f green:0.3f blue:0.3f alpha:1.f];
     weekdayLabel.shadowColor = [UIColor whiteColor];
     weekdayLabel.shadowOffset = CGSizeMake(0.f, 1.f);

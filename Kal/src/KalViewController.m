@@ -240,13 +240,23 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   if (!self.title)
     self.title = @"Calendar";
 
+
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+
+
+#if 0
   // Patch from https://github.com/klazuka/Kal/pull/62/files#diff-0
   // Add support for iPad.
-  CGRect popoverRect = CGRectMake(0, 0, self.contentSizeForViewInPopover.width, self.contentSizeForViewInPopover.height);
-  CGRect windowsRect = [[UIScreen mainScreen] applicationFrame];
-  CGRect rect = CGRectMake(0, 0, MIN(popoverRect.size.width, windowsRect.size.width), MIN(popoverRect.size.height, windowsRect.size.height));
-  KalView *kalView = [[KalView alloc] initWithFrame:rect delegate:self logic:logic];
-
+  //  CGRect popoverRect = CGRectMake(0, 0, self.contentSizeForViewInPopover.width, self.contentSizeForViewInPopover.height);
+  //  CGRect windowsRect = [[UIScreen mainScreen] applicationFrame];
+  //  CGRect rect = CGRectMake(0, 0, MIN(popoverRect.size.width, windowsRect.size.width), MIN(popoverRect.size.height, windowsRect.size.height));
+  //  KalView *kalView = [[KalView alloc] initWithFrame:rect delegate:self logic:logic];
+#else
+    KalView *kalView = [[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic];
+#endif
   
   self.view = kalView;
   tableView = kalView.tableView;
