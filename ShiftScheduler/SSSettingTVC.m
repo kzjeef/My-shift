@@ -140,6 +140,12 @@ enum {
 
 - (void)viewDidLoad
 {
+
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"Settings", "Settings");
@@ -217,12 +223,19 @@ enum {
     }
 }
 
-- (UISwitch *)newSwitch:(NSIndexPath *)indexPath withTag:(NSInteger) tag
+- (UISwitch *)newSwitch:(NSIndexPath *)indexPath withTag:(NSInteger) tag cell:(UITableViewCell*) cell
 {
+    UISwitch *theSwitch = [[UISwitch alloc] init];
+    CGSize switchSize = [theSwitch sizeThatFits:CGSizeZero];
     
-    UISwitch *theSwitch;
-    CGRect frame = CGRectMake(220, 8.0, 120.0, 27.0);
-    theSwitch = [[UISwitch alloc] initWithFrame:frame];
+
+    theSwitch.frame = CGRectMake(cell.contentView.bounds.size.width - switchSize.width - 5.0f,
+                         (cell.contentView.bounds.size.height - switchSize.height) / 2.0f,
+                         switchSize.width,
+                         switchSize.height);
+
+    theSwitch.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+
     [theSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
     
     // in case the parent view draws with a custom color or gradient, use a transparent color
@@ -336,12 +349,12 @@ enum {
         cell.detailTextLabel.text = [self.appConfigHelpArray objectAtIndex:indexPath.row];
         
         if (indexPath.row == SSSETTING_APPCFG_LUNAR_ENABLE) {
-            UISwitch *s = [self newSwitch:indexPath withTag:SSSETTING_TAG_APPCFG_LUNAR_ENABLE];
+            UISwitch *s = [self newSwitch:indexPath withTag:SSSETTING_TAG_APPCFG_LUNAR_ENABLE cell:cell];
             BOOL enableLunar = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY];
             s.on = enableLunar;
             [cell.contentView addSubview:s];
         } else if (indexPath.row == SSSETTING_APPCFG_MONDAY_ENABLE) {
-            UISwitch *s = [self newSwitch:indexPath withTag:SSSETTING_TAG_APPCFG_MONDAY_ENABLE];
+            UISwitch *s = [self newSwitch:indexPath withTag:SSSETTING_TAG_APPCFG_MONDAY_ENABLE cell:cell];
             BOOL enableMondayFirst = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_MONDAY_DISPLAY];
             s.on = enableMondayFirst;
             [cell.contentView addSubview:s];
@@ -355,7 +368,7 @@ enum {
     } else if (indexPath.section == SSALARM_SECTION) {
         cell.textLabel.text = [self.alarmSettingsArray objectAtIndex:indexPath.row];
         
-        UISwitch *s = [self newSwitch:indexPath withTag:SSSETTING_TAG_SYSALARM_ENABLE];
+        UISwitch *s = [self newSwitch:indexPath withTag:SSSETTING_TAG_SYSALARM_ENABLE cell:cell];
         BOOL enableSound = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_ALERT_SOUND];
         if (indexPath.row == 0) { // enable sound.
             s.on = enableSound;

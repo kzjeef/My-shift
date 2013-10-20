@@ -568,8 +568,14 @@ return YES;
                                                   [j jobEverydayOffTimeWithFormatter:self.timeFormatter]];
         
         UISwitch *theSwitch;
-        CGRect frame = CGRectMake(200, 8.0, 120.0, 27.0);
-        theSwitch = [[UISwitch alloc] initWithFrame:frame];
+        theSwitch = [[UISwitch alloc] init];
+        CGSize switchSize = [theSwitch sizeThatFits:CGSizeZero];
+
+        theSwitch.frame = CGRectMake(cell.contentView.bounds.size.width - switchSize.width - 5.0f,
+                             (cell.contentView.bounds.size.height - switchSize.height) / 2.0f,
+                             switchSize.width,
+                             switchSize.height);
+        theSwitch.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         [theSwitch addTarget:self action:@selector(jobSwitchAction:)
             forControlEvents:UIControlEventValueChanged];
         
