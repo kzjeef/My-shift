@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2916127615A609B00031F78C /* UIImageResizing.h in Headers */ = {isa = PBXBuildFile; fileRef = 2916127415A609B00031F78C /* UIImageResizing.h */; };
 		2916127715A609B00031F78C /* UIImageResizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 2916127515A609B00031F78C /* UIImageResizing.m */; };
+		298C6CAD182807F900E566A3 /* UIColor+HexCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 298C6CAC182807F900E566A3 /* UIColor+HexCoding.m */; };
+		298C6CAF1828081600E566A3 /* UIColor+HexCoding.h in Sources */ = {isa = PBXBuildFile; fileRef = 298C6CAE1828081600E566A3 /* UIColor+HexCoding.h */; };
 		29AD3C9616DBDC6F002E6543 /* KalTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD3C9516DBDC6F002E6543 /* KalTileView.m */; };
 		29ADE6AF159FF92B0026A039 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29ADE6AC159FF8CC0026A039 /* CoreText.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		29E6D7DD15ADA05C00235123 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E6D7DC15ADA05C00235123 /* CoreGraphics.framework */; };
@@ -40,11 +42,13 @@
 /* Begin PBXFileReference section */
 		2916127415A609B00031F78C /* UIImageResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIImageResizing.h; path = ../../ShiftScheduler/JPImagePicker/UIImageResizing.h; sourceTree = "<group>"; };
 		2916127515A609B00031F78C /* UIImageResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImageResizing.m; path = ../../ShiftScheduler/JPImagePicker/UIImageResizing.m; sourceTree = "<group>"; };
+		298C6CAC182807F900E566A3 /* UIColor+HexCoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HexCoding.m"; path = "../../ShiftScheduler/UIColor+HexCoding.m"; sourceTree = "<group>"; };
+		298C6CAE1828081600E566A3 /* UIColor+HexCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIColor+HexCoding.h"; path = "../../ShiftScheduler/UIColor+HexCoding.h"; sourceTree = "<group>"; };
 		29AD3C9516DBDC6F002E6543 /* KalTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalTileView.m; sourceTree = "<group>"; };
 		29ADE69F159F7D650026A039 /* libm.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libm.dylib; path = usr/lib/libm.dylib; sourceTree = SDKROOT; };
 		29ADE6AC159FF8CC0026A039 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		29C4B5E11813C4250041D0B2 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = "UIImage+Blur.h"; path = "../../ShiftScheduler/UIImage+Blur.h"; sourceTree = "<group>"; };
-		29C4B5E21813C4250041D0B2 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; name = "UIImage+Blur.m"; path = "../../ShiftScheduler/UIImage+Blur.m"; sourceTree = "<group>"; };
+		29C4B5E11813C4250041D0B2 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Blur.h"; path = "../../ShiftScheduler/UIImage+Blur.h"; sourceTree = "<group>"; };
+		29C4B5E21813C4250041D0B2 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Blur.m"; path = "../../ShiftScheduler/UIImage+Blur.m"; sourceTree = "<group>"; };
 		29E6D7DC15ADA05C00235123 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		533B285F11E2D46E00B3CC07 /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Kal.bundle; sourceTree = "<group>"; };
 		533B286011E2D46E00B3CC07 /* Kal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kal.h; sourceTree = SOURCE_ROOT; };
@@ -98,6 +102,8 @@
 		0867D691FE84028FC02AAC07 /* Kal */ = {
 			isa = PBXGroup;
 			children = (
+				298C6CAE1828081600E566A3 /* UIColor+HexCoding.h */,
+				298C6CAC182807F900E566A3 /* UIColor+HexCoding.m */,
 				29C4B5E11813C4250041D0B2 /* UIImage+Blur.h */,
 				29C4B5E21813C4250041D0B2 /* UIImage+Blur.m */,
 				29E6D7DC15ADA05C00235123 /* CoreGraphics.framework */,
@@ -246,6 +252,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				298C6CAF1828081600E566A3 /* UIColor+HexCoding.h in Sources */,
+				298C6CAD182807F900E566A3 /* UIColor+HexCoding.m in Sources */,
 				533B287811E2D46E00B3CC07 /* KalDataSource.m in Sources */,
 				533B287A11E2D46E00B3CC07 /* KalDate.m in Sources */,
 				533B287C11E2D46E00B3CC07 /* KalGridView.m in Sources */,

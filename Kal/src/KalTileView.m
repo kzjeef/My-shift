@@ -9,6 +9,7 @@
 #import "KalViewController.h"
 #import "UIImageResizing.h"
 #import "CoreText/CTFont.h"
+#import "UIColor+HexCoding.h"
 #import "UIImage+Blur.h"
 
 
@@ -56,8 +57,9 @@ extern const CGSize kTileSize;
 - (void)drawRect:(CGRect)rect
 {
   CGContextRef ctx = UIGraphicsGetCurrentContext();
-  CGFloat fontSize = 21.f;
-  UIFont *font = [UIFont boldSystemFontOfSize:fontSize];
+  CGFloat fontSize = 20.f;
+    //    UIFont *font = [UIFont boldSystemFontOfSize:fontSize];
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:fontSize];
   UIColor *shadowColor = nil;
   UIColor *textColor = nil;
   UIImage *markerImage = nil;
@@ -134,26 +136,33 @@ extern const CGSize kTileSize;
 
 #define RED_FILL_COLOR red:.80 green:.05 blue:0 alpha:.7
 #define GREEN_FILL_COLOR red:0.f green:.9 blue:0.1 alpha:.125
-#define HOLIDAY_FILL_COLOR red:.7f green:0 blue:0.f alpha:.3
+#define HOLIDAY_FILL_COLOR red:.25f green:.5019f blue:0.0 alpha:1
 #define BLUE_FILL_COLOR red:0.f green:0.34f  blue:.98  alpha:.7
-    if ([self isHoliday])
+  if ([self isHoliday]) {
         textColor = [self holidayTextColor:textColor];
+
+        /* If holiday, draw a little line under the text */
+        CGContextSaveGState(ctx);
+        CGContextSetLineWidth(ctx, 1.5f);
+        [textColor setStroke];
+        CGContextMoveToPoint(ctx, textX + 2, textY - 2) ;
+        CGContextAddLineToPoint (ctx, textX + textSize.width - 2,  textY - 2);
+        CGContextStrokePath(ctx);
+        CGContextRestoreGState(ctx);
+  }
 
     if (self.isToday) {
         if (self.isSelected)
-            [self drawFilledCricle:ctx x:kTileSize.width/2 y:kTileSize.height/2 - 6 radius:textSize.height / 2 + 1 RED_FILL_COLOR];
+            [self drawFilledCricle:ctx x:kTileSize.width/2 y:kTileSize.height/2 - 5  radius: kTileSize.height / 3.35 RED_FILL_COLOR]; // -6 means down little bit.
         else {
             textColor = [UIColor colorWithRed:.80 green:.05 blue:0 alpha:1];
         }
     } else if (self.isSelected)
-            [self drawFilledCricle:ctx x:kTileSize.width/2 y:kTileSize.height/2 - 6 radius:textSize.height / 2 + 1 BLUE_FILL_COLOR];
-
-
+            [self drawFilledCricle:ctx x:kTileSize.width/2 y:kTileSize.height/2 - 5 radius:kTileSize.height / 3.35 RED_FILL_COLOR];
 
     [textColor setFill];
     CGContextShowTextAtPoint(ctx, textX, textY, day, n >= 10 ? 2 : 1);
 
-  
   if (self.highlighted) {
     [[UIColor colorWithWhite:0.25f alpha:0.3f] setFill];
     CGContextFillRect(ctx, CGRectMake(0.f, 0.f, kTileSize.width, kTileSize.height));
@@ -178,8 +187,10 @@ extern const CGSize kTileSize;
 
     if (self.selected)
         return [UIColor colorWithRed:0.6 green:1 blue:0.6 alpha:.88];
-    else
-        return [UIColor purpleColor];
+    else {
+        UIColor *c = [UIColor colorWithHexString:@"D35400"];
+        return  [c colorWithAlphaComponent:.88];
+    }
 }
 
 - (void) drawMarkForShiftIcon:(NSDictionary *) dict count:(int) count ctx:(CGContextRef) ctx
