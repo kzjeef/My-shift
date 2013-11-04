@@ -136,13 +136,19 @@ extern const CGSize kTileSize;
 #define GREEN_FILL_COLOR red:0.f green:.9 blue:0.1 alpha:.125
 #define HOLIDAY_FILL_COLOR red:.7f green:0 blue:0.f alpha:.3
 #define BLUE_FILL_COLOR red:0.f green:0.34f  blue:.98  alpha:.7
-
-    if (self.isToday)
-        [self drawFilledCricle:ctx x:kTileSize.width/2 y:kTileSize.height/2 - 6 radius:textSize.height / 2 + 1 RED_FILL_COLOR];
-    if (self.isSelected)
-        [self drawFilledCricle:ctx x:kTileSize.width/2 y:kTileSize.height/2 - 6 radius:textSize.height / 2 + 1 BLUE_FILL_COLOR];
     if ([self isHoliday])
         textColor = [self holidayTextColor:textColor];
+
+    if (self.isToday) {
+        if (self.isSelected)
+            [self drawFilledCricle:ctx x:kTileSize.width/2 y:kTileSize.height/2 - 6 radius:textSize.height / 2 + 1 RED_FILL_COLOR];
+        else {
+            textColor = [UIColor colorWithRed:.80 green:.05 blue:0 alpha:1];
+        }
+    } else if (self.isSelected)
+            [self drawFilledCricle:ctx x:kTileSize.width/2 y:kTileSize.height/2 - 6 radius:textSize.height / 2 + 1 BLUE_FILL_COLOR];
+
+
 
     [textColor setFill];
     CGContextShowTextAtPoint(ctx, textX, textY, day, n >= 10 ? 2 : 1);
