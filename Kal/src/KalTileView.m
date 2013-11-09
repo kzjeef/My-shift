@@ -186,7 +186,7 @@ extern const CGSize kTileSize;
         return originColor;
 
     if (self.selected)
-        return [UIColor colorWithRed:0.6 green:1 blue:0.6 alpha:.88];
+        return [UIColor whiteColor];
     else {
         UIColor *c = [UIColor colorWithHexString:@"D35400"];
         return  [c colorWithAlphaComponent:.88];

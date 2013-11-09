@@ -10,7 +10,6 @@
 		2916127615A609B00031F78C /* UIImageResizing.h in Headers */ = {isa = PBXBuildFile; fileRef = 2916127415A609B00031F78C /* UIImageResizing.h */; };
 		2916127715A609B00031F78C /* UIImageResizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 2916127515A609B00031F78C /* UIImageResizing.m */; };
 		298C6CAD182807F900E566A3 /* UIColor+HexCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 298C6CAC182807F900E566A3 /* UIColor+HexCoding.m */; };
-		298C6CAF1828081600E566A3 /* UIColor+HexCoding.h in Sources */ = {isa = PBXBuildFile; fileRef = 298C6CAE1828081600E566A3 /* UIColor+HexCoding.h */; };
 		29AD3C9616DBDC6F002E6543 /* KalTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD3C9516DBDC6F002E6543 /* KalTileView.m */; };
 		29ADE6AF159FF92B0026A039 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29ADE6AC159FF8CC0026A039 /* CoreText.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		29E6D7DD15ADA05C00235123 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E6D7DC15ADA05C00235123 /* CoreGraphics.framework */; };
@@ -252,7 +251,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				298C6CAF1828081600E566A3 /* UIColor+HexCoding.h in Sources */,
 				298C6CAD182807F900E566A3 /* UIColor+HexCoding.m in Sources */,
 				533B287811E2D46E00B3CC07 /* KalDataSource.m in Sources */,
 				533B287A11E2D46E00B3CC07 /* KalDate.m in Sources */,
