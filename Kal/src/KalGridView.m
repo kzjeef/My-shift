@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2009 Keith Lazuka
  * License: http://www.opensource.org/licenses/mit-license.html
  */
@@ -18,13 +18,6 @@
 #define SLIDE_DOWN 2
 
 const CGSize kTileSize = { 46.f, 44.f };
-CGFloat const gestureMinimumTranslation = 13.0;
-typedef enum : NSInteger {
-    kKalViewMoveDirectionNone,
-    kKalViewMoveDirectionUp,
-    kKalViewMoveDirectionDown,
-} CameraMoveDirection;
-
 
 static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
@@ -66,7 +59,6 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     [self addSubview:frontMonthView];
 
     [self jumpToSelectedMonth];
-    [self setGestureRecognizers: @[[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)]]];
   }
   return self;
 }
@@ -86,104 +78,6 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 - (void)sizeToFit
 {
   self.height = frontMonthView.height;
-}
-
-#pragma mark -
-#pragma mark Gesture
-
-
-
-- (void)handleSwipe:(UIPanGestureRecognizer *)gesture
-{
-    CGPoint translation = [gesture translationInView:self];
-
-    if (gesture.state == UIGestureRecognizerStateBegan)
-    {
-        swip_direction = kKalViewMoveDirectionNone;
-    }
-    else if (gesture.state == UIGestureRecognizerStateChanged && swip_direction == kKalViewMoveDirectionNone)
-    {
-        swip_direction = [self determineCameraDirectionIfNeeded:translation];
-
-        // ok, now initiate movement in the direction indicated by the user's gesture
-
-        switch (swip_direction) {
-            case kKalViewMoveDirectionDown:
-                [delegate showPreviousMonth];
-                NSLog(@"Start moving down");
-                break;
-
-            case kKalViewMoveDirectionUp:
-                [delegate showFollowingMonth];
-                NSLog(@"Start moving up");
-                break;
-
-            // case kKalViewMoveDirectionRight:
-            //     break;
-
-            // case kKalViewMoveDirectionLeft:
-
-                // NSLog(@"Start moving left");
-                break;
-
-            default:
-                break;
-        }
-    }
-    else if (gesture.state == UIGestureRecognizerStateEnded)
-    {
-        // now tell the camera to stop
-        NSLog(@"Stop");
-    }
-}
-
-// This method will determine whether the direction of the user's swipe
-
-- (CameraMoveDirection)determineCameraDirectionIfNeeded:(CGPoint)translation
-{
-    if (swip_direction != kKalViewMoveDirectionNone)
-        return swip_direction;
-
-    // determine if horizontal swipe only if you meet some minimum velocity
-
-    if (fabs(translation.x) > gestureMinimumTranslation)
-    {
-        BOOL gestureHorizontal = NO;
-
-        if (translation.y == 0.0)
-            gestureHorizontal = YES;
-        else
-            gestureHorizontal = (fabs(translation.x / translation.y) > 5.0);
-
-        if (gestureHorizontal)
-        {
-            // if (translation.x > 0.0)
-            //     return kKalViewMoveDirectionRight;
-            // else
-            //     return kKalViewMoveDirectionLeft;
-        }
-    }
-    // determine if vertical swipe only if you meet some minimum velocity
-
-    else if (fabs(translation.y) > gestureMinimumTranslation)
-    {
-        BOOL gestureVertical = NO;
-
-        if (translation.x == 0.0)
-            gestureVertical = YES;
-        else
-            gestureVertical = (fabs(translation.y / translation.x) > 5.0);
-
-        if (gestureVertical)
-        {
-            if (translation.y > 0.0)
-                return kKalViewMoveDirectionDown;
-            else
-                return kKalViewMoveDirectionUp;
-        }
-    }
-
-    return swip_direction;
 }
 
 
@@ -219,9 +113,6 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   if (!hitView)
     return;
 
-  if (swip_direction != kKalViewMoveDirectionNone)
-      return;
-  
   if ([hitView isKindOfClass:[KalTileView class]]) {
     KalTileView *tile = (KalTileView*)hitView;
     if (tile.belongsToAdjacentMonth) {
@@ -242,6 +133,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 {
   [self receivedTouches:touches withEvent:event];
 }
+
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {

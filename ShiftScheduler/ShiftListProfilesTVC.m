@@ -11,6 +11,7 @@
 #import "OneJob.h"
 #import "SSDefaultConfigName.h"
 #import "UIColor+HexCoding.h"
+#import "SSAppDelegate.h"
 
 
 #define PROFILE_CACHE_INDIFITER @"ProfileListCache"
@@ -39,7 +40,7 @@ enum {
 - (id)initWithManagedContext:(NSManagedObjectContext *)context
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
-    self.title = NSLocalizedString(@"Shift Manage", "");
+    self.title = SHIFTS_STR;
     self.managedObjectContext = context;
     return self;
 }

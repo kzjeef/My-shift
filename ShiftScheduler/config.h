@@ -17,5 +17,7 @@
 /* Use single shift config table mode. */
 #define CONFIG_SINGLE_SHIFT_CONFIG_MODE 1
 
+#define TAB_ICON_SIZE CGSizeMake(32, 32)
+
 #endif
 

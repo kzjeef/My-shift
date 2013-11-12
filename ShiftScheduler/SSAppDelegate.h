@@ -14,6 +14,9 @@
 #import "SSSettingTVC.h"
 #import "SSAlertController.h"
 #import "ThinkNoteShareViewController.h"
+#import "REFrostedViewController.h"
+#import "SSMainNavigationController.h"
+#import "config.h"
 
 @class SSShareProfileListViewController;
 
@@ -24,13 +27,13 @@
 
 #define SS_LOCAL_NOTIFY_WEEK_START_CHANGED @"week start day changed"
 
-@interface SSAppDelegate : UIResponder <UIApplicationDelegate, 
+@interface SSAppDelegate : UIResponder <UIApplicationDelegate,
 UIActionSheetDelegate,UIAlertViewDelegate,SSShareViewControllerDelegate,
-ProfileEditFinishDelegate>
+ProfileEditFinishDelegate, REFrostedViewControllerDelegate>
 {
-    UINavigationController	*navController;
+    SSMainNavigationController	*navController;
     UINavigationController	*profileNVC;
-    KalViewController *kal;
+    KalViewController *_kalController;
     SSAlertController *alertC;
     ShiftListProfilesTVC *profileView;
     SSShiftHolidayList *changelistVC;
@@ -43,13 +46,13 @@ ProfileEditFinishDelegate>
     SSMailAgent *mailAgent;
     SSThinkNoteShareAgent *thinkNoteAgent;
     SSShareController *_shareC;
-    
+
     ThinkNoteShareViewController *_tnoteShareVC;
-    
+
     UIBarButtonItem *shareButton;
     UIBarButtonItem *loadingButton;
     id dataSource;
-    
+
 }
 
 @property (strong, nonatomic) UIWindow *window;
@@ -59,15 +62,15 @@ ProfileEditFinishDelegate>
 @property (strong, nonatomic) ThinkNoteShareViewController *tnoteShareVC;
 
 // --
-@property (nonatomic, strong) UINavigationController *navController;				
+@property (nonatomic, strong) SSMainNavigationController *navController;
 @property (nonatomic, strong) ShiftListProfilesTVC *profileView;
 @property (nonatomic, strong) SSSettingTVC *settingVC;
+@property (nonatomic, strong) KalViewController *kalController;
 @property (nonatomic, strong) UINavigationController *profileNVC;
 @property (nonatomic, strong) SSShiftHolidayList *changelistVC;
 @property (nonatomic, strong) UIActionSheet *rightAS;
 @property (nonatomic, strong) SSKalDelegate *sskalDelegate;
 @property (nonatomic, strong) SSShareProfileListViewController *shareProfilesVC;
-
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
@@ -78,3 +81,10 @@ ProfileEditFinishDelegate>
 
 + (BOOL) enableThinkNoteConfig;
 @end
+
+
+#define SHIFTS_STR NSLocalizedString(@"Shift Manage", "")
+//NSLocalizedString(@"Shifts", "shifts works in tabbar")
+#define SETTINGS_STR NSLocalizedString(@"Settings", "Settings")
+#define CALENDAR_STR NSLocalizedString(@"Calendar", "calendar in tab bar")
+#define APP_NAME_STR NSLocalizedString(@"Shift Scheduler", "")

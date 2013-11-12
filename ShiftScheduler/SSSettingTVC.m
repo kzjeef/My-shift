@@ -119,23 +119,6 @@ enum {
     return feedbackItemsArray;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -148,8 +131,13 @@ enum {
 
     [super viewDidLoad];
     
+    self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.backgroundColor = [UIColor clearColor];
+
     self.title = NSLocalizedString(@"Settings", "Settings");
-    
+
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = YES;
     
@@ -164,6 +152,17 @@ enum {
                                                object:nil];
 
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section != SSRESET_SECTION) {
+        cell.backgroundColor = [UIColor clearColor];
+        cell.textLabel.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
+    }
+    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
+
+}
+
 
 - (void) socialSettingChanged
 {
@@ -247,12 +246,6 @@ enum {
 
 #pragma mark - Table view data source
 
-
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
-{
-    return Nil;
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -285,7 +278,7 @@ enum {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == SSSNAME_SECTION)
-        return tableView.rowHeight * 1.5;
+        return tableView.rowHeight * 1.33;
     else
         return tableView.rowHeight;
 }
@@ -341,7 +334,7 @@ enum {
     
     if (indexPath.section == SSSNAME_SECTION) {
         cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
-        cell.textLabel.text = NSLocalizedString(@"Shift Scheduler", "");
+        cell.textLabel.text = APP_NAME_STR;
         cell.textLabel.font = [UIFont systemFontOfSize:24];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     } else if (indexPath.section == SSAPPCFG_SECTION) {
@@ -390,9 +383,8 @@ enum {
         
     } else if (indexPath.section == SSRESET_SECTION) {
         cell.textLabel.text = RESET_STR;
-        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"redButtonBackgroud"]];
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.backgroundColor = [UIColor colorWithWhite:.1 alpha:0];
+        //       cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"redButtonBackgroud"]];
+        cell.textLabel.textColor = [UIColor redColor];
     }
     
     return cell;

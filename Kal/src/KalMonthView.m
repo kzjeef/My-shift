@@ -58,6 +58,24 @@ extern const CGSize kTileSize;
 {
   CGContextRef ctx = UIGraphicsGetCurrentContext();
   CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,kTileSize}, [[UIImage imageNamed:@"Kal.bundle/kal_tile.png"] CGImage]);
+
+    /*
+
+     // draw a line under each rect..
+    int ax = rect.origin.x;
+    int ay = rect.origin.y + rect.size.height;
+    int bx = rect.origin.x + rect.size.width;
+    int by = ay;
+
+    CGContextSaveGState(ctx);
+    CGContextSetLineWidth(ctx, 1.5f);
+    [[UIColor yellowColor] setStroke];
+    CGContextMoveToPoint(ctx, ax, ay);
+    CGContextAddLineToPoint (ctx, bx, by);
+    CGContextStrokePath(ctx);
+    CGContextRestoreGState(ctx);
+
+     */
 }
 
 - (KalTileView *)firstTileOfMonth

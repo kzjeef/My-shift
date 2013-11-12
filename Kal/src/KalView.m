@@ -35,7 +35,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
     self.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
     headerView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, frame.size.width, kHeaderHeight)];
-   headerView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.8];
+    headerView.backgroundColor = [UIColor colorWithWhite:.9 alpha:1];
     [self addSubviewsToHeaderView:headerView];
     [self addSubview:headerView];
 

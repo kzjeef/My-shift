@@ -17,6 +17,8 @@
 #import "ThinkNoteShareViewController.h"
 #import "UIImageResizing.h"
 #import "SSDefaultConfigName.h"
+#import "SSMainMenuTableViewController.h"
+
 
 #import "Kal.h"
 
@@ -48,82 +50,78 @@ enum {
 
 - (void) SSKalControllerInit
 {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
 
-	    [self shiftModuleMigration];
-	    
-	    kal = [[KalViewController alloc] init];
-	    kal.title = NSLocalizedString(@"Shift Scheduler", "application title");
-    
-	    kal.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] 
-						       initWithTitle:NSLocalizedString (@"Today", "today") 
-							       style:UIBarButtonItemStyleBordered target:self action:@selector(showAndSelectToday)];
-    
-	    SSKalDelegate *kalDelegate = [[SSKalDelegate alloc] init];
-	    self.sskalDelegate = kalDelegate;
-	    kal.vcdelegate = self.sskalDelegate;
+    //   dispatch_async(dispatch_get_main_queue(), ^{
 
-	    WorkdayDataSource *wds = [[WorkdayDataSource alloc] initWithManagedContext:self.managedObjectContext];
+    [self shiftModuleMigration];
 
-	    dataSource  = wds;
-	    kal.dataSource = dataSource;
-        kal.delegate = dataSource;
-	    kal.tileDelegate = dataSource;
-        
-	    if ([self.class enableThinkNoteConfig]) {
-		self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
-						  cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
-					     destructiveButtonTitle:nil
-						  otherButtonTitles:
-							  NSLocalizedString(@"Email", "share by mail"),
+    _kalController = [[KalViewController alloc] init];
+    _kalController.title = NSLocalizedString(@"Shift Scheduler", "application title");
+
+    _kalController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                                       initWithTitle:NSLocalizedString (@"Today", "today")
+                                                               style:UIBarButtonItemStyleBordered target:self action:@selector(showAndSelectToday)];
+
+    SSKalDelegate *kalDelegate = [[SSKalDelegate alloc] init];
+    self.sskalDelegate = kalDelegate;
+    _kalController.vcdelegate = self.sskalDelegate;
+
+    WorkdayDataSource *wds = [[WorkdayDataSource alloc] initWithManagedContext:self.managedObjectContext];
+
+    dataSource  = wds;
+    _kalController.dataSource = dataSource;
+    _kalController.delegate = dataSource;
+    _kalController.tileDelegate = dataSource;
+
+    [self.navController setViewControllers:@[_kalController]];
+
+    if ([self.class enableThinkNoteConfig]) {
+        self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
+                                          cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
+                                     destructiveButtonTitle:nil
+                                          otherButtonTitles:
+                                                  NSLocalizedString(@"Email", "share by mail"),
 #if ENABLE_THINKNOTE_SHARE
-						      NSLocalizedString(@"ThinkNote", "share by thinknote"),
+                                              NSLocalizedString(@"ThinkNote", "share by thinknote"),
 #endif
-						      nil];
-        
-	    } else {
-		self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
-						  cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
-					     destructiveButtonTitle:nil
-						  otherButtonTitles:
-							  NSLocalizedString(@"Email", "share by mail"),
-						      nil];
+                                              nil];
 
-	    }
-	    self.rightAS.tag = TAG_MENU;
-	    shareButton = [[UIBarButtonItem alloc]
+    } else {
+        self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
+                                          cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
+                                     destructiveButtonTitle:nil
+                                          otherButtonTitles:
+                                                  NSLocalizedString(@"Email", "share by mail"),
+                                              nil];
+
+    }
+    self.rightAS.tag = TAG_MENU;
+    shareButton = [[UIBarButtonItem alloc]
                                      initWithBarButtonSystemItem: UIBarButtonSystemItemAction
                                                           target:self action:@selector(showRightActionSheet)];
-    
-	    [UIView beginAnimations:nil context:NULL];
-	    [navController setViewControllers:@[kal] animated:NO];
-	    [UIView setAnimationDuration:.5];
-	    [UIView setAnimationBeginsFromCurrentState:YES];        
-	    [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown  forView:navController.view cache:YES];
-	    [UIView commitAnimations];
 
-	    [self rightButtonSwitchToShareOrBusy:YES];
-	    // 6. setup share operation, and add it in Kal view.
-	    _shareC = [[SSShareController alloc] initWithProfilesVC:self.shareProfilesVC withKalController:kal];
-    
-	    mailAgent = [[SSMailAgent alloc] initWithShareController:_shareC];
-    
-	    thinkNoteAgent = [[SSThinkNoteShareAgent alloc] initWithSharedObject:_shareC];
-    
-	    self.tnoteShareVC = [[ThinkNoteShareViewController alloc] initWithNibName:@"ThinkNoteShareViewController" bundle:nil];
-	    self.tnoteShareVC.shareC = _shareC;
-	    self.tnoteShareVC.shareAgent = thinkNoteAgent;
-	    self.tnoteShareVC.shareDelegate = self;
+    [self rightButtonSwitchToShareOrBusy:YES];
+    // 6. setup share operation, and add it in Kal view.
+    _shareC = [[SSShareController alloc] initWithProfilesVC:self.shareProfilesVC withKalController:_kalController];
 
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyWeekStartHandler:) name:SS_LOCAL_NOTIFY_WEEK_START_CHANGED object:nil];
-            [self notifyWeekStartHandler:nil];
-	});
+    mailAgent = [[SSMailAgent alloc] initWithShareController:_shareC];
+
+    thinkNoteAgent = [[SSThinkNoteShareAgent alloc] initWithSharedObject:_shareC];
+
+    self.tnoteShareVC = [[ThinkNoteShareViewController alloc] initWithNibName:@"ThinkNoteShareViewController" bundle:nil];
+    self.tnoteShareVC.shareC = _shareC;
+    self.tnoteShareVC.shareAgent = thinkNoteAgent;
+    self.tnoteShareVC.shareDelegate = self;
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyWeekStartHandler:) name:SS_LOCAL_NOTIFY_WEEK_START_CHANGED object:nil];
+    [self notifyWeekStartHandler:nil];
+//	});
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
+    NSString *iconPath;
 
     /*
      *    Kal Initialization
@@ -132,104 +130,80 @@ enum {
      * If your application requires an arbitrary starting date, use -[KalViewController initWithSelectedDate:]
      * instead of -[KalViewController init].
      */
-    
-    // 1. Kal view controller init.
-    
-    // 2. shift profile list init functions.
+
     self.profileView = [[ShiftListProfilesTVC alloc] initWithManagedContext:self.managedObjectContext];
     self.profileView.parentViewDelegate = self;
     self.profileNVC = [[UINavigationController alloc] initWithRootViewController:self.profileView];
 
-    // 3. work days data source init, used by Kal.
-    // setup tile view delegate, provides tile icon information.
-
-    
-    // 4. init a nav view, used by mail.
-    // Setup the navigation stack and display it.
-
-    navController = [[UINavigationController alloc] init];
-    navController.view.backgroundColor = [UIColor underPageBackgroundColor];
-
-    self.navController = navController;
-    self.navController.modalPresentationStyle = UIModalPresentationFormSheet;
-
-    // a loading button
-    UIActivityIndicatorView * activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [activityView sizeToFit];
-    [activityView setAutoresizingMask:(UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin)];
-    loadingButton = [[UIBarButtonItem alloc] initWithCustomView:activityView];
-    [activityView startAnimating];
-    [activityView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhite];
-
-    
 #if 0
     // 5. alert view for no profiles.
     alertNoProfile = [[UIAlertView alloc] initWithTitle:nil message:CREATE_PROFILE_PROMPT
                                                delegate:self cancelButtonTitle:CREATE_PROFILE_NO
                                       otherButtonTitles:CREATE_PROFILE_YES, nil];
     alertNoProfile.tag = TAG_ZERO_PROFILE;
-    
+
 #endif
-    
+
     // setup a alert controller
     alertC = [[SSAlertController alloc] initWithManagedContext:self.managedObjectContext];
-    
+
     if ([self.profileView profileuNumber] == 0)
         [self performSelector:@selector(popNotifyZeroProfile:) withObject:nil afterDelay:1];
 
-    
+
     // 7. setup up for the tabbar related.
     // add tab bar vc related things.
-    tabBarVC = [[UITabBarController alloc] init];
-    NSString *iconPath = [[NSBundle mainBundle] pathForResource:@"tab-calendar" ofType:@"png"];
-    
-#define TAB_ICON_SIZE CGSizeMake(32, 32)
-    UIImage *calImage = [[UIImage imageWithContentsOfFile:iconPath]  scaleToSize:TAB_ICON_SIZE onlyIfNeeded:YES];
-    self.navController.tabBarItem = [[UITabBarItem alloc]
-                                        initWithTitle:NSLocalizedString(@"Calendar", "calendar in tab bar")
-                                                image:calImage tag:1];
-    [tabBarVC addChildViewController:self.navController];
-    
     iconPath = [[NSBundle mainBundle] pathForResource:@"users"
                                                ofType:@"png"];
     UIImage *shiftlistImg = [[UIImage imageWithContentsOfFile:iconPath]  scaleToSize:TAB_ICON_SIZE onlyIfNeeded:YES];
     self.profileView.tabBarItem = [[UITabBarItem alloc]
-                                      initWithTitle:NSLocalizedString(@"Shifts", "shifts works in tabbar") 
+                                      initWithTitle:SHIFTS_STR
                                               image:shiftlistImg tag:2];
 
-
-    UINavigationController *profileNVCC = [[UINavigationController alloc]
-                                              initWithRootViewController:self.profileView];
-    [tabBarVC addChildViewController:profileNVCC];
-    
     iconPath = [[NSBundle mainBundle] pathForResource:@"settings" ofType:@"png"];
-    
+
     UIImage *settingImg = [[UIImage imageWithContentsOfFile:iconPath]  scaleToSize:TAB_ICON_SIZE onlyIfNeeded:YES];
     self.settingVC.tabBarItem = [[UITabBarItem alloc]
-                                    initWithTitle:NSLocalizedString(@"Settings", "Settings")
+                                    initWithTitle:SETTINGS_STR
                                             image:settingImg tag:3];
 
-
-    UINavigationController *settingNVC = [[UINavigationController alloc]
-                                             initWithRootViewController:self.settingVC];
-    [tabBarVC addChildViewController:settingNVC];
-    
     iconPath = [[NSBundle mainBundle] pathForResource:@"GSFacesInfo" ofType:@"png"];
-    
+
     //    UINavigationController *help = [[UINavigationController alloc] init];
     //    help.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Tips", "tips in tabbar")
     //                                                    image:[UIImage imageWithContentsOfFile:iconPath] tag:4];
-    //[tabBarVC addChildViewController:help];
-    // help interface
-    // [tabBarVC addChildViewController:self.helpView];
 
+    [self SSKalControllerInit];
+
+    self.navController = [[SSMainNavigationController alloc] init];
+
+    SSMainMenuTableViewController *menuController = [[SSMainMenuTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    
+    menuController.kalController = self.kalController;
+    menuController.settingTVC = self.settingVC;
+    menuController.shiftListTVC = self.profileView;
+
+    // Create frosted view controller
+    REFrostedViewController *frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:self.navController
+                                                                                                 menuViewController:menuController];
+
+    frostedViewController.direction = REFrostedViewControllerDirectionLeft;
+    frostedViewController.liveBlurBackgroundStyle = REFrostedViewControllerLiveBackgroundStyleLight;
+    frostedViewController.liveBlur = YES;
+    frostedViewController.delegate = self;
+    //frostedViewController.menuViewSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width / 1.33, [[UIScreen mainScreen] bounds].size.height);
+    
+    menuController.frostedViewController = frostedViewController;
+
+    self.navController.frostedViewController = frostedViewController;
+    self.navController.kalViewController = _kalController;
+    [self.navController setViewControllers:@[_kalController]];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    [self.window addSubview:tabBarVC.view];
-
+    self.window.rootViewController = frostedViewController;
+    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    
+
     // default perferences
     NSDictionary *appDefaults = [NSDictionary
                                  dictionaryWithObjects:
@@ -255,18 +229,16 @@ enum {
                                            ]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 
-    //    [self performSelectorInBackground:@selector(SSKalControllerInit) withObject:nil];
-    [self SSKalControllerInit];
-    
+
     return YES;
 }
 
 - (void) rightButtonSwitchToShareOrBusy:(BOOL) share
 {
     if (share)
-        [kal.navigationItem setRightBarButtonItem:shareButton];
+        [_kalController.navigationItem setRightBarButtonItem:shareButton];
     else
-        [kal.navigationItem setRightBarButtonItem:loadingButton];
+        [_kalController.navigationItem setRightBarButtonItem:loadingButton];
 }
 
 - (void)popNotifyZeroProfile:(id) sender
@@ -277,7 +249,7 @@ enum {
 - (void)showRightActionSheet
 {
     // friendly for iPAD
-    [self.rightAS showFromBarButtonItem: kal.navigationItem.rightBarButtonItem animated:YES];
+    [self.rightAS showFromBarButtonItem: _kalController.navigationItem.rightBarButtonItem animated:YES];
 }
 
 - (SSShareProfileListViewController *)shareProfilesVC
@@ -285,7 +257,7 @@ enum {
     if (shareProfilesVC == nil) {
         shareProfilesVC =  [[SSShareProfileListViewController alloc] initWithManagedContext:self.managedObjectContext];
     }
-        
+
     return shareProfilesVC;
 }
 
@@ -298,7 +270,7 @@ enum {
 // Action handler for the navigation bar's right bar button item.
 - (void)showAndSelectToday
 {
-    [kal showAndSelectDate:[NSDate date]];
+    [_kalController showAndSelectDate:[NSDate date]];
 }
 
 - (SSShiftHolidayList *)changelistVC
@@ -338,7 +310,7 @@ enum {
     if (buttonIndex == 0) return; // 0 is cancel.
 
     [self.navController pushViewController:self.profileView animated:YES];
-    [self.profileView insertNewProfile:self.navController];    
+    [self.profileView insertNewProfile:self.navController];
 }
 
 - (void)actionSheet:(UIAlertView *)sender clickedButtonAtIndex:(NSInteger)index
@@ -359,7 +331,7 @@ enum {
     default:
         break;
     }
-    
+
 }
 
 #pragma  mark - share controller delegate
@@ -391,19 +363,19 @@ enum {
      Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
-    
+
     [alertC setupAlarm:NO];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    
+
     [self.rightAS dismissWithClickedButtonIndex:self.rightAS.cancelButtonIndex animated:NO];
     /*
-     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
-    
+
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
@@ -418,7 +390,7 @@ enum {
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
-    
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -426,7 +398,7 @@ enum {
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-    
+
     dispatch_queue_t queue = dispatch_queue_create("start setup", nil);
     dispatch_async(queue, ^{
         [alertC clearBadgeNumber];
@@ -450,12 +422,12 @@ enum {
         {
             /*
              Replace this implementation with code to handle the error appropriately.
-             
-             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+
+             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
              */
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
-        } 
+        }
     }
 }
 
@@ -471,7 +443,7 @@ enum {
     {
         return __managedObjectContext;
     }
-    
+
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil)
     {
@@ -506,46 +478,46 @@ enum {
     {
         return __persistentStoreCoordinator;
     }
-    
+
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"ShiftScheduler.sqlite"];
-    
+
     NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption: @(YES),
                                 NSInferMappingModelAutomaticallyOption: @(YES)};
-    
+
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    
-    
-    
+
+
+
     if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error])
     {
         /*
          Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-         
+
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+
          Typical reasons for an error here include:
          * The persistent store is not accessible;
          * The schema for the persistent store is incompatible with current managed object model.
          Check the error message to determine what the actual problem was.
-         
-         
+
+
          If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
+
          If you encounter schema incompatibility errors during development, you can reduce their frequency by:
          * Simply deleting the existing store:
          [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter: 
+
+         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
          [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-         
+
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
+
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
-    }    
-    
+    }
+
     return __persistentStoreCoordinator;
 }
 
@@ -581,33 +553,33 @@ enum {
   else {
     NSLog(@"user will perform one shift migration..only once...");
   }
-  
+
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"OneJob"
                                               inManagedObjectContext:self.managedObjectContext];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"jobName"  ascending:YES]];
     [request setEntity:entity];
-    
+
     request.fetchBatchSize = 20;
     NSFetchedResultsController *frc = [[NSFetchedResultsController alloc]
                                        initWithFetchRequest:request
                                        managedObjectContext:self.managedObjectContext
                                        sectionNameKeyPath:Nil cacheName:nil];
-    
+
     NSError *error = nil;
     [frc performFetch:&error];
     if (error) {
         NSLog(@"fetch meeds error when shift module migration:%@", [error userInfo]);
         return;
     }
-    
+
     OneJob *j;
     for (j in frc.fetchedObjects) {
         if ([j convertShiftRoundToJump] == NO) {
             NSLog(@"shift:%@ convert failed", j);
-	    [self.managedObjectContext reset];
+            [self.managedObjectContext reset];
             success = NO;
-	    break;
+            break;
         }
     }
 
@@ -627,9 +599,28 @@ enum {
 {
   NSNumber *isMondayStart = [[NSUserDefaults standardUserDefaults]
                              objectForKey:USER_CONFIG_ENABLE_MONDAY_DISPLAY];
-  [kal changeWeekStartType:isMondayStart.boolValue];
+  [_kalController changeWeekStartType:isMondayStart.boolValue];
 }
 
+- (void)frostedViewController:(REFrostedViewController *)frostedViewController willShowMenuViewController:(UIViewController *)menuViewController
+{
+    NSLog(@"willShowMenuViewController");
+}
+
+- (void)frostedViewController:(REFrostedViewController *)frostedViewController didShowMenuViewController:(UIViewController *)menuViewController
+{
+    NSLog(@"didShowMenuViewController");
+}
+
+- (void)frostedViewController:(REFrostedViewController *)frostedViewController willHideMenuViewController:(UIViewController *)menuViewController
+{
+    NSLog(@"willHideMenuViewController");
+}
+
+- (void)frostedViewController:(REFrostedViewController *)frostedViewController didHideMenuViewController:(UIViewController *)menuViewController
+{
+    NSLog(@"didHideMenuViewController");
+}
 
 
 @end
