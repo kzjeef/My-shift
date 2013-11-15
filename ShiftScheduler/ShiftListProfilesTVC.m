@@ -408,9 +408,7 @@ enum {
     else if (indexPath.section == SECTION_ADD_NEW_SHIFT) {
         cell.imageView.image = plusImage;
         cell.textLabel.text = NSLocalizedString(@"Adding new shift...", "add new shift");
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.backgroundColor = [UIColor colorWithWhite:.1 alpha:0];
-        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"greenButtonBackgroud"]];
+        cell.textLabel.textColor = [UIColor colorWithRed:22.0/255.0 green:152.0/255.0 blue:69.0/255.0 alpha:1];
     } else if (indexPath.section == SECTION_OUTDATE_SHOW_HIDE) {
         NSString *tt = NSLocalizedString(@"Outdated Shifts", "expand archived shifts");
         NSString *text = [NSString stringWithFormat:@"%@ (%d)",
@@ -423,7 +421,7 @@ enum {
         cell.textLabel.backgroundColor = [UIColor colorWithWhite:.1 alpha:0];
         cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"grayButtonBackgroud"]];
     }
-    
+
     return cell;
 }
 
