@@ -106,6 +106,12 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 
 - (void) viewDidLoad
 {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
+    {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+
+
 	[ super viewDidLoad ];
 
 	self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -224,7 +230,6 @@ static void HSVFromUIColor( UIColor* color, float* h, float* s, float* v )
 	[ self didChangeValueForKey: @"resultColor" ];
 	
 	resultColorView.backgroundColor = resultColor;
-	
 	[ self informDelegateDidChangeColor ];
 }
 

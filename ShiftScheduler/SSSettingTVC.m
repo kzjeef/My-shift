@@ -134,8 +134,6 @@ enum {
     self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.backgroundColor = [UIColor clearColor];
-
     self.title = NSLocalizedString(@"Settings", "Settings");
 
     // Uncomment the following line to preserve selection between presentations.
@@ -156,7 +154,7 @@ enum {
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section != SSRESET_SECTION) {
-        cell.backgroundColor = [UIColor clearColor];
+        //        cell.backgroundColor = [UIColor clearColor];
         cell.textLabel.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
     }
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
@@ -333,9 +331,9 @@ enum {
     cell.detailTextLabel.text = nil;
     
     if (indexPath.section == SSSNAME_SECTION) {
-        cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
         cell.textLabel.text = APP_NAME_STR;
         cell.textLabel.font = [UIFont systemFontOfSize:24];
+        cell.userInteractionEnabled = NO;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Version %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     } else if (indexPath.section == SSAPPCFG_SECTION) {
         cell.textLabel.text = [self.appConfigArray objectAtIndex:indexPath.row];

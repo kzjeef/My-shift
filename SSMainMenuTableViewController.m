@@ -39,8 +39,8 @@
         imageView.image = [UIImage imageNamed:@"AppIcon.png"];
         imageView.layer.masksToBounds = YES;
         imageView.layer.cornerRadius = 50.0;
-        imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        imageView.layer.borderWidth = 3.0f;
+        imageView.layer.borderColor = [UIColor darkGrayColor].CGColor;
+        imageView.layer.borderWidth = 1.0f;
         imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
         imageView.layer.shouldRasterize = YES;
         imageView.clipsToBounds = YES;
