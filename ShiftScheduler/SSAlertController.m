@@ -11,6 +11,7 @@
 #import "SSDefaultConfigName.h"
 
 
+// XXX: in .strings file, %d actually going to %@, which can use for a strings.
 #define TIME_STR_ALARM_BEFORE_HOURS NSLocalizedString(@"will start in %d Hour", "will start in %d Hour")
 #define TIME_STR_ALARM_BEFORE_MINITES NSLocalizedString(@"will start in %d Minutes", "will start in %d Minutes")
 #define TIME_STR_ALARM_BEFORE_NOW NSLocalizedString(@"is start now", "is start now")
@@ -242,6 +243,13 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
     badgeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber;
 }
 
+- (NSString *)numberToStr:(int) n
+{
+    return [NSNumberFormatter localizedStringFromNumber:
+                                [NSNumber numberWithInt:n]
+                                            numberStyle:NSNumberFormatterDecimalStyle];
+}
+
 
 - (int) setupAlarmForJob: (OneJob *) job daysLater:(int) daysLater
 {
@@ -256,14 +264,15 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
 
         if (job.jobRemindBeforeWork.intValue > 60*60)
             timestr = [NSString stringWithFormat:TIME_STR_ALARM_BEFORE_HOURS,
-                                job.jobRemindBeforeWork.intValue / 60 / 60];
+                               [self numberToStr:job.jobRemindBeforeWork.intValue / 60 / 60]];
         else
             timestr = [NSString stringWithFormat:TIME_STR_ALARM_BEFORE_MINITES,
-                                job.jobRemindBeforeWork.intValue / 60];
+                       [NSNumberFormatter localizedStringFromNumber:
+                        [NSNumber numberWithInt:job.jobRemindBeforeWork.intValue / 60]
+                                                        numberStyle:NSNumberFormatterDecimalStyle]];
         if (job.jobRemindBeforeWork.intValue == 0)
             timestr = TIME_STR_ALARM_BEFORE_NOW;
         NSString *workRemindString = [NSString stringWithFormat:@"%@ %@.", job.jobName, timestr];
-
 
         ret = [self scheduleNotificationWithItem:[job getJobEverydayStartTime]
                                    withDaysLater:daysLater
