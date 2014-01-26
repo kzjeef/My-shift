@@ -46,6 +46,7 @@ ProfileEditFinishDelegate, REFrostedViewControllerDelegate>
     SSMailAgent *mailAgent;
     SSThinkNoteShareAgent *thinkNoteAgent;
     SSShareController *_shareC;
+    REFrostedViewController *_frostedViewController;
 
     ThinkNoteShareViewController *_tnoteShareVC;
 

@@ -15,6 +15,16 @@
 
 @implementation SSMainMenuTableViewController
 
+- (id) initWithStyle:(UITableViewStyle)style nameArray: (NSArray *) nameArray iconArray: (NSArray *)iconArray
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        self.menuItemIconPathList = iconArray;
+        self.menuItemNameList = nameArray;
+    }
+
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -80,7 +90,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,9 +105,14 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    if (indexPath.section == 0) {
-        NSArray *titles = @[CALENDAR_STR, SHIFTS_STR, SETTINGS_STR];
-        cell.textLabel.text = titles[indexPath.row];
+    if (indexPath.section == 0 && indexPath.row != 0) {
+        // -1 is to remove the first item, the big logo.
+        cell.textLabel.text = [self.menuItemNameList objectAtIndex:(indexPath.row - 1)];
+        NSString *str = [self.menuItemIconPathList objectAtIndex:(indexPath.row - 1)];
+        if (str != NULL && str.length > 0)
+            cell.imageView.image = [[UIImage imageWithContentsOfFile:str]  scaleToSize:TAB_ICON_SIZE onlyIfNeeded:YES];
+        else
+            cell.imageView.image = NULL;
     }
     return cell;
 }
@@ -115,6 +130,7 @@
             navigationController.viewControllers = @[self.shiftListTVC];
         } else if (indexPath.row == 2) {
             navigationController.viewControllers = @[self.settingTVC];
+        } else if (indexPath.row == 3) {
         }
     }
 

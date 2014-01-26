@@ -50,9 +50,6 @@ enum {
 
 - (void) SSKalControllerInit
 {
-
-    //   dispatch_async(dispatch_get_main_queue(), ^{
-
     [self shiftModuleMigration];
 
     _kalController = [[KalViewController alloc] init];
@@ -115,7 +112,6 @@ enum {
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyWeekStartHandler:) name:SS_LOCAL_NOTIFY_WEEK_START_CHANGED object:nil];
     [self notifyWeekStartHandler:nil];
-//	});
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -153,84 +149,92 @@ enum {
 
     // 7. setup up for the tabbar related.
     // add tab bar vc related things.
-    iconPath = [[NSBundle mainBundle] pathForResource:@"users"
-                                               ofType:@"png"];
+
+    NSString *shiftListIconPath = [[NSBundle mainBundle] pathForResource:@"users" ofType:@"png"];
+    NSString *settingListIconPath = [[NSBundle mainBundle] pathForResource:@"settings" ofType:@"png"];
+    NSString *calendarListIconPath = [[NSBundle mainBundle] pathForResource:@"tab-calendar" ofType:@"png"];
+
     UIImage *shiftlistImg = [[UIImage imageWithContentsOfFile:iconPath]  scaleToSize:TAB_ICON_SIZE onlyIfNeeded:YES];
     self.profileView.tabBarItem = [[UITabBarItem alloc]
                                       initWithTitle:SHIFTS_STR
                                               image:shiftlistImg tag:2];
-
-    iconPath = [[NSBundle mainBundle] pathForResource:@"settings" ofType:@"png"];
-
-    UIImage *settingImg = [[UIImage imageWithContentsOfFile:iconPath]  scaleToSize:TAB_ICON_SIZE onlyIfNeeded:YES];
-    self.settingVC.tabBarItem = [[UITabBarItem alloc]
-                                    initWithTitle:SETTINGS_STR
-                                            image:settingImg tag:3];
-
-    iconPath = [[NSBundle mainBundle] pathForResource:@"GSFacesInfo" ofType:@"png"];
-
     //    UINavigationController *help = [[UINavigationController alloc] init];
     //    help.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Tips", "tips in tabbar")
     //                                                    image:[UIImage imageWithContentsOfFile:iconPath] tag:4];
 
     [self SSKalControllerInit];
 
+    [self initFrostedMainMenu:@[CALENDAR_STR, SHIFTS_STR, SETTINGS_STR]
+                    withIcons:@[shiftListIconPath, settingListIconPath, calendarListIconPath]];
+
+    [self initMainWindow];
+
+    [self initAppDefaults];
+
+    return YES;
+}
+
+- (void) initMainWindow
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = _frostedViewController;
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+}
+
+- (void) initFrostedMainMenu:(NSArray *) nameArray withIcons:(NSArray *) iconArray
+{
     self.navController = [[SSMainNavigationController alloc] init];
 
-    SSMainMenuTableViewController *menuController = [[SSMainMenuTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    SSMainMenuTableViewController *menuController = [[SSMainMenuTableViewController alloc] initWithStyle:UITableViewStylePlain nameArray:nameArray
+                                                                                               iconArray:iconArray];
     
     menuController.kalController = self.kalController;
     menuController.settingTVC = self.settingVC;
     menuController.shiftListTVC = self.profileView;
 
     // Create frosted view controller
-    REFrostedViewController *frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:self.navController
+    _frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:self.navController
                                                                                                  menuViewController:menuController];
-
-    frostedViewController.direction = REFrostedViewControllerDirectionLeft;
-    frostedViewController.liveBlurBackgroundStyle = REFrostedViewControllerLiveBackgroundStyleLight;
-    frostedViewController.liveBlur = YES;
-    frostedViewController.delegate = self;
+    _frostedViewController.direction = REFrostedViewControllerDirectionLeft;
+    _frostedViewController.liveBlurBackgroundStyle = REFrostedViewControllerLiveBackgroundStyleLight;
+    _frostedViewController.liveBlur = YES;
+    _frostedViewController.delegate = self;
     //frostedViewController.menuViewSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width / 1.33, [[UIScreen mainScreen] bounds].size.height);
     
-    menuController.frostedViewController = frostedViewController;
+    menuController.frostedViewController = _frostedViewController;
 
-    self.navController.frostedViewController = frostedViewController;
+    self.navController.frostedViewController = _frostedViewController;
     self.navController.kalViewController = _kalController;
     [self.navController setViewControllers:@[_kalController]];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+}
 
-    self.window.rootViewController = frostedViewController;
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-
-    // default perferences
+- (void) initAppDefaults
+{
     NSDictionary *appDefaults = [NSDictionary
                                  dictionaryWithObjects:
                                  @[@(YES),
-                                 @(NO),
-                                 @"Alarm_Beep_03.caf",
-                                 @"Beep",
-                                    @[@0,@0],
-                                    @(NO),
-                                    @(NO),
-                                    @(NO),
-                                    @(NO),
+                                   @(NO),
+                                   @"Alarm_Beep_03.caf",
+                                   @"Beep",
+                                   @[@0,@0],
+                                   @(NO),
+                                   @(NO),
+                                   @(NO),
+                                   @(NO),
                                    ]
                                  forKeys:@[USER_CONFIG_ENABLE_ALERT_SOUND,
-                                 USER_CONFIG_USE_SYS_DEFAULT_ALERT_SOUND,
-                                 USER_CONFIG_APP_DEFAULT_ALERT_SOUND,
-                                 USER_CONFIG_APP_ALERT_SOUND_FILE,
-                                 USER_CONFIG_HOLIDAY_REGION,
-                                 USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY,
+                                           USER_CONFIG_USE_SYS_DEFAULT_ALERT_SOUND,
+                                           USER_CONFIG_APP_DEFAULT_ALERT_SOUND,
+                                           USER_CONFIG_APP_ALERT_SOUND_FILE,
+                                           USER_CONFIG_HOLIDAY_REGION,
+                                           USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY,
                                            USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT,
                                            DID_SHIFT_MIGRATION,
                                            USER_CONFIG_ENABLE_MONDAY_DISPLAY,
                                            ]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
 
-
-    return YES;
 }
 
 - (void) rightButtonSwitchToShareOrBusy:(BOOL) share

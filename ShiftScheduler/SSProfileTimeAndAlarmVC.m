@@ -32,16 +32,6 @@ enum {
             REMIND_BEFORE_CLOCK_OFF];
 }
 
-//- (UIPickerView *) picker
-//{
-//    if (picker == nil) {
-//        picker = [[UIPickerView alloc] init];
-//        SSProfileReminderDateSource *dateSource = [[SSProfileReminderDateSource alloc] init];
-//        picker.dataSource = dateSource;
-//    }
-//    return picker;
-//}
-
 - (NSArray *) itemsArray
 {
     if (!itemsArray) {

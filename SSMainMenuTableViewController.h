@@ -11,7 +11,7 @@
 #import "SSSettingTVC.h"
 #import "ShiftListProfilesTVC.h"
 #import "REFrostedViewController.h"
-
+#import "UIImageResizing.h"
 
 @interface SSMainMenuTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -20,4 +20,9 @@
 @property (nonatomic, strong) ShiftListProfilesTVC *shiftListTVC;
 @property (strong, nonatomic) REFrostedViewController *frostedViewController;
 
+@property (strong, nonatomic) NSArray *menuItemNameList; // a list of string of the menu items.
+
+@property (strong, nonatomic) NSArray *menuItemIconPathList; // a list of path of menu item list, if no, pass "" to it.
+
+- (id) initWithStyle:(UITableViewStyle)style nameArray: (NSArray *) nameArray iconArray: (NSArray *)iconArray;
 @end
