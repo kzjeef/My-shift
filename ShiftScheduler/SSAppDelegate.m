@@ -53,11 +53,26 @@ enum {
     [self shiftModuleMigration];
 
     _kalController = [[KalViewController alloc] init];
-    _kalController.title = NSLocalizedString(@"Shift Scheduler", "application title");
+    //    _kalController.title = NSLocalizedString(@"Shift Scheduler", "application title");
+    _kalController.title = @"";
 
-    _kalController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-                                                       initWithTitle:NSLocalizedString (@"Today", "today")
-                                                               style:UIBarButtonItemStyleBordered target:self action:@selector(showAndSelectToday)];
+    todayButton = [[UIBarButtonItem alloc]
+                   initWithTitle:NSLocalizedString (@"Today", "today")
+                   style:UIBarButtonItemStyleBordered
+                   target:self
+                   action:@selector(showAndSelectToday)];
+
+    UIImage *menuIcon = [UIImage imageNamed:@"menu.png"];
+
+    menuButton = [[UIBarButtonItem alloc] initWithImage:menuIcon style:UIBarButtonItemStylePlain  target:self action:@selector(SSMainMenuDelegatePopMainMenu:)];
+
+    self.navController.navigationItem.leftBarButtonItem = menuButton;
+
+
+
+    [_kalController.navigationItem setRightBarButtonItems:@[todayButton]]; // shareButton
+    [_kalController.navigationItem setLeftBarButtonItem:menuButton];
+
 
     SSKalDelegate *kalDelegate = [[SSKalDelegate alloc] init];
     self.sskalDelegate = kalDelegate;
@@ -93,9 +108,6 @@ enum {
 
     }
     self.rightAS.tag = TAG_MENU;
-    shareButton = [[UIBarButtonItem alloc]
-                                     initWithBarButtonSystemItem: UIBarButtonSystemItemAction
-                                                          target:self action:@selector(showRightActionSheet)];
 
     [self rightButtonSwitchToShareOrBusy:YES];
     // 6. setup share operation, and add it in Kal view.
@@ -128,6 +140,7 @@ enum {
      */
 
     self.profileView = [[ShiftListProfilesTVC alloc] initWithManagedContext:self.managedObjectContext];
+    self.profileView.menuDelegate = self;
     self.profileView.parentViewDelegate = self;
     self.profileNVC = [[UINavigationController alloc] initWithRootViewController:self.profileView];
 
@@ -153,19 +166,16 @@ enum {
     NSString *shiftListIconPath = [[NSBundle mainBundle] pathForResource:@"users" ofType:@"png"];
     NSString *settingListIconPath = [[NSBundle mainBundle] pathForResource:@"settings" ofType:@"png"];
     NSString *calendarListIconPath = [[NSBundle mainBundle] pathForResource:@"tab-calendar" ofType:@"png"];
+    NSString *shareIconPath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"png"];
 
-    UIImage *shiftlistImg = [[UIImage imageWithContentsOfFile:iconPath]  scaleToSize:TAB_ICON_SIZE onlyIfNeeded:YES];
-    self.profileView.tabBarItem = [[UITabBarItem alloc]
-                                      initWithTitle:SHIFTS_STR
-                                              image:shiftlistImg tag:2];
     //    UINavigationController *help = [[UINavigationController alloc] init];
     //    help.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Tips", "tips in tabbar")
     //                                                    image:[UIImage imageWithContentsOfFile:iconPath] tag:4];
 
     [self SSKalControllerInit];
 
-    [self initFrostedMainMenu:@[CALENDAR_STR, SHIFTS_STR, SETTINGS_STR]
-                    withIcons:@[shiftListIconPath, settingListIconPath, calendarListIconPath]];
+    [self initFrostedMainMenu:@[CALENDAR_STR, SHIFTS_STR, SETTINGS_STR, SHARE_STRING]
+                    withIcons:@[calendarListIconPath, shiftListIconPath, settingListIconPath, shareIconPath]];
 
     [self initMainWindow];
 
@@ -192,6 +202,7 @@ enum {
     menuController.kalController = self.kalController;
     menuController.settingTVC = self.settingVC;
     menuController.shiftListTVC = self.profileView;
+    menuController.shareDelegate = self;
 
     // Create frosted view controller
     _frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:self.navController
@@ -239,6 +250,7 @@ enum {
 
 - (void) rightButtonSwitchToShareOrBusy:(BOOL) share
 {
+    return;
     if (share)
         [_kalController.navigationItem setRightBarButtonItem:shareButton];
     else
@@ -299,6 +311,7 @@ enum {
     {
         settingVC = [[SSSettingTVC alloc] initWithNibName:@"SSSettingTVC" bundle:nil];
         settingVC.managedObjectContext = self.managedObjectContext;
+        settingVC.menuDelegate = self;
     }
     return settingVC;
 }
@@ -624,6 +637,16 @@ enum {
 - (void)frostedViewController:(REFrostedViewController *)frostedViewController didHideMenuViewController:(UIViewController *)menuViewController
 {
     NSLog(@"didHideMenuViewController");
+}
+
+- (void) SSMainMenuDelegatePopMainMenu:(id)from
+{
+    [self.navController presentMenuView];
+}
+
+- (void) SSMainMenuShareButtonClicked:(id)from
+{
+    [self showRightActionSheet];
 }
 
 

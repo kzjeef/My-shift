@@ -119,7 +119,15 @@ enum {
     return feedbackItemsArray;
 }
 
+- (void)menuButtonClicked
+{
+    if (self.menuDelegate) {
+        [self.menuDelegate SSMainMenuDelegatePopMainMenu:self];
+    }
+}
+
 #pragma mark - View lifecycle
+
 
 - (void)viewDidLoad
 {
@@ -142,6 +150,12 @@ enum {
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    UIImage *menuIcon = [UIImage imageNamed:@"menu.png"];
+
+    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:menuIcon style:UIBarButtonItemStylePlain  target:self action:@selector(menuButtonClicked)];
+    self.navigationItem.leftBarButtonItem = menuButton;
+
+
     _thinknoteLogin = [[SSSocialThinkNoteLogin alloc]init];
     
     [[NSNotificationCenter defaultCenter] addObserver:self

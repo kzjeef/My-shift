@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "OneJob.h"
+#import "SSMainNavigationController.h"
 
 @class ShiftProfileChangeViewController;
 
@@ -43,6 +44,7 @@
 @property (strong, nonatomic) NSDateFormatter *timeFormatter;
 
 @property (strong, nonatomic) id <ProfileEditFinishDelegate> parentViewDelegate;
+@property (weak, nonatomic) id <SSMainMenuDelegate> menuDelegate;
 
 - (id)initWithManagedContext:(NSManagedObjectContext *)context;
 - (IBAction)insertNewProfile:(id) sender;

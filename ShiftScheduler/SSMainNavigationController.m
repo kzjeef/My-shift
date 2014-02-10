@@ -90,6 +90,11 @@ typedef enum : NSInteger {
     // Dispose of any resources that can be recreated.
 }
 
+- (void) presentMenuView {
+    [self.frostedViewController presentMenuViewController];
+}
+
+
 // This method will determine whether the direction of the user's swipe
 
 - (SSGestureDirection)determineCameraDirectionIfNeeded:(CGPoint)translation

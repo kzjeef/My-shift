@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "SSSocialThinkNoteLogin.h"
+#import "SSMainNavigationController.h"
 
 
 @interface SSSettingTVC : UITableViewController
@@ -35,15 +36,11 @@
 @property (weak, nonatomic, readonly) NSArray *alarmSettingsArray;
 @property (weak, nonatomic, readonly) NSArray *appConfigArray;
 @property (weak, nonatomic, readonly) NSArray *appConfigHelpArray;
-
 @property (weak, nonatomic, readonly) NSArray *socialAccountArray;
 @property (weak, nonatomic, readonly) NSArray *feedbackItemsArray;
-
-
-
 @property (nonatomic, strong) NSURL *iTunesURL;
-
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (weak, nonatomic) id<SSMainMenuDelegate> menuDelegate;
 
 
 @end

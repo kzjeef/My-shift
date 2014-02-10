@@ -31,6 +31,10 @@
     [super viewDidLoad];
 
     self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
+
+    if ([self.tableView respondsToSelector:@selector(separatorInset)])
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 7, 0, 7);
+
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -90,7 +94,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return self.menuItemNameList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,13 +109,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    if (indexPath.section == 0 && indexPath.row != 0) {
+    if (indexPath.section == 0) {
         // -1 is to remove the first item, the big logo.
-        cell.textLabel.text = [self.menuItemNameList objectAtIndex:(indexPath.row - 1)];
-        NSString *str = [self.menuItemIconPathList objectAtIndex:(indexPath.row - 1)];
-        if (str != NULL && str.length > 0)
-            cell.imageView.image = [[UIImage imageWithContentsOfFile:str]  scaleToSize:TAB_ICON_SIZE onlyIfNeeded:YES];
-        else
+        cell.textLabel.text = [self.menuItemNameList objectAtIndex:(indexPath.row)];
+        NSString *str = [self.menuItemIconPathList objectAtIndex:(indexPath.row)];
+
+        if (str != NULL && str.length > 0) {
+            UIImage *i = [UIImage imageWithContentsOfFile:str];
+            cell.imageView.image = i;
+        } else
             cell.imageView.image = NULL;
     }
     return cell;
@@ -131,6 +137,10 @@
         } else if (indexPath.row == 2) {
             navigationController.viewControllers = @[self.settingTVC];
         } else if (indexPath.row == 3) {
+            if (self.shareDelegate) {
+                navigationController.viewControllers = @[self.kalController];
+                [self.shareDelegate SSMainMenuShareButtonClicked:self];
+            }
         }
     }
 

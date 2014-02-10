@@ -83,6 +83,13 @@ enum {
     return timeFormatter;
 }
 
+- (void)menuButtonClicked
+{
+    if (self.menuDelegate) {
+        [self.menuDelegate SSMainMenuDelegatePopMainMenu:self];
+    }
+}
+
 - (IBAction)insertNewProfile:(id) sender
 {
     ShiftProfileChangeViewController *addViewController = [[ShiftProfileChangeViewController alloc] initWithStyle:UITableViewStyleGrouped];
@@ -287,8 +294,14 @@ enum {
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    UIBarButtonItem *addbutton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewProfile:)];
-    self.navigationItem.leftBarButtonItem = addbutton;
+    //    UIBarButtonItem *addbutton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewProfile:)];
+
+    ///    self.navigationItem.leftBarButtonItem = addbutton;
+    UIImage *menuIcon = [UIImage imageNamed:@"menu.png"];
+
+    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:menuIcon style:UIBarButtonItemStylePlain  target:self action:@selector(menuButtonClicked)];
+    self.navigationItem.leftBarButtonItem = menuButton;
+
     
     NSError *error;
     if (![self.fetchedResultsController performFetch:&error]) {

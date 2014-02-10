@@ -29,7 +29,7 @@
 
 @interface SSAppDelegate : UIResponder <UIApplicationDelegate,
 UIActionSheetDelegate,UIAlertViewDelegate,SSShareViewControllerDelegate,
-ProfileEditFinishDelegate, REFrostedViewControllerDelegate>
+ProfileEditFinishDelegate, REFrostedViewControllerDelegate, SSMainMenuDelegate, SSMainMenuShareButtonDelegate>
 {
     SSMainNavigationController	*navController;
     UINavigationController	*profileNVC;
@@ -50,8 +50,12 @@ ProfileEditFinishDelegate, REFrostedViewControllerDelegate>
 
     ThinkNoteShareViewController *_tnoteShareVC;
 
+    // bar button items.
+
     UIBarButtonItem *shareButton;
     UIBarButtonItem *loadingButton;
+    UIBarButtonItem *todayButton;
+    UIBarButtonItem *menuButton;
     id dataSource;
 
 }
