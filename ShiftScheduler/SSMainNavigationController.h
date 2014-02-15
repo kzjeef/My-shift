@@ -10,6 +10,8 @@
 #import "REFrostedViewController.h"
 #import "KalViewController.h"
 
+@class SSMainMenuTableViewController;
+
 @protocol SSMainMenuDelegate
 - (void) SSMainMenuDelegatePopMainMenu: (id) from;
 @end
@@ -18,11 +20,19 @@
 - (void) SSMainMenuShareButtonClicked: (id) from;
 @end
 
-@interface SSMainNavigationController : UINavigationController
+@protocol SSMainMenuSwitchViewDelegate
+- (void) SSMainMenuViewStartChange;
+@end
+
+@interface SSMainNavigationController : UINavigationController <SSMainMenuSwitchViewDelegate>
 
 @property (strong, nonatomic) REFrostedViewController *frostedViewController;
 @property (strong, nonatomic) KalViewController *kalViewController;
+@property (strong, nonatomic) SSMainMenuTableViewController *menuTableView;
+
 
 - (void) presentMenuView;
+
+- (void)displayCoachMarks;
 
 @end

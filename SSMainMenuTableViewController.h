@@ -14,6 +14,10 @@
 #import "UIImageResizing.h"
 #import "SSMainMenuTableViewController.h"
 
+#define     MainViewCalendarView  1
+#define     MainViewShiftListView 2
+#define     MainViewSettingView  3
+
 @interface SSMainMenuTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) KalViewController *kalController;
@@ -27,6 +31,10 @@
 
 @property (weak, nonatomic) id<SSMainMenuDelegate> menuDelegate;
 @property (weak, nonatomic) id<SSMainMenuShareButtonDelegate> shareDelegate;
+@property (readonly, nonatomic) int currentSelectedView;
+@property (weak, nonatomic)  id<SSMainMenuSwitchViewDelegate> switchDelegate;
+
 
 - (id) initWithStyle:(UITableViewStyle)style nameArray: (NSArray *) nameArray iconArray: (NSArray *)iconArray;
+
 @end

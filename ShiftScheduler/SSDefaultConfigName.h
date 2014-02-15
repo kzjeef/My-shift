@@ -17,5 +17,6 @@
 #define USER_CONFIG_ENABLE_MONDAY_DISPLAY        @"enableMondayFirstDisplay"
 #define USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT @"enableDisplayOutdateShift"
 #define USER_CONFIG_HOLIDAY_REGION                @"holidayRegionList"
+#define MAIN_VIEW_COACH_KEY                       @"MAIN_VIEW_COACH_KEY"
 
 #endif

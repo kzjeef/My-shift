@@ -1,4 +1,4 @@
-//
+
 //  mainNavigationController.m
 //  ShiftScheduler
 //
@@ -9,6 +9,10 @@
 #import "SSMainNavigationController.h"
 #import "UIImageResizing.h"
 #import "config.h"
+#import "WSCoachMarksView.h"
+#import "SSDefaultConfigName.h"
+#import "SSMainMenuTableViewController.h"
+
 
 CGFloat const gestureMinimumTranslation = 13.0;
 typedef enum : NSInteger {
@@ -22,7 +26,9 @@ typedef enum : NSInteger {
 @interface SSMainNavigationController ()
 {
     int _swipDirection;
+    WSCoachMarksView *coachMarkView;
 }
+
 
 @end
 
@@ -43,6 +49,68 @@ typedef enum : NSInteger {
     self.view.backgroundColor = [UIColor whiteColor];
     self.modalPresentationStyle = UIModalPresentationFormSheet;
     [self.view setGestureRecognizers: @[[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]]];
+
+
+
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    // This will only show calendar view 's help, because only called once after app start.
+    [self displayCoachMarks];
+}
+
+- (void)displayCoachMarks
+{
+    // TODO: fix the hard coded position and size, try find a better way like tag
+    // finding to figure out where is the view is, but viewByTag seems not working
+    NSArray *coachMarksCal = @[
+                            @{@"rect": [NSValue valueWithCGRect:CGRectMake(5, 20, 40, 40)],
+                              @"caption":@"Click to open Menu"
+                              },
+                            @{@"rect": [NSValue valueWithCGRect:CGRectMake(80, 65, 170, 35)],
+                              @"caption": @"Click to quick jump to some date"},
+                            @{@"rect": [NSValue valueWithCGRect:CGRectMake(260, 20, 60, 35)],
+                              @"caption": @"Click to jump back to today"},
+                            ];
+    NSArray *coachMarksList = @[
+                            @{@"rect": [NSValue valueWithCGRect:CGRectMake(5, 20, 40, 40)],
+                              @"caption":@"Click to open Menu"
+                              },
+                            @{@"rect": [NSValue valueWithCGRect:CGRectMake(5, 170, 320, 44)],
+                              @"caption": @"Click to create a new shift profile"},
+                            @{@"rect": [NSValue valueWithCGRect:CGRectMake(275, 20, 40, 35)],
+                              @"caption": @"Click to organize shift profiles"}];
+
+//#define DEBUG_COACH_MARKS
+#ifdef DEBUG_COACH_MARKS
+    [[NSUserDefaults standardUserDefaults] setObject:@[@NO, @NO] forKey:MAIN_VIEW_COACH_KEY];
+#endif
+
+    NSArray *history = [[NSUserDefaults standardUserDefaults] arrayForKey:MAIN_VIEW_COACH_KEY];
+
+    if (self.menuTableView.currentSelectedView > 0  && self.menuTableView.currentSelectedView <= MainViewShiftListView) {
+        int i = self.menuTableView.currentSelectedView;
+        NSNumber *t = [history objectAtIndex:i - 1];
+        if (t.boolValue == NO) {
+            NSArray *a;
+            if (i == MainViewCalendarView)
+                a = coachMarksCal;
+            else
+                a = coachMarksList;
+
+            coachMarkView  = [[WSCoachMarksView alloc] initWithFrame:[[[UIApplication sharedApplication] keyWindow] frame]
+                                                                                    coachMarks:a];
+
+
+            [coachMarkView setMaskColor:[[UIColor blackColor] colorWithAlphaComponent:0.77]];
+            [self.view addSubview:coachMarkView];
+            [coachMarkView start];
+             NSMutableArray *m = [history mutableCopy];
+            [m replaceObjectAtIndex:i - 1 withObject:@YES];
+            [[NSUserDefaults standardUserDefaults] setObject:m forKey:MAIN_VIEW_COACH_KEY];
+        }
+    }
 }
 
 - (void)panGestureRecognized:(UIPanGestureRecognizer *)gesture
@@ -143,4 +211,10 @@ typedef enum : NSInteger {
 
     return _swipDirection;
 }
+
+- (void) SSMainMenuViewStartChange
+{
+    [self displayCoachMarks];
+}
+
 @end

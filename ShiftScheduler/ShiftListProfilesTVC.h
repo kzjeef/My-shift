@@ -10,6 +10,8 @@
 
 #import "OneJob.h"
 #import "SSMainNavigationController.h"
+#import "WSCoachMarksView.h"
+
 
 @class ShiftProfileChangeViewController;
 
@@ -33,6 +35,7 @@
     UIBarButtonItem *oldLeftItem;
     UIImage *plusImage;
     NSDateFormatter *timeFormatter;
+    WSCoachMarksView *coachMarkView;
     id <ProfileEditFinishDelegate> parentViewDelegate;
 }
 

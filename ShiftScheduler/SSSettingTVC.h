@@ -11,7 +11,6 @@
 #import "SSSocialThinkNoteLogin.h"
 #import "SSMainNavigationController.h"
 
-
 @interface SSSettingTVC : UITableViewController
 <NSURLConnectionDelegate, UIAlertViewDelegate>
 {

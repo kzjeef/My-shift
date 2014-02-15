@@ -21,6 +21,7 @@
     if (self) {
         self.menuItemIconPathList = iconArray;
         self.menuItemNameList = nameArray;
+        _currentSelectedView = MainViewCalendarView;
     }
 
     return self;
@@ -44,7 +45,7 @@
 {
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
+    //    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
 
     self.tableView.tableHeaderView = ({
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
@@ -76,7 +77,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 54;
+    return 44;
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,8 +100,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-
     static NSString *cellIdentifier = @"Cell";
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -112,10 +111,12 @@
     if (indexPath.section == 0) {
         // -1 is to remove the first item, the big logo.
         cell.textLabel.text = [self.menuItemNameList objectAtIndex:(indexPath.row)];
+        cell.textLabel.textColor = [UIColor blueColor];
         NSString *str = [self.menuItemIconPathList objectAtIndex:(indexPath.row)];
 
         if (str != NULL && str.length > 0) {
             UIImage *i = [UIImage imageWithContentsOfFile:str];
+            i = [i imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             cell.imageView.image = i;
         } else
             cell.imageView.image = NULL;
@@ -132,14 +133,25 @@
     if (indexPath.section == 0) {
         if(indexPath.row == 0) {
             navigationController.viewControllers = @[self.kalController];
+            _currentSelectedView = MainViewCalendarView;
+            [self.switchDelegate SSMainMenuViewStartChange];
+
         } else if (indexPath.row == 1) {
             navigationController.viewControllers = @[self.shiftListTVC];
+            _currentSelectedView = MainViewShiftListView;
+            [self.switchDelegate SSMainMenuViewStartChange];
+
         } else if (indexPath.row == 2) {
             navigationController.viewControllers = @[self.settingTVC];
+            _currentSelectedView = MainViewSettingView;
+            [self.switchDelegate SSMainMenuViewStartChange];
+
         } else if (indexPath.row == 3) {
             if (self.shareDelegate) {
                 navigationController.viewControllers = @[self.kalController];
+                _currentSelectedView = MainViewCalendarView;
                 [self.shareDelegate SSMainMenuShareButtonClicked:self];
+                [self.switchDelegate SSMainMenuViewStartChange];
             }
         }
     }

@@ -22,7 +22,13 @@ enum {
     SECTION_OUTDATE_SHOW_HIDE,
     SECTION_ADD_NEW_SHIFT,
     SECTION_SIZE,
-} ;
+};
+
+enum {
+    TAG_MENU_BUTTON = 1,
+    TAG_EDIT_BUTTON,
+    TAG_ADD_BUTTON,
+};
 
 @implementation ShiftListProfilesTVC
 
@@ -291,18 +297,20 @@ enum {
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.editButtonItem.tag = TAG_EDIT_BUTTON;
     //    UIBarButtonItem *addbutton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewProfile:)];
 
     ///    self.navigationItem.leftBarButtonItem = addbutton;
     UIImage *menuIcon = [UIImage imageNamed:@"menu.png"];
 
     UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:menuIcon style:UIBarButtonItemStylePlain  target:self action:@selector(menuButtonClicked)];
+    menuButton.tag = TAG_MENU_BUTTON;
     self.navigationItem.leftBarButtonItem = menuButton;
 
-    
+
     NSError *error;
     if (![self.fetchedResultsController performFetch:&error]) {
         // Update to handle the error appropriately.
@@ -314,14 +322,16 @@ enum {
     self.fetchedResultsController.delegate = self;
 
     plusImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"addButton" ofType:@"png"]];
+    plusImage = [plusImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    // start init coach marks.
+
+
     
 }
 
 
-
 - (void)viewDidUnload
 {
-    [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     plusImage = nil;
@@ -422,6 +432,7 @@ enum {
         cell.imageView.image = plusImage;
         cell.textLabel.text = NSLocalizedString(@"Adding new shift...", "add new shift");
         cell.textLabel.textColor = [UIColor colorWithRed:22.0/255.0 green:152.0/255.0 blue:69.0/255.0 alpha:1];
+        cell.tag = TAG_ADD_BUTTON;
     } else if (indexPath.section == SECTION_OUTDATE_SHOW_HIDE) {
         NSString *tt = NSLocalizedString(@"Outdated Shifts", "expand archived shifts");
         NSString *text = [NSString stringWithFormat:@"%@ (%d)",

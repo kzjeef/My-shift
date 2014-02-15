@@ -20,6 +20,7 @@
 #import "SSMainMenuTableViewController.h"
 
 
+
 #import "Kal.h"
 
 @implementation SSAppDelegate
@@ -55,6 +56,7 @@ enum {
     _kalController = [[KalViewController alloc] init];
     //    _kalController.title = NSLocalizedString(@"Shift Scheduler", "application title");
     _kalController.title = @"";
+
 
     todayButton = [[UIBarButtonItem alloc]
                    initWithTitle:NSLocalizedString (@"Today", "today")
@@ -128,17 +130,6 @@ enum {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
-    NSString *iconPath;
-
-    /*
-     *    Kal Initialization
-     *
-     * When the calendar is first displayed to the user, Kal will automatically select today's date.
-     * If your application requires an arbitrary starting date, use -[KalViewController initWithSelectedDate:]
-     * instead of -[KalViewController init].
-     */
-
     self.profileView = [[ShiftListProfilesTVC alloc] initWithManagedContext:self.managedObjectContext];
     self.profileView.menuDelegate = self;
     self.profileView.parentViewDelegate = self;
@@ -203,6 +194,7 @@ enum {
     menuController.settingTVC = self.settingVC;
     menuController.shiftListTVC = self.profileView;
     menuController.shareDelegate = self;
+    menuController.switchDelegate = self.navController;
 
     // Create frosted view controller
     _frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:self.navController
@@ -217,6 +209,7 @@ enum {
 
     self.navController.frostedViewController = _frostedViewController;
     self.navController.kalViewController = _kalController;
+    self.navController.menuTableView = menuController;
     [self.navController setViewControllers:@[_kalController]];
 }
 
@@ -245,6 +238,9 @@ enum {
                                            USER_CONFIG_ENABLE_MONDAY_DISPLAY,
                                            ]];
     [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+
+    NSDictionary *coachDefault = @{MAIN_VIEW_COACH_KEY: @[@NO, @NO]};
+    [[NSUserDefaults standardUserDefaults] registerDefaults:coachDefault];
 
 }
 
