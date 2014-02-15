@@ -66,21 +66,25 @@ typedef enum : NSInteger {
     // finding to figure out where is the view is, but viewByTag seems not working
     NSArray *coachMarksCal = @[
                             @{@"rect": [NSValue valueWithCGRect:CGRectMake(5, 20, 40, 40)],
-                              @"caption":@"Click to open Menu"
+                              @"caption":NSLocalizedString(@"Click to open Menu", "click to open menu")
                               },
                             @{@"rect": [NSValue valueWithCGRect:CGRectMake(80, 65, 170, 35)],
-                              @"caption": @"Click to quick jump to some date"},
+                              @"caption": NSLocalizedString(@"Click to quick jump to some date", "click jump date")
+                            },
                             @{@"rect": [NSValue valueWithCGRect:CGRectMake(260, 20, 60, 35)],
-                              @"caption": @"Click to jump back to today"},
+                              @"caption": NSLocalizedString(@"Click to jump back to today", "jump to today")
+                            },
                             ];
     NSArray *coachMarksList = @[
                             @{@"rect": [NSValue valueWithCGRect:CGRectMake(5, 20, 40, 40)],
-                              @"caption":@"Click to open Menu"
+                              @"caption":NSLocalizedString(@"Click to open Menu", "click to open menu")
                               },
                             @{@"rect": [NSValue valueWithCGRect:CGRectMake(5, 170, 320, 44)],
-                              @"caption": @"Click to create a new shift profile"},
+                              @"caption": NSLocalizedString(@"Click to create a new shift profile", "new shift profile")
+                            },
                             @{@"rect": [NSValue valueWithCGRect:CGRectMake(275, 20, 40, 35)],
-                              @"caption": @"Click to organize shift profiles"}];
+                              @"caption": NSLocalizedString(@"Click to organize shift profiles", "organize shift profiles")
+                            }];
 
 //#define DEBUG_COACH_MARKS
 #ifdef DEBUG_COACH_MARKS
