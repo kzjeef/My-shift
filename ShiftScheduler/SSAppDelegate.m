@@ -57,7 +57,6 @@ enum {
     //    _kalController.title = NSLocalizedString(@"Shift Scheduler", "application title");
     _kalController.title = @"";
 
-
     todayButton = [[UIBarButtonItem alloc]
                    initWithTitle:NSLocalizedString (@"Today", "today")
                    style:UIBarButtonItemStyleBordered
@@ -65,30 +64,24 @@ enum {
                    action:@selector(showAndSelectToday)];
 
     UIImage *menuIcon = [UIImage imageNamed:@"menu.png"];
-
     menuButton = [[UIBarButtonItem alloc] initWithImage:menuIcon style:UIBarButtonItemStylePlain  target:self action:@selector(SSMainMenuDelegatePopMainMenu:)];
 
     self.navController.navigationItem.leftBarButtonItem = menuButton;
-
-
-
     [_kalController.navigationItem setRightBarButtonItems:@[todayButton]]; // shareButton
     [_kalController.navigationItem setLeftBarButtonItem:menuButton];
-
 
     SSKalDelegate *kalDelegate = [[SSKalDelegate alloc] init];
     self.sskalDelegate = kalDelegate;
     _kalController.vcdelegate = self.sskalDelegate;
 
     WorkdayDataSource *wds = [[WorkdayDataSource alloc] initWithManagedContext:self.managedObjectContext];
-
     dataSource  = wds;
     _kalController.dataSource = dataSource;
     _kalController.delegate = dataSource;
     _kalController.tileDelegate = dataSource;
-
     [self.navController setViewControllers:@[_kalController]];
 
+    self.rightAS.tag = TAG_MENU;
     if ([self.class enableThinkNoteConfig]) {
         self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
                                           cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
@@ -109,14 +102,12 @@ enum {
                                               nil];
 
     }
-    self.rightAS.tag = TAG_MENU;
 
     [self rightButtonSwitchToShareOrBusy:YES];
+
     // 6. setup share operation, and add it in Kal view.
     _shareC = [[SSShareController alloc] initWithProfilesVC:self.shareProfilesVC withKalController:_kalController];
-
     mailAgent = [[SSMailAgent alloc] initWithShareController:_shareC];
-
     thinkNoteAgent = [[SSThinkNoteShareAgent alloc] initWithSharedObject:_shareC];
 
     self.tnoteShareVC = [[ThinkNoteShareViewController alloc] initWithNibName:@"ThinkNoteShareViewController" bundle:nil];

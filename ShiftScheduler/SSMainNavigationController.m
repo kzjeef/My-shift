@@ -73,8 +73,33 @@ typedef enum : NSInteger {
                             },
                             @{@"rect": [NSValue valueWithCGRect:CGRectMake(260, 20, 60, 35)],
                               @"caption": NSLocalizedString(@"Click to jump back to today", "jump to today")
-                            },
+                            }
                             ];
+    NSMutableArray *mcoachMarkCal = [coachMarksCal mutableCopy];
+    
+    UIImage *downImage = [UIImage imageNamed:@"blueArrowDown.png"];
+    NSAssert(downImage != nil, @"image should be load fine.");
+    
+    UIImage *upImage = [UIImage imageNamed:@"blueArrowUp.png"];
+    NSAssert(upImage != nil, @"image should be load fine");
+    
+    UIImage *rightImage = [UIImage imageNamed:@"blueArrowRight.png"];
+    NSAssert(rightImage != nil, @"image should be load fine");
+    
+    [mcoachMarkCal addObjectsFromArray:@[
+                                        @{@"rect" : [NSValue valueWithCGRect:CGRectMake(260, 130, 0, 0)],
+                                          @"caption": NSLocalizedString(@"Pull Down to next month of calendar", "pull down to next month"),
+                                          @"image": downImage},
+                                        @{@"rect": [NSValue valueWithCGRect:CGRectMake(260, 130, 0, 0)],
+                                          @"caption" : NSLocalizedString(@"Pull Up to previous month of calendar", "pull up help"),
+                                          @"image" : upImage},
+                                        @{@"rect" : [NSValue valueWithCGRect:CGRectMake(260, 130, 0, 0)],
+                                          @"caption" : NSLocalizedString(@"Pull right to open main menu", "pull right help"),
+                                          @"image" : rightImage}]
+                                        ];
+    
+    coachMarksCal = mcoachMarkCal;
+
     NSArray *coachMarksList = @[
                             @{@"rect": [NSValue valueWithCGRect:CGRectMake(5, 20, 40, 40)],
                               @"caption":NSLocalizedString(@"Click to open Menu", "click to open menu")
