@@ -96,6 +96,12 @@
 		297FDBD218A88D0100BA0240 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 297FDBD018A88D0100BA0240 /* share.png */; };
 		297FDBD318A88D0100BA0240 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 297FDBD118A88D0100BA0240 /* share@2x.png */; };
 		297FDBDA18A8BAC900BA0240 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 297E0C7D1833D3D2000E1F19 /* libPods.a */; };
+		2980756618B1208A003A733F /* blueArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980756418B1208A003A733F /* blueArrowDown.png */; };
+		2980756718B1208A003A733F /* blueArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980756518B1208A003A733F /* blueArrowDown@2x.png */; };
+		2980756E18B12364003A733F /* blueArrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980756A18B12364003A733F /* blueArrowRight.png */; };
+		2980756F18B12364003A733F /* blueArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980756B18B12364003A733F /* blueArrowRight@2x.png */; };
+		2980757018B12364003A733F /* blueArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980756C18B12364003A733F /* blueArrowUp.png */; };
+		2980757118B12364003A733F /* blueArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980756D18B12364003A733F /* blueArrowUp@2x.png */; };
 		298C3FBD15D92622002F9AC3 /* ThinkNoteShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 298C3FBC15D92622002F9AC3 /* ThinkNoteShareViewController.m */; };
 		2991F79717B78026009AF142 /* strike_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F79617B78026009AF142 /* strike_icon@2x.png */; };
 		2991F7E617B780A9009AF142 /* Calendar-icon-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B317B780A9009AF142 /* Calendar-icon-114x114.png */; };
@@ -442,6 +448,12 @@
 		297FDBC718A7D3B100BA0240 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu@2x.png"; path = "Resources/menu@2x.png"; sourceTree = "<group>"; };
 		297FDBD018A88D0100BA0240 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share.png; path = Resources/share.png; sourceTree = "<group>"; };
 		297FDBD118A88D0100BA0240 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share@2x.png"; path = "Resources/share@2x.png"; sourceTree = "<group>"; };
+		2980756418B1208A003A733F /* blueArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueArrowDown.png; path = Resources/blueArrowDown.png; sourceTree = "<group>"; };
+		2980756518B1208A003A733F /* blueArrowDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blueArrowDown@2x.png"; path = "Resources/blueArrowDown@2x.png"; sourceTree = "<group>"; };
+		2980756A18B12364003A733F /* blueArrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueArrowRight.png; path = Resources/blueArrowRight.png; sourceTree = "<group>"; };
+		2980756B18B12364003A733F /* blueArrowRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blueArrowRight@2x.png"; path = "Resources/blueArrowRight@2x.png"; sourceTree = "<group>"; };
+		2980756C18B12364003A733F /* blueArrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueArrowUp.png; path = Resources/blueArrowUp.png; sourceTree = "<group>"; };
+		2980756D18B12364003A733F /* blueArrowUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blueArrowUp@2x.png"; path = "Resources/blueArrowUp@2x.png"; sourceTree = "<group>"; };
 		298C3FBC15D92622002F9AC3 /* ThinkNoteShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteShareViewController.m; path = ShiftScheduler/ThinkNoteShareViewController.m; sourceTree = "<group>"; };
 		2991F79617B78026009AF142 /* strike_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "strike_icon@2x.png"; path = "Resources/strike_icon@2x.png"; sourceTree = "<group>"; };
 		2991F79917B780A8009AF142 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addButton.png; sourceTree = "<group>"; };
@@ -795,6 +807,12 @@
 		293B64EC15A3BF5000D0C4B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2980756A18B12364003A733F /* blueArrowRight.png */,
+				2980756B18B12364003A733F /* blueArrowRight@2x.png */,
+				2980756C18B12364003A733F /* blueArrowUp.png */,
+				2980756D18B12364003A733F /* blueArrowUp@2x.png */,
+				2980756418B1208A003A733F /* blueArrowDown.png */,
+				2980756518B1208A003A733F /* blueArrowDown@2x.png */,
 				297FDBD018A88D0100BA0240 /* share.png */,
 				297FDBD118A88D0100BA0240 /* share@2x.png */,
 				297FDBC618A7D3B100BA0240 /* menu.png */,
@@ -1564,6 +1582,7 @@
 				29C943B814E9642900122144 /* SSProfileTimeAndAlarmVC.xib in Resources */,
 				29D6A525159CB4A200AC6103 /* Kal.bundle in Resources */,
 				29009FCF159F4A4D00A1588E /* SSSettingTVC.xib in Resources */,
+				2980757018B12364003A733F /* blueArrowUp.png in Resources */,
 				29009FD7159F4AA100A1588E /* SSShiftHolidayCreateVC.xib in Resources */,
 				29009FE3159F4AB600A1588E /* DatePickerViewController2.xib in Resources */,
 				29009FE7159F4AB600A1588E /* SSShiftHolidayList.xib in Resources */,
@@ -1585,17 +1604,21 @@
 				29E9810116419E1500B65A7E /* Alarm_Rooster_02.caf in Resources */,
 				29E9810216419E1500B65A7E /* ArgoNavis.caf in Resources */,
 				29E9810316419E1500B65A7E /* Big_Easy.caf in Resources */,
+				2980756718B1208A003A733F /* blueArrowDown@2x.png in Resources */,
 				29E9810416419E1500B65A7E /* BirdLoop.caf in Resources */,
 				29E9810516419E1500B65A7E /* HalfwayHome.caf in Resources */,
 				29E9810616419E1500B65A7E /* Procyon.caf in Resources */,
 				29E9810716419E1500B65A7E /* Revelation.caf in Resources */,
+				2980756618B1208A003A733F /* blueArrowDown.png in Resources */,
 				297FDBD318A88D0100BA0240 /* share@2x.png in Resources */,
 				29E9810816419E1500B65A7E /* TwirlAway.caf in Resources */,
 				29E9810B1642DBB700B65A7E /* Default-568h@2x.png in Resources */,
 				293970D4164E8AC200A79721 /* grayButtonBackgroud.png in Resources */,
 				29B460C6182E00810059F149 /* Pods.xcodeproj in Resources */,
 				293970D5164E8AC200A79721 /* redButtonBackgroud.png in Resources */,
+				2980757118B12364003A733F /* blueArrowUp@2x.png in Resources */,
 				293970D6164E8AC200A79721 /* greenButtonBackgroud.png in Resources */,
+				2980756E18B12364003A733F /* blueArrowRight.png in Resources */,
 				293970D7164E8AC200A79721 /* grayButtonBackgroud@2x.png in Resources */,
 				293970DA164E8AF700A79721 /* redButtonBackgroud@2x.png in Resources */,
 				293970DB164E8AF700A79721 /* greenButtonBackgroud@2x.png in Resources */,
@@ -1604,6 +1627,7 @@
 				293970E6164EA0B200A79721 /* settings@2x.png in Resources */,
 				293970E7164EA0B200A79721 /* tab-calendar@2x.png in Resources */,
 				293970E9164EA0B200A79721 /* users@2x.png in Resources */,
+				2980756F18B12364003A733F /* blueArrowRight@2x.png in Resources */,
 				290317B5164FE5FD008C258E /* overdate.png in Resources */,
 				297FDBC918A7D3B100BA0240 /* menu@2x.png in Resources */,
 				290F4E3B1783EF1B0023ADE8 /* SSDayEventUTC.xib in Resources */,
