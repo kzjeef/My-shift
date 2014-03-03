@@ -25,5 +25,6 @@
 - (NSUInteger)cc_weekday;
 - (NSUInteger)cc_weekdayWithCalendar:(NSCalendar *) calendar;
 - (NSUInteger)cc_numberOfDaysInMonth;
+- (NSDate *) cc_dateBySetTimePart:(NSDate *) time withCalendar:(NSCalendar *) cal;
 
 @end

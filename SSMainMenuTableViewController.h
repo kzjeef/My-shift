@@ -14,16 +14,21 @@
 #import "UIImageResizing.h"
 #import "SSMainMenuTableViewController.h"
 
-#define     MainViewCalendarView  1
-#define     MainViewShiftListView 2
-#define     MainViewSettingView  3
+@class CalendarSyncTVC;
+
+#define     kMainViewCalendarView  1
+#define     kMainViewShiftListView 2
+#define     kMainViewSettingView  3
+#define     kMainViewCalendarSyncView 4
 
 @interface SSMainMenuTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) KalViewController *kalController;
-@property (nonatomic, strong) SSSettingTVC      *settingTVC;
-@property (nonatomic, strong) ShiftListProfilesTVC *shiftListTVC;
+@property (nonatomic, strong) KalViewController       *kalController;
+@property (nonatomic, strong) SSSettingTVC            *settingTVC;
+@property (nonatomic, strong) ShiftListProfilesTVC    *shiftListTVC;
 @property (strong, nonatomic) REFrostedViewController *frostedViewController;
+@property (strong, nonatomic) CalendarSyncTVC         *calendarSyncTVC;
+
 
 @property (strong, nonatomic) NSArray *menuItemNameList; // a list of string of the menu items.
 

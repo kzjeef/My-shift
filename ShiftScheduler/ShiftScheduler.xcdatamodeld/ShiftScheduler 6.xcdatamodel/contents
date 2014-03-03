@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="InfoNode" representedClassName="InfoNode" syncable="YES">
+        <attribute name="create" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="modify" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="shift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OneJob" inverseName="infonodes" inverseEntity="OneJob" syncable="YES"/>
+    </entity>
+    <entity name="OneJob" representedClassName="OneJob">
+        <attribute name="jobDescription" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="jobEnable" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="jobEveryDayLengthSec" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="jobEverydayStartTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="jobFinishDate" optional="YES" attributeType="Date">
+            <userInfo/>
+        </attribute>
+        <attribute name="jobFreeJumpArrayArchive" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="jobFreeJumpCycle" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="jobGeneratedData" optional="YES" attributeType="Binary">
+            <userInfo/>
+        </attribute>
+        <attribute name="jobName" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="jobOffDays" optional="YES" attributeType="Integer 16" defaultValueString="0">
+            <userInfo/>
+        </attribute>
+        <attribute name="jobOnColorID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="jobOnDays" optional="YES" attributeType="Integer 16" defaultValueString="0">
+            <userInfo/>
+        </attribute>
+        <attribute name="jobOnIconColorOn" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="jobOnIconID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="jobRemindBeforeOff" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="jobRemindBeforeWork" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="jobShiftType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="jobShowTextInCalendar" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="jobStartDate" optional="YES" attributeType="Date">
+            <userInfo/>
+        </attribute>
+        <attribute name="jobXShiftCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="jobXShiftRevertOrder" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="jobXShiftStartShift" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="syncEnableEKEvent" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="syncLatestDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="infonodes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="InfoNode" inverseName="shift" inverseEntity="InfoNode" syncable="YES"/>
+        <relationship name="shiftdays" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ShiftDay" inverseName="whatJob" inverseEntity="ShiftDay" syncable="YES"/>
+        <relationship name="syncevents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SyncEvent" inverseName="shift" inverseEntity="SyncEvent" syncable="YES"/>
+        <userInfo/>
+    </entity>
+    <entity name="ShiftDay" representedClassName="ShiftDay" syncable="YES">
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="otherInfo" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="shiftFromDay" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="shiftToDay" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="whatJob" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="OneJob" inverseName="shiftdays" inverseEntity="OneJob" syncable="YES"/>
+    </entity>
+    <entity name="SyncEvent" representedClassName="SyncEvent" syncable="YES">
+        <attribute name="alarmOne" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="alarmTwo" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="ekId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="shift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OneJob" inverseName="syncevents" inverseEntity="OneJob" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="InfoNode" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="OneJob" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ShiftDay" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SyncEvent" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

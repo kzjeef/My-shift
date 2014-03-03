@@ -46,6 +46,8 @@
 @end
 
 @implementation OneJob
+@dynamic syncEnableEKEvent;
+@dynamic syncLatestDate;
 @dynamic jobName;
 @dynamic jobEnable;
 @dynamic jobDescription;
@@ -55,7 +57,6 @@
 @dynamic jobOffDays;
 @dynamic jobStartDate;
 @dynamic jobFinishDate;
-@dynamic shiftdays;
 @dynamic jobOnColorID;
 @dynamic jobOnIconID;
 @dynamic jobShiftType;
@@ -65,22 +66,25 @@
 @dynamic jobXShiftCount, jobXShiftStartShift, jobXShiftRevertOrder;
 @dynamic jobShowTextInCalendar;
 @synthesize curCalender, cachedJobOnIconColor, cachedJobOnIconID, shiftAlgo, jobShiftTypeString, middleSizeImage;
+@dynamic shiftdays;
+@dynamic syncevents;
+@dynamic infonodes;
 
 - (ShiftAlgoBase *)shiftAlgo;
 {
     if (shiftAlgo == nil) {
         enum JobShiftAlgoType type = (enum JobShiftAlgoType)self.jobShiftType.intValue;
         switch(type) {
-            case JOB_SHIFT_ALGO_FREE_ROUND:
-                shiftAlgo = [[ShiftAlgoFreeRound alloc] initWithContext:self];
-                break;
-            case JOB_SHIFT_ALGO_FREE_JUMP:
-                shiftAlgo = [[ShiftAlgoFreeJump alloc] initWithContext:self];
-                break;
-            default:
-                shiftAlgo = [[ShiftAlgoFreeRound alloc] initWithContext:self];
-                NSLog(@"OneJob: back fall the shift algo to shift round");
-                break;
+        case JOB_SHIFT_ALGO_FREE_ROUND:
+            shiftAlgo = [[ShiftAlgoFreeRound alloc] initWithContext:self];
+            break;
+        case JOB_SHIFT_ALGO_FREE_JUMP:
+            shiftAlgo = [[ShiftAlgoFreeJump alloc] initWithContext:self];
+            break;
+        default:
+            shiftAlgo = [[ShiftAlgoFreeRound alloc] initWithContext:self];
+            NSLog(@"OneJob: back fall the shift algo to shift round");
+            break;
         }
     }
     return shiftAlgo;
@@ -133,8 +137,9 @@
     [self createEmptyJumpTable];
 }
 
-/** this function should do the job convert all jump work information
- * to an array can be process by the modale
+/**
+ * This function should do the job convert all jump work information
+ * to an array can be process by the model.
  */
 - (NSArray *) jobFreeJumpTable
 {
@@ -159,6 +164,7 @@
 - (void) createEmptyJumpTable
 {
     NSLog(@"Create new jump table with cycle: %@", self.jobFreeJumpCycle);
+
     NSMutableArray *t = [[NSMutableArray alloc] initWithCapacity:self.jobFreeJumpCycle.intValue];
     for (int i = 0; i < self.jobFreeJumpCycle.intValue; i++) {
         [t addObject:[NSNumber numberWithBool:0]];
@@ -178,26 +184,24 @@
 
 #define FREE_ROUND_STRING NSLocalizedString(@"Regular Work Day", "")
 #define FREE_JUMP_STRING NSLocalizedString(@"Customize Work Day", "")
-
-//#define HOUR_ROUND_STRING NSLocalizedString(@"Hour Round", "")
 #define NA_SHITF_STRING   NSLocalizedString(@"N/A", "")
 
 - (NSArray *) jobShiftAllTypesString
 {
-    if (jobShiftAllTypesString == nil) {
-	jobShiftAllTypesString = @[FREE_ROUND_STRING,
-				  FREE_JUMP_STRING];
-    }
+    if (jobShiftAllTypesString == nil)
+        jobShiftAllTypesString = @[FREE_ROUND_STRING,  FREE_JUMP_STRING];
+
     return jobShiftAllTypesString;
 }
 
 - (Boolean) shiftTypeValied
 {
     NSInteger n = self.jobShiftType.intValue;
-    if (n > 0 && n <= [[self jobShiftAllTypesString] count]) {
-	return YES;
-    }
-    return NO;
+
+    if (n > 0 && n <= [[self jobShiftAllTypesString] count])
+        return YES;
+    else 
+        return NO;
 }
 
 - (Boolean) isShiftDateValied
@@ -214,58 +218,52 @@
 {
 
     if ([self shiftTypeValied])
-	return [[self jobShiftAllTypesString]
-		   objectAtIndex:(self.jobShiftType.intValue - 1)];
-    //    NSAssert(NO, @"shiftType return with empty string, should not happen");
+        return [[self jobShiftAllTypesString] objectAtIndex:(self.jobShiftType.intValue - 1)];
+
     return NA_SHITF_STRING;
 }
 
+/// will reset to default setting if not set.
 - (void) trydDfaultSetting
-// will reset to default setting if not set.
 {
-    if (!self.jobOnDays)
-	self.jobOnDays = @JOB_DEFAULT_ON_DAYS;
-
-    if (!self.jobOffDays)
-	self.jobOffDays = @JOB_DEFAULT_OFF_DAYS;
-
-    if (!self.jobStartDate)
-	self.jobStartDate = [NSDate date];
-
-    if (!self.jobOnIconID)
-    self.jobOnIconID = JOB_DEFAULT_ICON_FILE;
-
-    if (!self.jobEnable)
-	self.jobEnable = @(YES);
-
-    if (!self.jobOnColorID)
-	self.jobOnColorID = JOB_DEFAULT_COLOR_VALUE;
-
     NSDateComponents *defaultOnTime = [[NSDateComponents alloc] init];
     [defaultOnTime setHour:8];
     [defaultOnTime setMinute:0];
+
+    if (!self.jobOnDays)  self.jobOnDays = @JOB_DEFAULT_ON_DAYS;
+
+    if (!self.jobOffDays)  self.jobOffDays = @JOB_DEFAULT_OFF_DAYS;
+
+    if (!self.jobStartDate)  self.jobStartDate = [NSDate date];
+
+    if (!self.jobOnIconID)  self.jobOnIconID = JOB_DEFAULT_ICON_FILE;
+
+    if (!self.jobEnable)  self.jobEnable = @(YES);
+
+    if (!self.syncEnableEKEvent)  self.syncEnableEKEvent = self.jobEnable;
+
+    if (!self.jobOnColorID)  self.jobOnColorID = JOB_DEFAULT_COLOR_VALUE;
+
+    if (!self.jobShowTextInCalendar) self.jobShowTextInCalendar = @0;
+
     if (!self.jobEverydayStartTime)
-	self.jobEverydayStartTime =  [[NSCalendar currentCalendar] dateFromComponents:defaultOnTime];
+        self.jobEverydayStartTime =  [[NSCalendar currentCalendar] dateFromComponents:defaultOnTime];
 
     if (!self.jobEveryDayLengthSec)
-	self.jobEveryDayLengthSec = @JOB_DEFAULT_EVERYDAY_ON_LENGTH; // 8 hour a day default
+        self.jobEveryDayLengthSec = @JOB_DEFAULT_EVERYDAY_ON_LENGTH; // 8 hour a day default
 
     if (!self.jobRemindBeforeOff)
-	self.jobRemindBeforeOff = @JOB_DEFAULT_REMIND_TIME_BEFORE_OFF;
+        self.jobRemindBeforeOff = @JOB_DEFAULT_REMIND_TIME_BEFORE_OFF;
 
     if (!self.jobRemindBeforeWork)
-	self.jobRemindBeforeWork = @JOB_DEFAULT_REMIND_TIME_BEFORE_WORK;
-
-    if (!self.jobShowTextInCalendar)
-	self.jobShowTextInCalendar = @0;
+        self.jobRemindBeforeWork = @JOB_DEFAULT_REMIND_TIME_BEFORE_WORK;
 
     if (!self.jobShiftType || self.jobShiftType.intValue == JOB_SHIFT_ALGO_NON_TYPE)
-	self.jobShiftType = @(JOB_SHIFT_ALGO_FREE_JUMP);
+        self.jobShiftType = @(JOB_SHIFT_ALGO_FREE_JUMP);
 }
 
-
-- (void) forceDefaultSetting
 // will reset to default setting if not set.
+- (void) forceDefaultSetting
 {
     self.jobOnDays = @JOB_DEFAULT_ON_DAYS;
 
@@ -293,9 +291,9 @@
 - (int)getXShiftCount
 {
     if (self.jobXShiftCount == nil || self.jobXShiftCount.intValue == 0)
-	return 0;
+        return 0;
     else
-	return self.jobXShiftCount.intValue;
+        return self.jobXShiftCount.intValue;
 }
 
 -(NSNumber *)getJobEveryDayLengthSec
@@ -315,7 +313,7 @@
 
 -(NSDate *)getJobEverydayStartTime
 {
-	return self.jobEverydayStartTime;
+    return self.jobEverydayStartTime;
 }
 
 -(void)mysetJobEverydayStartTime:(NSDate *)time
@@ -353,31 +351,37 @@
 - (UIImage *) iconImage
 {
     if (!iconImage
-	|| ![cachedJobOnIconID isEqualToString:self.jobOnIconID]
+        || ![cachedJobOnIconID isEqualToString:self.jobOnIconID]
 #ifdef ENABLE_COLOR_ENABLE_CHOOSE
-	|| ![cachedJobOnIconColorOn isEqualToNumber:self.jobOnIconColorOn]
+        || ![cachedJobOnIconColorOn isEqualToNumber:self.jobOnIconColorOn]
 #endif
-	) {
+        ) {
 
-	if (self.jobOnIconID == nil)
-	    self.jobOnIconID = JOB_DEFAULT_ICON_FILE;
+        if (self.jobOnIconID == nil)
+            self.jobOnIconID = JOB_DEFAULT_ICON_FILE;
 
-	NSString *iconpath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"jobicons.bundle/%@", self.jobOnIconID] ofType:nil];
+        cachedJobOnIconID = self.jobOnIconID;
 
-	iconImage = [UIImage imageWithContentsOfFile:iconpath];
-	cachedJobOnIconID = self.jobOnIconID;
-	if (!iconImage) {
-	    NSLog(@"ICON: can't found icon %@", self.jobOnIconID);
-	}
 
-	// disable cholor enable or not choose by user;
+        NSString *iconpath = [[NSBundle mainBundle]
+                                 pathForResource:[NSString stringWithFormat:@"jobicons.bundle/%@",
+                                                           self.jobOnIconID]
+                                          ofType:nil];
+
+        iconImage = [UIImage imageWithContentsOfFile:iconpath];
+
+        if (!iconImage) {
+            NSLog(@"ICON: can't found icon %@", self.jobOnIconID);
+        }
+
+        // disable cholor enable or not choose by user;
 #ifdef ENABLE_COLOR_ENABLE_CHOOSE
-	cachedJobOnIconColorOn = self.jobOnIconColorOn;
-       if (self.jobOnIconColorOn.intValue == TRUE) {
-	    iconImage = [OneJob processIconImageWithColor:iconImage withColor:self.iconColor];
-	}
+        cachedJobOnIconColorOn = self.jobOnIconColorOn;
+
+        if (self.jobOnIconColorOn.intValue == TRUE)
+            iconImage = [OneJob processIconImageWithColor:iconImage withColor:self.iconColor];
 #else
-	iconImage = [UIImage generateMonoImage:iconImage withColor:self.iconColor];
+        iconImage = [UIImage generateMonoImage:iconImage withColor:self.iconColor];
 #endif
     }
     return iconImage;
@@ -387,15 +391,14 @@
 // for this application, color can use to notice different tasks,
 // so different color make sense, no color not make sense.
 // instread of return NULL, Return a default COLOR
-
 #define DEFAULT_ALPHA_VALUE_OF_JOB_ICON 0.9f
 
 - (UIColor *) defaultIconColor
 {
     if (defaultIconColor == nil) {
-	// 39814c is green one
-	// B674C2 is light purple one
-	defaultIconColor = [UIColor colorWithHexString:JOB_DEFAULT_COLOR_VALUE withAlpha:DEFAULT_ALPHA_VALUE_OF_JOB_ICON];
+        // 39814c is green one
+        // B674C2 is light purple one
+        defaultIconColor = [UIColor colorWithHexString:JOB_DEFAULT_COLOR_VALUE withAlpha:DEFAULT_ALPHA_VALUE_OF_JOB_ICON];
     }
     return defaultIconColor;
 }
@@ -403,21 +406,21 @@
 - (UIColor *) iconColor
 {
     if (!iconColor || ![cachedJobOnIconColor isEqualToString:self.jobOnColorID]) {
-	if (self.jobOnColorID == nil)
-	    return self.defaultIconColor;
-	NSLog(@"%@", self.jobOnColorID);
-	iconColor = [UIColor colorWithHexString:self.jobOnColorID
-				      withAlpha:DEFAULT_ALPHA_VALUE_OF_JOB_ICON];
+        if (self.jobOnColorID == nil)
+            return self.defaultIconColor;
+        NSLog(@"%@", self.jobOnColorID);
+        iconColor = [UIColor colorWithHexString:self.jobOnColorID
+                                      withAlpha:DEFAULT_ALPHA_VALUE_OF_JOB_ICON];
 
-	if (cachedJobOnIconColor != self.jobOnIconID)
-	    cachedJobOnIconID = nil;
-	cachedJobOnIconColor = self.jobOnColorID;
+        if (cachedJobOnIconColor != self.jobOnIconID)
+            cachedJobOnIconID = nil;
+        cachedJobOnIconColor = self.jobOnColorID;
 
     }
 
 #ifdef ENABLE_COLOR_ENABLE_CHOOSE
     if (self.jobOnIconColorOn.intValue == FALSE)
-       return nil;
+        return nil;
 #endif
 
     return iconColor;
@@ -430,10 +433,10 @@
 //          这样就需要把nsdate做继承。 继承或者不继承。。 继承了不用改现有代码。
 // 先选择2把。
 - (id) initWithWorkConfigWithStartDate: (NSDate *) thestartDate
-		     workdayLengthWith: (int) workdaylength
-		     restdayLengthWith: (int) restdayLength
-			 lengthOfArray: (int) lengthOfArray
-			      withName:(NSString *)name
+                     workdayLengthWith: (int) workdaylength
+                     restdayLengthWith: (int) restdayLength
+                         lengthOfArray: (int) lengthOfArray
+                              withName:(NSString *)name
 {
     self = [self init];
 
@@ -445,10 +448,6 @@
 }
 
 
-+ (BOOL) IsDateBetweenInclusive:(NSDate *)date begin: (NSDate *) begin end: (NSDate *)end;
-{
-    return [date compare:begin] != NSOrderedAscending && [date compare:end] != NSOrderedDescending;
-}
 
 - (NSDate *) dateByMovingForwardDays:(NSInteger) i withDate:(NSDate *) theDate
 {
@@ -473,8 +472,8 @@
 {
     if (self.jobFinishDate == nil) return NO;
     if ([[self.jobFinishDate cc_dateByMovingToMiddleOfDay]
-         timeIntervalSinceDate:[[NSDate date] cc_dateByMovingToMiddleOfDay]] >= 0)
-         return NO;
+            timeIntervalSinceDate:[[NSDate date] cc_dateByMovingToMiddleOfDay]] >= 0)
+        return NO;
     else
         return YES;
 }
@@ -483,7 +482,7 @@
 - (BOOL) convertShiftRoundToJump
 {
     if (self.jobShiftType.intValue == JOB_SHIFT_ALGO_FREE_JUMP)
-      return YES;
+        return YES;
     
     if (self.jobShiftType.intValue == JOB_SHIFT_ALGO_FREE_ROUND) {
         if (self.jobOnDays < 0 || self.jobOffDays < 0) {
@@ -491,34 +490,41 @@
             return NO;
         }
 
-	@try {
-	    self.jobShiftType = @(JOB_SHIFT_ALGO_FREE_JUMP);
+        @try {
+            self.jobShiftType = @(JOB_SHIFT_ALGO_FREE_JUMP);
 	    
-	    self.jobFreeJumpCycle = [NSNumber numberWithInt:self.jobOnDays.intValue
-					      + self.jobOffDays.intValue];
+            self.jobFreeJumpCycle = [NSNumber numberWithInt:self.jobOnDays.intValue
+                                              + self.jobOffDays.intValue];
 
-	    NSMutableArray *a = [[NSMutableArray alloc]
-                             initWithCapacity:self.jobFreeJumpCycle.intValue];
+            NSMutableArray *a = [[NSMutableArray alloc]
+                                    initWithCapacity:self.jobFreeJumpCycle.intValue];
 
-	    for (int i = 0; i < self.jobOnDays.intValue; i++)
-            [a setObject:@1 atIndexedSubscript:i];
-	    for (int i = self.jobOnDays.intValue; i < self.jobFreeJumpCycle.intValue; i++)
-            [a setObject:@0 atIndexedSubscript:i];
+            for (int i = 0; i < self.jobOnDays.intValue; i++)
+                [a setObject:@1 atIndexedSubscript:i];
+            for (int i = self.jobOnDays.intValue; i < self.jobFreeJumpCycle.intValue; i++)
+                [a setObject:@0 atIndexedSubscript:i];
         
-	    [self setJobFreeJumpTable:a];
+            [self setJobFreeJumpTable:a];
         
-	    NSLog(@"Convert: contert a shift %@ to jump cycle shift", self);
+            NSLog(@"Convert: contert a shift %@ to jump cycle shift", self);
         
-	    return YES;
-	}
+            return YES;
+        }
 
-	@catch (NSException *e) { // deal with exception ,and return false, if return false, db reset, and continue.
-	    NSLog(@"Got Exception:%@ when process shift %@", e, self);
-	    return NO;
-	}
+        @catch (NSException *e) { // deal with exception ,and return
+                                  // false, if return false, db reset,
+                                  // and continue.
+            NSLog(@"Got Exception:%@ when process shift %@", e, self);
+            return NO;
+        }
     }
 
     return YES;
+}
+
++ (BOOL) IsDateBetweenInclusive:(NSDate *)date begin: (NSDate *) begin end: (NSDate *)end;
+{
+    return [date compare:begin] != NSOrderedAscending && [date compare:end] != NSOrderedDescending;
 }
 
 @end

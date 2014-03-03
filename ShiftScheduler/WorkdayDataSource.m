@@ -1,3 +1,4 @@
+
 //
 //  WorkdayDataSource.m
 //  Holiday
@@ -20,12 +21,12 @@
 
 @interface WorkdayDataSource()
 {
-    NSArray *_cachedRegionList;
-    NSArray *_holidayManagers;
+  NSArray *_cachedRegionList;
+  NSArray *_holidayManagers;
 }
 
 @property (readonly) NSArray *holidayManagers;
-@property (readonly) NSArray * cachedRegionList;
+@property (readonly) NSArray *cachedRegionList;
 
 @end
 
@@ -42,7 +43,6 @@
 @synthesize fetchedRequestController;
 @synthesize theJobNameArray;
 @synthesize timeFormatter, objectContext;
-
 - (id)init
 {
     self = [super init];
@@ -51,7 +51,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(regionChangedNotifyHandler) name:HOLIDAY_REGION_CHANGED_NOTICE object:nil];
         _currentChoosenDate = [NSDate date];
     }
-    
+
     return self;
 }
 
@@ -218,9 +218,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
 	 cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (([self isLunarDateDisplayEnable]
-         || (self.currentChoosenDate  && [self getHolidayForDate:self.currentChoosenDate].count > 0))
-        && indexPath.section == 0) {
+    if (indexPath.section == 0
+        && ([self isLunarDateDisplayEnable]
+            || (self.currentChoosenDate
+                && [self getHolidayForDate:self.currentChoosenDate].count > 0))) {
         NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"SSDayEventUTC"
                                       owner:self
                                     options:nil];
@@ -344,13 +345,12 @@
 {
     NSDate *nextday;
     
-    for (nextday = fromDate; [nextday timeIntervalSinceDate:toDate] < 0;
+    for (nextday = fromDate;
+         [nextday timeIntervalSinceDate:toDate] < 0;
          // FIXME: why ???? dont understand now...
-         nextday = 
-         [nextday dateByAddingTimeInterval:24*60*60]) {
+         nextday =  [nextday dateByAddingTimeInterval:24*60*60]) {
         [self loadItemsForData:nextday toArray:array];
     }
-
 }
 
 
@@ -370,7 +370,7 @@
 - (NSArray *) KalTileDrawDelegate: (KalTileView *) sender getIconDrawInfoWithDate: (NSDate *) date
 {
     NSMutableArray *resultArray = [[NSMutableArray alloc] init];
-    
+
     NSMutableArray *tjobArray = [[NSMutableArray alloc] init];
 
     [self loadItemsForData:date toArray:tjobArray];
@@ -432,7 +432,7 @@
 
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-	[callback loadedDataSource:self];
+    [callback loadedDataSource:self];
 }
 
 
@@ -440,7 +440,6 @@
 	// The fetch controller has sent all current change
 	// notifications, so tell the table view to process all
 	// updates.
-    
     self.theJobNameArray = nil;
 }
 

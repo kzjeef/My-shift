@@ -173,4 +173,21 @@
   return [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:self].length;
 }
 
+
+- (NSDate *) cc_dateBySetTimePart:(NSDate *) time withCalendar:(NSCalendar *) cal {
+    
+    unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+
+    
+    //unsigned int flags = NSMinuteCalendarUnit | NSHourCalendarUnit | NSSecondCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSDayCalendarUnit;
+    NSDateComponents* timeparts = [cal components:flags fromDate:time];
+    
+    NSDateComponents *parts = [cal components:flags fromDate:self];
+
+    [parts setHour:[timeparts hour]];
+    [parts setMinute:[timeparts minute]];
+    [parts setSecond:[timeparts second]];
+    return [cal dateFromComponents:parts];
+}
+
 @end

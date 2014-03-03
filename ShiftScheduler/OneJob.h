@@ -11,7 +11,6 @@
 
 #include "ShiftDay.h"
 
-
 #define JOB_DEFAULT_ON_DAYS                     5
 #define JOB_DEFAULT_OFF_DAYS                    2
 #define JOB_DEFAULT_ICON_FILE                   @"bag32.png"
@@ -27,6 +26,9 @@ enum JobShiftAlgoType {
   JOB_SHIFT_ALGO_FREE_JUMP,	 // X on/off self check in Y days.
   JOB_SHIFT_ALGO_HOUR_ROUND ,	 // three shift system. 
 };
+
+@class SyncEvent;
+@class InfoNode;
 
 @interface OneJob : NSManagedObject
 
@@ -53,6 +55,15 @@ enum JobShiftAlgoType {
 @property (weak, nonatomic, readonly) UIImage  *iconImage;
 @property (weak, nonatomic, readonly) UIColor  *iconColor;
 
+// for sync phone calendar
+@property (nonatomic, strong) NSNumber * syncEnableEKEvent;
+@property (nonatomic, retain) NSDate * syncLatestDate;
+
+# pragma  mark Relationships
+@property (nonatomic, retain) NSSet *syncevents;
+@property (nonatomic, retain) NSSet *shiftdays;
+@property (nonatomic, retain) NSSet *infonodes;
+
 // For reminder support
 @property (nonatomic, strong) NSNumber *jobRemindBeforeOff;
 @property (nonatomic, strong) NSNumber *jobRemindBeforeWork;
@@ -67,20 +78,18 @@ enum JobShiftAlgoType {
 @property (nonatomic, strong) NSNumber *jobXShiftStartShift; // X shift, what's you shart shift.
 @property (nonatomic, strong) NSNumber *jobXShiftRevertOrder; // True If it's revert order.
 
-// SHift list images.
-
+// Shift list images.
 @property (nonatomic, strong) UIImage  *middleSizeImage;
 
-
-// init the work date generator with these input.
+/// init the work date generator with these input.
 - (id) initWithWorkConfigWithStartDate: (NSDate *) startDate
                      workdayLengthWith: (int) workdaylength
                      restdayLengthWith: (int) restdayLength
                          lengthOfArray: (int) lengthOfArray
                               withName: (NSString *)name;
 
-- (NSArray *) returnWorkdaysWithInStartDate:(NSDate *) startDate endDate: (NSDate *) endDate;
-- (BOOL) isDayWorkingDay:(NSDate *)theDate;
+- (NSArray *)       returnWorkdaysWithInStartDate:(NSDate *) startDate endDate: (NSDate *) endDate;
+- (BOOL)            isDayWorkingDay:(NSDate *)theDate;
 
 - (UIColor *)       iconColor;
 - (void)            trydDfaultSetting;
@@ -97,34 +106,34 @@ enum JobShiftAlgoType {
 - (Boolean)         shiftTypeValied;
 - (Boolean)         isShiftDateValied;
 - (NSNumber *)      shiftTotalCycle;
-+ (BOOL)            IsDateBetweenInclusive:(NSDate *)date begin: (NSDate *) begin end: (NSDate *)end;
+
 - (void)            jobFreeJumpTableCacheInvalid;
 - (BOOL)            isShiftAlreadyOutdated;
 - (BOOL)            isJobFreeJumpTableAllZero;
+- (BOOL)            convertShiftRoundToJump;
 
-- (BOOL)	    convertShiftRoundToJump;
++ (BOOL)            IsDateBetweenInclusive:(NSDate *)date begin: (NSDate *) begin end: (NSDate *)end;
 
-@property (nonatomic, strong) NSSet *shiftdays;
 @end
+
 
 @interface OneJob (CoreDataGeneratedAccessors)
+- (void)addInfonodesObject:(InfoNode *)value;
+- (void)removeInfonodesObject:(InfoNode *)value;
+- (void)addInfonodes:(NSSet *)values;
+- (void)removeInfonodes:(NSSet *)values;
 
-//  should check whether the shiftday is allowed. if the shift day is now allowed, return -Error Code;
+- (void)addSynceventsObject:(SyncEvent *)value;
+- (void)removeSynceventsObject:(SyncEvent *)value;
+- (void)addSyncevents:(NSSet *)values;
+- (void)removeSyncevents:(NSSet *)values;
 
-//  eg, if the shift day is exchange shift day, one of "From" or "To" must has one "on day"
-//      in a overwork shift day: it must added to a "off day"
-//      in a vacation shift day: it must be on a "on day"
-
-// return value:
-// failed: return -X; is error number
-// success: return 0;
-- (NSInteger)       addShiftdaysObject:(ShiftDay *)value;
-
-- (void)            removeShiftdaysObject:(ShiftDay *)value;
-- (void)            addShiftdays:(NSSet *)values;
-- (void)            removeShiftdays:(NSSet *)values;
-
+- (void)addShiftdaysObject:(ShiftDay *)value;
+- (void)removeShiftdaysObject:(ShiftDay *)value;
+- (void)addShiftdays:(NSSet *)values;
+- (void)removeShiftdays:(NSSet *)values;
 @end
+
 
 
 

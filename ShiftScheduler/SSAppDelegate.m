@@ -18,10 +18,15 @@
 #import "UIImageResizing.h"
 #import "SSDefaultConfigName.h"
 #import "SSMainMenuTableViewController.h"
-
-
+#import "SSCalendarSyncController.h"
 
 #import "Kal.h"
+
+@interface SSAppDelegate()
+
+@property (nonatomic, strong) SSCalendarSyncController *calSyncController;
+
+@end
 
 @implementation SSAppDelegate
 
@@ -44,6 +49,7 @@ enum {
 #define CREATE_PROFILE_PROMPT NSLocalizedString(@"You don't have any shift profile yet. Do you want to create one? ", "prompt of create profile title")
 #define CREATE_PROFILE_NO  NSLocalizedString(@"No,Thanks", "no create one")
 #define CREATE_PROFILE_YES  NSLocalizedString(@"Create Profile", "create one")
+#define SYNC_CALENDAR       NSLocalizedString(@"Sync to Phone", "sync to phone")
 
 #define DID_SHIFT_MIGRATION @"user_migration_done"
 
@@ -80,6 +86,12 @@ enum {
     _kalController.delegate = dataSource;
     _kalController.tileDelegate = dataSource;
     [self.navController setViewControllers:@[_kalController]];
+  
+    self.calSyncController = [[SSCalendarSyncController alloc] initWithManagedContext:self.managedObjectContext];
+    self.calendarSyncSettingTVC = [[CalendarSyncTVC alloc] initWithNibName:@"CalendarSyncTVC" bundle:nil];
+    self.calendarSyncSettingTVC.calendarSyncController = self.calSyncController;
+    self.calendarSyncSettingTVC.menuDelegate = self;
+    
 
     self.rightAS.tag = TAG_MENU;
     if ([self.class enableThinkNoteConfig]) {
@@ -149,6 +161,8 @@ enum {
     NSString *settingListIconPath = [[NSBundle mainBundle] pathForResource:@"settings" ofType:@"png"];
     NSString *calendarListIconPath = [[NSBundle mainBundle] pathForResource:@"tab-calendar" ofType:@"png"];
     NSString *shareIconPath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"png"];
+    NSString *syncIconPath = [[NSBundle mainBundle] pathForResource:@"sync-icon" ofType:@"png"];
+  
 
     //    UINavigationController *help = [[UINavigationController alloc] init];
     //    help.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Tips", "tips in tabbar")
@@ -156,13 +170,13 @@ enum {
 
     [self SSKalControllerInit];
 
-    [self initFrostedMainMenu:@[CALENDAR_STR, SHIFTS_STR, SETTINGS_STR, SHARE_STRING]
-                    withIcons:@[calendarListIconPath, shiftListIconPath, settingListIconPath, shareIconPath]];
+    [self initFrostedMainMenu:@[CALENDAR_STR, SHIFTS_STR, SETTINGS_STR, SHARE_STRING, SYNC_CALENDAR]
+                    withIcons:@[calendarListIconPath, shiftListIconPath, settingListIconPath, shareIconPath, syncIconPath]];
 
     [self initMainWindow];
 
     [self initAppDefaults];
-
+    
     return YES;
 }
 
@@ -186,6 +200,7 @@ enum {
     menuController.shiftListTVC = self.profileView;
     menuController.shareDelegate = self;
     menuController.switchDelegate = self.navController;
+    menuController.calendarSyncTVC = self.calendarSyncSettingTVC;
 
     // Create frosted view controller
     _frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:self.navController
@@ -608,22 +623,22 @@ enum {
 
 - (void)frostedViewController:(REFrostedViewController *)frostedViewController willShowMenuViewController:(UIViewController *)menuViewController
 {
-    NSLog(@"willShowMenuViewController");
+
 }
 
 - (void)frostedViewController:(REFrostedViewController *)frostedViewController didShowMenuViewController:(UIViewController *)menuViewController
 {
-    NSLog(@"didShowMenuViewController");
+
 }
 
 - (void)frostedViewController:(REFrostedViewController *)frostedViewController willHideMenuViewController:(UIViewController *)menuViewController
 {
-    NSLog(@"willHideMenuViewController");
+
 }
 
 - (void)frostedViewController:(REFrostedViewController *)frostedViewController didHideMenuViewController:(UIViewController *)menuViewController
 {
-    NSLog(@"didHideMenuViewController");
+
 }
 
 - (void) SSMainMenuDelegatePopMainMenu:(id)from

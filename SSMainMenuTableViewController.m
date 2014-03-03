@@ -21,7 +21,7 @@
     if (self) {
         self.menuItemIconPathList = iconArray;
         self.menuItemNameList = nameArray;
-        _currentSelectedView = MainViewCalendarView;
+        _currentSelectedView = kMainViewCalendarView;
     }
 
     return self;
@@ -133,26 +133,30 @@
     if (indexPath.section == 0) {
         if(indexPath.row == 0) {
             navigationController.viewControllers = @[self.kalController];
-            _currentSelectedView = MainViewCalendarView;
+            _currentSelectedView = kMainViewCalendarView;
             [self.switchDelegate SSMainMenuViewStartChange];
 
         } else if (indexPath.row == 1) {
             navigationController.viewControllers = @[self.shiftListTVC];
-            _currentSelectedView = MainViewShiftListView;
+            _currentSelectedView = kMainViewShiftListView;
             [self.switchDelegate SSMainMenuViewStartChange];
 
         } else if (indexPath.row == 2) {
             navigationController.viewControllers = @[self.settingTVC];
-            _currentSelectedView = MainViewSettingView;
+            _currentSelectedView = kMainViewSettingView;
             [self.switchDelegate SSMainMenuViewStartChange];
 
         } else if (indexPath.row == 3) {
             if (self.shareDelegate) {
                 navigationController.viewControllers = @[self.kalController];
-                _currentSelectedView = MainViewCalendarView;
+                _currentSelectedView = kMainViewCalendarView;
                 [self.shareDelegate SSMainMenuShareButtonClicked:self];
                 [self.switchDelegate SSMainMenuViewStartChange];
             }
+        } else if (indexPath.row == 4) {
+          navigationController.viewControllers = @[self.calendarSyncTVC];
+          _currentSelectedView =  kMainViewCalendarSyncView;
+          [self.switchDelegate SSMainMenuViewStartChange];
         }
     }
 

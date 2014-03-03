@@ -118,12 +118,12 @@ typedef enum : NSInteger {
 
     NSArray *history = [[NSUserDefaults standardUserDefaults] arrayForKey:MAIN_VIEW_COACH_KEY];
 
-    if (self.menuTableView.currentSelectedView > 0  && self.menuTableView.currentSelectedView <= MainViewShiftListView) {
+    if (self.menuTableView.currentSelectedView > 0  && self.menuTableView.currentSelectedView <= kMainViewShiftListView) {
         int i = self.menuTableView.currentSelectedView;
         NSNumber *t = [history objectAtIndex:i - 1];
         if (t.boolValue == NO) {
             NSArray *a;
-            if (i == MainViewCalendarView)
+            if (i == kMainViewCalendarView)
                 a = coachMarksCal;
             else
                 a = coachMarksList;

@@ -31,6 +31,10 @@
 		2912673D16CF81FA00FFB202 /* libSSLunarDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2912673C16CF81FA00FFB202 /* libSSLunarDate.a */; };
 		2916128515A62A6B0031F78C /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128415A62A6B0031F78C /* AppIcon.png */; };
 		2916128715A62AC20031F78C /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128615A62AC20031F78C /* AppIcon@2x.png */; };
+		2920039A18B4F142000CA7D3 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2920039918B4F142000CA7D3 /* EventKit.framework */; };
+		292003A118B5A269000CA7D3 /* CalendarSyncTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2920039E18B5A269000CA7D3 /* CalendarSyncTVC.h */; };
+		292003A218B5A269000CA7D3 /* CalendarSyncTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2920039F18B5A269000CA7D3 /* CalendarSyncTVC.m */; };
+		292003A318B5A269000CA7D3 /* CalendarSyncTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 292003A018B5A269000CA7D3 /* CalendarSyncTVC.xib */; };
 		292652D2174D0EFE00ACE37F /* libSSLunarDate.a in Sources */ = {isa = PBXBuildFile; fileRef = 2912673C16CF81FA00FFB202 /* libSSLunarDate.a */; };
 		292652D3174D0F1400ACE37F /* libSSLunarDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F1BCF416D26A650097F9CC /* libSSLunarDate.a */; };
 		29293D9215DFE778006B6907 /* SSSocialThinkNoteLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */; };
@@ -90,6 +94,12 @@
 		2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECD14F9076400DF1CCF /* AVFoundation.framework */; };
 		2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */; };
 		296E3A11182DE4CD00B85E29 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296E3A10182DE4CD00B85E29 /* Accelerate.framework */; };
+		297409E618C323D5008A5AF9 /* SSSingleSelectTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 297409E418C323D5008A5AF9 /* SSSingleSelectTVC.h */; };
+		297409E718C323D5008A5AF9 /* SSSingleSelectTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 297409E518C323D5008A5AF9 /* SSSingleSelectTVC.m */; };
+		297409EF18C36311008A5AF9 /* sync-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 297409ED18C36310008A5AF9 /* sync-icon.png */; };
+		297409F018C36311008A5AF9 /* sync-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 297409EE18C36310008A5AF9 /* sync-icon@2x.png */; };
+		297409F818C37117008A5AF9 /* SSShiftMultipSelectTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 297409F618C37117008A5AF9 /* SSShiftMultipSelectTVC.h */; };
+		297409F918C37117008A5AF9 /* SSShiftMultipSelectTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 297409F718C37117008A5AF9 /* SSShiftMultipSelectTVC.m */; };
 		297D073215B702DC008B9983 /* ThinkNoteModelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D073115B702DC008B9983 /* ThinkNoteModelTest.m */; };
 		297FDBC818A7D3B100BA0240 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 297FDBC618A7D3B100BA0240 /* menu.png */; };
 		297FDBC918A7D3B100BA0240 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 297FDBC718A7D3B100BA0240 /* menu@2x.png */; };
@@ -102,6 +112,8 @@
 		2980756F18B12364003A733F /* blueArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980756B18B12364003A733F /* blueArrowRight@2x.png */; };
 		2980757018B12364003A733F /* blueArrowUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980756C18B12364003A733F /* blueArrowUp.png */; };
 		2980757118B12364003A733F /* blueArrowUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980756D18B12364003A733F /* blueArrowUp@2x.png */; };
+		2980757518B25462003A733F /* InfoNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2980757318B25462003A733F /* InfoNode.h */; };
+		2980757618B25462003A733F /* InfoNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2980757418B25462003A733F /* InfoNode.m */; };
 		298C3FBD15D92622002F9AC3 /* ThinkNoteShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 298C3FBC15D92622002F9AC3 /* ThinkNoteShareViewController.m */; };
 		2991F79717B78026009AF142 /* strike_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F79617B78026009AF142 /* strike_icon@2x.png */; };
 		2991F7E617B780A9009AF142 /* Calendar-icon-114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2991F7B317B780A9009AF142 /* Calendar-icon-114x114.png */; };
@@ -124,6 +136,8 @@
 		2991F81717B7971C009AF142 /* 起床闹钟.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F80C17B7971C009AF142 /* 起床闹钟.caf */; };
 		2991F81817B7971C009AF142 /* 甜美舞曲.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F80D17B7971C009AF142 /* 甜美舞曲.caf */; };
 		2991F81917B7971C009AF142 /* 自然晨曦.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F80E17B7971C009AF142 /* 自然晨曦.caf */; };
+		299A256D18BB967D00592137 /* SyncEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 299A256B18BB967D00592137 /* SyncEvent.h */; };
+		299A256E18BB967D00592137 /* SyncEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 299A256C18BB967D00592137 /* SyncEvent.m */; };
 		299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */; };
 		299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */; };
 		29AB77A815D8746400669B6B /* notify.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29AB77A715D8746400669B6B /* notify.caf */; };
@@ -207,6 +221,10 @@
 		29D6A529159CB4B600AC6103 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D6A527159CB4B600AC6103 /* UIViewAdditions.m */; };
 		29D6A534159CB65500AC6103 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B9E1C31472C1D700DB2E1F /* main.m */; };
 		29D6A550159CB79F00AC6103 /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D6A513159CB37000AC6103 /* libKal.a */; };
+		29D93E9D18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 29D93E9B18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.h */; };
+		29D93E9E18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D93E9C18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.m */; };
+		29D93EA318B9D3020087806B /* SSCalendarSyncController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29D93EA118B9D3020087806B /* SSCalendarSyncController.h */; };
+		29D93EA418B9D3020087806B /* SSCalendarSyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D93EA218B9D3020087806B /* SSCalendarSyncController.m */; };
 		29D9F0DA15D93A9A00960B56 /* SSShareObject.h in Sources */ = {isa = PBXBuildFile; fileRef = 29B8F3CD15B9BA62000D934A /* SSShareObject.h */; };
 		29D9F0DB15D93A9A00960B56 /* SSShareObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B8F3CE15B9BA62000D934A /* SSShareObject.m */; };
 		29DCB8DA15A7C79C0095C71D /* NSDateAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 29DCB8D915A7C79C0095C71D /* NSDateAdditions.h */; };
@@ -373,15 +391,19 @@
 		2900DEC11483E44E00E588EE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		2900DEC21483E44E00E588EE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2900DEC31483EEA100E588EE /* ShiftSchedulerModelBasic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShiftSchedulerModelBasic.xcdatamodel; sourceTree = "<group>"; };
-		290317B4164FE5FD008C258E /* overdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = overdate.png; path = Resources/overdate.png; sourceTree = "<group>"; };
+		290317B4164FE5FD008C258E /* overdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overdate.png; sourceTree = "<group>"; };
 		290F4E361783EA800023ADE8 /* SSDayEventUTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSDayEventUTC.h; path = ShiftScheduler/SSDayEventUTC.h; sourceTree = "<group>"; };
 		290F4E371783EA800023ADE8 /* SSDayEventUTC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSDayEventUTC.m; path = ShiftScheduler/SSDayEventUTC.m; sourceTree = "<group>"; };
 		290F4E3A1783EF1B0023ADE8 /* SSDayEventUTC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSDayEventUTC.xib; sourceTree = "<group>"; };
 		2912672D16CF691D00FFB202 /* SSLunarDate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSLunarDate.xcodeproj; path = ../../SSLunarDate/SSLunarDate.xcodeproj; sourceTree = "<group>"; };
 		2912673816CF77CE00FFB202 /* SSDefaultConfigName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SSDefaultConfigName.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2912673C16CF81FA00FFB202 /* libSSLunarDate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSSLunarDate.a; path = "../SSLunarDate/build/Release-iphoneos/libSSLunarDate.a"; sourceTree = "<group>"; };
-		2916128415A62A6B0031F78C /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
-		2916128615A62AC20031F78C /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x.png"; sourceTree = "<group>"; };
+		2916128415A62A6B0031F78C /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon.png; path = ../AppIcon.png; sourceTree = "<group>"; };
+		2916128615A62AC20031F78C /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon@2x.png"; path = "../AppIcon@2x.png"; sourceTree = "<group>"; };
+		2920039918B4F142000CA7D3 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		2920039E18B5A269000CA7D3 /* CalendarSyncTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarSyncTVC.h; path = ShiftScheduler/CalendarSync/CalendarSyncTVC.h; sourceTree = "<group>"; };
+		2920039F18B5A269000CA7D3 /* CalendarSyncTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarSyncTVC.m; path = ShiftScheduler/CalendarSync/CalendarSyncTVC.m; sourceTree = "<group>"; };
+		292003A018B5A269000CA7D3 /* CalendarSyncTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarSyncTVC.xib; path = ShiftScheduler/CalendarSync/CalendarSyncTVC.xib; sourceTree = "<group>"; };
 		29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSocialThinkNoteLogin.h; path = ShiftScheduler/SSSocialThinkNoteLogin.h; sourceTree = "<group>"; };
 		29293D9115DFE777006B6907 /* SSSocialThinkNoteLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSocialThinkNoteLogin.m; path = ShiftScheduler/SSSocialThinkNoteLogin.m; sourceTree = "<group>"; };
 		2929A43614D04B360059728D /* InfColorBarPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfColorBarPicker.h; path = ColorPicker/InfColorPicker/InfColorBarPicker.h; sourceTree = "<group>"; };
@@ -412,23 +434,23 @@
 		2935514114E2BABA004D8FAC /* SSTurnShiftTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTurnShiftTVC.h; sourceTree = "<group>"; };
 		2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTurnShiftTVC.m; sourceTree = "<group>"; };
 		2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSTurnShiftTVC.xib; sourceTree = "<group>"; };
-		293970D0164E8AC100A79721 /* grayButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grayButtonBackgroud.png; path = Resources/grayButtonBackgroud.png; sourceTree = "<group>"; };
-		293970D1164E8AC200A79721 /* redButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redButtonBackgroud.png; path = Resources/redButtonBackgroud.png; sourceTree = "<group>"; };
-		293970D2164E8AC200A79721 /* greenButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greenButtonBackgroud.png; path = Resources/greenButtonBackgroud.png; sourceTree = "<group>"; };
-		293970D3164E8AC200A79721 /* grayButtonBackgroud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "grayButtonBackgroud@2x.png"; path = "Resources/grayButtonBackgroud@2x.png"; sourceTree = "<group>"; };
-		293970D8164E8AF700A79721 /* redButtonBackgroud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "redButtonBackgroud@2x.png"; path = "Resources/redButtonBackgroud@2x.png"; sourceTree = "<group>"; };
-		293970D9164E8AF700A79721 /* greenButtonBackgroud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "greenButtonBackgroud@2x.png"; path = "Resources/greenButtonBackgroud@2x.png"; sourceTree = "<group>"; };
+		293970D0164E8AC100A79721 /* grayButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayButtonBackgroud.png; sourceTree = "<group>"; };
+		293970D1164E8AC200A79721 /* redButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redButtonBackgroud.png; sourceTree = "<group>"; };
+		293970D2164E8AC200A79721 /* greenButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenButtonBackgroud.png; sourceTree = "<group>"; };
+		293970D3164E8AC200A79721 /* grayButtonBackgroud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayButtonBackgroud@2x.png"; sourceTree = "<group>"; };
+		293970D8164E8AF700A79721 /* redButtonBackgroud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redButtonBackgroud@2x.png"; sourceTree = "<group>"; };
+		293970D9164E8AF700A79721 /* greenButtonBackgroud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenButtonBackgroud@2x.png"; sourceTree = "<group>"; };
 		293970DC164E9DE800A79721 /* jobicons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = jobicons.bundle; sourceTree = SOURCE_ROOT; };
-		293970DE164EA09F00A79721 /* arrow-circular-alt-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow-circular-alt-1.png"; path = "Resources/arrow-circular-alt-1.png"; sourceTree = "<group>"; };
-		293970E1164EA0B200A79721 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "Resources/settings@2x.png"; sourceTree = "<group>"; };
-		293970E2164EA0B200A79721 /* tab-calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab-calendar@2x.png"; path = "Resources/tab-calendar@2x.png"; sourceTree = "<group>"; };
-		293970E4164EA0B200A79721 /* users@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "users@2x.png"; path = "Resources/users@2x.png"; sourceTree = "<group>"; };
+		293970DE164EA09F00A79721 /* arrow-circular-alt-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-circular-alt-1.png"; sourceTree = "<group>"; };
+		293970E1164EA0B200A79721 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		293970E2164EA0B200A79721 /* tab-calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-calendar@2x.png"; sourceTree = "<group>"; };
+		293970E4164EA0B200A79721 /* users@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "users@2x.png"; sourceTree = "<group>"; };
 		293B64EA15A335A900D0C4B5 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
-		293B64F015A3BF8400D0C4B5 /* tab-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab-calendar.png"; path = "Resources/tab-calendar.png"; sourceTree = "<group>"; };
-		293B64F915A3C64900D0C4B5 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addButton.png; path = Resources/addButton.png; sourceTree = "<group>"; };
-		293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GSFacesInfo.png; path = Resources/GSFacesInfo.png; sourceTree = "<group>"; };
-		293C347E15A89B1F00CECAFA /* calendar-simple-blue-72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendar-simple-blue-72x72.png"; path = "Resources/icons/calendar-simple-blue-72x72.png"; sourceTree = "<group>"; };
-		293C348015A89B6400CECAFA /* calendar-simple-blue-144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendar-simple-blue-144x144.png"; path = "Resources/icons/calendar-simple-blue-144x144.png"; sourceTree = "<group>"; };
+		293B64F015A3BF8400D0C4B5 /* tab-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-calendar.png"; sourceTree = "<group>"; };
+		293B64F915A3C64900D0C4B5 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addButton.png; sourceTree = "<group>"; };
+		293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GSFacesInfo.png; sourceTree = "<group>"; };
+		293C347E15A89B1F00CECAFA /* calendar-simple-blue-72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendar-simple-blue-72x72.png"; path = "icons/calendar-simple-blue-72x72.png"; sourceTree = "<group>"; };
+		293C348015A89B6400CECAFA /* calendar-simple-blue-144x144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendar-simple-blue-144x144.png"; path = "icons/calendar-simple-blue-144x144.png"; sourceTree = "<group>"; };
 		294E28FF148B2F3A00E6ED45 /* ShiftScheduler 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 2.xcdatamodel"; sourceTree = "<group>"; };
 		294E2900148B302700E6ED45 /* ShiftDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftDay.h; sourceTree = "<group>"; };
 		294E2901148B302700E6ED45 /* ShiftDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftDay.m; sourceTree = "<group>"; };
@@ -442,20 +464,29 @@
 		296E3A1A182DFC7400B85E29 /* libPods-REFrostedViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-REFrostedViewController.a"; path = "Pods/build/Debug-iphoneos/libPods-REFrostedViewController.a"; sourceTree = "<group>"; };
 		296E3A1E182DFE2400B85E29 /* libPods-REFrostedViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-REFrostedViewController.a"; path = "Pods/build/Debug-iphoneos/libPods-REFrostedViewController.a"; sourceTree = "<group>"; };
 		296E3A20182DFE2900B85E29 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		297409E418C323D5008A5AF9 /* SSSingleSelectTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSingleSelectTVC.h; path = GenernalUI/SSSingleSelectTVC.h; sourceTree = "<group>"; };
+		297409E518C323D5008A5AF9 /* SSSingleSelectTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSingleSelectTVC.m; path = GenernalUI/SSSingleSelectTVC.m; sourceTree = "<group>"; };
+		297409ED18C36310008A5AF9 /* sync-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync-icon.png"; sourceTree = "<group>"; };
+		297409EE18C36310008A5AF9 /* sync-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync-icon@2x.png"; sourceTree = "<group>"; };
+		297409F618C37117008A5AF9 /* SSShiftMultipSelectTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSShiftMultipSelectTVC.h; path = GenernalUI/SSShiftMultipSelectTVC.h; sourceTree = "<group>"; };
+		297409F718C37117008A5AF9 /* SSShiftMultipSelectTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSShiftMultipSelectTVC.m; path = GenernalUI/SSShiftMultipSelectTVC.m; sourceTree = "<group>"; };
 		297D073015B702DB008B9983 /* ThinkNoteModelTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThinkNoteModelTest.h; path = OneJobModuleTest/ThinkNoteModelTest.h; sourceTree = "<group>"; };
 		297D073115B702DC008B9983 /* ThinkNoteModelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteModelTest.m; path = OneJobModuleTest/ThinkNoteModelTest.m; sourceTree = "<group>"; };
-		297FDBC618A7D3B100BA0240 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = Resources/menu.png; sourceTree = "<group>"; };
-		297FDBC718A7D3B100BA0240 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu@2x.png"; path = "Resources/menu@2x.png"; sourceTree = "<group>"; };
-		297FDBD018A88D0100BA0240 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share.png; path = Resources/share.png; sourceTree = "<group>"; };
-		297FDBD118A88D0100BA0240 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share@2x.png"; path = "Resources/share@2x.png"; sourceTree = "<group>"; };
-		2980756418B1208A003A733F /* blueArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueArrowDown.png; path = Resources/blueArrowDown.png; sourceTree = "<group>"; };
-		2980756518B1208A003A733F /* blueArrowDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blueArrowDown@2x.png"; path = "Resources/blueArrowDown@2x.png"; sourceTree = "<group>"; };
-		2980756A18B12364003A733F /* blueArrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueArrowRight.png; path = Resources/blueArrowRight.png; sourceTree = "<group>"; };
-		2980756B18B12364003A733F /* blueArrowRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blueArrowRight@2x.png"; path = "Resources/blueArrowRight@2x.png"; sourceTree = "<group>"; };
-		2980756C18B12364003A733F /* blueArrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueArrowUp.png; path = Resources/blueArrowUp.png; sourceTree = "<group>"; };
-		2980756D18B12364003A733F /* blueArrowUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blueArrowUp@2x.png"; path = "Resources/blueArrowUp@2x.png"; sourceTree = "<group>"; };
+		297FDBC618A7D3B100BA0240 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		297FDBC718A7D3B100BA0240 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		297FDBD018A88D0100BA0240 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		297FDBD118A88D0100BA0240 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
+		2980756418B1208A003A733F /* blueArrowDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrowDown.png; sourceTree = "<group>"; };
+		2980756518B1208A003A733F /* blueArrowDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrowDown@2x.png"; sourceTree = "<group>"; };
+		2980756A18B12364003A733F /* blueArrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrowRight.png; sourceTree = "<group>"; };
+		2980756B18B12364003A733F /* blueArrowRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrowRight@2x.png"; sourceTree = "<group>"; };
+		2980756C18B12364003A733F /* blueArrowUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrowUp.png; sourceTree = "<group>"; };
+		2980756D18B12364003A733F /* blueArrowUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrowUp@2x.png"; sourceTree = "<group>"; };
+		2980757218B22E22003A733F /* ShiftScheduler 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 6.xcdatamodel"; sourceTree = "<group>"; };
+		2980757318B25462003A733F /* InfoNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoNode.h; sourceTree = "<group>"; };
+		2980757418B25462003A733F /* InfoNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoNode.m; sourceTree = "<group>"; };
 		298C3FBC15D92622002F9AC3 /* ThinkNoteShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThinkNoteShareViewController.m; path = ShiftScheduler/ThinkNoteShareViewController.m; sourceTree = "<group>"; };
-		2991F79617B78026009AF142 /* strike_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "strike_icon@2x.png"; path = "Resources/strike_icon@2x.png"; sourceTree = "<group>"; };
+		2991F79617B78026009AF142 /* strike_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "strike_icon@2x.png"; sourceTree = "<group>"; };
 		2991F79917B780A8009AF142 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addButton.png; sourceTree = "<group>"; };
 		2991F79B17B780A8009AF142 /* Alarm_Beep_03.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alarm_Beep_03.caf; sourceTree = "<group>"; };
 		2991F79C17B780A8009AF142 /* Alarm_Classic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alarm_Classic.caf; sourceTree = "<group>"; };
@@ -503,7 +534,7 @@
 		2991F7CB17B780A9009AF142 /* tab-calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-calendar@2x.png"; sourceTree = "<group>"; };
 		2991F7CC17B780A9009AF142 /* users.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = users.png; sourceTree = "<group>"; };
 		2991F7CD17B780A9009AF142 /* users@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "users@2x.png"; sourceTree = "<group>"; };
-		2991F7FE17B781F6009AF142 /* strike_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = strike_icon.png; path = Resources/strike_icon.png; sourceTree = "<group>"; };
+		2991F7FE17B781F6009AF142 /* strike_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strike_icon.png; sourceTree = "<group>"; };
 		2991F80017B783C5009AF142 /* SSSettingAlarmPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSSettingAlarmPickerVC.xib; path = ShiftScheduler/SSSettingAlarmPickerVC.xib; sourceTree = "<group>"; };
 		2991F80217B791C1009AF142 /* LongAlarmList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LongAlarmList.plist; sourceTree = "<group>"; };
 		2991F80417B7971C009AF142 /* soft.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soft.caf; path = Resources/alarm/long/soft.caf; sourceTree = "<group>"; };
@@ -517,6 +548,8 @@
 		2991F80C17B7971C009AF142 /* 起床闹钟.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "起床闹钟.caf"; path = "Resources/alarm/long/起床闹钟.caf"; sourceTree = "<group>"; };
 		2991F80D17B7971C009AF142 /* 甜美舞曲.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "甜美舞曲.caf"; path = "Resources/alarm/long/甜美舞曲.caf"; sourceTree = "<group>"; };
 		2991F80E17B7971C009AF142 /* 自然晨曦.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "自然晨曦.caf"; path = "Resources/alarm/long/自然晨曦.caf"; sourceTree = "<group>"; };
+		299A256B18BB967D00592137 /* SyncEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncEvent.h; path = CalendarSync/SyncEvent.h; sourceTree = "<group>"; };
+		299A256C18BB967D00592137 /* SyncEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyncEvent.m; path = CalendarSync/SyncEvent.m; sourceTree = "<group>"; };
 		299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftWorkdayConfigTVC.h; sourceTree = "<group>"; };
 		299E33A1156A74820066E843 /* SSShiftWorkdayConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftWorkdayConfigTVC.m; sourceTree = "<group>"; };
 		29AAF46F17D4F88500989BE2 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -596,10 +629,14 @@
 		29D6A524159CB4A200AC6103 /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Kal.bundle; path = Kal/src/Kal.bundle; sourceTree = "<group>"; };
 		29D6A526159CB4B600AC6103 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewAdditions.h; path = Kal/src/UIViewAdditions.h; sourceTree = "<group>"; };
 		29D6A527159CB4B600AC6103 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewAdditions.m; path = Kal/src/UIViewAdditions.m; sourceTree = "<group>"; };
+		29D93E9B18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UISwitch+AdjustForTableViewCell.h"; path = "ShiftScheduler/util/UISwitch+AdjustForTableViewCell.h"; sourceTree = "<group>"; };
+		29D93E9C18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UISwitch+AdjustForTableViewCell.m"; path = "ShiftScheduler/util/UISwitch+AdjustForTableViewCell.m"; sourceTree = "<group>"; };
+		29D93EA118B9D3020087806B /* SSCalendarSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSCalendarSyncController.h; path = ShiftScheduler/CalendarSync/SSCalendarSyncController.h; sourceTree = "<group>"; };
+		29D93EA218B9D3020087806B /* SSCalendarSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSCalendarSyncController.m; path = ShiftScheduler/CalendarSync/SSCalendarSyncController.m; sourceTree = "<group>"; };
 		29DCB8D915A7C79C0095C71D /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDateAdditions.h; path = Kal/src/NSDateAdditions.h; sourceTree = SOURCE_ROOT; };
 		29DCB8DB15A7C8730095C71D /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDateAdditions.m; path = Kal/src/NSDateAdditions.m; sourceTree = SOURCE_ROOT; };
-		29DCB8DD15A873F40095C71D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		29DCB8DF15A878590095C71D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		29DCB8DD15A873F40095C71D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		29DCB8DF15A878590095C71D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		29E339D214CA955A0036EAED /* ProfileIconPickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileIconPickerDataSource.h; sourceTree = "<group>"; };
 		29E339D314CA955A0036EAED /* ProfileIconPickerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileIconPickerDataSource.m; sourceTree = "<group>"; };
 		29E6D7EC15ADAC8200235123 /* SSMailAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSMailAgent.h; path = ShiftScheduler/SSMailAgent.h; sourceTree = "<group>"; };
@@ -621,7 +658,7 @@
 		29E980FB16419E1500B65A7E /* Procyon.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Procyon.caf; path = Resources/alarm/Procyon.caf; sourceTree = "<group>"; };
 		29E980FC16419E1500B65A7E /* Revelation.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Revelation.caf; path = Resources/alarm/Revelation.caf; sourceTree = "<group>"; };
 		29E980FD16419E1500B65A7E /* TwirlAway.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TwirlAway.caf; path = Resources/alarm/TwirlAway.caf; sourceTree = "<group>"; };
-		29E9810A1642DBB600B65A7E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		29E9810A1642DBB600B65A7E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		29E98C9914EFD8270048AF49 /* SCAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAnimation.h; sourceTree = "<group>"; };
 		29E98C9A14EFD8270048AF49 /* SCAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAnimation.m; sourceTree = "<group>"; };
 		29E98C9B14EFD8270048AF49 /* SCModalPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCModalPickerView.h; sourceTree = "<group>"; };
@@ -642,8 +679,8 @@
 		29E98CB614EFDA340048AF49 /* SCPathUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPathUtils.m; sourceTree = "<group>"; };
 		29E98CD114EFF3FF0048AF49 /* SSProfileReminderDateSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSProfileReminderDateSource.h; sourceTree = "<group>"; };
 		29ECA45814B0514E00B3832D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		29F2147B14E66DB7008BEE92 /* UIImage+MonoImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MonoImage.h"; sourceTree = "<group>"; };
-		29F2147C14E66DB7008BEE92 /* UIImage+MonoImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MonoImage.m"; sourceTree = "<group>"; };
+		29F2147B14E66DB7008BEE92 /* UIImage+MonoImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+MonoImage.h"; path = "ShiftScheduler/UIImage+MonoImage.h"; sourceTree = "<group>"; };
+		29F2147C14E66DB7008BEE92 /* UIImage+MonoImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MonoImage.m"; path = "ShiftScheduler/UIImage+MonoImage.m"; sourceTree = "<group>"; };
 		29F2147F14E68A9B008BEE92 /* ShiftScheduler 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 3.xcdatamodel"; sourceTree = "<group>"; };
 		29F49CA4156FDAD900C76EFC /* SSShiftTableConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftTableConfigTVC.h; sourceTree = "<group>"; };
 		29F49CA5156FDAD900C76EFC /* SSShiftTableConfigTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSShiftTableConfigTVC.m; sourceTree = "<group>"; };
@@ -673,6 +710,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2920039A18B4F142000CA7D3 /* EventKit.framework in Frameworks */,
 				297FDBDA18A8BAC900BA0240 /* libPods.a in Frameworks */,
 				296E3A11182DE4CD00B85E29 /* Accelerate.framework in Frameworks */,
 				29C4B5DC1813BEA70041D0B2 /* QuartzCore.framework in Frameworks */,
@@ -758,6 +796,20 @@
 			name = Calendar;
 			sourceTree = "<group>";
 		};
+		2920039D18B5A1DD000CA7D3 /* CalSync */ = {
+			isa = PBXGroup;
+			children = (
+				2920039E18B5A269000CA7D3 /* CalendarSyncTVC.h */,
+				2920039F18B5A269000CA7D3 /* CalendarSyncTVC.m */,
+				29D93EA118B9D3020087806B /* SSCalendarSyncController.h */,
+				29D93EA218B9D3020087806B /* SSCalendarSyncController.m */,
+				29D93E9B18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.h */,
+				29D93E9C18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.m */,
+				292003A018B5A269000CA7D3 /* CalendarSyncTVC.xib */,
+			);
+			name = CalSync;
+			sourceTree = "<group>";
+		};
 		292DBC8A14CA931800C87A70 /* JPImage Picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -807,44 +859,11 @@
 		293B64EC15A3BF5000D0C4B5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2980756A18B12364003A733F /* blueArrowRight.png */,
-				2980756B18B12364003A733F /* blueArrowRight@2x.png */,
-				2980756C18B12364003A733F /* blueArrowUp.png */,
-				2980756D18B12364003A733F /* blueArrowUp@2x.png */,
-				2980756418B1208A003A733F /* blueArrowDown.png */,
-				2980756518B1208A003A733F /* blueArrowDown@2x.png */,
-				297FDBD018A88D0100BA0240 /* share.png */,
-				297FDBD118A88D0100BA0240 /* share@2x.png */,
-				297FDBC618A7D3B100BA0240 /* menu.png */,
-				297FDBC718A7D3B100BA0240 /* menu@2x.png */,
 				29D6A524159CB4A200AC6103 /* Kal.bundle */,
-				290317B4164FE5FD008C258E /* overdate.png */,
 				2991F79817B780A8009AF142 /* Resources */,
-				2991F7FE17B781F6009AF142 /* strike_icon.png */,
-				2991F79617B78026009AF142 /* strike_icon@2x.png */,
-				293970D0164E8AC100A79721 /* grayButtonBackgroud.png */,
-				293970D8164E8AF700A79721 /* redButtonBackgroud@2x.png */,
-				293970D9164E8AF700A79721 /* greenButtonBackgroud@2x.png */,
-				293970D1164E8AC200A79721 /* redButtonBackgroud.png */,
-				293970D2164E8AC200A79721 /* greenButtonBackgroud.png */,
-				293970D3164E8AC200A79721 /* grayButtonBackgroud@2x.png */,
-				29E9810A1642DBB600B65A7E /* Default-568h@2x.png */,
 				29E9810916419E1E00B65A7E /* Audio */,
 				29E980F1164177B600B65A7E /* AlarmList.plist */,
 				2991F80217B791C1009AF142 /* LongAlarmList.plist */,
-				293970E1164EA0B200A79721 /* settings@2x.png */,
-				293970E2164EA0B200A79721 /* tab-calendar@2x.png */,
-				293970E4164EA0B200A79721 /* users@2x.png */,
-				293970DE164EA09F00A79721 /* arrow-circular-alt-1.png */,
-				293C348015A89B6400CECAFA /* calendar-simple-blue-144x144.png */,
-				293C347E15A89B1F00CECAFA /* calendar-simple-blue-72x72.png */,
-				29DCB8DF15A878590095C71D /* Default.png */,
-				29DCB8DD15A873F40095C71D /* Default@2x.png */,
-				2916128615A62AC20031F78C /* AppIcon@2x.png */,
-				2916128415A62A6B0031F78C /* AppIcon.png */,
-				293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */,
-				293B64F915A3C64900D0C4B5 /* addButton.png */,
-				293B64F015A3BF8400D0C4B5 /* tab-calendar.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -856,6 +875,17 @@
 				29F49CA5156FDAD900C76EFC /* SSShiftTableConfigTVC.m */,
 			);
 			name = "Free Jump Profile";
+			sourceTree = "<group>";
+		};
+		297409E818C323DE008A5AF9 /* General UI */ = {
+			isa = PBXGroup;
+			children = (
+				297409F618C37117008A5AF9 /* SSShiftMultipSelectTVC.h */,
+				297409F718C37117008A5AF9 /* SSShiftMultipSelectTVC.m */,
+				297409E418C323D5008A5AF9 /* SSSingleSelectTVC.h */,
+				297409E518C323D5008A5AF9 /* SSSingleSelectTVC.m */,
+			);
+			name = "General UI";
 			sourceTree = "<group>";
 		};
 		297E0C781833D3D2000E1F19 /* Products */ = {
@@ -901,6 +931,41 @@
 		2991F79817B780A8009AF142 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				297409ED18C36310008A5AF9 /* sync-icon.png */,
+				297409EE18C36310008A5AF9 /* sync-icon@2x.png */,
+				290317B4164FE5FD008C258E /* overdate.png */,
+				2980756A18B12364003A733F /* blueArrowRight.png */,
+				2980756B18B12364003A733F /* blueArrowRight@2x.png */,
+				2980756C18B12364003A733F /* blueArrowUp.png */,
+				2980756D18B12364003A733F /* blueArrowUp@2x.png */,
+				2980756418B1208A003A733F /* blueArrowDown.png */,
+				2980756518B1208A003A733F /* blueArrowDown@2x.png */,
+				297FDBD018A88D0100BA0240 /* share.png */,
+				297FDBD118A88D0100BA0240 /* share@2x.png */,
+				297FDBC618A7D3B100BA0240 /* menu.png */,
+				297FDBC718A7D3B100BA0240 /* menu@2x.png */,
+				293970E1164EA0B200A79721 /* settings@2x.png */,
+				293970E2164EA0B200A79721 /* tab-calendar@2x.png */,
+				293970E4164EA0B200A79721 /* users@2x.png */,
+				293970DE164EA09F00A79721 /* arrow-circular-alt-1.png */,
+				293C348015A89B6400CECAFA /* calendar-simple-blue-144x144.png */,
+				293C347E15A89B1F00CECAFA /* calendar-simple-blue-72x72.png */,
+				29DCB8DF15A878590095C71D /* Default.png */,
+				29DCB8DD15A873F40095C71D /* Default@2x.png */,
+				2916128615A62AC20031F78C /* AppIcon@2x.png */,
+				2916128415A62A6B0031F78C /* AppIcon.png */,
+				293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */,
+				293B64F915A3C64900D0C4B5 /* addButton.png */,
+				293B64F015A3BF8400D0C4B5 /* tab-calendar.png */,
+				2991F7FE17B781F6009AF142 /* strike_icon.png */,
+				2991F79617B78026009AF142 /* strike_icon@2x.png */,
+				293970D0164E8AC100A79721 /* grayButtonBackgroud.png */,
+				293970D8164E8AF700A79721 /* redButtonBackgroud@2x.png */,
+				293970D9164E8AF700A79721 /* greenButtonBackgroud@2x.png */,
+				293970D1164E8AC200A79721 /* redButtonBackgroud.png */,
+				293970D2164E8AC200A79721 /* greenButtonBackgroud.png */,
+				293970D3164E8AC200A79721 /* grayButtonBackgroud@2x.png */,
+				29E9810A1642DBB600B65A7E /* Default-568h@2x.png */,
 				2991F79917B780A8009AF142 /* addButton.png */,
 				2991F79A17B780A8009AF142 /* alarm */,
 				2991F7B217B780A9009AF142 /* arrow-circular-alt-1.png */,
@@ -1035,11 +1100,13 @@
 		29AEBDC4156134B50010F27D /* ShiftModel */ = {
 			isa = PBXGroup;
 			children = (
-				29F2147B14E66DB7008BEE92 /* UIImage+MonoImage.h */,
-				29F2147C14E66DB7008BEE92 /* UIImage+MonoImage.m */,
+				29B9E1C91472C1D700DB2E1F /* ShiftScheduler.xcdatamodeld */,
+				299A256B18BB967D00592137 /* SyncEvent.h */,
+				299A256C18BB967D00592137 /* SyncEvent.m */,
 				29B9E1DD1472C39F00DB2E1F /* OneJob.h */,
 				29B9E1DE1472C39F00DB2E1F /* OneJob.m */,
-				29B9E1C91472C1D700DB2E1F /* ShiftScheduler.xcdatamodeld */,
+				2980757318B25462003A733F /* InfoNode.h */,
+				2980757418B25462003A733F /* InfoNode.m */,
 				29AEBDE515628BAB0010F27D /* ShiftAlgoFreeJump.h */,
 				29AEBDE615628BAB0010F27D /* ShiftAlgoFreeJump.m */,
 				29AEBDAC15612CBA0010F27D /* ShiftAlgoBase.h */,
@@ -1075,6 +1142,10 @@
 		29AEBDC8156136830010F27D /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				297409E818C323DE008A5AF9 /* General UI */,
+				2920039D18B5A1DD000CA7D3 /* CalSync */,
+				29F2147B14E66DB7008BEE92 /* UIImage+MonoImage.h */,
+				29F2147C14E66DB7008BEE92 /* UIImage+MonoImage.m */,
 				29B460CD182E0AA70059F149 /* MainUI */,
 				290F4E331783EA2C0023ADE8 /* Calendar */,
 				29E6D7F215ADC59A00235123 /* Share */,
@@ -1141,6 +1212,7 @@
 		29B9E1B41472C1D700DB2E1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2920039918B4F142000CA7D3 /* EventKit.framework */,
 				29B460CB182E01290059F149 /* libPods.a */,
 				29B460C9182E011F0059F149 /* libPods.a */,
 				29B460C3182E006B0059F149 /* libPods.a */,
@@ -1352,9 +1424,11 @@
 				292DBCAF14CA943F00C87A70 /* JPImagePickerOverviewController.h in Headers */,
 				292DBCB214CA943F00C87A70 /* UIImageResizing.h in Headers */,
 				29E339D414CA955A0036EAED /* ProfileIconPickerDataSource.h in Headers */,
+				297409E618C323D5008A5AF9 /* SSSingleSelectTVC.h in Headers */,
 				2929A44414D04B360059728D /* InfColorBarPicker.h in Headers */,
 				2929A44614D04B360059728D /* InfColorIndicatorView.h in Headers */,
 				29B460D4182E0B1D0059F149 /* SSMainMenuTableViewController.h in Headers */,
+				299A256D18BB967D00592137 /* SyncEvent.h in Headers */,
 				2929A44814D04B360059728D /* InfColorPicker.h in Headers */,
 				2929A44914D04B360059728D /* InfColorPickerController.h in Headers */,
 				2929A44C14D04B360059728D /* InfColorSquarePicker.h in Headers */,
@@ -1364,6 +1438,7 @@
 				29F2147D14E66DB7008BEE92 /* UIImage+MonoImage.h in Headers */,
 				29C943B014E957F700122144 /* SSKalDelegate.h in Headers */,
 				29C943B614E9642900122144 /* SSProfileTimeAndAlarmVC.h in Headers */,
+				29D93E9D18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.h in Headers */,
 				29C943BB14EAB55200122144 /* UserReviewController.h in Headers */,
 				29E98CA314EFD8270048AF49 /* SCAnimation.h in Headers */,
 				29E98CA514EFD8270048AF49 /* SCModalPickerView.h in Headers */,
@@ -1381,8 +1456,11 @@
 				29AEBDE715628BAB0010F27D /* ShiftAlgoFreeJump.h in Headers */,
 				299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */,
 				29F49CA6156FDAD900C76EFC /* SSShiftTableConfigTVC.h in Headers */,
+				29D93EA318B9D3020087806B /* SSCalendarSyncController.h in Headers */,
 				29F49CAA156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.h in Headers */,
+				297409F818C37117008A5AF9 /* SSShiftMultipSelectTVC.h in Headers */,
 				29D6A528159CB4B600AC6103 /* UIViewAdditions.h in Headers */,
+				2980757518B25462003A733F /* InfoNode.h in Headers */,
 				29009FCD159F4A4D00A1588E /* SSSettingTVC.h in Headers */,
 				29009FD5159F4AA100A1588E /* SSShiftHolidayCreateVC.h in Headers */,
 				29009FD8159F4AA100A1588E /* ShiftPickerDataSource.h in Headers */,
@@ -1398,6 +1476,7 @@
 				29B8F3D515B9BA62000D934A /* SSShareObject.h in Headers */,
 				29B8F3D715B9BA62000D934A /* SSThinkNoteShareAgent.h in Headers */,
 				29B8F3D915B9BA62000D934A /* UIImage+CaptureView.h in Headers */,
+				292003A118B5A269000CA7D3 /* CalendarSyncTVC.h in Headers */,
 				29B43CA615D29DBF000BC677 /* ThinkNoteShareViewController.h in Headers */,
 				29293D9215DFE778006B6907 /* SSSocialThinkNoteLogin.h in Headers */,
 				29E980EF1641747B00B65A7E /* SSSettingAlarmPickerVC.h in Headers */,
@@ -1576,6 +1655,7 @@
 				29B9E1D41472C2B000DB2E1F /* Localizable.strings in Resources */,
 				292DBCAE14CA943F00C87A70 /* JPImagePickerDetailController.xib in Resources */,
 				292DBCB114CA943F00C87A70 /* JPImagePickerOverviewController.xib in Resources */,
+				292003A318B5A269000CA7D3 /* CalendarSyncTVC.xib in Resources */,
 				297FDBC818A7D3B100BA0240 /* menu.png in Resources */,
 				2929A44B14D04B360059728D /* InfColorPickerView.xib in Resources */,
 				2935514614E2BABA004D8FAC /* SSTurnShiftTVC.xib in Resources */,
@@ -1591,6 +1671,7 @@
 				293B64FE15A3C7D300D0C4B5 /* GSFacesInfo.png in Resources */,
 				2916128515A62A6B0031F78C /* AppIcon.png in Resources */,
 				2916128715A62AC20031F78C /* AppIcon@2x.png in Resources */,
+				297409F018C36311008A5AF9 /* sync-icon@2x.png in Resources */,
 				29DCB8E015A878590095C71D /* Default.png in Resources */,
 				29DCB8E115A878700095C71D /* Default@2x.png in Resources */,
 				293C347F15A89B1F00CECAFA /* calendar-simple-blue-72x72.png in Resources */,
@@ -1627,6 +1708,7 @@
 				293970E6164EA0B200A79721 /* settings@2x.png in Resources */,
 				293970E7164EA0B200A79721 /* tab-calendar@2x.png in Resources */,
 				293970E9164EA0B200A79721 /* users@2x.png in Resources */,
+				297409EF18C36311008A5AF9 /* sync-icon.png in Resources */,
 				2980756F18B12364003A733F /* blueArrowRight@2x.png in Resources */,
 				290317B5164FE5FD008C258E /* overdate.png in Resources */,
 				297FDBC918A7D3B100BA0240 /* menu@2x.png in Resources */,
@@ -1749,17 +1831,20 @@
 				292DBCAB14CA943F00C87A70 /* JPImagePickerController.m in Sources */,
 				292DBCAD14CA943F00C87A70 /* JPImagePickerDetailController.m in Sources */,
 				292DBCB014CA943F00C87A70 /* JPImagePickerOverviewController.m in Sources */,
+				29D93EA418B9D3020087806B /* SSCalendarSyncController.m in Sources */,
 				292DBCB314CA943F00C87A70 /* UIImageResizing.m in Sources */,
 				29E339D514CA955A0036EAED /* ProfileIconPickerDataSource.m in Sources */,
 				2929A44514D04B360059728D /* InfColorBarPicker.m in Sources */,
 				2929A44714D04B360059728D /* InfColorIndicatorView.m in Sources */,
 				2929A44A14D04B360059728D /* InfColorPickerController.m in Sources */,
 				2929A44D14D04B360059728D /* InfColorSquarePicker.m in Sources */,
+				292003A218B5A269000CA7D3 /* CalendarSyncTVC.m in Sources */,
 				2929A44F14D04B360059728D /* InfHSBSupport.m in Sources */,
 				2929A45114D04B360059728D /* InfSourceColorView.m in Sources */,
 				2935514514E2BABA004D8FAC /* SSTurnShiftTVC.m in Sources */,
 				29F2147E14E66DB7008BEE92 /* UIImage+MonoImage.m in Sources */,
 				29C943B214E9581600122144 /* SSKalDelegate.m in Sources */,
+				299A256E18BB967D00592137 /* SyncEvent.m in Sources */,
 				29C943B714E9642900122144 /* SSProfileTimeAndAlarmVC.m in Sources */,
 				29C943BC14EAB55200122144 /* UserReviewController.m in Sources */,
 				29E98CA414EFD8270048AF49 /* SCAnimation.m in Sources */,
@@ -1767,6 +1852,7 @@
 				29E98CA814EFD8270048AF49 /* SCViewController.m in Sources */,
 				29E98CAA14EFD8270048AF49 /* UIImage+SCAdditions.m in Sources */,
 				29E98CAC14EFD8270048AF49 /* UIView+SCAdditions.m in Sources */,
+				29D93E9E18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.m in Sources */,
 				29E98CB814EFDA340048AF49 /* SCArgument.m in Sources */,
 				29E98CBA14EFDA340048AF49 /* SCArgumentParser.m in Sources */,
 				29E98CBC14EFDA340048AF49 /* SCConstants.m in Sources */,
@@ -1785,11 +1871,13 @@
 				29B460D1182E0AF20059F149 /* SSMainNavigationController.m in Sources */,
 				29C4B5E01813C38E0041D0B2 /* UIImage+Blur.m in Sources */,
 				29009FD6159F4AA100A1588E /* SSShiftHolidayCreateVC.m in Sources */,
+				297409F918C37117008A5AF9 /* SSShiftMultipSelectTVC.m in Sources */,
 				29009FD9159F4AA100A1588E /* ShiftPickerDataSource.m in Sources */,
 				29009FE2159F4AB600A1588E /* DatePickerViewController2.m in Sources */,
 				29009FE6159F4AB600A1588E /* SSShiftHolidayList.m in Sources */,
 				29009FEB159F4AE500A1588E /* UIColor+HexCoding.m in Sources */,
 				29DCB8DC15A7C8730095C71D /* NSDateAdditions.m in Sources */,
+				297409E718C323D5008A5AF9 /* SSSingleSelectTVC.m in Sources */,
 				29E6D7EF15ADAC8200235123 /* SSMailAgent.m in Sources */,
 				29E6D7FA15ADC63100235123 /* SSShareProfileListViewController.m in Sources */,
 				29B8F3D415B9BA62000D934A /* NSString+HTTPEscapes.m in Sources */,
@@ -1801,6 +1889,7 @@
 				29E980F01641747B00B65A7E /* SSSettingAlarmPickerVC.m in Sources */,
 				29AD3C8C16D7B036002E6543 /* SSSettingHolidayRegionPIckerVC.m in Sources */,
 				290F4E391783EA800023ADE8 /* SSDayEventUTC.m in Sources */,
+				2980757618B25462003A733F /* InfoNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2081,13 +2170,14 @@
 			isa = XCVersionGroup;
 			children = (
 				29F6B55D15A4C40500FAEA1C /* ShiftScheduler 5.xcdatamodel */,
+				2980757218B22E22003A733F /* ShiftScheduler 6.xcdatamodel */,
 				29F89FEC14E8072D002BB665 /* ShiftScheduler 4.xcdatamodel */,
 				29F2147F14E68A9B008BEE92 /* ShiftScheduler 3.xcdatamodel */,
 				294E28FF148B2F3A00E6ED45 /* ShiftScheduler 2.xcdatamodel */,
 				2900DEC31483EEA100E588EE /* ShiftSchedulerModelBasic.xcdatamodel */,
 				29B9E1CA1472C1D700DB2E1F /* ShiftScheduler.xcdatamodel */,
 			);
-			currentVersion = 29F6B55D15A4C40500FAEA1C /* ShiftScheduler 5.xcdatamodel */;
+			currentVersion = 2980757218B22E22003A733F /* ShiftScheduler 6.xcdatamodel */;
 			path = ShiftScheduler.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -12,6 +12,8 @@
 #import "SSAppDelegate.h"
 #import "SSDefaultConfigName.h"
 #import "SSSettingHolidayRegionPIckerVC.h"
+#import "UISwitch+AdjustForTableViewCell.h"
+
 
 
 @implementation SSSettingTVC
@@ -24,15 +26,16 @@
 #define PICK_ALERT_SOUND NSLocalizedString(@"Alert", "choose alert sound")
 
 #define LUNAR_ENABLE_ITEM   NSLocalizedString(@"Lunar Calendar", "enable chinese calendar config title")
-
 #define LUNAR_ENABLE_TEIM_HELP NSLocalizedString(@"show chinese lunar calendar", "enable chinese calendar config help")
 
 #define MONDAY_START_ITEM   NSLocalizedString(@"Monday Start", "enable start with monday title.")
 #define MONDAY_START_ITEM_HELP   NSLocalizedString(@"change week to monday", "change week start with monday help")
 
 #define HOLIDAY_PICK_ITEM   NSLocalizedString(@"Holiday", "enable chinese calendar config title")
-
 #define HOLIDAY_PICK_ITEM_HLEP NSLocalizedString(@"pick your region to show holidays", "show region hlidays help")
+
+#define SYNC_CALENDAR_ITEM NSLocalizedString(@"Sync Calendar", "sync to phone calendar")
+#define SYNC_CALENDAR_ITEM_HELP NSLocalizedString(@"sync shift events to phone calendar", "sync to phone calendar help")
 
 #define LOGIN_THINKNOTE_ITEM    NSLocalizedString(@"Login ThinkNote", "thinkNote Login")
 
@@ -41,7 +44,6 @@
 #define RESET_STR NSLocalizedString(@"Reset All Data", "reset")
 #define RESET_WARNNING_STR NSLocalizedString(@"This will delete all Shift information in your application, are you sure ?", \
                                              "long warnning information before delete all data")
-
 
 @synthesize iTunesURL;
 
@@ -74,9 +76,7 @@ enum {
 - (NSArray *) appConfigHelpArray
 {
     if (!appConfigHelpArray)
-        appConfigHelpArray = @[ LUNAR_ENABLE_TEIM_HELP,
-                                MONDAY_START_ITEM_HELP,
-                                HOLIDAY_PICK_ITEM_HLEP];
+        appConfigHelpArray = @[LUNAR_ENABLE_TEIM_HELP, MONDAY_START_ITEM_HELP, HOLIDAY_PICK_ITEM_HLEP, SYNC_CALENDAR_ITEM_HELP];
 
     return appConfigHelpArray;
 }
@@ -84,9 +84,7 @@ enum {
 - (NSArray *) appConfigArray
 {
     if (!appConfigArray)
-      appConfigArray = @[ LUNAR_ENABLE_ITEM,
-                          MONDAY_START_ITEM,
-                          HOLIDAY_PICK_ITEM];
+        appConfigArray = @[ LUNAR_ENABLE_ITEM, MONDAY_START_ITEM, HOLIDAY_PICK_ITEM, SYNC_CALENDAR_ITEM];
 
     return appConfigArray;
 }
@@ -112,9 +110,7 @@ enum {
 - (NSArray *) feedbackItemsArray
 {
     if (!feedbackItemsArray) {
-        feedbackItemsArray = @[TELL_OTHER_ITEM_STRING,
-        EMAIL_SUPPORT_ITEM_STRING,
-        RATING_ITEM_STRING];
+        feedbackItemsArray = @[TELL_OTHER_ITEM_STRING, EMAIL_SUPPORT_ITEM_STRING, RATING_ITEM_STRING];
     }
     return feedbackItemsArray;
 }
@@ -152,7 +148,10 @@ enum {
     
     UIImage *menuIcon = [UIImage imageNamed:@"menu.png"];
 
-    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:menuIcon style:UIBarButtonItemStylePlain  target:self action:@selector(menuButtonClicked)];
+    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:menuIcon 
+                                                                   style:UIBarButtonItemStylePlain  
+                                                                  target:self 
+                                                                  action:@selector(menuButtonClicked)];
     self.navigationItem.leftBarButtonItem = menuButton;
 
 
@@ -237,18 +236,10 @@ enum {
 - (UISwitch *)newSwitch:(NSIndexPath *)indexPath withTag:(NSInteger) tag cell:(UITableViewCell*) cell
 {
     UISwitch *theSwitch = [[UISwitch alloc] init];
-    CGSize switchSize = [theSwitch sizeThatFits:CGSizeZero];
-    
 
-    theSwitch.frame = CGRectMake(cell.contentView.bounds.size.width - switchSize.width - 5.0f,
-                         (cell.contentView.bounds.size.height - switchSize.height) / 2.0f,
-                         switchSize.width,
-                         switchSize.height);
-
-    theSwitch.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-
+    [theSwitch adjustFrameForTableViewCell: cell];
     [theSwitch addTarget:self action:@selector(switchChanged:) forControlEvents:UIControlEventValueChanged];
-    
+
     // in case the parent view draws with a custom color or gradient, use a transparent color
     theSwitch.backgroundColor = [UIColor clearColor];
     theSwitch.tag = tag;
@@ -509,6 +500,8 @@ enum {
     }
     
 }
+
+
 
 
 @end

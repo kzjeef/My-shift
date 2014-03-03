@@ -22,9 +22,9 @@
     id<KalDataSourceCallbacks> callback;
 }
 
-@property (strong) NSDate *currentChoosenDate;
+@property (strong, nonatomic) NSDate *currentChoosenDate;
 @property (strong, nonatomic) NSArray *theJobNameArray;
-@property (nonatomic, strong) NSFetchedResultsController *fetchedRequestController;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedRequestController;
 @property (strong, nonatomic) NSDateFormatter *timeFormatter;
 @property (strong, nonatomic) NSManagedObjectContext * objectContext;
 

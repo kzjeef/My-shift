@@ -16,6 +16,7 @@
 #import "ThinkNoteShareViewController.h"
 #import "REFrostedViewController.h"
 #import "SSMainNavigationController.h"
+#import "CalendarSyncTVC.h"
 #import "config.h"
 
 @class SSShareProfileListViewController;
@@ -71,6 +72,7 @@ ProfileEditFinishDelegate, REFrostedViewControllerDelegate, SSMainMenuDelegate, 
 @property (nonatomic, strong) ShiftListProfilesTVC *profileView;
 @property (nonatomic, strong) SSSettingTVC *settingVC;
 @property (nonatomic, strong) KalViewController *kalController;
+@property (nonatomic, strong) CalendarSyncTVC  *calendarSyncSettingTVC;
 @property (nonatomic, strong) UINavigationController *profileNVC;
 @property (nonatomic, strong) SSShiftHolidayList *changelistVC;
 @property (nonatomic, strong) UIActionSheet *rightAS;

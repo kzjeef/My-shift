@@ -99,7 +99,7 @@
 - (NSArray *) timeItemsArray
 {
     if (!timeItemArray) {
-	timeItemArray = @[FROM_ITEM_STRING,
+        timeItemArray = @[FROM_ITEM_STRING,
 					 HOURS_ITEM_STRING,
 					 REMIND_BEFORE_WORK,
 					 REMIND_BEFORE_CLOCK_OFF];
