@@ -68,12 +68,20 @@ enum {
                    style:UIBarButtonItemStyleBordered
                    target:self
                    action:@selector(showAndSelectToday)];
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow-left.png"]
+                                                             style:UIBarButtonItemStylePlain target:self
+                                                            action:@selector(calendartoLastMonth)];
+
+    UIBarButtonItem *next = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow-right.png"]
+                                                             style:UIBarButtonItemStylePlain target:self
+                                                            action:@selector(calendartoNextMonth)];
+
 
     UIImage *menuIcon = [UIImage imageNamed:@"menu.png"];
     menuButton = [[UIBarButtonItem alloc] initWithImage:menuIcon style:UIBarButtonItemStylePlain  target:self action:@selector(SSMainMenuDelegatePopMainMenu:)];
 
     self.navController.navigationItem.leftBarButtonItem = menuButton;
-    [_kalController.navigationItem setRightBarButtonItems:@[todayButton]]; // shareButton
+    [_kalController.navigationItem setRightBarButtonItems:@[todayButton, next, back]]; // shareButton
     [_kalController.navigationItem setLeftBarButtonItem:menuButton];
 
     SSKalDelegate *kalDelegate = [[SSKalDelegate alloc] init];
@@ -86,6 +94,9 @@ enum {
     _kalController.delegate = dataSource;
     _kalController.tileDelegate = dataSource;
     [self.navController setViewControllers:@[_kalController]];
+    
+
+
   
     self.calSyncController = [[SSCalendarSyncController alloc] initWithManagedContext:self.managedObjectContext];
     self.calendarSyncSettingTVC = [[CalendarSyncTVC alloc] initWithNibName:@"CalendarSyncTVC" bundle:nil];
@@ -129,6 +140,19 @@ enum {
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyWeekStartHandler:) name:SS_LOCAL_NOTIFY_WEEK_START_CHANGED object:nil];
     [self notifyWeekStartHandler:nil];
+    [self themeInit];
+}
+
+- (void) themeInit {
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x067AB6)];
+    [[UINavigationBar appearance] setTintColor:[ UIColor whiteColor]];
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [UIColor whiteColor],
+                                NSForegroundColorAttributeName, nil];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:attributes];
+    //    [[UINavigationBar appearance] setTranslucent:YES];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -170,8 +194,8 @@ enum {
 
     [self SSKalControllerInit];
 
-    [self initFrostedMainMenu:@[CALENDAR_STR, SHIFTS_STR, SETTINGS_STR, SHARE_STRING, SYNC_CALENDAR]
-                    withIcons:@[calendarListIconPath, shiftListIconPath, settingListIconPath, shareIconPath, syncIconPath]];
+    [self initFrostedMainMenu:@[CALENDAR_STR, SHIFTS_STR, SETTINGS_STR,  SYNC_CALENDAR, SHARE_STRING]
+                    withIcons:@[calendarListIconPath, shiftListIconPath, settingListIconPath, syncIconPath, shareIconPath]];
 
     [self initMainWindow];
 
@@ -649,6 +673,16 @@ enum {
 - (void) SSMainMenuShareButtonClicked:(id)from
 {
     [self showRightActionSheet];
+}
+
+- (void) calendartoLastMonth
+{
+    [self.kalController showPreviousMonth];
+}
+
+- (void) calendartoNextMonth
+{
+    [self.kalController showFollowingMonth];
 }
 
 

@@ -147,18 +147,17 @@
             [self.switchDelegate SSMainMenuViewStartChange];
 
         } else if (indexPath.row == 3) {
+            navigationController.viewControllers = @[self.calendarSyncTVC];
+            _currentSelectedView =  kMainViewCalendarSyncView;
+            [self.switchDelegate SSMainMenuViewStartChange];
+        } else if (indexPath.row == 4) {
             if (self.shareDelegate) {
                 navigationController.viewControllers = @[self.kalController];
                 _currentSelectedView = kMainViewCalendarView;
                 [self.shareDelegate SSMainMenuShareButtonClicked:self];
                 [self.switchDelegate SSMainMenuViewStartChange];
             }
-        } else if (indexPath.row == 4) {
-          navigationController.viewControllers = @[self.calendarSyncTVC];
-          _currentSelectedView =  kMainViewCalendarSyncView;
-          [self.switchDelegate SSMainMenuViewStartChange];
-        }
-    }
+        }    }
 
     [self.frostedViewController hideMenuViewController];
 }

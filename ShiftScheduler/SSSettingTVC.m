@@ -135,11 +135,17 @@ enum {
 
     [super viewDidLoad];
     
-    self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
+    //    self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.title = NSLocalizedString(@"Settings", "Settings");
+    
+    
+    
+    
+                           
 
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = YES;
     

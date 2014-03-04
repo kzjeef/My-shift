@@ -95,6 +95,10 @@
 		2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */; };
 		296915EE18C629FA00B743F3 /* colors_crayola.plist in Resources */ = {isa = PBXBuildFile; fileRef = 296915EC18C629FA00B743F3 /* colors_crayola.plist */; };
 		296915EF18C629FA00B743F3 /* colors_pantone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 296915ED18C629FA00B743F3 /* colors_pantone.plist */; };
+		296915F418C63C3100B743F3 /* arrow-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 296915F018C63C3100B743F3 /* arrow-left.png */; };
+		296915F518C63C3100B743F3 /* arrow-left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296915F118C63C3100B743F3 /* arrow-left@2x.png */; };
+		296915F618C63C3100B743F3 /* arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 296915F218C63C3100B743F3 /* arrow-right.png */; };
+		296915F718C63C3100B743F3 /* arrow-right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296915F318C63C3100B743F3 /* arrow-right@2x.png */; };
 		296E3A11182DE4CD00B85E29 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296E3A10182DE4CD00B85E29 /* Accelerate.framework */; };
 		297409E618C323D5008A5AF9 /* SSSingleSelectTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 297409E418C323D5008A5AF9 /* SSSingleSelectTVC.h */; };
 		297409E718C323D5008A5AF9 /* SSSingleSelectTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 297409E518C323D5008A5AF9 /* SSSingleSelectTVC.m */; };
@@ -467,6 +471,10 @@
 		2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		296915EC18C629FA00B743F3 /* colors_crayola.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colors_crayola.plist; sourceTree = "<group>"; };
 		296915ED18C629FA00B743F3 /* colors_pantone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colors_pantone.plist; sourceTree = "<group>"; };
+		296915F018C63C3100B743F3 /* arrow-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-left.png"; sourceTree = "<group>"; };
+		296915F118C63C3100B743F3 /* arrow-left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-left@2x.png"; sourceTree = "<group>"; };
+		296915F218C63C3100B743F3 /* arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-right.png"; sourceTree = "<group>"; };
+		296915F318C63C3100B743F3 /* arrow-right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-right@2x.png"; sourceTree = "<group>"; };
 		296E3A0C182DE29A00B85E29 /* libPods-REFrostedViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-REFrostedViewController.a"; path = "Pods/build/Debug-iphoneos/libPods-REFrostedViewController.a"; sourceTree = "<group>"; };
 		296E3A10182DE4CD00B85E29 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		296E3A12182DE64300B85E29 /* libPods-REFrostedViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-REFrostedViewController.a"; path = "Pods/build/Debug-iphoneos/libPods-REFrostedViewController.a"; sourceTree = "<group>"; };
@@ -943,6 +951,10 @@
 		2991F79817B780A8009AF142 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				296915F018C63C3100B743F3 /* arrow-left.png */,
+				296915F118C63C3100B743F3 /* arrow-left@2x.png */,
+				296915F218C63C3100B743F3 /* arrow-right.png */,
+				296915F318C63C3100B743F3 /* arrow-right@2x.png */,
 				297409ED18C36310008A5AF9 /* sync-icon.png */,
 				297409EE18C36310008A5AF9 /* sync-icon@2x.png */,
 				290317B4164FE5FD008C258E /* overdate.png */,
@@ -1688,6 +1700,7 @@
 				29009FD7159F4AA100A1588E /* SSShiftHolidayCreateVC.xib in Resources */,
 				29009FE3159F4AB600A1588E /* DatePickerViewController2.xib in Resources */,
 				29009FE7159F4AB600A1588E /* SSShiftHolidayList.xib in Resources */,
+				296915F418C63C3100B743F3 /* arrow-left.png in Resources */,
 				293B64F415A3BF8400D0C4B5 /* tab-calendar.png in Resources */,
 				293B64FB15A3C64900D0C4B5 /* addButton.png in Resources */,
 				293B64FE15A3C7D300D0C4B5 /* GSFacesInfo.png in Resources */,
@@ -1720,7 +1733,9 @@
 				29B460C6182E00810059F149 /* Pods.xcodeproj in Resources */,
 				293970D5164E8AC200A79721 /* redButtonBackgroud.png in Resources */,
 				2980757118B12364003A733F /* blueArrowUp@2x.png in Resources */,
+				296915F518C63C3100B743F3 /* arrow-left@2x.png in Resources */,
 				293970D6164E8AC200A79721 /* greenButtonBackgroud.png in Resources */,
+				296915F718C63C3100B743F3 /* arrow-right@2x.png in Resources */,
 				2980756E18B12364003A733F /* blueArrowRight.png in Resources */,
 				293970D7164E8AC200A79721 /* grayButtonBackgroud@2x.png in Resources */,
 				293970DA164E8AF700A79721 /* redButtonBackgroud@2x.png in Resources */,
@@ -1743,6 +1758,7 @@
 				2991F7F017B780A9009AF142 /* calendar-2.png in Resources */,
 				2991F7F117B780A9009AF142 /* calendar.png in Resources */,
 				2991F7F317B780A9009AF142 /* Notify.mp3 in Resources */,
+				296915F618C63C3100B743F3 /* arrow-right.png in Resources */,
 				297FDBD218A88D0100BA0240 /* share.png in Resources */,
 				2991F7FF17B781F6009AF142 /* strike_icon.png in Resources */,
 				2991F80117B783C5009AF142 /* SSSettingAlarmPickerVC.xib in Resources */,

@@ -324,8 +324,6 @@ enum {
     plusImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"addButton" ofType:@"png"]];
     plusImage = [plusImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     // start init coach marks.
-
-
     
 }
 
