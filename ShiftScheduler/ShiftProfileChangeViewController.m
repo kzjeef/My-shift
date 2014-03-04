@@ -8,7 +8,6 @@
 
 #import "ShiftProfileChangeViewController.h"
 #import "UIColor+HexCoding.h"
-#import "InfColorPicker.h"
 #import "SSTurnShiftTVC.h"
 #import "SSProfileTimeAndAlarmVC.h"
 #import "SSShiftWorkdayConfigTVC.h"
@@ -521,12 +520,11 @@
     }
     
     if ([item isEqualToString:COLOR_PICKER_STRING]) {
-        InfColorPickerController* color_picker = [ InfColorPickerController colorPickerViewController];
-        color_picker.delegate = self;
-        UIColor *color = self.theJob.iconColor;
-        if (color != nil)
-            color_picker.sourceColor = self.theJob.iconColor;
-        [color_picker presentModallyOverViewController:self];
+        KKColorListViewController *controller = [[KKColorListViewController alloc] initWithSchemeType:
+                                                                                       KKColorsSchemeTypeCrayola];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+        controller.delegate = self;
+        [self presentViewController:navController animated:YES completion:nil];
     }
     
     if ([item isEqualToString:SHIFTCONFIG_ITEM_STRING]) {
@@ -668,15 +666,19 @@
 
 #pragma - mark - ColorPicker
 
-- (void) colorPickerControllerDidFinish: (InfColorPickerController*) color_picker
+-(void) colorListPickerDidComplete:(KKColorListViewController *)controller
 {
-    self.theJob.jobOnColorID = [color_picker.resultColor hexStringFromColor];
-    self.theJob.cachedJobOnIconID = nil;
-    self.theJob.cachedJobOnIconColor = nil;
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES  completion:nil];
+    [self.tableView  reloadData];
 }
 
+- (void)colorListController:(KKColorListViewController *)controller didSelectColor:(KKColor *)color;
+{
+
+    self.theJob.jobOnColorID = [[color uiColor] hexStringFromColor];
+    self.theJob.cachedJobOnIconID = nil;
+    self.theJob.cachedJobOnIconColor = nil;
+}
 
 #pragma - mark - JPImage Picker Delegate
 

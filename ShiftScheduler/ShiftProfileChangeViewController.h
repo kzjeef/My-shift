@@ -11,7 +11,7 @@
 #import "OneJob.h"
 #import "ShiftListProfilesTVC.h"
 #import "ProfileIconPickerDataSource.h"
-#import "InfColorPickerController.h"
+#import "KKColorListPicker.h"
 #import "SSShiftWorkdayConfigTVC.h"
 
 
@@ -22,10 +22,10 @@
 
 @interface ShiftProfileChangeViewController : UITableViewController
 <UITextFieldDelegate,
-   JPImagePickerControllerDelegate,
-   InfColorPickerControllerDelegate,
-   UIActionSheetDelegate,
-   SSShiftTypePickerDelegate>
+     JPImagePickerControllerDelegate,
+     KKColorListViewControllerDelegate,
+     UIActionSheetDelegate,
+     SSShiftTypePickerDelegate>
 
 @property (nonatomic, strong) NSArray *itemsArray;
 @property (nonatomic, strong) NSArray *timeItemsArray;

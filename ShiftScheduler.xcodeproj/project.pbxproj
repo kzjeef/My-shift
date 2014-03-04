@@ -93,6 +93,8 @@
 		294E2903148B302700E6ED45 /* ShiftDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 294E2901148B302700E6ED45 /* ShiftDay.m */; };
 		2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECD14F9076400DF1CCF /* AVFoundation.framework */; };
 		2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */; };
+		296915EE18C629FA00B743F3 /* colors_crayola.plist in Resources */ = {isa = PBXBuildFile; fileRef = 296915EC18C629FA00B743F3 /* colors_crayola.plist */; };
+		296915EF18C629FA00B743F3 /* colors_pantone.plist in Resources */ = {isa = PBXBuildFile; fileRef = 296915ED18C629FA00B743F3 /* colors_pantone.plist */; };
 		296E3A11182DE4CD00B85E29 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 296E3A10182DE4CD00B85E29 /* Accelerate.framework */; };
 		297409E618C323D5008A5AF9 /* SSSingleSelectTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 297409E418C323D5008A5AF9 /* SSSingleSelectTVC.h */; };
 		297409E718C323D5008A5AF9 /* SSSingleSelectTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 297409E518C323D5008A5AF9 /* SSSingleSelectTVC.m */; };
@@ -284,6 +286,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		296915E918C625D100B743F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6E6EDDBCFE034B42A41A5E7F;
+			remoteInfo = "Pods-KKColorListPicker";
+		};
 		297E0C7C1833D3D2000E1F19 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
@@ -309,21 +318,21 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 4FF1E561BAA34D6A9FAEBB59;
+			remoteGlobalIDString = EBC376B2855541A9B4400886;
 			remoteInfo = Pods;
 		};
 		297FDBD618A8B9BD00BA0240 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = FEF017C6762B40C19B69F67B;
+			remoteGlobalIDString = E659477364C84814889144F6;
 			remoteInfo = "Pods-EAIntroView";
 		};
 		297FDBD818A8B9C000BA0240 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = AF5242CF5EEF493EA37C5F9F;
+			remoteGlobalIDString = CDC41601B4184BDE9DAA9B2D;
 			remoteInfo = "Pods-REFrostedViewController";
 		};
 		297FDBE618AF1CA400BA0240 /* PBXContainerItemProxy */ = {
@@ -456,6 +465,8 @@
 		294E2901148B302700E6ED45 /* ShiftDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftDay.m; sourceTree = "<group>"; };
 		2968BECD14F9076400DF1CCF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2968BECF14F907BB00DF1CCF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		296915EC18C629FA00B743F3 /* colors_crayola.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colors_crayola.plist; sourceTree = "<group>"; };
+		296915ED18C629FA00B743F3 /* colors_pantone.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colors_pantone.plist; sourceTree = "<group>"; };
 		296E3A0C182DE29A00B85E29 /* libPods-REFrostedViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-REFrostedViewController.a"; path = "Pods/build/Debug-iphoneos/libPods-REFrostedViewController.a"; sourceTree = "<group>"; };
 		296E3A10182DE4CD00B85E29 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		296E3A12182DE64300B85E29 /* libPods-REFrostedViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-REFrostedViewController.a"; path = "Pods/build/Debug-iphoneos/libPods-REFrostedViewController.a"; sourceTree = "<group>"; };
@@ -893,6 +904,7 @@
 			children = (
 				297E0C7D1833D3D2000E1F19 /* libPods.a */,
 				297FDBCE18A7D3B100BA0240 /* libPods-EAIntroView.a */,
+				296915EA18C625D100B743F3 /* libPods-KKColorListPicker.a */,
 				297E0C7F1833D3D2000E1F19 /* libPods-REFrostedViewController.a */,
 				297FDBE718AF1CA400BA0240 /* libPods-WSCoachMarksView.a */,
 			);
@@ -1264,6 +1276,8 @@
 				293970DC164E9DE800A79721 /* jobicons.bundle */,
 				29B9E1D61472C2B000DB2E1F /* Localizable.strings */,
 				29B9E1BF1472C1D700DB2E1F /* ShiftScheduler-Info.plist */,
+				296915EC18C629FA00B743F3 /* colors_crayola.plist */,
+				296915ED18C629FA00B743F3 /* colors_pantone.plist */,
 				29B9E1C01472C1D700DB2E1F /* InfoPlist.strings */,
 				29B9E1C31472C1D700DB2E1F /* main.m */,
 				29B9E1C51472C1D700DB2E1F /* ShiftScheduler-Prefix.pch */,
@@ -1581,6 +1595,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		296915EA18C625D100B743F3 /* libPods-KKColorListPicker.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-KKColorListPicker.a";
+			remoteRef = 296915E918C625D100B743F3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		297E0C7D1833D3D2000E1F19 /* libPods.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1659,6 +1680,7 @@
 				297FDBC818A7D3B100BA0240 /* menu.png in Resources */,
 				2929A44B14D04B360059728D /* InfColorPickerView.xib in Resources */,
 				2935514614E2BABA004D8FAC /* SSTurnShiftTVC.xib in Resources */,
+				296915EE18C629FA00B743F3 /* colors_crayola.plist in Resources */,
 				29C943B814E9642900122144 /* SSProfileTimeAndAlarmVC.xib in Resources */,
 				29D6A525159CB4A200AC6103 /* Kal.bundle in Resources */,
 				29009FCF159F4A4D00A1588E /* SSSettingTVC.xib in Resources */,
@@ -1714,6 +1736,7 @@
 				297FDBC918A7D3B100BA0240 /* menu@2x.png in Resources */,
 				290F4E3B1783EF1B0023ADE8 /* SSDayEventUTC.xib in Resources */,
 				2991F79717B78026009AF142 /* strike_icon@2x.png in Resources */,
+				296915EF18C629FA00B743F3 /* colors_pantone.plist in Resources */,
 				2991F7E617B780A9009AF142 /* Calendar-icon-114x114.png in Resources */,
 				2991F7E717B780A9009AF142 /* Calendar-icon-57x57.png in Resources */,
 				2991F7EF17B780A9009AF142 /* calendar-1.png in Resources */,
@@ -2076,7 +2099,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShiftScheduler/ShiftScheduler-Prefix.pch";
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../SSLunarDate/build/Release-iphoneos\"",
@@ -2113,7 +2136,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShiftScheduler/ShiftScheduler-Prefix.pch";
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../SSLunarDate/build/Release-iphoneos\"",
