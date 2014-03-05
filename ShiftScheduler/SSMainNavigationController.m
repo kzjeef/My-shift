@@ -132,7 +132,7 @@ typedef enum : NSInteger {
                                                                                     coachMarks:a];
 
 
-            [coachMarkView setMaskColor:[[UIColor blackColor] colorWithAlphaComponent:0.77]];
+            [coachMarkView setMaskColor:[[UIColor blackColor] colorWithAlphaComponent:0.88]];
             [self.view addSubview:coachMarkView];
             [coachMarkView start];
              NSMutableArray *m = [history mutableCopy];

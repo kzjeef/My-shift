@@ -9,23 +9,35 @@
 #import "CalendarSyncTVC.h"
 #import "UISwitch+AdjustForTableViewCell.h"
 #import "SSCalendarSyncController.h"
+#import "UIActivityIndicatorView+BigRound.h"
+#import "config.h"
 
-#define kDoSyncItem NSLocalizedString(@"Perform Sync", "")
-#define kAlertInCalendarItem NSLocalizedString(@"Alert In Calendar", "")
-#define kShiftSelectItem     NSLocalizedString(@"Select Shift to Sync", "")
-#define kLengthItem              NSLocalizedString(@"Length", "")
+#define kCalendarSyncTitle   NSLocalizedString(@"Sync Phone Calendar", "")
+#define kDoSyncItem NSLocalizedString(@"Manual Sync", "")
+#define kAlertInCalendarItem NSLocalizedString(@"Alert Setup", "")
+#define kShiftSelectItem     NSLocalizedString(@"Shifts to Sync", "")
+#define kLengthItem              NSLocalizedString(@"Time Span", "")
 #define kDeleteEventsItem    NSLocalizedString(@"Delete Synced Events", "")
 
 #define kEnableAutoSyncDetail NSLocalizedString(@"", "")
 #define kAlertInCalendarDetail NSLocalizedString(@"setup same alarm as shift setting", "")
 #define kShiftSelectDetail     NSLocalizedString(@"default sync all enabled shift", "")
-#define kLengthDetail    NSLocalizedString(@"", "")
+#define kLengthDetail    NSLocalizedString(@"sync days in further", "")
 #define kDeleteEventsDetail   NSLocalizedString(@"", "")
 
 #define kLengthSelectionWeek NSLocalizedString(@"One Week", "")
 #define kLengthSelection2Week NSLocalizedString(@"Two Week", "")
 #define kLengthSelectionMonth NSLocalizedString(@"One Month", "")
 #define kLengthSelection3Month NSLocalizedString(@"Three Month", "")
+
+#define kCalendarSyncToPhoneFmt NSLocalizedString(@"%d calendar events are sync to phone calendar", "")
+#define kCalendarSyncToPhoneNoAdd NSLocalizedString(@"No new calendar event was added in phone calendar", "")
+#define kCalendarSyncToPhoneNoDel NSLocalizedString(@"No calendar event was deleted.", "")
+#define kCalendarSyncToPhoneDel NSLocalizedString(@"%d calendar events are delete.", "")
+
+#define kCalenderSyncDetail NSLocalizedString(@"Perform sync shift event from scheudler to phone calendar", "")
+#define kCalendarLengthDetal NSLocalizedString(@"Sync the length days shift events of selected shift to phone calendar. Calendar events will be re created for any setting changes", "")
+#define kCalendarDeleveDetail NSLocalizedString(@"Delete all events created by scheduler from phone calendar", "")
 
 /// TODO: add note to user, event it's a auto sync, it's still require
 /// user open the app after the length of further time is about to
@@ -39,6 +51,7 @@
 @property (nonatomic, strong) IBOutlet UISwitch  *enableSyncSwitch;
 @property (nonatomic, strong) IBOutlet UISwitch  *alarmSwitch;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *busyIndicator;
+@property                       BOOL    disabled;
 - (IBAction)enableSyncValueChanged:(id)sender;
 - (IBAction)enableAlarmSwitchValueChanged:(id)sender;
 @end
@@ -111,7 +124,7 @@
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
 
-    self.title = NSLocalizedString(@"Sync to Phone Calendar", "");
+    self.title = kCalendarSyncTitle;
     
     UIImage *menuIcon = [UIImage imageNamed:@"menu.png"];
 
@@ -121,12 +134,22 @@
                                                                   action:@selector(menuButtonClicked)];
     self.navigationItem.leftBarButtonItem = menuButton;
     
-    self.busyIndicator.frame = self.view.frame;
+    [self.busyIndicator setupRoundCorner:100];
     self.busyIndicator.center = self.view.center;
 
     [self.view insertSubview:self.busyIndicator aboveSubview:self.tableView];
     
     self.alarmSwitch.on = [SSCalendarSyncController getAlarmSyncSetting];
+
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(calendarEventProcessStart)
+                                                 name: kSSCalendarSyncStartNotification
+                                               object: nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(calendarEventProcessFinish:)
+                                                 name: kSSCalendarSyncStopNotification
+                                               object: nil];
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -146,12 +169,13 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+
     if (section == 0)
-        return @"Perform sync shift event from scheudler to phone calendar";
+        return kCalenderSyncDetail;
     else if (section == 1)
-        return @"Sync the length days shift events of selected shift to phone calendar. Calendar events will be re created for any setting changes. ";
+        return kCalendarLengthDetal;
     else if (section == 2)
-        return @"Delete all events created by scheduler from phone calendar";
+        return kCalendarDeleveDetail;
     return nil;
 }
 
@@ -183,7 +207,11 @@
 
     if ([cell.textLabel.text compare:kDoSyncItem] == NSOrderedSame) {
         [self.enableSyncSwitch adjustFrameForTableViewCell:cell];
-        
+        cell.textLabel.textColor = UIColorFromRGB(0x0466C0);
+        NSString *syncIconPath = [[NSBundle mainBundle] pathForResource:@"sync-icon" ofType:@"png"];
+        cell.imageView.image = [[[UIImage alloc] initWithContentsOfFile:syncIconPath] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.imageView.tintColor = UIColorFromRGB(0x0466C0);
+
     } else if ([cell.textLabel.text compare:kAlertInCalendarItem] == NSOrderedSame) {
         [self.alarmSwitch adjustFrameForTableViewCell:cell];
         [cell.contentView addSubview:self.alarmSwitch];
@@ -191,6 +219,9 @@
     } else if ([cell.textLabel.text compare:kDeleteEventsItem] == NSOrderedSame) {
         cell.textLabel.textColor = [UIColor redColor];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        NSString *removeIconPath = [[NSBundle mainBundle] pathForResource:@"remove" ofType:@"png"];
+        cell.imageView.image = [[[UIImage alloc] initWithContentsOfFile:removeIconPath] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        cell.imageView.tintColor = [UIColor redColor];
         [cell.textLabel sizeToFit];
     } else if ([cell.textLabel.text compare:kLengthItem] == NSOrderedSame) {
         cell.detailTextLabel.text = [self getStringLength];
@@ -205,6 +236,12 @@
 }
 #pragma mark - Table view delegate
 
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.disabled)
+        return nil;
+    else
+        return indexPath;
+}
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -214,14 +251,7 @@
     
     if (title == kDoSyncItem) {
         [self.busyIndicator startAnimating];
-        count = [self.calendarSyncController setupAllEKEvent];
-        [self.busyIndicator stopAnimating];
-        NSString *str = [NSString stringWithFormat:@"%d calendar events are sync to phone calendar", count];
-        if (count == 0)
-            str = @"No new calendar event was added in phone calendar";
-        UIAlertView *v = [[UIAlertView alloc] initWithTitle:@"Done" message:str delegate:nil
-                                          cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [v show];
+        count = [self.calendarSyncController setupAllEKEvent:YES];
     }
     if (title == kLengthItem) {
         SSSingleSelectTVC *select = [[SSSingleSelectTVC alloc] initWithStyle:UITableViewStylePlain];
@@ -249,27 +279,21 @@
 
     if (title == kDeleteEventsItem) {
         [self.busyIndicator startAnimating];
-        int count = [self.calendarSyncController deleteAllEKEvents];
-        [self.busyIndicator stopAnimating];
-        
-        NSString *str = [NSString stringWithFormat:@"%d calendar events are delete.", count];
-        if (count == 0)
-            str =  @"No calendar event was deleted. ";
-        UIAlertView *v = [[UIAlertView alloc] initWithTitle:@"Done" message:str delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [v show];
+        [self.calendarSyncController deleteAllEKEvents];
+
     }
 }
 
 - (IBAction)enableSyncValueChanged:(id)sender {
     UISwitch *s = sender;
 
+    [self.busyIndicator startAnimating];
     [[NSUserDefaults standardUserDefaults] setBool:s.on forKey: kSSCalendarAutoSyncSetting];
     [[NSNotificationCenter defaultCenter] postNotificationName:kSSCalendarAutoSyncSettingChangedNotification object:nil];
 }
 
 - (IBAction)enableAlarmSwitchValueChanged:(id)sender {
     UISwitch *s = sender;
-
     [[NSUserDefaults standardUserDefaults] setBool:s.on forKey: kSSCalendarWithAlarmSetting];
     [[NSNotificationCenter defaultCenter] postNotificationName: kSSCalendarWithAlarmSettingChangedNotification object:nil];
 }
@@ -277,6 +301,8 @@
 - (void) changedLengthValue:(NSNumber *)n {
     [[NSUserDefaults standardUserDefaults] setValue:n forKey:kSSCalendarSyncLengthSetting];
     [[NSNotificationCenter defaultCenter] postNotificationName: kSSCalendarSyncLengthSettingChangedNotification object:nil];
+    // Because this notification will result calendar sync controller start work,
+    // so the busy indicator will start.
 }
 
 - (void)menuButtonClicked
@@ -302,11 +328,9 @@
 
 - (void)singleSelect: (id) sender itemSelectedatRow:(NSInteger) row {
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self.busyIndicator startAnimating];
     NSString *key = [self.lengthArray objectAtIndex:row];
     NSNumber *n = [self.lengthDict objectForKey:key];
     [self changedLengthValue:n];
-    [self.busyIndicator stopAnimating];
     [self.tableView reloadData];
 }
 
@@ -334,11 +358,59 @@
             j.syncEnableEKEvent = [states objectForKey:objid];
         }
     }
+    // After save, the controller will perform the operation in the case.
+    // so it will be a busy indicator show up.
     [self.calendarSyncController saveShiftChange];
 }
 
 - (void)shiftSelect:(id)sender cancelButtonClicked:(NSDictionary *)states {}
 - (void) shiftSelect:(id)sender newState:(BOOL)newState {}
+
+
+- (void) calendarEventProcessFinish: (NSNotification *) notify {
+    self.disabled = NO;
+    self.enableSyncSwitch.enabled = YES;
+    self.alarmSwitch.enabled = YES;
+    [self.busyIndicator stopAnimating];
+    if ([notify.object isKindOfClass:NSDictionary.class]) {
+        NSDictionary *dict = notify.object;
+        NSInteger count = [[dict objectForKey:@"count"] integerValue];
+        SSCalendarEventType type = [[dict objectForKey:@"type"] intValue];
+ 
+        if (type == SSCalendarEventTypeSetup) {
+            NSString *str = [NSString stringWithFormat:kCalendarSyncToPhoneFmt, count];
+            if (count == 0)
+                str = kCalendarSyncToPhoneNoAdd;
+            UIAlertView *v = [[UIAlertView alloc] initWithTitle:@"" message:str delegate:nil
+                                              cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//            [v show];
+//    now show the alrt is better
+        } else if (type == SSCalendarEventTypeDelete) {
+
+            NSString *str = [NSString stringWithFormat:kCalendarSyncToPhoneDel, count];
+            if (count == 0)
+                str = kCalendarSyncToPhoneNoDel;
+            UIAlertView *v = [[UIAlertView alloc] initWithTitle:@"" message:str delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//            [v show];
+// now show the alert is better.
+            
+        }
+    }
+}
+
+- (void) calendarEventProcessStart {
+    // This event can be sent even the window not there,
+    // so if not show, don't show this animation.
+    if (self.view.window) {
+        [self.busyIndicator startAnimating];
+        self.disabled = YES;
+        self.enableSyncSwitch.enabled = NO;
+        self.alarmSwitch.enabled = NO;
+    }
+    
+
+}
+
 
 
 @end

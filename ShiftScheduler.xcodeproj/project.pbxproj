@@ -29,6 +29,12 @@
 		290F4E3B1783EF1B0023ADE8 /* SSDayEventUTC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 290F4E3A1783EF1B0023ADE8 /* SSDayEventUTC.xib */; };
 		2912673916CF77CE00FFB202 /* SSDefaultConfigName.h in Headers */ = {isa = PBXBuildFile; fileRef = 2912673816CF77CE00FFB202 /* SSDefaultConfigName.h */; };
 		2912673D16CF81FA00FFB202 /* libSSLunarDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2912673C16CF81FA00FFB202 /* libSSLunarDate.a */; };
+		2915099118C7800D00BE360D /* SSCalendarSyncOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2915098F18C7800D00BE360D /* SSCalendarSyncOperation.h */; };
+		2915099218C7800D00BE360D /* SSCalendarSyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2915099018C7800D00BE360D /* SSCalendarSyncOperation.m */; };
+		2915099818C8A4B300BE360D /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 2915099618C8A4B300BE360D /* remove.png */; };
+		2915099918C8A4B300BE360D /* remove@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2915099718C8A4B300BE360D /* remove@2x.png */; };
+		2915099C18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.h in Headers */ = {isa = PBXBuildFile; fileRef = 2915099A18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.h */; };
+		2915099D18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.m in Sources */ = {isa = PBXBuildFile; fileRef = 2915099B18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.m */; };
 		2916128515A62A6B0031F78C /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128415A62A6B0031F78C /* AppIcon.png */; };
 		2916128715A62AC20031F78C /* AppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128615A62AC20031F78C /* AppIcon@2x.png */; };
 		2920039A18B4F142000CA7D3 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2920039918B4F142000CA7D3 /* EventKit.framework */; };
@@ -411,6 +417,12 @@
 		2912672D16CF691D00FFB202 /* SSLunarDate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSLunarDate.xcodeproj; path = ../../SSLunarDate/SSLunarDate.xcodeproj; sourceTree = "<group>"; };
 		2912673816CF77CE00FFB202 /* SSDefaultConfigName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SSDefaultConfigName.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2912673C16CF81FA00FFB202 /* libSSLunarDate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSSLunarDate.a; path = "../SSLunarDate/build/Release-iphoneos/libSSLunarDate.a"; sourceTree = "<group>"; };
+		2915098F18C7800D00BE360D /* SSCalendarSyncOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSCalendarSyncOperation.h; path = ShiftScheduler/CalendarSync/SSCalendarSyncOperation.h; sourceTree = "<group>"; };
+		2915099018C7800D00BE360D /* SSCalendarSyncOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSCalendarSyncOperation.m; path = ShiftScheduler/CalendarSync/SSCalendarSyncOperation.m; sourceTree = "<group>"; };
+		2915099618C8A4B300BE360D /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove.png; sourceTree = "<group>"; };
+		2915099718C8A4B300BE360D /* remove@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove@2x.png"; sourceTree = "<group>"; };
+		2915099A18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+BigRound.h"; path = "ShiftScheduler/util/UIActivityIndicatorView+BigRound.h"; sourceTree = "<group>"; };
+		2915099B18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+BigRound.m"; path = "ShiftScheduler/util/UIActivityIndicatorView+BigRound.m"; sourceTree = "<group>"; };
 		2916128415A62A6B0031F78C /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon.png; path = ../AppIcon.png; sourceTree = "<group>"; };
 		2916128615A62AC20031F78C /* AppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon@2x.png"; path = "../AppIcon@2x.png"; sourceTree = "<group>"; };
 		2920039918B4F142000CA7D3 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -555,7 +567,7 @@
 		2991F7CD17B780A9009AF142 /* users@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "users@2x.png"; sourceTree = "<group>"; };
 		2991F7FE17B781F6009AF142 /* strike_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = strike_icon.png; sourceTree = "<group>"; };
 		2991F80017B783C5009AF142 /* SSSettingAlarmPickerVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSSettingAlarmPickerVC.xib; path = ShiftScheduler/SSSettingAlarmPickerVC.xib; sourceTree = "<group>"; };
-		2991F80217B791C1009AF142 /* LongAlarmList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LongAlarmList.plist; sourceTree = "<group>"; };
+		2991F80217B791C1009AF142 /* LongAlarmList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = LongAlarmList.plist; path = ../LongAlarmList.plist; sourceTree = "<group>"; };
 		2991F80417B7971C009AF142 /* soft.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = soft.caf; path = Resources/alarm/long/soft.caf; sourceTree = "<group>"; };
 		2991F80517B7971C009AF142 /* 八音盒.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "八音盒.caf"; path = "Resources/alarm/long/八音盒.caf"; sourceTree = "<group>"; };
 		2991F80617B7971C009AF142 /* 海边小屋.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "海边小屋.caf"; path = "Resources/alarm/long/海边小屋.caf"; sourceTree = "<group>"; };
@@ -665,7 +677,7 @@
 		29E6D7F815ADC63100235123 /* SSShareProfileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSShareProfileListViewController.m; path = ShiftScheduler/SSShareProfileListViewController.m; sourceTree = "<group>"; };
 		29E980ED1641747B00B65A7E /* SSSettingAlarmPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSettingAlarmPickerVC.h; path = ShiftScheduler/SSSettingAlarmPickerVC.h; sourceTree = "<group>"; };
 		29E980EE1641747B00B65A7E /* SSSettingAlarmPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SSSettingAlarmPickerVC.m; path = ShiftScheduler/SSSettingAlarmPickerVC.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		29E980F1164177B600B65A7E /* AlarmList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AlarmList.plist; sourceTree = "<group>"; };
+		29E980F1164177B600B65A7E /* AlarmList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AlarmList.plist; path = ../AlarmList.plist; sourceTree = "<group>"; };
 		29E980F316419E1500B65A7E /* DingDong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DingDong.caf; path = Resources/alarm/DingDong.caf; sourceTree = "<group>"; };
 		29E980F416419E1500B65A7E /* Alarm_Beep_03.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Alarm_Beep_03.caf; path = Resources/alarm/Alarm_Beep_03.caf; sourceTree = "<group>"; };
 		29E980F516419E1500B65A7E /* Alarm_Classic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Alarm_Classic.caf; path = Resources/alarm/Alarm_Classic.caf; sourceTree = "<group>"; };
@@ -821,7 +833,11 @@
 				2920039E18B5A269000CA7D3 /* CalendarSyncTVC.h */,
 				2920039F18B5A269000CA7D3 /* CalendarSyncTVC.m */,
 				29D93EA118B9D3020087806B /* SSCalendarSyncController.h */,
+				2915098F18C7800D00BE360D /* SSCalendarSyncOperation.h */,
+				2915099018C7800D00BE360D /* SSCalendarSyncOperation.m */,
 				29D93EA218B9D3020087806B /* SSCalendarSyncController.m */,
+				2915099A18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.h */,
+				2915099B18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.m */,
 				29D93E9B18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.h */,
 				29D93E9C18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.m */,
 				292003A018B5A269000CA7D3 /* CalendarSyncTVC.xib */,
@@ -881,8 +897,6 @@
 				29D6A524159CB4A200AC6103 /* Kal.bundle */,
 				2991F79817B780A8009AF142 /* Resources */,
 				29E9810916419E1E00B65A7E /* Audio */,
-				29E980F1164177B600B65A7E /* AlarmList.plist */,
-				2991F80217B791C1009AF142 /* LongAlarmList.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -899,6 +913,8 @@
 		297409E818C323DE008A5AF9 /* General UI */ = {
 			isa = PBXGroup;
 			children = (
+				29F2147C14E66DB7008BEE92 /* UIImage+MonoImage.m */,
+				29F2147B14E66DB7008BEE92 /* UIImage+MonoImage.h */,
 				297409F618C37117008A5AF9 /* SSShiftMultipSelectTVC.h */,
 				297409F718C37117008A5AF9 /* SSShiftMultipSelectTVC.m */,
 				297409E418C323D5008A5AF9 /* SSSingleSelectTVC.h */,
@@ -951,6 +967,10 @@
 		2991F79817B780A8009AF142 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2991F80217B791C1009AF142 /* LongAlarmList.plist */,
+				29E980F1164177B600B65A7E /* AlarmList.plist */,
+				2915099618C8A4B300BE360D /* remove.png */,
+				2915099718C8A4B300BE360D /* remove@2x.png */,
 				296915F018C63C3100B743F3 /* arrow-left.png */,
 				296915F118C63C3100B743F3 /* arrow-left@2x.png */,
 				296915F218C63C3100B743F3 /* arrow-right.png */,
@@ -991,6 +1011,7 @@
 				293970D3164E8AC200A79721 /* grayButtonBackgroud@2x.png */,
 				29E9810A1642DBB600B65A7E /* Default-568h@2x.png */,
 				2991F79917B780A8009AF142 /* addButton.png */,
+				2991F7BA17B780A9009AF142 /* icons */,
 				2991F79A17B780A8009AF142 /* alarm */,
 				2991F7B217B780A9009AF142 /* arrow-circular-alt-1.png */,
 				2991F7B317B780A9009AF142 /* Calendar-icon-114x114.png */,
@@ -1000,7 +1021,6 @@
 				2991F7B717B780A9009AF142 /* greenButtonBackgroud.png */,
 				2991F7B817B780A9009AF142 /* greenButtonBackgroud@2x.png */,
 				2991F7B917B780A9009AF142 /* GSFacesInfo.png */,
-				2991F7BA17B780A9009AF142 /* icons */,
 				2991F7C217B780A9009AF142 /* notify.caf */,
 				2991F7C317B780A9009AF142 /* Notify.mp3 */,
 				2991F7C417B780A9009AF142 /* overdate.png */,
@@ -1168,8 +1188,6 @@
 			children = (
 				297409E818C323DE008A5AF9 /* General UI */,
 				2920039D18B5A1DD000CA7D3 /* CalSync */,
-				29F2147B14E66DB7008BEE92 /* UIImage+MonoImage.h */,
-				29F2147C14E66DB7008BEE92 /* UIImage+MonoImage.m */,
 				29B460CD182E0AA70059F149 /* MainUI */,
 				290F4E331783EA2C0023ADE8 /* Calendar */,
 				29E6D7F215ADC59A00235123 /* Share */,
@@ -1485,12 +1503,14 @@
 				29D93EA318B9D3020087806B /* SSCalendarSyncController.h in Headers */,
 				29F49CAA156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.h in Headers */,
 				297409F818C37117008A5AF9 /* SSShiftMultipSelectTVC.h in Headers */,
+				2915099C18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.h in Headers */,
 				29D6A528159CB4B600AC6103 /* UIViewAdditions.h in Headers */,
 				2980757518B25462003A733F /* InfoNode.h in Headers */,
 				29009FCD159F4A4D00A1588E /* SSSettingTVC.h in Headers */,
 				29009FD5159F4AA100A1588E /* SSShiftHolidayCreateVC.h in Headers */,
 				29009FD8159F4AA100A1588E /* ShiftPickerDataSource.h in Headers */,
 				29009FE1159F4AB600A1588E /* DatePickerViewController2.h in Headers */,
+				2915099118C7800D00BE360D /* SSCalendarSyncOperation.h in Headers */,
 				29009FE5159F4AB600A1588E /* SSShiftHolidayList.h in Headers */,
 				29009FEA159F4AE500A1588E /* UIColor+HexCoding.h in Headers */,
 				29B460D0182E0AF20059F149 /* SSMainNavigationController.h in Headers */,
@@ -1748,6 +1768,7 @@
 				297409EF18C36311008A5AF9 /* sync-icon.png in Resources */,
 				2980756F18B12364003A733F /* blueArrowRight@2x.png in Resources */,
 				290317B5164FE5FD008C258E /* overdate.png in Resources */,
+				2915099918C8A4B300BE360D /* remove@2x.png in Resources */,
 				297FDBC918A7D3B100BA0240 /* menu@2x.png in Resources */,
 				290F4E3B1783EF1B0023ADE8 /* SSDayEventUTC.xib in Resources */,
 				2991F79717B78026009AF142 /* strike_icon@2x.png in Resources */,
@@ -1772,6 +1793,7 @@
 				2991F81517B7971C009AF142 /* 美妙清晨.caf in Resources */,
 				2991F81617B7971C009AF142 /* 木琴.caf in Resources */,
 				2991F81717B7971C009AF142 /* 起床闹钟.caf in Resources */,
+				2915099818C8A4B300BE360D /* remove.png in Resources */,
 				2991F81817B7971C009AF142 /* 甜美舞曲.caf in Resources */,
 				2991F81917B7971C009AF142 /* 自然晨曦.caf in Resources */,
 			);
@@ -1898,8 +1920,10 @@
 				29E98CBE14EFDA340048AF49 /* SCPathUtils.m in Sources */,
 				29FA9AF414F48DAE00717505 /* SSAlertController.m in Sources */,
 				29AEBDB115612CBA0010F27D /* ShiftAlgoBase.m in Sources */,
+				2915099D18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.m in Sources */,
 				29AEBDB315612CBA0010F27D /* ShiftAlgoFreeRound.m in Sources */,
 				29AEBDE815628BAB0010F27D /* ShiftAlgoFreeJump.m in Sources */,
+				2915099218C7800D00BE360D /* SSCalendarSyncOperation.m in Sources */,
 				299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */,
 				29F49CA7156FDAD900C76EFC /* SSShiftTableConfigTVC.m in Sources */,
 				29F49CAB156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.m in Sources */,

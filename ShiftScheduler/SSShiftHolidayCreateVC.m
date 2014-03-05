@@ -95,8 +95,7 @@
                                  [ShiftDay returnStringForType:@TYPE_VACATION]];
     UISegmentedControl *control = [[UISegmentedControl alloc] initWithItems:changeShiftTypes];
     control.selectedSegmentIndex = 0;
-    control.segmentedControlStyle = UISegmentedControlStyleBar;
-    [control addTarget:self action:@selector(shiftTypeChanged:) 
+    [control addTarget:self action:@selector(shiftTypeChanged:)
       forControlEvents:UIControlEventValueChanged];
     changeShiftSegmentControl = control;
     return changeShiftSegmentControl;

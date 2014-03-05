@@ -103,20 +103,10 @@ enum {
 	
     // Create a new managed object context for the new book -- set its persistent store coordinator to the same as that from the fetched results controller's context.
     NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+    addingContext.undoManager = nil; // Undo manager is not needed here.
     self.addingManagedObjectContext = addingContext;
-    
-#if 1
     [addingManagedObjectContext setPersistentStoreCoordinator:[[self.fetchedResultsController managedObjectContext] persistentStoreCoordinator]];
     
-#else 
-    // this below not work....
-    NSManagedObjectModel *model = [[[self.fetchedResultsController managedObjectContext] persistentStoreCoordinator] managedObjectModel];
-    
-    NSPersistentStoreCoordinator *newco = [[NSPersistentStoreCoordinator alloc]
-                                              initWithManagedObjectModel:model];
-    [newco addPersistentStoreWithType:NSInMemoryStoreType configuration:nil URL:nil options:nil error:NULL];
-    [self.addingManagedObjectContext setPersistentStoreCoordinator:newco];
-#endif
     addViewController.managedObjectContext = addingContext;
     // use same manage object context can auto update the frc.
     OneJob *job = [NSEntityDescription insertNewObjectForEntityForName:@"OneJob" inManagedObjectContext:addingContext];

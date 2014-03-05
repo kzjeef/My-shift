@@ -72,6 +72,10 @@
     return self;
 }
 
+- (void) dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void) managedContextDataChanged:(NSNotification *) saveNotifaction
 {
     NSError *error;

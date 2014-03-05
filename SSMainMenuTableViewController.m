@@ -11,9 +11,20 @@
 
 @interface SSMainMenuTableViewController ()
 
+@property (strong, nonatomic) NSDateFormatter *formatter;
 @end
 
 @implementation SSMainMenuTableViewController
+
+- (NSDateFormatter *) formatter
+{
+    if (_formatter == nil){
+        _formatter = [[NSDateFormatter alloc] init];
+        [_formatter setDateStyle:NSDateFormatterMediumStyle];
+    }
+    return _formatter;
+    
+}
 
 - (id) initWithStyle:(UITableViewStyle)style nameArray: (NSArray *) nameArray iconArray: (NSArray *)iconArray
 {
@@ -31,11 +42,7 @@
 {
     [super viewDidLoad];
 
-    self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
-
-    if ([self.tableView respondsToSelector:@selector(separatorInset)])
-        self.tableView.separatorInset = UIEdgeInsetsMake(0, 7, 0, 7);
-
+    self.tableView.separatorColor = UIColorFromRGB(0xCAD1D4);
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -44,9 +51,24 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
+    cell.textLabel.textColor = self.navigationController.tabBarController.tabBar.barTintColor;
     //    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
 
+    self.tableView.tableHeaderView = ({
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 80.0f)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(70, 40, 0, 24)];
+        label.text = [self.formatter stringFromDate:[NSDate date]];
+        label.textColor = UIColorFromRGB(0xFFFFFF);
+        label.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
+        [label sizeToFit];
+        [view setBackgroundColor:[UIColorFromRGB(0x0466C0) colorWithAlphaComponent:0.9f]];
+
+        /* TODO: add lunar calendar text show here. */
+        /* TODO: add holiday here. */
+        [view addSubview:label];
+        view;
+    });
+    /*
     self.tableView.tableHeaderView = ({
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
@@ -62,7 +84,7 @@
 
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
         label.text = APP_NAME_STR;
-        label.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
+     label.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
         [label sizeToFit];
@@ -72,12 +94,13 @@
         [view addSubview:label];
         view;
     });
+     */
 
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return 54;
 }
 
 - (void)didReceiveMemoryWarning
@@ -111,7 +134,7 @@
     if (indexPath.section == 0) {
         // -1 is to remove the first item, the big logo.
         cell.textLabel.text = [self.menuItemNameList objectAtIndex:(indexPath.row)];
-        cell.textLabel.textColor = [UIColor blueColor];
+
         NSString *str = [self.menuItemIconPathList objectAtIndex:(indexPath.row)];
 
         if (str != NULL && str.length > 0) {

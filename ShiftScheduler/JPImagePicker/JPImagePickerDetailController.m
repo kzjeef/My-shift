@@ -37,7 +37,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	originalStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];
 	[super viewWillAppear:animated];
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 	[self prepareForImageNumber:imageNumber];

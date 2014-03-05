@@ -30,8 +30,6 @@
     [super viewDidLoad];
 	
 	originalStatusBarStyle = [UIApplication sharedApplication].statusBarStyle;
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
-	
 	overviewController = [[JPImagePickerOverviewController alloc] initWithImagePickerController:self];
 	modalNavigationController = [[UINavigationController alloc] initWithRootViewController:overviewController];	
 	modalNavigationController.view.frame = self.view.bounds;

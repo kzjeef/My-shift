@@ -49,7 +49,7 @@ enum {
 #define CREATE_PROFILE_PROMPT NSLocalizedString(@"You don't have any shift profile yet. Do you want to create one? ", "prompt of create profile title")
 #define CREATE_PROFILE_NO  NSLocalizedString(@"No,Thanks", "no create one")
 #define CREATE_PROFILE_YES  NSLocalizedString(@"Create Profile", "create one")
-#define SYNC_CALENDAR       NSLocalizedString(@"Sync to Phone", "sync to phone")
+#define SYNC_CALENDAR       NSLocalizedString(@"Syncing", "sync to phone")
 
 #define DID_SHIFT_MIGRATION @"user_migration_done"
 
@@ -144,14 +144,16 @@ enum {
 }
 
 - (void) themeInit {
-    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x067AB6)];
-    [[UINavigationBar appearance] setTintColor:[ UIColor whiteColor]];
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x0466C0)];
+    //    [[UINavigationBar appearance] setTintColor:[ UIColor whiteColor]];
+    [[UINavigationBar appearance] setTintColor:UIColorFromRGB(0xecf0f1)];
     
     NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [UIColor whiteColor],
                                 NSForegroundColorAttributeName, nil];
     
     [[UINavigationBar appearance] setTitleTextAttributes:attributes];
+    [[UITableView appearance] setTintColor:UIColorFromRGB(0x34495e)];
     //    [[UINavigationBar appearance] setTranslucent:YES];
 }
 

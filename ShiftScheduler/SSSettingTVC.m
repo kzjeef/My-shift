@@ -34,9 +34,6 @@
 #define HOLIDAY_PICK_ITEM   NSLocalizedString(@"Holiday", "enable chinese calendar config title")
 #define HOLIDAY_PICK_ITEM_HLEP NSLocalizedString(@"pick your region to show holidays", "show region hlidays help")
 
-#define SYNC_CALENDAR_ITEM NSLocalizedString(@"Sync Calendar", "sync to phone calendar")
-#define SYNC_CALENDAR_ITEM_HELP NSLocalizedString(@"sync shift events to phone calendar", "sync to phone calendar help")
-
 #define LOGIN_THINKNOTE_ITEM    NSLocalizedString(@"Login ThinkNote", "thinkNote Login")
 
 #define CANCEL_STR NSLocalizedString(@"Cancel", "cancel")
@@ -76,7 +73,7 @@ enum {
 - (NSArray *) appConfigHelpArray
 {
     if (!appConfigHelpArray)
-        appConfigHelpArray = @[LUNAR_ENABLE_TEIM_HELP, MONDAY_START_ITEM_HELP, HOLIDAY_PICK_ITEM_HLEP, SYNC_CALENDAR_ITEM_HELP];
+        appConfigHelpArray = @[LUNAR_ENABLE_TEIM_HELP, MONDAY_START_ITEM_HELP, HOLIDAY_PICK_ITEM_HLEP];
 
     return appConfigHelpArray;
 }
@@ -84,7 +81,7 @@ enum {
 - (NSArray *) appConfigArray
 {
     if (!appConfigArray)
-        appConfigArray = @[ LUNAR_ENABLE_ITEM, MONDAY_START_ITEM, HOLIDAY_PICK_ITEM, SYNC_CALENDAR_ITEM];
+        appConfigArray = @[ LUNAR_ENABLE_ITEM, MONDAY_START_ITEM, HOLIDAY_PICK_ITEM];
 
     return appConfigArray;
 }
@@ -168,6 +165,10 @@ enum {
                                                  name:SSSocialAccountChangedNotification
                                                object:nil];
 
+}
+
+- (void) dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
