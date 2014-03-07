@@ -48,10 +48,22 @@ typedef enum : NSInteger {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.modalPresentationStyle = UIModalPresentationFormSheet;
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self.view setGestureRecognizers: @[[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]]];
 
 
 
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return NO;
 }
 
 - (void) viewDidAppear:(BOOL)animated

@@ -136,13 +136,6 @@ enum {
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.title = NSLocalizedString(@"Settings", "Settings");
-    
-    
-    
-    
-                           
-
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = YES;
     

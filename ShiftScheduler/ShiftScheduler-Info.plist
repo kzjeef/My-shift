@@ -54,6 +54,8 @@
 	<true/>
 	<key>UIStatusBarHidden</key>
 	<false/>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 	<key>UIStatusBarTintParameters</key>
 	<dict>
 		<key>UINavigationBar</key>

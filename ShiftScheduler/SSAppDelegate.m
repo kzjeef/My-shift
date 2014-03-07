@@ -125,7 +125,8 @@ enum {
                                               nil];
 
     }
-
+    
+    self.rightAS.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     [self rightButtonSwitchToShareOrBusy:YES];
 
     // 6. setup share operation, and add it in Kal view.
@@ -140,7 +141,6 @@ enum {
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyWeekStartHandler:) name:SS_LOCAL_NOTIFY_WEEK_START_CHANGED object:nil];
     [self notifyWeekStartHandler:nil];
-    [self themeInit];
 }
 
 - (void) themeInit {
@@ -154,7 +154,6 @@ enum {
     
     [[UINavigationBar appearance] setTitleTextAttributes:attributes];
     [[UITableView appearance] setTintColor:UIColorFromRGB(0x34495e)];
-    //    [[UINavigationBar appearance] setTranslucent:YES];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -205,6 +204,8 @@ enum {
 
     [self initCoreData];
     
+    [self themeInit];
+    
     return YES;
 }
 
@@ -227,13 +228,15 @@ enum {
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = _frostedViewController;
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor clearColor];
+    self.window.rootViewController.view.tintColor = [UIColor redColor];
     [self.window makeKeyAndVisible];
 }
 
 - (void) initFrostedMainMenu:(NSArray *) nameArray withIcons:(NSArray *) iconArray
 {
     self.navController = [[SSMainNavigationController alloc] init];
+    
 
     SSMainMenuTableViewController *menuController = [[SSMainMenuTableViewController alloc] initWithStyle:UITableViewStylePlain nameArray:nameArray
                                                                                                iconArray:iconArray];

@@ -45,20 +45,6 @@
 		292652D3174D0F1400ACE37F /* libSSLunarDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F1BCF416D26A650097F9CC /* libSSLunarDate.a */; };
 		29293D9215DFE778006B6907 /* SSSocialThinkNoteLogin.h in Headers */ = {isa = PBXBuildFile; fileRef = 29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */; };
 		29293D9315DFE778006B6907 /* SSSocialThinkNoteLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 29293D9115DFE777006B6907 /* SSSocialThinkNoteLogin.m */; };
-		2929A44414D04B360059728D /* InfColorBarPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 2929A43614D04B360059728D /* InfColorBarPicker.h */; };
-		2929A44514D04B360059728D /* InfColorBarPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2929A43714D04B360059728D /* InfColorBarPicker.m */; };
-		2929A44614D04B360059728D /* InfColorIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2929A43814D04B360059728D /* InfColorIndicatorView.h */; };
-		2929A44714D04B360059728D /* InfColorIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2929A43914D04B360059728D /* InfColorIndicatorView.m */; };
-		2929A44814D04B360059728D /* InfColorPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 2929A43A14D04B360059728D /* InfColorPicker.h */; };
-		2929A44914D04B360059728D /* InfColorPickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2929A43B14D04B360059728D /* InfColorPickerController.h */; };
-		2929A44A14D04B360059728D /* InfColorPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2929A43C14D04B360059728D /* InfColorPickerController.m */; };
-		2929A44B14D04B360059728D /* InfColorPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2929A43D14D04B360059728D /* InfColorPickerView.xib */; };
-		2929A44C14D04B360059728D /* InfColorSquarePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 2929A43E14D04B360059728D /* InfColorSquarePicker.h */; };
-		2929A44D14D04B360059728D /* InfColorSquarePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2929A43F14D04B360059728D /* InfColorSquarePicker.m */; };
-		2929A44E14D04B360059728D /* InfHSBSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 2929A44014D04B360059728D /* InfHSBSupport.h */; };
-		2929A44F14D04B360059728D /* InfHSBSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2929A44114D04B360059728D /* InfHSBSupport.m */; };
-		2929A45014D04B360059728D /* InfSourceColorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2929A44214D04B360059728D /* InfSourceColorView.h */; };
-		2929A45114D04B360059728D /* InfSourceColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2929A44314D04B360059728D /* InfSourceColorView.m */; };
 		292DBCAA14CA943F00C87A70 /* JPImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 292DBCA014CA943F00C87A70 /* JPImagePickerController.h */; };
 		292DBCAB14CA943F00C87A70 /* JPImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 292DBCA114CA943F00C87A70 /* JPImagePickerController.m */; };
 		292DBCAC14CA943F00C87A70 /* JPImagePickerDetailController.h in Headers */ = {isa = PBXBuildFile; fileRef = 292DBCA214CA943F00C87A70 /* JPImagePickerDetailController.h */; };
@@ -431,20 +417,6 @@
 		292003A018B5A269000CA7D3 /* CalendarSyncTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarSyncTVC.xib; path = ShiftScheduler/CalendarSync/CalendarSyncTVC.xib; sourceTree = "<group>"; };
 		29293D9015DFE777006B6907 /* SSSocialThinkNoteLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSocialThinkNoteLogin.h; path = ShiftScheduler/SSSocialThinkNoteLogin.h; sourceTree = "<group>"; };
 		29293D9115DFE777006B6907 /* SSSocialThinkNoteLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSSocialThinkNoteLogin.m; path = ShiftScheduler/SSSocialThinkNoteLogin.m; sourceTree = "<group>"; };
-		2929A43614D04B360059728D /* InfColorBarPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfColorBarPicker.h; path = ColorPicker/InfColorPicker/InfColorBarPicker.h; sourceTree = "<group>"; };
-		2929A43714D04B360059728D /* InfColorBarPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfColorBarPicker.m; path = ColorPicker/InfColorPicker/InfColorBarPicker.m; sourceTree = "<group>"; };
-		2929A43814D04B360059728D /* InfColorIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfColorIndicatorView.h; path = ColorPicker/InfColorPicker/InfColorIndicatorView.h; sourceTree = "<group>"; };
-		2929A43914D04B360059728D /* InfColorIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfColorIndicatorView.m; path = ColorPicker/InfColorPicker/InfColorIndicatorView.m; sourceTree = "<group>"; };
-		2929A43A14D04B360059728D /* InfColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfColorPicker.h; path = ColorPicker/InfColorPicker/InfColorPicker.h; sourceTree = "<group>"; };
-		2929A43B14D04B360059728D /* InfColorPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfColorPickerController.h; path = ColorPicker/InfColorPicker/InfColorPickerController.h; sourceTree = "<group>"; };
-		2929A43C14D04B360059728D /* InfColorPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfColorPickerController.m; path = ColorPicker/InfColorPicker/InfColorPickerController.m; sourceTree = "<group>"; };
-		2929A43D14D04B360059728D /* InfColorPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InfColorPickerView.xib; path = ColorPicker/InfColorPicker/InfColorPickerView.xib; sourceTree = "<group>"; };
-		2929A43E14D04B360059728D /* InfColorSquarePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfColorSquarePicker.h; path = ColorPicker/InfColorPicker/InfColorSquarePicker.h; sourceTree = "<group>"; };
-		2929A43F14D04B360059728D /* InfColorSquarePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfColorSquarePicker.m; path = ColorPicker/InfColorPicker/InfColorSquarePicker.m; sourceTree = "<group>"; };
-		2929A44014D04B360059728D /* InfHSBSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfHSBSupport.h; path = ColorPicker/InfColorPicker/InfHSBSupport.h; sourceTree = "<group>"; };
-		2929A44114D04B360059728D /* InfHSBSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfHSBSupport.m; path = ColorPicker/InfColorPicker/InfHSBSupport.m; sourceTree = "<group>"; };
-		2929A44214D04B360059728D /* InfSourceColorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfSourceColorView.h; path = ColorPicker/InfColorPicker/InfSourceColorView.h; sourceTree = "<group>"; };
-		2929A44314D04B360059728D /* InfSourceColorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InfSourceColorView.m; path = ColorPicker/InfColorPicker/InfSourceColorView.m; sourceTree = "<group>"; };
 		292DBCA014CA943F00C87A70 /* JPImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JPImagePickerController.h; path = JPImagePicker/JPImagePickerController.h; sourceTree = "<group>"; };
 		292DBCA114CA943F00C87A70 /* JPImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JPImagePickerController.m; path = JPImagePicker/JPImagePickerController.m; sourceTree = "<group>"; };
 		292DBCA214CA943F00C87A70 /* JPImagePickerDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JPImagePickerDetailController.h; path = JPImagePicker/JPImagePickerDetailController.h; sourceTree = "<group>"; };
@@ -764,27 +736,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		29057D1D14D0477C00155E12 /* Color Picker */ = {
-			isa = PBXGroup;
-			children = (
-				2929A43614D04B360059728D /* InfColorBarPicker.h */,
-				2929A43714D04B360059728D /* InfColorBarPicker.m */,
-				2929A43814D04B360059728D /* InfColorIndicatorView.h */,
-				2929A43914D04B360059728D /* InfColorIndicatorView.m */,
-				2929A43A14D04B360059728D /* InfColorPicker.h */,
-				2929A43B14D04B360059728D /* InfColorPickerController.h */,
-				2929A43C14D04B360059728D /* InfColorPickerController.m */,
-				2929A43D14D04B360059728D /* InfColorPickerView.xib */,
-				2929A43E14D04B360059728D /* InfColorSquarePicker.h */,
-				2929A43F14D04B360059728D /* InfColorSquarePicker.m */,
-				2929A44014D04B360059728D /* InfHSBSupport.h */,
-				2929A44114D04B360059728D /* InfHSBSupport.m */,
-				2929A44214D04B360059728D /* InfSourceColorView.h */,
-				2929A44314D04B360059728D /* InfSourceColorView.m */,
-			);
-			name = "Color Picker";
-			sourceTree = "<group>";
-		};
 		290885F01573D90000465EE1 /* DayRound */ = {
 			isa = PBXGroup;
 			children = (
@@ -1108,7 +1059,6 @@
 				290885F11573D93D00465EE1 /* Alarm */,
 				290885F01573D90000465EE1 /* DayRound */,
 				2958CFBD1568DC2A00E273C3 /* Free Jump Profile */,
-				29057D1D14D0477C00155E12 /* Color Picker */,
 				292DBC8A14CA931800C87A70 /* JPImage Picker */,
 				29B9E1E01472C39F00DB2E1F /* ShiftProfileChangeViewController.h */,
 				29B9E1E11472C39F00DB2E1F /* ShiftProfileChangeViewController.m */,
@@ -1469,15 +1419,8 @@
 				292DBCB214CA943F00C87A70 /* UIImageResizing.h in Headers */,
 				29E339D414CA955A0036EAED /* ProfileIconPickerDataSource.h in Headers */,
 				297409E618C323D5008A5AF9 /* SSSingleSelectTVC.h in Headers */,
-				2929A44414D04B360059728D /* InfColorBarPicker.h in Headers */,
-				2929A44614D04B360059728D /* InfColorIndicatorView.h in Headers */,
 				29B460D4182E0B1D0059F149 /* SSMainMenuTableViewController.h in Headers */,
 				299A256D18BB967D00592137 /* SyncEvent.h in Headers */,
-				2929A44814D04B360059728D /* InfColorPicker.h in Headers */,
-				2929A44914D04B360059728D /* InfColorPickerController.h in Headers */,
-				2929A44C14D04B360059728D /* InfColorSquarePicker.h in Headers */,
-				2929A44E14D04B360059728D /* InfHSBSupport.h in Headers */,
-				2929A45014D04B360059728D /* InfSourceColorView.h in Headers */,
 				2935514414E2BABA004D8FAC /* SSTurnShiftTVC.h in Headers */,
 				29F2147D14E66DB7008BEE92 /* UIImage+MonoImage.h in Headers */,
 				29C943B014E957F700122144 /* SSKalDelegate.h in Headers */,
@@ -1710,7 +1653,6 @@
 				292DBCB114CA943F00C87A70 /* JPImagePickerOverviewController.xib in Resources */,
 				292003A318B5A269000CA7D3 /* CalendarSyncTVC.xib in Resources */,
 				297FDBC818A7D3B100BA0240 /* menu.png in Resources */,
-				2929A44B14D04B360059728D /* InfColorPickerView.xib in Resources */,
 				2935514614E2BABA004D8FAC /* SSTurnShiftTVC.xib in Resources */,
 				296915EE18C629FA00B743F3 /* colors_crayola.plist in Resources */,
 				29C943B814E9642900122144 /* SSProfileTimeAndAlarmVC.xib in Resources */,
@@ -1895,13 +1837,7 @@
 				29D93EA418B9D3020087806B /* SSCalendarSyncController.m in Sources */,
 				292DBCB314CA943F00C87A70 /* UIImageResizing.m in Sources */,
 				29E339D514CA955A0036EAED /* ProfileIconPickerDataSource.m in Sources */,
-				2929A44514D04B360059728D /* InfColorBarPicker.m in Sources */,
-				2929A44714D04B360059728D /* InfColorIndicatorView.m in Sources */,
-				2929A44A14D04B360059728D /* InfColorPickerController.m in Sources */,
-				2929A44D14D04B360059728D /* InfColorSquarePicker.m in Sources */,
 				292003A218B5A269000CA7D3 /* CalendarSyncTVC.m in Sources */,
-				2929A44F14D04B360059728D /* InfHSBSupport.m in Sources */,
-				2929A45114D04B360059728D /* InfSourceColorView.m in Sources */,
 				2935514514E2BABA004D8FAC /* SSTurnShiftTVC.m in Sources */,
 				29F2147E14E66DB7008BEE92 /* UIImage+MonoImage.m in Sources */,
 				29C943B214E9581600122144 /* SSKalDelegate.m in Sources */,
