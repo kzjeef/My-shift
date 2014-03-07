@@ -55,8 +55,11 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     frontMonthView = [[KalMonthView alloc] initWithFrame:monthRect delegate:theDelegate];
     backMonthView = [[KalMonthView alloc] initWithFrame:monthRect delegate:theDelegate];
     backMonthView.hidden = YES;
+
     [self addSubview:backMonthView];
     [self addSubview:frontMonthView];
+
+    self.backgroundColor = [UIColor colorWithRed:0.90f green:0.9f blue:0.9f alpha:1.0f];
 
     [self jumpToSelectedMonth];
   }
@@ -67,8 +70,8 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (void)drawRect:(CGRect)rect
 {
-  [[UIImage imageNamed:@"Kal.bundle/kal_grid_background.png"] drawInRect:rect];
-  [[UIColor colorWithRed:0.63f green:0.65f blue:0.68f alpha:1.f] setFill];
+    //  [[UIImage imageNamed:@"Kal.bundle/kal_grid_background.png"] drawInRect:rect];
+    //  [[UIColor colorWithRed:0.63f green:0.65f blue:0.68f alpha:1.f] setFill];
   CGRect line;
   line.origin = CGPointMake(0.f, self.height - 1.f);
   line.size = CGSizeMake(self.width, 1.f);

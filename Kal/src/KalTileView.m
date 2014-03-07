@@ -133,14 +133,13 @@ extern const CGSize kTileSize;
   textY = 0.f + roundf(textPosition * (kTileSize.height - textSize.height));
 
     // draw the background based on the state of current selection.
-
-#define RED_FILL_COLOR red:.80 green:.05 blue:0 alpha:.7
+#define RED_FILL_COLOR red:.015 green:0.4 blue:0.752 alpha:.9
 #define GREEN_FILL_COLOR red:0.f green:.9 blue:0.1 alpha:.125
 #define HOLIDAY_FILL_COLOR red:.25f green:.5019f blue:0.0 alpha:1
 #define BLUE_FILL_COLOR red:0.f green:0.34f  blue:.98  alpha:.7
+
   if ([self isHoliday]) {
         textColor = [self holidayTextColor:textColor];
-
         /* If holiday, draw a little line under the text */
         CGContextSaveGState(ctx);
         CGContextSetLineWidth(ctx, 1.5f);

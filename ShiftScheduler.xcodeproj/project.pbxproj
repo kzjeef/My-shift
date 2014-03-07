@@ -134,6 +134,7 @@
 		2991F81717B7971C009AF142 /* 起床闹钟.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F80C17B7971C009AF142 /* 起床闹钟.caf */; };
 		2991F81817B7971C009AF142 /* 甜美舞曲.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F80D17B7971C009AF142 /* 甜美舞曲.caf */; };
 		2991F81917B7971C009AF142 /* 自然晨曦.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F80E17B7971C009AF142 /* 自然晨曦.caf */; };
+		2995A42018CA5381004782DF /* arrow-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 2995A41F18CA5381004782DF /* arrow-down.png */; };
 		299A256D18BB967D00592137 /* SyncEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 299A256B18BB967D00592137 /* SyncEvent.h */; };
 		299A256E18BB967D00592137 /* SyncEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 299A256C18BB967D00592137 /* SyncEvent.m */; };
 		299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */; };
@@ -551,6 +552,7 @@
 		2991F80C17B7971C009AF142 /* 起床闹钟.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "起床闹钟.caf"; path = "Resources/alarm/long/起床闹钟.caf"; sourceTree = "<group>"; };
 		2991F80D17B7971C009AF142 /* 甜美舞曲.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "甜美舞曲.caf"; path = "Resources/alarm/long/甜美舞曲.caf"; sourceTree = "<group>"; };
 		2991F80E17B7971C009AF142 /* 自然晨曦.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "自然晨曦.caf"; path = "Resources/alarm/long/自然晨曦.caf"; sourceTree = "<group>"; };
+		2995A41F18CA5381004782DF /* arrow-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-down.png"; sourceTree = "<group>"; };
 		299A256B18BB967D00592137 /* SyncEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyncEvent.h; path = CalendarSync/SyncEvent.h; sourceTree = "<group>"; };
 		299A256C18BB967D00592137 /* SyncEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyncEvent.m; path = CalendarSync/SyncEvent.m; sourceTree = "<group>"; };
 		299E33A0156A74820066E843 /* SSShiftWorkdayConfigTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSShiftWorkdayConfigTVC.h; sourceTree = "<group>"; };
@@ -918,6 +920,7 @@
 		2991F79817B780A8009AF142 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2995A41F18CA5381004782DF /* arrow-down.png */,
 				2991F80217B791C1009AF142 /* LongAlarmList.plist */,
 				29E980F1164177B600B65A7E /* AlarmList.plist */,
 				2915099618C8A4B300BE360D /* remove.png */,
@@ -1688,6 +1691,7 @@
 				29E9810616419E1500B65A7E /* Procyon.caf in Resources */,
 				29E9810716419E1500B65A7E /* Revelation.caf in Resources */,
 				2980756618B1208A003A733F /* blueArrowDown.png in Resources */,
+				2995A42018CA5381004782DF /* arrow-down.png in Resources */,
 				297FDBD318A88D0100BA0240 /* share@2x.png in Resources */,
 				29E9810816419E1500B65A7E /* TwirlAway.caf in Resources */,
 				29E9810B1642DBB700B65A7E /* Default-568h@2x.png in Resources */,

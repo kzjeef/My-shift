@@ -313,7 +313,8 @@ enum {
 - (void)showRightActionSheet
 {
     // friendly for iPAD
-    [self.rightAS showFromBarButtonItem: _kalController.navigationItem.rightBarButtonItem animated:YES];
+//    [self.rightAS showFromBarButtonItem: _kalController.navigationItem.rightBarButtonItem animated:YES];
+    [self.rightAS showFromToolbar:self.navController.toolbar];
 }
 
 - (SSShareProfileListViewController *)shareProfilesVC
