@@ -13,6 +13,8 @@
 #import "config.h"
 
 #define kCalendarSyncTitle   NSLocalizedString(@"Sync Phone Calendar", "")
+
+#define kEnableCalendarSync NSLocalizedString(@"Enable Calendar Sync", "")
 #define kDoSyncItem NSLocalizedString(@"Manual Sync", "")
 #define kAlertInCalendarItem NSLocalizedString(@"Alert Setup", "")
 #define kShiftSelectItem     NSLocalizedString(@"Shifts to Sync", "")
@@ -39,6 +41,9 @@
 #define kCalendarLengthDetal NSLocalizedString(@"Sync the length days shift events of selected shift to phone calendar. Calendar events will be re created for any setting changes", "")
 #define kCalendarDeleveDetail NSLocalizedString(@"Delete all events created by scheduler from phone calendar", "")
 
+#define kSSCalendarAccessError NSLocalizedString(@"Access system calendar error, you need to enable calendar access by Setting -> Privacy -> Calendar", "")  
+
+
 /// TODO: add note to user, event it's a auto sync, it's still require
 /// user open the app after the length of further time is about to
 /// expired.
@@ -51,6 +56,7 @@
 @property (nonatomic, strong) IBOutlet UISwitch  *enableSyncSwitch;
 @property (nonatomic, strong) IBOutlet UISwitch  *alarmSwitch;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *busyIndicator;
+@property                       BOOL    eventProcessWorking;
 @property                       BOOL    disabled;
 - (IBAction)enableSyncValueChanged:(id)sender;
 - (IBAction)enableAlarmSwitchValueChanged:(id)sender;
@@ -86,6 +92,7 @@
 - (NSArray*) menuArray {
   if (_menuArray == nil)
     _menuArray = @[@[
+            kEnableCalendarSync,
                      kDoSyncItem
                      ],
                    @[
@@ -103,6 +110,7 @@
 - (NSArray *) detailArray {
     if (_detailArray == nil)
         _detailArray = @[ @[
+                          @"",
                           @"",
                           ],
                       @[
@@ -141,6 +149,8 @@
     
     self.alarmSwitch.on = [SSCalendarSyncController getAlarmSyncSetting];
 
+    self.enableSyncSwitch.on = [SSCalendarSyncController getCalendarSyncEnable];
+
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(calendarEventProcessStart)
                                                  name: kSSCalendarSyncStartNotification
@@ -150,10 +160,20 @@
                                              selector: @selector(calendarEventProcessFinish:)
                                                  name: kSSCalendarSyncStopNotification
                                                object: nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(calendarEventProcessError:)
+                                                 name: kSSCalendarSyncErrorNotification
+                                               object: nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(calendarEnableChanged)
+                                                 name: kSSCalendarSyncEnableSettingChangedNotification
+                                               object:nil];
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -205,8 +225,13 @@
     cell.textLabel.text = [[self.menuArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [[self.detailArray objectAtIndex:indexPath.section] objectAtIndex: indexPath.row];
 
-    if ([cell.textLabel.text compare:kDoSyncItem] == NSOrderedSame) {
+    if ([cell.textLabel.text compare:kEnableCalendarSync ] == NSOrderedSame) {
         [self.enableSyncSwitch adjustFrameForTableViewCell:cell];
+        if ([cell.contentView.subviews indexOfObject:self.enableSyncSwitch] == NSNotFound)
+            [cell.contentView addSubview:self.enableSyncSwitch];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+   } else if ([cell.textLabel.text compare:kDoSyncItem] == NSOrderedSame) {
         cell.textLabel.textColor = UIColorFromRGB(0x0466C0);
         NSString *syncIconPath = [[NSBundle mainBundle] pathForResource:@"sync-icon" ofType:@"png"];
         cell.imageView.image = [[[UIImage alloc] initWithContentsOfFile:syncIconPath] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -216,6 +241,7 @@
         [self.alarmSwitch adjustFrameForTableViewCell:cell];
         [cell.contentView addSubview:self.alarmSwitch];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     } else if ([cell.textLabel.text compare:kDeleteEventsItem] == NSOrderedSame) {
         cell.textLabel.textColor = [UIColor redColor];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
@@ -223,6 +249,7 @@
         cell.imageView.image = [[[UIImage alloc] initWithContentsOfFile:removeIconPath] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         cell.imageView.tintColor = [UIColor redColor];
         [cell.textLabel sizeToFit];
+
     } else if ([cell.textLabel.text compare:kLengthItem] == NSOrderedSame) {
         cell.detailTextLabel.text = [self getStringLength];
     }
@@ -243,15 +270,20 @@
         return indexPath;
 }
 
+- (void) notifyUserEnableCalendarAccess {
+    
+    UIAlertView *v = [[UIAlertView alloc] initWithTitle:@"" message:kSSCalendarAccessError delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [v show];
+}
+
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *title = [[self.menuArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    int count;
-    
+
     if (title == kDoSyncItem) {
         [self.busyIndicator startAnimating];
-        count = [self.calendarSyncController setupAllEKEvent:YES];
+        [self.calendarSyncController setupAllEKEvent:YES];
     }
     if (title == kLengthItem) {
         SSSingleSelectTVC *select = [[SSSingleSelectTVC alloc] initWithStyle:UITableViewStylePlain];
@@ -272,9 +304,9 @@
         for (OneJob *s in list)
             [array addObject:s.objectID];
         select.items = array;
-       select.delegate = self;
-       select.navigationItem.title = kShiftSelectItem;
-       [self presentViewController: navController animated: YES completion:nil];
+        select.delegate = self;
+        select.navigationItem.title = kShiftSelectItem;
+        [self presentViewController: navController animated: YES completion:nil];
     }
 
     if (title == kDeleteEventsItem) {
@@ -286,10 +318,9 @@
 
 - (IBAction)enableSyncValueChanged:(id)sender {
     UISwitch *s = sender;
-
-    [self.busyIndicator startAnimating];
-    [[NSUserDefaults standardUserDefaults] setBool:s.on forKey: kSSCalendarAutoSyncSetting];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kSSCalendarAutoSyncSettingChangedNotification object:nil];
+    
+    [[NSUserDefaults standardUserDefaults] setBool: s.on forKey: kSSCalendarSyncEnableSetting];
+    [self calendarEnable: s.on];
 }
 
 - (IBAction)enableAlarmSwitchValueChanged:(id)sender {
@@ -327,9 +358,15 @@
 }
 
 - (void)singleSelect: (id) sender itemSelectedatRow:(NSInteger) row {
-    [self dismissViewControllerAnimated:YES completion:nil];
+
+    __block CalendarSyncTVC *blk_self = self;
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (blk_self.eventProcessWorking)
+            [blk_self _calendarEventStart];
+    }];
     NSString *key = [self.lengthArray objectAtIndex:row];
     NSNumber *n = [self.lengthDict objectForKey:key];
+    [self _calendarEventStart];
     [self changedLengthValue:n];
     [self.tableView reloadData];
 }
@@ -357,60 +394,105 @@
         if (j) {
             j.syncEnableEKEvent = [states objectForKey:objid];
         }
+        [self.calendarSyncController saveShiftChange];
     }
     // After save, the controller will perform the operation in the case.
     // so it will be a busy indicator show up.
-    [self.calendarSyncController saveShiftChange];
+    __block CalendarSyncTVC *blk_self = self;
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (blk_self.eventProcessWorking)
+            [blk_self _calendarEventStart];
+    }];
 }
 
 - (void)shiftSelect:(id)sender cancelButtonClicked:(NSDictionary *)states {}
 - (void) shiftSelect:(id)sender newState:(BOOL)newState {}
 
-
-- (void) calendarEventProcessFinish: (NSNotification *) notify {
+#pragma mark "Notification handlers"
+/// Do thing when sync finish, or error. 
+- (void) _calendarEventDone {
     self.disabled = NO;
     self.enableSyncSwitch.enabled = YES;
     self.alarmSwitch.enabled = YES;
     [self.busyIndicator stopAnimating];
-    if ([notify.object isKindOfClass:NSDictionary.class]) {
-        NSDictionary *dict = notify.object;
-        NSInteger count = [[dict objectForKey:@"count"] integerValue];
-        SSCalendarEventType type = [[dict objectForKey:@"type"] intValue];
- 
-        if (type == SSCalendarEventTypeSetup) {
-            NSString *str = [NSString stringWithFormat:kCalendarSyncToPhoneFmt, count];
-            if (count == 0)
-                str = kCalendarSyncToPhoneNoAdd;
-            UIAlertView *v = [[UIAlertView alloc] initWithTitle:@"" message:str delegate:nil
-                                              cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//            [v show];
-//    now show the alrt is better
-        } else if (type == SSCalendarEventTypeDelete) {
-
-            NSString *str = [NSString stringWithFormat:kCalendarSyncToPhoneDel, count];
-            if (count == 0)
-                str = kCalendarSyncToPhoneNoDel;
-            UIAlertView *v = [[UIAlertView alloc] initWithTitle:@"" message:str delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//            [v show];
-// now show the alert is better.
-            
-        }
-    }
+    self.eventProcessWorking = NO;
 }
 
-- (void) calendarEventProcessStart {
-    // This event can be sent even the window not there,
-    // so if not show, don't show this animation.
+
+/// Do things when start sync
+- (void) _calendarEventStart {
     if (self.view.window) {
         [self.busyIndicator startAnimating];
         self.disabled = YES;
         self.enableSyncSwitch.enabled = NO;
         self.alarmSwitch.enabled = NO;
     }
-    
+    self.eventProcessWorking = YES;
+}
+
+- (void) calendarEventProcessFinish: (NSNotification *) notify {
+    [self _calendarEventDone];
+    if ([notify.object isKindOfClass:NSDictionary.class]) {
+        //        NSDictionary *dict = notify.object;
+        //        NSInteger count = [[dict objectForKey:@"count"] integerValue];
+        //        SSCalendarEventType type = [[dict objectForKey:@"type"] intValue];
+ 
+        //        if (type == SSCalendarEventTypeSetup) {
+            //            NSString *str = [NSString stringWithFormat:kCalendarSyncToPhoneFmt, count];
+            // if (count == 0)
+            //   str = kCalendarSyncToPhoneNoAdd;
+            //            UIAlertView *v = [[UIAlertView alloc] initWithTitle:@"" message:str delegate:nil
+            //                                              cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            //            [v show];
+            //    not show the alert is better
+            //        } else if (type == SSCalendarEventTypeDelete) {
+            //            NSString *str = [NSString stringWithFormat:kCalendarSyncToPhoneDel, count];
+            //            if (count == 0)
+            //                str = kCalendarSyncToPhoneNoDel;
+            //            UIAlertView *v = [[UIAlertView alloc] initWithTitle:@"" message:str delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            //            [v show];
+            // not show the alert is better.
+            
+            //        }
+    }
+}
+
+- (void) calendarEventProcessStart {
+    // This event can be sent even the window not there,
+    // so if not show, don't show this animation.
+    [self _calendarEventStart];
+}
+
+- (void) calendarEventProcessError: (NSNotification *) notify {
+    [self _calendarEventDone];
+
+    NSString *error = notify.object;
+    if ([error isEqualToString: kSSCalendarSyncNoCalenarAccess]) {
+        [self notifyUserEnableCalendarAccess];
+    } else if ([error isEqualToString: kSSCalendarSyncNotEnable]) {
+        // Not enable, do nothing...
+    }
+}
+
+- (void) calendarEnable:(BOOL) enable {
+
+    if (enable) {
+    // Need enable the manual sync index path.
+    // and delete button.
+    } else {
+
+        // disable manual sync button
+        // disable delete button.
+    }
 
 }
 
+- (void) calendarEnableChanged {
+    // if disable , need disable the manual sync and delete access.
+// also gray them out.
+    BOOL on = [SSCalendarSyncController getCalendarSyncEnable];
+    [self calendarEnable:on];
+}
 
 
 @end

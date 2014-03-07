@@ -202,8 +202,25 @@ enum {
     [self initMainWindow];
 
     [self initAppDefaults];
+
+    [self initCoreData];
     
     return YES;
+}
+
+- (void) initCoreData {
+    [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification* note) {
+            NSManagedObjectContext *moc = self.managedObjectContext;
+                if (note.object != moc) {
+                    [moc performBlock:^(){
+                            [moc mergeChangesFromContextDidSaveNotification:note];
+                        }];
+                }
+        }];
+
 }
 
 - (void) initMainWindow
@@ -492,7 +509,7 @@ enum {
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil)
     {
-        __managedObjectContext = [[NSManagedObjectContext alloc] init];
+        __managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [__managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return __managedObjectContext;

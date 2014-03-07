@@ -126,7 +126,6 @@
     NSAssert(state != nil, @"array is not same length ?");
     if ([self.delegate respondsToSelector:@selector(shiftSelect:doneButtonClicked:)])
         [self.delegate shiftSelect:self doneButtonClicked:state];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) cancelPressed {

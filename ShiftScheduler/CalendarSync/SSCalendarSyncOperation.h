@@ -13,12 +13,15 @@
 
 typedef NS_ENUM(NSInteger, SSCalendarSyncOperationType) {
     SSCalendarSyncOperationSetupAll = 1,
+        SSCalendarSyncOperationDeleteSetupAll,       
         SSCalendarSyncOperationDeleteAll,
+        SSCalendarSyncOperationDeleteOneShift,
         SSCalendarAlarmSettingChanged,
         SSCalendarLengthSettingChanged,
 };
 
 @interface SSCalendarSyncOperation : NSOperation
+
 
 - (id) initWithOperation: (SSCalendarSyncOperationType) type
                 oldValue: (NSInteger) oldValue
@@ -34,5 +37,9 @@ typedef NS_ENUM(NSInteger, SSCalendarSyncOperationType) {
                    formatter : (NSDateFormatter *) formatter;
 
 @property NSInteger count;
+@property (nonatomic, strong) NSManagedObjectContext *mainContext;
+/// only useful when delete specialy shift's events.
+@property (nonatomic, copy)  NSManagedObjectID * shiftID;
+
 
 @end

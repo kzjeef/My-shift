@@ -87,13 +87,7 @@
 }
 
 
-- (NSManagedObjectContext *) newContext
-{
-    NSManagedObjectContext *context = [[NSManagedObjectContext alloc]
-                                          initWithConcurrencyType: NSPrivateQueueConcurrencyType];
-    context.persistentStoreCoordinator = self.coordinator;
-    return context;
-}
+
 
 - (void) initFetchController {
 
@@ -314,6 +308,19 @@
     }
 }
 
+- (int) deleteOneShiftEKEvents  {
+    int count = 0;
+    [self reloadData];
+    
+    OneJob *j = (OneJob *)([self.context objectWithID:self.shiftID]);
+    
+    if (!j)
+        return 0;
+    
+    count += [SSCalendarSyncOperation deleteEKEventForShift:j context:self.context store:self.eventStore formatter:self.formatter];
+    return count;
+}
+
 - (int) deleteAllEKEvents {
     int count = 0;
     NSError *error;
@@ -367,7 +374,13 @@
 
 - (void) main
 {
-    self.context = [self newContext];
+    
+    /// Note: about concurrcy CoreData, can set the main queue to parent to private type context,
+    /// so when child changed, will also notify parent to merge child's change.
+    
+    self.context = [[NSManagedObjectContext alloc]
+                    initWithConcurrencyType: NSPrivateQueueConcurrencyType];
+    self.context.parentContext = self.mainContext;
     self.context.undoManager = nil;
     self.eventStore = [[EKEventStore alloc] init];
 
@@ -384,6 +397,11 @@
        self.count = [self setupAllEKEvent];
     } else if (self.operation == SSCalendarSyncOperationDeleteAll) {
         self.count = [self deleteAllEKEvents];
+    } else if (self.operation == SSCalendarSyncOperationDeleteSetupAll) {
+        [self deleteAllEKEvents];
+        self.count = [self setupAllEKEvent];
+    } else if (self.operation == SSCalendarSyncOperationDeleteOneShift) {
+        self.count = [self deleteOneShiftEKEvents];
     } else if (self.operation == SSCalendarAlarmSettingChanged) {
         [self alarmSettingChanged];
     } else if (self.operation == SSCalendarLengthSettingChanged) {

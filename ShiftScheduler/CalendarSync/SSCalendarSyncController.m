@@ -135,9 +135,13 @@
         self.eventStore = [[EKEventStore alloc] init];
         
         [self.eventStore  requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
-            if (!granted) return;
+                if (!granted) {
+                    /// Disable calendar sync if no calendar access to avoid mess. 
+                    [[NSUserDefaults standardUserDefaults] setBool:NO forKey: kSSCalendarSyncEnableSetting];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kSSCalendarSyncEnableSettingChangedNotification  object:nil];   
+                    return;
+                }
             if (!_eventStore.defaultCalendarForNewEvents.allowsContentModifications) return;
-
             _canAccessCalendar = YES;
         }];
 
@@ -159,9 +163,14 @@
 
     // Setup calendar sync related defaults and fetch the latest value in cached value.
     [[NSUserDefaults standardUserDefaults] registerDefaults: @{
-                                                               kSSCalendarAutoSyncSetting: @1, // default should false
+                                                               kSSCalendarSyncEnableSetting: @0,
+                                                               kSSCalendarAutoSyncSetting: @0, // default should false
                                                                kSSCalendarWithAlarmSetting: @1,
                                                                kSSCalendarSyncLengthSetting: @7}];
+}
+
++ (int) getCalendarSyncEnable {
+    return [[NSUserDefaults standardUserDefaults] integerForKey:kSSCalendarSyncEnableSetting];
 }
 
 + (int) getAutoSyncSetting {
@@ -214,15 +223,34 @@
     });
 }
 
+- (void) eventProcessError: (NSString *) error {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kSSCalendarSyncErrorNotification object:error];
+};
+
+- (BOOL) _checkCanlendarEnable {
+    if (![self.class getCalendarSyncEnable]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kSSCalendarSyncErrorNotification
+                                                            object:kSSCalendarSyncNotEnable];
+        return NO;
+    } else {
+        return YES;
+    }
+}
+            
+
 #pragma mark SSCalendar core function
 
-- (int) setupAllEKEvent: (BOOL) isNotify {
+- (void) setupAllEKEvent: (BOOL) isNotify {
+
+    if (![self _checkCanlendarEnable])
+        return;
 
     // Queue a setup all events, and wait for the result.
     if (!self.canAccessCalendar) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kSSCalendarSyncNoCalenarAccess object:nil];
-        return SSCalendarSyncErrorNoAccessCalendar;
+        [self eventProcessError: kSSCalendarSyncNoCalenarAccess];
+        return;
     }
+
 
     SSCalendarSyncOperation *operation = [[SSCalendarSyncOperation alloc] 
                                           initWithOperation: SSCalendarSyncOperationSetupAll
@@ -230,6 +258,9 @@
                                           syncDays:self.cachedConfigSyncDays
                                           withAlarm:self.cachedConfigAlarmOn
                                           coordinator : self.persistentStoreCoordinator];
+
+    operation.mainContext = self.mainManagedContext;
+
     __block SSCalendarSyncOperation *weako = operation;
 
     [self eventProcessStart];
@@ -241,15 +272,18 @@
     }];
 
     [self.operationQueue addOperation: operation];
-    return 0;
 }
 
-- (int) deleteAllEKEvents {
+- (void) deleteAllEKEvents {
+
+    if (![self _checkCanlendarEnable])
+        return;
 
     if (!self.canAccessCalendar) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kSSCalendarSyncNoCalenarAccess object:nil];
-        return SSCalendarSyncErrorNoAccessCalendar;
+        [self eventProcessError: kSSCalendarSyncNoCalenarAccess];
+        return;
     }
+
 
     // Queue a setup all events, and wait for the result.
 
@@ -261,6 +295,7 @@
                                           coordinator : self.persistentStoreCoordinator];
     
     __block SSCalendarSyncOperation *weako = operation;
+    operation.mainContext = self.mainManagedContext;
     
     [self eventProcessStart];
     [operation setCompletionBlock: ^{
@@ -268,8 +303,71 @@
         [self eventProcessFinish:weako.count type: SSCalendarEventTypeDelete];
     }];
     [self.operationQueue addOperation: operation];
-    return 0;
  }
+
+- (void) deleteEventsWithObjectID: (NSManagedObjectID *)id {
+
+    if (![self _checkCanlendarEnable])
+        return;
+
+    if (!self.canAccessCalendar) {
+        [self eventProcessError: kSSCalendarSyncNoCalenarAccess];
+        return;
+    }
+
+
+    // Queue a setup all events, and wait for the result.
+
+    SSCalendarSyncOperation *operation = [[SSCalendarSyncOperation alloc] 
+                                             initWithOperation: SSCalendarSyncOperationDeleteOneShift
+                                                      oldValue: 0
+                                                      syncDays:self.cachedConfigSyncDays
+                                                     withAlarm:self.cachedConfigAlarmOn
+                                                  coordinator : self.persistentStoreCoordinator];
+    operation.shiftID = id;
+    operation.mainContext = self.mainManagedContext;
+    __block SSCalendarSyncOperation *weako = operation;
+    
+    [self eventProcessStart];
+    [operation setCompletionBlock: ^{
+        NSLog(@"finish setup all  operation: count:%d", weako.count);
+        [self eventProcessFinish:weako.count type: SSCalendarEventTypeDelete];
+    }];
+    [self.operationQueue addOperation: operation];
+
+}
+
+- (void) deleteAndSetupEvents:(BOOL) notify {
+    
+    if (![self _checkCanlendarEnable])
+        return;
+
+    if (!self.canAccessCalendar) {
+        [self eventProcessError: kSSCalendarSyncNoCalenarAccess];
+        return;
+    }
+
+
+    // Queue a setup all events, and wait for the result.
+
+    SSCalendarSyncOperation *operation = [[SSCalendarSyncOperation alloc] 
+                                          initWithOperation: SSCalendarSyncOperationDeleteSetupAll
+                                          oldValue: 0
+                                          syncDays:self.cachedConfigSyncDays
+                                          withAlarm:self.cachedConfigAlarmOn
+                                          coordinator : self.persistentStoreCoordinator];
+
+    operation.mainContext = self.mainManagedContext;
+    __block SSCalendarSyncOperation *weako = operation;
+    
+    [self eventProcessStart];
+    [operation setCompletionBlock: ^{
+        NSLog(@"finish setup all  operation: count:%d", weako.count);
+        if (notify)
+            [self eventProcessFinish:weako.count type: SSCalendarEventTypeSetup];
+    }];
+    [self.operationQueue addOperation: operation];
+}
 
 #pragma mark - FetchedResultControllerDelegate
 /**
@@ -288,13 +386,17 @@
     switch(type) {
         case NSFetchedResultsChangeInsert:
             if ([anObject isKindOfClass:[OneJob class]]) {
+
+                if (![self _checkCanlendarEnable])
+                    return;
+
                 [self setupAllEKEvent: NO];
             }
             break;
             
         case NSFetchedResultsChangeDelete:
             if ([anObject isKindOfClass:[OneJob class]]) {
-                OneJob *j =  (OneJob *) anObject;
+                //                OneJob *j =  (OneJob *) anObject;
                 // FIXME This have a delama, because this remove was base on shift, but shift already removed, and will cause crash.
 //                [SSCalendarSyncOperation deleteEKEventForShift:j context:self.mainManagedContext store:self.eventStore formatter:self.formatter];
             }
@@ -302,12 +404,20 @@
             
         case NSFetchedResultsChangeUpdate:
             if ([anObject isKindOfClass:[OneJob class]]) {
+                if (![self _checkCanlendarEnable])
+                    return;
+
                 OneJob *j = (OneJob *) anObject;
+                NSDictionary *d = [j changedValues];
+                NSLog(@"DEBUG: changed values: %@", d);
+                
+                if ([d objectForKey:@"syncEnableEKEvent"] == nil)
+                    return;
+
                 if (j.syncEnableEKEvent) {
-                    [self deleteAllEKEvents];
-                    [self setupAllEKEvent: NO];
+                    [self deleteAndSetupEvents:YES];
                 } else {
-                    [SSCalendarSyncOperation deleteEKEventForShift:j context:self.mainManagedContext store:self.eventStore formatter:self.formatter];
+                    [self deleteEventsWithObjectID:j.objectID];
                 }
             }
             break;
@@ -320,8 +430,11 @@
 
 - (void) autoSyncSettingChanged {
 
+    if (![self _checkCanlendarEnable])
+        return;
+
     if (!self.canAccessCalendar) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kSSCalendarSyncNoCalenarAccess object:nil];
+        [self eventProcessError: kSSCalendarSyncNoCalenarAccess];
         return;
     }
 
@@ -343,8 +456,11 @@
 
     int n = [SSCalendarSyncController getSyncLengthSetting];
 
+    if (![self _checkCanlendarEnable])
+        return;
+
     if (!self.canAccessCalendar) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kSSCalendarSyncNoCalenarAccess object:nil];
+        [self eventProcessError: kSSCalendarSyncNoCalenarAccess];
     }
     
     if (self.cachedConfigSyncDays == n) {
@@ -358,7 +474,8 @@
                                           syncDays:n
                                           withAlarm:self.cachedConfigAlarmOn
                                           coordinator : self.persistentStoreCoordinator];
-    
+
+    operation.mainContext = self.mainManagedContext;
     __block SSCalendarSyncOperation *weako = operation;
 
     [self eventProcessStart];
@@ -378,6 +495,14 @@
 - (void) withAlarmSettingChanged {
     int n = [SSCalendarSyncController getAlarmSyncSetting];
 
+
+    if (![self _checkCanlendarEnable])
+        return;
+
+    if (!self.canAccessCalendar) {
+        [self eventProcessError: kSSCalendarSyncNoCalenarAccess];
+    }
+
     if (n == self.cachedConfigAlarmOn)
         return;
 
@@ -387,9 +512,11 @@
                                           syncDays:self.cachedConfigSyncDays
                                           withAlarm:self.cachedConfigAlarmOn
                                           coordinator : self.persistentStoreCoordinator];
-    
-    [self eventProcessStart];
+
+    operation.mainContext = self.mainManagedContext;
     __block SSCalendarSyncOperation *weako = operation;
+
+    [self eventProcessStart];
     [operation setCompletionBlock: ^{
             NSLog(@"finish alarm setting  operation: count:%d", weako.count);
             // TODO: add notification here.
