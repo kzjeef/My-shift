@@ -46,6 +46,21 @@
 	<string>4.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
+			<string>AppIcon@2x</string>
+			<key>CFBundleURLName</key>
+			<string>com.kzjeef.shitf.scheduler</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wx42e638b828242aaa</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -54,8 +69,6 @@
 	<true/>
 	<key>UIStatusBarHidden</key>
 	<false/>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
 	<key>UIStatusBarTintParameters</key>
 	<dict>
 		<key>UINavigationBar</key>
@@ -74,5 +87,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>

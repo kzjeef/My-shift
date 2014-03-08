@@ -97,10 +97,13 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 + (UIImage *) imageWithView:(UIView *)view
 {
+    // UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    // CGRect rectFullScreen = [keyWindow bounds];
+    // FIXME: if use full screen capture, it was a black in bottom,
+    // if use view boudns capture, it will be scaled...
+    UIGraphicsBeginImageContextWithOptions(view.frame.size, view.opaque, 0.0);
 
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
-    
-    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
 
@@ -109,7 +112,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (UIImage *)captureCalendarView
 {
-   return [KalViewController imageWithView:[self calendarView]];
+   return [KalViewController imageWithView:self.navigationController.view];
 }
 
 - (NSString *)selecedMonthNameAndYear
@@ -246,7 +249,6 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
 
-
 #if 0
   // Patch from https://github.com/klazuka/Kal/pull/62/files#diff-0
   // Add support for iPad.
@@ -264,6 +266,21 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   tableView.delegate = delegate;
   [kalView selectDate:[KalDate dateFromNSDate:self.initialDate]];
   [self reloadData];
+}
+
+
+- (int) tableViewWhiteHeight
+{
+    return tableView.bounds.size.height - tableView.contentSize.height;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // This empty view will stop table 's empty line
+    UIView *emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
+    emptyView.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:emptyView];
 }
 
 - (void)viewDidUnload

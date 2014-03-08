@@ -39,8 +39,13 @@ typedef void (^ComposeShareViewCompleteHander)(SSShareResult *result);
 @property (strong, nonatomic) NSString *shiftCalImageName;
 @property (weak, readonly) UIImage *shiftListImage;
 @property (weak, readonly) NSString *shiftListImageName;
+@property (strong, nonatomic) UIImage *shiftCalendarSnapshot;
+
 
 - (id) initWithProfilesVC:(SSShareProfileListViewController *)profilelist
         withKalController:(KalViewController *)kal;
+
+- (UIImage *) shiftCalendarWithListImage;
+
 - (void) invaildCache;
 @end

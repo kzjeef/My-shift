@@ -90,17 +90,86 @@
     
 }
 
++ (UIImage*) addStarToThumb:(UIImage*)thumb
+{
+   CGSize size = CGSizeMake(50, 50);
+   UIGraphicsBeginImageContext(size);
+
+   CGPoint thumbPoint = CGPointMake(0, 25 - thumb.size.height / 2);
+   [thumb drawAtPoint:thumbPoint];
+
+   UIImage* starred = [UIImage imageNamed:@"starred.png"];
+
+   CGPoint starredPoint = CGPointMake(0, 0);
+   [starred drawAtPoint:starredPoint];
+
+   UIImage* result = UIGraphicsGetImageFromCurrentImageContext();
+   UIGraphicsEndImageContext();
+
+   return result;
+}
+
+- (NSString *) timedate {
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    return [formatter stringFromDate:[NSDate date]];
+}
+
+- (UIImage *) shiftCalendarWithListImage {
+
+    UIImage *imageCalendar = [self shiftCalendarSnapshot];
+    UIImage *imageList = [self shiftListImage];
+    CGSize calSize = imageCalendar.size;
+    
+    int gap = 20;
+    int calendarHeightOffset = [_kal tableViewWhiteHeight];
+  
+    CGSize size = imageCalendar.size;
+    size.height += imageList.size.height;
+
+    calSize.height -= calendarHeightOffset;
+    size.height -= calendarHeightOffset;
+
+    int textHeight;
+    NSString *copyright = [NSString stringWithFormat:@"%@ @ %@", APP_NAME_STR, APP_URL];
+    textHeight = [copyright sizeWithAttributes:nil].height;
+    NSString * timestr = [self timedate];
+    
+    size.height += 2 * textHeight;
+    size.height += gap;
+
+    UIGraphicsBeginImageContextWithOptions(size, 0, 0.0);
+  
+    [imageCalendar drawInRect:CGRectMake(0, 0, calSize.width, imageCalendar.size.height )];
+
+    [imageList drawInRect:CGRectMake(0, calSize.height, imageList.size.width, imageList.size.height)];
+    
+    [copyright drawAtPoint:CGPointMake(size.width - [copyright sizeWithAttributes:nil].width, size.height -  (2 * textHeight)) withAttributes:nil];
+
+    [timestr drawAtPoint:CGPointMake(size.width - [timestr sizeWithAttributes:nil].width, (size.height - textHeight)) withAttributes:nil];
+
+    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();  
+  
+    UIGraphicsEndImageContext();  
+  
+    return resultingImage;  
+}
+
+- (UIImage *)shiftCalendarSnapshot {
+    return [self shiftCalImage];
+}
+
 - (UIImage *)shiftCalImage
 {
-    if (!_shiftCalImage) {
-        UIImage *image = [_kal captureCalendarView];
-        if (!image) {
-            NSLog(@"shift Cal image generate failed\n");
-            return nil;
-        }
-        _shiftCalImage = image;
+    UIImage *image = [_kal captureCalendarView];
+    if (!image) {
+        NSLog(@"shift Cal image generate failed\n");
+        return nil;
     }
-    return _shiftCalImage;
+
+    return image;
 }
 
 - (NSString *) shiftCalImageName
@@ -114,11 +183,9 @@
 
 - (UIImage *) shiftListImage
 {
-    if (!_shiftListImage) {
     NSAssert(_profileListVC != nil, @"shareProfileViewController == nil");
-    UIImage *listImage = [UIImage imageWithView:_profileListVC.view];
-        _shiftListImage = listImage;
-    }
+    UIImage *listImage = [UIImage imageWithView:_profileListVC.tableView size:_profileListVC.tableView.contentSize];
+    _shiftListImage = listImage;
     return _shiftListImage;
 }
 

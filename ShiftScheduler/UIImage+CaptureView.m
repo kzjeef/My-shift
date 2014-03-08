@@ -23,5 +23,18 @@
     return image;
 }
 
++ (UIImage *) imageWithView:(UIView *)view size: (CGSize) size
+{
+    UIGraphicsBeginImageContextWithOptions(size, view.opaque, 0.0);
+    
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+
+
 
 @end

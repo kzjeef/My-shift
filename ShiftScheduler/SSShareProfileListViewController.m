@@ -146,7 +146,10 @@
 		exit(-1);  // Fail
     }
     self.fetchedResultsController.delegate = self;
-
+    
+    UIView *emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
+    emptyView.backgroundColor = [UIColor whiteColor];
+    [self.tableView setTableFooterView:emptyView];
 }
 
 - (void)viewDidUnload

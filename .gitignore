@@ -98,9 +98,8 @@ GTAGS
 Untitled-zh-Hans.loc/
 ShiftScheduler.ldb/
 Untitled-zh-Hant.loc/
-rm 'Resources/icons/v1/calendar-1.png'
-rm 'Resources/icons/v1/calendar-2.png'
-rm 'Resources/icons/v1/calendar.png'
 Resources/icons/v1/
 Resources/alarm/
 build/
+Pods
+Podfile.lock

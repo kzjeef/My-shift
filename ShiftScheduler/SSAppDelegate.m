@@ -10,7 +10,6 @@
 #import "SSAppDelegate.h"
 #import "WorkdayDataSource.h"
 #import "SSKalDelegate.h"
-#import "SSMailAgent.h"
 #import "SSShareProfileListViewController.h"
 #import "SSShareObject.h"
 #import "SSThinkNoteShareAgent.h"
@@ -102,36 +101,9 @@ enum {
     self.calendarSyncSettingTVC = [[CalendarSyncTVC alloc] initWithNibName:@"CalendarSyncTVC" bundle:nil];
     self.calendarSyncSettingTVC.calendarSyncController = self.calSyncController;
     self.calendarSyncSettingTVC.menuDelegate = self;
-    
-
-    self.rightAS.tag = TAG_MENU;
-    if ([self.class enableThinkNoteConfig]) {
-        self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
-                                          cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
-                                     destructiveButtonTitle:nil
-                                          otherButtonTitles:
-                                                  NSLocalizedString(@"Email", "share by mail"),
-#if ENABLE_THINKNOTE_SHARE
-                                              NSLocalizedString(@"ThinkNote", "share by thinknote"),
-#endif
-                                              nil];
-
-    } else {
-        self.rightAS = [[UIActionSheet alloc] initWithTitle:SHARE_STRING delegate:self
-                                          cancelButtonTitle:NSLocalizedString(@"Cancel", "cancel")
-                                     destructiveButtonTitle:nil
-                                          otherButtonTitles:
-                                                  NSLocalizedString(@"Email", "share by mail"),
-                                              nil];
-
-    }
-    
-    self.rightAS.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-    [self rightButtonSwitchToShareOrBusy:YES];
 
     // 6. setup share operation, and add it in Kal view.
     _shareC = [[SSShareController alloc] initWithProfilesVC:self.shareProfilesVC withKalController:_kalController];
-    mailAgent = [[SSMailAgent alloc] initWithShareController:_shareC];
     thinkNoteAgent = [[SSThinkNoteShareAgent alloc] initWithSharedObject:_shareC];
 
     self.tnoteShareVC = [[ThinkNoteShareViewController alloc] initWithNibName:@"ThinkNoteShareViewController" bundle:nil];
@@ -206,8 +178,26 @@ enum {
     
     [self themeInit];
     
+    [self initWeChat];
+    
     return YES;
 }
+
+#pragma mark wechat setting.
+- (void) initWeChat {
+    [WXApi registerApp:@"wx42e638b828242aaa" withDescription:APP_NAME_STR];
+}
+
+- (BOOL) application:(UIApplication *) application handleOpenURL:(NSURL *)url
+{
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+- (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
 
 - (void) initCoreData {
     [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification
@@ -296,15 +286,6 @@ enum {
 
 }
 
-- (void) rightButtonSwitchToShareOrBusy:(BOOL) share
-{
-    return;
-    if (share)
-        [_kalController.navigationItem setRightBarButtonItem:shareButton];
-    else
-        [_kalController.navigationItem setRightBarButtonItem:loadingButton];
-}
-
 - (void)popNotifyZeroProfile:(id) sender
 {
       [alertNoProfile show];
@@ -312,9 +293,8 @@ enum {
 
 - (void)showRightActionSheet
 {
-    // friendly for iPAD
-//    [self.rightAS showFromBarButtonItem: _kalController.navigationItem.rightBarButtonItem animated:YES];
-    [self.rightAS showFromToolbar:self.navController.toolbar];
+// friendly for iPAD
+    [self.rightAS showFromBarButtonItem: _kalController.navigationItem.rightBarButtonItem animated:YES];
 }
 
 - (SSShareProfileListViewController *)shareProfilesVC
@@ -370,35 +350,6 @@ enum {
     [self.navController pushViewController:self.settingVC animated:YES];
 }
 
-#pragma mark - alert and action sheet
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0) return; // 0 is cancel.
-
-    [self.navController pushViewController:self.profileView animated:YES];
-    [self.profileView insertNewProfile:self.navController];
-}
-
-- (void)actionSheet:(UIAlertView *)sender clickedButtonAtIndex:(NSInteger)index
-{
-    [alertNoProfile dismissWithClickedButtonIndex:alertNoProfile.cancelButtonIndex animated:NO];
-    switch (index) {
-
-    case 0:
-            [_shareC invaildCache];
-            [mailAgent composeMailWithAppDelegate:self withNVC:self.navController];
-            break;
-    case 1:
-            if ([self.class enableThinkNoteConfig]) {
-                [_shareC invaildCache];
-                [self.navController presentViewController:self.tnoteShareVC animated:YES completion:nil];
-            }
-        break;
-    default:
-        break;
-    }
-
-}
 
 #pragma  mark - share controller delegate
 
@@ -695,7 +646,17 @@ enum {
 
 - (void) SSMainMenuShareButtonClicked:(id)from
 {
-    [self showRightActionSheet];
+    
+    NSArray *shareItems;
+    shareItems = @[self.shareC.shiftOverviewStr, [self.shareC shiftCalendarWithListImage], [NSURL URLWithString:APP_URL]];
+    
+    NSArray *activity = @[[[WeixinSessionActivity alloc] init], [[WeixinTimelineActivity alloc] init]];
+    UIActivityViewController *activityView = [[UIActivityViewController alloc]
+                                              initWithActivityItems:shareItems applicationActivities:activity];
+    
+    activityView.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList];
+    
+    [self.navController presentViewController:activityView animated:YES completion:nil];
 }
 
 - (void) calendartoLastMonth

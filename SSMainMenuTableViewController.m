@@ -46,6 +46,11 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor clearColor];
+
+    // This empty view will stop table 's empty label.
+    UIView *emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
+    emptyView.backgroundColor = [UIColor clearColor];
+    [self.tableView setTableFooterView:emptyView];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

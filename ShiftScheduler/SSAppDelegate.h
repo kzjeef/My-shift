@@ -17,6 +17,7 @@
 #import "REFrostedViewController.h"
 #import "SSMainNavigationController.h"
 #import "CalendarSyncTVC.h"
+#import "WeixinActivity.h" // this file include WXApi.h
 #import "config.h"
 
 @class SSShareProfileListViewController;
@@ -30,7 +31,7 @@
 
 @interface SSAppDelegate : UIResponder <UIApplicationDelegate,
 UIActionSheetDelegate,UIAlertViewDelegate,SSShareViewControllerDelegate,
-ProfileEditFinishDelegate, REFrostedViewControllerDelegate, SSMainMenuDelegate, SSMainMenuShareButtonDelegate>
+ProfileEditFinishDelegate, REFrostedViewControllerDelegate, SSMainMenuDelegate, SSMainMenuShareButtonDelegate, WXApiDelegate>
 {
     SSMainNavigationController	*navController;
     UINavigationController	*profileNVC;
@@ -78,13 +79,13 @@ ProfileEditFinishDelegate, REFrostedViewControllerDelegate, SSMainMenuDelegate, 
 @property (nonatomic, strong) UIActionSheet *rightAS;
 @property (nonatomic, strong) SSKalDelegate *sskalDelegate;
 @property (nonatomic, strong) SSShareProfileListViewController *shareProfilesVC;
+@property (nonatomic, strong ) SSShareController *shareC;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 - (void)didFinishEditingSetting;
 - (void)showRightActionSheet;
 - (void)popNotifyZeroProfile:(id) sender;
-- (void) rightButtonSwitchToShareOrBusy:(BOOL) share;
 
 + (BOOL) enableThinkNoteConfig;
 @end
@@ -95,3 +96,4 @@ ProfileEditFinishDelegate, REFrostedViewControllerDelegate, SSMainMenuDelegate, 
 #define SETTINGS_STR NSLocalizedString(@"Settings", "Settings")
 #define CALENDAR_STR NSLocalizedString(@"Calendar", "calendar in tab bar")
 #define APP_NAME_STR NSLocalizedString(@"Shift Scheduler", "")
+#define APP_URL @"http://appstore.com/shiftscheduler"

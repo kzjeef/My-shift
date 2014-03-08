@@ -12,5 +12,6 @@
 
 + (UIImage *) imageWithView:(UIView *)view;
 
++ (UIImage *) imageWithView:(UIView *)view size: (CGSize) size;
 
 @end
