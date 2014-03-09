@@ -55,24 +55,29 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = self.navigationController.tabBarController.tabBar.barTintColor;
+
+
     //    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
+        self.tableView.tableHeaderView = ({
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 80.0f)];
+            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(70, 40, 0, 24)];
+                label.text = [self.formatter stringFromDate:[NSDate date]];
+                label.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
+                [label sizeToFit];
+                
+                cell.textLabel.textColor = self.navigationController.tabBarController.tabBar.barTintColor;
+                cell.backgroundColor = [UIColor clearColor];
+                label.textColor = UIColorFromRGB(0xFFFFFF);
+                [view setBackgroundColor:[UIColorFromRGB(0x0466C0) colorWithAlphaComponent:0.9f]];
+                
+                /* TODO: add lunar calendar text show here. */
+                /* TODO: add holiday here. */
+                [view addSubview:label];
+            }
+            view;
+        });
 
-    self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 80.0f)];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(70, 40, 0, 24)];
-        label.text = [self.formatter stringFromDate:[NSDate date]];
-        label.textColor = UIColorFromRGB(0xFFFFFF);
-        label.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
-        [label sizeToFit];
-        [view setBackgroundColor:[UIColorFromRGB(0x0466C0) colorWithAlphaComponent:0.9f]];
-
-        /* TODO: add lunar calendar text show here. */
-        /* TODO: add holiday here. */
-        [view addSubview:label];
-        view;
-    });
     /*
     self.tableView.tableHeaderView = ({
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
@@ -144,7 +149,8 @@
 
         if (str != NULL && str.length > 0) {
             UIImage *i = [UIImage imageWithContentsOfFile:str];
-            i = [i imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            if ([i respondsToSelector:@selector(imageWithRenderingMode:)])
+                i = [i imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             cell.imageView.image = i;
         } else
             cell.imageView.image = NULL;

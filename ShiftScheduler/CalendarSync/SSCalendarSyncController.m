@@ -141,7 +141,7 @@
                     [[NSNotificationCenter defaultCenter] postNotificationName:kSSCalendarSyncEnableSettingChangedNotification  object:nil];   
                     return;
                 }
-            if (!_eventStore.defaultCalendarForNewEvents.allowsContentModifications) return;
+            if (_eventStore && !_eventStore.defaultCalendarForNewEvents.allowsContentModifications) return;
             _canAccessCalendar = YES;
         }];
 

@@ -234,8 +234,10 @@
    } else if ([cell.textLabel.text compare:kDoSyncItem] == NSOrderedSame) {
         cell.textLabel.textColor = UIColorFromRGB(0x0466C0);
         NSString *syncIconPath = [[NSBundle mainBundle] pathForResource:@"sync-icon" ofType:@"png"];
-        cell.imageView.image = [[[UIImage alloc] initWithContentsOfFile:syncIconPath] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        cell.imageView.tintColor = UIColorFromRGB(0x0466C0);
+       if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+           cell.imageView.image = [[[UIImage alloc] initWithContentsOfFile:syncIconPath] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+           cell.imageView.tintColor = UIColorFromRGB(0x0466C0);
+       }
 
     } else if ([cell.textLabel.text compare:kAlertInCalendarItem] == NSOrderedSame) {
         [self.alarmSwitch adjustFrameForTableViewCell:cell];
@@ -246,8 +248,10 @@
         cell.textLabel.textColor = [UIColor redColor];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         NSString *removeIconPath = [[NSBundle mainBundle] pathForResource:@"remove" ofType:@"png"];
-        cell.imageView.image = [[[UIImage alloc] initWithContentsOfFile:removeIconPath] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        cell.imageView.tintColor = [UIColor redColor];
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
+            cell.imageView.image = [[[UIImage alloc] initWithContentsOfFile:removeIconPath] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            cell.imageView.tintColor = [UIColor redColor];
+        }
         [cell.textLabel sizeToFit];
 
     } else if ([cell.textLabel.text compare:kLengthItem] == NSOrderedSame) {

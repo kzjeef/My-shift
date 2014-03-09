@@ -132,9 +132,16 @@
     calSize.height -= calendarHeightOffset;
     size.height -= calendarHeightOffset;
 
-    int textHeight;
+    int textHeight, textWidth;
     NSString *copyright = [NSString stringWithFormat:@"%@ @ %@", APP_NAME_STR, APP_URL];
-    textHeight = [copyright sizeWithAttributes:nil].height;
+    if ([copyright respondsToSelector:@selector(sizeWithAttributes:)]) {
+        textHeight = [copyright sizeWithAttributes:nil].height;
+        textWidth = [copyright sizeWithAttributes:nil].width;
+        
+    } else {
+        textHeight = [copyright sizeWithFont:[UIFont systemFontOfSize:UIFont.systemFontSize]].height;
+        textWidth = [copyright sizeWithFont:[UIFont systemFontOfSize:UIFont.systemFontSize]].width;
+    }
     NSString * timestr = [self timedate];
     
     size.height += 2 * textHeight;
@@ -146,11 +153,12 @@
 
     [imageList drawInRect:CGRectMake(0, calSize.height, imageList.size.width, imageList.size.height)];
     
-    [copyright drawAtPoint:CGPointMake(size.width - [copyright sizeWithAttributes:nil].width, size.height -  (2 * textHeight)) withAttributes:nil];
+    if ([copyright respondsToSelector:@selector(drawAtPoint:withAttributes:)]) {
+        [copyright drawAtPoint:CGPointMake(size.width - textWidth, size.height -  (2 * textHeight)) withAttributes:nil];
+        [timestr drawAtPoint:CGPointMake(size.width - [timestr sizeWithAttributes:nil].width, (size.height - textHeight)) withAttributes:nil];
+    }
 
-    [timestr drawAtPoint:CGPointMake(size.width - [timestr sizeWithAttributes:nil].width, (size.height - textHeight)) withAttributes:nil];
-
-    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();  
+    UIImage *resultingImage = UIGraphicsGetImageFromCurrentImageContext();
   
     UIGraphicsEndImageContext();  
   

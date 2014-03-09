@@ -102,8 +102,11 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
     // FIXME: if use full screen capture, it was a black in bottom,
     // if use view boudns capture, it will be scaled...
     UIGraphicsBeginImageContextWithOptions(view.frame.size, view.opaque, 0.0);
-
-    [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
+    if(SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    } else {
+        [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
+    }
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
 

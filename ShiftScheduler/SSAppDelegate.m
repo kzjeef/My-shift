@@ -94,9 +94,6 @@ enum {
     _kalController.tileDelegate = dataSource;
     [self.navController setViewControllers:@[_kalController]];
     
-
-
-  
     self.calSyncController = [[SSCalendarSyncController alloc] initWithManagedContext:self.managedObjectContext];
     self.calendarSyncSettingTVC = [[CalendarSyncTVC alloc] initWithNibName:@"CalendarSyncTVC" bundle:nil];
     self.calendarSyncSettingTVC.calendarSyncController = self.calSyncController;
@@ -116,16 +113,20 @@ enum {
 }
 
 - (void) themeInit {
-    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x0466C0)];
-    //    [[UINavigationBar appearance] setTintColor:[ UIColor whiteColor]];
-    [[UINavigationBar appearance] setTintColor:UIColorFromRGB(0xecf0f1)];
     
-    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [UIColor whiteColor],
-                                NSForegroundColorAttributeName, nil];
-    
-    [[UINavigationBar appearance] setTitleTextAttributes:attributes];
-    [[UITableView appearance] setTintColor:UIColorFromRGB(0x34495e)];
+    if(SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+    } else {
+        [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x0466C0)];
+     
+        [[UINavigationBar appearance] setTintColor:UIColorFromRGB(0xecf0f1)];
+        
+        NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [UIColor whiteColor],
+                                    NSForegroundColorAttributeName, nil];
+        
+        [[UINavigationBar appearance] setTitleTextAttributes:attributes];
+        [[UITableView appearance] setTintColor:UIColorFromRGB(0x34495e)];
+    }
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -159,7 +160,13 @@ enum {
     NSString *calendarListIconPath = [[NSBundle mainBundle] pathForResource:@"tab-calendar" ofType:@"png"];
     NSString *shareIconPath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"png"];
     NSString *syncIconPath = [[NSBundle mainBundle] pathForResource:@"sync-icon" ofType:@"png"];
-  
+    
+    NSAssert(shiftListIconPath != nil, @"not nil for icon");
+    NSAssert(settingListIconPath != nil, @"not nil for icon");
+    NSAssert(calendarListIconPath != nil, @"not nil for icon");
+    NSAssert(shareIconPath != nil, @"not nil for icon");
+    NSAssert(syncIconPath != nil, @"not nil for icon");
+
 
     //    UINavigationController *help = [[UINavigationController alloc] init];
     //    help.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"Tips", "tips in tabbar")
@@ -219,7 +226,8 @@ enum {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = _frostedViewController;
     self.window.backgroundColor = [UIColor clearColor];
-    self.window.rootViewController.view.tintColor = [UIColor redColor];
+    if ([self.window.rootViewController.view respondsToSelector:@selector(tintColor)])
+        self.window.rootViewController.view.tintColor = [UIColor redColor];
     [self.window makeKeyAndVisible];
 }
 
@@ -243,7 +251,11 @@ enum {
                                                                                                  menuViewController:menuController];
     _frostedViewController.direction = REFrostedViewControllerDirectionLeft;
     _frostedViewController.liveBlurBackgroundStyle = REFrostedViewControllerLiveBackgroundStyleLight;
-    _frostedViewController.liveBlur = YES;
+    if(SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        _frostedViewController.liveBlur = NO;
+    } else {
+        _frostedViewController.liveBlur = YES;
+    }
     _frostedViewController.delegate = self;
     //frostedViewController.menuViewSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width / 1.33, [[UIScreen mainScreen] bounds].size.height);
     
@@ -653,8 +665,13 @@ enum {
     NSArray *activity = @[[[WeixinSessionActivity alloc] init], [[WeixinTimelineActivity alloc] init]];
     UIActivityViewController *activityView = [[UIActivityViewController alloc]
                                               initWithActivityItems:shareItems applicationActivities:activity];
+
+    if(SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        activityView.excludedActivityTypes = @[UIActivityTypeAssignToContact];
+    } else {
+        activityView.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList];
+    }
     
-    activityView.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeAddToReadingList];
     
     [self.navController presentViewController:activityView animated:YES completion:nil];
 }

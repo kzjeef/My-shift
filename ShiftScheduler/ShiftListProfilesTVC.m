@@ -312,7 +312,8 @@ enum {
     self.fetchedResultsController.delegate = self;
 
     plusImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"addButton" ofType:@"png"]];
-    plusImage = [plusImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    if ([plusImage respondsToSelector:@selector(imageWithRenderingMode:)])
+        plusImage = [plusImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     // start init coach marks.
     
 }
