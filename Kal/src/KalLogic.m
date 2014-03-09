@@ -64,14 +64,17 @@
   [self moveToMonthForDate:[self.baseDate cc_dateByMovingToFirstDayOfThePreviousMonth]];
 }
 
+
 - (void)setCalendarStartMonday:(BOOL)isStartMonday
 {
+#ifdef START_MONDAY_FIXED
   if (isStartMonday)
     [cacheCalendar setFirstWeekday:2];
   else
     [cacheCalendar setFirstWeekday:1];
 
     mIsStartMonday = isStartMonday;
+#endif
 }
 
 - (BOOL)isCalendarStartMondayMode

@@ -141,8 +141,6 @@ static const CGFloat kMonthLabelHeight = 17.f;
                                       kHeaderVerticalAdjust,
                                       kMonthLabelWidth,
                                       kMonthLabelHeight);
-    CGRect selectLabelFrame = CGRectMake(210, 4, 25, 25);
-    
     // Header and Title label.
   headerTitleLabel = [[UILabel alloc] initWithFrame:monthLabelFrame];
   headerTitleLabel.backgroundColor = [UIColor clearColor];
@@ -151,15 +149,11 @@ static const CGFloat kMonthLabelHeight = 17.f;
     headerTitleLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Kal.bundle/kal_header_text_fill.png"]];
     //  headerTitleLabel.shadowColor = [UIColor whiteColor];
     //  headerTitleLabel.shadowOffset = CGSizeMake(0.f, 1.f);
-  [self setHeaderTitleText:[logic selectedMonthNameAndYear]];
-  [headerView addSubview:headerTitleLabel];
-    UIImageView *image = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"arrow-down.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
-    [image setTintColor:UIColorFromRGB(0x0466C0)];
-     image.frame = selectLabelFrame;
+    [self setHeaderTitleText:[logic selectedMonthNameAndYear]];
+    
+    [headerTitleLabel sizeToFit];
 
-    [headerView addSubview:image];
-
-
+    [headerView addSubview:headerTitleLabel];
 /*
   // Create the next month button on the right side of the view
   CGRect nextMonthButtonFrame = CGRectMake(self.width - kChangeMonthButtonWidth,
@@ -192,10 +186,13 @@ static const CGFloat kMonthLabelHeight = 17.f;
   NSArray *weekdayNames = [[[NSDateFormatter alloc] init]
                             shortWeekdaySymbols];
   NSCalendar *cal = [NSCalendar currentCalendar];
+    
+#if MONDAY_START_FIXED
   if (sunDayStart)
     [cal setFirstWeekday:1];
   else
     [cal setFirstWeekday:2];
+#endif
   NSUInteger firstWeekday = [cal firstWeekday];
   NSUInteger i = firstWeekday - 1;
   for (CGFloat xOffset = 0.f;

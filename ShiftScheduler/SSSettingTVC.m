@@ -60,20 +60,20 @@ enum {
 
 enum {
     SSSETTING_APPCFG_LUNAR_ENABLE = 0,
-    SSSETTING_APPCFG_MONDAY_ENABLE,
     SSSETTING_APPCFG_HOLIDAY_PICK,
+    SSSETTING_APPCFG_MONDAY_ENABLE,
 };
 
 enum {
     SSSETTING_TAG_SYSALARM_ENABLE = 0,
     SSSETTING_TAG_APPCFG_LUNAR_ENABLE = 1,
-    SSSETTING_TAG_APPCFG_MONDAY_ENABLE,
+    SSETTING_TAG_APPCFG_MONDAY_ENABLE,
 };
 
 - (NSArray *) appConfigHelpArray
 {
     if (!appConfigHelpArray)
-        appConfigHelpArray = @[LUNAR_ENABLE_TEIM_HELP, MONDAY_START_ITEM_HELP, HOLIDAY_PICK_ITEM_HLEP];
+        appConfigHelpArray = @[LUNAR_ENABLE_TEIM_HELP, HOLIDAY_PICK_ITEM_HLEP];
 
     return appConfigHelpArray;
 }
@@ -81,7 +81,7 @@ enum {
 - (NSArray *) appConfigArray
 {
     if (!appConfigArray)
-        appConfigArray = @[ LUNAR_ENABLE_ITEM, MONDAY_START_ITEM, HOLIDAY_PICK_ITEM];
+        appConfigArray = @[ LUNAR_ENABLE_ITEM, HOLIDAY_PICK_ITEM];
 
     return appConfigArray;
 }
@@ -227,7 +227,7 @@ enum {
         [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:USER_CONFIG_ENABLE_ALERT_SOUND];
     }  else if (s.tag == SSSETTING_TAG_APPCFG_LUNAR_ENABLE) {
         [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY];
-    } else if (s.tag == SSSETTING_TAG_APPCFG_MONDAY_ENABLE) {
+    } else if (s.tag == SSETTING_TAG_APPCFG_MONDAY_ENABLE) {
         [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:USER_CONFIG_ENABLE_MONDAY_DISPLAY];
         [[NSNotificationCenter defaultCenter] postNotificationName:SS_LOCAL_NOTIFY_WEEK_START_CHANGED object:[NSNumber numberWithBool:s.on]];
     }
@@ -350,7 +350,7 @@ enum {
             s.on = enableLunar;
             [cell.contentView addSubview:s];
         } else if (indexPath.row == SSSETTING_APPCFG_MONDAY_ENABLE) {
-            UISwitch *s = [self newSwitch:indexPath withTag:SSSETTING_TAG_APPCFG_MONDAY_ENABLE cell:cell];
+            UISwitch *s = [self newSwitch:indexPath withTag:SSETTING_TAG_APPCFG_MONDAY_ENABLE cell:cell];
             BOOL enableMondayFirst = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_MONDAY_DISPLAY];
             s.on = enableMondayFirst;
             [cell.contentView addSubview:s];
@@ -439,9 +439,6 @@ enum {
         }
     } else if (indexPath.section == SSALARM_SECTION) {
         if (indexPath.row == 1) {
-            BOOL enableSound = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_ALERT_SOUND];
-            if (!enableSound)
-                return;
             SSSettingAlarmPickerVC  *view = [[SSSettingAlarmPickerVC alloc] initWithNibName:@"SSSettingAlarmPickerVC" bundle:nil];
             [self.navigationController pushViewController:view animated:YES];
         }
