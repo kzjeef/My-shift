@@ -8,32 +8,10 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>calendar-simple-blue-144x144.png</string>
-		<string>calendar-simple-blue-114x114.png</string>
-		<string>calendar-simple-blue-72x72.png</string>
-		<string>calendar-simple-blue-57x57.png</string>
-		<string>Default@2x.png</string>
-		<string>Default.png</string>
-	</array>
 	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>calendar-simple-blue-144x144.png</string>
-				<string>calendar-simple-blue-114x114.png</string>
-				<string>calendar-simple-blue-72x72.png</string>
-				<string>calendar-simple-blue-57x57.png</string>
-				<string>Default@2x.png</string>
-				<string>Default.png</string>
-			</array>
-			<key>UIPrerenderedIcon</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>com.kzjeef.shitf.scheduler</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -62,7 +40,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>4.0.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIPrerenderedIcon</key>

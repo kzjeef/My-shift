@@ -78,7 +78,7 @@
     unsigned int flags =  NSHourCalendarUnit | NSMinuteCalendarUnit;
     NSDateComponents* parts = [[NSCalendar currentCalendar] components:flags fromDate:self];
     
-    return [NSString stringWithFormat:@"%d:%d", [parts hour], [parts minute]];
+    return [NSString stringWithFormat:@"%ld:%d", (long)[parts hour], [parts minute]];
 }
 
 

@@ -19,6 +19,7 @@
 #import "SSMainMenuTableViewController.h"
 #import "SSCalendarSyncController.h"
 
+#import "UIImage+MonoImage.h"
 #import "Kal.h"
 
 @interface SSAppDelegate()
@@ -67,16 +68,18 @@ enum {
                    style:UIBarButtonItemStyleBordered
                    target:self
                    action:@selector(showAndSelectToday)];
-    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow-left.png"]
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithImage:
+                             [UIImage generateMonoImage: [UIImage imageNamed:@"arrow-left.png"] withColor:UIColorFromRGB(0xffffff)]
                                                              style:UIBarButtonItemStylePlain target:self
                                                             action:@selector(calendartoLastMonth)];
-
-    UIBarButtonItem *next = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow-right.png"]
+ 
+    UIBarButtonItem *next = [[UIBarButtonItem alloc] initWithImage:
+                                                          [UIImage generateMonoImage:[UIImage imageNamed:@"arrow-right.png"] withColor:UIColorFromRGB(0xffffff)]
                                                              style:UIBarButtonItemStylePlain target:self
                                                             action:@selector(calendartoNextMonth)];
 
 
-    UIImage *menuIcon = [UIImage imageNamed:@"menu.png"];
+    UIImage *menuIcon = [UIImage generateMonoImage:[UIImage imageNamed:@"menu.png"] withColor:UIColorFromRGB(0xffffff)];
     menuButton = [[UIBarButtonItem alloc] initWithImage:menuIcon style:UIBarButtonItemStylePlain  target:self action:@selector(SSMainMenuDelegatePopMainMenu:)];
 
     self.navController.navigationItem.leftBarButtonItem = menuButton;

@@ -8,6 +8,7 @@
 
 #import "SSMainMenuTableViewController.h"
 #import "SSAppDelegate.h"
+#import "UIImage+MonoImage.h"
 
 @interface SSMainMenuTableViewController ()
 
@@ -60,21 +61,27 @@
     //    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
         self.tableView.tableHeaderView = ({
             UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 80.0f)];
-            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(70, 40, 0, 24)];
-                label.text = [self.formatter stringFromDate:[NSDate date]];
-                label.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
-                [label sizeToFit];
-                
-                cell.textLabel.textColor = self.navigationController.tabBarController.tabBar.barTintColor;
+
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(70, 40, 0, 24)];
+            label.text = [self.formatter stringFromDate:[NSDate date]];
+            label.font = [UIFont fontWithName:@"HelveticaNeue" size:18];
+            [label sizeToFit];
+            if (SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+                view.backgroundColor = UIColorFromRGB(0x0466C0);
+                label.backgroundColor = UIColorFromRGB(0x0466C0);
+                //                cell.textLabel.textColor = [UIColor whiteColor];
+                //                cell.backgroundColor = UIColorFromRGB(0x0466C0);
+            } else {
                 cell.backgroundColor = [UIColor clearColor];
-                label.textColor = UIColorFromRGB(0xFFFFFF);
+                cell.textLabel.textColor = self.navigationController.tabBarController.tabBar.barTintColor;
                 [view setBackgroundColor:[UIColorFromRGB(0x0466C0) colorWithAlphaComponent:0.9f]];
-                
-                /* TODO: add lunar calendar text show here. */
-                /* TODO: add holiday here. */
-                [view addSubview:label];
             }
+
+            label.textColor = UIColorFromRGB(0xFFFFFF);
+            /* TODO: add lunar calendar text show here. */
+            /* TODO: add holiday here. */
+            [view addSubview:label];
+            
             view;
         });
 
@@ -151,6 +158,10 @@
             UIImage *i = [UIImage imageWithContentsOfFile:str];
             if ([i respondsToSelector:@selector(imageWithRenderingMode:)])
                 i = [i imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            else {
+                i = [UIImage generateMonoImage:i withColor:UIColorFromRGB(0x34495e)];
+                cell.textLabel.textColor = UIColorFromRGB(0x34495e);
+            }
             cell.imageView.image = i;
         } else
             cell.imageView.image = NULL;
