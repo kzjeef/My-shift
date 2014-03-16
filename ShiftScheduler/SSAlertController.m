@@ -295,9 +295,10 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
         if (job.jobRemindBeforeOff.intValue > 60*60)
             timestr = [NSString stringWithFormat:TIME_STR_ALARM_OFF_HOURS,
                                 job.jobRemindBeforeOff.intValue / 60 / 60];
-        else
+        else {
             timestr = [NSString stringWithFormat:TIME_STR_ALARM_OFF_MINITES,
                                 job.jobRemindBeforeOff.intValue / 60];
+        }
 
         if (job.jobRemindBeforeOff.intValue == 0)
             timestr = TIME_STR_ALARM_OFF_NOW;
