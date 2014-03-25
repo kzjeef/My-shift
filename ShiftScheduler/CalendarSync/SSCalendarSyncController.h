@@ -57,6 +57,12 @@ typedef NS_ENUM(NSInteger, SSCalendarEventType) {
  */
 - (void) deleteAllEKEvents;
 
+/** 
+ Delete and resetup all sync events.
+ */
+
+- (void) deleteAndSetupEvents: (BOOL) isNotify;
+
 /**
    get shift list for other UI.
 */

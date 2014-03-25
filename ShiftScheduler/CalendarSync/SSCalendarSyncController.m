@@ -149,6 +149,7 @@
         }];
 
         self.operationQueue = [[NSOperationQueue alloc] init];
+        [self.operationQueue setName:@"Calendar Sync Queue"];
         self.persistentStoreCoordinator = [context persistentStoreCoordinator];
     }
 
@@ -478,6 +479,13 @@
         // The fetch controller has sent all current change
         // notifications, so tell the table view to process all
         // updates.
+    if (controller == self.eventFetchedRequestController)
+        return;
+    NSLog(@"CaendarSync: controller did changed context...");
+//    [self calendarSettingChangeSaved];
+// this will not reflect change, so don't do that...
+// conservative strategy.. 
+    
 }
 
 
@@ -610,13 +618,21 @@
     [self.mainManagedContext save:nil];
 }
 
+- (void) calendarSettingChangeSaved {
+     if (self.savedDeleteCalendarMark && self.savedSetupCalendarMark)
+     [self deleteAndSetupEvents:NO];
+     else if (self.savedDeleteCalendarMark)
+     [self deleteAllEKEvents];
+     else if (self.savedSetupCalendarMark)
+     [self setupAllEKEvent:NO];
+
+}
+
 - (void) appGoingToBackgroud {
-    if (self.savedDeleteCalendarMark && self.savedSetupCalendarMark)
-        [self deleteAndSetupEvents:NO];
-    else if (self.savedDeleteCalendarMark)
-        [self deleteAllEKEvents];
-    else if (self.savedSetupCalendarMark)
-        [self setupAllEKEvent:NO];
+    
+    // iOS sees don't execute operation queue when app going to background.
+    // so we don't do that automaticlly.
+    // compare to mess up user's system calendar, we let user manually setup this.
 
     [self markCalendarReset];
 }

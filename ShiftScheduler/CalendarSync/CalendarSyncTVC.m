@@ -78,14 +78,14 @@
 
 - (NSDictionary *) lengthDict {
     if (_lengthDict == nil)
-        _lengthDict = @{kLengthSelectionWeek : @7, kLengthSelection2Week: @14, kLengthSelectionMonth:@31, kLengthSelection3Month:@93};
+        _lengthDict = @{kLengthSelectionWeek : @7, kLengthSelection2Week: @14, kLengthSelectionMonth:@31};
 
     return _lengthDict;
 }
 
 - (NSArray *) lengthArray {
     if (_lengthArray == nil)
-        _lengthArray = @[kLengthSelectionWeek, kLengthSelection2Week, kLengthSelectionMonth, kLengthSelection3Month];
+        _lengthArray = @[kLengthSelectionWeek, kLengthSelection2Week, kLengthSelectionMonth];
     return _lengthArray;
 }
 
@@ -287,7 +287,8 @@
 
     if (title == kDoSyncItem) {
         [self.busyIndicator startAnimating];
-        [self.calendarSyncController setupAllEKEvent:YES];
+        [self.calendarSyncController deleteAndSetupEvents:YES];
+        //        [self.calendarSyncController setupAllEKEvent:YES];
     }
     if (title == kLengthItem) {
         SSSingleSelectTVC *select = [[SSSingleSelectTVC alloc] initWithStyle:UITableViewStylePlain];
