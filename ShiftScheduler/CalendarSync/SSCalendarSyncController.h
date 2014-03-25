@@ -73,6 +73,11 @@ typedef NS_ENUM(NSInteger, SSCalendarEventType) {
 - (void) saveShiftChange;
 
 /**
+   application going to background callback.
+*/
+- (void) appGoingToBackgroud;
+
+/**
  get current settting value of auto sync
  */
 + (int) getAutoSyncSetting;

@@ -64,6 +64,9 @@
 
 @property bool canAccessCalendar;
 
+@property bool savedDeleteCalendarMark;
+@property bool savedSetupCalendarMark;
+
 @end
 
 @implementation SSCalendarSyncController
@@ -252,6 +255,8 @@
     }
 
 
+    [self.operationQueue cancelAllOperations];
+
     SSCalendarSyncOperation *operation = [[SSCalendarSyncOperation alloc] 
                                           initWithOperation: SSCalendarSyncOperationSetupAll
                                           oldValue: self.cachedConfigSyncDays
@@ -285,6 +290,9 @@
     }
 
 
+    // cancel all pending event, since it's not make sense.
+    [self.operationQueue cancelAllOperations];
+
     // Queue a setup all events, and wait for the result.
 
     SSCalendarSyncOperation *operation = [[SSCalendarSyncOperation alloc] 
@@ -315,9 +323,6 @@
         return;
     }
 
-
-    // Queue a setup all events, and wait for the result.
-
     SSCalendarSyncOperation *operation = [[SSCalendarSyncOperation alloc] 
                                              initWithOperation: SSCalendarSyncOperationDeleteOneShift
                                                       oldValue: 0
@@ -347,9 +352,10 @@
         return;
     }
 
+    // cancel all pending event, since it's not make sense.
+    [self.operationQueue cancelAllOperations];
 
     // Queue a setup all events, and wait for the result.
-
     SSCalendarSyncOperation *operation = [[SSCalendarSyncOperation alloc] 
                                           initWithOperation: SSCalendarSyncOperationDeleteSetupAll
                                           oldValue: 0
@@ -379,7 +385,10 @@
        atIndexPath:(NSIndexPath *)indexPath
      forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
-    
+
+/// This cause issue when using a lot on phone, this will cause iOS crash and a lot of slow down to phone.
+/// So, we only do this when the application is going to background.     
+#if 0
     if (controller == self.eventFetchedRequestController)
         return;
 
@@ -426,7 +435,51 @@
           // ignore this.
             break;
     }
+#else
+    if (controller == self.eventFetchedRequestController)
+        return;
+
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            if ([anObject isKindOfClass:[OneJob class]]) {
+                if (![self _checkCanlendarEnable])
+                    return;
+
+                [self markSetupCalendar];
+            }
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            if ([anObject isKindOfClass:[OneJob class]]) {
+                if (![self _checkCanlendarEnable])
+                    return;
+
+                OneJob *j = (OneJob *) anObject;
+                NSDictionary *d = [j changedValues];
+                NSLog(@"DEBUG: changed values: %@", d);
+                
+                if ([d objectForKey:@"syncEnableEKEvent"] == nil)
+                    return;
+
+                if (j.syncEnableEKEvent) {
+                    [self markDeleteCalendar];
+                    [self markSetupCalendar];
+                } else {
+                    NSLog(@"Warnning: Will delete all shift events with object DI");
+                    [self deleteEventsWithObjectID:j.objectID];
+                }
+            }
+            break;
+    }
+#endif
  }
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+        // The fetch controller has sent all current change
+        // notifications, so tell the table view to process all
+        // updates.
+}
+
 
 - (void) autoSyncSettingChanged {
 
@@ -555,6 +608,32 @@
 
 - (void) saveShiftChange {
     [self.mainManagedContext save:nil];
+}
+
+- (void) appGoingToBackgroud {
+    if (self.savedDeleteCalendarMark && self.savedSetupCalendarMark)
+        [self deleteAndSetupEvents:NO];
+    else if (self.savedDeleteCalendarMark)
+        [self deleteAllEKEvents];
+    else if (self.savedSetupCalendarMark)
+        [self setupAllEKEvent:NO];
+
+    [self markCalendarReset];
+}
+
+- (void) markCalendarReset {
+    self.savedDeleteCalendarMark = NO;
+    self.savedSetupCalendarMark = NO;
+}
+
+/// Mark the schedule delete operation of current calendar
+- (void) markDeleteCalendar {
+    self.savedDeleteCalendarMark = YES;
+}
+
+/// Mark the schedule delete operation of current calendar 
+- (void) markSetupCalendar {
+    self.savedSetupCalendarMark = YES;
 }
 
 @end

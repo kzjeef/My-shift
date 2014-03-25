@@ -415,6 +415,7 @@ enum {
     [self.managedObjectContext save:&error];
     [alertC setupAlarm:NO];
     [alertC clearBadgeNumber];
+    [self.calSyncController appGoingToBackgroud];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
