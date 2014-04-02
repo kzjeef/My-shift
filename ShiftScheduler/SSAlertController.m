@@ -266,14 +266,13 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
         // user have setup alarm for this shift.
         // setup for Work Alarm
 
-        if (job.jobRemindBeforeWork.intValue > 60*60)
+        if (job.jobRemindBeforeWork.intValue >= 60*60)
             timestr = [NSString stringWithFormat:TIME_STR_ALARM_BEFORE_HOURS,
-                               [self numberToStr:job.jobRemindBeforeWork.intValue / 60 / 60]];
+                               job.jobRemindBeforeWork.intValue / 60 / 60];
         else
             timestr = [NSString stringWithFormat:TIME_STR_ALARM_BEFORE_MINITES,
-                       [NSNumberFormatter localizedStringFromNumber:
-                        [NSNumber numberWithInt:job.jobRemindBeforeWork.intValue / 60]
-                                                        numberStyle:NSNumberFormatterDecimalStyle]];
+                               job.jobRemindBeforeWork.intValue / 60];
+
         if (job.jobRemindBeforeWork.intValue == 0)
             timestr = TIME_STR_ALARM_BEFORE_NOW;
         NSString *workRemindString = [NSString stringWithFormat:@"%@ %@.", job.jobName, timestr];
