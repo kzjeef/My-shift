@@ -457,7 +457,7 @@
 
                 OneJob *j = (OneJob *) anObject;
                 NSDictionary *d = [j changedValues];
-                NSLog(@"DEBUG: changed values: %@", d);
+                //                NSLog(@"DEBUG: changed values: %@", d);
                 
                 if ([d objectForKey:@"syncEnableEKEvent"] == nil)
                     return;

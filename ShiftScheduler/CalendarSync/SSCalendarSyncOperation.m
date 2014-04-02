@@ -199,7 +199,8 @@
         NSDate *startDate, *endDate;
         installDate = [installDate cc_dateByMovingToNextOrBackwardsFewDays:1 withCalender:self.calendar];
         startDate = [installDate cc_dateBySetTimePart:[shift getJobEverydayStartTime]  withCalendar:self.calendar];
-        endDate = [installDate cc_dateBySetTimePart:[shift getJobEverydayEndTime]  withCalendar:self.calendar];
+        // Note: Because some night shift will over date, this end value will become a smaller value.
+        endDate = [startDate dateByAddingTimeInterval:shift.jobEveryDayLengthSec.intValue];
 
         if (![shift isDayWorkingDay:startDate])
             continue;
@@ -214,7 +215,7 @@
         event.startDate = syncevent.startDate;
         event.endDate = syncevent.endDate;
         event.calendar = self.ekEventCalendar;
-        event.notes = NSLocalizedString(@"Calendar Event is Created by Shift Scheduler, download via: http://itunes.apple.com/en/app//id482061308?mt=8", "");
+        event.notes = NSLocalizedString(@"Calendar Event is Created by Shift Scheduler, download via: http://appstore.com/shiftscheduler", "");
 
         if (alarmOn) {
             // Note: the seconds of alarm is "seconds" before the on and off time.

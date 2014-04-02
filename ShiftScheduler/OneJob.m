@@ -39,7 +39,6 @@
 // This two is shift start/end related member, if shift is regular, it function like normal.
 // If the shift is X-Shift, it's the work lenght is fixed, and start time needs calculate by
 // shift property and order.
-@property (nonatomic, strong) NSNumber * jobEveryDayLengthSec;  // minites of every day work.
 @property (nonatomic, strong) NSDate * jobEverydayStartTime;
 @property (weak, nonatomic, readonly)  UIColor *defaultIconColor;
 

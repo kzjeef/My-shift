@@ -45,6 +45,8 @@ enum JobShiftAlgoType {
 // For (legency/Most common) On/Off Days work shift.
 @property (nonatomic, strong) NSNumber  *jobOnDays; // how long works once
 @property (nonatomic, strong) NSNumber  *jobOffDays; // how long rest once.
+@property (nonatomic, strong) NSNumber * jobEveryDayLengthSec;  // minites of every day work.
+
 
 // For support ICON of Shift Day.
 @property (nonatomic, strong) NSNumber  *jobShowTextInCalendar;
