@@ -1,6 +1,3 @@
----
-  language: objective-c
-
-  before_script: travis/before_script.sh
-  script: travis/script.sh
-
+language: objective-c
+xcode_project: ShiftScheduler.xcodeproj # path to your xcodeproj folder
+xcode_scheme: OneJobModuleTest
