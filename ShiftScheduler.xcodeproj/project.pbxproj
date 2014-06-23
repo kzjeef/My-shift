@@ -438,6 +438,7 @@
 		292DBCA714CA943F00C87A70 /* JPImagePickerOverviewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JPImagePickerOverviewController.xib; path = JPImagePicker/JPImagePickerOverviewController.xib; sourceTree = "<group>"; };
 		292DBCA814CA943F00C87A70 /* UIImageResizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIImageResizing.h; path = JPImagePicker/UIImageResizing.h; sourceTree = "<group>"; };
 		292DBCA914CA943F00C87A70 /* UIImageResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImageResizing.m; path = JPImagePicker/UIImageResizing.m; sourceTree = "<group>"; };
+		29331A43195877710033A4E9 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		293446E916835B88007219D1 /* ShiftScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = ShiftScheduler.entitlements; path = ShiftScheduler/ShiftScheduler.entitlements; sourceTree = "<group>"; };
 		2935514114E2BABA004D8FAC /* SSTurnShiftTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTurnShiftTVC.h; sourceTree = "<group>"; };
 		2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTurnShiftTVC.m; sourceTree = "<group>"; };
@@ -1227,6 +1228,7 @@
 		29B9E1B41472C1D700DB2E1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29331A43195877710033A4E9 /* NetworkExtension.framework */,
 				2995A42918CB685C004782DF /* Social.framework */,
 				2920039918B4F142000CA7D3 /* EventKit.framework */,
 				29B460CB182E01290059F149 /* libPods.a */,
@@ -1519,7 +1521,7 @@
 			name = OneJobModuleTest;
 			productName = OneJobModuleTest;
 			productReference = 29AEBD681554146F0010F27D /* OneJobModuleTest.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 		29B9E1B01472C1D700DB2E1F /* ShiftScheduler */ = {
 			isa = PBXNativeTarget;
