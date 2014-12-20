@@ -727,6 +727,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B9E1B81472C1D700DB2E1F /* Foundation.framework in Frameworks */,
 				2995A42A18CB685C004782DF /* Social.framework in Frameworks */,
 				2920039A18B4F142000CA7D3 /* EventKit.framework in Frameworks */,
 				297FDBDA18A8BAC900BA0240 /* libPods.a in Frameworks */,
@@ -741,7 +742,6 @@
 				2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */,
 				2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */,
 				29B9E1B61472C1D700DB2E1F /* UIKit.framework in Frameworks */,
-				29B9E1B81472C1D700DB2E1F /* Foundation.framework in Frameworks */,
 				29B9E1BA1472C1D700DB2E1F /* CoreGraphics.framework in Frameworks */,
 				29B9E1BC1472C1D700DB2E1F /* CoreData.framework in Frameworks */,
 				9A85C2A9A9AA44AEB7EE5EA3 /* libPods.a in Frameworks */,

@@ -10,33 +10,37 @@
 	<string>ShiftScheduler</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>2D9FAE28-E36F-4D77-8573-098632DA51E7</key>
-		<string>ssh://github.com/kzjeef/SSLunarDate.git</string>
-		<key>EE92F3DC-40B9-4E40-8AA0-1F581DEE051D</key>
+		<key>6047254B6E455AD3AE8B6C876F153ACBBCC63592</key>
 		<string>ssh://github.com/kzjeef/ShiftScheduler-iOS.git</string>
+		<key>A890EE2B69A984CC3960F2281FCF64AE2D039F4E</key>
+		<string>https://github.com/kzjeef/weixin-ios-sdk.git</string>
+		<key>EDD7749C9B5B3F491FA60EF62C7F14E347AC6B8B</key>
+		<string>ssh://github.com/kzjeef/SSLunarDate.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ShiftScheduler.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>2D9FAE28-E36F-4D77-8573-098632DA51E7</key>
-		<string>../../SSLunarDate</string>
-		<key>EE92F3DC-40B9-4E40-8AA0-1F581DEE051D</key>
+		<key>6047254B6E455AD3AE8B6C876F153ACBBCC63592</key>
 		<string>..</string>
+		<key>A890EE2B69A984CC3960F2281FCF64AE2D039F4E</key>
+		<string>../Submodules/wechat</string>
+		<key>EDD7749C9B5B3F491FA60EF62C7F14E347AC6B8B</key>
+		<string>../../SSLunarDate</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/kzjeef/ShiftScheduler-iOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>EE92F3DC-40B9-4E40-8AA0-1F581DEE051D</string>
+	<string>6047254B6E455AD3AE8B6C876F153ACBBCC63592</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>EE92F3DC-40B9-4E40-8AA0-1F581DEE051D</string>
+			<string>6047254B6E455AD3AE8B6C876F153ACBBCC63592</string>
 			<key>IDESourceControlWCCName</key>
 			<string>shiftScheduler</string>
 		</dict>
@@ -44,9 +48,17 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>2D9FAE28-E36F-4D77-8573-098632DA51E7</string>
+			<string>EDD7749C9B5B3F491FA60EF62C7F14E347AC6B8B</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SSLunarDate</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A890EE2B69A984CC3960F2281FCF64AE2D039F4E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>wechat</string>
 		</dict>
 	</array>
 </dict>
