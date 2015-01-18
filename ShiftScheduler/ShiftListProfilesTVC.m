@@ -12,6 +12,7 @@
 #import "SSDefaultConfigName.h"
 #import "UIColor+HexCoding.h"
 #import "SSAppDelegate.h"
+#import "I18NStrings.h"
 
 
 #define PROFILE_CACHE_INDIFITER @"ProfileListCache"
@@ -264,6 +265,8 @@ enum {
     case NSFetchedResultsChangeDelete:
         [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
         break;
+    default:
+            break;
     }
 }
 

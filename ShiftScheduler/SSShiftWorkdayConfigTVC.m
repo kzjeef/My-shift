@@ -9,6 +9,7 @@
 #import "SSShiftWorkdayConfigTVC.h"
 #import "SSTurnShiftTVC.h"
 #import "SSShiftTableConfigTVC.h"
+#import "I18NStrings.h"
 #import "OneJob.h"
 
 @interface SSShiftWorkdayConfigTVC () {
@@ -22,11 +23,6 @@
 @implementation SSShiftWorkdayConfigTVC
 
 @synthesize items, pickDelegate, theJob;
-
-#define FREE_ROUND_DETAIL_STRING NSLocalizedString(@"eg, work 5 days off 2 days.", "")
-#define FREE_JUMP_DETAIL_STRING NSLocalizedString(@"eg, 1, 3, 5, 7 on, 2, 4, 6 off", "")
-
-#define SHIFT_TYPE_PICKER_STRING  NSLocalizedString(@"Work days mode", "in shift type picker view")
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

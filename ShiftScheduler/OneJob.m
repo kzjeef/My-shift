@@ -15,6 +15,7 @@
 #import "ShiftAlgoBase.h"
 #import "ShiftAlgoFreeRound.h"
 #import "ShiftAlgoFreeJump.h"
+#import "I18NStrings.h"
 
 #define DAY_TO_SECONDS 60*60*24
 
@@ -180,10 +181,6 @@
     }
     return YES;
 }
-
-#define FREE_ROUND_STRING NSLocalizedString(@"Regular Work Day", "")
-#define FREE_JUMP_STRING NSLocalizedString(@"Customize Work Day", "")
-#define NA_SHITF_STRING   NSLocalizedString(@"N/A", "")
 
 - (NSArray *) jobShiftAllTypesString
 {

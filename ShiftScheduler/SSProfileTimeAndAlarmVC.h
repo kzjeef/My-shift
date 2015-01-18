@@ -9,11 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "OneJob.h"
 #import "SCModalPickerView.h"
+#import "I18NStrings.h"
 
-#define FROM_ITEM_STRING NSLocalizedString(@"Clock In", "Time to start work")
-#define HOURS_ITEM_STRING NSLocalizedString(@"With Hours", "How many hours?")
-#define REMIND_BEFORE_WORK NSLocalizedString(@"Work Alert", "how long notice before work")
-#define REMIND_BEFORE_CLOCK_OFF NSLocalizedString(@"Off Alert", "how long time remind me before off")
 @class SCModalPickerView;
 
 @interface SSProfileTimeAndAlarmVC : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource>

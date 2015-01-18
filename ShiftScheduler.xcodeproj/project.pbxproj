@@ -78,6 +78,7 @@
 		294D069E15C2DB320029786A /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2916128415A62A6B0031F78C /* AppIcon.png */; };
 		294D069F15C2DB320029786A /* GSFacesInfo.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */; };
 		294D06A115C2DB320029786A /* addButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 293B64F915A3C64900D0C4B5 /* addButton.png */; };
+		294D95481A6B7ADE00B34E29 /* I18NStrings.h in Headers */ = {isa = PBXBuildFile; fileRef = 294D95471A6B7ADE00B34E29 /* I18NStrings.h */; };
 		294E2902148B302700E6ED45 /* ShiftDay.h in Headers */ = {isa = PBXBuildFile; fileRef = 294E2900148B302700E6ED45 /* ShiftDay.h */; };
 		294E2903148B302700E6ED45 /* ShiftDay.m in Sources */ = {isa = PBXBuildFile; fileRef = 294E2901148B302700E6ED45 /* ShiftDay.m */; };
 		29657E7318CCF7F400FE61AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29657E7218CCF7F400FE61AC /* Images.xcassets */; };
@@ -457,6 +458,7 @@
 		293B64F015A3BF8400D0C4B5 /* tab-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-calendar.png"; sourceTree = "<group>"; };
 		293B64F915A3C64900D0C4B5 /* addButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addButton.png; sourceTree = "<group>"; };
 		293B64FD15A3C7D200D0C4B5 /* GSFacesInfo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GSFacesInfo.png; sourceTree = "<group>"; };
+		294D95471A6B7ADE00B34E29 /* I18NStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = I18NStrings.h; path = ShiftScheduler/I18NStrings.h; sourceTree = "<group>"; };
 		294E28FF148B2F3A00E6ED45 /* ShiftScheduler 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 2.xcdatamodel"; sourceTree = "<group>"; };
 		294E2900148B302700E6ED45 /* ShiftDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShiftDay.h; sourceTree = "<group>"; };
 		294E2901148B302700E6ED45 /* ShiftDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShiftDay.m; sourceTree = "<group>"; };
@@ -727,6 +729,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B9E1B81472C1D700DB2E1F /* Foundation.framework in Frameworks */,
 				2995A42A18CB685C004782DF /* Social.framework in Frameworks */,
 				2920039A18B4F142000CA7D3 /* EventKit.framework in Frameworks */,
 				297FDBDA18A8BAC900BA0240 /* libPods.a in Frameworks */,
@@ -741,7 +744,6 @@
 				2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */,
 				2968BECE14F9076400DF1CCF /* AVFoundation.framework in Frameworks */,
 				29B9E1B61472C1D700DB2E1F /* UIKit.framework in Frameworks */,
-				29B9E1B81472C1D700DB2E1F /* Foundation.framework in Frameworks */,
 				29B9E1BA1472C1D700DB2E1F /* CoreGraphics.framework in Frameworks */,
 				29B9E1BC1472C1D700DB2E1F /* CoreData.framework in Frameworks */,
 				9A85C2A9A9AA44AEB7EE5EA3 /* libPods.a in Frameworks */,
@@ -867,6 +869,14 @@
 				29E9810916419E1E00B65A7E /* Audio */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		294D95421A6B7AAC00B34E29 /* I18N */ = {
+			isa = PBXGroup;
+			children = (
+				294D95471A6B7ADE00B34E29 /* I18NStrings.h */,
+			);
+			name = I18N;
 			sourceTree = "<group>";
 		};
 		2958CFBD1568DC2A00E273C3 /* Free Jump Profile */ = {
@@ -1197,6 +1207,7 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
+				294D95421A6B7AAC00B34E29 /* I18N */,
 				29B460C5182E00810059F149 /* Pods.xcodeproj */,
 				29C4B5DD1813C38D0041D0B2 /* UIImage+Blur.h */,
 				29C4B5DE1813C38D0041D0B2 /* UIImage+Blur.m */,
@@ -1441,6 +1452,7 @@
 				292DBCAA14CA943F00C87A70 /* JPImagePickerController.h in Headers */,
 				292DBCAC14CA943F00C87A70 /* JPImagePickerDetailController.h in Headers */,
 				29C4B5DF1813C38D0041D0B2 /* UIImage+Blur.h in Headers */,
+				294D95481A6B7ADE00B34E29 /* I18NStrings.h in Headers */,
 				292DBCAF14CA943F00C87A70 /* JPImagePickerOverviewController.h in Headers */,
 				292DBCB214CA943F00C87A70 /* UIImageResizing.h in Headers */,
 				29E339D414CA955A0036EAED /* ProfileIconPickerDataSource.h in Headers */,
@@ -1554,8 +1566,8 @@
 		29B9E1A81472C1D700DB2E1F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0510;
+				LastTestingUpgradeCheck = 0600;
+				LastUpgradeCheck = 0600;
 				TargetAttributes = {
 					29B9E1B01472C1D700DB2E1F = {
 						DevelopmentTeam = CTTU5P78CK;
@@ -2063,7 +2075,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;

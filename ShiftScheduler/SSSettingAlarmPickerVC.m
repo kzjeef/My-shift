@@ -10,9 +10,7 @@
 #import <CoreMedia/CoreMedia.h>
 #import "SSSettingAlarmPickerVC.h"
 #import "SSDefaultConfigName.h"
-
-#define LONG_ALARM_STR NSLocalizedString(@"Long Alarm", "long alarm section title")
-#define SHORT_ALARM_STR NSLocalizedString(@"Short Alarm", "short alarm section title")
+#import "I18NStrings.h"
 
 @interface SSSettingAlarmPickerVC ()
 {

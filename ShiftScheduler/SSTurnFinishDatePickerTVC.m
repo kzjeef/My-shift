@@ -8,6 +8,7 @@
 
 #import "SSTurnFinishDatePickerTVC.h"
 #import "NSDateAdditions.h"
+#import "I18NStrings.h"
 
 @interface SSTurnFinishDatePickerTVC ()
 {
@@ -27,9 +28,6 @@
 @synthesize dateFormatter;
 @synthesize job;
 
-
-#define REPEAT_ITEM_STRING    NSLocalizedString(@"Repeat Until", "finish at this date")
-#define REPEAT_FOREVER_STRING NSLocalizedString(@"Repeat forever", "repeart forever string")
 
 - (NSArray *) items {
     if (items == nil) {

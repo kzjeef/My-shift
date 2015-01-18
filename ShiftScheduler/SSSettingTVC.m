@@ -13,35 +13,11 @@
 #import "SSDefaultConfigName.h"
 #import "SSSettingHolidayRegionPIckerVC.h"
 #import "UISwitch+AdjustForTableViewCell.h"
+#import "I18NStrings.h"
 
 
 
 @implementation SSSettingTVC
-
-#define TELL_OTHER_ITEM_STRING NSLocalizedString(@"Tell a friend", "tell a friend item")
-#define EMAIL_SUPPORT_ITEM_STRING NSLocalizedString(@"Email support", "eMail support item")
-#define RATING_ITEM_STRING    NSLocalizedString(@"Rating me!", "Rating me item")
-
-#define ENABLE_ALARM_SOUND NSLocalizedString(@"Alert Sound", "enable Alert")
-#define PICK_ALERT_SOUND NSLocalizedString(@"Alert", "choose alert sound")
-
-#define LUNAR_ENABLE_ITEM   NSLocalizedString(@"Lunar Calendar", "enable chinese calendar config title")
-#define LUNAR_ENABLE_TEIM_HELP NSLocalizedString(@"show chinese lunar calendar", "enable chinese calendar config help")
-
-#define MONDAY_START_ITEM   NSLocalizedString(@"Monday Start", "enable start with monday title.")
-#define MONDAY_START_ITEM_HELP   NSLocalizedString(@"change week to monday", "change week start with monday help")
-
-#define HOLIDAY_PICK_ITEM   NSLocalizedString(@"Holiday", "enable chinese calendar config title")
-#define HOLIDAY_PICK_ITEM_HLEP NSLocalizedString(@"pick your region to show holidays", "show region hlidays help")
-
-#define LOGIN_THINKNOTE_ITEM    NSLocalizedString(@"Login ThinkNote", "thinkNote Login")
-
-#define CANCEL_STR NSLocalizedString(@"Cancel", "cancel")
-
-#define RESET_STR NSLocalizedString(@"Reset All Data", "reset")
-#define RESET_WARNNING_STR NSLocalizedString(@"This will delete all Shift information in your application, are you sure ?", \
-                                             "long warnning information before delete all data")
-
 @synthesize iTunesURL;
 
 enum {

@@ -10,10 +10,11 @@
 #import "WorkdayDataSource.h"
 #import "NSDateAdditions.h"
 #import "SSDefaultConfigName.h"
-#import "SSLunarDate/SSLunarDate.h"
+#import "SSLunarDate.h"
 #import "SSLunarDate/SSHolidayManager.h"
 #import "SSDayEventUTC.h"
 #import "UIColor+HexCoding.m"
+#import "I18NStrings.h"
 
 #define ONE_DAY_SECONDS (60*60*24)
 #define HALF_DAY_SECONDS (60*60*12)
@@ -33,11 +34,6 @@
 @implementation WorkdayDataSource
 
 #define JOB_CACHE_INDEFITER @"JobNameCache"
-
-#define LUNAR_CONVERT_ERROR_TITLE_STR  NSLocalizedString(@"No Lunar Date", "not able to generate lunar Date title")
-#define LUNAR_CONVERT_ERROR_DETAIL_STR  NSLocalizedString(@"lunar date out of range.", "not able to generate lunar Date title")
-
-#define LUNAR_FMT_START_STRING  NSLocalizedString(@"Lunar", "")
 
 
 @synthesize fetchedRequestController;

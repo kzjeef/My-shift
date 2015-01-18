@@ -9,18 +9,7 @@
 #import "OneJob.h"
 #import "NSDateAdditions.h"
 #import "SSDefaultConfigName.h"
-
-
-// XXX: in .strings file, %d actually going to %@, which can use for a strings.
-#define TIME_STR_ALARM_BEFORE_HOURS NSLocalizedString(@"will start in %d Hour", "will start in %d Hour")
-#define TIME_STR_ALARM_BEFORE_MINITES NSLocalizedString(@"will start in %d Minutes", "will start in %d Minutes")
-#define TIME_STR_ALARM_BEFORE_NOW NSLocalizedString(@"is start now", "is start now")
-#define TIME_STR_ALARM_OFF_HOURS NSLocalizedString(@"will off in %d Hour", "will start in %d Hour")
-#define TIME_STR_ALARM_OFF_MINITES NSLocalizedString(@"will off in %d Minutes", "will start in %d Minutes")
-#define TIME_STR_ALARM_OFF_NOW NSLocalizedString(@"is off now", "is start now")
-
-#define ALERT_USER_ENTER_APP NSLocalizedString(@"The alarm you setup in app is going to out of date, please enter the app to active the alarm again (only enter and exit is enough)", "alarm out of date notify body")
-
+#import "I18NStrings.h"
 
 #define JOB_CACHE_INDEFITER @"JobNameCache"
 @implementation SSAlertController

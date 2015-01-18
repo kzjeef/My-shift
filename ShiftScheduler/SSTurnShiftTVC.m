@@ -9,6 +9,7 @@
 #import "SSTurnShiftTVC.h"
 #import "SCViewController.h"
 #import "SCModalPickerView.h"
+#import "I18NStrings.h"
 
 @interface SSTurnShiftTVC()
 {
@@ -30,9 +31,6 @@
 @implementation SSTurnShiftTVC
 
 @synthesize picker, theJob, firstChooseIndexPath, pickDelegate;
-
-#define WORKLEN_ITEM_STRING   NSLocalizedString(@"Work Length", "how long work days")
-#define RESTLEN_ITEM_STRING   NSLocalizedString(@"Rest Length", "how long rest days")
 
 enum {
     WORKLEN_ITEM = 0,

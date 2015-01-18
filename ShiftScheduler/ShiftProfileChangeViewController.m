@@ -15,6 +15,7 @@
 #import "SCModalPickerView.h"
 #import "NSDateAdditions.h"
 #import "SSShiftTableConfigTVC.h"
+#import "I18NStrings.h"
 
 
 @interface ShiftProfileChangeViewController() 
@@ -60,23 +61,6 @@
 
 
 #pragma mark - "init values"
-
-#define NAME_ITEM_STRING  NSLocalizedString(@"Shift Name", "job name")
-#define ICON_ITEM_STRING  NSLocalizedString(@"Change Icon", "choose a icon")
-#define COLOR_ENABLE_STRING NSLocalizedString(@"Enable Color icon", "enable color icon")
-#define COLOR_PICKER_STRING NSLocalizedString(@"Change Color", "choose a color to show icon")
-#define ICON_OR_TEXT_STRING NSLocalizedString(@"Icon Behavior", "show icon or text in profile change view")
-#define ICON_STRING NSLocalizedString(@"Icon", "Icon")
-#define TEXT_STRING NSLocalizedString(@"Charactor", "Charactor")
-#define STARTWITH_ITEM_STRING NSLocalizedString(@"Start with", "start with this date")
-#define REPEAT_ITEM_STRING    NSLocalizedString(@"Repeat until", "finish at this date")
-#define REPEAT_FOREVER_STRING NSLocalizedString(@"Repeat forever", "repeart forever string")
-#define SHIFTCONFIG_ITEM_STRING NSLocalizedString(@"Shift detail", "config  detail of shift")
-#define SHIFT_TIME_DETAIL_TITLE NSLocalizedString(@"Time and Remind", "time and remind title")
-
-#define EMPTY_SHIFT_WARNNING_TITLE NSLocalizedString(@"Do you forget shift detail?", "empty shift warnning")
-#define EMPTY_SHIFT_WARNNING_DETAIL NSLocalizedString(@"Please choose your shift detail...", "empty shift warnning.")
-
 #define STARTWITH_ITEM 1
 #define FINISH_ITEM 2
 

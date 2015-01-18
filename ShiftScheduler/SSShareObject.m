@@ -11,6 +11,7 @@
 #import "SSShareProfileListViewController.h"
 #import "KalViewController.h"
 #import "UIImage+CaptureView.h"
+#import "I18NStrings.h"
 
 @interface SSShareResult ()
 {

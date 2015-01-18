@@ -10,7 +10,7 @@
 #import "SCViewController.h"
 #import "SCModalPickerView.h"
 #import "NSDateAdditions.h"
-
+#import "I18NStrings.h"
 
 @interface SSShiftTableConfigTVC ()
 {
@@ -31,7 +31,6 @@
 @synthesize theJob=job_;
 @synthesize pickDelegate;
 
-#define LENGTH_OF_CYCLE NSLocalizedString(@"Shift Cycle", "length of cycle")
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

@@ -471,6 +471,8 @@
                 }
             }
             break;
+        default:
+            break;
     }
 #endif
  }

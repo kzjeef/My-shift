@@ -6,13 +6,11 @@
 //
 //
 
+#import <UIKit/UIKit.h>
 #import "SSSocialThinkNoteLogin.h"
 #import "SSThinkNoteShareAgent.h"
-#import <UIKit/UIKit.h>
+#import "I18NStrings.h"
 
-#define LOGIN_THINKNOTE_ITEM    NSLocalizedString(@"Login ThinkNote", "thinkNote Login")
-
-#define USER_PASSWD_WRONG_STR   NSLocalizedString(@"User Name or Password is not correct, failed to login to server, please double again", "user/password wrong message")
 
 
 @implementation SSSocialThinkNoteLogin

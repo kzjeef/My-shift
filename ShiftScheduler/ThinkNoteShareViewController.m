@@ -10,6 +10,7 @@
 #import "SSThinkNoteShareAgent.h"
 #import "SSSocialThinkNoteLogin.h"
 #import "SSShareObject.h"
+#import "I18NStrings.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -36,13 +37,6 @@
     }
     return self;
 }
-
-#define SHARE_STRING NSLocalizedString(@"Share", "share to other")
-#define  TNS_SUCCESS_SHARED NSLocalizedString(@"Success share shift calendar to  www.qinbiji.cn", "success share shift calendar to qingbiji")
-
-#define SHARE_TO_THINKNOTE  NSLocalizedString(@"Share by ThinkNote", "share by thinknote")
-
-#define TNS_SETTING_TIPS NSLocalizedString(@"Please setup your ThinkNote account in 'Setting->Login ThinkNote'", "thinkNote Setting tips")
 
 // ZJJ Lib.
 

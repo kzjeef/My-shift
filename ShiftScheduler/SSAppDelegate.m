@@ -18,8 +18,10 @@
 #import "SSDefaultConfigName.h"
 #import "SSMainMenuTableViewController.h"
 #import "SSCalendarSyncController.h"
-
 #import "UIImage+MonoImage.h"
+#import "I18NStrings.h"
+
+
 #import "Kal.h"
 
 @interface SSAppDelegate()
@@ -44,12 +46,6 @@ enum {
     TAG_MENU,
     TAG_ZERO_PROFILE,
 };
-
-#define SHARE_STRING NSLocalizedString(@"Share", "share to other")
-#define CREATE_PROFILE_PROMPT NSLocalizedString(@"You don't have any shift profile yet. Do you want to create one? ", "prompt of create profile title")
-#define CREATE_PROFILE_NO  NSLocalizedString(@"No,Thanks", "no create one")
-#define CREATE_PROFILE_YES  NSLocalizedString(@"Create Profile", "create one")
-#define SYNC_CALENDAR       NSLocalizedString(@"Syncing", "sync to phone")
 
 #define DID_SHIFT_MIGRATION @"user_migration_done"
 

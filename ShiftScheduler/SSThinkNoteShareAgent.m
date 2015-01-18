@@ -11,10 +11,9 @@
 #import "NSString+HTTPEscapes.h"
 #import "SSSettingTVC.h"
 #import "SSSocialThinkNoteLogin.h"
+#import "I18NStrings.h"
 
 //#define LOCAL_DEBUG
-
-#define LOGIN_FAILED_STR NSLocalizedString(@"ThinkNote Login Failed", "think note login failed")
 
 @interface SSThinkNoteShareAgent()
 {

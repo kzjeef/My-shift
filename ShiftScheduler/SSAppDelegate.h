@@ -90,10 +90,3 @@ ProfileEditFinishDelegate, REFrostedViewControllerDelegate, SSMainMenuDelegate, 
 + (BOOL) enableThinkNoteConfig;
 @end
 
-
-#define SHIFTS_STR NSLocalizedString(@"Shift Manage", "")
-//NSLocalizedString(@"Shifts", "shifts works in tabbar")
-#define SETTINGS_STR NSLocalizedString(@"Settings", "Settings")
-#define CALENDAR_STR NSLocalizedString(@"Calendar", "calendar in tab bar")
-#define APP_NAME_STR NSLocalizedString(@"Shift Scheduler", "")
-#define APP_URL @"http://appstore.com/shiftscheduler"

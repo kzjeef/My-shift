@@ -10,38 +10,8 @@
 #import "UISwitch+AdjustForTableViewCell.h"
 #import "SSCalendarSyncController.h"
 #import "UIActivityIndicatorView+BigRound.h"
+#import "I18NStrings.h"
 #import "config.h"
-
-#define kCalendarSyncTitle   NSLocalizedString(@"Sync Phone Calendar", "")
-
-#define kEnableCalendarSync NSLocalizedString(@"Enable Calendar Sync", "")
-#define kDoSyncItem NSLocalizedString(@"Manual Sync", "")
-#define kAlertInCalendarItem NSLocalizedString(@"Alert Setup", "")
-#define kShiftSelectItem     NSLocalizedString(@"Shifts to Sync", "")
-#define kLengthItem              NSLocalizedString(@"Time Span", "")
-#define kDeleteEventsItem    NSLocalizedString(@"Delete Synced Events", "")
-
-#define kEnableAutoSyncDetail NSLocalizedString(@"", "")
-#define kAlertInCalendarDetail NSLocalizedString(@"setup same alarm as shift setting", "")
-#define kShiftSelectDetail     NSLocalizedString(@"default sync all enabled shift", "")
-#define kLengthDetail    NSLocalizedString(@"sync days in further", "")
-#define kDeleteEventsDetail   NSLocalizedString(@"", "")
-
-#define kLengthSelectionWeek NSLocalizedString(@"One Week", "")
-#define kLengthSelection2Week NSLocalizedString(@"Two Week", "")
-#define kLengthSelectionMonth NSLocalizedString(@"One Month", "")
-#define kLengthSelection3Month NSLocalizedString(@"Three Month", "")
-
-#define kCalendarSyncToPhoneFmt NSLocalizedString(@"%d calendar events are sync to phone calendar", "")
-#define kCalendarSyncToPhoneNoAdd NSLocalizedString(@"No new calendar event was added in phone calendar", "")
-#define kCalendarSyncToPhoneNoDel NSLocalizedString(@"No calendar event was deleted.", "")
-#define kCalendarSyncToPhoneDel NSLocalizedString(@"%d calendar events are delete.", "")
-
-#define kCalenderSyncDetail NSLocalizedString(@"Perform sync shift event from scheudler to phone calendar", "")
-#define kCalendarLengthDetal NSLocalizedString(@"Sync the length days shift events of selected shift to phone calendar. Calendar events will be re created for any setting changes", "")
-#define kCalendarDeleveDetail NSLocalizedString(@"Delete all events created by scheduler from phone calendar", "")
-
-#define kSSCalendarAccessError NSLocalizedString(@"Access system calendar error, you need to enable calendar access by Setting -> Privacy -> Calendar", "")  
 
 
 /// TODO: add note to user, event it's a auto sync, it's still require

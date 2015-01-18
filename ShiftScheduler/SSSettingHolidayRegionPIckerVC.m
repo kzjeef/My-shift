@@ -9,6 +9,7 @@
 #import "SSSettingHolidayRegionPIckerVC.h"
 #import "SSDefaultConfigName.h"
 #import "SSLunarDate/SSHolidayManager.h"
+#import "I18NStrings.h"
 
 @interface SSSettingHolidayRegionPIckerVC ()
 {
@@ -26,13 +27,6 @@
  SSHolidayRegionUK,
  */
 
-#define REGION_NAME_CHINA   NSLocalizedString(@"China", "china str")
-#define REGION_NAME_HK      NSLocalizedString(@"HongKong", "hongkong str")
-#define REGION_NAME_MACAO   NSLocalizedString(@"Mocao", "macoa")
-#define REGION_NAME_TAIWAN  NSLocalizedString(@"Taiwan", "taiwan")
-#define REGION_NAME_US      NSLocalizedString(@"US",     "US")
-#define REGION_NAME_CANADIA NSLocalizedString(@"Canadia", "Canadia")
-#define REGION_NAME_UK      NSLocalizedString(@"UK",      "UK")
 
 @property (readonly) NSArray *regionList;
 @property (nonatomic, strong) NSMutableArray *regionCheckList;
