@@ -212,6 +212,8 @@
 		29C4B5DC1813BEA70041D0B2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C4B5DB1813BEA70041D0B2 /* QuartzCore.framework */; };
 		29C4B5DF1813C38D0041D0B2 /* UIImage+Blur.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C4B5DD1813C38D0041D0B2 /* UIImage+Blur.h */; };
 		29C4B5E01813C38E0041D0B2 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C4B5DE1813C38D0041D0B2 /* UIImage+Blur.m */; };
+		29C5BCDD1A7CD080009B065A /* SSHolidayHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C5BCDB1A7CD080009B065A /* SSHolidayHelper.h */; };
+		29C5BCDE1A7CD080009B065A /* SSHolidayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C5BCDC1A7CD080009B065A /* SSHolidayHelper.m */; };
 		29C943B014E957F700122144 /* SSKalDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C943AF14E957F700122144 /* SSKalDelegate.h */; };
 		29C943B214E9581600122144 /* SSKalDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C943B114E9581600122144 /* SSKalDelegate.m */; };
 		29C943B614E9642900122144 /* SSProfileTimeAndAlarmVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C943B314E9642800122144 /* SSProfileTimeAndAlarmVC.h */; };
@@ -636,6 +638,8 @@
 		29C4B5DB1813BEA70041D0B2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		29C4B5DD1813C38D0041D0B2 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Blur.h"; path = "ShiftScheduler/UIImage+Blur.h"; sourceTree = "<group>"; };
 		29C4B5DE1813C38D0041D0B2 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Blur.m"; path = "ShiftScheduler/UIImage+Blur.m"; sourceTree = "<group>"; };
+		29C5BCDB1A7CD080009B065A /* SSHolidayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSHolidayHelper.h; sourceTree = "<group>"; };
+		29C5BCDC1A7CD080009B065A /* SSHolidayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSHolidayHelper.m; sourceTree = "<group>"; };
 		29C943AF14E957F700122144 /* SSKalDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKalDelegate.h; sourceTree = "<group>"; };
 		29C943B114E9581600122144 /* SSKalDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKalDelegate.m; sourceTree = "<group>"; };
 		29C943B314E9642800122144 /* SSProfileTimeAndAlarmVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSProfileTimeAndAlarmVC.h; sourceTree = "<group>"; };
@@ -850,6 +854,7 @@
 		293994B5147D25D30007320C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				29C5BCD81A7CCFEE009B065A /* Helper */,
 				2912672D16CF691D00FFB202 /* SSLunarDate.xcodeproj */,
 				29AEBDC71561356C0010F27D /* KalRelated */,
 				29AEBDC6156134DF0010F27D /* AlertModel */,
@@ -1223,10 +1228,10 @@
 				29B0EA0D1A6B91EA0028ABEA /* Utils */,
 				294D95421A6B7AAC00B34E29 /* I18N */,
 				29B9E1BD1472C1D700DB2E1F /* Application */,
-				293B64EC15A3BF5000D0C4B5 /* Resources */,
 				29AEBDC8156136830010F27D /* GUI */,
 				293994B5147D25D30007320C /* Model */,
 				29B9E1BE1472C1D700DB2E1F /* Supporting Files */,
+				293B64EC15A3BF5000D0C4B5 /* Resources */,
 				298B0167148B941900C013F5 /* Compile Need files */,
 				29AEBDC91561369D0010F27D /* Test */,
 				29B9E1B41472C1D700DB2E1F /* Frameworks */,
@@ -1311,6 +1316,15 @@
 			);
 			name = "Supporting Files";
 			path = ShiftScheduler;
+			sourceTree = "<group>";
+		};
+		29C5BCD81A7CCFEE009B065A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				29C5BCDB1A7CD080009B065A /* SSHolidayHelper.h */,
+				29C5BCDC1A7CD080009B065A /* SSHolidayHelper.m */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		29D6A50C159CB36F00AC6103 /* Products */ = {
@@ -1458,6 +1472,7 @@
 				29D6A523159CB48200AC6103 /* Kal.h in Headers */,
 				29D6A521159CB45D00AC6103 /* KalViewController.h in Headers */,
 				294E2902148B302700E6ED45 /* ShiftDay.h in Headers */,
+				29C5BCDD1A7CD080009B065A /* SSHolidayHelper.h in Headers */,
 				292DBCAA14CA943F00C87A70 /* JPImagePickerController.h in Headers */,
 				292DBCAC14CA943F00C87A70 /* JPImagePickerDetailController.h in Headers */,
 				29C4B5DF1813C38D0041D0B2 /* UIImage+Blur.h in Headers */,
@@ -1575,7 +1590,7 @@
 		29B9E1A81472C1D700DB2E1F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastTestingUpgradeCheck = 0600;
+				LastTestingUpgradeCheck = 0610;
 				LastUpgradeCheck = 0600;
 				TargetAttributes = {
 					29B9E1B01472C1D700DB2E1F = {
@@ -1935,6 +1950,7 @@
 				29009FEB159F4AE500A1588E /* UIColor+HexCoding.m in Sources */,
 				29DCB8DC15A7C8730095C71D /* NSDateAdditions.m in Sources */,
 				297409E718C323D5008A5AF9 /* SSSingleSelectTVC.m in Sources */,
+				29C5BCDE1A7CD080009B065A /* SSHolidayHelper.m in Sources */,
 				29E6D7FA15ADC63100235123 /* SSShareProfileListViewController.m in Sources */,
 				29B8F3D415B9BA62000D934A /* NSString+HTTPEscapes.m in Sources */,
 				29B8F3D615B9BA62000D934A /* SSShareObject.m in Sources */,
@@ -2143,7 +2159,7 @@
 					Submodules/wechat,
 				);
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -2185,7 +2201,7 @@
 					Submodules/wechat,
 				);
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";

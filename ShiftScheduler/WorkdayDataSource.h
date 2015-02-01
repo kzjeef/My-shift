@@ -14,7 +14,7 @@
     //WorkDateGenerator *generator;
     //NSArray *jobsArray;
     NSManagedObjectContext * objectContext;
-    NSFetchedResultsController * fetchedRequestController;
+    NSFetchedResultsController * jobFetchRequestController;
     NSArray *theJobNameArray;
     NSMutableArray*items;
     NSDateFormatter *timeFormatter;
@@ -24,7 +24,7 @@
 
 @property (strong, nonatomic) NSDate *currentChoosenDate;
 @property (strong, nonatomic) NSArray *theJobNameArray;
-@property (strong, nonatomic) NSFetchedResultsController *fetchedRequestController;
+@property (strong, nonatomic) NSFetchedResultsController *jobFetchRequestController;
 @property (strong, nonatomic) NSDateFormatter *timeFormatter;
 @property (strong, nonatomic) NSManagedObjectContext * objectContext;
 

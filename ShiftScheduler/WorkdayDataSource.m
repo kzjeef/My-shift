@@ -1,4 +1,3 @@
-
 //
 //  WorkdayDataSource.m
 //  Holiday
@@ -15,6 +14,7 @@
 #import "SSDayEventUTC.h"
 #import "UIColor+HexCoding.m"
 #import "I18NStrings.h"
+#import "SSHolidayHelper.h"
 
 #define ONE_DAY_SECONDS (60*60*24)
 #define HALF_DAY_SECONDS (60*60*12)
@@ -36,7 +36,7 @@
 #define JOB_CACHE_INDEFITER @"JobNameCache"
 
 
-@synthesize fetchedRequestController;
+@synthesize jobFetchRequestController;
 @synthesize theJobNameArray;
 @synthesize timeFormatter, objectContext;
 - (id)init
@@ -60,6 +60,15 @@
     _holidayManagers = nil;
     _cachedRegionList = nil;
     [callback loadedDataSource:self];
+}
+
+- (NSDateFormatter *) timeFormatter
+{
+    if (timeFormatter == nil) {
+        timeFormatter = [[NSDateFormatter alloc] init];
+        timeFormatter.timeStyle = NSDateFormatterShortStyle;
+    }
+    return timeFormatter;
 }
 
 - (NSArray *) cachedRegionList
@@ -89,24 +98,12 @@
 }
 
 
-
-- (NSDateFormatter *) timeFormatter
-{
-    if (timeFormatter == nil) {
-        timeFormatter = [[NSDateFormatter alloc] init];
-        timeFormatter.timeStyle = NSDateFormatterShortStyle;
-    }
-    return timeFormatter;
-}
-
-
-
 #pragma mark - TableView
 
-- (NSFetchedResultsController *) fetchedRequestController
+- (NSFetchedResultsController *) jobFetchRequestController
 {
-    if (fetchedRequestController != nil) {
-        return fetchedRequestController;
+    if (jobFetchRequestController != nil) {
+        return jobFetchRequestController;
     }
 
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -126,7 +123,7 @@
                                        managedObjectContext:self.objectContext
                                        sectionNameKeyPath:nil 
                                        cacheName:JOB_CACHE_INDEFITER];
-    fetchedRequestController = frc;
+    jobFetchRequestController = frc;
     return frc;
 }
 
@@ -134,34 +131,13 @@
 
 - (NSArray *) getHolidayForDate:(NSDate *) date
 {
-    NSAssert(date != nil, @"Date not should nil");
-    NSMutableArray *result = [[NSMutableArray alloc] init];
-    
-    for (SSHolidayManager *m in self.holidayManagers) {
-        NSArray *a = [m getHolidayListForDate:date];
-        if (a != nil && [a lastObject] != nil)
-            [result addObjectsFromArray:a];
-    }
-    
-    return result;
+    return [SSHolidayHelper getHolidayForDate:date holidayManagers:self.holidayManagers];
 }
 
-- (NSArray *) getHolidayFromDateToDate:(NSDate *) fromDate  endDate:(NSDate *) toDate {
-    
-    NSDate *d = [fromDate copy];
-    NSMutableArray *res = [[NSMutableArray alloc] init];
-    while (true) {
-        NSArray *a = [self getHolidayForDate:d];
-        if ([a lastObject] != nil)
-            [res addObject:[d copy]];
-        d = [d dateByAddingTimeInterval:ONE_DAY_SECONDS];
-        if ([d compare:toDate] == NSOrderedDescending)
-            break;
-    }
-    return res;
+- (NSArray *) getHolidayFromDateToDate:(NSDate *) fromDate  endDate:(NSDate *) toDate
+{
+    return [SSHolidayHelper getHolidayFromDateToDate:fromDate endDate:toDate holidayManagers:self.holidayManagers];
 }
-
-
 
 - (id) initWithManagedContext:(NSManagedObjectContext *)thecontext
 {
@@ -171,11 +147,11 @@
 #if 1
     NSError *error = 0;
 
-    [self.fetchedRequestController performFetch:&error];
+    [self.jobFetchRequestController performFetch:&error];
     if (error)
         NSLog(@"fetch request error:%@", error.userInfo);
 #endif
-    self.fetchedRequestController.delegate = self;
+    self.jobFetchRequestController.delegate = self;
     
     NSNotificationCenter *dnc = [NSNotificationCenter defaultCenter];
     [dnc addObserver:self
@@ -188,12 +164,10 @@
 
 - (void) managedContextDataChanged:(NSNotification *) saveNotifaction
 {
-    
-    [self.fetchedRequestController performFetch:nil];
+    [self.jobFetchRequestController performFetch:nil];
     theJobNameArray = nil;
     _holidayManagers = nil;
     [callback loadedDataSource:self];
-    
 }
 
 - (BOOL) isLunarDateDisplayEnable
@@ -204,7 +178,7 @@
 
 - (NSArray *)theJobNameArray 
 {
-    theJobNameArray = self.fetchedRequestController.fetchedObjects;
+    theJobNameArray = self.jobFetchRequestController.fetchedObjects;
     return theJobNameArray;
 }
 
@@ -296,10 +270,23 @@
 }
 
 #pragma mark UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat def = 44.0f;
+    
+    if ([self needsDisplayInformationBar] && indexPath.section == 0 && indexPath.row == 0) {
+        return def * 0.75;
+    } else
+        return def;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self needsDisplayInformationBar] && indexPath.section == 0 && indexPath.row == 0)
+    if (tableView.rowHeight == UITableViewAutomaticDimension)
+        return tableView.rowHeight;
+
+    if ([self needsDisplayInformationBar] && indexPath.section == 0 && indexPath.row == 0) {
         return tableView.rowHeight * 0.75;
-    else
+    } else
         return  tableView.rowHeight;
 }
 
