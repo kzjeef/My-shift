@@ -101,21 +101,22 @@
 - (NSArray *)fixupArrayByLength: (NSArray *) inputarray
 {
     int diff = inputarray.count - self.jobFreeJumpCycle.intValue;
+    
     if (diff == 0)
         return inputarray;
-    else if (diff < 0) {
+    else if (diff < 0) { // Means new array is larger.
         // oh, we needs fill the addional days with zero
         NSMutableArray *fixeda = [[NSMutableArray alloc] initWithCapacity:self.jobFreeJumpCycle.intValue];
         [fixeda setArray:inputarray];
-        for (int i = 0; i < -diff; i++)
+        for (int i = 0; i < abs(diff); i++)
             [fixeda addObject: @0];
         return fixeda;
     } else {
+        // means new array is lesser.
         // diff < 0, we need cut the array with cycle length
-        NSMutableArray *fixeda = [[NSMutableArray alloc] initWithCapacity:self.jobFreeJumpCycle.intValue];
-        NSRange a = NSMakeRange(0, self.jobFreeJumpCycle.intValue);
-//        NSAssert(inputarray.count == fixeda.count, @"size not equal");
-        [fixeda replaceObjectsInRange:a withObjectsFromArray:inputarray range:a];
+        NSMutableArray *fixeda = [[NSMutableArray alloc] init];
+        for (int i = 0; i < self.jobFreeJumpCycle.intValue; i++)
+            [fixeda addObject:[inputarray objectAtIndex:i]];
         return fixeda;
     }
 }
@@ -123,7 +124,6 @@
 - (void)didChangeValueForKey:(NSString *)key
 {
     [super didChangeValueForKey:key];
-
     
     NSLog(@"Job: %@.%@ changed \n", self.jobName, key);
 

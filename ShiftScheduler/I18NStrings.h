@@ -14,6 +14,7 @@
 #define CREATE_PROFILE_NO  NSLocalizedString(@"No,Thanks", "no create one")
 #define CREATE_PROFILE_YES  NSLocalizedString(@"Create Profile", "create one")
 #define SYNC_CALENDAR       NSLocalizedString(@"Syncing", "sync to phone")
+#define DONE_STRING         NSLocalizedString(@"Done", "Done")
 
 
 #define kCalendarSyncTitle   NSLocalizedString(@"Sync Phone Calendar", "")

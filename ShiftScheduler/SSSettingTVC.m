@@ -256,6 +256,9 @@ enum {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (tableView.rowHeight == -1)
+        return tableView.rowHeight;
+
     if (indexPath.section == SSSNAME_SECTION)
         return tableView.rowHeight * 1.33;
     else

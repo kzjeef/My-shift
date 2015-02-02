@@ -250,46 +250,42 @@ enum {
     [modalPickerView show];
 }
 
-- (void) showDatePickerView:(UIDatePicker *)pdatePicker
+- (void) pickerDoneButtonClicked
 {
-    __weak UIDatePicker *tdatePicker = pdatePicker;
-    
-    SCModalPickerView *modalPickerView = [[SCModalPickerView alloc] init];
-    [modalPickerView setPickerView:tdatePicker];
-    __weak OneJob *job = self.theJob;
-    
+    OneJob *job = self.theJob;
     NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
-    __weak NSDateFormatter *pDateFormatter = self.dateFormatter;
-    __weak SSProfileTimeAndAlarmVC *safeSelf = self;
-    [modalPickerView setCompletionHandler:^(SCModalPickerViewResult result){
-        if (result == SCModalPickerViewResultDone)
-        { 
-            if (pChoosedIndexPath.row == CLOCK_IN_ITEM) {
-                [job mysetJobEverydayStartTime:tdatePicker.date];
-                NSLog(@"start time every date:%@ with Job:%@", [pDateFormatter stringFromDate:[job getJobEverydayStartTime]], job.jobName);
-            } else if (pChoosedIndexPath.row == HOURS_ITEM) {
-	      [job mysetJobEveryDayLengthSec:[NSNumber numberWithInt:tdatePicker.countDownDuration]];
-                NSLog(@"work every length:%@ with Job:%@", [job getJobEveryDayLengthSec], job.jobName);
-            }
-            
-            [safeSelf.tableView reloadData];
-        }
-    }];
-    [modalPickerView show];
+
+    NSTimeInterval i = [SSProfileTimeAndAlarmVC convertRemindItemToTimeInterval:[self.picker selectedRowInComponent:0]];
+    if (pChoosedIndexPath.row == PICKER_VIEW_BEFORE_WORK) {
+        job.jobRemindBeforeWork = [NSNumber numberWithInt:i];
+    } else if (pChoosedIndexPath.row == PICKER_VIEW_BEFORE_OFF) {
+        job.jobRemindBeforeOff = [NSNumber numberWithInt:i];
+    }
+    [self.tableView reloadData];
 }
 
+- (void) datePickerDoneButtonClicked {
+    NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
+    if (pChoosedIndexPath.row == CLOCK_IN_ITEM) {
+        [self.theJob mysetJobEverydayStartTime:self.datePicker.date];
+        NSLog(@"start time every date:%@ with Job:%@", [self.dateFormatter stringFromDate:[self.theJob getJobEverydayStartTime]], self.theJob.jobName);
+    } else if (pChoosedIndexPath.row == HOURS_ITEM) {
+        [self.theJob mysetJobEveryDayLengthSec:[NSNumber numberWithInt:self.datePicker.countDownDuration]];
+        NSLog(@"work every length:%@ with Job:%@", [self.theJob getJobEveryDayLengthSec], self.theJob.jobName);
+    }
+    
+    [self.tableView reloadData];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == CLOCK_IN_ITEM) {
         self.datePicker.datePickerMode = UIDatePickerModeTime;
         self.datePicker.date = [self.theJob getJobEverydayStartTime];
-        [self showDatePickerView:self.datePicker];
     } else if (indexPath.row == HOURS_ITEM) {
         self.datePicker.datePickerMode = UIDatePickerModeCountDownTimer;
         self.datePicker.minuteInterval = 5;
         self.datePicker.countDownDuration = [[self.theJob getJobEveryDayLengthSec] intValue];
-        [self showDatePickerView:self.datePicker];
     } else if (indexPath.row == REMIND_BEFORE_WORK_ITEM) {
         NSTimeInterval i = [self.theJob.jobRemindBeforeWork doubleValue];
         int row = [SSProfileTimeAndAlarmVC convertTimeIntervalToRemindItem:i];

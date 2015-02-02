@@ -214,6 +214,8 @@
 		29C4B5E01813C38E0041D0B2 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C4B5DE1813C38D0041D0B2 /* UIImage+Blur.m */; };
 		29C5BCDD1A7CD080009B065A /* SSHolidayHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C5BCDB1A7CD080009B065A /* SSHolidayHelper.h */; };
 		29C5BCDE1A7CD080009B065A /* SSHolidayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C5BCDC1A7CD080009B065A /* SSHolidayHelper.m */; };
+		29C5BCF61A7E4257009B065A /* UITableViewCell+DoneButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C5BCF41A7E4257009B065A /* UITableViewCell+DoneButton.h */; };
+		29C5BCF71A7E4257009B065A /* UITableViewCell+DoneButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C5BCF51A7E4257009B065A /* UITableViewCell+DoneButton.m */; };
 		29C943B014E957F700122144 /* SSKalDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C943AF14E957F700122144 /* SSKalDelegate.h */; };
 		29C943B214E9581600122144 /* SSKalDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C943B114E9581600122144 /* SSKalDelegate.m */; };
 		29C943B614E9642900122144 /* SSProfileTimeAndAlarmVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C943B314E9642800122144 /* SSProfileTimeAndAlarmVC.h */; };
@@ -640,6 +642,8 @@
 		29C4B5DE1813C38D0041D0B2 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Blur.m"; path = "ShiftScheduler/UIImage+Blur.m"; sourceTree = "<group>"; };
 		29C5BCDB1A7CD080009B065A /* SSHolidayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSHolidayHelper.h; sourceTree = "<group>"; };
 		29C5BCDC1A7CD080009B065A /* SSHolidayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSHolidayHelper.m; sourceTree = "<group>"; };
+		29C5BCF41A7E4257009B065A /* UITableViewCell+DoneButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+DoneButton.h"; sourceTree = "<group>"; };
+		29C5BCF51A7E4257009B065A /* UITableViewCell+DoneButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+DoneButton.m"; sourceTree = "<group>"; };
 		29C943AF14E957F700122144 /* SSKalDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKalDelegate.h; sourceTree = "<group>"; };
 		29C943B114E9581600122144 /* SSKalDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKalDelegate.m; sourceTree = "<group>"; };
 		29C943B314E9642800122144 /* SSProfileTimeAndAlarmVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSProfileTimeAndAlarmVC.h; sourceTree = "<group>"; };
@@ -896,6 +900,8 @@
 		297409E818C323DE008A5AF9 /* General UI */ = {
 			isa = PBXGroup;
 			children = (
+				29C5BCF41A7E4257009B065A /* UITableViewCell+DoneButton.h */,
+				29C5BCF51A7E4257009B065A /* UITableViewCell+DoneButton.m */,
 				29C4B5DD1813C38D0041D0B2 /* UIImage+Blur.h */,
 				29C4B5DE1813C38D0041D0B2 /* UIImage+Blur.m */,
 				29F2147C14E66DB7008BEE92 /* UIImage+MonoImage.m */,
@@ -1483,6 +1489,7 @@
 				297409E618C323D5008A5AF9 /* SSSingleSelectTVC.h in Headers */,
 				29B460D4182E0B1D0059F149 /* SSMainMenuTableViewController.h in Headers */,
 				299A256D18BB967D00592137 /* SyncEvent.h in Headers */,
+				29C5BCF61A7E4257009B065A /* UITableViewCell+DoneButton.h in Headers */,
 				2935514414E2BABA004D8FAC /* SSTurnShiftTVC.h in Headers */,
 				29F2147D14E66DB7008BEE92 /* UIImage+MonoImage.h in Headers */,
 				29C943B014E957F700122144 /* SSKalDelegate.h in Headers */,
@@ -1961,6 +1968,7 @@
 				29E980F01641747B00B65A7E /* SSSettingAlarmPickerVC.m in Sources */,
 				29AD3C8C16D7B036002E6543 /* SSSettingHolidayRegionPIckerVC.m in Sources */,
 				290F4E391783EA800023ADE8 /* SSDayEventUTC.m in Sources */,
+				29C5BCF71A7E4257009B065A /* UITableViewCell+DoneButton.m in Sources */,
 				2980757618B25462003A733F /* InfoNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
