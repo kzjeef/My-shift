@@ -8,11 +8,10 @@
 
 #import "ShiftProfileChangeViewController.h"
 #import "UIColor+HexCoding.h"
-#import "SSTurnShiftTVC.h"
+#import "UITableViewCell+DoneButton.h"
 #import "SSProfileTimeAndAlarmVC.h"
 #import "SSShiftWorkdayConfigTVC.h"
 #import "SSTurnFinishDatePickerTVC.h"
-#import "SCModalPickerView.h"
 #import "NSDateAdditions.h"
 #import "SSShiftTableConfigTVC.h"
 #import "I18NStrings.h"
@@ -36,7 +35,6 @@
     JPImagePickerController *imagePickerVC;
 
     UIDatePicker *datePicker;
-    SCModalPickerView *modalDatePickerView;
     Boolean warnningShiftType;
     
     Boolean enterConfig;
@@ -241,7 +239,6 @@
 
 // default value configure
    [self.theJob trydDfaultSetting];
-   modalDatePickerView = [[SCModalPickerView alloc] init];
 }
 
 - (void)viewDidUnload
@@ -342,8 +339,11 @@
 
 - (void)configureStartRepeatItems:(NSString *)item withCell:(UITableViewCell *)cell
 {
-    if ([item isEqualToString:STARTWITH_ITEM_STRING])
-	cell.detailTextLabel.text = [self.dateFormatter stringFromDate:theJob.jobStartDate];
+    if ([item isEqualToString:STARTWITH_ITEM_STRING]) {
+        cell.detailTextLabel.text = [self.dateFormatter stringFromDate:theJob.jobStartDate];
+        self.datePicker.date = self.theJob.jobStartDate;
+        [cell addModalDatePickerView:self.datePicker target:self done:@selector(doneButtonClicked:) tag:STARTWITH_ITEM];
+    }
 
     if ([item isEqualToString:REPEAT_ITEM_STRING]) {
 	NSString *text;
@@ -522,8 +522,7 @@
 
     if ([item isEqualToString:STARTWITH_ITEM_STRING]) {
         self.datePicker.tag = STARTWITH_ITEM;
-        self.datePicker.date = self.theJob.jobStartDate;
-        [self showDatePickerView:self.datePicker];
+
     }
     
     if ([item isEqualToString:REPEAT_ITEM_STRING]) {
@@ -625,27 +624,15 @@
 
 #pragma - mark DatePicker
 
-- (void) showDatePickerView:(UIDatePicker *)pdatePicker
+-(void) doneButtonClicked:(id) sender
 {
-    //    __block UIDatePicker *tdatePicker = pdatePicker;
+    UIBarButtonItem *button = sender;
+    if (button.tag == STARTWITH_ITEM) {
+        theJob.jobStartDate = [datePicker.date cc_dateByMovingToMiddleOfDay];
+    } else if (button.tag == FINISH_ITEM)
+        theJob.jobFinishDate = [datePicker.date cc_dateByMovingToMiddleOfDay];
     
-    [modalDatePickerView setPickerView:pdatePicker];
-    __weak OneJob *job = self.theJob;
-    __weak ShiftProfileChangeViewController *self_ptr = self;
-    
-    [modalDatePickerView setCompletionHandler:^(SCModalPickerViewResult result){
-	    if (result == SCModalPickerViewResultDone)
-		{ 
-		    if (pdatePicker.tag == STARTWITH_ITEM) {
-                job.jobStartDate = [pdatePicker.date cc_dateByMovingToMiddleOfDay];
-            } else if (pdatePicker.tag == FINISH_ITEM)
-                job.jobFinishDate = [pdatePicker.date cc_dateByMovingToMiddleOfDay];
-
-		    dispatch_async(dispatch_get_main_queue(), ^{
-			    [[self_ptr tableView] reloadData];
-			});
-		}}];
-    [modalDatePickerView show];
+    [[self tableView] reloadData];
 }
 
 #pragma - mark - ColorPicker

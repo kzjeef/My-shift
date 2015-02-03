@@ -55,9 +55,6 @@
 		292DBCB114CA943F00C87A70 /* JPImagePickerOverviewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 292DBCA714CA943F00C87A70 /* JPImagePickerOverviewController.xib */; };
 		292DBCB214CA943F00C87A70 /* UIImageResizing.h in Headers */ = {isa = PBXBuildFile; fileRef = 292DBCA814CA943F00C87A70 /* UIImageResizing.h */; };
 		292DBCB314CA943F00C87A70 /* UIImageResizing.m in Sources */ = {isa = PBXBuildFile; fileRef = 292DBCA914CA943F00C87A70 /* UIImageResizing.m */; };
-		2935514414E2BABA004D8FAC /* SSTurnShiftTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2935514114E2BABA004D8FAC /* SSTurnShiftTVC.h */; };
-		2935514514E2BABA004D8FAC /* SSTurnShiftTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */; };
-		2935514614E2BABA004D8FAC /* SSTurnShiftTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */; };
 		293970D4164E8AC200A79721 /* grayButtonBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970D0164E8AC100A79721 /* grayButtonBackgroud.png */; };
 		293970D5164E8AC200A79721 /* redButtonBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970D1164E8AC200A79721 /* redButtonBackgroud.png */; };
 		293970D6164E8AC200A79721 /* greenButtonBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 293970D2164E8AC200A79721 /* greenButtonBackgroud.png */; };
@@ -445,9 +442,6 @@
 		292DBCA914CA943F00C87A70 /* UIImageResizing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImageResizing.m; path = JPImagePicker/UIImageResizing.m; sourceTree = "<group>"; };
 		29331A43195877710033A4E9 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		293446E916835B88007219D1 /* ShiftScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ShiftScheduler.entitlements; sourceTree = "<group>"; };
-		2935514114E2BABA004D8FAC /* SSTurnShiftTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTurnShiftTVC.h; sourceTree = "<group>"; };
-		2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTurnShiftTVC.m; sourceTree = "<group>"; };
-		2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSTurnShiftTVC.xib; sourceTree = "<group>"; };
 		293970D0164E8AC100A79721 /* grayButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayButtonBackgroud.png; sourceTree = "<group>"; };
 		293970D1164E8AC200A79721 /* redButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redButtonBackgroud.png; sourceTree = "<group>"; };
 		293970D2164E8AC200A79721 /* greenButtonBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenButtonBackgroud.png; sourceTree = "<group>"; };
@@ -764,9 +758,6 @@
 		290885F01573D90000465EE1 /* DayRound */ = {
 			isa = PBXGroup;
 			children = (
-				2935514114E2BABA004D8FAC /* SSTurnShiftTVC.h */,
-				2935514214E2BABA004D8FAC /* SSTurnShiftTVC.m */,
-				2935514314E2BABA004D8FAC /* SSTurnShiftTVC.xib */,
 				29F49CA8156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.h */,
 				29F49CA9156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.m */,
 			);
@@ -1490,7 +1481,6 @@
 				29B460D4182E0B1D0059F149 /* SSMainMenuTableViewController.h in Headers */,
 				299A256D18BB967D00592137 /* SyncEvent.h in Headers */,
 				29C5BCF61A7E4257009B065A /* UITableViewCell+DoneButton.h in Headers */,
-				2935514414E2BABA004D8FAC /* SSTurnShiftTVC.h in Headers */,
 				29F2147D14E66DB7008BEE92 /* UIImage+MonoImage.h in Headers */,
 				29C943B014E957F700122144 /* SSKalDelegate.h in Headers */,
 				29C943B614E9642900122144 /* SSProfileTimeAndAlarmVC.h in Headers */,
@@ -1771,7 +1761,6 @@
 				292DBCB114CA943F00C87A70 /* JPImagePickerOverviewController.xib in Resources */,
 				292003A318B5A269000CA7D3 /* CalendarSyncTVC.xib in Resources */,
 				297FDBC818A7D3B100BA0240 /* menu.png in Resources */,
-				2935514614E2BABA004D8FAC /* SSTurnShiftTVC.xib in Resources */,
 				296915EE18C629FA00B743F3 /* colors_crayola.plist in Resources */,
 				29C943B814E9642900122144 /* SSProfileTimeAndAlarmVC.xib in Resources */,
 				29D6A525159CB4A200AC6103 /* Kal.bundle in Resources */,
@@ -1918,7 +1907,6 @@
 				292DBCB314CA943F00C87A70 /* UIImageResizing.m in Sources */,
 				29E339D514CA955A0036EAED /* ProfileIconPickerDataSource.m in Sources */,
 				292003A218B5A269000CA7D3 /* CalendarSyncTVC.m in Sources */,
-				2935514514E2BABA004D8FAC /* SSTurnShiftTVC.m in Sources */,
 				29F2147E14E66DB7008BEE92 /* UIImage+MonoImage.m in Sources */,
 				29C943B214E9581600122144 /* SSKalDelegate.m in Sources */,
 				299A256E18BB967D00592137 /* SyncEvent.m in Sources */,

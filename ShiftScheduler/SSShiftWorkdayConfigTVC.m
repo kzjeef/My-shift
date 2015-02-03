@@ -7,7 +7,6 @@
 //
 
 #import "SSShiftWorkdayConfigTVC.h"
-#import "SSTurnShiftTVC.h"
 #import "SSShiftTableConfigTVC.h"
 #import "I18NStrings.h"
 #import "OneJob.h"
@@ -99,17 +98,14 @@
     }
 
     if (self.theJob.jobShiftType.intValue == JOB_SHIFT_ALGO_FREE_ROUND) {
-        SSTurnShiftTVC *tstvc = [[SSTurnShiftTVC alloc] initWithNibName:@"SSTurnShiftTVC" bundle:nil];
-        tstvc.theJob = self.theJob;
-	tstvc.pickDelegate = self;
-        [self.navigationController pushViewController:tstvc animated:YES];
+        NSLog(@"Warnning: Shift Free Round already deleted. SHOULD NOT BE HERE...");
     }
 
     if (self.theJob.jobShiftType.intValue == JOB_SHIFT_ALGO_FREE_JUMP) {
-	SSShiftTableConfigTVC *fjmp = [[SSShiftTableConfigTVC alloc] initWithStyle:UITableViewStyleGrouped];
-	fjmp.theJob = self.theJob;
-	fjmp.pickDelegate = self;
-	[self.navigationController pushViewController:fjmp animated:YES];
+        SSShiftTableConfigTVC *fjmp = [[SSShiftTableConfigTVC alloc] initWithStyle:UITableViewStyleGrouped];
+        fjmp.theJob = self.theJob;
+        fjmp.pickDelegate = self;
+        [self.navigationController pushViewController:fjmp animated:YES];
     }
 }
 

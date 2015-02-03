@@ -163,7 +163,7 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-            [cell addModalPickerView:picker target:self done:@selector(doneButtonSelected)];
+            [cell addModalPickerView:picker target:self done:@selector(doneButtonSelected) tag:0];
             [picker selectRow:self.theJob.jobFreeJumpCycle.intValue - 1 inComponent:0 animated:YES];
             cell.textLabel.text = LENGTH_OF_CYCLE;
             cell.detailTextLabel.text = (self.theJob.jobFreeJumpCycle == nil) ? @"0" : ([NSString stringWithFormat:@"%@", self.theJob.jobFreeJumpCycle]);

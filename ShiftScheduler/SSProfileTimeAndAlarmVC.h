@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "OneJob.h"
-#import "SCModalPickerView.h"
 #import "I18NStrings.h"
 
-@class SCModalPickerView;
 
 @interface SSProfileTimeAndAlarmVC : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 {
@@ -23,7 +21,6 @@
     NSIndexPath *firstChooseIndexPath; // the indexPath use choose when enter this UI.
     int lastChooseCell;
     NSArray *remindItemsArray;
-    //    SCModalPickerView *modalPickerView;
 }
 
 @property (weak, nonatomic, readonly) NSArray *itemsArray;

@@ -128,7 +128,7 @@
     onOffJob.jobStartDate = today; // start from today...
     onOffJob.jobFinishDate = [today cc_dateByMovingToNextOrBackwardsFewDays: (testround * totalloop)
                                                                withCalender:calender];
-    
+
     STAssertTrue(onOffJob.jobOnDays.intValue == default_on, @"default on not equal to 5");
     STAssertTrue(onOffJob.jobOffDays.intValue == default_off, @"defualt off not equla to 2");
     

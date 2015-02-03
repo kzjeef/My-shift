@@ -8,7 +8,6 @@
 
 #import "SSProfileTimeAndAlarmVC.h"
 #import "NSDateAdditions.h"
-#import "SSTurnShiftTVC.h"
 #import "SSProfileReminderDateSource.h"
 
 enum {
@@ -222,33 +221,9 @@ enum {
     return cell;
 }
 
-#pragma mark - Table view delegate
 
-- (void) showPickerView:(UIPickerView *)pPickerView
-{
-    __weak UIPickerView *tPickerView = pPickerView;
-    SCModalPickerView *modalPickerView  = [[SCModalPickerView alloc] init];
-    [modalPickerView setPickerView:tPickerView];
-    __weak OneJob *job = self.theJob;
-    __weak NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
-    //__block UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:pChoosedIndexPath];
-    //b__block NSArray *premindItemsArray = self.remindItemsArray;
-    __weak SSProfileTimeAndAlarmVC *safeSelf = self;
-    [modalPickerView setCompletionHandler:^(SCModalPickerViewResult result){
-        if (result == SCModalPickerViewResultDone)
-        { 
-            NSTimeInterval i = [SSProfileTimeAndAlarmVC convertRemindItemToTimeInterval:[tPickerView selectedRowInComponent:0]];
-            if (pChoosedIndexPath.row == PICKER_VIEW_BEFORE_WORK) {
-                job.jobRemindBeforeWork = [NSNumber numberWithInt:i];
-            } else if (pChoosedIndexPath.row == PICKER_VIEW_BEFORE_OFF) {
-                job.jobRemindBeforeOff = [NSNumber numberWithInt:i];
-            }
-            [safeSelf.tableView reloadData];
-        }
-    }];
-    
-    [modalPickerView show];
-}
+
+#pragma mark - Table view delegate
 
 - (void) pickerDoneButtonClicked
 {
@@ -277,6 +252,37 @@ enum {
     [self.tableView reloadData];
 }
 
+这里
+/* 
+ (void) showPickerView:(UIPickerView *)pPickerView
+ -{
+ -    __weak UIPickerView *tPickerView = pPickerView;
+ -    SCModalPickerView *modalPickerView  = [[SCModalPickerView alloc] init];
+ -    [modalPickerView setPickerView:tPickerView];
+ -    __weak OneJob *job = self.theJob;
+ -    __weak NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
+ -    //__block UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:pChoosedIndexPath];
+ -    //b__block NSArray *premindItemsArray = self.remindItemsArray;
+ -    __weak SSProfileTimeAndAlarmVC *safeSelf = self;
+ -    [modalPickerView setCompletionHandler:^(SCModalPickerViewResult result){
+ -        if (result == SCModalPickerViewResultDone)
+ -        {
+ -            NSTimeInterval i = [SSProfileTimeAndAlarmVC convertRemindItemToTimeInterval:[tPickerView selectedRowInComponent:0]];
+ -            if (pChoosedIndexPath.row == PICKER_VIEW_BEFORE_WORK) {
+ -                job.jobRemindBeforeWork = [NSNumber numberWithInt:i];
+ -            } else if (pChoosedIndexPath.row == PICKER_VIEW_BEFORE_OFF) {
+ -                job.jobRemindBeforeOff = [NSNumber numberWithInt:i];
+ -            }
+ -            [safeSelf.tableView reloadData];
+ -        }
+ -    }];
+ -
+ -    [modalPickerView show];
+ -}
+ +
+ */
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == CLOCK_IN_ITEM) {
@@ -290,12 +296,12 @@ enum {
         NSTimeInterval i = [self.theJob.jobRemindBeforeWork doubleValue];
         int row = [SSProfileTimeAndAlarmVC convertTimeIntervalToRemindItem:i];
         [self.picker selectRow:row inComponent:0 animated:YES];
-        [self showPickerView:self.picker];
+        //        [self showPickerView:self.picker];
     } else if (indexPath.row == REMIND_BEFORE_OFF_ITEM) {
         NSTimeInterval i = [self.theJob.jobRemindBeforeOff doubleValue];
         int row = [SSProfileTimeAndAlarmVC convertTimeIntervalToRemindItem:i];
         [self.picker selectRow:row inComponent:0 animated:YES];
-        [self showPickerView:self.picker];
+        //        [self showPickerView:self.picker];
     }
 }
 

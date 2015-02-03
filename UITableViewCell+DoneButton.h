@@ -11,7 +11,10 @@
 @interface UITableViewCell (DoneButton)
 
 -(void)addModalPickerView:(UIPickerView *)picker
-                   target:(id)target done:(SEL)action;
+                   target:(id)target done:(SEL)action tag:(int) tag;
+
+-(void)addModalDatePickerView:(UIDatePicker *)picker
+                   target:(id)target done:(SEL)action tag:(int) tag;
 
 - (void) dismissModalPickerView;
 
