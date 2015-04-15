@@ -11,7 +11,8 @@
 
 @implementation SSHolidayHelper
 
-
+#define ONE_DAY_SECONDS (60*60*24)
+#define HALF_DAY_SECONDS (60*60*12)
 
 + (NSArray *) getHolidayForDate:(NSDate *) date holidayManagers: (NSArray *) managers
 {

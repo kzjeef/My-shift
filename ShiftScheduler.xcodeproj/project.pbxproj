@@ -257,24 +257,6 @@
 		29E9810716419E1500B65A7E /* Revelation.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980FC16419E1500B65A7E /* Revelation.caf */; };
 		29E9810816419E1500B65A7E /* TwirlAway.caf in Resources */ = {isa = PBXBuildFile; fileRef = 29E980FD16419E1500B65A7E /* TwirlAway.caf */; };
 		29E9810B1642DBB700B65A7E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 29E9810A1642DBB600B65A7E /* Default-568h@2x.png */; };
-		29E98CA314EFD8270048AF49 /* SCAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98C9914EFD8270048AF49 /* SCAnimation.h */; };
-		29E98CA414EFD8270048AF49 /* SCAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E98C9A14EFD8270048AF49 /* SCAnimation.m */; };
-		29E98CA514EFD8270048AF49 /* SCModalPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98C9B14EFD8270048AF49 /* SCModalPickerView.h */; };
-		29E98CA614EFD8270048AF49 /* SCModalPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E98C9C14EFD8270048AF49 /* SCModalPickerView.m */; };
-		29E98CA714EFD8270048AF49 /* SCViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98C9D14EFD8270048AF49 /* SCViewController.h */; };
-		29E98CA814EFD8270048AF49 /* SCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E98C9E14EFD8270048AF49 /* SCViewController.m */; };
-		29E98CA914EFD8270048AF49 /* UIImage+SCAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98C9F14EFD8270048AF49 /* UIImage+SCAdditions.h */; };
-		29E98CAA14EFD8270048AF49 /* UIImage+SCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E98CA014EFD8270048AF49 /* UIImage+SCAdditions.m */; };
-		29E98CAB14EFD8270048AF49 /* UIView+SCAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98CA114EFD8270048AF49 /* UIView+SCAdditions.h */; };
-		29E98CAC14EFD8270048AF49 /* UIView+SCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E98CA214EFD8270048AF49 /* UIView+SCAdditions.m */; };
-		29E98CB714EFDA340048AF49 /* SCArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98CAF14EFDA340048AF49 /* SCArgument.h */; };
-		29E98CB814EFDA340048AF49 /* SCArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E98CB014EFDA340048AF49 /* SCArgument.m */; };
-		29E98CB914EFDA340048AF49 /* SCArgumentParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98CB114EFDA340048AF49 /* SCArgumentParser.h */; };
-		29E98CBA14EFDA340048AF49 /* SCArgumentParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E98CB214EFDA340048AF49 /* SCArgumentParser.m */; };
-		29E98CBB14EFDA340048AF49 /* SCConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98CB314EFDA340048AF49 /* SCConstants.h */; };
-		29E98CBC14EFDA340048AF49 /* SCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E98CB414EFDA340048AF49 /* SCConstants.m */; };
-		29E98CBD14EFDA340048AF49 /* SCPathUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98CB514EFDA340048AF49 /* SCPathUtils.h */; };
-		29E98CBE14EFDA340048AF49 /* SCPathUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E98CB614EFDA340048AF49 /* SCPathUtils.m */; };
 		29E98CD314EFF3FF0048AF49 /* SSProfileReminderDateSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E98CD114EFF3FF0048AF49 /* SSProfileReminderDateSource.h */; };
 		29F2147D14E66DB7008BEE92 /* UIImage+MonoImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 29F2147B14E66DB7008BEE92 /* UIImage+MonoImage.h */; };
 		29F2147E14E66DB7008BEE92 /* UIImage+MonoImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F2147C14E66DB7008BEE92 /* UIImage+MonoImage.m */; };
@@ -679,24 +661,6 @@
 		29E980FC16419E1500B65A7E /* Revelation.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Revelation.caf; path = Resources/alarm/Revelation.caf; sourceTree = "<group>"; };
 		29E980FD16419E1500B65A7E /* TwirlAway.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = TwirlAway.caf; path = Resources/alarm/TwirlAway.caf; sourceTree = "<group>"; };
 		29E9810A1642DBB600B65A7E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
-		29E98C9914EFD8270048AF49 /* SCAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAnimation.h; sourceTree = "<group>"; };
-		29E98C9A14EFD8270048AF49 /* SCAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAnimation.m; sourceTree = "<group>"; };
-		29E98C9B14EFD8270048AF49 /* SCModalPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCModalPickerView.h; sourceTree = "<group>"; };
-		29E98C9C14EFD8270048AF49 /* SCModalPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCModalPickerView.m; sourceTree = "<group>"; };
-		29E98C9D14EFD8270048AF49 /* SCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCViewController.h; sourceTree = "<group>"; };
-		29E98C9E14EFD8270048AF49 /* SCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCViewController.m; sourceTree = "<group>"; };
-		29E98C9F14EFD8270048AF49 /* UIImage+SCAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SCAdditions.h"; sourceTree = "<group>"; };
-		29E98CA014EFD8270048AF49 /* UIImage+SCAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SCAdditions.m"; sourceTree = "<group>"; };
-		29E98CA114EFD8270048AF49 /* UIView+SCAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SCAdditions.h"; sourceTree = "<group>"; };
-		29E98CA214EFD8270048AF49 /* UIView+SCAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SCAdditions.m"; sourceTree = "<group>"; };
-		29E98CAF14EFDA340048AF49 /* SCArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCArgument.h; sourceTree = "<group>"; };
-		29E98CB014EFDA340048AF49 /* SCArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCArgument.m; sourceTree = "<group>"; };
-		29E98CB114EFDA340048AF49 /* SCArgumentParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCArgumentParser.h; sourceTree = "<group>"; };
-		29E98CB214EFDA340048AF49 /* SCArgumentParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCArgumentParser.m; sourceTree = "<group>"; };
-		29E98CB314EFDA340048AF49 /* SCConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCConstants.h; sourceTree = "<group>"; };
-		29E98CB414EFDA340048AF49 /* SCConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCConstants.m; sourceTree = "<group>"; };
-		29E98CB514EFDA340048AF49 /* SCPathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPathUtils.h; sourceTree = "<group>"; };
-		29E98CB614EFDA340048AF49 /* SCPathUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPathUtils.m; sourceTree = "<group>"; };
 		29E98CD114EFF3FF0048AF49 /* SSProfileReminderDateSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSProfileReminderDateSource.h; sourceTree = "<group>"; };
 		29ECA45814B0514E00B3832D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		29F2147B14E66DB7008BEE92 /* UIImage+MonoImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+MonoImage.h"; path = "ShiftScheduler/UIImage+MonoImage.h"; sourceTree = "<group>"; };
@@ -1182,7 +1146,6 @@
 				2935514914E2E5EB004D8FAC /* SettingView */,
 				299D8D0D147948B900E20DAE /* ProfileView */,
 				298B0168148B946500C013F5 /* ChangeShiftView */,
-				29E98C9514EFD78F0048AF49 /* SCKit */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -1383,73 +1346,6 @@
 			name = Audio;
 			sourceTree = "<group>";
 		};
-		29E98C9514EFD78F0048AF49 /* SCKit */ = {
-			isa = PBXGroup;
-			children = (
-				29E98CAD14EFDA340048AF49 /* Core */,
-				29E98C9614EFD8270048AF49 /* iOS */,
-			);
-			name = SCKit;
-			sourceTree = "<group>";
-		};
-		29E98C9614EFD8270048AF49 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				29E98C9714EFD8270048AF49 /* Core */,
-			);
-			name = iOS;
-			path = SCKit/iOS;
-			sourceTree = "<group>";
-		};
-		29E98C9714EFD8270048AF49 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				29E98C9814EFD8270048AF49 /* Classes */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		29E98C9814EFD8270048AF49 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				29E98C9914EFD8270048AF49 /* SCAnimation.h */,
-				29E98C9A14EFD8270048AF49 /* SCAnimation.m */,
-				29E98C9B14EFD8270048AF49 /* SCModalPickerView.h */,
-				29E98C9C14EFD8270048AF49 /* SCModalPickerView.m */,
-				29E98C9D14EFD8270048AF49 /* SCViewController.h */,
-				29E98C9E14EFD8270048AF49 /* SCViewController.m */,
-				29E98C9F14EFD8270048AF49 /* UIImage+SCAdditions.h */,
-				29E98CA014EFD8270048AF49 /* UIImage+SCAdditions.m */,
-				29E98CA114EFD8270048AF49 /* UIView+SCAdditions.h */,
-				29E98CA214EFD8270048AF49 /* UIView+SCAdditions.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		29E98CAD14EFDA340048AF49 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				29E98CAE14EFDA340048AF49 /* Classes */,
-			);
-			name = Core;
-			path = SCKit/Core;
-			sourceTree = "<group>";
-		};
-		29E98CAE14EFDA340048AF49 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				29E98CAF14EFDA340048AF49 /* SCArgument.h */,
-				29E98CB014EFDA340048AF49 /* SCArgument.m */,
-				29E98CB114EFDA340048AF49 /* SCArgumentParser.h */,
-				29E98CB214EFDA340048AF49 /* SCArgumentParser.m */,
-				29E98CB314EFDA340048AF49 /* SCConstants.h */,
-				29E98CB414EFDA340048AF49 /* SCConstants.m */,
-				29E98CB514EFDA340048AF49 /* SCPathUtils.h */,
-				29E98CB614EFDA340048AF49 /* SCPathUtils.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		29F1BCEF16D26A650097F9CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1486,15 +1382,6 @@
 				29C943B614E9642900122144 /* SSProfileTimeAndAlarmVC.h in Headers */,
 				29D93E9D18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.h in Headers */,
 				29C943BB14EAB55200122144 /* UserReviewController.h in Headers */,
-				29E98CA314EFD8270048AF49 /* SCAnimation.h in Headers */,
-				29E98CA514EFD8270048AF49 /* SCModalPickerView.h in Headers */,
-				29E98CA714EFD8270048AF49 /* SCViewController.h in Headers */,
-				29E98CA914EFD8270048AF49 /* UIImage+SCAdditions.h in Headers */,
-				29E98CAB14EFD8270048AF49 /* UIView+SCAdditions.h in Headers */,
-				29E98CB714EFDA340048AF49 /* SCArgument.h in Headers */,
-				29E98CB914EFDA340048AF49 /* SCArgumentParser.h in Headers */,
-				29E98CBB14EFDA340048AF49 /* SCConstants.h in Headers */,
-				29E98CBD14EFDA340048AF49 /* SCPathUtils.h in Headers */,
 				29E98CD314EFF3FF0048AF49 /* SSProfileReminderDateSource.h in Headers */,
 				29FA9AF314F48DAE00717505 /* SSAlertController.h in Headers */,
 				29AEBDB015612CBA0010F27D /* ShiftAlgoBase.h in Headers */,
@@ -1912,16 +1799,7 @@
 				299A256E18BB967D00592137 /* SyncEvent.m in Sources */,
 				29C943B714E9642900122144 /* SSProfileTimeAndAlarmVC.m in Sources */,
 				29C943BC14EAB55200122144 /* UserReviewController.m in Sources */,
-				29E98CA414EFD8270048AF49 /* SCAnimation.m in Sources */,
-				29E98CA614EFD8270048AF49 /* SCModalPickerView.m in Sources */,
-				29E98CA814EFD8270048AF49 /* SCViewController.m in Sources */,
-				29E98CAA14EFD8270048AF49 /* UIImage+SCAdditions.m in Sources */,
-				29E98CAC14EFD8270048AF49 /* UIView+SCAdditions.m in Sources */,
 				29D93E9E18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.m in Sources */,
-				29E98CB814EFDA340048AF49 /* SCArgument.m in Sources */,
-				29E98CBA14EFDA340048AF49 /* SCArgumentParser.m in Sources */,
-				29E98CBC14EFDA340048AF49 /* SCConstants.m in Sources */,
-				29E98CBE14EFDA340048AF49 /* SCPathUtils.m in Sources */,
 				29FA9AF414F48DAE00717505 /* SSAlertController.m in Sources */,
 				29AEBDB115612CBA0010F27D /* ShiftAlgoBase.m in Sources */,
 				2915099D18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.m in Sources */,
@@ -2157,7 +2035,7 @@
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2165,7 +2043,6 @@
 				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 1;
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = "$(BUILT_PRODUCTS_DIR)/**";
-				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2208,7 +2085,6 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = "";
-				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

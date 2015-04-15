@@ -15,8 +15,10 @@
 {
     NSArray *itemsArray;
     OneJob *theJob;
-    IBOutlet UIDatePicker *datePicker;
-    IBOutlet UIPickerView *picker;
+    IBOutlet UIDatePicker *startDatePicker;
+    IBOutlet UIDatePicker *lengthDatePicker;
+    IBOutlet UIPickerView *onAlertPicker;
+    IBOutlet UIPickerView *offAlertPicker;
     NSDateFormatter *dateFormatter;
     NSIndexPath *firstChooseIndexPath; // the indexPath use choose when enter this UI.
     int lastChooseCell;
@@ -25,9 +27,11 @@
 
 @property (weak, nonatomic, readonly) NSArray *itemsArray;
 @property (weak, nonatomic, readonly) NSArray *remindItemsArray;
-@property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) UIDatePicker *startDatePicker;
+@property (nonatomic, strong) UIDatePicker *lengthDatePicker;
 @property (nonatomic, strong) OneJob *theJob;
-@property (nonatomic, strong) UIPickerView *picker;
+@property (nonatomic, strong) UIPickerView *onAlertPicker;
+@property (nonatomic, strong) UIPickerView *offAlertPicker;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
 @property (nonatomic, strong) NSIndexPath *firstChooseIndexPath;
 

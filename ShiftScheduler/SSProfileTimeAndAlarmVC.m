@@ -9,6 +9,7 @@
 #import "SSProfileTimeAndAlarmVC.h"
 #import "NSDateAdditions.h"
 #import "SSProfileReminderDateSource.h"
+#import "UITableViewCell+DoneButton.h"
 
 enum {
     CLOCK_IN_ITEM = 0,
@@ -22,7 +23,7 @@ enum {
 
 @implementation SSProfileTimeAndAlarmVC
 
-@synthesize dateFormatter, theJob, datePicker, picker, firstChooseIndexPath;
+@synthesize dateFormatter, theJob, startDatePicker, lengthDatePicker, onAlertPicker, offAlertPicker, firstChooseIndexPath;
 
 + (NSArray *) returnItemArray {
     return @[FROM_ITEM_STRING,
@@ -55,13 +56,26 @@ enum {
 {
     self = [super initWithStyle:style];
     if (self) {
-        self.datePicker = [[UIDatePicker alloc] init];
-        self.datePicker.timeZone = [NSTimeZone defaultTimeZone];
-        self.picker = [[UIPickerView alloc] initWithFrame:CGRectMake(0.0f, 200.0f, 320.0f, 216.0f)];
-        self.picker.showsSelectionIndicator = YES;
-        self.picker.dataSource = self;
-        self.picker.delegate = self;
-        [self.picker reloadAllComponents];
+        self.startDatePicker = [[UIDatePicker alloc] init];
+        self.startDatePicker.timeZone = [NSTimeZone defaultTimeZone];
+ 
+        
+        self.lengthDatePicker = [[UIDatePicker alloc] init];
+        self.lengthDatePicker.timeZone = [NSTimeZone defaultTimeZone];
+ 
+        
+        self.onAlertPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0.0f, 200.0f, 320.0f, 216.0f)];
+        self.onAlertPicker.showsSelectionIndicator = YES;
+        self.onAlertPicker.dataSource = self;
+        self.onAlertPicker.delegate = self;
+        [self.onAlertPicker reloadAllComponents];
+        
+        
+        self.offAlertPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0.0f, 200.0f, 320.0f, 216.0f)];
+        self.offAlertPicker.showsSelectionIndicator = YES;
+        self.offAlertPicker.dataSource = self;
+        self.offAlertPicker.delegate = self;
+        [self.offAlertPicker reloadAllComponents];
         
     }
     return self;
@@ -217,8 +231,30 @@ enum {
     cell.textLabel.text = item;
     
     [[self class] configureTimeCell:cell indexPath:indexPath Job:self.theJob];
-            
+    
+    [self configurePicker:cell indexPath:indexPath Job:self.theJob];
+    
+    
     return cell;
+}
+
+- (void) configurePicker: (UITableViewCell *)cell indexPath: (NSIndexPath *)indexPath Job: (OneJob *)theJob
+{
+    if (indexPath.row == CLOCK_IN_ITEM) {
+        [cell addModalDatePickerView:self.startDatePicker target:self done:@selector(datePickerDoneButtonClicked) tag:0];
+        self.startDatePicker.datePickerMode = UIDatePickerModeTime;
+        self.startDatePicker.date = [self.theJob getJobEverydayStartTime];
+        
+    } else if (indexPath.row == HOURS_ITEM) {
+        [cell addModalDatePickerView:self.lengthDatePicker target:self done:@selector(lengthPickerDoneButtonClicked) tag:1];
+        self.lengthDatePicker.datePickerMode = UIDatePickerModeCountDownTimer;
+        self.lengthDatePicker.minuteInterval = 1;
+        self.lengthDatePicker.countDownDuration = [[self.theJob getJobEveryDayLengthSec] intValue];
+    } else if (indexPath.row == REMIND_BEFORE_WORK_ITEM) {
+        [cell addModalPickerView:self.onAlertPicker target:self done:@selector(pickerDoneButtonClicked) tag:2];
+    } else if (indexPath.row == REMIND_BEFORE_OFF_ITEM) {
+        [cell addModalPickerView:self.offAlertPicker target:self done:@selector(offpickerDoneButtonClicked) tag:3];
+    }
 }
 
 
@@ -228,81 +264,39 @@ enum {
 - (void) pickerDoneButtonClicked
 {
     OneJob *job = self.theJob;
-    NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
+   
+    NSTimeInterval i = [SSProfileTimeAndAlarmVC convertRemindItemToTimeInterval:[self.onAlertPicker selectedRowInComponent:0]];
+    job.jobRemindBeforeWork = [NSNumber numberWithInt:i];
+    [self.tableView reloadData];
+}
 
-    NSTimeInterval i = [SSProfileTimeAndAlarmVC convertRemindItemToTimeInterval:[self.picker selectedRowInComponent:0]];
-    if (pChoosedIndexPath.row == PICKER_VIEW_BEFORE_WORK) {
-        job.jobRemindBeforeWork = [NSNumber numberWithInt:i];
-    } else if (pChoosedIndexPath.row == PICKER_VIEW_BEFORE_OFF) {
-        job.jobRemindBeforeOff = [NSNumber numberWithInt:i];
-    }
+- (void) offpickerDoneButtonClicked
+{
+    OneJob *job = self.theJob;
+
+    NSTimeInterval i = [SSProfileTimeAndAlarmVC convertRemindItemToTimeInterval:[self.offAlertPicker selectedRowInComponent:0]];
+
+    job.jobRemindBeforeOff = [NSNumber numberWithInt:i];
+
+    [self.tableView reloadData];
+}
+
+
+-(void)lengthPickerDoneButtonClicked {
+    [self.theJob mysetJobEveryDayLengthSec:[NSNumber numberWithInt:self.lengthDatePicker.countDownDuration]];
+    NSLog(@"work every length:%@ with Job:%@", [self.theJob getJobEveryDayLengthSec], self.theJob.jobName);
     [self.tableView reloadData];
 }
 
 - (void) datePickerDoneButtonClicked {
-    NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
-    if (pChoosedIndexPath.row == CLOCK_IN_ITEM) {
-        [self.theJob mysetJobEverydayStartTime:self.datePicker.date];
+        [self.theJob mysetJobEverydayStartTime:self.startDatePicker.date];
         NSLog(@"start time every date:%@ with Job:%@", [self.dateFormatter stringFromDate:[self.theJob getJobEverydayStartTime]], self.theJob.jobName);
-    } else if (pChoosedIndexPath.row == HOURS_ITEM) {
-        [self.theJob mysetJobEveryDayLengthSec:[NSNumber numberWithInt:self.datePicker.countDownDuration]];
-        NSLog(@"work every length:%@ with Job:%@", [self.theJob getJobEveryDayLengthSec], self.theJob.jobName);
-    }
-    
     [self.tableView reloadData];
 }
 
-这里
-/* 
- (void) showPickerView:(UIPickerView *)pPickerView
- -{
- -    __weak UIPickerView *tPickerView = pPickerView;
- -    SCModalPickerView *modalPickerView  = [[SCModalPickerView alloc] init];
- -    [modalPickerView setPickerView:tPickerView];
- -    __weak OneJob *job = self.theJob;
- -    __weak NSIndexPath *pChoosedIndexPath = [self.tableView indexPathForSelectedRow];
- -    //__block UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:pChoosedIndexPath];
- -    //b__block NSArray *premindItemsArray = self.remindItemsArray;
- -    __weak SSProfileTimeAndAlarmVC *safeSelf = self;
- -    [modalPickerView setCompletionHandler:^(SCModalPickerViewResult result){
- -        if (result == SCModalPickerViewResultDone)
- -        {
- -            NSTimeInterval i = [SSProfileTimeAndAlarmVC convertRemindItemToTimeInterval:[tPickerView selectedRowInComponent:0]];
- -            if (pChoosedIndexPath.row == PICKER_VIEW_BEFORE_WORK) {
- -                job.jobRemindBeforeWork = [NSNumber numberWithInt:i];
- -            } else if (pChoosedIndexPath.row == PICKER_VIEW_BEFORE_OFF) {
- -                job.jobRemindBeforeOff = [NSNumber numberWithInt:i];
- -            }
- -            [safeSelf.tableView reloadData];
- -        }
- -    }];
- -
- -    [modalPickerView show];
- -}
- +
- */
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == CLOCK_IN_ITEM) {
-        self.datePicker.datePickerMode = UIDatePickerModeTime;
-        self.datePicker.date = [self.theJob getJobEverydayStartTime];
-    } else if (indexPath.row == HOURS_ITEM) {
-        self.datePicker.datePickerMode = UIDatePickerModeCountDownTimer;
-        self.datePicker.minuteInterval = 5;
-        self.datePicker.countDownDuration = [[self.theJob getJobEveryDayLengthSec] intValue];
-    } else if (indexPath.row == REMIND_BEFORE_WORK_ITEM) {
-        NSTimeInterval i = [self.theJob.jobRemindBeforeWork doubleValue];
-        int row = [SSProfileTimeAndAlarmVC convertTimeIntervalToRemindItem:i];
-        [self.picker selectRow:row inComponent:0 animated:YES];
-        //        [self showPickerView:self.picker];
-    } else if (indexPath.row == REMIND_BEFORE_OFF_ITEM) {
-        NSTimeInterval i = [self.theJob.jobRemindBeforeOff doubleValue];
-        int row = [SSProfileTimeAndAlarmVC convertTimeIntervalToRemindItem:i];
-        [self.picker selectRow:row inComponent:0 animated:YES];
-        //        [self showPickerView:self.picker];
-    }
+
 }
 
 #pragma mark - PickerView Data Source

@@ -435,7 +435,7 @@ enum {
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
         //        cell.textLabel.textColor = [UIColor colorWithHexString:@"283DA0"];
         cell.textLabel.backgroundColor = [UIColor colorWithWhite:.1 alpha:0];
-        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"grayButtonBackgroud"]];
+        //        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"grayButtonBackgroud"]];
     }
 
     return cell;

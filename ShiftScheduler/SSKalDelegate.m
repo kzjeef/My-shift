@@ -7,17 +7,18 @@
 //
 
 #import "SSKalDelegate.h"
-#import "SCModalPickerView.h"
 #import "NSDateAdditions.h"
+#import "UITableViewCell+DoneButton.h"
+
 
 @interface SSKalDelegate()
 {
-    SCModalPickerView *_modalDatePickerView;
     UIDatePicker *_datePicker;
+    KalViewController *_controller;
+    UIHideCurosrTextField *_titleField;
 }
 
 @property (strong, readonly) UIDatePicker *datePicker;
-@property (strong, readonly) SCModalPickerView *modalDatePickerView;
 @end
 
 @implementation SSKalDelegate
@@ -41,30 +42,55 @@
     return _datePicker;
 }
 
-- (SCModalPickerView *)modalDatePickerView
+- (void) DateTitleSelected:(id)sender
 {
-    if (!_modalDatePickerView) {
-        _modalDatePickerView = [[SCModalPickerView alloc] init];
-    }
+    [self dismissModalPickerView:nil];
+    [_controller showAndSelectDate:[self.datePicker.date cc_dateByMovingToMiddleOfDay]];
+    
 
-    return _modalDatePickerView;
 }
 
-- (void) KalViewControllerdidSelectTitle:(KalViewController *)sender
+- (void) dismissModalPickerView: (id) sender
 {
+    if (_titleField) {
+        if ([_titleField isFirstResponder])
+            [_titleField resignFirstResponder];
+    }
+}
 
-    [self.modalDatePickerView setPickerView:self.datePicker];
-    [self.modalDatePickerView setPickerView:self.datePicker];
-    __weak UIDatePicker *pdatePicker = self.datePicker;
-    [self.modalDatePickerView setCompletionHandler:^(SCModalPickerViewResult result) {
-            if (result == SCModalPickerViewResultDone) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                        [sender showAndSelectDate:[pdatePicker.date cc_dateByMovingToMiddleOfDay]];
-                    });
-            }
-        }];
+- (void) KalViewControllerdidSelectTitle:(KalViewController *)sender titleView:(UIView *)titleView
+{
+    static int FIELD_TAG = 5991;
+    _controller = sender;
+    if ([titleView viewWithTag:FIELD_TAG] == nil) {
+        // create the view.
+        UIHideCurosrTextField *field;
+        field = [[UIHideCurosrTextField alloc] initWithFrame:[titleView bounds]];
+//        field.tag = FIELD_POP_TAG;
+        [titleView addSubview: field];
+        [field setInputView: self.datePicker];
+        UIToolbar* keyboardDoneButtonView = [[UIToolbar alloc] init];
+        keyboardDoneButtonView.translucent = YES;
+        keyboardDoneButtonView.tintColor = nil;
+        [keyboardDoneButtonView sizeToFit];
+        
+        UIBarButtonItem* doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(DateTitleSelected:)];
+        UIBarButtonItem* cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismissModalPickerView:)];
 
-    [self.modalDatePickerView show];
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+
+        [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:cancelButton, flexibleSpace, doneButton,nil]];
+
+        field.inputAccessoryView = keyboardDoneButtonView;
+        [field setTag:FIELD_TAG];
+        
+        _titleField = field; // TODO: cache a pointer here is dirty hack...
+        [field becomeFirstResponder];
+    } else {
+        UIHideCurosrTextField *field;
+        field = (UIHideCurosrTextField *)[titleView viewWithTag:FIELD_TAG];
+        [field becomeFirstResponder];
+    }
 }
 
 #pragma mark UITableViewDelegate protocol conformance

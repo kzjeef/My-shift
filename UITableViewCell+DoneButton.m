@@ -9,8 +9,6 @@
 #import "UITableViewCell+DoneButton.h"
 #import "I18NStrings.h"
 
-@interface UIHideCurosrTextField : UITextField
-@end
 //隐藏掉光标， 这样看不出来是一个TextField.
 @implementation UIHideCurosrTextField
 - (CGRect)caretRectForPosition:(UITextPosition *)position
@@ -19,10 +17,8 @@
 }
 @end
 
-
 @implementation UITableViewCell (DoneButton)
 
-#define FIELD_POP_TAG 2002
 
 - (void)addTitleButtons:(SEL)action target:(id)target tag:(int)tag field:(UITextField *)field
 {

@@ -88,7 +88,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
     UIView *hitView  = [self hitTest:location withEvent:event];
     
     if (hitView == headerView) {
-        [self.delegate didSelectTitle];
+        [self.delegate didSelectTitle: hitView];
     }
 }
 

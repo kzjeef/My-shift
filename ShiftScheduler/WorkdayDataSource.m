@@ -19,7 +19,6 @@
 #define ONE_DAY_SECONDS (60*60*24)
 #define HALF_DAY_SECONDS (60*60*12)
 
-
 @interface WorkdayDataSource()
 {
   NSArray *_cachedRegionList;

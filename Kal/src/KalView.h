@@ -82,7 +82,7 @@
 - (void)showPreviousMonth;
 - (void)showFollowingMonth;
 - (void)didSelectDate:(KalDate *)date;
-- (void)didSelectTitle;
+- (void)didSelectTitle:(UIView *) hitView;
 
 - (NSArray *) KalTileDrawDelegate: (KalTileView *) sender getIconDrawInfoWithDate: (NSDate *) date;
 
