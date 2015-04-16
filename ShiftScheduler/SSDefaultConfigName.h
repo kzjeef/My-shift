@@ -18,5 +18,5 @@
 #define USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT @"enableDisplayOutdateShift"
 #define USER_CONFIG_HOLIDAY_REGION                @"holidayRegionList"
 #define MAIN_VIEW_COACH_KEY                       @"MAIN_VIEW_COACH_KEY"
-
+#define USER_COACH_LAST_VERSION                   @"User_Coach_Last_Time_Version"
 #endif

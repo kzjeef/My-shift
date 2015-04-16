@@ -140,8 +140,11 @@
         textWidth = [copyright sizeWithAttributes:nil].width;
         
     } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         textHeight = [copyright sizeWithFont:[UIFont systemFontOfSize:UIFont.systemFontSize]].height;
         textWidth = [copyright sizeWithFont:[UIFont systemFontOfSize:UIFont.systemFontSize]].width;
+#pragma clang diagnostic pop
     }
     NSString * timestr = [self timedate];
     

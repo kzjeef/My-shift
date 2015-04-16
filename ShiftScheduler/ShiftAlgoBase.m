@@ -28,7 +28,7 @@
 {
   self = [super init];
   if (self) {
-    self.jobContext = context;
+    self.JobContext = context;
   }
   return self;
 }

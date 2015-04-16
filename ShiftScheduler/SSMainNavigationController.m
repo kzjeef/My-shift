@@ -72,6 +72,17 @@ typedef enum : NSInteger {
     [self displayCoachMarks];
 }
 
+- (void)tryResetCoachState
+{
+    // Save the Last coach app version.
+    // if app version is different, reset the coach setting.
+    
+    NSString *last_version = [[NSUserDefaults standardUserDefaults] objectForKey:USER_COACH_LAST_VERSION];
+    if (last_version == nil || [last_version compare:[self version]] != NSOrderedSame) {
+        [[NSUserDefaults standardUserDefaults] setObject:@[@NO, @NO] forKey:MAIN_VIEW_COACH_KEY];
+    }
+}
+
 - (void)displayCoachMarks
 {
     // TODO: fix the hard coded position and size, try find a better way like tag
@@ -123,10 +134,13 @@ typedef enum : NSInteger {
                               @"caption": NSLocalizedString(@"Click to organize shift profiles", "organize shift profiles")
                             }];
 
-//#define DEBUG_COACH_MARKS
+    //#define DEBUG_COACH_MARKS
 #ifdef DEBUG_COACH_MARKS
     [[NSUserDefaults standardUserDefaults] setObject:@[@NO, @NO] forKey:MAIN_VIEW_COACH_KEY];
 #endif
+    
+    [self tryResetCoachState];
+    
 
     NSArray *history = [[NSUserDefaults standardUserDefaults] arrayForKey:MAIN_VIEW_COACH_KEY];
 
@@ -150,8 +164,17 @@ typedef enum : NSInteger {
              NSMutableArray *m = [history mutableCopy];
             [m replaceObjectAtIndex:i - 1 withObject:@YES];
             [[NSUserDefaults standardUserDefaults] setObject:m forKey:MAIN_VIEW_COACH_KEY];
+            
+            // save current version.
+            [[NSUserDefaults standardUserDefaults] setObject:[self version] forKey:USER_COACH_LAST_VERSION];
         }
     }
+}
+
+- (NSString*) version {
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    return [NSString stringWithFormat:@"%@ build %@", version, build];
 }
 
 - (void)panGestureRecognized:(UIPanGestureRecognizer *)gesture
