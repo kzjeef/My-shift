@@ -427,9 +427,9 @@ enum {
         cell.tag = TAG_ADD_BUTTON;
     } else if (indexPath.section == SECTION_OUTDATE_SHOW_HIDE) {
         NSString *tt = NSLocalizedString(@"Outdated Shifts", "expand archived shifts");
-        NSString *text = [NSString stringWithFormat:@"%@ (%d)",
+        NSString *text = [NSString stringWithFormat:@"%@ (%lu)",
                                    tt,
-                                   [self.fetchedResultsControllerOOD.fetchedObjects count]];
+                                   (unsigned long)[self.fetchedResultsControllerOOD.fetchedObjects count]];
         cell.textLabel.text = text;
         cell.imageView.image = [UIImage imageNamed:@"overdate"];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
@@ -615,7 +615,7 @@ return YES;
         
     }
     } @catch (NSException *e) {
-        NSLog(@"Got exception when configure cell at %d %@",row, e);
+        NSLog(@"Got exception when configure cell at %ld %@",(long)row, e);
     }
     
 }

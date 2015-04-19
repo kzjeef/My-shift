@@ -146,8 +146,8 @@
         emptyplaceholder.hidden = NO;
     }
     
-    NSLog(@"count: %d ", 
-          [self.fetchedResultsController.fetchedObjects count]);
+    NSLog(@"count: %lu ", 
+          (unsigned long)[self.fetchedResultsController.fetchedObjects count]);
     
 
 }

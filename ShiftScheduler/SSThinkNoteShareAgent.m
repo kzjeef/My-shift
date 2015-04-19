@@ -325,8 +325,8 @@
                                                  options:NSJSONReadingMutableLeaves
                                                    error:&error];
     
-    NSLog(@"post attach got return:%@ response:%d data:%@ error:%@",returnData,
-          [response statusCode],
+    NSLog(@"post attach got return:%@ response:%ld data:%@ error:%@",returnData,
+          (long)[response statusCode],
           jsonDict,
           error.userInfo);
     
@@ -503,7 +503,7 @@
             contentType = mimeType;
             valueData = obj;
         }
-        NSLog(@"encoding: %@ -> %@ --> length:%d", keystr, contentType, result_.length );
+        NSLog(@"encoding: %@ -> %@ --> length:%lu", keystr, contentType, (unsigned long)result_.length );
         
         
         if ([obj isKindOfClass:[NSString class]])
@@ -586,7 +586,7 @@
                                   _loginToken,
                                   _noteID,
                                   name,
-                           [NSString stringWithFormat:@"%d",data.length],
+                           [NSString stringWithFormat:@"%lu",(unsigned long)data.length],
                                   data];
 
     NSDictionary *params = [[NSDictionary alloc] initWithObjects:values forKeys:keys];
@@ -609,7 +609,7 @@
     [request setHTTPBody:postBodyData];
     
     [request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundaryStr] forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%d", postBodyData.length] forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)postBodyData.length] forHTTPHeaderField:@"Content-Length"];
   
 #ifdef LOCAL_DEBUG
     NSLog(@"dump the request:%@ ", request);

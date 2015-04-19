@@ -173,7 +173,7 @@
     }
 
     if (indexPath.section == 1) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
+        cell.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
 
         if ([self checkShiftDayState:indexPath.row]) {
             cell.editingAccessoryType = UITableViewCellAccessoryCheckmark;

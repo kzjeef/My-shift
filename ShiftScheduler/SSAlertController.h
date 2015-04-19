@@ -29,7 +29,7 @@
     NSURL *alert_sound_url;
     NSDate *farestAlarmDate;
 
-    int badgeNumber;
+    NSInteger badgeNumber;
 }
 
 @property (nonatomic, strong) NSFetchedResultsController *frc;

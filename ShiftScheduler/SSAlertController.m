@@ -190,7 +190,7 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
     if ([finalFireDate timeIntervalSinceDate:farestAlarmDate] > 0)
         farestAlarmDate = finalFireDate;
 
-    NSLog(@"setup local notify job: %@ firedate: %@ sound:%@ badge: %d",
+    NSLog(@"setup local notify job: %@ firedate: %@ sound:%@ badge: %ld",
           job.jobName,
           [formatter stringFromDate:finalFireDate], alarmSoundFile, badgeNumber + 1);
 
@@ -328,7 +328,7 @@ static void alertSoundPlayingCallback( SystemSoundID sound_id, void *user_data)
 
         }
     } else {
-        int max_notify = MIN(self.jobArray.count * 7, MAX_NOTIFY_COUNT);
+        NSInteger max_notify = MIN(self.jobArray.count * 7, MAX_NOTIFY_COUNT);
         int used = 0;
         int days = 0;
         // try our best to eat all the notify
