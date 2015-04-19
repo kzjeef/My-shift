@@ -147,9 +147,11 @@
         cell.textLabel.text = REPEAT_ITEM_STRING;
 
         NSDate *d = self.job.jobFinishDate;
-        if (d == nil)
-            d = [self minValildDate];
-        cell.detailTextLabel.text = [self.dateFormatter stringFromDate:d];
+        if (d == nil) {
+            cell.detailTextLabel.text = REPEAT_FOREVER_STRING;
+        } else {
+            cell.detailTextLabel.text = [self.dateFormatter stringFromDate:d];
+        }
 
     }
     

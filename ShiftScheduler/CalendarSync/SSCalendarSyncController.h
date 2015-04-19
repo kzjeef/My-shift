@@ -86,23 +86,23 @@ typedef NS_ENUM(NSInteger, SSCalendarEventType) {
 /**
  get current settting value of auto sync
  */
-+ (int) getAutoSyncSetting;
++ (NSInteger) getAutoSyncSetting;
 
 /**
  get current setting value of alarm of sync
  */
-+ (int) getAlarmSyncSetting;
++ (NSInteger) getAlarmSyncSetting;
 
 /**
  get current setting value of sync length 
  */
-+ (int) getSyncLengthSetting;
++ (NSInteger) getSyncLengthSetting;
 
 /**
    get current setting of enable calendar sync
 */
 
-+ (int) getCalendarSyncEnable;
++ (NSInteger) getCalendarSyncEnable;
 
 
 @end

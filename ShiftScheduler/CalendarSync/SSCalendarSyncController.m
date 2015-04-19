@@ -53,7 +53,7 @@
 
 @property bool cachedConfigAlarmOn;
 @property bool cachedConfigAutoSyncOn;
-@property int  cachedConfigSyncDays;
+@property NSInteger  cachedConfigSyncDays;
 
 @property (nonatomic, strong)  EKEventStore *eventStore;
 @property (nonatomic, strong)  EKCalendar   *ekEventCalendar;
@@ -173,19 +173,19 @@
                                                                kSSCalendarSyncLengthSetting: @7}];
 }
 
-+ (int) getCalendarSyncEnable {
++ (NSInteger) getCalendarSyncEnable {
     return [[NSUserDefaults standardUserDefaults] integerForKey:kSSCalendarSyncEnableSetting];
 }
 
-+ (int) getAutoSyncSetting {
++ (NSInteger) getAutoSyncSetting {
     return [[NSUserDefaults standardUserDefaults] integerForKey:kSSCalendarAutoSyncSetting];
 }
 
-+ (int) getAlarmSyncSetting {
++ (NSInteger) getAlarmSyncSetting {
     return [[NSUserDefaults standardUserDefaults] integerForKey:kSSCalendarWithAlarmSetting];
 }
 
-+ (int) getSyncLengthSetting {
++ (NSInteger) getSyncLengthSetting {
     return [[NSUserDefaults standardUserDefaults] integerForKey:kSSCalendarSyncLengthSetting];
 }
 
@@ -222,8 +222,8 @@
 - (void) eventProcessFinish: (NSInteger) count  type: (SSCalendarEventType) type {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:kSSCalendarSyncStopNotification object:
-                                                        @{@"count" : [NSNumber numberWithInt:count],
-                    @"type" : [NSNumber numberWithInt: (int)type]}];
+                                                        @{@"count" : [NSNumber numberWithInteger:count],
+                    @"type" : [NSNumber numberWithInteger: type]}];
     });
 }
 
@@ -272,7 +272,7 @@
     [self eventProcessStart];
 
     [operation setCompletionBlock: ^{
-        NSLog(@"finish setup all  operation, count:%d ", weako.count);
+        NSLog(@"finish setup all  operation, count:%ld ", (long)weako.count);
         if (isNotify)
             [self eventProcessFinish:weako.count type: SSCalendarEventTypeSetup];
     }];
@@ -308,7 +308,7 @@
     
     [self eventProcessStart];
     [operation setCompletionBlock: ^{
-        NSLog(@"finish setup all  operation: count:%d", weako.count);
+        NSLog(@"finish setup all  operation: count:%ld", (long)weako.count);
         [self eventProcessFinish:weako.count type: SSCalendarEventTypeDelete];
     }];
     [self.operationQueue addOperation: operation];
@@ -336,7 +336,7 @@
     
     [self eventProcessStart];
     [operation setCompletionBlock: ^{
-        NSLog(@"finish setup all  operation: count:%d", weako.count);
+        NSLog(@"finish setup all  operation: count:%ld", (long)weako.count);
         [self eventProcessFinish:weako.count type: SSCalendarEventTypeDelete];
     }];
     [self.operationQueue addOperation: operation];
@@ -369,7 +369,7 @@
     
     [self eventProcessStart];
     [operation setCompletionBlock: ^{
-        NSLog(@"finish setup all  operation: count:%d", weako.count);
+        NSLog(@"finish setup all  operation: count:%ld", (long)weako.count);
         if (notify)
             [self eventProcessFinish:weako.count type: SSCalendarEventTypeSetup];
     }];
@@ -501,7 +501,7 @@
         return;
     }
 
-    int n = [SSCalendarSyncController getAutoSyncSetting];
+    NSInteger n = [SSCalendarSyncController getAutoSyncSetting];
 
     // so if user want to stop or start the auto sync, stop notification for some time well...
     if (n == self.cachedConfigAutoSyncOn)
@@ -517,7 +517,7 @@
 /// if length become sort, delete events and resync.
 - (void) syncLengthSettingChanged {
 
-    int n = [SSCalendarSyncController getSyncLengthSetting];
+    NSInteger n = [SSCalendarSyncController getSyncLengthSetting];
 
     if (![self _checkCanlendarEnable])
         return;
@@ -543,7 +543,7 @@
 
     [self eventProcessStart];
     [operation setCompletionBlock: ^{
-            NSLog(@"finish length change  operation: count:%d", weako.count);
+            NSLog(@"finish length change  operation: count:%ld", (long)weako.count);
             [self eventProcessFinish:weako.count type: SSCalendarEventTypeDays];
         }];
     [self.operationQueue addOperation: operation];
@@ -556,7 +556,7 @@
 /// again.  else if disable alarm, just go through all existing events,
 /// and clear the their alarm.
 - (void) withAlarmSettingChanged {
-    int n = [SSCalendarSyncController getAlarmSyncSetting];
+    NSInteger n = [SSCalendarSyncController getAlarmSyncSetting];
 
 
     if (![self _checkCanlendarEnable])
@@ -581,7 +581,7 @@
 
     [self eventProcessStart];
     [operation setCompletionBlock: ^{
-            NSLog(@"finish alarm setting  operation: count:%d", weako.count);
+            NSLog(@"finish alarm setting  operation: count:%ld", (long)weako.count);
             // TODO: add notification here.
             [self eventProcessFinish:weako.count type: SSCalendarEventTypeAlarm];
         }];

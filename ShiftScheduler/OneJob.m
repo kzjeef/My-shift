@@ -100,7 +100,7 @@
 
 - (NSArray *)fixupArrayByLength: (NSArray *) inputarray
 {
-    int diff = inputarray.count - self.jobFreeJumpCycle.intValue;
+    long diff = inputarray.count - self.jobFreeJumpCycle.intValue;
     
     if (diff == 0)
         return inputarray;
@@ -108,7 +108,7 @@
         // oh, we needs fill the addional days with zero
         NSMutableArray *fixeda = [[NSMutableArray alloc] initWithCapacity:self.jobFreeJumpCycle.intValue];
         [fixeda setArray:inputarray];
-        for (int i = 0; i < abs(diff); i++)
+        for (long i = 0; i < labs(diff); i++)
             [fixeda addObject: @0];
         return fixeda;
     } else {

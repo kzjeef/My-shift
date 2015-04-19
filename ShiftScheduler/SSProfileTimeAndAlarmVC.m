@@ -312,7 +312,9 @@ enum {
                             @(30 * 60),
                             @(60 * 60),
                             [NSNumber numberWithInt:1.5 * 60 * 60],
-                            @(2 *60 * 60)];
+                            @(2 *60 * 60),
+                            @(3 * 60 * 60),
+                            @(4 * 60 * 60)];
     NSArray *keysArray = @[@(REMIND_NO_ITEM),
                           @(REMIND_JUST_HAPPEN_ITEM),
                           @(REMIND_5_MIN_ITEM),
@@ -320,7 +322,9 @@ enum {
                           @(REMIND_30_MIN_ITEM),
                           @(REMIND_1_HOUR_ITEM),
                           @(REMIND_1_5_HOUR_ITEM),
-                          @(REMIND_2_HOUR_ITEM)];
+                          @(REMIND_2_HOUR_ITEM),
+                          @(REMIND_3_HOUR_ITEM),
+                          @(REMIND_4_HOUR_ITEM)];
     return [[NSDictionary alloc] initWithObjects:objectArray forKeys:keysArray];
 }
 
@@ -343,7 +347,9 @@ enum {
     REMIND_30_MIN_ITEM_STR,
     REMIND_1_HOUR_ITEM_STR,
     REMIND_1_5_HOUR_ITEM_STR,
-    REMIND_2_HOUR_ITEM_STR];
+    REMIND_2_HOUR_ITEM_STR,
+    REMIND_3_HOUR_ITEM_STR,
+    REMIND_4_HOUR_ITEM_STR];
 
 }
 

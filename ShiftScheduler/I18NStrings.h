@@ -114,6 +114,9 @@
 #define REMIND_1_HOUR_ITEM_STR NSLocalizedString(@"1 hour before", "1 Hour")
 #define REMIND_1_5_HOUR_ITEM_STR NSLocalizedString(@"1.5 hour before", "1.5 Hour")
 #define REMIND_2_HOUR_ITEM_STR NSLocalizedString(@"2 hour before", "2 Hour")
+#define REMIND_3_HOUR_ITEM_STR NSLocalizedString(@"3 hour before", "3 Hour")
+#define REMIND_4_HOUR_ITEM_STR NSLocalizedString(@"4 hour before", "4 Hour")
+
 
 #define LENGTH_OF_CYCLE NSLocalizedString(@"Shift Cycle", "length of cycle")
 

@@ -45,7 +45,7 @@
 	
 	UIButton *button;
 	UIImage *thumbnail;
-	int images_count = [imagePickerController.dataSource numberOfImagesInImagePicker:imagePickerController];
+	long images_count = [imagePickerController.dataSource numberOfImagesInImagePicker:imagePickerController];
 	
 	for (int i=0; i<images_count; i++) {
 		thumbnail = [[imagePickerController.dataSource imagePicker:imagePickerController thumbnailForImageNumber:(NSInteger)i]

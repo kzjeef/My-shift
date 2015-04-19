@@ -99,7 +99,6 @@
 		297FDBC918A7D3B100BA0240 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 297FDBC718A7D3B100BA0240 /* menu@2x.png */; };
 		297FDBD218A88D0100BA0240 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 297FDBD018A88D0100BA0240 /* share.png */; };
 		297FDBD318A88D0100BA0240 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 297FDBD118A88D0100BA0240 /* share@2x.png */; };
-		297FDBDA18A8BAC900BA0240 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 297E0C7D1833D3D2000E1F19 /* libPods.a */; };
 		2980756618B1208A003A733F /* blueArrowDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980756418B1208A003A733F /* blueArrowDown.png */; };
 		2980756718B1208A003A733F /* blueArrowDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980756518B1208A003A733F /* blueArrowDown@2x.png */; };
 		2980756E18B12364003A733F /* blueArrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2980756A18B12364003A733F /* blueArrowRight.png */; };
@@ -220,6 +219,14 @@
 		29C943B814E9642900122144 /* SSProfileTimeAndAlarmVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29C943B514E9642900122144 /* SSProfileTimeAndAlarmVC.xib */; };
 		29C943BB14EAB55200122144 /* UserReviewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29C943B914EAB55200122144 /* UserReviewController.h */; };
 		29C943BC14EAB55200122144 /* UserReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C943BA14EAB55200122144 /* UserReviewController.m */; };
+		29C97A021AE3E6090066B6A5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C97A011AE3E6090066B6A5 /* SystemConfiguration.framework */; };
+		29C97A041AE3E6130066B6A5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C97A031AE3E6130066B6A5 /* libz.dylib */; };
+		29C97A061AE3E61F0066B6A5 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C97A051AE3E61F0066B6A5 /* libsqlite3.0.dylib */; };
+		29C97A111AE404270066B6A5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C97A101AE404270066B6A5 /* CoreImage.framework */; };
+		29C97A161AE4045F0066B6A5 /* libPods-KKColorListPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 296915EA18C625D100B743F3 /* libPods-KKColorListPicker.a */; };
+		29C97A171AE4045F0066B6A5 /* libPods-REFrostedViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 297E0C7F1833D3D2000E1F19 /* libPods-REFrostedViewController.a */; };
+		29C97A181AE4045F0066B6A5 /* libPods-WeixinActivity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2995A42D18CB8C39004782DF /* libPods-WeixinActivity.a */; };
+		29C97A191AE4045F0066B6A5 /* libPods-WSCoachMarksView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 297FDBE718AF1CA400BA0240 /* libPods-WSCoachMarksView.a */; };
 		29D6A521159CB45D00AC6103 /* KalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29D6A520159CB45D00AC6103 /* KalViewController.h */; };
 		29D6A523159CB48200AC6103 /* Kal.h in Headers */ = {isa = PBXBuildFile; fileRef = 29D6A522159CB48200AC6103 /* Kal.h */; };
 		29D6A525159CB4A200AC6103 /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 29D6A524159CB4A200AC6103 /* Kal.bundle */; };
@@ -291,32 +298,18 @@
 			remoteGlobalIDString = 7BBD6A8749F5457395B603CC;
 			remoteInfo = "Pods-REFrostedViewController";
 		};
-		297FDBCD18A7D3B100BA0240 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FCD5644C584B4294839E95D7;
-			remoteInfo = "Pods-EAIntroView";
-		};
 		297FDBD418A8B99900BA0240 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = CDC25B5C236C43E6B32B7763;
+			remoteGlobalIDString = A515C2AF32069D9997E1661A;
 			remoteInfo = Pods;
-		};
-		297FDBD618A8B9BD00BA0240 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = DBFA8F105BD34DA7815EA19A;
-			remoteInfo = "Pods-EAIntroView";
 		};
 		297FDBD818A8B9C000BA0240 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 1ADC9FAC10A9456CB85BED0C;
+			remoteGlobalIDString = C94E29E15276E367BDBC0AE4;
 			remoteInfo = "Pods-REFrostedViewController";
 		};
 		297FDBE618AF1CA400BA0240 /* PBXContainerItemProxy */ = {
@@ -371,7 +364,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E841E6FC54147CFB1B9A1F9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		29009FCA159F4A4D00A1588E /* SSSettingTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSettingTVC.h; path = ShiftScheduler/SSSettingTVC.h; sourceTree = "<group>"; };
 		29009FCB159F4A4D00A1588E /* SSSettingTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SSSettingTVC.m; path = ShiftScheduler/SSSettingTVC.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29009FCC159F4A4D00A1588E /* SSSettingTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSSettingTVC.xib; path = ShiftScheduler/SSSettingTVC.xib; sourceTree = "<group>"; };
@@ -627,6 +619,10 @@
 		29C943B514E9642900122144 /* SSProfileTimeAndAlarmVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSProfileTimeAndAlarmVC.xib; sourceTree = "<group>"; };
 		29C943B914EAB55200122144 /* UserReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserReviewController.h; sourceTree = "<group>"; };
 		29C943BA14EAB55200122144 /* UserReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserReviewController.m; sourceTree = "<group>"; };
+		29C97A011AE3E6090066B6A5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		29C97A031AE3E6130066B6A5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		29C97A051AE3E61F0066B6A5 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		29C97A101AE404270066B6A5 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = Kal/src/Kal.xcodeproj; sourceTree = "<group>"; };
 		29D6A520159CB45D00AC6103 /* KalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KalViewController.h; path = Kal/src/KalViewController.h; sourceTree = "<group>"; };
 		29D6A522159CB48200AC6103 /* Kal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Kal.h; path = Kal/src/Kal.h; sourceTree = "<group>"; };
@@ -675,6 +671,8 @@
 		29FA9AF114F48DAE00717505 /* SSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAlertController.h; sourceTree = "<group>"; };
 		29FA9AF214F48DAE00717505 /* SSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SSAlertController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B7B41447E5FD4EFE9D397177 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6D0B58EDD498B3173DF575B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F4699C511670580AED364DC0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -695,10 +693,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29C97A161AE4045F0066B6A5 /* libPods-KKColorListPicker.a in Frameworks */,
+				29C97A171AE4045F0066B6A5 /* libPods-REFrostedViewController.a in Frameworks */,
+				29C97A181AE4045F0066B6A5 /* libPods-WeixinActivity.a in Frameworks */,
+				29C97A191AE4045F0066B6A5 /* libPods-WSCoachMarksView.a in Frameworks */,
+				29C97A111AE404270066B6A5 /* CoreImage.framework in Frameworks */,
+				29C97A061AE3E61F0066B6A5 /* libsqlite3.0.dylib in Frameworks */,
+				29C97A041AE3E6130066B6A5 /* libz.dylib in Frameworks */,
+				29C97A021AE3E6090066B6A5 /* SystemConfiguration.framework in Frameworks */,
 				29B9E1B81472C1D700DB2E1F /* Foundation.framework in Frameworks */,
 				2995A42A18CB685C004782DF /* Social.framework in Frameworks */,
 				2920039A18B4F142000CA7D3 /* EventKit.framework in Frameworks */,
-				297FDBDA18A8BAC900BA0240 /* libPods.a in Frameworks */,
 				2995A42718CB5CDE004782DF /* libWeChatSDK.a in Frameworks */,
 				296E3A11182DE4CD00B85E29 /* Accelerate.framework in Frameworks */,
 				29C4B5DC1813BEA70041D0B2 /* QuartzCore.framework in Frameworks */,
@@ -873,7 +878,6 @@
 			isa = PBXGroup;
 			children = (
 				297E0C7D1833D3D2000E1F19 /* libPods.a */,
-				297FDBCE18A7D3B100BA0240 /* libPods-EAIntroView.a */,
 				296915EA18C625D100B743F3 /* libPods-KKColorListPicker.a */,
 				297E0C7F1833D3D2000E1F19 /* libPods-REFrostedViewController.a */,
 				297FDBE718AF1CA400BA0240 /* libPods-WSCoachMarksView.a */,
@@ -1198,7 +1202,7 @@
 				29B9E1B21472C1D700DB2E1F /* Products */,
 				29B460C5182E00810059F149 /* Pods.xcodeproj */,
 				29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */,
-				0E841E6FC54147CFB1B9A1F9 /* Pods.xcconfig */,
+				7F6CA32BD0895106DACF9C1C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1214,6 +1218,10 @@
 		29B9E1B41472C1D700DB2E1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29C97A101AE404270066B6A5 /* CoreImage.framework */,
+				29C97A051AE3E61F0066B6A5 /* libsqlite3.0.dylib */,
+				29C97A031AE3E6130066B6A5 /* libz.dylib */,
+				29C97A011AE3E6090066B6A5 /* SystemConfiguration.framework */,
 				2912673C16CF81FA00FFB202 /* libSSLunarDate.a */,
 				29331A43195877710033A4E9 /* NetworkExtension.framework */,
 				2995A42918CB685C004782DF /* Social.framework */,
@@ -1355,6 +1363,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7F6CA32BD0895106DACF9C1C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F4699C511670580AED364DC0 /* Pods.debug.xcconfig */,
+				D6D0B58EDD498B3173DF575B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1458,7 +1475,6 @@
 			);
 			dependencies = (
 				297FDBD918A8B9C000BA0240 /* PBXTargetDependency */,
-				297FDBD718A8B9BD00BA0240 /* PBXTargetDependency */,
 				297FDBD518A8B99900BA0240 /* PBXTargetDependency */,
 				29B460C8182E009E0059F149 /* PBXTargetDependency */,
 				29D6A52B159CB4DC00AC6103 /* PBXTargetDependency */,
@@ -1537,13 +1553,6 @@
 			fileType = archive.ar;
 			path = "libPods-REFrostedViewController.a";
 			remoteRef = 297E0C7E1833D3D2000E1F19 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		297FDBCE18A7D3B100BA0240 /* libPods-EAIntroView.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-EAIntroView.a";
-			remoteRef = 297FDBCD18A7D3B100BA0240 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		297FDBE718AF1CA400BA0240 /* libPods-WSCoachMarksView.a */ = {
@@ -1739,7 +1748,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1846,11 +1855,6 @@
 			isa = PBXTargetDependency;
 			name = Pods;
 			targetProxy = 297FDBD418A8B99900BA0240 /* PBXContainerItemProxy */;
-		};
-		297FDBD718A8B9BD00BA0240 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-EAIntroView";
-			targetProxy = 297FDBD618A8B9BD00BA0240 /* PBXContainerItemProxy */;
 		};
 		297FDBD918A8B9C000BA0240 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2008,7 +2012,7 @@
 		};
 		29B9E1CF1472C1D700DB2E1F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E841E6FC54147CFB1B9A1F9 /* Pods.xcconfig */;
+			baseConfigurationReference = F4699C511670580AED364DC0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2049,7 +2053,7 @@
 		};
 		29B9E1D01472C1D700DB2E1F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E841E6FC54147CFB1B9A1F9 /* Pods.xcconfig */;
+			baseConfigurationReference = D6D0B58EDD498B3173DF575B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

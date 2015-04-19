@@ -54,7 +54,7 @@
     {
 
 //    先计算出当前这个临时时间和工作开始时间的差别    
-        int days = [self daysBetweenDateV2:jobStartGMT andDate:workingDate];
+        NSInteger days = [self daysBetweenDateV2:jobStartGMT andDate:workingDate];
 //    如果这个临时时间小于工作开始的时间，就直接进行下一个
         if (days < 0)
             continue;
