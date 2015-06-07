@@ -19,6 +19,7 @@
 #import "SSMainMenuTableViewController.h"
 #import "SSCalendarSyncController.h"
 #import "UIImage+MonoImage.h"
+#import "SSCoreDataHelper.h"
 #import "I18NStrings.h"
 
 
@@ -189,19 +190,36 @@ enum {
     return YES;
 }
 
+NSString *kWeChatScheme = @"wx42e638b828242aaa";
+
 #pragma mark wechat setting.
 - (void) initWeChat {
-    [WXApi registerApp:@"wx42e638b828242aaa" withDescription:APP_NAME_STR];
+    [WXApi registerApp:kWeChatScheme withDescription:APP_NAME_STR];
 }
 
 - (BOOL) application:(UIApplication *) application handleOpenURL:(NSURL *)url
 {
-    return [WXApi handleOpenURL:url delegate:self];
+    if ([url.scheme containsString:kWeChatScheme]) {
+        return [WXApi handleOpenURL:url delegate:self];
+    } else {
+        if ([url.baseURL.path containsString:@"today"]) {
+            [self.kalController showAndSelectDate:[NSDate date]];
+        }
+        return true;
+    }
 }
 
 - (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    return [WXApi handleOpenURL:url delegate:self];
+    NSLog(@"app open by url:%@", [url path]);
+    if ([url.scheme containsString:kWeChatScheme]) {
+        return [WXApi handleOpenURL:url delegate:self];
+    } else {
+        if ([url.relativeString containsString:@"today"]) {
+            [self.kalController showAndSelectDate:[NSDate date]];
+        }
+        return true;
+    }
 }
 
 
@@ -476,11 +494,11 @@ enum {
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil)
     {
-        __managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        [__managedObjectContext setPersistentStoreCoordinator:coordinator];
+        __managedObjectContext = [SSCoreDataHelper createContext: coordinator];
     }
     return __managedObjectContext;
 }
+
 
 /**
  Returns the managed object model for the application.
@@ -492,10 +510,10 @@ enum {
     {
         return __managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"ShiftScheduler" withExtension:@"momd"];
-    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
+    __managedObjectModel = [SSCoreDataHelper createShiftModel];
     return __managedObjectModel;
 }
+
 
 /**
  Returns the persistent store coordinator for the application.
@@ -507,58 +525,14 @@ enum {
     {
         return __persistentStoreCoordinator;
     }
-
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"ShiftScheduler.sqlite"];
-
-    NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption: @(YES),
-                                NSInferMappingModelAutomaticallyOption: @(YES)};
-
-    NSError *error = nil;
-    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-
-
-
-    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error])
-    {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-
-
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-         [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-
+    
+    
+    __persistentStoreCoordinator = [SSCoreDataHelper createPersistentStoreCoordinator: [self managedObjectModel]];
+    
     return __persistentStoreCoordinator;
 }
 
 #pragma mark - Application's Documents directory
-
-/**
- Returns the URL to the application's Documents directory.
- */
-- (NSURL *)applicationDocumentsDirectory
-{
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-}
 
 + (BOOL) enableThinkNoteConfig
 {

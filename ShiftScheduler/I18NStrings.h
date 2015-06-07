@@ -181,5 +181,7 @@
 
 #define TNS_SETTING_TIPS NSLocalizedString(@"Please setup your ThinkNote account in 'Setting->Login ThinkNote'", "thinkNote Setting tips")
 
+#define TODAY_VIEW_NO_SHIFT NSLocalizedString(@"No shift scheduled today, Enjoy!", "no shift today")
+
 
 #endif

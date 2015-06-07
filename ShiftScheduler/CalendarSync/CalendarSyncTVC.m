@@ -319,7 +319,7 @@
 }
 
 - (NSString *) getStringLength {
-   int n =  [SSCalendarSyncController getSyncLengthSetting];
+   NSInteger n =  [SSCalendarSyncController getSyncLengthSetting];
     NSString *str;
    
     for (NSString *key in [self.lengthDict allKeys]) {

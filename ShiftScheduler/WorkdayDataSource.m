@@ -231,10 +231,10 @@
         OneJob *job = [self jobAtIndexPath: indexPath];
         cell.textLabel.text = job.jobName;
     
-    if ([job getJobEverydayStartTime] != Nil)
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@",
-                                     [job jobEverydayStartTimeWithFormatter:self.timeFormatter],
-                                     [job jobEverydayOffTimeWithFormatter:self.timeFormatter]];
+        if ([job getJobEverydayStartTime] != Nil)
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@",
+                                                  [job jobEverydayStartTimeWithFormatter:self.timeFormatter],
+                                                  [job jobEverydayOffTimeWithFormatter:self.timeFormatter]];
         cell.imageView.image = job.middleSizeImage;
         return cell;
     }

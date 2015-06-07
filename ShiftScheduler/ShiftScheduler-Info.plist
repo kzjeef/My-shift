@@ -38,6 +38,18 @@
 				<string>wx42e638b828242aaa</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
+			<string>AppIcon@2x</string>
+			<key>CFBundleURLName</key>
+			<string>com.kzjeef.shitf.scheduler</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>shiftscheduler</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>4.1.0</string>
