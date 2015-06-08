@@ -19,6 +19,8 @@
 #define ONE_DAY_SECONDS (60*60*24)
 #define HALF_DAY_SECONDS (60*60*12)
 
+static int kWDSAddNoteFontSize = 14;  // font size of Note 
+
 @interface WorkdayDataSource()
 {
   NSArray *_cachedRegionList;
@@ -250,8 +252,10 @@
     if (cell == nil)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NoteCell"];
     
-    UITextField *field  = [[UITextField alloc] initWithFrame:cell.bounds];
-    [cell.contentView addSubview:field];
+    cell.textLabel.text = @"Click to add Note";
+    cell.textLabel.textColor = [UIColor grayColor];
+    cell.textLabel.font = [UIFont systemFontOfSize:kWDSAddNoteFontSize];
+
     return cell;
 }
 

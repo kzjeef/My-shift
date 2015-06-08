@@ -532,7 +532,7 @@
 
 - (void)didSave
 {
-    [self.sharedDefualt  setDouble:[[NSDate date] timeIntervalSince1970 ] forKey:kOneJobUpdateKey];
+    //    [self.sharedDefualt  setDouble:[[NSDate date] timeIntervalSince1970 ] forKey:kOneJobUpdateKey];
     // no need to sync, it will automaticlly sync, sync will cause delay.
 }
 

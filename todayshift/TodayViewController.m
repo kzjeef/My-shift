@@ -12,6 +12,7 @@
 #import "SSCoreDataHelper.h"
 #import "I18NStrings.h"
 #import "CommonDefine.h"
+#import "MeasureUtil.h"
 
 NSString *kJobEnabledCacheName  = @"JobEnabledCache";
 
@@ -93,45 +94,18 @@ NSString *kKeySSTodayLastDbOpTimeIntevalSince1970 = @"kKey_SSToday_Last_Db_Op_Ti
     NSDate *lastReadTime = [self lastDBReadTime];
     NSDate *updatedate = [OneJob lastUpdateTimeForAllObjects:self.sharedDefaults];
     
-    if (updatedate == nil || lastReadTime == nil || [lastReadTime timeIntervalSinceDate:updatedate] < 0) {
-        [self loadDataWithContext:self.objectContext];
-        [self updateLastDbReadTime];
-        NSLog(@"load date from DB: last read time:%@, db update time:%@",
-              [self.timeFormatter stringFromDate:lastReadTime],
-              [self.timeFormatter stringFromDate:updatedate]);
-    } else {
-        NSLog(@"load date from Cache: last read time:%@, db update time:%@",
-              [self.timeFormatter stringFromDate:lastReadTime],
-              [self.timeFormatter stringFromDate:updatedate]);
-        
-        // use cached value.
-        
-    }
+    [self loadDataWithContext:self.objectContext];
+    [self updateLastDbReadTime];
+    NSLog(@"load date from DB: last read time:%@, db update time:%@",
+          [self.timeFormatter stringFromDate:lastReadTime],
+          [self.timeFormatter stringFromDate:updatedate]);
+    
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _shiftArray = [[NSMutableArray alloc] init];
-    
-    // Do any additional setup after loading the view from its nib.
-    
-    
-    [self loadDateWithCache];
-    
-    long size;
-    size = [self getEstimatedHeight];
-    // for no shift today.
-    self.preferredContentSize = CGSizeMake(0, size);
-    
-    CGRect rect = CGRectMake(0, 0, 320, size);
-    
-    UITableView *tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [self.view addSubview:tableView];
-    [tableView reloadData];
-    _tableView = tableView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -141,12 +115,32 @@ NSString *kKeySSTodayLastDbOpTimeIntevalSince1970 = @"kKey_SSToday_Last_Db_Op_Ti
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
     // Perform any setup necessary in order to update the view.
+    // Do any additional setup after loading the view from its nib.
+    
+    LOO_MEASURE_TIME(@"TodayView: LoadData") {
+        [self loadDateWithCache];
+    }
+    
+    LOO_MEASURE_TIME(@"TodayView: Setup View") {
+        long size;
+        size = [self getEstimatedHeight];
+        // for no shift today.
+        self.preferredContentSize = CGSizeMake(0, size);
+        
+        CGRect rect = CGRectMake(0, 0, 320, size);
+        
+        UITableView *tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        [self.view addSubview:tableView];
+        [tableView reloadData];
+        _tableView = tableView;
+    }
     
     // If an error is encountered, use NCUpdateResultFailed
     // If there's no update required, use NCUpdateResultNoData
     // If there's an update, use NCUpdateResultNewData
-
-    completionHandler(NCUpdateResultNewData);
+     completionHandler(NCUpdateResultNewData);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
