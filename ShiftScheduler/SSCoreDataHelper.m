@@ -7,6 +7,7 @@
 //
 
 #import "SSCoreDataHelper.h"
+#import "CommonDefine.h"
 
 @implementation SSCoreDataHelper
 
@@ -61,6 +62,11 @@
     
     if (targetURL == nil)
         targetURL = groupURL;
+    
+    if (targetURL == nil) {
+        NSLog(@"group  url create failed. use local store, today view will be abnormal.");
+        targetURL = storeURL;
+    }
     
     NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption: @(YES),
                               NSInferMappingModelAutomaticallyOption: @(YES)};
@@ -129,7 +135,7 @@
 
 + (NSURL *)applicationGroupDocumentDirectory
 {
-    return [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.com.kzjeef.shitf.scheduler"];
+    return [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:kAppGroupName];
 }
 
 

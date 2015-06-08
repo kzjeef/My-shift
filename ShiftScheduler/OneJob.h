@@ -117,6 +117,8 @@ enum JobShiftAlgoType {
 
 + (BOOL)            IsDateBetweenInclusive:(NSDate *)date begin: (NSDate *) begin end: (NSDate *)end;
 
++ (NSDate *)        lastUpdateTimeForAllObjects : (NSUserDefaults *)sharedDefault;
+
 @end
 
 

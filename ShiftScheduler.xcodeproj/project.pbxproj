@@ -295,6 +295,8 @@
 		29F49CAB156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F49CA9156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.m */; };
 		29FA9AF314F48DAE00717505 /* SSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29FA9AF114F48DAE00717505 /* SSAlertController.h */; };
 		29FA9AF414F48DAE00717505 /* SSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FA9AF214F48DAE00717505 /* SSAlertController.m */; };
+		877B23B21B2599D7006EA638 /* CommonDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 877B23B11B2599D7006EA638 /* CommonDefine.h */; };
+		877B23BF1B25B335006EA638 /* MeasureUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 877B23BE1B25B335006EA638 /* MeasureUtil.h */; };
 		9A85C2A9A9AA44AEB7EE5EA3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B41447E5FD4EFE9D397177 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -338,14 +340,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = A515C2AF32069D9997E1661A;
+			remoteGlobalIDString = ABDA124A0328C8162FB46F25;
 			remoteInfo = Pods;
 		};
 		297FDBD818A8B9C000BA0240 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = C94E29E15276E367BDBC0AE4;
+			remoteGlobalIDString = 157D3D70C02804486D983940;
 			remoteInfo = "Pods-REFrostedViewController";
 		};
 		297FDBE618AF1CA400BA0240 /* PBXContainerItemProxy */ = {
@@ -736,6 +738,8 @@
 		29F89FEC14E8072D002BB665 /* ShiftScheduler 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 4.xcdatamodel"; sourceTree = "<group>"; };
 		29FA9AF114F48DAE00717505 /* SSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAlertController.h; sourceTree = "<group>"; };
 		29FA9AF214F48DAE00717505 /* SSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SSAlertController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		877B23B11B2599D7006EA638 /* CommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDefine.h; sourceTree = "<group>"; };
+		877B23BE1B25B335006EA638 /* MeasureUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasureUtil.h; sourceTree = "<group>"; };
 		B7B41447E5FD4EFE9D397177 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D0B58EDD498B3173DF575B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F4699C511670580AED364DC0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -850,16 +854,6 @@
 			name = Icon;
 			sourceTree = "<group>";
 		};
-		290F4E331783EA2C0023ADE8 /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-				290F4E361783EA800023ADE8 /* SSDayEventUTC.h */,
-				290F4E3A1783EF1B0023ADE8 /* SSDayEventUTC.xib */,
-				290F4E371783EA800023ADE8 /* SSDayEventUTC.m */,
-			);
-			name = Calendar;
-			sourceTree = "<group>";
-		};
 		2920039D18B5A1DD000CA7D3 /* CalSync */ = {
 			isa = PBXGroup;
 			children = (
@@ -952,23 +946,6 @@
 				29F49CA5156FDAD900C76EFC /* SSShiftTableConfigTVC.m */,
 			);
 			name = "Free Jump Profile";
-			sourceTree = "<group>";
-		};
-		297409E818C323DE008A5AF9 /* General UI */ = {
-			isa = PBXGroup;
-			children = (
-				29C5BCF41A7E4257009B065A /* UITableViewCell+DoneButton.h */,
-				29C5BCF51A7E4257009B065A /* UITableViewCell+DoneButton.m */,
-				29C4B5DD1813C38D0041D0B2 /* UIImage+Blur.h */,
-				29C4B5DE1813C38D0041D0B2 /* UIImage+Blur.m */,
-				29F2147C14E66DB7008BEE92 /* UIImage+MonoImage.m */,
-				29F2147B14E66DB7008BEE92 /* UIImage+MonoImage.h */,
-				297409F618C37117008A5AF9 /* SSShiftMultipSelectTVC.h */,
-				297409F718C37117008A5AF9 /* SSShiftMultipSelectTVC.m */,
-				297409E418C323D5008A5AF9 /* SSSingleSelectTVC.h */,
-				297409E518C323D5008A5AF9 /* SSSingleSelectTVC.m */,
-			);
-			name = "General UI";
 			sourceTree = "<group>";
 		};
 		297E0C781833D3D2000E1F19 /* Products */ = {
@@ -1239,10 +1216,9 @@
 		29AEBDC8156136830010F27D /* GUI */ = {
 			isa = PBXGroup;
 			children = (
-				297409E818C323DE008A5AF9 /* General UI */,
+				87F5B2A41B1755530030A919 /* Widget */,
 				2920039D18B5A1DD000CA7D3 /* CalSync */,
 				29B460CD182E0AA70059F149 /* MainUI */,
-				290F4E331783EA2C0023ADE8 /* Calendar */,
 				29E6D7F215ADC59A00235123 /* Share */,
 				2935514914E2E5EB004D8FAC /* SettingView */,
 				299D8D0D147948B900E20DAE /* ProfileView */,
@@ -1268,6 +1244,8 @@
 				29DCB8DB15A7C8730095C71D /* NSDateAdditions.m */,
 				29009FE8159F4AE500A1588E /* UIColor+HexCoding.h */,
 				29009FE9159F4AE500A1588E /* UIColor+HexCoding.m */,
+				877B23B11B2599D7006EA638 /* CommonDefine.h */,
+				877B23BE1B25B335006EA638 /* MeasureUtil.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1474,6 +1452,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		87F5B2A41B1755530030A919 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				29C5BCF41A7E4257009B065A /* UITableViewCell+DoneButton.h */,
+				29C5BCF51A7E4257009B065A /* UITableViewCell+DoneButton.m */,
+				29C4B5DD1813C38D0041D0B2 /* UIImage+Blur.h */,
+				29C4B5DE1813C38D0041D0B2 /* UIImage+Blur.m */,
+				29F2147C14E66DB7008BEE92 /* UIImage+MonoImage.m */,
+				29F2147B14E66DB7008BEE92 /* UIImage+MonoImage.h */,
+				297409F618C37117008A5AF9 /* SSShiftMultipSelectTVC.h */,
+				297409F718C37117008A5AF9 /* SSShiftMultipSelectTVC.m */,
+				297409E418C323D5008A5AF9 /* SSSingleSelectTVC.h */,
+				297409E518C323D5008A5AF9 /* SSSingleSelectTVC.m */,
+				290F4E361783EA800023ADE8 /* SSDayEventUTC.h */,
+				290F4E3A1783EF1B0023ADE8 /* SSDayEventUTC.xib */,
+				290F4E371783EA800023ADE8 /* SSDayEventUTC.m */,
+			);
+			name = Widget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1497,12 +1495,14 @@
 				299A256D18BB967D00592137 /* SyncEvent.h in Headers */,
 				29C5BCF61A7E4257009B065A /* UITableViewCell+DoneButton.h in Headers */,
 				29F2147D14E66DB7008BEE92 /* UIImage+MonoImage.h in Headers */,
+				877B23B21B2599D7006EA638 /* CommonDefine.h in Headers */,
 				29C943B014E957F700122144 /* SSKalDelegate.h in Headers */,
 				29C943B614E9642900122144 /* SSProfileTimeAndAlarmVC.h in Headers */,
 				29D93E9D18B8AA9D0087806B /* UISwitch+AdjustForTableViewCell.h in Headers */,
 				29C943BB14EAB55200122144 /* UserReviewController.h in Headers */,
 				29E98CD314EFF3FF0048AF49 /* SSProfileReminderDateSource.h in Headers */,
 				29FA9AF314F48DAE00717505 /* SSAlertController.h in Headers */,
+				877B23BF1B25B335006EA638 /* MeasureUtil.h in Headers */,
 				29AEBDB015612CBA0010F27D /* ShiftAlgoBase.h in Headers */,
 				29AEBDB215612CBA0010F27D /* ShiftAlgoFreeRound.h in Headers */,
 				29AEBDE715628BAB0010F27D /* ShiftAlgoFreeJump.h in Headers */,

@@ -16,6 +16,7 @@
 #import "ShiftAlgoFreeRound.h"
 #import "ShiftAlgoFreeJump.h"
 #import "I18NStrings.h"
+#import "CommonDefine.h"
 
 #define DAY_TO_SECONDS 60*60*24
 
@@ -33,6 +34,8 @@
     NSString *cachedJobOnIconColor;
     NSNumber *cachedJobOnIconColorOn;
     UIImage  *middleSizeImage;
+    
+    NSUserDefaults *_sharedDefualt;
 }
 
 @property (strong, nonatomic) ShiftAlgoBase *shiftAlgo;
@@ -42,6 +45,7 @@
 // shift property and order.
 @property (nonatomic, strong) NSDate * jobEverydayStartTime;
 @property (weak, nonatomic, readonly)  UIColor *defaultIconColor;
+@property (strong, nonatomic) NSUserDefaults *sharedDefualt;
 
 @end
 
@@ -69,6 +73,14 @@
 @dynamic shiftdays;
 @dynamic syncevents;
 @dynamic infonodes;
+
+-(NSUserDefaults *) sharedDefualt {
+    if (_sharedDefualt != nil)
+        return _sharedDefualt;
+    
+    _sharedDefualt = [[NSUserDefaults alloc] initWithSuiteName:kAppGroupName];
+    return _sharedDefualt;
+}
 
 - (ShiftAlgoBase *)shiftAlgo;
 {
@@ -516,6 +528,21 @@
     }
 
     return YES;
+}
+
+- (void)didSave
+{
+    [self.sharedDefualt  setDouble:[[NSDate date] timeIntervalSince1970 ] forKey:kOneJobUpdateKey];
+    // no need to sync, it will automaticlly sync, sync will cause delay.
+}
+
++ (NSDate *) lastUpdateTimeForAllObjects : (NSUserDefaults *)sharedDefault
+{
+    NSTimeInterval itval;
+    itval = [sharedDefault doubleForKey:kOneJobUpdateKey];
+    if (itval == 0.0f)
+        return nil;
+    return [NSDate dateWithTimeIntervalSince1970:itval];
 }
 
 + (BOOL) IsDateBetweenInclusive:(NSDate *)date begin: (NSDate *) begin end: (NSDate *)end;

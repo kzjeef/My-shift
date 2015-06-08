@@ -188,55 +188,85 @@
     return [items objectAtIndex:indexPath.row];
 }
 
+- (UITableViewCell *)setupHolidayCell
+{
+    NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"SSDayEventUTC"
+                                                   owner:self
+                                                 options:nil];
+    
+    SSDayEventUTC *cell = [views objectAtIndex:0];
+    cell.lunarLabel.text = nil;
+    cell.holidayLabel.text = nil;
+    cell.lunarLabel.textColor = [UIColor colorWithHexString:@"2C3E50"];
+    cell.holidayLabel.textColor = [UIColor colorWithHexString:@"D35400"];
+    
+    if ([self isLunarDateDisplayEnable]) {
+        SSLunarDate *lunarDate = [[SSLunarDate alloc] initWithDate:self.currentChoosenDate];
+        
+        if ([lunarDate convertSuccess])
+            cell.lunarLabel.text = [NSString stringWithFormat:@"%@:%@%@",
+                                    LUNAR_FMT_START_STRING,
+                                    [lunarDate monthString],
+                                    [lunarDate dayString]];
+    }
+    
+    if (self.currentChoosenDate != nil) {
+        NSArray *holidays = [self getHolidayForDate:self.currentChoosenDate];
+        if ([holidays count] > 0)
+            cell.holidayLabel.text = [holidays objectAtIndex:0];
+    }
+    
+    return cell;
+}
+
+- (BOOL) isCurrentDateNeedsShowHoliday {
+   return  [self isLunarDateDisplayEnable]
+            || (self.currentChoosenDate && [self getHolidayForDate:self.currentChoosenDate].count > 0);
+}
+
+- (UITableViewCell *)setupWorkdayCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:@"WorkdayNormalCell"];
+    if (cell == nil)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"WorkdayNormalCell"];
+    
+    OneJob *job = [self jobAtIndexPath: indexPath];
+    cell.textLabel.text = job.jobName;
+    
+    if ([job getJobEverydayStartTime] != Nil)
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@",
+                                     [job jobEverydayStartTimeWithFormatter:self.timeFormatter],
+                                     [job jobEverydayOffTimeWithFormatter:self.timeFormatter]];
+    cell.imageView.image = job.middleSizeImage;
+    return cell;
+}
+
+- (UITableViewCell *)setupNoteCell:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:@"NoteCell"];
+    
+    if (cell == nil)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NoteCell"];
+    
+    UITextField *field  = [[UITextField alloc] initWithFrame:cell.bounds];
+    [cell.contentView addSubview:field];
+    return cell;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
 	 cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0
-        && ([self isLunarDateDisplayEnable]
-            || (self.currentChoosenDate
-                && [self getHolidayForDate:self.currentChoosenDate].count > 0))) {
-        NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"SSDayEventUTC"
-                                      owner:self
-                                    options:nil];
-
-        SSDayEventUTC *cell = [views objectAtIndex:0];
-        cell.lunarLabel.text = nil;
-        cell.holidayLabel.text = nil;
-        cell.lunarLabel.textColor = [UIColor colorWithHexString:@"2C3E50"];
-        cell.holidayLabel.textColor = [UIColor colorWithHexString:@"D35400"];
-
-        if ([self isLunarDateDisplayEnable]) {
-            SSLunarDate *lunarDate = [[SSLunarDate alloc] initWithDate:self.currentChoosenDate];
-
-            if ([lunarDate convertSuccess])
-                cell.lunarLabel.text = [NSString stringWithFormat:@"%@:%@%@",
-                                           LUNAR_FMT_START_STRING,
-                                           [lunarDate monthString],
-                                           [lunarDate dayString]];
+    if (indexPath.section == 0 && [self isCurrentDateNeedsShowHoliday])
+        return [self setupHolidayCell];
+    else {
+        if (indexPath.row < items.count)
+            return [self setupWorkdayCell:tableView indexPath:indexPath];
+        else {  // shift file is over, let move into notes area.
+            return [self setupNoteCell:tableView  indexPath:indexPath];
         }
-        
-        if (self.currentChoosenDate != nil) {
-            NSArray *holidays = [self getHolidayForDate:self.currentChoosenDate];
-            if ([holidays count] > 0)
-                cell.holidayLabel.text = [holidays objectAtIndex:0];
-        }
-
-        return cell;
-    } else {
-        UITableViewCell *cell;
-        cell = [tableView dequeueReusableCellWithIdentifier:@"WorkdayNormalCell"];
-        if (cell == nil)
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"WorkdayNormalCell"];
-
-        OneJob *job = [self jobAtIndexPath: indexPath];
-        cell.textLabel.text = job.jobName;
-    
-        if ([job getJobEverydayStartTime] != Nil)
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@",
-                                                  [job jobEverydayStartTimeWithFormatter:self.timeFormatter],
-                                                  [job jobEverydayOffTimeWithFormatter:self.timeFormatter]];
-        cell.imageView.image = job.middleSizeImage;
-        return cell;
     }
 
     NSLog(@"work day data source return an nil cell");
@@ -257,7 +287,7 @@
     if ([self needsDisplayInformationBar] && section == 0)
         return 1;
     else
-        return [items count];
+        return [items count] + 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -411,13 +441,19 @@
  additions, removals and so on.
  */
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
 	// The fetch controller is about to start sending change
 	// notifications, so prepare the table view for updates.
 }
 
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+- (void)controller:(NSFetchedResultsController *)controller
+        didChangeObject:(id)anObject
+        atIndexPath:(NSIndexPath *)indexPath
+        forChangeType:(NSFetchedResultsChangeType)type
+        newIndexPath:(NSIndexPath *)newIndexPath
+{
     [callback loadedDataSource:self];
 }
 

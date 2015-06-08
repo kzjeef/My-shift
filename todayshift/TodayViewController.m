@@ -11,6 +11,7 @@
 #import "OneJob.h"
 #import "SSCoreDataHelper.h"
 #import "I18NStrings.h"
+#import "CommonDefine.h"
 
 NSString *kJobEnabledCacheName  = @"JobEnabledCache";
 
@@ -24,6 +25,7 @@ NSString *kJobEnabledCacheName  = @"JobEnabledCache";
      NSMutableArray                     *_shiftArray;
      NSManagedObjectContext             * _objectContext;
      NSFetchedResultsController         * _jobFetchRequestController;
+    NSUserDefaults                      *_sharedDefaults;
 }
 
 @property (strong, nonatomic) NSManagedObjectContext        *objectContext;
@@ -33,10 +35,20 @@ NSString *kJobEnabledCacheName  = @"JobEnabledCache";
 @property (strong, nonatomic) NSDateFormatter               *timeFormatter;
 @property (strong, nonatomic) NSArray                       *theJobNameArray;
 @property (strong, nonatomic) NSMutableArray                *shiftArray;
+@property (strong, nonatomic) NSUserDefaults                *sharedDefaults;
 
 @end
 
 @implementation TodayViewController
+
+- (NSUserDefaults *) sharedDefaults
+{
+    
+    if (_sharedDefaults != nil)
+        return _sharedDefaults;
+    _sharedDefaults = [[NSUserDefaults alloc] initWithSuiteName:kAppGroupName];
+    return _sharedDefaults;
+}
 
 - (long)getEstimatedHeight {
     long size = (self.shiftArray.count * 44);
@@ -54,6 +66,49 @@ NSString *kJobEnabledCacheName  = @"JobEnabledCache";
     return _timeFormatter;
 }
 
+NSString *kKeySSTodayLastDbOpTimeIntevalSince1970 = @"kKey_SSToday_Last_Db_Op_Time_Inteval_Since_1970";
+
+- (NSDate *) lastDBReadTime {
+    NSTimeInterval itval;
+    itval = [self.sharedDefaults doubleForKey:kKeySSTodayLastDbOpTimeIntevalSince1970];
+    if (itval == 0.0f)
+        return nil;
+    
+    return [NSDate dateWithTimeIntervalSince1970:itval];
+}
+
+- (void) updateLastDbReadTime
+{
+    [self.sharedDefaults setDouble:[[NSDate date] timeIntervalSince1970] forKey:kKeySSTodayLastDbOpTimeIntevalSince1970];
+    [self.sharedDefaults synchronize];
+}
+
+- (void) saveJobInCache
+{
+//    [self.sharedDefaults set]
+}
+
+- (void) loadDateWithCache {
+    
+    NSDate *lastReadTime = [self lastDBReadTime];
+    NSDate *updatedate = [OneJob lastUpdateTimeForAllObjects:self.sharedDefaults];
+    
+    if (updatedate == nil || lastReadTime == nil || [lastReadTime timeIntervalSinceDate:updatedate] < 0) {
+        [self loadDataWithContext:self.objectContext];
+        [self updateLastDbReadTime];
+        NSLog(@"load date from DB: last read time:%@, db update time:%@",
+              [self.timeFormatter stringFromDate:lastReadTime],
+              [self.timeFormatter stringFromDate:updatedate]);
+    } else {
+        NSLog(@"load date from Cache: last read time:%@, db update time:%@",
+              [self.timeFormatter stringFromDate:lastReadTime],
+              [self.timeFormatter stringFromDate:updatedate]);
+        
+        // use cached value.
+        
+    }
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,7 +116,8 @@ NSString *kJobEnabledCacheName  = @"JobEnabledCache";
     
     // Do any additional setup after loading the view from its nib.
     
-    [self loadDataWithContext:self.objectContext];
+    
+    [self loadDateWithCache];
     
     long size;
     size = [self getEstimatedHeight];
