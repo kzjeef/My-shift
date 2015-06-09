@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6047254B6E455AD3AE8B6C876F153ACBBCC63592",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "A890EE2B69A984CC3960F2281FCF64AE2D039F4E" : 0,
+    "6047254B6E455AD3AE8B6C876F153ACBBCC63592" : 0,
+    "EDD7749C9B5B3F491FA60EF62C7F14E347AC6B8B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "17BE6EEB-CCDF-40CD-A978-537EF8C21542",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "A890EE2B69A984CC3960F2281FCF64AE2D039F4E" : "shiftScheduler\/Submodules\/wechat",
+    "6047254B6E455AD3AE8B6C876F153ACBBCC63592" : "shiftScheduler",
+    "EDD7749C9B5B3F491FA60EF62C7F14E347AC6B8B" : "SSLunarDate"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ShiftScheduler",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ShiftScheduler.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/github.com\/kzjeef\/ShiftScheduler-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6047254B6E455AD3AE8B6C876F153ACBBCC63592"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/kzjeef\/weixin-ios-sdk.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A890EE2B69A984CC3960F2281FCF64AE2D039F4E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/github.com\/kzjeef\/SSLunarDate.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EDD7749C9B5B3F491FA60EF62C7F14E347AC6B8B"
+    }
+  ]
+}
