@@ -295,6 +295,9 @@
 		29FA9AF414F48DAE00717505 /* SSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FA9AF214F48DAE00717505 /* SSAlertController.m */; };
 		877B23B21B2599D7006EA638 /* CommonDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 877B23B11B2599D7006EA638 /* CommonDefine.h */; };
 		877B23BF1B25B335006EA638 /* MeasureUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 877B23BE1B25B335006EA638 /* MeasureUtil.h */; };
+		879292CC1B26E7B60079BCFD /* SSNoteAppendingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 879292C91B26E7B60079BCFD /* SSNoteAppendingViewController.h */; };
+		879292CD1B26E7B60079BCFD /* SSNoteAppendingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879292CA1B26E7B60079BCFD /* SSNoteAppendingViewController.m */; };
+		879292CE1B26E7B60079BCFD /* SSNoteAppendingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879292CB1B26E7B60079BCFD /* SSNoteAppendingViewController.xib */; };
 		9A85C2A9A9AA44AEB7EE5EA3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B41447E5FD4EFE9D397177 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -731,6 +734,9 @@
 		877B23B11B2599D7006EA638 /* CommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDefine.h; sourceTree = "<group>"; };
 		877B23BE1B25B335006EA638 /* MeasureUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasureUtil.h; sourceTree = "<group>"; };
 		879292BB1B26DCEF0079BCFD /* SSLunarDate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSLunarDate.xcodeproj; path = vendor/SSLunarDate.xcodeproj; sourceTree = "<group>"; };
+		879292C91B26E7B60079BCFD /* SSNoteAppendingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSNoteAppendingViewController.h; path = ShiftScheduler/SSNoteAppendingViewController.h; sourceTree = "<group>"; };
+		879292CA1B26E7B60079BCFD /* SSNoteAppendingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSNoteAppendingViewController.m; path = ShiftScheduler/SSNoteAppendingViewController.m; sourceTree = "<group>"; };
+		879292CB1B26E7B60079BCFD /* SSNoteAppendingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSNoteAppendingViewController.xib; path = ShiftScheduler/SSNoteAppendingViewController.xib; sourceTree = "<group>"; };
 		B7B41447E5FD4EFE9D397177 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D0B58EDD498B3173DF575B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F4699C511670580AED364DC0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1205,6 +1211,7 @@
 		29AEBDC8156136830010F27D /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				879292C81B26E7690079BCFD /* Note */,
 				87F5B2A41B1755530030A919 /* Widget */,
 				2920039D18B5A1DD000CA7D3 /* CalSync */,
 				29B460CD182E0AA70059F149 /* MainUI */,
@@ -1442,6 +1449,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		879292C81B26E7690079BCFD /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				879292C91B26E7B60079BCFD /* SSNoteAppendingViewController.h */,
+				879292CA1B26E7B60079BCFD /* SSNoteAppendingViewController.m */,
+				879292CB1B26E7B60079BCFD /* SSNoteAppendingViewController.xib */,
+			);
+			name = Note;
+			sourceTree = "<group>";
+		};
 		87F5B2A41B1755530030A919 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -1480,6 +1497,7 @@
 				292DBCAF14CA943F00C87A70 /* JPImagePickerOverviewController.h in Headers */,
 				292DBCB214CA943F00C87A70 /* UIImageResizing.h in Headers */,
 				29E339D414CA955A0036EAED /* ProfileIconPickerDataSource.h in Headers */,
+				879292CC1B26E7B60079BCFD /* SSNoteAppendingViewController.h in Headers */,
 				297409E618C323D5008A5AF9 /* SSSingleSelectTVC.h in Headers */,
 				29B460D4182E0B1D0059F149 /* SSMainMenuTableViewController.h in Headers */,
 				299A256D18BB967D00592137 /* SyncEvent.h in Headers */,
@@ -1817,6 +1835,7 @@
 				2980756718B1208A003A733F /* blueArrowDown@2x.png in Resources */,
 				2980756618B1208A003A733F /* blueArrowDown.png in Resources */,
 				2995A42018CA5381004782DF /* arrow-down.png in Resources */,
+				879292CE1B26E7B60079BCFD /* SSNoteAppendingViewController.xib in Resources */,
 				297FDBD318A88D0100BA0240 /* share@2x.png in Resources */,
 				29E9810B1642DBB700B65A7E /* Default-568h@2x.png in Resources */,
 				29B460C6182E00810059F149 /* Pods.xcodeproj in Resources */,
@@ -1974,6 +1993,7 @@
 				29AEBDB115612CBA0010F27D /* ShiftAlgoBase.m in Sources */,
 				2915099D18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.m in Sources */,
 				29AEBDB315612CBA0010F27D /* ShiftAlgoFreeRound.m in Sources */,
+				879292CD1B26E7B60079BCFD /* SSNoteAppendingViewController.m in Sources */,
 				29AEBDE815628BAB0010F27D /* ShiftAlgoFreeJump.m in Sources */,
 				2915099218C7800D00BE360D /* SSCalendarSyncOperation.m in Sources */,
 				299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */,

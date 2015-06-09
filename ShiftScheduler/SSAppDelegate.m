@@ -56,6 +56,9 @@ enum {
 {
     [self shiftModuleMigration];
 
+    self.navController = [[SSMainNavigationController alloc] init];
+
+    
     _kalController = [[KalViewController alloc] init];
     //    _kalController.title = NSLocalizedString(@"Shift Scheduler", "application title");
     _kalController.title = @"";
@@ -88,7 +91,10 @@ enum {
     _kalController.vcdelegate = self.sskalDelegate;
 
     WorkdayDataSource *wds = [[WorkdayDataSource alloc] initWithManagedContext:self.managedObjectContext];
+    wds.globalNavController = self.navController;
+    
     dataSource  = wds;
+
     _kalController.dataSource = dataSource;
     _kalController.delegate = dataSource;
     _kalController.tileDelegate = dataSource;
@@ -250,7 +256,6 @@ NSString *kWeChatScheme = @"wx42e638b828242aaa";
 
 - (void) initFrostedMainMenu:(NSArray *) nameArray withIcons:(NSArray *) iconArray
 {
-    self.navController = [[SSMainNavigationController alloc] init];
     
 
     SSMainMenuTableViewController *menuController = [[SSMainMenuTableViewController alloc] initWithStyle:UITableViewStylePlain nameArray:nameArray

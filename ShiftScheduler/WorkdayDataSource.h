@@ -20,6 +20,7 @@
     NSDateFormatter *timeFormatter;
     NSDate *_currentChoosenDate;
     id<KalDataSourceCallbacks> callback;
+
 }
 
 @property (strong, nonatomic) NSDate *currentChoosenDate;
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) NSFetchedResultsController *jobFetchRequestController;
 @property (strong, nonatomic) NSDateFormatter *timeFormatter;
 @property (strong, nonatomic) NSManagedObjectContext * objectContext;
+@property (weak,   nonatomic) UINavigationController   *globalNavController;
 
 
 - (id) initWithManagedContext:(NSManagedObjectContext *)thecontext;

@@ -15,6 +15,7 @@
 #import "UIColor+HexCoding.m"
 #import "I18NStrings.h"
 #import "SSHolidayHelper.h"
+#import "SSNoteAppendingViewController.h"
 
 #define ONE_DAY_SECONDS (60*60*24)
 #define HALF_DAY_SECONDS (60*60*12)
@@ -277,6 +278,30 @@ static int kWDSAddNoteFontSize = 14;  // font size of Note
     return nil;
 }
 
+- (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+        [self startAddNote];
+
+}
+
+- (void)startAddNote
+{
+    
+    SSNoteAppendingViewController *noteaddVC = [[SSNoteAppendingViewController alloc] initWithNibName:@"SSNoteAppendingViewController" bundle:nil];
+    
+    // Create a new managed object context for the new book -- set its persistent store coordinator to the same as that from the fetched results controller's context.
+    NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
+    [addingContext setPersistentStoreCoordinator:[self.objectContext persistentStoreCoordinator]];
+    addingContext.undoManager = nil; // Undo manager is not needed here.
+    
+    noteaddVC.managedContext = addingContext;
+    // use same manage object context can auto update the frc.
+//    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:noteaddVC];
+    if (self.globalNavController != nil) {
+        [self.globalNavController presentViewController:noteaddVC animated:YES completion:nil];
+    }
+}
+
 - (BOOL) needsDisplayInformationBar
 {
     if ([self isLunarDateDisplayEnable]
@@ -322,6 +347,7 @@ static int kWDSAddNoteFontSize = 14;  // font size of Note
     } else
         return  tableView.rowHeight;
 }
+
 
 #pragma mark KalDataSource protocol conformance
 
