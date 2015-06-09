@@ -1,3 +1,10 @@
 language: objective-c
-xcode_project: ShiftScheduler.xcodeproj # path to your xcodeproj folder
-xcode_scheme: OneJobModuleTest
+cache:
+  - cocoapods
+
+before_install:
+    - 'echo ' 'gem install'
+    - pod install
+
+script:
+  - xcodebuild
