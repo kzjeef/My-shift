@@ -258,6 +258,7 @@
     if (title == kDoSyncItem) {
         [self.busyIndicator startAnimating];
         [self.calendarSyncController deleteAndSetupEvents:YES];
+        [SSTrackUtil logEvent:kLogEventCaldendarSyncManualSync];
         //        [self.calendarSyncController setupAllEKEvent:YES];
     }
     if (title == kLengthItem) {
@@ -269,6 +270,7 @@
         select.selectedRow = [self.lengthArray  indexOfObject:[self getStringLength]];
         select.navigationItem.title = kLengthItem;
         [self presentViewController:navController animated:YES completion:nil];
+        [SSTrackUtil logEvent:kLogEventCaldendarSyncLengthChange];
     }
 
     if (title == kShiftSelectItem) {
@@ -282,12 +284,13 @@
         select.delegate = self;
         select.navigationItem.title = kShiftSelectItem;
         [self presentViewController: navController animated: YES completion:nil];
+        [SSTrackUtil logEvent:kLogEventCaldendarSyncChangeShift];
     }
 
     if (title == kDeleteEventsItem) {
         [self.busyIndicator startAnimating];
         [self.calendarSyncController deleteAllEKEvents];
-
+        [SSTrackUtil logEvent:kLogEventCaldendarSyncDeleteAll];
     }
 }
 

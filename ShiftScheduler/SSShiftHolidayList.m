@@ -207,6 +207,7 @@
         NSError *error;
         if (![addingManagedObjectContext save:&error]) {
                 // Update to handle the error appropriately.
+            [SSTrackUtil logError:kLogEventSettingMondayEnable message:@"error on add shift save" error:error];
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             exit(-1);  // Fail
         }

@@ -130,6 +130,7 @@ NSString *kKeySSTodayLastDbOpTimeIntevalSince1970 = @"kKey_SSToday_Last_Db_Op_Ti
         CGRect rect = CGRectMake(0, 0, 320, size);
         
         UITableView *tableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStylePlain];
+        [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         tableView.delegate = self;
         tableView.dataSource = self;
         [self.view addSubview:tableView];

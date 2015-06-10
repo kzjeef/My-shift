@@ -79,6 +79,8 @@ enum {
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         exit(-1);  // Fail
     }
+    
+    [SSTrackUtil logEvent:kLogEventShiftListEnable param:@{@"enable" : [NSNumber numberWithInteger:currentSwitch.isOn]}];
 }
 
 - (NSDateFormatter *) timeFormatter
@@ -536,10 +538,11 @@ return YES;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == SECTION_NORMAL_SHIFT)
+    if (indexPath.section == SECTION_NORMAL_SHIFT) {
         [self openProfileEditView:indexPath.row
                           withFrc:self.fetchedResultsController];
-    else if (indexPath.section == SECTION_OUTDATE_SHOW_HIDE) {
+        [SSTrackUtil logEvent:kLogEventShiftListNormalOpen];
+    } else if (indexPath.section == SECTION_OUTDATE_SHOW_HIDE) {
 
         if (self.fetchedResultsController.fetchRequest.predicate == nil) {
             [self switchPredicate:[self validOnlyPredicate]];
@@ -554,8 +557,12 @@ return YES;
         
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_NORMAL_SHIFT]  withRowAnimation:UITableViewRowAnimationAutomatic];
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_OUTDATE_SHOW_HIDE]  withRowAnimation:UITableViewRowAnimationAutomatic];
-    } else
+        [SSTrackUtil logEvent:kLogEventShiftListNormalOutdate];
+
+    } else {
         [self insertNewProfile:nil];
+        [SSTrackUtil logEvent:kLogEventShiftListAdd];
+    }
 }
 
 - (void)configureCell:(UITableViewCell *)cell

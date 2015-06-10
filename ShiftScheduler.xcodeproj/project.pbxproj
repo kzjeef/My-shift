@@ -293,6 +293,12 @@
 		29F49CAB156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F49CA9156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.m */; };
 		29FA9AF314F48DAE00717505 /* SSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29FA9AF114F48DAE00717505 /* SSAlertController.h */; };
 		29FA9AF414F48DAE00717505 /* SSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FA9AF214F48DAE00717505 /* SSAlertController.m */; };
+		871303501B2801C600CCBEB8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8713034F1B2801C600CCBEB8 /* Security.framework */; };
+		871303561B280A8B00CCBEB8 /* libFlurry_6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8748CC471B27FFDE006CB18B /* libFlurry_6.4.0.a */; };
+		8748CC3B1B27FE94006CB18B /* SSTrackUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 8748CC391B27FE94006CB18B /* SSTrackUtil.h */; };
+		8748CC3C1B27FE94006CB18B /* SSTrackUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8748CC3A1B27FE94006CB18B /* SSTrackUtil.m */; };
+		8748CC481B27FFDE006CB18B /* Flurry.h in Headers */ = {isa = PBXBuildFile; fileRef = 8748CC451B27FFDE006CB18B /* Flurry.h */; };
+		8748CC491B27FFDE006CB18B /* FlurryWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8748CC461B27FFDE006CB18B /* FlurryWatch.h */; };
 		877B23B21B2599D7006EA638 /* CommonDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 877B23B11B2599D7006EA638 /* CommonDefine.h */; };
 		877B23BF1B25B335006EA638 /* MeasureUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 877B23BE1B25B335006EA638 /* MeasureUtil.h */; };
 		879292CC1B26E7B60079BCFD /* SSNoteAppendingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 879292C91B26E7B60079BCFD /* SSNoteAppendingViewController.h */; };
@@ -731,6 +737,12 @@
 		29F89FEC14E8072D002BB665 /* ShiftScheduler 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 4.xcdatamodel"; sourceTree = "<group>"; };
 		29FA9AF114F48DAE00717505 /* SSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAlertController.h; sourceTree = "<group>"; };
 		29FA9AF214F48DAE00717505 /* SSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SSAlertController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		8713034F1B2801C600CCBEB8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8748CC391B27FE94006CB18B /* SSTrackUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTrackUtil.h; sourceTree = "<group>"; };
+		8748CC3A1B27FE94006CB18B /* SSTrackUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTrackUtil.m; sourceTree = "<group>"; };
+		8748CC451B27FFDE006CB18B /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = vendor/furry/Flurry.h; sourceTree = "<group>"; };
+		8748CC461B27FFDE006CB18B /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlurryWatch.h; path = vendor/furry/FlurryWatch.h; sourceTree = "<group>"; };
+		8748CC471B27FFDE006CB18B /* libFlurry_6.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_6.4.0.a; path = vendor/furry/libFlurry_6.4.0.a; sourceTree = "<group>"; };
 		877B23B11B2599D7006EA638 /* CommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDefine.h; sourceTree = "<group>"; };
 		877B23BE1B25B335006EA638 /* MeasureUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasureUtil.h; sourceTree = "<group>"; };
 		879292BB1B26DCEF0079BCFD /* SSLunarDate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSLunarDate.xcodeproj; path = vendor/SSLunarDate.xcodeproj; sourceTree = "<group>"; };
@@ -768,6 +780,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				871303561B280A8B00CCBEB8 /* libFlurry_6.4.0.a in Frameworks */,
+				29C97A021AE3E6090066B6A5 /* SystemConfiguration.framework in Frameworks */,
+				871303501B2801C600CCBEB8 /* Security.framework in Frameworks */,
 				29C97A161AE4045F0066B6A5 /* libPods-KKColorListPicker.a in Frameworks */,
 				29C97A171AE4045F0066B6A5 /* libPods-REFrostedViewController.a in Frameworks */,
 				29C97A181AE4045F0066B6A5 /* libPods-WeixinActivity.a in Frameworks */,
@@ -775,7 +790,6 @@
 				29C97A111AE404270066B6A5 /* CoreImage.framework in Frameworks */,
 				29C97A061AE3E61F0066B6A5 /* libsqlite3.0.dylib in Frameworks */,
 				29C97A041AE3E6130066B6A5 /* libz.dylib in Frameworks */,
-				29C97A021AE3E6090066B6A5 /* SystemConfiguration.framework in Frameworks */,
 				29B9E1B81472C1D700DB2E1F /* Foundation.framework in Frameworks */,
 				2995A42A18CB685C004782DF /* Social.framework in Frameworks */,
 				2920039A18B4F142000CA7D3 /* EventKit.framework in Frameworks */,
@@ -1242,6 +1256,8 @@
 				29009FE9159F4AE500A1588E /* UIColor+HexCoding.m */,
 				877B23B11B2599D7006EA638 /* CommonDefine.h */,
 				877B23BE1B25B335006EA638 /* MeasureUtil.h */,
+				8748CC391B27FE94006CB18B /* SSTrackUtil.h */,
+				8748CC3A1B27FE94006CB18B /* SSTrackUtil.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1260,7 +1276,7 @@
 		29B9E1A61472C1D700DB2E1F = {
 			isa = PBXGroup;
 			children = (
-				879292BB1B26DCEF0079BCFD /* SSLunarDate.xcodeproj */,
+				8748CC431B27FF9D006CB18B /* Vendors */,
 				29B0EA0D1A6B91EA0028ABEA /* Utils */,
 				294D95421A6B7AAC00B34E29 /* I18N */,
 				29B9E1BD1472C1D700DB2E1F /* Application */,
@@ -1273,8 +1289,6 @@
 				290218A41B24048000FBFAAD /* todayshift */,
 				29B9E1B41472C1D700DB2E1F /* Frameworks */,
 				29B9E1B21472C1D700DB2E1F /* Products */,
-				29B460C5182E00810059F149 /* Pods.xcodeproj */,
-				29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */,
 				7F6CA32BD0895106DACF9C1C /* Pods */,
 			);
 			sourceTree = "<group>";
@@ -1292,6 +1306,7 @@
 		29B9E1B41472C1D700DB2E1F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8713034F1B2801C600CCBEB8 /* Security.framework */,
 				29C97A101AE404270066B6A5 /* CoreImage.framework */,
 				29C97A051AE3E61F0066B6A5 /* libsqlite3.0.dylib */,
 				29C97A031AE3E6130066B6A5 /* libz.dylib */,
@@ -1440,6 +1455,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8748CC431B27FF9D006CB18B /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				8748CC441B27FFCC006CB18B /* Furry */,
+				879292BB1B26DCEF0079BCFD /* SSLunarDate.xcodeproj */,
+				29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */,
+				29B460C5182E00810059F149 /* Pods.xcodeproj */,
+			);
+			name = Vendors;
+			sourceTree = "<group>";
+		};
+		8748CC441B27FFCC006CB18B /* Furry */ = {
+			isa = PBXGroup;
+			children = (
+				8748CC451B27FFDE006CB18B /* Flurry.h */,
+				8748CC461B27FFDE006CB18B /* FlurryWatch.h */,
+				8748CC471B27FFDE006CB18B /* libFlurry_6.4.0.a */,
+			);
+			name = Furry;
+			sourceTree = "<group>";
+		};
 		879292BC1B26DCEF0079BCFD /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1516,6 +1552,7 @@
 				29AEBDE715628BAB0010F27D /* ShiftAlgoFreeJump.h in Headers */,
 				299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */,
 				29F49CA6156FDAD900C76EFC /* SSShiftTableConfigTVC.h in Headers */,
+				8748CC491B27FFDE006CB18B /* FlurryWatch.h in Headers */,
 				29D93EA318B9D3020087806B /* SSCalendarSyncController.h in Headers */,
 				29F49CAA156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.h in Headers */,
 				297409F818C37117008A5AF9 /* SSShiftMultipSelectTVC.h in Headers */,
@@ -1536,9 +1573,11 @@
 				29DCB8DA15A7C79C0095C71D /* NSDateAdditions.h in Headers */,
 				29E6D7F915ADC63100235123 /* SSShareProfileListViewController.h in Headers */,
 				29B8F3D315B9BA62000D934A /* NSString+HTTPEscapes.h in Headers */,
+				8748CC3B1B27FE94006CB18B /* SSTrackUtil.h in Headers */,
 				29B8F3D515B9BA62000D934A /* SSShareObject.h in Headers */,
 				29B8F3D715B9BA62000D934A /* SSThinkNoteShareAgent.h in Headers */,
 				29B8F3D915B9BA62000D934A /* UIImage+CaptureView.h in Headers */,
+				8748CC481B27FFDE006CB18B /* Flurry.h in Headers */,
 				292003A118B5A269000CA7D3 /* CalendarSyncTVC.h in Headers */,
 				29B43CA615D29DBF000BC677 /* ThinkNoteShareViewController.h in Headers */,
 				2995A42618CB5CDE004782DF /* WXApiObject.h in Headers */,
@@ -1972,6 +2011,7 @@
 				29C2C8C11B24261100E05CC9 /* SSCoreDataHelper.m in Sources */,
 				29B9E1CB1472C1D700DB2E1F /* ShiftScheduler.xcdatamodeld in Sources */,
 				29B9E1EB1472C39F00DB2E1F /* OneJob.m in Sources */,
+				8748CC3C1B27FE94006CB18B /* SSTrackUtil.m in Sources */,
 				29B9E1ED1472C39F00DB2E1F /* ShiftProfileChangeViewController.m in Sources */,
 				29B9E1EF1472C39F00DB2E1F /* ShiftListProfilesTVC.m in Sources */,
 				29B9E1F11472C39F00DB2E1F /* WorkdayDataSource.m in Sources */,
@@ -2335,10 +2375,14 @@
 					"\"${PODS_ROOT}/Headers/REFrostedViewController\"",
 					"\"${PODS_ROOT}/Headers/WSCoachMarksView\"",
 					Submodules/wechat,
+					"\"vendor/furry\"",
 				);
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					vendor/furry/,
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kzjeef.shitf.scheduler;
@@ -2377,10 +2421,14 @@
 					"\"${PODS_ROOT}/Headers/REFrostedViewController\"",
 					"\"${PODS_ROOT}/Headers/WSCoachMarksView\"",
 					Submodules/wechat,
+					vendor/furry/,
 				);
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					vendor/furry/,
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kzjeef.shitf.scheduler;

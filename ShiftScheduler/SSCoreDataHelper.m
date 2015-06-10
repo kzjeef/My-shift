@@ -117,6 +117,7 @@
             NSLog(@"Error when migration to groupd url %@, %@", error, [error userInfo]);
             abort();
         }
+        
     }
     
     return coordinator;

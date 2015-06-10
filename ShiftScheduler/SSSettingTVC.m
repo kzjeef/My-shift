@@ -176,6 +176,7 @@ enum {
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [SSTrackUtil logTimedEvent:kLogEventSettingPage];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -186,6 +187,7 @@ enum {
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    [SSTrackUtil stopLogTimedEvent:kLogEventSettingPage];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -201,11 +203,14 @@ enum {
     
     if (s.tag == SSSETTING_TAG_SYSALARM_ENABLE) {
         [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:USER_CONFIG_ENABLE_ALERT_SOUND];
+        [SSTrackUtil logEvent:kLogEventSettingSysAlarmEnable param:@{@"enable" : [NSNumber numberWithInt:s.on]}];
     }  else if (s.tag == SSSETTING_TAG_APPCFG_LUNAR_ENABLE) {
         [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:USER_CONFIG_ENABLE_LUNAR_DAY_DISPLAY];
+        [SSTrackUtil logEvent:kLogEventSettingLuarnEnable param:@{@"enable" : [NSNumber numberWithInt:s.on]}];
     } else if (s.tag == SSETTING_TAG_APPCFG_MONDAY_ENABLE) {
         [[NSUserDefaults standardUserDefaults] setBool:s.on forKey:USER_CONFIG_ENABLE_MONDAY_DISPLAY];
         [[NSNotificationCenter defaultCenter] postNotificationName:SS_LOCAL_NOTIFY_WEEK_START_CHANGED object:[NSNumber numberWithBool:s.on]];
+        [SSTrackUtil logEvent:kLogEventSettingMondayEnable param:@{@"enable" : [NSNumber numberWithInt:s.on]}];
     }
 }
 
@@ -401,9 +406,11 @@ enum {
         if (indexPath.row == SSSETTING_APPCFG_HOLIDAY_PICK) {
             SSSettingHolidayRegionPIckerVC *vc = [[SSSettingHolidayRegionPIckerVC alloc] initWithStyle:UITableViewStylePlain];
             [self.navigationController pushViewController:vc animated:YES];
+            [SSTrackUtil logEvent:kLogEventSettingPageHolidayPick];
         }
     } else if (indexPath.section == SSFEEDBACK_SECTION) {
         
+        [SSTrackUtil logEvent:kLogEventSettingPageSendFeedback];
         if ( [TELL_OTHER_ITEM_STRING isEqualToString:[self.feedbackItemsArray objectAtIndex:indexPath.row]])
             [self sendEMailTo:@"" WithSubject:tel_other_title withBody:tel_other_body];
         
@@ -418,10 +425,12 @@ enum {
         }
     } else if (indexPath.section == SSALARM_SECTION) {
         if (indexPath.row == 1) {
+            [SSTrackUtil logEvent:kLogEventSettingPageAlarm];
             SSSettingAlarmPickerVC  *view = [[SSSettingAlarmPickerVC alloc] initWithNibName:@"SSSettingAlarmPickerVC" bundle:nil];
             [self.navigationController pushViewController:view animated:YES];
         }
     } else if (indexPath.section == SSRESET_SECTION) {
+        [SSTrackUtil logEvent:kLogEventSettingPageReset];
         [[[UIAlertView alloc] initWithTitle:RESET_STR message:RESET_WARNNING_STR delegate:self
                           cancelButtonTitle:RESET_STR otherButtonTitles:NSLocalizedString(@"Cancel", "cancel") ,nil] show];
 

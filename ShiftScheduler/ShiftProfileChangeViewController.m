@@ -239,6 +239,8 @@
 
 // default value configure
    [self.theJob trydDfaultSetting];
+    
+
 }
 
 - (void)viewDidUnload
@@ -257,6 +259,8 @@
     [super viewWillAppear:animated];
     [self.tableView reloadData];
     [self setEditing:YES];
+    
+    [SSTrackUtil logTimedEvent:kLogEventShiftChangePage];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -273,6 +277,7 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    [SSTrackUtil stopLogTimedEvent:kLogEventCaldendarSyncLengthChange];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -480,6 +485,7 @@
             
     if ([item isEqualToString:NAME_ITEM_STRING]) {
         [self.nameField becomeFirstResponder];
+        [SSTrackUtil logEvent:kLogEventShiftChangePageNameChange];
     }
     
     if ([item isEqualToString:ICON_ITEM_STRING]) {
@@ -492,6 +498,8 @@
                 imagePickerController.monoProcessAllImage = YES;
 		
 		[self.navigationController presentViewController:imagePickerController animated:YES completion:nil];
+        
+        [SSTrackUtil logEvent:kLogEventShiftChangePageIconChange];
     }
 
     if ([item isEqualToString:ICON_OR_TEXT_STRING]) {
@@ -501,6 +509,8 @@
                                                        destructiveButtonTitle:nil 
                                                             otherButtonTitles:ICON_STRING, TEXT_STRING , nil];
         [colorTextPicker showInView:self.tableView.superview];
+        
+        [SSTrackUtil logEvent:kLogEventShiftChangePageTextIcon];
     }
     
     if ([item isEqualToString:COLOR_PICKER_STRING]) {
@@ -509,6 +519,8 @@
         UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
         controller.delegate = self;
         [self presentViewController:navController animated:YES completion:nil];
+        
+        [SSTrackUtil logEvent:kLogEventShiftChangePageColorPick];
     }
     
     if ([item isEqualToString:SHIFTCONFIG_ITEM_STRING]) {
@@ -518,17 +530,19 @@
         [self.navigationController pushViewController:fjmp animated:YES];
         enterConfig = YES;
         warnningShiftType = NO;
+        [SSTrackUtil logEvent:kLogEventShiftChangePageShiftDetail];
     }
 
     if ([item isEqualToString:STARTWITH_ITEM_STRING]) {
         self.datePicker.tag = STARTWITH_ITEM;
-
+        [SSTrackUtil logEvent:kLogEventShiftChangePageStartWith];
     }
     
     if ([item isEqualToString:REPEAT_ITEM_STRING]) {
         SSTurnFinishDatePickerTVC *finishpicker = [[SSTurnFinishDatePickerTVC alloc] initWithStyle:UITableViewStyleGrouped];
         finishpicker.job = self.theJob;
         [self.navigationController pushViewController:finishpicker animated:YES];
+        [SSTrackUtil logEvent:kLogEventShiftChangePageRepeatTo];
     }
 
 

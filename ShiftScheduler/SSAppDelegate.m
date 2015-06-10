@@ -21,6 +21,7 @@
 #import "UIImage+MonoImage.h"
 #import "SSCoreDataHelper.h"
 #import "I18NStrings.h"
+#import "SSTrackUtil.h"
 
 
 #import "Kal.h"
@@ -137,6 +138,9 @@ enum {
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [SSTrackUtil applicationStarted];
+    
+    [SSTrackUtil logTimedEvent:kLogEventAppStart];
     self.profileView = [[ShiftListProfilesTVC alloc] initWithManagedContext:self.managedObjectContext];
     self.profileView.menuDelegate = self;
     self.profileView.parentViewDelegate = self;
@@ -193,6 +197,8 @@ enum {
     
     [self initWeChat];
     
+    [SSTrackUtil  stopLogTimedEvent:kLogEventAppStart];
+    
     return YES;
 }
 
@@ -222,6 +228,7 @@ NSString *kWeChatScheme = @"wx42e638b828242aaa";
         return [WXApi handleOpenURL:url delegate:self];
     } else {
         if ([url.relativeString containsString:@"today"]) {
+            [SSTrackUtil logEvent:kLogEventAppStartFromTodayWidget];
             [self.kalController showAndSelectDate:[NSDate date]];
         }
         return true;
@@ -349,6 +356,7 @@ NSString *kWeChatScheme = @"wx42e638b828242aaa";
 // Action handler for the navigation bar's right bar button item.
 - (void)showAndSelectToday
 {
+    [SSTrackUtil logEvent:kLogEventTodayClicked];
     [_kalController showAndSelectDate:[NSDate date]];
 }
 
@@ -358,13 +366,6 @@ NSString *kWeChatScheme = @"wx42e638b828242aaa";
         return changelistVC;
     changelistVC = [[SSShiftHolidayList alloc] initWithManagedContext:self.managedObjectContext];
     return changelistVC;
-}
-
-- (void) showShiftChangeView
-{
-        //    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:self.changelistVC];
-        //   [self.navController presentModalViewController:nvc animated:YES];
-    [self.navController pushViewController:self.changelistVC animated:YES];
 }
 
 - (SSSettingTVC *) settingVC
@@ -377,11 +378,6 @@ NSString *kWeChatScheme = @"wx42e638b828242aaa";
         settingVC.menuDelegate = self;
     }
     return settingVC;
-}
-
-- (void) showSettingView
-{
-    [self.navController pushViewController:self.settingVC animated:YES];
 }
 
 
@@ -461,6 +457,7 @@ NSString *kWeChatScheme = @"wx42e638b828242aaa";
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
+
     [self saveContext];
 }
 
@@ -632,6 +629,7 @@ NSString *kWeChatScheme = @"wx42e638b828242aaa";
 
 - (void) SSMainMenuDelegatePopMainMenu:(id)from
 {
+    [SSTrackUtil logEvent:kLogEventPopMenu];
     [self.navController presentMenuView];
 }
 
@@ -657,11 +655,13 @@ NSString *kWeChatScheme = @"wx42e638b828242aaa";
 
 - (void) calendartoLastMonth
 {
+    [SSTrackUtil logEvent:kLogEventLastMonth];
     [self.kalController showPreviousMonth];
 }
 
 - (void) calendartoNextMonth
 {
+    [SSTrackUtil logEvent:kLogEventNextMonth];
     [self.kalController showFollowingMonth];
 }
 

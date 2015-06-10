@@ -152,9 +152,12 @@
     
     [self reloadData];
     
+    [SSTrackUtil logTimedEvent:kLogEventCalendarSync param:@{@"length" : [NSNumber numberWithInt:days],
+                                                             @"alarm"  : [NSNumber numberWithInt:alarmOn]}];
     for (OneJob *job in [self.jobFetchedRequestController fetchedObjects]) {
         count += [self setupEKEventWithAlarm:job alarm:alarmOn furtherLength:days];
     }
+    [SSTrackUtil stopLogTimedEvent:kLogEventCalendarSync];
 
     return count;
 }
@@ -326,6 +329,8 @@
     int count = 0;
     NSError *error;
 
+    [SSTrackUtil logEvent:kLogEventCalendarSyncDeleteAll];
+    
     [self reloadData];
     
     for (OneJob *job in [self.jobFetchedRequestController fetchedObjects]) {

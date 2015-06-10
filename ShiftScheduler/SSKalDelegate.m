@@ -62,6 +62,7 @@
 {
     static int FIELD_TAG = 5991;
     _controller = sender;
+    [SSTrackUtil logEvent:kLogEventPopDateChoose];
     if ([titleView viewWithTag:FIELD_TAG] == nil) {
         // create the view.
         UIHideCurosrTextField *field;

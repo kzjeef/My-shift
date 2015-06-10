@@ -177,25 +177,29 @@
 
     if (indexPath.section == 0) {
         if(indexPath.row == 0) {
+            [SSTrackUtil logEvent:kLogEventMenuCalendar];
             navigationController.viewControllers = @[self.kalController];
             _currentSelectedView = kMainViewCalendarView;
             [self.switchDelegate SSMainMenuViewStartChange];
-
         } else if (indexPath.row == 1) {
+            [SSTrackUtil logEvent:kLogEventMenuShiftList];
             navigationController.viewControllers = @[self.shiftListTVC];
             _currentSelectedView = kMainViewShiftListView;
             [self.switchDelegate SSMainMenuViewStartChange];
 
         } else if (indexPath.row == 2) {
+            [SSTrackUtil logEvent:kLogEventMenuMenu];
             navigationController.viewControllers = @[self.settingTVC];
             _currentSelectedView = kMainViewSettingView;
             [self.switchDelegate SSMainMenuViewStartChange];
 
         } else if (indexPath.row == 3) {
+            [SSTrackUtil logEvent:kLogEventMenuCalendarSync];
             navigationController.viewControllers = @[self.calendarSyncTVC];
             _currentSelectedView =  kMainViewCalendarSyncView;
             [self.switchDelegate SSMainMenuViewStartChange];
         } else if (indexPath.row == 4) {
+            [SSTrackUtil logEvent:kLogEventMenuShare];
             if (self.shareDelegate) {
                 navigationController.viewControllers = @[self.kalController];
                 _currentSelectedView = kMainViewCalendarView;
