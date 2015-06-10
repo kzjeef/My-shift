@@ -82,7 +82,6 @@ ProfileEditFinishDelegate, REFrostedViewControllerDelegate, SSMainMenuDelegate, 
 @property (nonatomic, strong ) SSShareController *shareC;
 
 - (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
 - (void)didFinishEditingSetting;
 - (void)showRightActionSheet;
 - (void)popNotifyZeroProfile:(id) sender;

@@ -51,9 +51,13 @@ typedef enum : NSInteger {
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [self.view setGestureRecognizers: @[[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]]];
+}
 
-
-
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    [SSTrackUtil stopLogPageViews:self];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -70,6 +74,9 @@ typedef enum : NSInteger {
 {
     // This will only show calendar view 's help, because only called once after app start.
     [self displayCoachMarks];
+    
+    [SSTrackUtil startLogPageViews:self];
+
 }
 
 - (void)tryResetCoachState

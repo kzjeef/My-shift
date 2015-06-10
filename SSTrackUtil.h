@@ -20,6 +20,9 @@
 + (void) logError: (NSString *) errorID message:(NSString *)message error: (NSError *) error;
 + (void) logError: (NSString *) errorID message:(NSString *)message exception: (NSException *) exception;
 
++ (void) startLogPageViews: (id) target;
++ (void) stopLogPageViews:  (id) target; 
+
 
 #define kLogEventTodayClicked           @"TODAY_CLICK"
 
@@ -77,5 +80,7 @@
 #define kLogDataMigrateError                                @"Error_DATA_MIGRATE"
 
 #define kLogEventDataMigrate                                @"DATA_MIGRATE"
+
+#define kLogEventSettingChooseHoliday                       @"SETTING_HOLIDAY_CHOOSE"
 
 @end

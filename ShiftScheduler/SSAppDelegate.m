@@ -66,7 +66,7 @@ enum {
 
     todayButton = [[UIBarButtonItem alloc]
                    initWithTitle:NSLocalizedString (@"Today", "today")
-                   style:UIBarButtonItemStyleBordered
+                   style:UIBarButtonItemStylePlain
                    target:self
                    action:@selector(showAndSelectToday)];
     UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithImage:

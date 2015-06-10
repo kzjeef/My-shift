@@ -17,7 +17,7 @@ NSString *kFurryKey = @"DBT8WY47JJRNHWH2JFSJ";
 {
     [Flurry setAppVersion:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     [Flurry setCrashReportingEnabled:YES];
-    // [Flurry setDebugLogEnabled: YES];
+    [Flurry setDebugLogEnabled: YES];
 
     [Flurry startSession:kFurryKey];
 
@@ -57,5 +57,15 @@ NSString *kFurryKey = @"DBT8WY47JJRNHWH2JFSJ";
 {
     [Flurry logError: errorID message:message exception: exception];
 }
+
++ (void) startLogPageViews: (id) target
+{
+    [Flurry logAllPageViewsForTarget:target];
+}
++ (void) stopLogPageViews:  (id) target
+{
+    [Flurry stopLogPageViewsForTarget: target];
+}
+
 
 @end
