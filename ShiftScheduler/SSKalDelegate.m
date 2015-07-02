@@ -9,6 +9,7 @@
 #import "SSKalDelegate.h"
 #import "NSDateAdditions.h"
 #import "UITableViewCell+DoneButton.h"
+#import "NSDateAdditions.h"
 
 
 @interface SSKalDelegate()
@@ -26,6 +27,20 @@
 #pragma mark - KalViewControllerDelegate protocol.
 - (void) KalViewController:(KalViewController *)sender selectDate:(NSDate *)date
 {
+    UIBarButtonItem *todayButton = [sender.navigationItem.rightBarButtonItems objectAtIndex:0];
+    if (todayButton == nil) {
+        NSLog(@"Error: today Button not found.");
+        return;
+    }
+
+    NSDate *today = [[NSDate date] cc_dateByMovingToMiddleOfDay];
+    NSDate *otherday = [date cc_dateByMovingToMiddleOfDay];
+
+    if ([otherday isEqualToDate:today])
+        [todayButton setEnabled:false];
+    else
+        [todayButton setEnabled:YES];
+         
 }
 
 - (UIDatePicker *)datePicker

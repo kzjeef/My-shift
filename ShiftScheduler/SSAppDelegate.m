@@ -69,6 +69,7 @@ enum {
                    style:UIBarButtonItemStylePlain
                    target:self
                    action:@selector(showAndSelectToday)];
+
     UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithImage:
                              [UIImage generateMonoImage: [UIImage imageNamed:@"arrow-left.png"] withColor:UIColorFromRGB(0xffffff)]
                                                              style:UIBarButtonItemStylePlain target:self
@@ -78,7 +79,7 @@ enum {
                                                           [UIImage generateMonoImage:[UIImage imageNamed:@"arrow-right.png"] withColor:UIColorFromRGB(0xffffff)]
                                                              style:UIBarButtonItemStylePlain target:self
                                                             action:@selector(calendartoNextMonth)];
-
+    
 
     UIImage *menuIcon = [UIImage generateMonoImage:[UIImage imageNamed:@"menu.png"] withColor:UIColorFromRGB(0xffffff)];
     menuButton = [[UIBarButtonItem alloc] initWithImage:menuIcon style:UIBarButtonItemStylePlain  target:self action:@selector(SSMainMenuDelegatePopMainMenu:)];

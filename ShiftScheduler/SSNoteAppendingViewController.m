@@ -20,6 +20,14 @@
 
 @implementation SSNoteAppendingViewController
 
+
+- (IBAction)cancelClicked:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)addClicked:(id)sender {
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.

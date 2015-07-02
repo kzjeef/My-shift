@@ -45,7 +45,7 @@
 // shift property and order.
 @property (nonatomic, strong) NSDate * jobEverydayStartTime;
 @property (weak, nonatomic, readonly)  UIColor *defaultIconColor;
-@property (strong, nonatomic) NSUserDefaults *sharedDefualt;
+@property (strong, nonatomic, readonly) NSUserDefaults *sharedDefualt;
 
 @end
 
