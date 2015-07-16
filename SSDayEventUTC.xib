@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,19 +14,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="337" height="40"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="234">
-                        <rect key="frame" x="9" y="1" width="139" height="33"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="234">
+                        <rect key="frame" x="9" y="1" width="139" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="139" id="F8q-vE-oRl"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="264">
-                        <rect key="frame" x="177" y="1" width="140" height="33"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="264">
+                        <rect key="frame" x="197" y="1" width="140" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="highlightedColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="234" firstAttribute="baseline" secondItem="264" secondAttribute="baseline" id="2hh-GB-UG9"/>
+                    <constraint firstAttribute="centerY" secondItem="264" secondAttribute="centerY" id="H8y-Wh-bT9"/>
+                    <constraint firstAttribute="trailing" secondItem="264" secondAttribute="trailing" constant="15" id="IZc-As-wK5"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="234" secondAttribute="bottom" constant="2" id="PFk-GM-3hx"/>
+                    <constraint firstItem="234" firstAttribute="leading" secondItem="3Na-6t-cg9" secondAttribute="leadingMargin" id="dbu-eq-w8n"/>
+                    <constraint firstItem="234" firstAttribute="top" secondItem="264" secondAttribute="top" id="hnH-2R-0nl"/>
+                    <constraint firstAttribute="centerY" secondItem="234" secondAttribute="centerY" id="mvr-WZ-DK2"/>
+                    <constraint firstItem="264" firstAttribute="top" secondItem="3Na-6t-cg9" secondAttribute="topMargin" constant="2" id="tbh-Dz-Jyo"/>
+                    <constraint firstItem="234" firstAttribute="top" secondItem="3Na-6t-cg9" secondAttribute="topMargin" constant="2" id="weI-Va-jZM"/>
+                </constraints>
             </tableViewCellContentView>
             <accessibility key="accessibilityConfiguration">
                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>

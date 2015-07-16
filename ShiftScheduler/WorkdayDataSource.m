@@ -15,7 +15,7 @@
 #import "UIColor+HexCoding.m"
 #import "I18NStrings.h"
 #import "SSHolidayHelper.h"
-#import "SSNoteAppendingViewController.h"
+#import "SSNoteAppendingTVC.h"
 
 #define ONE_DAY_SECONDS (60*60*24)
 #define HALF_DAY_SECONDS (60*60*12)
@@ -280,25 +280,26 @@ static int kWDSAddNoteFontSize = 14;  // font size of Note
 
 - (void)tableView:(nonnull UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-        [self startAddNote];
-
+//        [self startAddNote];
 }
 
 - (void)startAddNote
 {
     
-    SSNoteAppendingViewController *noteaddVC = [[SSNoteAppendingViewController alloc] initWithNibName:@"SSNoteAppendingViewController" bundle:nil];
+    UINavigationController *nav = [[UINavigationController alloc] init];
+    SSNoteAppendingTVC *noteaddVC = [[SSNoteAppendingTVC alloc] init];
     
+    [nav  pushViewController:noteaddVC animated:NO];
     // Create a new managed object context for the new book -- set its persistent store coordinator to the same as that from the fetched results controller's context.
     NSManagedObjectContext *addingContext = [[NSManagedObjectContext alloc] init];
     [addingContext setPersistentStoreCoordinator:[self.objectContext persistentStoreCoordinator]];
     addingContext.undoManager = nil; // Undo manager is not needed here.
-    
-    noteaddVC.managedContext = addingContext;
+
+    //    noteaddVC.managedContext = addingContext;
     // use same manage object context can auto update the frc.
 //    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:noteaddVC];
     if (self.globalNavController != nil) {
-        [self.globalNavController presentViewController:noteaddVC animated:YES completion:nil];
+        [self.globalNavController presentViewController:nav animated:YES completion:nil];
     }
 }
 
@@ -316,7 +317,7 @@ static int kWDSAddNoteFontSize = 14;  // font size of Note
     if ([self needsDisplayInformationBar] && section == 0)
         return 1;
     else
-        return [items count] + 1;
+        return [items count]; // [items count] + 1; // only for add note function.
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
