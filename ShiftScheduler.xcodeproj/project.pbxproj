@@ -34,6 +34,9 @@
 		290F4E3B1783EF1B0023ADE8 /* SSDayEventUTC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 290F4E3A1783EF1B0023ADE8 /* SSDayEventUTC.xib */; };
 		2912673916CF77CE00FFB202 /* SSDefaultConfigName.h in Headers */ = {isa = PBXBuildFile; fileRef = 2912673816CF77CE00FFB202 /* SSDefaultConfigName.h */; };
 		2912673D16CF81FA00FFB202 /* libSSLunarDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2912673C16CF81FA00FFB202 /* libSSLunarDate.a */; };
+		2914FC4F1B4ACD9000317B9A /* SSNoteAppendingTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2914FC4D1B4ACD9000317B9A /* SSNoteAppendingTVC.h */; };
+		2914FC501B4ACD9000317B9A /* SSNoteAppendingTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2914FC4E1B4ACD9000317B9A /* SSNoteAppendingTVC.m */; };
+		2914FC521B4AD22300317B9A /* SSNoteAppendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2914FC511B4AD22300317B9A /* SSNoteAppendingView.xib */; };
 		2915099118C7800D00BE360D /* SSCalendarSyncOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 2915098F18C7800D00BE360D /* SSCalendarSyncOperation.h */; };
 		2915099218C7800D00BE360D /* SSCalendarSyncOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2915099018C7800D00BE360D /* SSCalendarSyncOperation.m */; };
 		2915099818C8A4B300BE360D /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 2915099618C8A4B300BE360D /* remove.png */; };
@@ -301,9 +304,6 @@
 		8748CC491B27FFDE006CB18B /* FlurryWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8748CC461B27FFDE006CB18B /* FlurryWatch.h */; };
 		877B23B21B2599D7006EA638 /* CommonDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 877B23B11B2599D7006EA638 /* CommonDefine.h */; };
 		877B23BF1B25B335006EA638 /* MeasureUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 877B23BE1B25B335006EA638 /* MeasureUtil.h */; };
-		879292CC1B26E7B60079BCFD /* SSNoteAppendingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 879292C91B26E7B60079BCFD /* SSNoteAppendingViewController.h */; };
-		879292CD1B26E7B60079BCFD /* SSNoteAppendingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 879292CA1B26E7B60079BCFD /* SSNoteAppendingViewController.m */; };
-		879292CE1B26E7B60079BCFD /* SSNoteAppendingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879292CB1B26E7B60079BCFD /* SSNoteAppendingViewController.xib */; };
 		9A85C2A9A9AA44AEB7EE5EA3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B41447E5FD4EFE9D397177 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -347,14 +347,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = ABDA124A0328C8162FB46F25;
+			remoteGlobalIDString = A515C2AF32069D9997E1661A;
 			remoteInfo = Pods;
 		};
 		297FDBD818A8B9C000BA0240 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 157D3D70C02804486D983940;
+			remoteGlobalIDString = C94E29E15276E367BDBC0AE4;
 			remoteInfo = "Pods-REFrostedViewController";
 		};
 		297FDBE618AF1CA400BA0240 /* PBXContainerItemProxy */ = {
@@ -446,6 +446,9 @@
 		290F4E3A1783EF1B0023ADE8 /* SSDayEventUTC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSDayEventUTC.xib; sourceTree = "<group>"; };
 		2912673816CF77CE00FFB202 /* SSDefaultConfigName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = SSDefaultConfigName.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		2912673C16CF81FA00FFB202 /* libSSLunarDate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSSLunarDate.a; path = "../SSLunarDate/build/Release-iphoneos/libSSLunarDate.a"; sourceTree = "<group>"; };
+		2914FC4D1B4ACD9000317B9A /* SSNoteAppendingTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSNoteAppendingTVC.h; path = ShiftScheduler/SSNoteAppendingTVC.h; sourceTree = "<group>"; };
+		2914FC4E1B4ACD9000317B9A /* SSNoteAppendingTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSNoteAppendingTVC.m; path = ShiftScheduler/SSNoteAppendingTVC.m; sourceTree = "<group>"; };
+		2914FC511B4AD22300317B9A /* SSNoteAppendingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSNoteAppendingView.xib; path = ShiftScheduler/SSNoteAppendingView.xib; sourceTree = "<group>"; };
 		2915098F18C7800D00BE360D /* SSCalendarSyncOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSCalendarSyncOperation.h; path = ShiftScheduler/CalendarSync/SSCalendarSyncOperation.h; sourceTree = "<group>"; };
 		2915099018C7800D00BE360D /* SSCalendarSyncOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSCalendarSyncOperation.m; path = ShiftScheduler/CalendarSync/SSCalendarSyncOperation.m; sourceTree = "<group>"; };
 		2915099618C8A4B300BE360D /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove.png; sourceTree = "<group>"; };
@@ -746,9 +749,6 @@
 		877B23B11B2599D7006EA638 /* CommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDefine.h; sourceTree = "<group>"; };
 		877B23BE1B25B335006EA638 /* MeasureUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasureUtil.h; sourceTree = "<group>"; };
 		879292BB1B26DCEF0079BCFD /* SSLunarDate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSLunarDate.xcodeproj; path = vendor/SSLunarDate.xcodeproj; sourceTree = "<group>"; };
-		879292C91B26E7B60079BCFD /* SSNoteAppendingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSNoteAppendingViewController.h; path = ShiftScheduler/SSNoteAppendingViewController.h; sourceTree = "<group>"; };
-		879292CA1B26E7B60079BCFD /* SSNoteAppendingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSNoteAppendingViewController.m; path = ShiftScheduler/SSNoteAppendingViewController.m; sourceTree = "<group>"; };
-		879292CB1B26E7B60079BCFD /* SSNoteAppendingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSNoteAppendingViewController.xib; path = ShiftScheduler/SSNoteAppendingViewController.xib; sourceTree = "<group>"; };
 		B7B41447E5FD4EFE9D397177 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6D0B58EDD498B3173DF575B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F4699C511670580AED364DC0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1488,9 +1488,9 @@
 		879292C81B26E7690079BCFD /* Note */ = {
 			isa = PBXGroup;
 			children = (
-				879292C91B26E7B60079BCFD /* SSNoteAppendingViewController.h */,
-				879292CA1B26E7B60079BCFD /* SSNoteAppendingViewController.m */,
-				879292CB1B26E7B60079BCFD /* SSNoteAppendingViewController.xib */,
+				2914FC4D1B4ACD9000317B9A /* SSNoteAppendingTVC.h */,
+				2914FC511B4AD22300317B9A /* SSNoteAppendingView.xib */,
+				2914FC4E1B4ACD9000317B9A /* SSNoteAppendingTVC.m */,
 			);
 			name = Note;
 			sourceTree = "<group>";
@@ -1533,7 +1533,6 @@
 				292DBCAF14CA943F00C87A70 /* JPImagePickerOverviewController.h in Headers */,
 				292DBCB214CA943F00C87A70 /* UIImageResizing.h in Headers */,
 				29E339D414CA955A0036EAED /* ProfileIconPickerDataSource.h in Headers */,
-				879292CC1B26E7B60079BCFD /* SSNoteAppendingViewController.h in Headers */,
 				297409E618C323D5008A5AF9 /* SSSingleSelectTVC.h in Headers */,
 				29B460D4182E0B1D0059F149 /* SSMainMenuTableViewController.h in Headers */,
 				299A256D18BB967D00592137 /* SyncEvent.h in Headers */,
@@ -1564,6 +1563,7 @@
 				29C2C8C01B24261100E05CC9 /* SSCoreDataHelper.h in Headers */,
 				29009FD5159F4AA100A1588E /* SSShiftHolidayCreateVC.h in Headers */,
 				29009FD8159F4AA100A1588E /* ShiftPickerDataSource.h in Headers */,
+				2914FC4F1B4ACD9000317B9A /* SSNoteAppendingTVC.h in Headers */,
 				29009FE1159F4AB600A1588E /* DatePickerViewController2.h in Headers */,
 				2915099118C7800D00BE360D /* SSCalendarSyncOperation.h in Headers */,
 				29009FE5159F4AB600A1588E /* SSShiftHolidayList.h in Headers */,
@@ -1830,6 +1830,7 @@
 				29657E7318CCF7F400FE61AC /* Images.xcassets in Resources */,
 				2991F81717B7971C009AF142 /* 起床闹钟.caf in Resources */,
 				2991F81417B7971C009AF142 /* 马林巴琴.caf in Resources */,
+				2914FC521B4AD22300317B9A /* SSNoteAppendingView.xib in Resources */,
 				2991F81217B7971C009AF142 /* 黑白琴键.caf in Resources */,
 				29E9810616419E1500B65A7E /* Procyon.caf in Resources */,
 				29E9810716419E1500B65A7E /* Revelation.caf in Resources */,
@@ -1874,7 +1875,6 @@
 				2980756718B1208A003A733F /* blueArrowDown@2x.png in Resources */,
 				2980756618B1208A003A733F /* blueArrowDown.png in Resources */,
 				2995A42018CA5381004782DF /* arrow-down.png in Resources */,
-				879292CE1B26E7B60079BCFD /* SSNoteAppendingViewController.xib in Resources */,
 				297FDBD318A88D0100BA0240 /* share@2x.png in Resources */,
 				29E9810B1642DBB700B65A7E /* Default-568h@2x.png in Resources */,
 				29B460C6182E00810059F149 /* Pods.xcodeproj in Resources */,
@@ -2032,8 +2032,8 @@
 				29FA9AF414F48DAE00717505 /* SSAlertController.m in Sources */,
 				29AEBDB115612CBA0010F27D /* ShiftAlgoBase.m in Sources */,
 				2915099D18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.m in Sources */,
+				2914FC501B4ACD9000317B9A /* SSNoteAppendingTVC.m in Sources */,
 				29AEBDB315612CBA0010F27D /* ShiftAlgoFreeRound.m in Sources */,
-				879292CD1B26E7B60079BCFD /* SSNoteAppendingViewController.m in Sources */,
 				29AEBDE815628BAB0010F27D /* ShiftAlgoFreeJump.m in Sources */,
 				2915099218C7800D00BE360D /* SSCalendarSyncOperation.m in Sources */,
 				299E33A3156A74820066E843 /* SSShiftWorkdayConfigTVC.m in Sources */,
