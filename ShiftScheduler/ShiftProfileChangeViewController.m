@@ -349,16 +349,16 @@
         self.datePicker.date = self.theJob.jobStartDate;
         [cell addModalDatePickerView:self.datePicker target:self done:@selector(doneButtonClicked:) tag:STARTWITH_ITEM];
     }
-
+    
     if ([item isEqualToString:REPEAT_ITEM_STRING]) {
-	NSString *text;
-
-	if ([self.theJob isShiftDateValied] == NO) {
-	    cell.detailTextLabel.textColor = [UIColor redColor];
-    }
-
-	text = (theJob.jobFinishDate == nil) ? REPEAT_FOREVER_STRING : [self.dateFormatter stringFromDate:theJob.jobFinishDate];
-	cell.detailTextLabel.text = text;
+        NSString *text;
+        
+        if ([self.theJob isShiftDateValied] == NO) {
+            cell.detailTextLabel.textColor = [UIColor redColor];
+        }
+        
+        text = (theJob.jobFinishDate == nil) ? REPEAT_FOREVER_STRING : [self.dateFormatter stringFromDate:theJob.jobFinishDate];
+        cell.detailTextLabel.text = text;
         cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 }

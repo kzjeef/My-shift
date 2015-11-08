@@ -13,6 +13,7 @@
 #import "UIColor+HexCoding.h"
 #import "SSAppDelegate.h"
 #import "I18NStrings.h"
+#import "NSDateAdditions.h"
 
 
 #define PROFILE_CACHE_INDIFITER @"ProfileListCache"
@@ -171,7 +172,7 @@ enum {
     [request setEntity:entity];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"jobStartDate"  ascending:YES]];
 
-    BOOL showOOD = [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT];
+    BOOL showOOD = [self getDisplayOutDateValue];
     if (showOOD)
         request.predicate = nil;
     else
@@ -200,12 +201,13 @@ enum {
 
 - (NSPredicate *) oodOnlyShifts
 {
-    return [NSPredicate predicateWithFormat:@"(jobFinishDate != nil) && (jobFinishDate < %@)", [NSDate date]];
+    return [NSPredicate predicateWithFormat:@"(jobFinishDate != nil) && (jobFinishDate < %@)",
+            [[NSDate date] cc_dateByMovingToBeginningOfDay]];
 }
 
 - (NSPredicate *) validOnlyPredicate
 {
-    return [NSPredicate predicateWithFormat:@"(jobFinishDate == nil) || (jobFinishDate >= %@) ", [NSDate date]];
+    return [NSPredicate predicateWithFormat:@"(jobFinishDate == nil) || (jobFinishDate >= %@) ", [[NSDate date] cc_dateByMovingToBeginningOfDay]];
 }
 
 /**
@@ -435,9 +437,8 @@ enum {
         cell.textLabel.text = text;
         cell.imageView.image = [UIImage imageNamed:@"overdate"];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        //        cell.textLabel.textColor = [UIColor colorWithHexString:@"283DA0"];
         cell.textLabel.backgroundColor = [UIColor colorWithWhite:.1 alpha:0];
-        //        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"grayButtonBackgroud"]];
+
     }
 
     return cell;
@@ -535,6 +536,13 @@ return YES;
 
 #pragma mark - Table view delegate
 
+- (BOOL) getDisplayOutDateValue {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT];
+}
+
+- (void) setDisplayOutDateValue: (BOOL) enable {
+    [[NSUserDefaults standardUserDefaults] setBool:enable forKey:USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -546,17 +554,18 @@ return YES;
 
         if (self.fetchedResultsController.fetchRequest.predicate == nil) {
             [self switchPredicate:[self validOnlyPredicate]];
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT];
+            [self setDisplayOutDateValue:NO];
         } else {
             [self switchPredicate:nil];
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_CONFIG_ENABLE_DISPLAY_OUT_DATE_SHIFT];
+            [self setDisplayOutDateValue:YES];
         }
         
         [self.fetchedResultsControllerOOD performFetch:NULL];
         [self.fetchedResultsController performFetch:NULL];
         
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_NORMAL_SHIFT]  withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_OUTDATE_SHOW_HIDE]  withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadData];
+        //        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_NORMAL_SHIFT]  withRowAnimation:UITableViewRowAnimationAutomatic];
+        //        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_OUTDATE_SHOW_HIDE]  withRowAnimation:UITableViewRowAnimationAutomatic];
         [SSTrackUtil logEvent:kLogEventShiftListNormalOutdate];
 
     } else {
@@ -674,6 +683,7 @@ return YES;
         [self.managedObjectContext reset];
 
         [self.fetchedResultsController performFetch:NULL];
+        [self.fetchedResultsControllerOOD performFetch:NULL];
         [self.tableView reloadData];
     }
     // Release the adding managed object context.
