@@ -214,7 +214,17 @@
 
 - (Boolean) isShiftDateValied
 {
-    return  self.jobFinishDate == nil || ([self.jobStartDate compare:self.jobFinishDate] == NSOrderedAscending) ;
+    if (self.jobFinishDate != nil)
+        NSLog(@"compare result:%ld", [self.jobStartDate compare:self.jobFinishDate]);
+    if (self.jobFinishDate == nil)
+        return YES;
+    
+    NSDate *startMiddle = [self.jobStartDate cc_dateByMovingToMiddleOfDay];
+    NSDate *finishMiddle = [self.jobFinishDate cc_dateByMovingToMiddleOfDay];
+    
+    NSComparisonResult compare = [startMiddle compare:finishMiddle];
+    
+    return compare == NSOrderedAscending || compare == NSOrderedSame;
 }
 
 - (NSNumber *) shiftTotalCycle

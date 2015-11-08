@@ -135,7 +135,7 @@
     // min at least 1 day
     //    return [date cc_dateByMovingToNextOrBackwardsFewDays:[self.job shiftTotalCycle].intValue
     //                                      withCalender:[NSCalendar currentCalendar]];
-    return [date cc_dateByMovingToNextOrBackwardsFewDays:1 withCalender:[NSCalendar currentCalendar]];
+    return [date cc_dateByMovingToNextOrBackwardsFewDays:0 withCalender:[NSCalendar currentCalendar]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

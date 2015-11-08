@@ -9,7 +9,7 @@
 #import "WorkdayDataSource.h"
 #import "NSDateAdditions.h"
 #import "SSDefaultConfigName.h"
-#import "SSLunarDate.h"
+#import "SSLunarDate/SSLunarDate.h"
 #import "SSLunarDate/SSHolidayManager.h"
 #import "SSDayEventUTC.h"
 #import "UIColor+HexCoding.m"

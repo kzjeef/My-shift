@@ -7,7 +7,7 @@
 //
 
 #import "SSHolidayHelper.h"
-#import "SSHolidayManager.h"
+#import "SSLunarDate/SSHolidayManager.h"
 
 @implementation SSHolidayHelper
 
