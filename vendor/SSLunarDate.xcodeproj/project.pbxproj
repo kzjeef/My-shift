@@ -24,6 +24,7 @@
 		29AD3C7716D4F9DB002E6543 /* SSLunarDateHoliday.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD3C7516D4F9DB002E6543 /* SSLunarDateHoliday.m */; };
 		29AD3C7816D600AA002E6543 /* SSHolidayManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29AD3C7016D4F8DF002E6543 /* SSHolidayManager.h */; };
 		29AD3C8616D62354002E6543 /* SSHolidayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AD3C8516D62354002E6543 /* SSHolidayTests.m */; };
+		29AEDE511BEF2CCE004F371C /* SSLunarDateHoliday.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29AD3C7416D4F9DB002E6543 /* SSLunarDateHoliday.h */; };
 		29AFF70E16C223E80093EAB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29AFF70D16C223E80093EAB4 /* Foundation.framework */; };
 		29AFF71316C223E80093EAB4 /* SSLunarDate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29AFF71216C223E80093EAB4 /* SSLunarDate.h */; };
 		29AFF71516C223E80093EAB4 /* SSLunarDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AFF71416C223E80093EAB4 /* SSLunarDate.m */; };
@@ -72,6 +73,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				29AEDE511BEF2CCE004F371C /* SSLunarDateHoliday.h in CopyFiles */,
 				29AD3C7816D600AA002E6543 /* SSHolidayManager.h in CopyFiles */,
 				2912674016CF846A00FFB202 /* SSLunarDateType.h in CopyFiles */,
 				2912673F16CF845900FFB202 /* libLunar.h in CopyFiles */,
@@ -305,7 +307,7 @@
 			name = SSLunarDateTests;
 			productName = SSLunarDateTests;
 			productReference = 29AFF71B16C223E80093EAB4 /* SSLunarDateTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -313,6 +315,7 @@
 		29AFF70116C223E80093EAB4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0630;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Jiejing Zhang";
 			};
