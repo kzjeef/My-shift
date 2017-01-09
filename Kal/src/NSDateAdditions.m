@@ -9,7 +9,7 @@
 
 - (NSDate *)cc_dateByMovingToBeginningOfDay
 {
-  unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+  unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
   NSDateComponents* parts = [[NSCalendar currentCalendar] components:flags fromDate:self];
   [parts setHour:0];
   [parts setMinute:0];
@@ -19,7 +19,7 @@
 
 - (NSDate *)cc_dateByMovingToMiddleOfDay
 {
-    unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents* parts = [[NSCalendar currentCalendar] components:flags fromDate:self];
     [parts setHour:12];
     [parts setMinute:0];
@@ -29,14 +29,14 @@
 
 - (NSDateComponents *)cc_getDateComponents
 {
-    unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *parts = [[NSCalendar autoupdatingCurrentCalendar] components:flags fromDate:self];
     return parts;
 }
 
 - (NSDate *)cc_dateByMovingToEndOfDay
 {
-  unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+  unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
   NSDateComponents* parts = [[NSCalendar currentCalendar] components:flags fromDate:self];
   [parts setHour:23];
   [parts setMinute:59];
@@ -47,7 +47,7 @@
 
 - (NSDate *)cc_dateByMovingToBeginningOfDayWithCalender:(NSCalendar *) cal
 {
-    unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents* parts = [cal components:flags fromDate:self];
     [parts setHour:0];
     [parts setMinute:0];
@@ -57,7 +57,7 @@
 
 - (NSDate *)cc_dateByMovingToMiddleOfDayWithCalender:(NSCalendar *) cal
 {
-    unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents* parts = [cal components:flags fromDate:self];
     [parts setHour:12];
     [parts setMinute:0];
@@ -67,7 +67,7 @@
 
 - (NSDate *)cc_convertToUTC
 {
-    unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents* parts = [[NSCalendar currentCalendar] components:flags fromDate:self];
     return [[NSCalendar currentCalendar ] dateFromComponents:parts];
 }
@@ -75,7 +75,7 @@
 - (NSString *)cc_getHourMinitesFromDate
 {
     
-    unsigned int flags =  NSHourCalendarUnit | NSMinuteCalendarUnit;
+    unsigned int flags =  NSCalendarUnitHour | NSCalendarUnitMinute;
     NSDateComponents* parts = [[NSCalendar currentCalendar] components:flags fromDate:self];
     
     return [NSString stringWithFormat:@"%ld:%ld", (long)[parts hour], (long)[parts minute]];
@@ -84,7 +84,7 @@
 
 - (NSDate *)cc_dateByMovingToEndOfDayWithCalender:(NSCalendar *)cal
 {
-    unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents* parts = [cal components:flags fromDate:self];
     [parts setHour:23];
     [parts setMinute:59];
@@ -102,7 +102,7 @@
 - (NSDate *)cc_dateByMovingToFirstDayOfTheMonthWithCalendar:(NSCalendar *)cal
 {
     NSDate *d = nil;
-    BOOL ok = [cal rangeOfUnit:NSMonthCalendarUnit startDate:&d interval:NULL forDate:self];
+    BOOL ok = [cal rangeOfUnit:NSCalendarUnitMonth startDate:&d interval:NULL forDate:self];
     NSAssert1(cal, @"calendar is null:%@", cal);
     NSAssert1(ok, @"Failed to calculate the first day the month based on cal: %@", self);
     ok =  ok; // avoid warnning
@@ -112,7 +112,7 @@
 - (NSDate *)cc_dateByMovingToFirstDayOfTheMonth
 {
   NSDate *d = nil;
-  BOOL ok = [[NSCalendar currentCalendar] rangeOfUnit:NSMonthCalendarUnit startDate:&d interval:NULL forDate:self];
+  BOOL ok = [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitMonth startDate:&d interval:NULL forDate:self];
   NSAssert1(ok, @"Failed to calculate the first day the month based on %@", self);
     ok =  ok; // avoid warnning
   return d;
@@ -149,37 +149,37 @@
 
 - (NSDateComponents *)cc_componentsForMonthDayAndYearWithCal:(NSCalendar *)cal
 {
-    return [cal components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
+    return [cal components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:self];
 }
 
 
 - (NSDateComponents *)cc_componentsForMonthDayAndYear
 {
-  return [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
+  return [[NSCalendar currentCalendar] components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:self];
 }
 
 - (NSUInteger)cc_weekday
 {
-    return [[NSCalendar currentCalendar] ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:self];
+    return [[NSCalendar currentCalendar] ordinalityOfUnit:NSCalendarUnitDay inUnit:NSWeekCalendarUnit forDate:self];
 }
 
 - (NSUInteger)cc_weekdayWithCalendar:(NSCalendar *) calendar
 {
-    return [calendar ordinalityOfUnit:NSDayCalendarUnit inUnit:NSWeekCalendarUnit forDate:self];
+    return [calendar ordinalityOfUnit:NSCalendarUnitDay inUnit:NSWeekCalendarUnit forDate:self];
 }
 
 - (NSUInteger)cc_numberOfDaysInMonth
 {
-  return [[NSCalendar currentCalendar] rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:self].length;
+  return [[NSCalendar currentCalendar] rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:self].length;
 }
 
 
 - (NSDate *) cc_dateBySetTimePart:(NSDate *) time withCalendar:(NSCalendar *) cal {
     
-    unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
 
     
-    //unsigned int flags = NSMinuteCalendarUnit | NSHourCalendarUnit | NSSecondCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSDayCalendarUnit;
+    //unsigned int flags = NSCalendarUnitMinute | NSCalendarUnitHour | NSCalendarUnitSecond | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitDay;
     NSDateComponents* timeparts = [cal components:flags fromDate:time];
     
     NSDateComponents *parts = [cal components:flags fromDate:self];

@@ -1,3 +1,4 @@
 /* Localized versions of Info.plist keys */
 CFBundleDisplayName = "排班表";
 
+NSCalendarsUsageDescription =  "需要访问您的系统日历来同步排班信息到您的系统日历";

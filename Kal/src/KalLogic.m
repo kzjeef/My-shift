@@ -112,10 +112,10 @@
   NSMutableArray *days = [NSMutableArray array];
   
   NSDate *beginningOfPreviousMonth = [self.baseDate cc_dateByMovingToFirstDayOfThePreviousMonth];
-  int n = [beginningOfPreviousMonth cc_numberOfDaysInMonth];
-  int numPartialDays = [self numberOfDaysInPreviousPartialWeek];
+  unsigned long n = [beginningOfPreviousMonth cc_numberOfDaysInMonth];
+  unsigned long numPartialDays = [self numberOfDaysInPreviousPartialWeek];
   NSDateComponents *c = [beginningOfPreviousMonth cc_componentsForMonthDayAndYear];
-  for (int i = n - (numPartialDays - 1); i < n + 1; i++)
+  for (unsigned long i = n - (numPartialDays - 1); i < n + 1; i++)
     [days addObject:[KalDate dateForDay:i month:c.month year:c.year]];
   
   return days;

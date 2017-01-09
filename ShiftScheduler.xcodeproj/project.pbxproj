@@ -33,7 +33,6 @@
 		290F4E391783EA800023ADE8 /* SSDayEventUTC.m in Sources */ = {isa = PBXBuildFile; fileRef = 290F4E371783EA800023ADE8 /* SSDayEventUTC.m */; };
 		290F4E3B1783EF1B0023ADE8 /* SSDayEventUTC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 290F4E3A1783EF1B0023ADE8 /* SSDayEventUTC.xib */; };
 		2912673916CF77CE00FFB202 /* SSDefaultConfigName.h in Headers */ = {isa = PBXBuildFile; fileRef = 2912673816CF77CE00FFB202 /* SSDefaultConfigName.h */; };
-		2912673D16CF81FA00FFB202 /* libSSLunarDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2912673C16CF81FA00FFB202 /* libSSLunarDate.a */; };
 		2914FC4F1B4ACD9000317B9A /* SSNoteAppendingTVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2914FC4D1B4ACD9000317B9A /* SSNoteAppendingTVC.h */; };
 		2914FC501B4ACD9000317B9A /* SSNoteAppendingTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2914FC4E1B4ACD9000317B9A /* SSNoteAppendingTVC.m */; };
 		2914FC521B4AD22300317B9A /* SSNoteAppendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2914FC511B4AD22300317B9A /* SSNoteAppendingView.xib */; };
@@ -135,10 +134,9 @@
 		2991F81817B7971C009AF142 /* 甜美舞曲.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F80D17B7971C009AF142 /* 甜美舞曲.caf */; };
 		2991F81917B7971C009AF142 /* 自然晨曦.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2991F80E17B7971C009AF142 /* 自然晨曦.caf */; };
 		2995A42018CA5381004782DF /* arrow-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 2995A41F18CA5381004782DF /* arrow-down.png */; };
-		2995A42518CB5CDE004782DF /* WXApi.h in Headers */ = {isa = PBXBuildFile; fileRef = 2995A42218CB5CDE004782DF /* WXApi.h */; };
-		2995A42618CB5CDE004782DF /* WXApiObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2995A42318CB5CDE004782DF /* WXApiObject.h */; };
-		2995A42718CB5CDE004782DF /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2995A42418CB5CDE004782DF /* libWeChatSDK.a */; };
-		2995A42818CB5CDE004782DF /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2995A42418CB5CDE004782DF /* libWeChatSDK.a */; };
+		2995A42518CB5CDE004782DF /* (null) in Headers */ = {isa = PBXBuildFile; };
+		2995A42618CB5CDE004782DF /* (null) in Headers */ = {isa = PBXBuildFile; };
+		2995A42818CB5CDE004782DF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		2995A42A18CB685C004782DF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2995A42918CB685C004782DF /* Social.framework */; };
 		2995A43018CCE5FB004782DF /* users.png in Resources */ = {isa = PBXBuildFile; fileRef = 2995A42E18CCE5FB004782DF /* users.png */; };
 		2995A43118CCE5FB004782DF /* users.png in Resources */ = {isa = PBXBuildFile; fileRef = 2995A42E18CCE5FB004782DF /* users.png */; };
@@ -246,10 +244,6 @@
 		29C97A041AE3E6130066B6A5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C97A031AE3E6130066B6A5 /* libz.dylib */; };
 		29C97A061AE3E61F0066B6A5 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C97A051AE3E61F0066B6A5 /* libsqlite3.0.dylib */; };
 		29C97A111AE404270066B6A5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29C97A101AE404270066B6A5 /* CoreImage.framework */; };
-		29C97A161AE4045F0066B6A5 /* libPods-KKColorListPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 296915EA18C625D100B743F3 /* libPods-KKColorListPicker.a */; };
-		29C97A171AE4045F0066B6A5 /* libPods-REFrostedViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 297E0C7F1833D3D2000E1F19 /* libPods-REFrostedViewController.a */; };
-		29C97A181AE4045F0066B6A5 /* libPods-WeixinActivity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2995A42D18CB8C39004782DF /* libPods-WeixinActivity.a */; };
-		29C97A191AE4045F0066B6A5 /* libPods-WSCoachMarksView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 297FDBE718AF1CA400BA0240 /* libPods-WSCoachMarksView.a */; };
 		29D6A521159CB45D00AC6103 /* KalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29D6A520159CB45D00AC6103 /* KalViewController.h */; };
 		29D6A523159CB48200AC6103 /* Kal.h in Headers */ = {isa = PBXBuildFile; fileRef = 29D6A522159CB48200AC6103 /* Kal.h */; };
 		29D6A525159CB4A200AC6103 /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 29D6A524159CB4A200AC6103 /* Kal.bundle */; };
@@ -297,14 +291,13 @@
 		29FA9AF314F48DAE00717505 /* SSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 29FA9AF114F48DAE00717505 /* SSAlertController.h */; };
 		29FA9AF414F48DAE00717505 /* SSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FA9AF214F48DAE00717505 /* SSAlertController.m */; };
 		871303501B2801C600CCBEB8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8713034F1B2801C600CCBEB8 /* Security.framework */; };
-		871303561B280A8B00CCBEB8 /* libFlurry_6.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8748CC471B27FFDE006CB18B /* libFlurry_6.4.0.a */; };
+		8721DBD01E235DC800D6DB80 /* libPods-ShiftScheduler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 870772FE1E232DAE00683713 /* libPods-ShiftScheduler.a */; };
+		8721DC011E235FC100D6DB80 /* libSSLunarDate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 879292C51B26DCEF0079BCFD /* libSSLunarDate.a */; };
 		8748CC3B1B27FE94006CB18B /* SSTrackUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 8748CC391B27FE94006CB18B /* SSTrackUtil.h */; };
 		8748CC3C1B27FE94006CB18B /* SSTrackUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8748CC3A1B27FE94006CB18B /* SSTrackUtil.m */; };
-		8748CC481B27FFDE006CB18B /* Flurry.h in Headers */ = {isa = PBXBuildFile; fileRef = 8748CC451B27FFDE006CB18B /* Flurry.h */; };
-		8748CC491B27FFDE006CB18B /* FlurryWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8748CC461B27FFDE006CB18B /* FlurryWatch.h */; };
 		877B23B21B2599D7006EA638 /* CommonDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 877B23B11B2599D7006EA638 /* CommonDefine.h */; };
 		877B23BF1B25B335006EA638 /* MeasureUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 877B23BE1B25B335006EA638 /* MeasureUtil.h */; };
-		9A85C2A9A9AA44AEB7EE5EA3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B41447E5FD4EFE9D397177 /* libPods.a */; };
+		9054E2D8EC7772D7D2CC8DAD /* libPods-ShiftScheduler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F1150627BA2CE15FACD0A0 /* libPods-ShiftScheduler.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -322,55 +315,6 @@
 			remoteGlobalIDString = 29B9E1B01472C1D700DB2E1F;
 			remoteInfo = ShiftScheduler;
 		};
-		296915E918C625D100B743F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6E6EDDBCFE034B42A41A5E7F;
-			remoteInfo = "Pods-KKColorListPicker";
-		};
-		297E0C7C1833D3D2000E1F19 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4C6DF0CFDFC04F3F93B9C78E;
-			remoteInfo = Pods;
-		};
-		297E0C7E1833D3D2000E1F19 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7BBD6A8749F5457395B603CC;
-			remoteInfo = "Pods-REFrostedViewController";
-		};
-		297FDBD418A8B99900BA0240 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = A515C2AF32069D9997E1661A;
-			remoteInfo = Pods;
-		};
-		297FDBD818A8B9C000BA0240 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = C94E29E15276E367BDBC0AE4;
-			remoteInfo = "Pods-REFrostedViewController";
-		};
-		297FDBE618AF1CA400BA0240 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0CB4C3CF51C34EEAADC39E50;
-			remoteInfo = "Pods-WSCoachMarksView";
-		};
-		2995A42C18CB8C39004782DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3E53CB2965404F8CACF7CBFC;
-			remoteInfo = "Pods-WeixinActivity";
-		};
 		29D6A512159CB37000AC6103 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */;
@@ -384,6 +328,48 @@
 			proxyType = 1;
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = Kal;
+		};
+		870772FB1E232DAE00683713 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CD30C1A52866FC96F8BE3B3C06BEC12B;
+			remoteInfo = KKColorListPicker;
+		};
+		870772FD1E232DAE00683713 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E8AD768D324AB858096A8798E3C431E6;
+			remoteInfo = "Pods-ShiftScheduler";
+		};
+		870772FF1E232DAE00683713 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DFC6F05C380D78E17A7EA3AEA7FFD83B;
+			remoteInfo = REFrostedViewController;
+		};
+		870773011E232DAE00683713 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5D4C1DD4C36E4529C2223AEFF3EC4BA1;
+			remoteInfo = WeixinActivity;
+		};
+		870773031E232DAE00683713 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E656EB960E912E4E23A72F7AAA9B2474;
+			remoteInfo = WSCoachMarksView;
+		};
+		8721DBC61E2357AF00D6DB80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B460C5182E00810059F149 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCA8F2DEC467E00DC6C87E2C32FF2F3F;
+			remoteInfo = "Flurry-iOS-SDK";
 		};
 		879292C41B26DCEF0079BCFD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -416,6 +402,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0CD3B96ADEABAC8C5196E5CB /* Pods-ShiftScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShiftScheduler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShiftScheduler/Pods-ShiftScheduler.debug.xcconfig"; sourceTree = "<group>"; };
 		29009FCA159F4A4D00A1588E /* SSSettingTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSSettingTVC.h; path = ShiftScheduler/SSSettingTVC.h; sourceTree = "<group>"; };
 		29009FCB159F4A4D00A1588E /* SSSettingTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SSSettingTVC.m; path = ShiftScheduler/SSSettingTVC.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29009FCC159F4A4D00A1588E /* SSSettingTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SSSettingTVC.xib; path = ShiftScheduler/SSSettingTVC.xib; sourceTree = "<group>"; };
@@ -594,9 +581,6 @@
 		2991F80D17B7971C009AF142 /* 甜美舞曲.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "甜美舞曲.caf"; path = "Resources/alarm/long/甜美舞曲.caf"; sourceTree = "<group>"; };
 		2991F80E17B7971C009AF142 /* 自然晨曦.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "自然晨曦.caf"; path = "Resources/alarm/long/自然晨曦.caf"; sourceTree = "<group>"; };
 		2995A41F18CA5381004782DF /* arrow-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-down.png"; sourceTree = "<group>"; };
-		2995A42218CB5CDE004782DF /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApi.h; path = Submodules/wechat/WXApi.h; sourceTree = "<group>"; };
-		2995A42318CB5CDE004782DF /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WXApiObject.h; path = Submodules/wechat/WXApiObject.h; sourceTree = "<group>"; };
-		2995A42418CB5CDE004782DF /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = Submodules/wechat/libWeChatSDK.a; sourceTree = "<group>"; };
 		2995A42918CB685C004782DF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		2995A42E18CCE5FB004782DF /* users.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = users.png; path = Resources/users.png; sourceTree = "<group>"; };
 		2995A42F18CCE5FB004782DF /* users@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "users@2x.png"; path = "Resources/users@2x.png"; sourceTree = "<group>"; };
@@ -704,7 +688,7 @@
 		29D93EA118B9D3020087806B /* SSCalendarSyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSCalendarSyncController.h; path = ShiftScheduler/CalendarSync/SSCalendarSyncController.h; sourceTree = "<group>"; };
 		29D93EA218B9D3020087806B /* SSCalendarSyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SSCalendarSyncController.m; path = ShiftScheduler/CalendarSync/SSCalendarSyncController.m; sourceTree = "<group>"; };
 		29DCB8D915A7C79C0095C71D /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDateAdditions.h; path = Kal/src/NSDateAdditions.h; sourceTree = SOURCE_ROOT; };
-		29DCB8DB15A7C8730095C71D /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDateAdditions.m; path = Kal/src/NSDateAdditions.m; sourceTree = SOURCE_ROOT; };
+		29DCB8DB15A7C8730095C71D /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = NSDateAdditions.m; path = Kal/src/NSDateAdditions.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		29DCB8DD15A873F40095C71D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		29DCB8DF15A878590095C71D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		29E339D214CA955A0036EAED /* ProfileIconPickerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileIconPickerDataSource.h; sourceTree = "<group>"; };
@@ -740,18 +724,14 @@
 		29F89FEC14E8072D002BB665 /* ShiftScheduler 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ShiftScheduler 4.xcdatamodel"; sourceTree = "<group>"; };
 		29FA9AF114F48DAE00717505 /* SSAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSAlertController.h; sourceTree = "<group>"; };
 		29FA9AF214F48DAE00717505 /* SSAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SSAlertController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		452AED27C6E75130758D0A9A /* Pods-ShiftScheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShiftScheduler.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShiftScheduler/Pods-ShiftScheduler.release.xcconfig"; sourceTree = "<group>"; };
 		8713034F1B2801C600CCBEB8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		8748CC391B27FE94006CB18B /* SSTrackUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTrackUtil.h; sourceTree = "<group>"; };
 		8748CC3A1B27FE94006CB18B /* SSTrackUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTrackUtil.m; sourceTree = "<group>"; };
-		8748CC451B27FFDE006CB18B /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flurry.h; path = vendor/furry/Flurry.h; sourceTree = "<group>"; };
-		8748CC461B27FFDE006CB18B /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlurryWatch.h; path = vendor/furry/FlurryWatch.h; sourceTree = "<group>"; };
-		8748CC471B27FFDE006CB18B /* libFlurry_6.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurry_6.4.0.a; path = vendor/furry/libFlurry_6.4.0.a; sourceTree = "<group>"; };
 		877B23B11B2599D7006EA638 /* CommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDefine.h; sourceTree = "<group>"; };
 		877B23BE1B25B335006EA638 /* MeasureUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasureUtil.h; sourceTree = "<group>"; };
 		879292BB1B26DCEF0079BCFD /* SSLunarDate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SSLunarDate.xcodeproj; path = vendor/SSLunarDate.xcodeproj; sourceTree = "<group>"; };
-		B7B41447E5FD4EFE9D397177 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6D0B58EDD498B3173DF575B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		F4699C511670580AED364DC0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D9F1150627BA2CE15FACD0A0 /* libPods-ShiftScheduler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ShiftScheduler.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -769,7 +749,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29AEBD79155418490010F27D /* CoreData.framework in Frameworks */,
-				2995A42818CB5CDE004782DF /* libWeChatSDK.a in Frameworks */,
+				2995A42818CB5CDE004782DF /* (null) in Frameworks */,
 				29AEBD691554146F0010F27D /* SenTestingKit.framework in Frameworks */,
 				29AEBD6A1554146F0010F27D /* UIKit.framework in Frameworks */,
 				29AEBD6B1554146F0010F27D /* Foundation.framework in Frameworks */,
@@ -780,25 +760,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				871303561B280A8B00CCBEB8 /* libFlurry_6.4.0.a in Frameworks */,
+				8721DC011E235FC100D6DB80 /* libSSLunarDate.a in Frameworks */,
+				8721DBD01E235DC800D6DB80 /* libPods-ShiftScheduler.a in Frameworks */,
 				29C97A021AE3E6090066B6A5 /* SystemConfiguration.framework in Frameworks */,
 				871303501B2801C600CCBEB8 /* Security.framework in Frameworks */,
-				29C97A161AE4045F0066B6A5 /* libPods-KKColorListPicker.a in Frameworks */,
-				29C97A171AE4045F0066B6A5 /* libPods-REFrostedViewController.a in Frameworks */,
-				29C97A181AE4045F0066B6A5 /* libPods-WeixinActivity.a in Frameworks */,
-				29C97A191AE4045F0066B6A5 /* libPods-WSCoachMarksView.a in Frameworks */,
 				29C97A111AE404270066B6A5 /* CoreImage.framework in Frameworks */,
 				29C97A061AE3E61F0066B6A5 /* libsqlite3.0.dylib in Frameworks */,
 				29C97A041AE3E6130066B6A5 /* libz.dylib in Frameworks */,
 				29B9E1B81472C1D700DB2E1F /* Foundation.framework in Frameworks */,
 				2995A42A18CB685C004782DF /* Social.framework in Frameworks */,
 				2920039A18B4F142000CA7D3 /* EventKit.framework in Frameworks */,
-				2995A42718CB5CDE004782DF /* libWeChatSDK.a in Frameworks */,
 				296E3A11182DE4CD00B85E29 /* Accelerate.framework in Frameworks */,
 				29C4B5DC1813BEA70041D0B2 /* QuartzCore.framework in Frameworks */,
 				29C4B5DA1813BE9B0041D0B2 /* CoreMedia.framework in Frameworks */,
 				29C4B5D41813BE260041D0B2 /* CFNetwork.framework in Frameworks */,
-				2912673D16CF81FA00FFB202 /* libSSLunarDate.a in Frameworks */,
 				29D6A550159CB79F00AC6103 /* libKal.a in Frameworks */,
 				29E6D7F115ADACCE00235123 /* MessageUI.framework in Frameworks */,
 				2968BED014F907BB00DF1CCF /* AudioToolbox.framework in Frameworks */,
@@ -806,7 +781,7 @@
 				29B9E1B61472C1D700DB2E1F /* UIKit.framework in Frameworks */,
 				29B9E1BA1472C1D700DB2E1F /* CoreGraphics.framework in Frameworks */,
 				29B9E1BC1472C1D700DB2E1F /* CoreData.framework in Frameworks */,
-				9A85C2A9A9AA44AEB7EE5EA3 /* libPods.a in Frameworks */,
+				9054E2D8EC7772D7D2CC8DAD /* libPods-ShiftScheduler.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -960,11 +935,12 @@
 		297E0C781833D3D2000E1F19 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				297E0C7D1833D3D2000E1F19 /* libPods.a */,
-				296915EA18C625D100B743F3 /* libPods-KKColorListPicker.a */,
-				297E0C7F1833D3D2000E1F19 /* libPods-REFrostedViewController.a */,
-				297FDBE718AF1CA400BA0240 /* libPods-WSCoachMarksView.a */,
-				2995A42D18CB8C39004782DF /* libPods-WeixinActivity.a */,
+				8721DBC71E2357AF00D6DB80 /* libFlurry-iOS-SDK.a */,
+				870772FC1E232DAE00683713 /* libKKColorListPicker.a */,
+				870772FE1E232DAE00683713 /* libPods-ShiftScheduler.a */,
+				870773001E232DAE00683713 /* libREFrostedViewController.a */,
+				870773021E232DAE00683713 /* libWeixinActivity.a */,
+				870773041E232DAE00683713 /* libWSCoachMarksView.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1134,9 +1110,6 @@
 		2995A42118CB5CC5004782DF /* WeChat */ = {
 			isa = PBXGroup;
 			children = (
-				2995A42218CB5CDE004782DF /* WXApi.h */,
-				2995A42318CB5CDE004782DF /* WXApiObject.h */,
-				2995A42418CB5CDE004782DF /* libWeChatSDK.a */,
 			);
 			name = WeChat;
 			sourceTree = "<group>";
@@ -1289,7 +1262,7 @@
 				290218A41B24048000FBFAAD /* todayshift */,
 				29B9E1B41472C1D700DB2E1F /* Frameworks */,
 				29B9E1B21472C1D700DB2E1F /* Products */,
-				7F6CA32BD0895106DACF9C1C /* Pods */,
+				EF12D428122AD5B8C07887F5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1338,8 +1311,8 @@
 				29B9E1B71472C1D700DB2E1F /* Foundation.framework */,
 				29B9E1B91472C1D700DB2E1F /* CoreGraphics.framework */,
 				29B9E1BB1472C1D700DB2E1F /* CoreData.framework */,
-				B7B41447E5FD4EFE9D397177 /* libPods.a */,
 				294AFED01B1DCBCE005E5CC8 /* NotificationCenter.framework */,
+				D9F1150627BA2CE15FACD0A0 /* libPods-ShiftScheduler.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1446,34 +1419,14 @@
 			name = Audio;
 			sourceTree = "<group>";
 		};
-		7F6CA32BD0895106DACF9C1C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F4699C511670580AED364DC0 /* Pods.debug.xcconfig */,
-				D6D0B58EDD498B3173DF575B /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		8748CC431B27FF9D006CB18B /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
-				8748CC441B27FFCC006CB18B /* Furry */,
 				879292BB1B26DCEF0079BCFD /* SSLunarDate.xcodeproj */,
 				29D6A50B159CB36F00AC6103 /* Kal.xcodeproj */,
 				29B460C5182E00810059F149 /* Pods.xcodeproj */,
 			);
 			name = Vendors;
-			sourceTree = "<group>";
-		};
-		8748CC441B27FFCC006CB18B /* Furry */ = {
-			isa = PBXGroup;
-			children = (
-				8748CC451B27FFDE006CB18B /* Flurry.h */,
-				8748CC461B27FFDE006CB18B /* FlurryWatch.h */,
-				8748CC471B27FFDE006CB18B /* libFlurry_6.4.0.a */,
-			);
-			name = Furry;
 			sourceTree = "<group>";
 		};
 		879292BC1B26DCEF0079BCFD /* Products */ = {
@@ -1515,6 +1468,15 @@
 			name = Widget;
 			sourceTree = "<group>";
 		};
+		EF12D428122AD5B8C07887F5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0CD3B96ADEABAC8C5196E5CB /* Pods-ShiftScheduler.debug.xcconfig */,
+				452AED27C6E75130758D0A9A /* Pods-ShiftScheduler.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1551,12 +1513,11 @@
 				29AEBDE715628BAB0010F27D /* ShiftAlgoFreeJump.h in Headers */,
 				299E33A2156A74820066E843 /* SSShiftWorkdayConfigTVC.h in Headers */,
 				29F49CA6156FDAD900C76EFC /* SSShiftTableConfigTVC.h in Headers */,
-				8748CC491B27FFDE006CB18B /* FlurryWatch.h in Headers */,
 				29D93EA318B9D3020087806B /* SSCalendarSyncController.h in Headers */,
 				29F49CAA156FE2A500C76EFC /* SSTurnFinishDatePickerTVC.h in Headers */,
 				297409F818C37117008A5AF9 /* SSShiftMultipSelectTVC.h in Headers */,
 				2915099C18C8EA5E00BE360D /* UIActivityIndicatorView+BigRound.h in Headers */,
-				2995A42518CB5CDE004782DF /* WXApi.h in Headers */,
+				2995A42518CB5CDE004782DF /* (null) in Headers */,
 				29D6A528159CB4B600AC6103 /* UIViewAdditions.h in Headers */,
 				2980757518B25462003A733F /* InfoNode.h in Headers */,
 				29009FCD159F4A4D00A1588E /* SSSettingTVC.h in Headers */,
@@ -1577,10 +1538,9 @@
 				29B8F3D515B9BA62000D934A /* SSShareObject.h in Headers */,
 				29B8F3D715B9BA62000D934A /* SSThinkNoteShareAgent.h in Headers */,
 				29B8F3D915B9BA62000D934A /* UIImage+CaptureView.h in Headers */,
-				8748CC481B27FFDE006CB18B /* Flurry.h in Headers */,
 				292003A118B5A269000CA7D3 /* CalendarSyncTVC.h in Headers */,
 				29B43CA615D29DBF000BC677 /* ThinkNoteShareViewController.h in Headers */,
-				2995A42618CB5CDE004782DF /* WXApiObject.h in Headers */,
+				2995A42618CB5CDE004782DF /* (null) in Headers */,
 				29293D9215DFE778006B6907 /* SSSocialThinkNoteLogin.h in Headers */,
 				29E980EF1641747B00B65A7E /* SSSettingAlarmPickerVC.h in Headers */,
 				2912673916CF77CE00FFB202 /* SSDefaultConfigName.h in Headers */,
@@ -1632,19 +1592,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29B9E1CE1472C1D700DB2E1F /* Build configuration list for PBXNativeTarget "ShiftScheduler" */;
 			buildPhases = (
-				35F9B78678B748D18757E1FB /* Check Pods Manifest.lock */,
+				3D193F9500593C01B011CBED /* [CP] Check Pods Manifest.lock */,
 				29B9E1AE1472C1D700DB2E1F /* Frameworks */,
 				29B9E1AD1472C1D700DB2E1F /* Sources */,
 				29B9E1AF1472C1D700DB2E1F /* Resources */,
 				29E128CD1476DA7F008DDB53 /* Headers */,
-				387F5AE3C7FF4202A05B1EDD /* Copy Pods Resources */,
 				294AFEE01B1DCBCF005E5CC8 /* Embed App Extensions */,
+				7DD64972CB8D35BA8D43804E /* [CP] Embed Pods Frameworks */,
+				EA29E258E8192260188B1A98 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				297FDBD918A8B9C000BA0240 /* PBXTargetDependency */,
-				297FDBD518A8B99900BA0240 /* PBXTargetDependency */,
 				29D6A52B159CB4DC00AC6103 /* PBXTargetDependency */,
 				290218AD1B24048100FBFAAD /* PBXTargetDependency */,
 			);
@@ -1659,6 +1618,9 @@
 		29B9E1A81472C1D700DB2E1F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastTestingUpgradeCheck = 0700;
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
@@ -1721,46 +1683,53 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		296915EA18C625D100B743F3 /* libPods-KKColorListPicker.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-KKColorListPicker.a";
-			remoteRef = 296915E918C625D100B743F3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		297E0C7D1833D3D2000E1F19 /* libPods.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPods.a;
-			remoteRef = 297E0C7C1833D3D2000E1F19 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		297E0C7F1833D3D2000E1F19 /* libPods-REFrostedViewController.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-REFrostedViewController.a";
-			remoteRef = 297E0C7E1833D3D2000E1F19 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		297FDBE718AF1CA400BA0240 /* libPods-WSCoachMarksView.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-WSCoachMarksView.a";
-			remoteRef = 297FDBE618AF1CA400BA0240 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2995A42D18CB8C39004782DF /* libPods-WeixinActivity.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-WeixinActivity.a";
-			remoteRef = 2995A42C18CB8C39004782DF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		29D6A513159CB37000AC6103 /* libKal.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libKal.a;
 			remoteRef = 29D6A512159CB37000AC6103 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		870772FC1E232DAE00683713 /* libKKColorListPicker.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKKColorListPicker.a;
+			remoteRef = 870772FB1E232DAE00683713 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		870772FE1E232DAE00683713 /* libPods-ShiftScheduler.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-ShiftScheduler.a";
+			remoteRef = 870772FD1E232DAE00683713 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		870773001E232DAE00683713 /* libREFrostedViewController.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libREFrostedViewController.a;
+			remoteRef = 870772FF1E232DAE00683713 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		870773021E232DAE00683713 /* libWeixinActivity.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWeixinActivity.a;
+			remoteRef = 870773011E232DAE00683713 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		870773041E232DAE00683713 /* libWSCoachMarksView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWSCoachMarksView.a;
+			remoteRef = 870773031E232DAE00683713 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8721DBC71E2357AF00D6DB80 /* libFlurry-iOS-SDK.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libFlurry-iOS-SDK.a";
+			remoteRef = 8721DBC61E2357AF00D6DB80 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		879292C51B26DCEF0079BCFD /* libSSLunarDate.a */ = {
@@ -1921,33 +1890,49 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		35F9B78678B748D18757E1FB /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-		};
-		387F5AE3C7FF4202A05B1EDD /* Copy Pods Resources */ = {
+		3D193F9500593C01B011CBED /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7DD64972CB8D35BA8D43804E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShiftScheduler/Pods-ShiftScheduler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA29E258E8192260188B1A98 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShiftScheduler/Pods-ShiftScheduler-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2081,16 +2066,6 @@
 			isa = PBXTargetDependency;
 			target = 29B9E1B01472C1D700DB2E1F /* ShiftScheduler */;
 			targetProxy = 294AFEE11B1DCBFC005E5CC8 /* PBXContainerItemProxy */;
-		};
-		297FDBD518A8B99900BA0240 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Pods;
-			targetProxy = 297FDBD418A8B99900BA0240 /* PBXContainerItemProxy */;
-		};
-		297FDBD918A8B9C000BA0240 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-REFrostedViewController";
-			targetProxy = 297FDBD818A8B9C000BA0240 /* PBXContainerItemProxy */;
 		};
 		29D6A52B159CB4DC00AC6103 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2258,7 +2233,6 @@
 					"\\\"$(SRCROOT)/../SSLunarDate/build/Release-iphoneos\\\"",
 					"\\\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7\\\"",
 					"\\\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7s\\\"",
-					/Users/zhangjeef/Developer/shiftScheduler/Submodules/wechat,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "woodesign.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2286,7 +2260,6 @@
 					"\\\"$(SRCROOT)/../SSLunarDate/build/Release-iphoneos\\\"",
 					"\\\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7\\\"",
 					"\\\"$(SRCROOT)/../SSLunarDate/build/SSLunarDate.build/Release-iphoneos/SSLunarDate.build/Objects-normal/armv7s\\\"",
-					/Users/zhangjeef/Developer/shiftScheduler/Submodules/wechat,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "woodesign.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2299,7 +2272,7 @@
 		29B9E1CC1472C1D700DB2E1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2317,7 +2290,9 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "";
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -2329,7 +2304,7 @@
 		29B9E1CD1472C1D700DB2E1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -2339,6 +2314,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
@@ -2352,39 +2328,26 @@
 		};
 		29B9E1CF1472C1D700DB2E1F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4699C511670580AED364DC0 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 0CD3B96ADEABAC8C5196E5CB /* Pods-ShiftScheduler.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = ShiftScheduler/ShiftScheduler.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					/Users/zhangjeef/Developer/shiftScheduler,
-				);
+				DEVELOPMENT_TEAM = CTTU5P78CK;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShiftScheduler/ShiftScheduler-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers\"",
-					"\"${PODS_ROOT}/Headers/EAIntroView\"",
-					"\"${PODS_ROOT}/Headers/KKColorListPicker\"",
-					"\"${PODS_ROOT}/Headers/REFrostedViewController\"",
-					"\"${PODS_ROOT}/Headers/WSCoachMarksView\"",
-					Submodules/wechat,
-					"\"vendor/furry\"",
-				);
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					vendor/furry/,
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kzjeef.shitf.scheduler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2398,39 +2361,25 @@
 		};
 		29B9E1D01472C1D700DB2E1F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6D0B58EDD498B3173DF575B /* Pods.release.xcconfig */;
+			baseConfigurationReference = 452AED27C6E75130758D0A9A /* Pods-ShiftScheduler.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = ShiftScheduler/ShiftScheduler.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					/Users/zhangjeef/Developer/shiftScheduler,
-				);
+				DEVELOPMENT_TEAM = CTTU5P78CK;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ShiftScheduler/ShiftScheduler-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers\"",
-					"\"${PODS_ROOT}/Headers/EAIntroView\"",
-					"\"${PODS_ROOT}/Headers/KKColorListPicker\"",
-					"\"${PODS_ROOT}/Headers/REFrostedViewController\"",
-					"\"${PODS_ROOT}/Headers/WSCoachMarksView\"",
-					Submodules/wechat,
-					vendor/furry/,
-				);
 				INFOPLIST_FILE = "ShiftScheduler/ShiftScheduler-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					vendor/furry/,
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kzjeef.shitf.scheduler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

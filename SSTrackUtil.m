@@ -15,8 +15,8 @@ NSString *kFurryKey = @"DBT8WY47JJRNHWH2JFSJ";
 
 + (void) applicationStarted
 {
-    [Flurry setAppVersion:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
-    [Flurry setCrashReportingEnabled:YES];
+//    [Flurry setAppVersion:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+//    [Flurry setCrashReportingEnabled:YES];
     //    [Flurry setDebugLogEnabled: YES];
 
     [Flurry startSession:kFurryKey];

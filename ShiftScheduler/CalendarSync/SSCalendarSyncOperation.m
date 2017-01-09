@@ -190,7 +190,7 @@
         NSDate *upper = [[NSDate date] cc_dateByMovingToNextOrBackwardsFewDays:daysNeedSync withCalender:self.calendar];
         installDate = [latestDate cc_dateByMovingToNextDayWithCalender:self.calendar];
 
-        NSDateComponents *difference = [self.calendar components:NSDayCalendarUnit
+        NSDateComponents *difference = [self.calendar components:NSCalendarUnitDay
                                                        fromDate:installDate toDate:upper options:0];
         daysNeedSync = MIN(difference.day, 93);  // safe ground, too many event makes iOS crash.
     }

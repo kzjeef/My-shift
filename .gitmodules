@@ -1,3 +1,6 @@
 [submodule "Submodules/wechat"]
 	path = Submodules/wechat
 	url = https://github.com/kzjeef/weixin-ios-sdk.git
+[submodule "Submodules/SSLunarDate"]
+	path = Submodules/SSLunarDate
+	url = https://github.com/kzjeef/SSLunarDate.git

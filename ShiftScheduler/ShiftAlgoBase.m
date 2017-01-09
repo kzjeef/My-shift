@@ -58,7 +58,7 @@
 - (NSInteger)daysBetweenDateV2:(NSDate *)fromDateTime andDate:(NSDate *)toDateTime
 {
 
-    NSDateComponents *difference = [self.curCalendar components:NSDayCalendarUnit
+    NSDateComponents *difference = [self.curCalendar components:NSCalendarUnitDay
                                                        fromDate:fromDateTime toDate:toDateTime options:0];
     
     return [difference day];
